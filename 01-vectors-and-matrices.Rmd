@@ -1,0 +1,573 @@
+# Vectors and matrices {#vectors-and-matrices}
+
+- [Printing matrices to Latex in R](https://data-and-the-world.onrender.com/posts/matrix-to-latex/)
+
+```{r}
+array_to_LaTeX <- function(arr){
+    rows <- apply(arr, MARGIN=1, paste, collapse = " & ")
+    matrix_string <- paste(rows, collapse = " \\\\ ")
+    return(paste("\\begin{bmatrix}", matrix_string, "\\end{bmatrix}"))
+}
+```
+
+This can produce an error, so we wrap the function `array_to_LaTeX` in a call to `cat()`
+```{r, results = 'asis'}
+A <- matrix(c(3,4,5,6,7,9,4,5,122), ncol=3, byrow=TRUE)
+array_to_LaTeX(A)
+```
+
+```{r, results = 'asis'}
+A <- matrix(c(3,4,5,6,7,9,4,5,122), ncol=3, byrow=TRUE)
+cat(array_to_LaTeX(A))
+```
+
+
+The fundamental objects in this text are scalars, vectors, and matrices. 
+
+## Vectors 
+
+For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
+
+$$
+\begin{align*}
+\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+\end{align*}
+$$
+
+where the elements $x_1, \ldots, x_n$ are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the $x_i$s are stacked on top of one another) and the order matters. For example, the vector 
+
+$$
+\begin{align*}
+\mathbf{x} & = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+\end{align*}
+$$
+
+has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3 = 8$. Note that the vector $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is not the same as the vector $\begin{pmatrix}  8 \\ 2 \\ 5 \end{pmatrix}$ because the order of the elements matters.
+
+We can also write the vector as  
+
+$$
+\begin{align*}
+\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
+\end{align*}
+$$
+where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
+
+
+
+## Application in `R`
+
+### Vectors
+To create a vector we can use the concatenate function `c()`. For example, the vector $\mathbf{x} = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ can be created as the `R` object using
+
+```{r}
+x <- c(5, 2, 8)
+```
+
+where the `<-` assigns the values in the vector `c(5, 2, 8)` to the object named `x`. To print the values of `x`, we can use
+
+```{r}
+x
+```
+
+which prints the elements of x. Notice that `R` prints the elements of $\mathbf{x}$ in a row; however, $\mathbf{x}$ is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a `data.frame`, then the vector will be presented as a column vector
+
+```{r}
+data.frame(x)
+```
+
+One can use the index operator $[\hspace{2mm}]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
+
+```{r}
+x[1]
+```
+
+and the third element of $\mathbf{x}$, $x_3$, is
+
+```{r}
+x[3]
+```
+
+The transpose function `t()` turns a column vector into a row vector (or a row vector into a column vector). For example the transpose $\mathbf{x}'$ of $\mathbf{x}$ is 
+
+```{r}
+tx <- t(x)
+tx
+```
+
+where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vector. The transpose of `tx`. Notice the indices on the output of the row vector `tx`. The index operator `[1, ]` selects the first row to `tx` and the index operator `[, 1]` gives the first column `tx`. Taking the transpose again gives us back the original column vector
+
+```{r}
+t(tx)
+```
+
+
+#### Properties of Vectors
+
+1) **Scalar multiplication:**
+
+    a) For a scalar $a$ and a vector $\mathbf{x}$, we have 
+
+    $$
+    \begin{align*}
+    a \mathbf{x} & = a \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
+    & = \begin{pmatrix} a x_1 \\ a x_2 \\ \vdots \\ a x_n \end{pmatrix} 
+    \end{align*}
+    $$
+    
+    where the scalar $a$ is multiplied by each element of the vector. For example, 
+    
+    $$
+    \begin{align*}
+    4 \begin{pmatrix} 4 \\ 6 \\ 7 \\ 12 \end{pmatrix} 
+    & = \begin{pmatrix} 4 * 4 \\ 4 * 6 \\ 4 * 7 \\ 4 * 12 \end{pmatrix} \\
+    & = \begin{pmatrix} 16 \\ 24 \\ 28 \\ 48 \end{pmatrix} 
+    \end{align*}
+    $$
+    
+    In `R`, we can multiply the vector by a scalar as
+    
+    ```{r}
+    4 * c(4, 6, 7, 12)
+    ```
+    
+    or if the vector $\mathbf{x} = \left( 4, 6, 7, 12 \right)'$ we can write this as
+    
+    ```{r}
+    x <- c(4, 6, 7, 12)
+    4 * x
+    ```
+
+    b) For scalars $a$ and $b$ and a vector $\mathbf{x}$, we have 
+
+    $$
+    \begin{align*}
+    a (b \mathbf{x}) & = (ab) \mathbf{X}
+    \end{align*}
+    $$
+    
+    c) For scalars $a$ and $b$ and a vector $\mathbf{x}$, we have 
+
+    $$
+    \begin{align*}
+    a (b \mathbf{x}) & = (ab) \mathbf{X}
+    \end{align*}
+    $$
+    
+
+
+
+2) **Vector Addition:** Two vectors of length $n$ can be added elementwise
+
+$$
+\begin{align*}
+\mathbf{x} + \mathbf{y} & = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} + \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix} \\
+& = \begin{pmatrix} x_1 + y_1 \\ x_2 + y_2 \\ \vdots \\ x_n + y_n \end{pmatrix} 
+\end{align*}
+$$
+
+For example, 
+
+$$
+\begin{align*}
+\begin{pmatrix} 3 \\ 1 \\ -4 \\ 3 \end{pmatrix} + \begin{pmatrix} -3 \\ 17 \\ -39 \\ 4 \end{pmatrix} & = \begin{pmatrix} 3 + (-3) \\ 1 + 17 \\ -4 + (-39) \\ 3 + 4 \end{pmatrix} \\
+& = \begin{pmatrix} 0 \\ 18 \\ -43 \\ 7 \end{pmatrix} 
+\end{align*}
+$$
+
+In `R`, we have
+
+```{r}
+x <- c(3, 1, -4, 3)
+y <- c(-3, 17, -39, 4)
+x + y
+``` 
+
+If two vectors $\mathbf{x}$ and $\mathbf{y}$ are of different lengths, then they cannot be added together. Using `R`, we get the following error:
+
+```{r}
+x <- c(1, 2, 3)
+y <- c(1, 2, 3, 4)
+x + y
+``` 
+
+The error is telling us that the vector $\mathbf{x}$ and the vector $\mathbf{y}$ do not have the same length. 
+
+Be careful when adding vectors in `R`. `R` uses "recycling" which means two vectors of different lengths can be added together if one vector is of a length that is a multiple of the other vector. For example, if $\mathbf{x} = (1, 2)'$ is a vector of length 2 and $\mathbf{y} = (1, 2, 3, 4)$ is a vector of length 4, `R` will add $\mathbf{x} + \mathbf{y}$ by replicating the vector $\mathbf{x}$ twice (i.e., $\mathbf{x} + \mathbf{y} = \left( \mathbf{x}', \mathbf{x}' \right)' = \left(1, 2, 1, 2 \right)' + \mathbf{y}$) 
+
+```{r}
+x <- c(1, 2)
+y <- c(1, 2, 3, 4)
+x + y
+# replicated x = c(1, 2, 1, 2)
+c(1, 2, 1, 2) + y
+```
+
+3) **Associativity of Addition:** For vectors $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ all of equal length $n$, we have
+
+$$
+\begin{align*}
+(\mathbf{x} + \mathbf{y}) + \mathbf{z} & = \mathbf{x} + (\mathbf{y} + \mathbf{z})
+\end{align*}
+$$
+
+3) **Commutativity of Addition:** For vectors $\mathbf{x}$ and $\mathbf{y}$ of equal length $n$, we have
+
+$$
+\begin{align*}
+\mathbf{x} + \mathbf{y} & = \mathbf{y} + \mathbf{x}
+\end{align*}
+$$
+
+3) **Identity Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $\mathbf{0}$, known as the *zero vector*, such that
+
+$$
+\begin{align*}
+\mathbf{x} + \mathbf{0} & = \mathbf{x}
+\end{align*}
+$$
+
+3) **Inverse Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $-\mathbf{x}$, known as the *additive inverse* vector, such that
+
+$$
+\begin{align*}
+\mathbf{x} + (- \mathbf{x}) & = \mathbf{0}
+\end{align*}
+$$
+11) **Transpose Transivity:** The transpose operator is transitive
+
+$$
+\begin{align*}
+(\mathbf{x} + \mathbf{y})' & = \mathbf{x}' + \mathbf{y}' 
+\end{align*}
+$$
+
+In addition, the transpose of a transpose is the identity operator $\left( \mathbf{x}' \right)' = \mathbf{x}$.
+
+
+4) 
+
+
+### Matrices
+
+We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $n$ rows and $p$ columns as
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix},
+\end{align*}
+$$
+
+with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and the $j$th column.
+
+If the matrix 
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{align*}
+$$
+
+the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc. 
+
+In `R`, we can define the matrix A using the `matrix()` function
+
+```{r}
+A <- matrix(
+    data = c(5, 5, -14, 42, 7, -22, 5, -3, 1, 2, 99, 0),
+    nrow = 4,
+    ncol = 3
+)
+A
+```
+
+Notice in the above creation of $\mathbf{A}$, we wrote defined the elements of the  $\mathbf{A}$ using the columns stacked on top of one another. If we want to fill in the elements of $\mathbf{A}$ using the rows, we can add the option `byrow = TRUE` to the `matrix()` function
+
+```{r}
+A <- matrix(
+    data  = c(5, 7, 1, 5, -22, 2, -14, 5, 99, 42, -3, 0), 
+    nrow  = 4,
+    ncol  = 3,
+    byrow = TRUE
+)
+A
+```
+
+To select the $ij$th elements of $\mathbf{A}$, we use the subset oberator `[ ]` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
+
+```{r}
+A[1, 1]
+```
+
+The element $a_{3, 3} = 99$ in the third row and third column can be selected using
+
+```{r}
+A[3, 3]
+```
+
+
+The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^p$ or row vectors $\{\mathbf{r}_i \}_{i=1}^n$. For example, the column vector representation is
+
+
+$$
+\begin{align*}
+\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{p} \right),
+\end{align*}
+$$
+
+where the notation $|$ is used to separate the vectors
+
+$$
+\begin{align*}
+\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1}
+\end{pmatrix},
+& \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2}
+\end{pmatrix}, 
+& \cdots, &
+& \mathbf{c}_p & = \begin{pmatrix} a_{1p} \\ a_{2p} \\ \vdots \\ a_{np}
+\end{pmatrix}
+\end{align*}
+$$
+The row vector reprsentation of $\mathbf{A}$ is 
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{n} \end{pmatrix},
+\end{align*}
+$$
+
+where the row vectors $\mathbf{r}_i$ are
+
+$$
+\begin{align*}
+\mathbf{r}_1 & = \left( a_{11}, a_{21}, \ldots, a_{n1} \right) \\
+\mathbf{r}_2 & = \left( a_{12}, a_{22}, \ldots, a_{n2} \right) \\
+& \vdots \\
+\mathbf{r}_n & = \left( a_{1p}, a_{2p}, \ldots, a_{np} \right)
+\end{align*}
+$$
+
+Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n$ and $\sum_{k=1}^K p_k = p$.
+
+For example, the matrix
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{align*}
+$$
+
+can be written in block diagonal form with
+
+$$
+\begin{align*}
+\mathbf{A} & = 
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\
+& = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\
+5 & -22 \end{bmatrix} & 
+\begin{bmatrix} 1 \\
+2 \end{bmatrix} \\
+\begin{bmatrix}
+-14 & 5 \\
+42 & -3 
+\end{bmatrix} & 
+\begin{bmatrix} 99 \\ 0 \end{bmatrix}
+\end{pmatrix},
+\end{align*}
+$$
+
+where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc.
+
+
+
+#### Properties of matrices
+
+1) **Matrix Adition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
+
+$$
+\begin{align*}
+\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix} + 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
+b_{21} & b_{22} & \cdots & b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & \cdots & b_{np}
+\end{pmatrix} \\
+& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1p} + b_{1p} \\
+a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2p} + b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{np} + b_{np}
+\end{pmatrix} \\
+& = \left\{ a_{ij} + b_{ij} \right\}
+\end{align*}
+$$
+
+**... Another way to **
+
+2) **Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $n \times p$ matrix and $\mathbf{B} = \left\{ a_{jk} \right\}$ is a $p \times q$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $n \times q$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}$
+
+
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix} 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1q} \\
+b_{21} & b_{22} & \cdots & b_{2q} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{p1} & b_{p2} & \cdots & b_{pq}
+\end{pmatrix} \\
+& = \begin{pmatrix} \sum_{j=1}^p a_{1j} b_{j1} & \sum_{j=1}^p a_{1j} b_{j2} & \cdots & \sum_{j=1}^p a_{1j} b_{jq} \\
+\sum_{j=1}^p a_{2j} b_{j1} &\sum_{j=1}^p a_{2j} b_{j2} & \cdots & \sum_{j=1}^p a_{2j} b_{jq} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{j=1}^p a_{nj} b_{j1} &\sum_{j=1}^p a_{nj} b_{j2} & \cdots & \sum_{j=1}^p a_{nj} b_{jq}
+\end{pmatrix} \\
+& = \left\{ \sum_{j=1}^p a_{ij} b_{jk} \right\}
+\end{align*}
+$$
+
+Another way to define matrix multiplication is through inner product notation. Define the $n \times p$ matrix $\mathbf{A}$ and the $p \times q$ matrix $\mathbf{B}$ as the partition
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
+\mathbf{a}_{2}' \\ 
+\vdots \\
+\mathbf{a}_{n} \end{pmatrix}
+& \mbox{ and } 
+&& \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
+\end{align*}
+$$
+
+where $\mathbf{a}$ and $\mathbf{b}_k$ are both $p$-vectors. Then, we have $\mathbf{C} = \mathbf{A} \mathbf{B} = \left\{ c_{ik} \right\} =  \left\{ \mathbf{a}_i' \mathbf{b}_k \right\}$ which has the matrix form
+
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
+\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
+\end{pmatrix} \\
+& = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
+\end{align*}
+$$
+ 
+Written in this notation, we arrive at the multiplication rule for $\mathbf{C} = \mathbf{A} \mathbf{B}$ -- the $ik$th element $c_{ik}$ of $\mathbf{C}$ is the inner product of the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$.
+
+
+
+3) **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is
+
+$$
+\begin{align*}
+\mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\
+& = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\
+\mathbf{0}_{m \times p} & \mathbf{B}
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively. 
+
+The direct sum can be generalized to any arbitrary number of matrices as 
+$$
+\begin{align*}
+\mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\
+& = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension.
+
+
+
+<!--   -->
+<!--   -->
+<!--   -->
+### Arrays
+
+Higher order arrays (for example, tensors in the tensorflow library) can be represented using subscript notation where $[\mathbf{A}_1 | \mathbf{A}_2 | \cdots \mathbf{A}_n]$ is a 3-dimensional array. Higher order arrays can be represented using additional subscripts.
+
+### Lists
+
+* To add: vector addition, multiplication
+* To add: matrix addition, multiplication
+* To add: determinants
+
+
+## Exercises
+
+1) What is 3 + $\begin{pmatrix} 4 \\ 7 \\ 3 \end{pmatrix}$?
+
+2) Why can't you add the following two vectors:
+
+$$
+\begin{align*}
+\mathbf{x} = \begin{pmatrix} 14 \\ 3 \\ 3 \\ -5 \end{pmatrix} & & \mathbf{y} =  \begin{pmatrix} 4 \\ 7 \\ 3 \end{pmatrix}
+\end{align*}
+$$
+
+3) Based on the notation, what type of object is 
+    
+    a) $\mathbf{x}'$?
+    
+    b) $\mathbf{x}' \mathbf{y}$?
+    
+    c) $\mathbf{x}' \mathbf{A}$?
+    
+    d) $\mathbf{A}' \mathbf{y}$?
+    
+    e) $\mathbf{X}' \mathbf{Z}$?
+
+<!-- You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods). -->
+
+<!-- Figures and tables with captions will be placed in `figure` and `table` environments, respectively. -->
+
+<!-- ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'} -->
+<!-- par(mar = c(4, 4, .1, .1)) -->
+<!-- plot(pressure, type = 'b', pch = 19) -->
+<!-- ``` -->
+
+<!-- Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab). -->
+
+<!-- ```{r nice-tab, tidy=FALSE} -->
+<!-- knitr::kable( -->
+<!--   head(iris, 20), caption = 'Here is a nice table!', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- ``` -->
+
+<!-- You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015]. -->
+

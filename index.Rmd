@@ -1,0 +1,73 @@
+--- 
+title: "Multivariable Mathematics for Data Science"
+author: "John Tipton"
+date: "`r Sys.Date()`"
+output: pdf_document
+description: This is a minimal example of using the bookdown package to write a book.
+  The output format for this example is bookdown::gitbook.
+documentclass: book
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+runtime: shiny
+biblio-style: apalike
+---
+
+```{r include = FALSE, echo = FALSE, message = FALSE}
+library(tidyverse)
+library(shiny)
+```
+
+# Preface
+
+This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines. 
+
+The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).
+
+
+
+## Outline
+
+1) Introduction to vectors and matrices and vector and matrix operations
+
+1) vector spaces and subspaces
+
+2) dot products, cross products, projections
+
+3) linear combinations, linear independence, bases, coordinate systems
+
+4) planes, surfaces, and lines in space
+
+5) linear transformations, matrix arithmetic, and matrix rank
+
+6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$
+
+7) innner products, outer products, and norms
+
+8) projections - orthogonal projections and least squares
+
+9) matrix decompositoins: Eigen, Cholesky, principal components, 
+singular value decomposition, pre-whitening
+
+10) matrix decompositoins: Eigen, Cholesky, principal components, 
+singular value decomposition, pre-whitening
+
+11) limits, continuity, and partial derivatives
+
+12) chain rule, directional derivatives
+
+13) tangent planes, linear approximations, Taylor Series
+
+14) double/triple integrals, change of variables, Jacobian transformation
+
+15) double/triple integrals, change of variables, Jacobian transformation
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
