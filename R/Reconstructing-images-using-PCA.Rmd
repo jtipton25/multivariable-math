@@ -1,0 +1,305 @@
+---
+title: "PCA image reconstruction"
+author: "John Tipton"
+date: "12/6/2019"
+output: html_document
+---
+
+from [https://kieranhealy.org/blog/archives/2019/10/27/reconstructing-images-using-pca/](https://kieranhealy.org/blog/archives/2019/10/27/reconstructing-images-using-pca/)
+
+Other resources: 
+
+* [https://sebastianraschka.com/Articles/2015_pca_in_3_steps.html](https://sebastianraschka.com/Articles/2015_pca_in_3_steps.html)
+
+* [https://towardsdatascience.com/pca-eigenvectors-and-eigenvalues-1f968bc6777a](https://towardsdatascience.com/pca-eigenvectors-and-eigenvalues-1f968bc6777a)
+
+<!-- A decade or more ago I read a nice worked example from the political scientist Simon Jackman demonstrating how to do [Principal Components Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis). PCA is one of the basic techniques for reducing data with multiple dimensions to some much smaller subset that nevertheless represents or condenses the information we have in a useful way. In a PCA approach, we transform the data in order to find the "best" set of underlying components. We want the dimensions we choose to be orthogonal to one another---that is, linearly uncorrelated.  -->
+
+<!-- When used as an approach to data analysis, PCA is inductive. Because of the way it works, we're arithmetically guaranteed to find a set of components that "explains" all the variance we observe. The *substantive* explanatory question is whether the main components uncovered by PCA have a plausible interpretation.  -->
+
+<!-- I was reminded of all of this on Friday because some of my first-year undergrad students are doing an "Algorithms for Data Science" course, and the topic of PCA came up there. Some students not in that class wanted some intuitions about what PCA was. The thing I remembered about Jackman's discussion was that he had the nice idea of doing PCA on an image, in order to show both how you could reconstruct the whole image from the PCA, if you wanted, and more importantly to provide some intuition about what the first few components of a PCA picked up on. His discussion doesn't seem to be available anymore, so this afternoon I rewrote the example myself. I'll use the same image he did. This one: -->
+
+```{r, out.width = "100%"}
+knitr::include_graphics(here::here("images", "elvis-nixon.jpeg"))
+# knitr::include_graphics(here::here("images", "jupiter.png"))
+```
+
+<!-- ![](../images/jupiter.png) -->
+
+
+<!-- ## Setup -->
+
+The [imager Library](https://dahtah.github.io/imager/imager.html) is our friend here. It's a great toolkit for processing images in R, and it's friendly to tidyverse packages, too.
+
+```{r}
+library(imager)
+library(here)
+library(dplyr)
+library(purrr)
+library(broom)
+library(ggplot2)
+```
+
+## Load the image
+
+Our image is in the subfolder `images` of our project directory. The `load.image()` function is from Imager, and imports the image as a `cimg` object. The library provides a method to convert these objects to a long-form data frame. Our image is greyscale, which makes it easier to work with. It's 800 pixels wide by 633 pixels tall.
+
+
+```{r]}
+# img <- load.image(here::here("images", "jupiter.png"))
+img <- load.image(here::here("images", "elvis-nixon.jpeg"))
+str(img)
+```
+
+```{r}
+dim(img)
+```
+
+```{r}
+img_df_long <- as.data.frame(img)
+
+head(img_df_long)
+```
+
+Each x-y pair is a location in the 800 by 633 pixel grid, and the value is a grayscale value ranging from zero to one. To do a PCA we will need a matrix of data in wide format, though---one that reproduces the shape of the image, a row-and-column grid of pixels, each with some a level of gray. We'll widen it using `pivot_wider`:
+
+
+```{r}
+img_df <- tidyr::pivot_wider(
+  img_df_long,
+  names_from   = y,
+  values_from = value
+)
+
+dim(img_df)
+```
+
+So now it's the right shape. Here are the first few rows and columns.
+
+```{r}
+img_df[1:5, 1:5]
+```
+
+The values stretch off in both directions. Notice the `x` column there, which names the rows. We'll drop that when we do the PCA.
+
+## Do an eigen decomposition
+
+## Do the PCA
+
+Next, we do the PCA, dropping the `x` column and feeding the 800x633 matrix to Base R's `prcomp()` function.
+
+```{r}
+## compare this to the eigen function as well
+img_pca <- img_df %>%
+  dplyr::select(-x) %>%
+  prcomp(scale = TRUE, center = TRUE)
+```
+
+There are a lot of components---633 of them altogether, in fact, so I'm only going to show the first twelve and the last six here. You can see that by component 12 we're already up to almost 87% of the total variance "explained".
+
+```{r}
+# summary(img_pca)
+```
+
+
+We can tidy the output of `prcomp` with broom's `tidy` function, just to get a summary scree plot showing the variance "explained" by each component.
+
+```{r}
+pca_tidy <- tidy(img_pca, matrix = "pcs")
+
+pca_tidy %>%
+    ggplot(aes(x = PC, y = percent)) +
+    geom_line() +
+    labs(x = "Principal Component", y = "Variance Explained")
+```
+
+
+## Reversing the PCA
+
+Now the fun bit. The object produced by `prcomp()` has a few pieces inside:
+
+
+```{r}
+names(img_pca)
+```
+
+
+What are these? `sdev` contains the standard deviations of the principal components. `rotation` is a square matrix where the rows correspond to the columns of the original data, and the columns are the principal components. `x` is a matrix of the same dimensions as the original data. It contains the values of the rotated data multiplied by the `rotation` matrix. Finally, `center` and `scale` are vectors with the centering and scaling information for each observation.
+
+Now, to get from this information back to the original data matrix, we need to multiply `x` by the transpose of the `rotation` matrix, and then revert the centering and scaling steps. If we multiply by the transpose of the _full_ rotation matrix (and then un-center and un-scale), we'll recover the original data matrix exactly. But we can also choose to use just the first few principal components, instead. There are 633 components in all (corresponding to the number of rows in the original data matrix), but the scree plot suggests that most of the data is "explained" by a much smaller number of components than that.
+
+Here's a function that takes a PCA object created by `prcomp()` and returns an approximation of the original data, calculated by some number (`n_comp`) of principal components. It returns its results in long format, in a way that mirrors what the Imager library wants. This will make plotting easier in a minute.
+
+
+```{r}
+reverse_pca <- function(n_comp = 20, pca_object = img_pca){
+  ## The pca_object is an object created by base R's prcomp() function.
+
+  ## Multiply the matrix of rotated data by the transpose of the matrix
+  ## of eigenvalues (i.e. the component loadings) to get back to a
+  ## matrix of original data values
+  recon <- pca_object$x[, 1:n_comp] %*% t(pca_object$rotation[, 1:n_comp])
+
+  ## Reverse any scaling and centering that was done by prcomp()
+
+  if(all(pca_object$scale != FALSE)){
+    ## Rescale by the reciprocal of the scaling factor, i.e. back to
+    ## original range.
+    recon <- scale(recon, center = FALSE, scale = 1/pca_object$scale)
+  }
+  if(all(pca_object$center != FALSE)){
+    ## Remove any mean centering by adding the subtracted mean back in
+    recon <- scale(recon, scale = FALSE, center = -1 * pca_object$center)
+  }
+
+  ## Make it a data frame that we can easily pivot to long format
+  ## (because that's the format that the excellent imager library wants
+  ## when drawing image plots with ggplot)
+  recon_df <- data.frame(cbind(1:nrow(recon), recon))
+  colnames(recon_df) <- c("x", 1:(ncol(recon_df)-1))
+
+  ## Return the data to long form
+  recon_df_long <- recon_df %>%
+    tidyr::pivot_longer(cols = -x,
+                        names_to = "y",
+                        values_to = "value") %>%
+    mutate(y = as.numeric(y)) %>%
+    arrange(y) %>%
+    as.data.frame()
+
+  recon_df_long
+}
+```
+
+Let's put the function to work by mapping it to our PCA object, and reconstructing our image based on the first 2, 3, 4, 5, 10, 20, 50, and 100 principal components.
+
+
+```{r, cache = TRUE}
+## The sequence of PCA components we want
+n_pcs <- c(2:5, 10, 20, 50, 100)
+names(n_pcs) <- paste("First", n_pcs, "Components", sep = "_")
+
+## map reverse_pca()
+recovered_imgs <- map_dfr(
+  n_pcs,
+  reverse_pca,
+  .id = "pcs"
+) %>%
+  mutate(
+    pcs = stringr::str_replace_all(pcs, "_", " "),
+    pcs = factor(pcs, levels = unique(pcs), ordered = TRUE)
+  )
+```
+
+This gives us a very long tibble with an index (`pcs`) for the number of components used to reconstruct the image. In essence it's eight images stacked on top of one another. Each image has been reconstituted using a some number of components, from a very small number (2) to a larger number (100). Now we can plot each resulting image in a small multiple. In the code for the plot, we use `scale_y_reverse` because by convention the indexing for pixel images starts in the top left corner of the image. If we plot it the usual way (with x = 1, y = 1 in the bottom left, instead of the top left) the image will be upside down.
+
+
+```{r}
+if (!file.exists(here::here("images", "elvis-nixon-pca.png"))) {
+  p <- ggplot(data = recovered_imgs,
+              mapping = aes(x = x, y = y, fill = value))
+  p_out <- p + geom_raster() +
+    scale_y_reverse() +
+    scale_fill_gradient(low = "black", high = "white") +
+    facet_wrap(~ pcs, ncol = 2) +
+    guides(fill = FALSE) +
+    labs(
+      title = "Recovering the content of an 800x600 pixel image \n 
+       from a Principal Components Analysis of its pixels"
+    ) +
+    theme(
+      strip.text = element_text(face = "bold", size = rel(1.2)),
+      plot.title = element_text(size = rel(1.5))
+    )
+  
+  png(file = here::here("images", "elvis-nixon-pca.png"))
+  p_out
+  dev.off()
+}
+
+knitr::include_graphics(here::here("images", "elvis-nixon-pca.png"))
+```
+
+We can also present this as an animated gif
+
+```{r}
+library(gganimate)
+## How can I make this faster? Maybe a traditional animation / for loop without the gganimate package
+
+
+# p <- recovered_imgs %>%
+#   subset(pcs %in% c("First 2 Components", "First 5 Components")) %>%
+#   ggplot(aes(x = x, y = y, fill = value)) +
+#   geom_raster() +
+#   scale_y_reverse() +
+#   scale_fill_gradient(low = "black", high = "white") +
+#   
+#   # facet_wrap(~ pcs, ncol = 2) +
+#   guides(fill = FALSE) +
+#   # labs(
+#   #   title = "Recovering the content of an 800x600 pixel image \n 
+#   #      from a Principal Components Analysis of its pixels"
+#   # ) +
+#   theme(
+#     strip.text = element_text(face = "bold", size = rel(1.2)),
+#     plot.title = element_text(size = rel(1.5))
+#   ) +
+#   ## Here comes the gganimate code
+#     labs(
+#     title = "Recovering the content of an 800x600 pixel image \n 
+#        from the {colsest_star} of its pixels"
+#   ) +
+#   transition_states(
+#     pcs,
+#     transition_length = 0,
+#     state_length = 1
+#   ) +
+#   enter_appear() + 
+#   exit_disappear()
+# 
+# animate(p, renderer = "gifski")
+
+if (!file.exists(here::here("images", "elvis-nixon-pca.gif"))) {
+  make_plot <- function() {
+    for (i in 1:length(n_pcs)) {
+      p <- recovered_imgs %>%
+        subset(pcs == paste("First", n_pcs[i], "Components", sep = " ")) %>%
+        ggplot(aes(x = x, y = y, fill = value)) +
+        geom_raster() +
+        scale_y_reverse() +
+        scale_fill_gradient(low = "black", high = "white") +
+        guides(fill = FALSE) +
+        theme(
+          plot.title = element_text(size = rel(2.5))
+        ) +
+        ## Here comes the gganimate code
+        labs(
+          title = paste(
+            "Recovering the content of an 800x600 pixel image \nfrom the First", n_pcs[i], "Components of its pixels", 
+       sep = " "
+          )
+        ) 
+      print(p)
+    }
+  }
+  
+  gifski::save_gif(
+    make_plot(),
+    gif_file = here::here("images", "elvis-nixon-pca.gif"), 
+    progress = TRUE,
+    delay = 0.75#, 
+    # height = 800, width = 600, units = "px"
+  )
+}
+```
+
+```{r}
+knitr::include_graphics(here::here("images", "elvis-nixon-pca.gif"))
+```
+
+
+
+
+
+
+
