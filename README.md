@@ -1,1 +1,1 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/ for how to compile this example.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/348847cf-eb8e-4e92-ac2e-c8d86c27f683/deploy-status)](https://app.netlify.com/sites/multivariable-math/deploys)
