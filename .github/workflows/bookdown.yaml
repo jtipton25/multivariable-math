@@ -1,58 +1,49 @@
 on:
   push:
-    branches:
-      - main
-      - master
+     branches:
+       - master
 
-name: bookdown
+
+name: renderbook
 
 jobs:
-  build:
+  bookdown:
+    name: Render-Book
     runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
-
-      - name: Install pandoc and pandoc citeproc
-        run: |
-          brew install pandoc
-#          brew install pandoc-citeproc
-
-      - name: Cache Renv packages
-        uses: actions/cache@v2
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
+      - name: Render Book
+        run: Rscript -e 'bookdown::render_book("index.Rmd")'
+      - uses: actions/upload-artifact@v1
         with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
+          name: _book
+          path: _book/
 
-      - name: Cache bookdown results
-        uses: actions/cache@v2
-        with:
-          path: _bookdown_files
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-
-      - name: Install packages
-        run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
-
-      - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
-
-      - name: Install npm
-        uses: actions/setup-node@v1
-
-      - name: Deploy to Netlify
-        # NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID added in the repo's secrets
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: |
-          npm install netlify-cli -g
-          netlify deploy --prod --dir _book
+# Need to first create an empty gh-pages branch
+# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GH_PAT and EMAIL to the repository
+# gh-action from Cecilapp/GitHub-Pages-deploy
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: bookdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+         # Artifact name
+         name: _book # optional
+         # Destination path
+         path: _book # optional
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@3.0.0
+       env:
+         GITHUB_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens:  
+       with: 
+          email: ${{ secrets.EMAIL }}               # must be a verified email
+          build_dir: _book/                     # "_site/" by default
