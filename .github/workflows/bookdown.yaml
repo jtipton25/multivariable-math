@@ -19,9 +19,14 @@ jobs:
       - name: Cache Renv packages
         uses: actions/cache@v2
         with:
-          path: $HOME/.local/share/renv
+          path: ~/local/share/renv
           key: r-${{ hashFiles('renv.lock') }}
           restore-keys: r-
+          
+      - name: Install R packages with renv
+        run: |
+          Rscript -e "install.packages('renv', repos = 'https://muug.ca/mirror/cran/')"
+          Rscript -e "renv::restore()":  
 
       - name: Cache bookdown results
         uses: actions/cache@v2
