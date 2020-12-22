@@ -66,8 +66,8 @@ A set of two or more linear equations that each contain the same set of variable
 
 $$
 \begin{align*}
-& x_1 & + & 4 x_2 & - & x_3 & = & 11 \\
-& 4 x_1 & + & 5 x_2 & &  & = & 9
+x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
+4 x_1 && + && 5 x_2 &&  && && = & 9
 \end{align*}
 $$
 
@@ -75,8 +75,8 @@ are a system of equations. Note that in the second equation, the coefficient for
 
 $$
 \begin{align*}
-& x_1 & + & 4 x_2 & - & x_3 & = & 11 \\
-& 4 x_1 & + & 5 x_2 & + & 0 x_3 & = & 9.
+x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
+4 x_1 && + && 5 x_2 && + && 0 x_3 && = & 9.
 \end{align*}
 $$
 

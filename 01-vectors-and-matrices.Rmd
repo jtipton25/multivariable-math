@@ -11,6 +11,7 @@ array_to_LaTeX <- function(arr){
 ```
 
 This can produce an error, so we wrap the function `array_to_LaTeX` in a call to `cat()`
+
 ```{r, results = 'asis'}
 A <- matrix(c(3,4,5,6,7,9,4,5,122), ncol=3, byrow=TRUE)
 array_to_LaTeX(A)
@@ -51,6 +52,7 @@ $$
 \textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
 \end{align*}
 $$
+
 where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
 
 
@@ -146,6 +148,11 @@ t(tx)
     \end{align*}
     $$
     
+    ```{r}
+    4 * (6 * x) 
+    (4 * 6) * x
+    ```
+    
     c) For scalars $a$ and $b$ and a vector $\mathbf{x}$, we have 
 
     $$
@@ -211,6 +218,16 @@ $$
 \end{align*}
 $$
 
+
+```{r}
+x <- c(1, 2, 3, 4)
+y <- c(4, 3, 5, 1)
+z <- c(5, 2, 4, 6)
+
+(x + y) + z
+x + (y + z)
+```
+
 3) **Commutativity of Addition:** For vectors $\mathbf{x}$ and $\mathbf{y}$ of equal length $n$, we have
 
 $$
@@ -218,6 +235,11 @@ $$
 \mathbf{x} + \mathbf{y} & = \mathbf{y} + \mathbf{x}
 \end{align*}
 $$
+
+```{r}
+x + y
+y + x
+```
 
 3) **Identity Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $\mathbf{0}$, known as the *zero vector*, such that
 
@@ -227,6 +249,11 @@ $$
 \end{align*}
 $$
 
+```{r}
+x + 0
+x + rep(0, 4)
+```
+
 3) **Inverse Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $-\mathbf{x}$, known as the *additive inverse* vector, such that
 
 $$
@@ -234,6 +261,11 @@ $$
 \mathbf{x} + (- \mathbf{x}) & = \mathbf{0}
 \end{align*}
 $$
+
+```{r}
+x + (-x)
+```
+
 11) **Transpose Transivity:** The transpose operator is transitive
 
 $$
@@ -242,8 +274,24 @@ $$
 \end{align*}
 $$
 
+```{r}
+t(x + y)
+t(x) + t(y)
+```
+
 In addition, the transpose of a transpose is the identity operator $\left( \mathbf{x}' \right)' = \mathbf{x}$.
 
+```{r}
+x
+t(x)
+t(t(x))
+```
+
+* **Note:** `R` can be finicky about vectors and matrices. The transpose converts the vector $\mathbf{x}$ to a matrix $\mathbf{x}'$ with one row. Thus, `t(t(x))` gives a matrix with one column (which is a not quite the same as a vector). To force `t(t(x))` to be a vector, you can drop the dimension with `drop()`
+
+```{r}
+drop(t(t(x)))
+```
 
 4) 
 
@@ -285,6 +333,7 @@ A <- matrix(
     nrow = 4,
     ncol = 3
 )
+
 A
 ```
 
@@ -300,7 +349,7 @@ A <- matrix(
 A
 ```
 
-To select the $ij$th elements of $\mathbf{A}$, we use the subset oberator `[ ]` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
+To select the $ij$th elements of $\mathbf{A}$, we use the subset operator `[` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
 
 ```{r}
 A[1, 1]
@@ -335,7 +384,22 @@ $$
 \end{pmatrix}
 \end{align*}
 $$
-The row vector reprsentation of $\mathbf{A}$ is 
+
+In `R` you can extract the columns using the `[` selection operator
+
+```{r}
+c1 <- A[, 1] # first column
+c2 <- A[, 2] # second column
+c3 <- A[, 3] # third column
+```
+
+and you can give the column representation of the matrix `A` with with column bind function `cbind()`
+
+```{r}
+cbind(c1, c2, c3)
+```
+
+The row vector representation of $\mathbf{A}$ is 
 
 $$
 \begin{align*}
@@ -353,6 +417,23 @@ $$
 \mathbf{r}_n & = \left( a_{1p}, a_{2p}, \ldots, a_{np} \right)
 \end{align*}
 $$
+
+
+In `R` you can extract the rows using the `[` selection operator
+
+```{r}
+r1 <- A[1, ] # first row
+r2 <- A[2, ] # second row
+r3 <- A[3, ] # third row
+r4 <- A[4, ] # fourth row
+```
+
+and you can give the row representation of the matrix `A` with with row bind function `rbind()`
+
+```{r}
+rbind(r1, r2, r3, r4)
+```
+
 
 Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
 
@@ -402,10 +483,36 @@ $$
 where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc.
 
 
+```{r}
+A_11 <- matrix(c(5, 5, 7, -22), 2, 2)
+A_12 <- c(1, 2)
+A_21 <- matrix(c(-14, 42, 5, -3), 2, 2)
+A_22 <- c(99, 0)
+
+## bind columns then rows
+rbind(
+    cbind(A_11, A_12),
+    cbind(A_21, A_22)
+)
+
+## bind rows then columns 
+cbind(
+    rbind(A_11, A_21),
+    c(A_12, A_22) ## rbind on vectors is different than c()
+)
+
+## bind rows then columns 
+cbind(
+    rbind(A_11, A_21),
+    ## convert the vectors to matrices for rbind
+    rbind(as.matrix(A_12), as.matrix(A_22)) 
+)
+```
+
 
 #### Properties of matrices
 
-1) **Matrix Adition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
+1) **Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
 
 $$
 \begin{align*}
@@ -429,6 +536,45 @@ a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{np} + b_{np}
 $$
 
 **... Another way to **
+
+If $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (same number of rows and columns) you can add the matrices together
+
+```{r}
+A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
+B <- matrix(c(7, -24, 3, 9, 11, -9), 3, 2)
+A
+B
+A + B
+```
+
+
+We can also write this using `for` loops
+
+```{r}
+# initialize an empty matrix to fill
+C <- matrix(0, 3, 2)
+
+for (i in 1:nrow(A)) {         # loop over the rows
+    for (j in 1:ncol(A)) {     # loop over the columns
+        C[i, j] <- A[i, j] + B[i, j]
+    }
+}
+C
+```
+
+If $\mathbf{A}$ and $\mathbf{B}$ are of different dimensions (they differ in either the number of rows or columns), `R` will return an error warning you that the matrices are of different sizes and can't be added
+
+```{r, error = TRUE}
+A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
+B <- matrix(c(7, -24, 3, 9), 2, 2)
+A
+B
+A + B
+```
+
+
+
+
 
 2) **Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $n \times p$ matrix and $\mathbf{B} = \left\{ a_{jk} \right\}$ is a $p \times q$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $n \times q$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}$
 
