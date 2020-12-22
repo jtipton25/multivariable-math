@@ -28,13 +28,7 @@ jobs:
         with:
           path: _bookdown_files
           key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-
-      - name: Install packages
-        run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
-          
+          restore-keys: bookdown-          
           
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
