@@ -1,5 +1,9 @@
 # Vectors spaces {#vector-spaces}
 
+```{r}
+library(shiny)
+```
+
 ## Linear equations
 
 Let $x_1, x_2, \ldots, x_n$ be variables with coefficients $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
@@ -121,7 +125,7 @@ ggplot(data = dat, aes(x = x, y = y)) +
 
 The below Shiny app allows you to plot the vector for any $(x, y)$ pair of your choosing.
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = FALSE, eval = TRUE}
 shinyApp(
 
   ui = fluidPage(
