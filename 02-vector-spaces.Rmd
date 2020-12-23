@@ -127,7 +127,8 @@ The below Shiny app allows you to plot the vector for any $(x, y)$ pair of your 
 
 ```{r, echo = FALSE, eval = TRUE}
 if (interactive()) {
-  runGitHub("jtipton25", "multivariable-math", subdir = "shiny-apps/chapter-02/vector-space")
+  library(shiny)
+  runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-02/vector-space")
 }
 # shinyApp(
 # 

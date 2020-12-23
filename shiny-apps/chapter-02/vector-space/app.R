@@ -1,3 +1,6 @@
+library(shiny)
+library(ggplot2)
+
 shinyApp(
     
     ui = fluidPage(
