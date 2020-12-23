@@ -9,5 +9,5 @@ shinyServer(function(input, output) {
             ylim(c(-10, 10))
     })
 },
-options = list(height = 500)
+# options = list(height = 500)
 )

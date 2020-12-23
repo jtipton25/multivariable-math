@@ -128,7 +128,7 @@ The below Shiny app allows you to plot the vector for any $(x, y)$ pair of your 
 ```{r, echo = FALSE, eval = TRUE}
 if (interactive()) {
   library(shiny)
-  runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-02/vector-space") 
+  runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
 }
 if (!interactive()) {
   shinyApp(
@@ -173,7 +173,7 @@ The shiny app can be downloaded and run on your own computer using
 
 ```{r, eval = FALSE}
 library(shiny)
-runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-02/vector-space") 
+runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
 ```
 
 ## Linear Combinations of Vectors
