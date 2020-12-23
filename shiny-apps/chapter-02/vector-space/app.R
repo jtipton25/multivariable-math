@@ -35,5 +35,5 @@ shinyApp(
         })
     },
     
-    options = list(height = 500)
+    # options = list(height = 500)
 )
