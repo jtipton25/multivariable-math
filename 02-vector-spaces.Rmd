@@ -4,86 +4,6 @@
 library(shiny)
 ```
 
-## Linear equations
-
-Let $x_1, x_2, \ldots, x_n$ be variables with coefficients $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
-
-$$
-\begin{align}
-\label{eq:linear}
-a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
-\end{align}
-$$
-
-is a linear equation. For example, the equation for a line with slope $m$ and $y$-intercept $b$ is
-
-$$
-\begin{align*}
-y & = m x + b,
-\end{align*}
-$$
-
-is a linear equation because it can be re-written as 
-
-$$
-\begin{align*}
-y - m x & = b,
-\end{align*}
-$$
-
-where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
-
-The equations
-
-$$
-\begin{align*}
-\sqrt{19} x_1 & = (4 + \sqrt{2}) x_2 - x_3 - 9
-& \mbox{ and } && 
--4 x_1 + 5 x_2 - 11 & = x_3
-\end{align*}
-$$
-
-are both linear equations because they can be written as 
-
-$$
-\begin{align*}
-\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 & = - 9 
-& \mbox{ and } &&
--4 x_1 + 5 x_2 - x_3 & = 11,
-\end{align*}
-$$
-
-respectively. The equations
-
-$$
-\begin{align*}
-x_1 & = x_2^2 + 3
-& \mbox{ and } && 
-x_1 + x_2 - x_1 x_2 & = 16
-\end{align*}
-$$
-are not linear equations because they do not meet the form of \ref{eq:linear} (The first equation above has a quadtric power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
-
-### Systems of linear equations
-
-A set of two or more linear equations that each contain the same set of variables is called a **system of linear equations**. The equations
-
-$$
-\begin{align*}
-x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
-4 x_1 && + && 5 x_2 &&  && && = & 9
-\end{align*}
-$$
-
-are a system of equations. Note that in the second equation, the coefficient for $x_3$ is 0, meaning we could re-write the above example as
-
-$$
-\begin{align*}
-x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
-4 x_1 && + && 5 x_2 && + && 0 x_3 && = & 9.
-\end{align*}
-$$
-
 
 
 ## Vector spaces in $\mathcal{R}^n$
@@ -125,48 +45,9 @@ ggplot(data = dat, aes(x = x, y = y)) +
 
 The below Shiny app allows you to plot the vector for any $(x, y)$ pair of your choosing.
 
-```{r, echo = FALSE, eval = TRUE}
-if (interactive()) {
-  library(shiny)
-  runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
-}
-if (!interactive()) {
-  shinyApp(
-    ui = fluidPage(
-      sliderInput(
-        inputId = "x",
-        label = "x:",
-        min = -10,
-        max = 10,
-        value = 2,
-        step = 0.01
-      ),
-      sliderInput(
-        inputId = "y",
-        label = "y:",
-        min = -10,
-        max = 10,
-        value = 2,
-        step = 0.01
-      ),
-      plotOutput("Plot")
-    ),
-    
-    server = function(input, output) {
-      output$Plot = renderPlot({
-        ggplot(data = data.frame(x = input$x, y = input$y),
-               aes(x = x, y = y)) +
-          geom_segment(aes(x = 0, xend = x, y = 0, yend = y), arrow = arrow()) +
-          geom_segment(aes(x = 0, xend = x, y = 0, yend = 0), arrow = arrow(), color = "blue") +
-          geom_segment(aes(x = 0, xend = 0, y = 0, yend = y), arrow = arrow(), color = "red") +
-          xlim(c(-10, 10)) +
-          ylim(c(-10, 10))
-      })
-    },
-    
-    options = list(height = 500)
-  )
-}
+```{r, echo = FALSE, eval = FALSE}
+library(shiny)
+runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
 ```
 
 The shiny app can be downloaded and run on your own computer using 

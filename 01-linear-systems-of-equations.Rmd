@@ -1,0 +1,369 @@
+# Linear Systems of Equations {#linear-systems-of-equations}
+
+```{r, message = FALSE}
+library(tidyverse)
+
+# For 3-d plotting
+# if devtools package not installed, install the package
+if (!require(devtools)) {
+    install.packages("devtools")
+}
+# if gg3D package not installed, install the package
+if (!require(gg3D)) {
+    devtools::install_github("AckerDWM/gg3D")
+}
+```
+
+## Linear equations
+
+Let $x_1, x_2, \ldots, x_n$ be variables with coefficients $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
+
+$$
+\begin{align}
+\label{eq:linear}
+a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
+\end{align}
+$$
+
+is a linear equation. For example, the equation for a line with slope $m$ and $y$-intercept $b$ is
+
+$$
+\begin{align*}
+y & = m x + b,
+\end{align*}
+$$
+
+is a linear equation because it can be re-written as 
+
+$$
+\begin{align*}
+y - m x & = b,
+\end{align*}
+$$
+
+where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
+
+The equations
+
+$$
+\begin{align*}
+\sqrt{19} x_1 & = (4 + \sqrt{2}) x_2 - x_3 - 9
+& \mbox{ and } && 
+-4 x_1 + 5 x_2 - 11 & = x_3
+\end{align*}
+$$
+
+are both linear equations because they can be written as 
+
+$$
+\begin{align*}
+\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 & = - 9 
+& \mbox{ and } &&
+-4 x_1 + 5 x_2 - x_3 & = 11,
+\end{align*}
+$$
+
+respectively. The equations
+
+$$
+\begin{align*}
+x_1 & = x_2^2 + 3
+& \mbox{ and } && 
+x_1 + x_2 - x_1 x_2 & = 16
+\end{align*}
+$$
+are not linear equations because they do not meet the form of \ref{eq:linear} (The first equation above has a quadtric power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
+
+### Systems of linear equations
+
+A set of two or more linear equations that each contain the same set of variables is called a **system of linear equations**. The equations
+
+$$
+\begin{align*}
+x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
+4 x_1 && + && 5 x_2 &&  && && = & 9
+\end{align*}
+$$
+
+are a system of equations. Note that in the second equation, the coefficient for $x_3$ is 0, meaning we could re-write the above example as
+
+$$
+\begin{align*}
+x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
+4 x_1 && + && 5 x_2 && + && 0 x_3 && = & 9.
+\end{align*}
+$$
+
+## Solutions of linear systems
+
+A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers that each of the variables take that allow for all the equations to simultaneously be true. For example, consider the system of equations
+
+$$
+\begin{align*}
+x && + && 4 y && = & 8 \\
+4 x && + && 5 y && = & 7
+\end{align*}
+$$
+
+To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
+
+
+$$
+\begin{align*}
+x && + && 4 y && = & 8 \\
+4 x - 4 * (x) && + && 5 y - 4 * (4y) && = & 7 - 4 * (8)
+\end{align*}
+$$
+where the part of the equations in `()` is the top equation. This system of equations now simplifies to 
+
+$$
+\begin{align*}
+x && + && 4 y && = & 8 \\
+0 && + && -11 y && = & -25
+\end{align*}
+$$
+
+which gives $y = \frac{25}{11}$. Plugging this value into the top equation gives
+
+$$
+\begin{align*}
+x && + && 4 * \frac{25}{11} && = & 8 \\
+0 && + && y && = & \frac{25}{11}
+\end{align*}
+$$
+
+where we can solve $x = 8 - \frac{100}{11} = -\frac{12}{11}$ giving the solution of the form
+
+$$
+\begin{align*}
+x && + && 0 && = & - \frac{12}{11} \\
+0 && + && y && = & \frac{25}{11}.
+\end{align*}
+$$
+
+In this case, the system of equation has the solution $x = -\frac{12}{11}$ and $y = \frac{25}{11}$. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were 
+
+$$
+\begin{align*}
+x && + && 4 y && = & 8 \\
+4 x && + && 5 y && = & 7
+\end{align*}
+$$
+
+which define two lines:
+
+1) $y = -\frac{x}{4} + 2$
+2) $y = -\frac{4x}{5} + \frac{7}{5}$
+
+Let's plot these equations in `R` and see what they look like
+
+```{r one-solution, fig.cap = "Linear system of equations with one solution"}
+# define some grid points to evaluate the line
+x <- seq(-2, 2, length = 1000)
+dat <- data.frame(
+    x = c(x, x),
+    y = c(-x / 4 + 2, - 4 / 5 * x + 7/5),
+    equation = factor(rep(c(1, 2), each = 1000))
+)
+glimpse(dat)
+
+dat %>%
+    ggplot(aes(x = x, y = y, color = equation, group = equation)) +
+    geom_line() +
+    scale_color_viridis_d(end = 0.8) +
+    # solution x = -12/11, y = 25/11
+    geom_point(aes(x = -12/11, y = 25/11), color = "red", size = 2) +
+    ggtitle("Linear system of equations")
+```
+
+From this plot, it is clear that the solution to the system of equations is the location where the two lines intersect!
+
+
+### Types of solutions
+
+Typically, there are 3 cases for the solutions to a system of linear equations
+
+1) There are no solutions
+2) There is one solution (Figure \@ref(fig:one-solution))
+3) There are infinitely many solutions
+
+**There are no solutions:** Consider the system of linear equations
+
+$$
+\begin{align*}
+x && + && 4 y && = & 8 \\
+4 x && + && 16 y && = & 18
+\end{align*}
+$$
+
+```{r no-solution, fig.cap = "Linear system of equations with no solution"}
+# define some grid points to evaluate the line
+x <- seq(-2, 2, length = 1000)
+dat <- data.frame(
+    x = c(x, x),
+    y = c(-x / 4 + 8 / 4, - x / 4 + 18 / 4),
+    equation = factor(rep(c(1, 2), each = 1000))
+)
+glimpse(dat)
+
+dat %>%
+    ggplot(aes(x = x, y = y, color = equation, group = equation)) +
+    geom_line() +
+    scale_color_viridis_d(end = 0.8) +
+    # solution x = -12/11, y = 25/11
+    ggtitle("Linear system of equations")
+```
+
+In this case, the linear equations are parallel lines and will never intersect so therefore there is no solution.
+
+**There is one solution:** We have seen this example in Figure \@ref(fig:one-solution)
+
+**There are infinitely many solutions:** Consider the system of linear equations
+
+$$
+\begin{align*}
+x && + && 4 y && = & 8 \\
+4 x && + && 16 y && = & 32
+\end{align*}
+$$
+
+```{r infinite-solutions, fig.cap = "Linear system of equations with no solution"}
+# define some grid points to evaluate the line
+x <- seq(-2, 2, length = 1000)
+dat <- data.frame(
+    x = c(x, x),
+    y = c(-x / 4 + 8 / 4, - 4 * x / 16 + 32 / 16),
+    equation = factor(rep(c(1, 2), each = 1000))
+)
+glimpse(dat)
+
+dat %>%
+    ggplot(aes(x = x, y = y, color = equation, group = equation)) +
+    geom_line() +
+    scale_color_viridis_d(end = 0.8) +
+    # solution x = -12/11, y = 25/11
+    ggtitle("Linear system of equations")
+```
+
+In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).
+
+
+* **Exercise/Lab: generate some equations, plot them, and determine if there is a solution. Then try to solve these using algebra.**
+
+
+## Elementary row and column operations on matrices
+
+The elementary row (column) operations include 
+
+1) swaps: swapping two rows (columns),
+2) sums: replacing a row (column) by the sum itself and a multiple of another row (column)
+3) scalar multiplication: replacing a row (column) by a scalar multiple times itself
+
+Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).
+
+
+
+* **Add in examples in class here**
+
+
+
+## The Augmented form of a matrix
+
+Consider the linear system of equations 
+$$
+\begin{align*}
+x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
+4 x_1 && + && 5 x_2 && + && 2 x_3 && = & 9.
+\end{align*}
+$$
+The augmented matrix representation of this system of linear equations is given by the matrix
+$$
+\begin{align*}
+\begin{pmatrix}
+1 & 4 & - 1 & 11 \\
+4 & 5 & 2   &  9
+\end{pmatrix},
+\end{align*}
+$$
+where the first column of the matrix represents the variable $x_1$, the second column of the matrix represents the variable $x_2$, the third column of the matrix represents the variable $x_3$, and the fourth column of the matrix represents the constant terms. We can express the augmented form in `R` using a matrix
+```{r}
+augmented_matrix <- matrix(c(1, 4, 4, 5, -1, 2, 11, 9), 2, 4)
+augmented_matrix
+```
+and to make clear the respective variables, we can add in column names as a matrix attribute using the `colnames()` function
+```{r}
+colnames(augmented_matrix) <- c("x1", "x2", "x3", "constants")
+augmented_matrix
+```
+
+which adds labels to each of the columns.
+
+Now, using elementary row operations on the matrix, we can attempt to find solutions to the system of equations. First, we multiply the first row by -4 and add it to the second row of the matrix and replace the second row with this sum
+```{r}
+augmented_matrix[2, ] <- -4 * augmented_matrix[1, ] + augmented_matrix[2, ]
+augmented_matrix
+```
+Next, scale the second row to have a leading value of 1 by dividing by -11
+```{r}
+augmented_matrix[2, ] <- augmented_matrix[2, ] / (-11)
+augmented_matrix
+```
+We can then multiply the second row by -4 and add it to the first row and replace the first row with this value.
+```{r}
+augmented_matrix[1, ] <- augmented_matrix[1, ] - 4 * augmented_matrix[2, ]
+augmented_matrix
+```
+There are infinitely many solutions to this system of equations subject to the requirements that 
+$$x_1 = - \frac{19}{11} - \frac{13}{11} x_3$$
+and
+$$x_2 = \frac{35}{11} + \frac{6}{11} x_3.$$
+To get this into a reasonable form, we will solve these equations as a function of $x_1$. Solving the first equation for $x_3$ gives
+$$x_3 = - \frac{19}{13} -\frac{11}{13} x_1.$$
+Then, plugging this into $x_3$ in the second equation gives 
+$$
+\begin{align*}
+x_2 & = \frac{35}{11} + \frac{6}{11} \left( - \frac{19}{13} -\frac{11}{13} x_1 \right) \\
+& = \frac{341}{143} - \frac{6}{13} x_1
+\end{align*}
+$$
+which defines a linear relationship between $x_1$ and $x_2$. Notice that in these last two solutions, $x_1$ is a "free variable" and $x_2$ and $x_3$ are "determined" by $x_1$. 
+
+
+In the plot below, the two planes (red and blue) are the geometric plots of the linear equations in the system of equations (the red plane is the top equation and the blue plane is the bottom equation). The purple line is the equation for the solution given the free variable $x_3$ and lies at the intersection of the two planes, much like the point in the two lines in figure **linking reference here** lies at the intersection of the two points. 
+
+
+```{r}
+n <- 60
+x1 <- x2 <- seq(-10, 10, length = n)
+region <- expand.grid(x1 = x1, x2 = x2)
+df <- data.frame(
+    x1 = region$x1,
+    x2 = region$x2,
+    x3 = - 11 + (region$x1 + 4 * region$x2)
+)
+
+df2 <- data.frame(
+    x1 = region$x1,
+    x2 = region$x2,
+    x3 = (9 - 4 * region$x1 - 5 * region$x2) / 2
+) 
+
+df_solution <- data.frame(
+    x1 = x1, 
+    x2 = 341 / 143 - 6 / 13 * x1,
+    x3 = -19/13 - 11/13 * x1
+) 
+
+# theta and phi set up the "perspective/viewing angle" of the 3D plot
+theta <- 63
+phi <- -12
+ggplot(df, aes(x1, x2, z = x3)) +
+    axes_3D(theta = theta, phi = phi) +
+    stat_wireframe(alpha = 0.25, color = "red", theta = theta, phi = phi) +
+    stat_wireframe(data = df2, aes(x = x1, y = x2, z = x3), alpha = 0.25, color = "blue", theta = theta, phi = phi) +
+    stat_3D(data = df_solution, aes(x1, x2, z = x3), geom = "line", theta = theta, phi = phi, color = "purple") +
+    theme_void() +
+    theme(legend.position = "none") +
+    labs_3D(hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90), theta = theta, phi = phi) 
+```
+
