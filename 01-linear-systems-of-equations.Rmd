@@ -12,6 +12,7 @@ if (!require(devtools)) {
 if (!require(gg3D)) {
     devtools::install_github("AckerDWM/gg3D")
 }
+library(gg3D)
 ```
 
 ## Linear equations
@@ -333,6 +334,7 @@ In the plot below, the two planes (red and blue) are the geometric plots of the 
 
 
 ```{r}
+# uses gg3D library
 n <- 60
 x1 <- x2 <- seq(-10, 10, length = n)
 region <- expand.grid(x1 = x1, x2 = x2)
