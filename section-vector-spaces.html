@@ -195,19 +195,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-vector-spaces" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Vectors spaces</h1>
-<div class="sourceCode" id="section-cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="section-vector-spaces.html#cb117-1"></a><span class="kw">library</span>(shiny)</span></code></pre></div>
+<div class="sourceCode" id="section-cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="section-vector-spaces.html#cb118-1"></a><span class="kw">library</span>(shiny)</span></code></pre></div>
 <div id="section-vector-spaces-in-mathcalrn" class="section level2">
 <h2><span class="header-section-number">4.1</span> Vector spaces in <span class="math inline">\(\mathcal{R}^n\)</span></h2>
 <p>Let <span class="math inline">\(\mathcal{R}^n\)</span> be a real coordinate space of <span class="math inline">\(n\)</span> dimesions. You are already familiar with the Cartesian plane that consists of ordered pairs <span class="math inline">\((x, y)\)</span>. The Cartesian plane defines the real coordinate space <span class="math inline">\(\mathbf{R}^2\)</span> of two dimensions. In <span class="math inline">\(\mathbf{R}^2\)</span>, the location of any point of interest can be defined using the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. For example, the plot below shows the location of the point (2, 3)</p>
-<div class="sourceCode" id="section-cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="section-vector-spaces.html#cb118-1"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb118-2"><a href="section-vector-spaces.html#cb118-2"></a>    <span class="dt">x =</span> <span class="dv">2</span>,</span>
-<span id="cb118-3"><a href="section-vector-spaces.html#cb118-3"></a>    <span class="dt">y =</span> <span class="dv">3</span></span>
-<span id="cb118-4"><a href="section-vector-spaces.html#cb118-4"></a>)</span>
-<span id="cb118-5"><a href="section-vector-spaces.html#cb118-5"></a></span>
-<span id="cb118-6"><a href="section-vector-spaces.html#cb118-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> dat, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb118-7"><a href="section-vector-spaces.html#cb118-7"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb118-8"><a href="section-vector-spaces.html#cb118-8"></a><span class="st">    </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span></span>
-<span id="cb118-9"><a href="section-vector-spaces.html#cb118-9"></a><span class="st">    </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="section-cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="section-vector-spaces.html#cb119-1"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb119-2"><a href="section-vector-spaces.html#cb119-2"></a>    <span class="dt">x =</span> <span class="dv">2</span>,</span>
+<span id="cb119-3"><a href="section-vector-spaces.html#cb119-3"></a>    <span class="dt">y =</span> <span class="dv">3</span></span>
+<span id="cb119-4"><a href="section-vector-spaces.html#cb119-4"></a>)</span>
+<span id="cb119-5"><a href="section-vector-spaces.html#cb119-5"></a></span>
+<span id="cb119-6"><a href="section-vector-spaces.html#cb119-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> dat, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb119-7"><a href="section-vector-spaces.html#cb119-7"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb119-8"><a href="section-vector-spaces.html#cb119-8"></a><span class="st">    </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span></span>
+<span id="cb119-9"><a href="section-vector-spaces.html#cb119-9"></a><span class="st">    </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>A vector space is a generalization of this representation. In <span class="math inline">\(\mathcal{R}^2\)</span>, we say that the vector <span class="math inline">\(\mathbf{z} = c(2, 3)\)</span> is centered at the origin (0, 0) and has length 2 in the <span class="math inline">\(x\)</span>-axis and length 3 in the <span class="math inline">\(y\)</span>-axis. The plot below shows this vector</p>
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
@@ -215,8 +215,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>The below Shiny app allows you to plot the vector for any <span class="math inline">\((x, y)\)</span> pair of your choosing.</p>
 <p>The shiny app can be downloaded and run on your own computer using</p>
-<div class="sourceCode" id="section-cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="section-vector-spaces.html#cb119-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb119-2"><a href="section-vector-spaces.html#cb119-2"></a><span class="kw">runGitHub</span>(<span class="dt">rep =</span> <span class="st">&quot;multivariable-math&quot;</span>, <span class="dt">username =</span> <span class="st">&quot;jtipton25&quot;</span>, <span class="dt">subdir =</span> <span class="st">&quot;shiny-apps/chapter-03/vector-space&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="section-cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="section-vector-spaces.html#cb120-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb120-2"><a href="section-vector-spaces.html#cb120-2"></a><span class="kw">runGitHub</span>(<span class="dt">rep =</span> <span class="st">&quot;multivariable-math&quot;</span>, <span class="dt">username =</span> <span class="st">&quot;jtipton25&quot;</span>, <span class="dt">subdir =</span> <span class="st">&quot;shiny-apps/chapter-03/vector-space&quot;</span>) </span></code></pre></div>
 </div>
 <div id="section-linear-combinations-of-vectors" class="section level2">
 <h2><span class="header-section-number">4.2</span> Linear Combinations of Vectors</h2>
