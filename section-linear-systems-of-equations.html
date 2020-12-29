@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Linear Systems of Equations | Multivariable Mathematics for Data Science</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Linear Systems of Equations | Multivariable Mathematics for Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Linear Systems of Equations | Multivariable Mathematics for Data Science" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="John Tipton" />
+
+
+<meta name="date" content="2020-12-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="section-vectors-and-matrices.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Multivariable Mathematics for Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-outline"><i class="fa fa-check"></i><b>1.1</b> Outline</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html"><i class="fa fa-check"></i><b>2</b> Linear Systems of Equations</a><ul>
+<li class="chapter" data-level="2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-equations"><i class="fa fa-check"></i><b>2.1</b> Linear equations</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.1.1</b> Systems of linear equations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-solutions-of-linear-systems"><i class="fa fa-check"></i><b>2.2</b> Solutions of linear systems</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-types-of-solutions"><i class="fa fa-check"></i><b>2.2.1</b> Types of solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>2.3</b> Elementary row and column operations on matrices</a></li>
+<li class="chapter" data-level="2.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-the-augmented-form-of-a-matrix"><i class="fa fa-check"></i><b>2.4</b> The Augmented form of a matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>3</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-application-in-r"><i class="fa fa-check"></i><b>3.2</b> Application in <code>R</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-vectors-1"><i class="fa fa-check"></i><b>3.2.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-matrices"><i class="fa fa-check"></i><b>3.2.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>3.2.3</b> Arrays</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>3.2.4</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>4</b> Vectors spaces</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vector-spaces-in-mathcalrn"><i class="fa fa-check"></i><b>4.1</b> Vector spaces in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2</b> Linear Combinations of Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-bases.html"><a href="section-bases.html"><i class="fa fa-check"></i><b>5</b> Bases</a></li>
+<li class="chapter" data-level="6" data-path="section-planes-surfaces-and-lines-in-vector-spaces.html"><a href="section-planes-surfaces-and-lines-in-vector-spaces.html"><i class="fa fa-check"></i><b>6</b> Planes, Surfaces, and Lines in Vector spaces</a></li>
+<li class="chapter" data-level="7" data-path="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><a href="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations, Matrix Arithmetic, and Matrix Rank</a></li>
+<li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
+<li class="chapter" data-level="9" data-path="section-inner-products-and-norms.html"><a href="section-inner-products-and-norms.html"><i class="fa fa-check"></i><b>9</b> Inner Products and Norms</a></li>
+<li class="chapter" data-level="10" data-path="section-projections-orthogonal-projections-and-least-squares.html"><a href="section-projections-orthogonal-projections-and-least-squares.html"><i class="fa fa-check"></i><b>10</b> Projections: Orthogonal Projections and Least Squares</a></li>
+<li class="chapter" data-level="11" data-path="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><a href="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><i class="fa fa-check"></i><b>11</b> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</a></li>
+<li class="chapter" data-level="12" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>12</b> Limits, Continuity, and Partial Derivatives</a></li>
+<li class="chapter" data-level="13" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>13</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
+<li class="chapter" data-level="14" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>14</b> Tangent Planes and Taylor Linearization</a></li>
+<li class="chapter" data-level="15" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>15</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
+<li class="chapter" data-level="" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Multivariable Mathematics for Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-linear-systems-of-equations" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Linear Systems of Equations</h1>
+<div class="sourceCode" id="section-cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="section-linear-systems-of-equations.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="section-linear-systems-of-equations.html#cb1-2"></a></span>
+<span id="cb1-3"><a href="section-linear-systems-of-equations.html#cb1-3"></a><span class="co"># For 3-d plotting</span></span>
+<span id="cb1-4"><a href="section-linear-systems-of-equations.html#cb1-4"></a><span class="co"># if devtools package not installed, install the package</span></span>
+<span id="cb1-5"><a href="section-linear-systems-of-equations.html#cb1-5"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(devtools)) {</span>
+<span id="cb1-6"><a href="section-linear-systems-of-equations.html#cb1-6"></a>    <span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb1-7"><a href="section-linear-systems-of-equations.html#cb1-7"></a>}</span>
+<span id="cb1-8"><a href="section-linear-systems-of-equations.html#cb1-8"></a><span class="co"># if gg3D package not installed, install the package</span></span>
+<span id="cb1-9"><a href="section-linear-systems-of-equations.html#cb1-9"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(gg3D)) {</span>
+<span id="cb1-10"><a href="section-linear-systems-of-equations.html#cb1-10"></a>    devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;AckerDWM/gg3D&quot;</span>)</span>
+<span id="cb1-11"><a href="section-linear-systems-of-equations.html#cb1-11"></a>}</span></code></pre></div>
+<pre><code>## Warning in fun(libname, pkgname): no display name and no $DISPLAY environment
+## variable</code></pre>
+<div id="section-linear-equations" class="section level2">
+<h2><span class="header-section-number">2.1</span> Linear equations</h2>
+<p>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be variables with coefficients <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
+<p><span class="math display">\[
+\begin{align}
+\label{eq:linear}
+a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
+\end{align}
+\]</span></p>
+<p>is a linear equation. For example, the equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
+<p><span class="math display">\[
+\begin{align*}
+y &amp; = m x + b,
+\end{align*}
+\]</span></p>
+<p>is a linear equation because it can be re-written as</p>
+<p><span class="math display">\[
+\begin{align*}
+y - m x &amp; = b,
+\end{align*}
+\]</span></p>
+<p>where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = m\)</span>, <span class="math inline">\(x_1 = y\)</span> and <span class="math inline">\(x_2 = x\)</span>.</p>
+<p>The equations</p>
+<p><span class="math display">\[
+\begin{align*}
+\sqrt{19} x_1 &amp; = (4 + \sqrt{2}) x_2 - x_3 - 9
+&amp; \mbox{ and } &amp;&amp; 
+-4 x_1 + 5 x_2 - 11 &amp; = x_3
+\end{align*}
+\]</span></p>
+<p>are both linear equations because they can be written as</p>
+<p><span class="math display">\[
+\begin{align*}
+\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 &amp; = - 9 
+&amp; \mbox{ and } &amp;&amp;
+-4 x_1 + 5 x_2 - x_3 &amp; = 11,
+\end{align*}
+\]</span></p>
+<p>respectively. The equations</p>
+<p><span class="math display">\[
+\begin{align*}
+x_1 &amp; = x_2^2 + 3
+&amp; \mbox{ and } &amp;&amp; 
+x_1 + x_2 - x_1 x_2 &amp; = 16
+\end{align*}
+\]</span>
+are not linear equations because they do not meet the form of  (The first equation above has a quadtric power of <span class="math inline">\(x_2\)</span> and the second equation has a product of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>).</p>
+<div id="section-systems-of-linear-equations" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Systems of linear equations</h3>
+<p>A set of two or more linear equations that each contain the same set of variables is called a <strong>system of linear equations</strong>. The equations</p>
+<p><span class="math display">\[
+\begin{align*}
+x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; x_3 &amp;&amp; = &amp; 11 \\
+4 x_1 &amp;&amp; + &amp;&amp; 5 x_2 &amp;&amp;  &amp;&amp; &amp;&amp; = &amp; 9
+\end{align*}
+\]</span></p>
+<p>are a system of equations. Note that in the second equation, the coefficient for <span class="math inline">\(x_3\)</span> is 0, meaning we could re-write the above example as</p>
+<p><span class="math display">\[
+\begin{align*}
+x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; x_3 &amp;&amp; = &amp; 11 \\
+4 x_1 &amp;&amp; + &amp;&amp; 5 x_2 &amp;&amp; + &amp;&amp; 0 x_3 &amp;&amp; = &amp; 9.
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div id="section-solutions-of-linear-systems" class="section level2">
+<h2><span class="header-section-number">2.2</span> Solutions of linear systems</h2>
+<p>A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers that each of the variables take that allow for all the equations to simultaneously be true. For example, consider the system of equations</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 y &amp;&amp; = &amp; 8 \\
+4 x &amp;&amp; + &amp;&amp; 5 y &amp;&amp; = &amp; 7
+\end{align*}
+\]</span></p>
+<p>To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 y &amp;&amp; = &amp; 8 \\
+4 x - 4 * (x) &amp;&amp; + &amp;&amp; 5 y - 4 * (4y) &amp;&amp; = &amp; 7 - 4 * (8)
+\end{align*}
+\]</span>
+where the part of the equations in <code>()</code> is the top equation. This system of equations now simplifies to</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 y &amp;&amp; = &amp; 8 \\
+0 &amp;&amp; + &amp;&amp; -11 y &amp;&amp; = &amp; -25
+\end{align*}
+\]</span></p>
+<p>which gives <span class="math inline">\(y = \frac{25}{11}\)</span>. Plugging this value into the top equation gives</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 * \frac{25}{11} &amp;&amp; = &amp; 8 \\
+0 &amp;&amp; + &amp;&amp; y &amp;&amp; = &amp; \frac{25}{11}
+\end{align*}
+\]</span></p>
+<p>where we can solve <span class="math inline">\(x = 8 - \frac{100}{11} = -\frac{12}{11}\)</span> giving the solution of the form</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 0 &amp;&amp; = &amp; - \frac{12}{11} \\
+0 &amp;&amp; + &amp;&amp; y &amp;&amp; = &amp; \frac{25}{11}.
+\end{align*}
+\]</span></p>
+<p>In this case, the system of equation has the solution <span class="math inline">\(x = -\frac{12}{11}\)</span> and <span class="math inline">\(y = \frac{25}{11}\)</span>. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 y &amp;&amp; = &amp; 8 \\
+4 x &amp;&amp; + &amp;&amp; 5 y &amp;&amp; = &amp; 7
+\end{align*}
+\]</span></p>
+<p>which define two lines:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(y = -\frac{x}{4} + 2\)</span></li>
+<li><span class="math inline">\(y = -\frac{4x}{5} + \frac{7}{5}\)</span></li>
+</ol>
+<p>Let’s plot these equations in <code>R</code> and see what they look like</p>
+<div class="sourceCode" id="section-cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="section-linear-systems-of-equations.html#cb3-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb3-2"><a href="section-linear-systems-of-equations.html#cb3-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-3"><a href="section-linear-systems-of-equations.html#cb3-3"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb3-4"><a href="section-linear-systems-of-equations.html#cb3-4"></a>    <span class="dt">x =</span> <span class="kw">c</span>(x, x),</span>
+<span id="cb3-5"><a href="section-linear-systems-of-equations.html#cb3-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>, <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">/</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">/</span><span class="dv">5</span>),</span>
+<span id="cb3-6"><a href="section-linear-systems-of-equations.html#cb3-6"></a>    <span class="dt">equation =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb3-7"><a href="section-linear-systems-of-equations.html#cb3-7"></a>)</span>
+<span id="cb3-8"><a href="section-linear-systems-of-equations.html#cb3-8"></a><span class="kw">glimpse</span>(dat)</span></code></pre></div>
+<pre><code>## Rows: 2,000
+## Columns: 3
+## $ x        [3m[90m&lt;dbl&gt;[39m[23m -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1.97…
+## $ y        [3m[90m&lt;dbl&gt;[39m[23m 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, …
+## $ equation [3m[90m&lt;fct&gt;[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+<div class="sourceCode" id="section-cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="section-linear-systems-of-equations.html#cb5-1"></a>dat <span class="op">%&gt;%</span></span>
+<span id="cb5-2"><a href="section-linear-systems-of-equations.html#cb5-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">color =</span> equation, <span class="dt">group =</span> equation)) <span class="op">+</span></span>
+<span id="cb5-3"><a href="section-linear-systems-of-equations.html#cb5-3"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb5-4"><a href="section-linear-systems-of-equations.html#cb5-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
+<span id="cb5-5"><a href="section-linear-systems-of-equations.html#cb5-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb5-6"><a href="section-linear-systems-of-equations.html#cb5-6"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">-12</span><span class="op">/</span><span class="dv">11</span>, <span class="dt">y =</span> <span class="dv">25</span><span class="op">/</span><span class="dv">11</span>), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb5-7"><a href="section-linear-systems-of-equations.html#cb5-7"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:one-solution"></span>
+<img src="multivariable-math_files/figure-html/one-solution-1.png" alt="Linear system of equations with one solution" width="672" />
+<p class="caption">
+Figure 2.1: Linear system of equations with one solution
+</p>
+</div>
+<p>From this plot, it is clear that the solution to the system of equations is the location where the two lines intersect!</p>
+<div id="section-types-of-solutions" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Types of solutions</h3>
+<p>Typically, there are 3 cases for the solutions to a system of linear equations</p>
+<ol style="list-style-type: decimal">
+<li>There are no solutions</li>
+<li>There is one solution (Figure <a href="section-linear-systems-of-equations.html#fig:one-solution">2.1</a>)</li>
+<li>There are infinitely many solutions</li>
+</ol>
+<p><strong>There are no solutions:</strong> Consider the system of linear equations</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 y &amp;&amp; = &amp; 8 \\
+4 x &amp;&amp; + &amp;&amp; 16 y &amp;&amp; = &amp; 18
+\end{align*}
+\]</span></p>
+<div class="sourceCode" id="section-cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="section-linear-systems-of-equations.html#cb6-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb6-2"><a href="section-linear-systems-of-equations.html#cb6-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-3"><a href="section-linear-systems-of-equations.html#cb6-3"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb6-4"><a href="section-linear-systems-of-equations.html#cb6-4"></a>    <span class="dt">x =</span> <span class="kw">c</span>(x, x),</span>
+<span id="cb6-5"><a href="section-linear-systems-of-equations.html#cb6-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>, <span class="op">-</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">18</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>),</span>
+<span id="cb6-6"><a href="section-linear-systems-of-equations.html#cb6-6"></a>    <span class="dt">equation =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb6-7"><a href="section-linear-systems-of-equations.html#cb6-7"></a>)</span>
+<span id="cb6-8"><a href="section-linear-systems-of-equations.html#cb6-8"></a><span class="kw">glimpse</span>(dat)</span></code></pre></div>
+<pre><code>## Rows: 2,000
+## Columns: 3
+## $ x        [3m[90m&lt;dbl&gt;[39m[23m -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1.97…
+## $ y        [3m[90m&lt;dbl&gt;[39m[23m 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, …
+## $ equation [3m[90m&lt;fct&gt;[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+<div class="sourceCode" id="section-cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="section-linear-systems-of-equations.html#cb8-1"></a>dat <span class="op">%&gt;%</span></span>
+<span id="cb8-2"><a href="section-linear-systems-of-equations.html#cb8-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">color =</span> equation, <span class="dt">group =</span> equation)) <span class="op">+</span></span>
+<span id="cb8-3"><a href="section-linear-systems-of-equations.html#cb8-3"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb8-4"><a href="section-linear-systems-of-equations.html#cb8-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
+<span id="cb8-5"><a href="section-linear-systems-of-equations.html#cb8-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb8-6"><a href="section-linear-systems-of-equations.html#cb8-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:no-solution"></span>
+<img src="multivariable-math_files/figure-html/no-solution-1.png" alt="Linear system of equations with no solution" width="672" />
+<p class="caption">
+Figure 2.2: Linear system of equations with no solution
+</p>
+</div>
+<p>In this case, the linear equations are parallel lines and will never intersect so therefore there is no solution.</p>
+<p><strong>There is one solution:</strong> We have seen this example in Figure <a href="section-linear-systems-of-equations.html#fig:one-solution">2.1</a></p>
+<p><strong>There are infinitely many solutions:</strong> Consider the system of linear equations</p>
+<p><span class="math display">\[
+\begin{align*}
+x &amp;&amp; + &amp;&amp; 4 y &amp;&amp; = &amp; 8 \\
+4 x &amp;&amp; + &amp;&amp; 16 y &amp;&amp; = &amp; 32
+\end{align*}
+\]</span></p>
+<div class="sourceCode" id="section-cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="section-linear-systems-of-equations.html#cb9-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb9-2"><a href="section-linear-systems-of-equations.html#cb9-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb9-3"><a href="section-linear-systems-of-equations.html#cb9-3"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb9-4"><a href="section-linear-systems-of-equations.html#cb9-4"></a>    <span class="dt">x =</span> <span class="kw">c</span>(x, x),</span>
+<span id="cb9-5"><a href="section-linear-systems-of-equations.html#cb9-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>, <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span><span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">32</span> <span class="op">/</span><span class="st"> </span><span class="dv">16</span>),</span>
+<span id="cb9-6"><a href="section-linear-systems-of-equations.html#cb9-6"></a>    <span class="dt">equation =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb9-7"><a href="section-linear-systems-of-equations.html#cb9-7"></a>)</span>
+<span id="cb9-8"><a href="section-linear-systems-of-equations.html#cb9-8"></a><span class="kw">glimpse</span>(dat)</span></code></pre></div>
+<pre><code>## Rows: 2,000
+## Columns: 3
+## $ x        [3m[90m&lt;dbl&gt;[39m[23m -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1.97…
+## $ y        [3m[90m&lt;dbl&gt;[39m[23m 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, …
+## $ equation [3m[90m&lt;fct&gt;[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+<div class="sourceCode" id="section-cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="section-linear-systems-of-equations.html#cb11-1"></a>dat <span class="op">%&gt;%</span></span>
+<span id="cb11-2"><a href="section-linear-systems-of-equations.html#cb11-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">color =</span> equation, <span class="dt">group =</span> equation)) <span class="op">+</span></span>
+<span id="cb11-3"><a href="section-linear-systems-of-equations.html#cb11-3"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb11-4"><a href="section-linear-systems-of-equations.html#cb11-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
+<span id="cb11-5"><a href="section-linear-systems-of-equations.html#cb11-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb11-6"><a href="section-linear-systems-of-equations.html#cb11-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:infinite-solutions"></span>
+<img src="multivariable-math_files/figure-html/infinite-solutions-1.png" alt="Linear system of equations with no solution" width="672" />
+<p class="caption">
+Figure 2.3: Linear system of equations with no solution
+</p>
+</div>
+<p>In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).</p>
+<ul>
+<li><strong>Exercise/Lab: generate some equations, plot them, and determine if there is a solution. Then try to solve these using algebra.</strong></li>
+</ul>
+</div>
+</div>
+<div id="section-elementary-row-and-column-operations-on-matrices" class="section level2">
+<h2><span class="header-section-number">2.3</span> Elementary row and column operations on matrices</h2>
+<p>The elementary row (column) operations include</p>
+<ol style="list-style-type: decimal">
+<li>swaps: swapping two rows (columns),</li>
+<li>sums: replacing a row (column) by the sum itself and a multiple of another row (column)</li>
+<li>scalar multiplication: replacing a row (column) by a scalar multiple times itself</li>
+</ol>
+<p>Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).</p>
+<ul>
+<li><strong>Add in examples in class here</strong></li>
+</ul>
+</div>
+<div id="section-the-augmented-form-of-a-matrix" class="section level2">
+<h2><span class="header-section-number">2.4</span> The Augmented form of a matrix</h2>
+<p>Consider the linear system of equations
+<span class="math display">\[
+\begin{align*}
+x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; x_3 &amp;&amp; = &amp; 11 \\
+4 x_1 &amp;&amp; + &amp;&amp; 5 x_2 &amp;&amp; + &amp;&amp; 2 x_3 &amp;&amp; = &amp; 9.
+\end{align*}
+\]</span>
+The augmented matrix representation of this system of linear equations is given by the matrix
+<span class="math display">\[
+\begin{align*}
+\begin{pmatrix}
+1 &amp; 4 &amp; - 1 &amp; 11 \\
+4 &amp; 5 &amp; 2   &amp;  9
+\end{pmatrix},
+\end{align*}
+\]</span>
+where the first column of the matrix represents the variable <span class="math inline">\(x_1\)</span>, the second column of the matrix represents the variable <span class="math inline">\(x_2\)</span>, the third column of the matrix represents the variable <span class="math inline">\(x_3\)</span>, and the fourth column of the matrix represents the constant terms. We can express the augmented form in <code>R</code> using a matrix</p>
+<div class="sourceCode" id="section-cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="section-linear-systems-of-equations.html#cb12-1"></a>augmented_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">-1</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb12-2"><a href="section-linear-systems-of-equations.html#cb12-2"></a>augmented_matrix</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4   -1   11
+## [2,]    4    5    2    9</code></pre>
+<p>and to make clear the respective variables, we can add in column names as a matrix attribute using the <code>colnames()</code> function</p>
+<div class="sourceCode" id="section-cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="section-linear-systems-of-equations.html#cb14-1"></a><span class="kw">colnames</span>(augmented_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;constants&quot;</span>)</span>
+<span id="cb14-2"><a href="section-linear-systems-of-equations.html#cb14-2"></a>augmented_matrix</span></code></pre></div>
+<pre><code>##      x1 x2 x3 constants
+## [1,]  1  4 -1        11
+## [2,]  4  5  2         9</code></pre>
+<p>which adds labels to each of the columns.</p>
+<p>Now, using elementary row operations on the matrix, we can attempt to find solutions to the system of equations. First, we multiply the first row by -4 and add it to the second row of the matrix and replace the second row with this sum</p>
+<div class="sourceCode" id="section-cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="section-linear-systems-of-equations.html#cb16-1"></a>augmented_matrix[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="dv">-4</span> <span class="op">*</span><span class="st"> </span>augmented_matrix[<span class="dv">1</span>, ] <span class="op">+</span><span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ]</span>
+<span id="cb16-2"><a href="section-linear-systems-of-equations.html#cb16-2"></a>augmented_matrix</span></code></pre></div>
+<pre><code>##      x1  x2 x3 constants
+## [1,]  1   4 -1        11
+## [2,]  0 -11  6       -35</code></pre>
+<p>Next, scale the second row to have a leading value of 1 by dividing by -11</p>
+<div class="sourceCode" id="section-cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="section-linear-systems-of-equations.html#cb18-1"></a>augmented_matrix[<span class="dv">2</span>, ] &lt;-<span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ] <span class="op">/</span><span class="st"> </span>(<span class="op">-</span><span class="dv">11</span>)</span>
+<span id="cb18-2"><a href="section-linear-systems-of-equations.html#cb18-2"></a>augmented_matrix</span></code></pre></div>
+<pre><code>##      x1 x2         x3 constants
+## [1,]  1  4 -1.0000000 11.000000
+## [2,]  0  1 -0.5454545  3.181818</code></pre>
+<p>We can then multiply the second row by -4 and add it to the first row and replace the first row with this value.</p>
+<div class="sourceCode" id="section-cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="section-linear-systems-of-equations.html#cb20-1"></a>augmented_matrix[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>augmented_matrix[<span class="dv">1</span>, ] <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ]</span>
+<span id="cb20-2"><a href="section-linear-systems-of-equations.html#cb20-2"></a>augmented_matrix</span></code></pre></div>
+<pre><code>##      x1 x2         x3 constants
+## [1,]  1  0  1.1818182 -1.727273
+## [2,]  0  1 -0.5454545  3.181818</code></pre>
+<p>There are infinitely many solutions to this system of equations subject to the requirements that
+<span class="math display">\[x_1 = - \frac{19}{11} - \frac{13}{11} x_3\]</span>
+and
+<span class="math display">\[x_2 = \frac{35}{11} + \frac{6}{11} x_3.\]</span>
+To get this into a reasonable form, we will solve these equations as a function of <span class="math inline">\(x_1\)</span>. Solving the first equation for <span class="math inline">\(x_3\)</span> gives
+<span class="math display">\[x_3 = - \frac{19}{13} -\frac{11}{13} x_1.\]</span>
+Then, plugging this into <span class="math inline">\(x_3\)</span> in the second equation gives
+<span class="math display">\[
+\begin{align*}
+x_2 &amp; = \frac{35}{11} + \frac{6}{11} \left( - \frac{19}{13} -\frac{11}{13} x_1 \right) \\
+&amp; = \frac{341}{143} - \frac{6}{13} x_1
+\end{align*}
+\]</span>
+which defines a linear relationship between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Notice that in these last two solutions, <span class="math inline">\(x_1\)</span> is a “free variable” and <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are “determined” by <span class="math inline">\(x_1\)</span>.</p>
+<p>In the plot below, the two planes (red and blue) are the geometric plots of the linear equations in the system of equations (the red plane is the top equation and the blue plane is the bottom equation). The purple line is the equation for the solution given the free variable <span class="math inline">\(x_3\)</span> and lies at the intersection of the two planes, much like the point in the two lines in figure <strong>linking reference here</strong> lies at the intersection of the two points.</p>
+<div class="sourceCode" id="section-cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="section-linear-systems-of-equations.html#cb22-1"></a>n &lt;-<span class="st"> </span><span class="dv">60</span></span>
+<span id="cb22-2"><a href="section-linear-systems-of-equations.html#cb22-2"></a>x1 &lt;-<span class="st"> </span>x2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length =</span> n)</span>
+<span id="cb22-3"><a href="section-linear-systems-of-equations.html#cb22-3"></a>region &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x1 =</span> x1, <span class="dt">x2 =</span> x2)</span>
+<span id="cb22-4"><a href="section-linear-systems-of-equations.html#cb22-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb22-5"><a href="section-linear-systems-of-equations.html#cb22-5"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
+<span id="cb22-6"><a href="section-linear-systems-of-equations.html#cb22-6"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
+<span id="cb22-7"><a href="section-linear-systems-of-equations.html#cb22-7"></a>    <span class="dt">x3 =</span> <span class="op">-</span><span class="st"> </span><span class="dv">11</span> <span class="op">+</span><span class="st"> </span>(region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2)</span>
+<span id="cb22-8"><a href="section-linear-systems-of-equations.html#cb22-8"></a>)</span>
+<span id="cb22-9"><a href="section-linear-systems-of-equations.html#cb22-9"></a></span>
+<span id="cb22-10"><a href="section-linear-systems-of-equations.html#cb22-10"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb22-11"><a href="section-linear-systems-of-equations.html#cb22-11"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
+<span id="cb22-12"><a href="section-linear-systems-of-equations.html#cb22-12"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
+<span id="cb22-13"><a href="section-linear-systems-of-equations.html#cb22-13"></a>    <span class="dt">x3 =</span> (<span class="dv">9</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb22-14"><a href="section-linear-systems-of-equations.html#cb22-14"></a>) </span>
+<span id="cb22-15"><a href="section-linear-systems-of-equations.html#cb22-15"></a></span>
+<span id="cb22-16"><a href="section-linear-systems-of-equations.html#cb22-16"></a>df_solution &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb22-17"><a href="section-linear-systems-of-equations.html#cb22-17"></a>    <span class="dt">x1 =</span> x1, </span>
+<span id="cb22-18"><a href="section-linear-systems-of-equations.html#cb22-18"></a>    <span class="dt">x2 =</span> <span class="dv">341</span> <span class="op">/</span><span class="st"> </span><span class="dv">143</span> <span class="op">-</span><span class="st"> </span><span class="dv">6</span> <span class="op">/</span><span class="st"> </span><span class="dv">13</span> <span class="op">*</span><span class="st"> </span>x1,</span>
+<span id="cb22-19"><a href="section-linear-systems-of-equations.html#cb22-19"></a>    <span class="dt">x3 =</span> <span class="dv">-19</span><span class="op">/</span><span class="dv">13</span> <span class="op">-</span><span class="st"> </span><span class="dv">11</span><span class="op">/</span><span class="dv">13</span> <span class="op">*</span><span class="st"> </span>x1</span>
+<span id="cb22-20"><a href="section-linear-systems-of-equations.html#cb22-20"></a>) </span>
+<span id="cb22-21"><a href="section-linear-systems-of-equations.html#cb22-21"></a></span>
+<span id="cb22-22"><a href="section-linear-systems-of-equations.html#cb22-22"></a><span class="co"># theta and phi set up the &quot;perspective/viewing angle&quot; of the 3D plot</span></span>
+<span id="cb22-23"><a href="section-linear-systems-of-equations.html#cb22-23"></a>theta &lt;-<span class="st"> </span><span class="dv">63</span></span>
+<span id="cb22-24"><a href="section-linear-systems-of-equations.html#cb22-24"></a>phi &lt;-<span class="st"> </span><span class="dv">-12</span></span>
+<span id="cb22-25"><a href="section-linear-systems-of-equations.html#cb22-25"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x1, x2, <span class="dt">z =</span> x3)) <span class="op">+</span></span>
+<span id="cb22-26"><a href="section-linear-systems-of-equations.html#cb22-26"></a><span class="st">    </span><span class="kw">axes_3D</span>(<span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb22-27"><a href="section-linear-systems-of-equations.html#cb22-27"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(<span class="dt">alpha =</span> <span class="fl">0.25</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb22-28"><a href="section-linear-systems-of-equations.html#cb22-28"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(<span class="dt">data =</span> df2, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">z =</span> x3), <span class="dt">alpha =</span> <span class="fl">0.25</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb22-29"><a href="section-linear-systems-of-equations.html#cb22-29"></a><span class="st">    </span><span class="kw">stat_3D</span>(<span class="dt">data =</span> df_solution, <span class="kw">aes</span>(x1, x2, <span class="dt">z =</span> x3), <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span></span>
+<span id="cb22-30"><a href="section-linear-systems-of-equations.html#cb22-30"></a><span class="st">    </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
+<span id="cb22-31"><a href="section-linear-systems-of-equations.html#cb22-31"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb22-32"><a href="section-linear-systems-of-equations.html#cb22-32"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).
+
+## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,5 +1,15 @@
+fig:one-solution
+fig:no-solution
+fig:infinite-solutions
 section-preface
 section-outline
+section-linear-systems-of-equations
+section-linear-equations
+section-systems-of-linear-equations
+section-solutions-of-linear-systems
+section-types-of-solutions
+section-elementary-row-and-column-operations-on-matrices
+section-the-augmented-form-of-a-matrix
 section-vectors-and-matrices
 section-vectors
 section-application-in-r
@@ -11,8 +21,6 @@ section-arrays
 section-lists
 section-exercises
 section-vector-spaces
-section-linear-equations
-section-systems-of-linear-equations
 section-vector-spaces-in-mathcalrn
 section-linear-combinations-of-vectors
 section-bases
