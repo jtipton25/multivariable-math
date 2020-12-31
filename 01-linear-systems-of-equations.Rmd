@@ -2,6 +2,7 @@
 
 ```{r, message = FALSE}
 library(tidyverse)
+library(pracma)
 
 # For 3-d plotting
 # if devtools package not installed, install the package
@@ -15,9 +16,10 @@ if (!require(gg3D)) {
 library(gg3D)
 ```
 
-## Linear equations
+## Liner Systems of equations
+### Linear equations
 
-Let $x_1, x_2, \ldots, x_n$ be variables with coefficients $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
+Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
 
 $$
 \begin{align}
@@ -26,7 +28,7 @@ a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
 \end{align}
 $$
 
-is a linear equation. For example, the equation for a line with slope $m$ and $y$-intercept $b$ is
+is a **linear equation**. For example, the equation for a line with slope $m$ and $y$-intercept $b$ is
 
 $$
 \begin{align*}
@@ -73,7 +75,8 @@ x_1 & = x_2^2 + 3
 x_1 + x_2 - x_1 x_2 & = 16
 \end{align*}
 $$
-are not linear equations because they do not meet the form of \ref{eq:linear} (The first equation above has a quadtric power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
+
+are not linear equations because they do not meet the form of \ref{eq:linear} (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
 
 ### Systems of linear equations
 
@@ -95,9 +98,9 @@ x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
 \end{align*}
 $$
 
-## Solutions of linear systems
+### Solutions of linear systems
 
-A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers that each of the variables take that allow for all the equations to simultaneously be true. For example, consider the system of equations
+A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true. For example, consider the system of equations
 
 $$
 \begin{align*}
@@ -188,6 +191,8 @@ Typically, there are 3 cases for the solutions to a system of linear equations
 2) There is one solution (Figure \@ref(fig:one-solution))
 3) There are infinitely many solutions
 
+**Definition:** A linear system of equations is called **consistent** if the system has either one or infinitely many solutions and is called **inconsistent** if the system has no solution.
+
 **There are no solutions:** Consider the system of linear equations
 
 $$
@@ -248,11 +253,29 @@ dat %>%
 
 In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).
 
+**Definition:** Two linear systems of equations are called **equivalent** if both systems share the same **solution set**.
+
+For example, the system of equations
+$$
+\begin{align*}
+x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
+4 x_1 && + && 5 x_2 && + && 2 x_3 && = & 9.
+\end{align*}
+$$ 
+and the system of equations
+$$
+\begin{align*}
+2x_1 && + && 8 x_2 && - && 2 x_3 && = & 22 \\
+8 x_1 && + && 10 x_2 && + && 4 x_3 && = & 18.
+\end{align*}
+$$
+have the same solution set (the second set of equations is just 2 times the first set of equations).
+
 
 * **Exercise/Lab: generate some equations, plot them, and determine if there is a solution. Then try to solve these using algebra.**
 
 
-## Elementary row and column operations on matrices
+### Elementary row and column operations on matrices
 
 The elementary row (column) operations include 
 
@@ -268,7 +291,7 @@ Note that these operations are exactly what we used to solve the equation using 
 
 
 
-## The Augmented form of a matrix
+### The Augmented matrix form of a system of equations
 
 Consider the linear system of equations 
 $$
@@ -314,7 +337,10 @@ We can then multiply the second row by -4 and add it to the first row and replac
 augmented_matrix[1, ] <- augmented_matrix[1, ] - 4 * augmented_matrix[2, ]
 augmented_matrix
 ```
-There are infinitely many solutions to this system of equations subject to the requirements that 
+
+Notice how the matrix has a "triangular" form (The lower part of the "triangle" is made of 0s and the upper part has numbers).
+
+The triangular form tells us that There are infinitely many solutions to this system of equation. The infinite solutions are subject to the requirements that 
 $$x_1 = - \frac{19}{11} - \frac{13}{11} x_3$$
 and
 $$x_2 = \frac{35}{11} + \frac{6}{11} x_3.$$
@@ -368,4 +394,143 @@ ggplot(df, aes(x1, x2, z = x3)) +
     theme(legend.position = "none") +
     labs_3D(hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90), theta = theta, phi = phi) 
 ```
+
+### Existence and Uniqueness
+
+**Definition:** A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a **unique** solution if only one solution exists. 
+
+* Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
+
+$$
+\begin{align*}
+16 x_1 && + && 2 x_2 && + && 3 x_3 && = & 13 \\
+5 x_1 && + && 11 x_2 && + && 10 x_3 && = & 8 \\
+9 x_1 && + && 7 x_2 && + && 6 x_3 && = & 12 \\
+4 x_1 && + && 14 x_2 && + && 15 x_3 && = & 1 \\
+\end{align*}
+$$
+
+* Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
+
+$$
+\begin{align*}
+x_1 && + && 2 x_2 && + && 3 x_3 = & 5 \\
+x_1 && + && 3 x_2 &&  + && 2 x_3= & 2 \\
+3 x_1 && + && 2 x_2 && + && x_3 = & 7
+\end{align*}
+$$
+
+## Reduce row echelon form
+Simple row operations can be used to solve systems of equations by manipulating the matrix into certain forms. 
+
+**Definition:** A matrix is said to be in **echelon** form if 
+1) all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)
+2) the leading entry/coefficient of a nonzero row (called the **pivot**) is always *strictly* to the right of the leading entry/coefficient of the row above
+
+* Example: **echelon matrix example in class**
+
+**Definition:** A matrix is in **reduced row echelon form** if it is in echelon form and
+1) the leading entry/coefficient of each row is 1
+2) The leading entry/coefficient of 1 is the only nonzero entry in its column.
+
+* Example: **rref matrix example in class**
+
+**Definition:** Echelon matrices have the property of being **upper diagonal**. A matrix is said to be **upper diagonal** if all entries of the matrix at or above the diagonal are nonzero. 
+
+* Example: **lower and non-lower diagonal matrices 
+
+**Definition:** Two matrices are **row-equivalent** if one matrix can be transformed to the other through elementary row operations.
+
+**Theorem:** A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
+
+* **Exercise:** using elementary row operations, calculate the reduced row echelon form of the following matrices
+1) **fill in later**
+2) **fill in later**
+3) **fill in later**
+
+
+### Pivot positions
+
+The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.
+
+**Definition:** In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
+
+* **Example: pivot position and pivot columns**
+
+### Finding the reduced row echelon form
+
+Calculating the reduced row echelon form is known as Gaussian elimination, which is named after [Johann Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss). This algorithm uses elementary row operations to calculate the reduced row echelon form. The following steps perform the Gaussian elimination algorithm.
+
+1) Start with the left-most nonzero column, which is a pivot column
+2) If the top row is zero, swap rows so that the top row is nonzero so that the top row has a nonzero element in the pivot position.
+3) Use row multiplication and addition to zero out all positions in the pivot column below the top row (pivot position).
+4) Ignore this top row and repeat steps 1-3 until there are no more nonzero rows to apply steps 1-3 on. At the end of this step, the matrix is in row echelon form.
+5) Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.
+
+* **Example: in class**
+
+```{r}
+# pracma library
+# rref example in class
+```
+
+### Using reduced row echelon forms to solve systems of linear equations
+
+When a system of linear equations is expressed as an augmented matrix, the reduced row echelon form can be used to find solutions to those systems of equations. Consider the systems of equations
+$$
+\begin{align*}
+3x_1 && + && 8 x_2 && - && 4 x_3 && = & 6 \\
+2 x_1 && - && 4 x_2 && - && x_3 && = & 8 \\
+4 x_1 && + && 5 x_2 &&  && && = & 9
+\end{align*}
+$$
+which can be written in the augmented matrix form
+$$
+\begin{pmatrix}
+3 & 8  & -4 & 6 \\
+2 & -4 & -1 & 8 \\
+4 & 5  & 0  & 9
+\end{pmatrix}
+$$
+In `R`, this is the matrix
+
+```{r}
+# define matrix
+```
+Calculating the reduced row echelon form, gives
+```{r}
+# calculate rref of augmented matrix
+```
+which gives the solution ...
+
+* **Exercise: calculate the RREF for the augmented matrix in the example above by hand**
+
+Another example where we find a solution is
+
+$$
+\begin{align*}
+5 x_1 && + && 4 x_2 && - && 2 x_3 && = & 0 \\
+-3 x_1 && - && 2 x_2 && - && 4 x_3 && = & 1 \\
+\end{align*}
+$$
+
+**Do same steps**
+
+* **Definition:** In a system of linear equations that is underdetermined (fewer equations than unknowns), the **determined/basic variables** are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called **free variable**.
+
+* **Example in class**
+
+### Existence and uniquenss from reduced row echelon form
+
+
+
+
+
+
+
+
+
+
+
+
 
