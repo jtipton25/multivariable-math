@@ -98,6 +98,14 @@ x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
 \end{align*}
 $$
 
+**Exercises:** For the following, are these linear equations?
+
+1) $x_1 + 3 x_1 x_2 = 5$
+2) $5x + 7y + 8z = 11.2$
+3) $y / 4 + \sqrt{2} z = 2^6$
+4) $x + 4 y^2 = 9$
+
+
 ### Solutions of linear systems
 
 A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true. For example, consider the system of equations
@@ -275,6 +283,25 @@ have the same solution set (the second set of equations is just 2 times the firs
 * **Exercise/Lab: generate some equations, plot them, and determine if there is a solution. Then try to solve these using algebra.**
 
 
+* **Exercises:** for the following systems of equations, determine if a solution(s) exist and if so, solve for the solution
+
+1) $$\begin{align*}
+4 x_1 && + && 5 x_2 && = 8\\
+9 x_1 && - && 3 x_2 && = 4
+\end{align*}$$
+
+2) $$\begin{align*}
+7 x_1 && + && 3 x_2 && + && 4 x_3 && = 5\\
+4 x_1 && - && 5 x_2 && && && = -2
+\end{align*}$$
+
+3) $$\begin{align*}
+4 x_1 && - && 2 x_2 && = 8\\
+2 x_1 && + && x_2 && = 7 \\
+-3 x_1 && + && 6 x_2 && = 11
+\end{align*}$$
+
+
 ### Elementary row and column operations on matrices
 
 The elementary row (column) operations include 
@@ -421,7 +448,9 @@ x_1 && + && 3 x_2 &&  + && 2 x_3= & 2 \\
 $$
 
 ## Reduce row echelon form
-Simple row operations can be used to solve systems of equations by manipulating the matrix into certain forms. 
+
+Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc. 
+
 
 **Definition:** A matrix is said to be in **echelon** form if 
 1) all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)
