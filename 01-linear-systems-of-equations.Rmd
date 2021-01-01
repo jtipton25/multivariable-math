@@ -2,7 +2,6 @@
 
 ```{r, message = FALSE}
 library(tidyverse)
-library(pracma)
 
 # For 3-d plotting
 # if devtools package not installed, install the package
@@ -12,8 +11,14 @@ if (!require(devtools)) {
 # if gg3D package not installed, install the package
 if (!require(gg3D)) {
     devtools::install_github("AckerDWM/gg3D")
+    library(gg3D)
 }
-library(gg3D)
+
+# if dasc2594 package not installed, install the package
+if (!require(dasc2594)) {
+    devtools::install_github("jtipton25/dasc2594")
+    library(dasc2594)
+}
 ```
 
 ## Liner Systems of equations
@@ -551,9 +556,31 @@ $$
 
 ### Existence and uniquenss from reduced row echelon form
 
+The row echelon form is useful to determine if a system of linear equations is consistent (the system of equations has a solution). To check if a solution to a linear system of equations exists, convert the system of equations to an augmented matrix form. Then, reduce the augmented matrix to row echelon form using elementary matrix operations. As long as there is not an equation of the form 
+$$
+0 = \mbox{constant}
+$$
+for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem
+
+**Theorem:** A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
 
 
+* **Example: consistent system of equations**
 
+```{r, echo = FALSE, results = 'asis'}
+set.seed(1)
+A <- matrix(sample(-10:10, 12), 3, 4)
+cat(array_to_latex(A))
+```
+
+* **Example: inconsistent system of equations**
+
+
+```{r, echo = FALSE, results = 'asis'}
+set.seed(1)
+A <- matrix(sample(-10:10, 16), 4, 4)
+cat(array_to_latex(A))
+```
 
 
 

@@ -2,13 +2,251 @@
 
 ```{r}
 library(shiny)
+library(patchwork)
+```
+
+## Vectors 
+
+For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
+
+$$
+\begin{align*}
+\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+\end{align*}
+$$
+
+where the elements $x_1, \ldots, x_n$ are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the $x_i$s are stacked on top of one another) and the order matters. For example, the vector 
+
+$$
+\begin{align*}
+\mathbf{x} & = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+\end{align*}
+$$
+
+has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3 = 8$. Note that the vector $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is not the same as the vector $\begin{pmatrix}  8 \\ 2 \\ 5 \end{pmatrix}$ because the order of the elements matters.
+
+We can also write the vector as  
+
+$$
+\begin{align*}
+\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
+\end{align*}
+$$
+
+where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
+
+
+To create a vector we can use the concatenate function `c()`. For example, the vector $\mathbf{x} = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ can be created as the `R` object using
+
+```{r}
+x <- c(5, 2, 8)
+```
+
+where the `<-` assigns the values in the vector `c(5, 2, 8)` to the object named `x`. To print the values of `x`, we can use
+
+```{r}
+x
+```
+
+which prints the elements of x. Notice that `R` prints the elements of $\mathbf{x}$ in a row; however, $\mathbf{x}$ is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a `data.frame`, then the vector will be presented as a column vector
+
+```{r}
+data.frame(x)
+```
+
+One can use the index operator $[\hspace{2mm}]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
+
+```{r}
+x[1]
+```
+
+and the third element of $\mathbf{x}$, $x_3$, is
+
+```{r}
+x[3]
+```
+
+The transpose function `t()` turns a column vector into a row vector (or a row vector into a column vector). For example the transpose $\mathbf{x}'$ of $\mathbf{x}$ is 
+
+```{r}
+tx <- t(x)
+tx
+```
+
+where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vector. The transpose of `tx`. Notice the indices on the output of the row vector `tx`. The index operator `[1, ]` selects the first row to `tx` and the index operator `[, 1]` gives the first column `tx`. Taking the transpose again gives us back the original column vector
+
+```{r}
+t(tx)
 ```
 
 
+### Properties of Vectors
 
-## Vector spaces in $\mathcal{R}^n$
+For any real valued scalars $a, b \in \mathcal{R}$ and any vectors $\mathbf{x}, \mathbf{y}, \mathbf{z} \in \mathcal{R}^n$ (vectors of real numbers of length $n$), 
 
-Let $\mathcal{R}^n$ be a real coordinate space of $n$ dimesions. You are already familiar with the Cartesian plane that consists of ordered pairs $(x, y)$. The Cartesian plane defines the real coordinate space $\mathbf{R}^2$ of two dimensions. In $\mathbf{R}^2$, the location of any point of interest can be defined using the $x$ and $y$. For example, the plot below shows the location of the point (2, 3)
+1) **scalar multiplication**
+$$
+\begin{align*}
+a \mathbf{x} & = a \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
+& = \begin{pmatrix} a x_1 \\ a x_2 \\ \vdots \\ a x_n \end{pmatrix} 
+\end{align*}
+$$
+    
+where the scalar $a$ is multiplied by each element of the vector. For example, 
+
+$$
+\begin{align*}
+4 \begin{pmatrix} 4 \\ 6 \\ 7 \\ 12 \end{pmatrix} 
+& = \begin{pmatrix} 4 * 4 \\ 4 * 6 \\ 4 * 7 \\ 4 * 12 \end{pmatrix} \\
+& = \begin{pmatrix} 16 \\ 24 \\ 28 \\ 48 \end{pmatrix} 
+\end{align*}
+$$
+
+In `R`, we can multiply the vector by a scalar as
+
+```{r}
+4 * c(4, 6, 7, 12)
+```
+
+or if the vector $\mathbf{x} = \left( 4, 6, 7, 12 \right)'$ we can write this as
+
+```{r}
+x <- c(4, 6, 7, 12)
+4 * x
+```
+
+2) **scalar multiplicative commutivity**
+
+$$
+\begin{align*}
+a (b \mathbf{x}) & = (ab) \mathbf{x} & = b (a \mathbf{x})
+\end{align*}
+$$
+    
+```{r}
+4 * (6 * x) 
+(4 * 6) * x
+```
+
+3) **scalar additive associativity**
+
+$$
+\begin{align*}
+a \mathbf{x} + b \mathbf{x} & = (a + b) \mathbf{x}
+\end{align*}
+$$
+
+4) **vector additive associativity**
+
+$$
+\begin{align*}
+a \mathbf{x} + a \mathbf{y} & = a (\mathbf{x} + \mathbf{y})
+\end{align*}
+$$
+    
+5) **vector associativity**
+$$
+\begin{align*}
+\mathbf{x} + \mathbf{y} & = \mathbf{y} + \mathbf{x}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+(\mathbf{x} + \mathbf{y}) + \mathbf{z} & = \mathbf{x} + (\mathbf{y} + \mathbf{z})
+\end{align*}
+$$
+
+
+```{r}
+x <- c(1, 2, 3, 4)
+y <- c(4, 3, 5, 1)
+z <- c(5, 2, 4, 6)
+
+x + y
+y + x
+
+(x + y) + z
+x + (y + z)
+```
+
+6) **Identity Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $\mathbf{0}$, known as the *zero vector*, such that
+
+$$
+\begin{align*}
+\mathbf{x} + \mathbf{0} & = \mathbf{x}
+\end{align*}
+$$
+
+```{r}
+x + 0
+x + rep(0, 4)
+```
+
+7) **Inverse Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $-\mathbf{x}$, known as the *additive inverse* vector, such that
+
+$$
+\begin{align*}
+\mathbf{x} + (- \mathbf{x}) & = \mathbf{0}
+\end{align*}
+$$
+
+```{r}
+x + (-x)
+```
+
+
+    
+## Vector addition
+Two vectors of length $n$ can be added elementwise
+
+$$
+\begin{align*}
+\mathbf{x} + \mathbf{y} & = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} + \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix} \\
+& = \begin{pmatrix} x_1 + y_1 \\ x_2 + y_2 \\ \vdots \\ x_n + y_n \end{pmatrix} 
+\end{align*}
+$$
+
+For example, 
+
+$$
+\begin{align*}
+\begin{pmatrix} 3 \\ 1 \\ -4 \\ 3 \end{pmatrix} + \begin{pmatrix} -3 \\ 17 \\ -39 \\ 4 \end{pmatrix} & = \begin{pmatrix} 3 + (-3) \\ 1 + 17 \\ -4 + (-39) \\ 3 + 4 \end{pmatrix} \\
+& = \begin{pmatrix} 0 \\ 18 \\ -43 \\ 7 \end{pmatrix} 
+\end{align*}
+$$
+
+In `R`, we have
+
+```{r}
+x <- c(3, 1, -4, 3)
+y <- c(-3, 17, -39, 4)
+x + y
+``` 
+
+If two vectors $\mathbf{x}$ and $\mathbf{y}$ are of different lengths, then they cannot be added together. Using `R`, we get the following error:
+
+```{r}
+x <- c(1, 2, 3)
+y <- c(1, 2, 3, 4)
+x + y
+``` 
+
+The error is telling us that the vector $\mathbf{x}$ and the vector $\mathbf{y}$ do not have the same length. 
+
+Be careful when adding vectors in `R`. `R` uses "recycling" which means two vectors of different lengths can be added together if one vector is of a length that is a multiple of the other vector. For example, if $\mathbf{x} = (1, 2)'$ is a vector of length 2 and $\mathbf{y} = (1, 2, 3, 4)$ is a vector of length 4, `R` will add $\mathbf{x} + \mathbf{y}$ by replicating the vector $\mathbf{x}$ twice (i.e., $\mathbf{x} + \mathbf{y} = \left( \mathbf{x}', \mathbf{x}' \right)' = \left(1, 2, 1, 2 \right)' + \mathbf{y}$) 
+
+```{r}
+x <- c(1, 2)
+y <- c(1, 2, 3, 4)
+x + y
+# replicated x = c(1, 2, 1, 2)
+c(1, 2, 1, 2) + y
+```
+
+### The geometric interpretation of vectors in $\mathcal{R}^n$
+
+Let $\mathcal{R}^2$ be a real coordinate space of $2$ dimensions. You are already familiar with the Cartesian plane that consists of ordered pairs $(x, y)$. The Cartesian plane defines the real coordinate space $\mathbf{R}^2$ of two dimensions. In $\mathbf{R}^2$, the location of any point of interest can be defined using the $x$ and $y$. For example, the plot below shows the location of the point (2, 3)
 
 ```{r}
 dat <- data.frame(
@@ -18,8 +256,9 @@ dat <- data.frame(
 
 ggplot(data = dat, aes(x = x, y = y)) +
     geom_point() +
-    xlim(c(-4, 4)) +
-    ylim(c(-4, 4))
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4))
 ```
 
 A vector space is a generalization of this representation. In $\mathcal{R}^2$, we say that the vector $\mathbf{z} = c(2, 3)$ is centered at the origin (0, 0) and has length 2 in the $x$-axis and length 3 in the $y$-axis. The plot below shows this vector
@@ -27,8 +266,9 @@ A vector space is a generalization of this representation. In $\mathcal{R}^2$, w
 ```{r, echo = FALSE}
 ggplot(data = dat, aes(x = x, y = y)) +
     geom_segment(aes(x = 0, xend = x, y = 0, yend = y), arrow = arrow()) +
-    xlim(c(-4, 4)) +
-    ylim(c(-4, 4))
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4))
 ```
 
 We can also decompose the vector $\mathbf{z}$ into its $x$ and $y$ components. The $x$ component of $\mathbf{z}$ is (2, 0) and the $y$ component of $\mathbf{z}$ is (0, 3). The following plot shows the $x$ component (2, 0) in blue and the $y$ component (0, 3) in red.
@@ -38,8 +278,9 @@ ggplot(data = dat, aes(x = x, y = y)) +
     geom_segment(aes(x = 0, xend = x, y = 0, yend = y), arrow = arrow()) +
     geom_segment(aes(x = 0, xend = x, y = 0, yend = 0), arrow = arrow(), color = "blue") +
     geom_segment(aes(x = 0, xend = 0, y = 0, yend = y), arrow = arrow(), color = "red") +
-    xlim(c(-4, 4)) +
-    ylim(c(-4, 4))
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4))
 ```
 
 
@@ -57,7 +298,48 @@ library(shiny)
 runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
 ```
 
-## Linear Combinations of Vectors
+### Addition of vectors
+
+We can also represent the addition of vectors geometrically as well. Consider the two vectors $\mathbf{u}$ = (3, 2) and $\mathbf{v}$ = (-2, 1) where $\mathbf{u} + \mathbf{v}$ = (1, 3).
+
+```{r}
+data.frame(x = c(3, -2, 1), y = c(2, 1, 3), vector = c("u", "v", "u+v")) %>%
+    ggplot() +
+    geom_point(aes(x = x, y = y, color = vector)) +
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4))
+```
+
+We can represent the sum using vectors by adding $\mathbf{u}$ first then adding $\mathbf{v}$ to $\mathbf{u}$ or by adding $\mathbf{v}$ first and then $\mathbf{u}$ to get
+
+```{r}
+df <- data.frame(x = c(0, 3, 1, -2), y = c(0, 2, 3, 1))
+p1 <- ggplot() +
+    geom_segment(aes(x = 0, xend = 3, y = 0, yend = 2), arrow = arrow(), color = "blue") +
+    geom_segment(aes(x = 3, xend = 3 - 2, y = 2, yend = 2 + 1), arrow = arrow(), color = "red") +
+    geom_segment(aes(x = 0, xend = 3 - 2, y = 0, yend = 2 + 1), arrow = arrow(), color = "black") +
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4)) + 
+    geom_polygon(data = df, aes(x = x, y = y), fill = "grey", alpha = 0.5) +
+    ggtitle("u + v")
+p2 <- ggplot() +
+    geom_segment(aes(x = 0, xend = -2, y = 0, yend = 1), arrow = arrow(), color = "red") +
+    geom_segment(aes(x = -2, xend = -2 + 3, y = 1, yend = 1 + 2), arrow = arrow(), color = "blue") +
+    geom_segment(aes(x = 0, xend = 3 - 2, y = 0, yend = 2 + 1), arrow = arrow(), color = "black") +
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4)) +
+    geom_polygon(data = df, aes(x = x, y = y), fill = "grey", alpha = 0.5) +
+    ggtitle("v + u")
+p1 + p2
+```
+
+Notice that the sum of these vectors defines a parallelogram where the sum $\mathbf{u} + \mathbf{v}$ is the diagonal of the shaded parallelogram. This geometric interpretation will serve as a basis for interpreting vector equations in higher dimensions where typical visualization methods fail.
+
+
+### Linear Combinations of Vectors
 
 We say that for any two scalars $a$ and $b$ and any two vectors $\mathbf{x}$ and $\mathbf{y}$ of length $n$, the sum
 

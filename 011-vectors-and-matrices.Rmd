@@ -1,270 +1,28 @@
 # Vectors and matrices {#vectors-and-matrices}
 
-- [Printing matrices to Latex in R](https://data-and-the-world.onrender.com/posts/matrix-to-latex/)
-
-```{r}
-array_to_LaTeX <- function(arr){
-    rows <- apply(arr, MARGIN=1, paste, collapse = " & ")
-    matrix_string <- paste(rows, collapse = " \\\\ ")
-    return(paste("\\begin{bmatrix}", matrix_string, "\\end{bmatrix}"))
-}
-```
-
-This can produce an error, so we wrap the function `array_to_LaTeX` in a call to `cat()`
+This can produce an error, so we wrap the function `array_to_latex` in a call to `cat()`
 
 ```{r, results = 'asis'}
 A <- matrix(c(3,4,5,6,7,9,4,5,122), ncol=3, byrow=TRUE)
-array_to_LaTeX(A)
+array_to_latex(A)
 ```
 
 ```{r, results = 'asis'}
 A <- matrix(c(3,4,5,6,7,9,4,5,122), ncol=3, byrow=TRUE)
-cat(array_to_LaTeX(A))
+cat(array_to_latex(A))
 ```
 
 
 The fundamental objects in this text are scalars, vectors, and matrices. 
 
-## Vectors 
-
-For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
-
-$$
-\begin{align*}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
-\end{align*}
-$$
-
-where the elements $x_1, \ldots, x_n$ are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the $x_i$s are stacked on top of one another) and the order matters. For example, the vector 
-
-$$
-\begin{align*}
-\mathbf{x} & = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
-\end{align*}
-$$
-
-has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3 = 8$. Note that the vector $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is not the same as the vector $\begin{pmatrix}  8 \\ 2 \\ 5 \end{pmatrix}$ because the order of the elements matters.
-
-We can also write the vector as  
-
-$$
-\begin{align*}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
-\end{align*}
-$$
-
-where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
 
 
 
-## Application in `R`
-
-### Vectors
-To create a vector we can use the concatenate function `c()`. For example, the vector $\mathbf{x} = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ can be created as the `R` object using
-
-```{r}
-x <- c(5, 2, 8)
-```
-
-where the `<-` assigns the values in the vector `c(5, 2, 8)` to the object named `x`. To print the values of `x`, we can use
-
-```{r}
-x
-```
-
-which prints the elements of x. Notice that `R` prints the elements of $\mathbf{x}$ in a row; however, $\mathbf{x}$ is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a `data.frame`, then the vector will be presented as a column vector
-
-```{r}
-data.frame(x)
-```
-
-One can use the index operator $[\hspace{2mm}]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
-
-```{r}
-x[1]
-```
-
-and the third element of $\mathbf{x}$, $x_3$, is
-
-```{r}
-x[3]
-```
-
-The transpose function `t()` turns a column vector into a row vector (or a row vector into a column vector). For example the transpose $\mathbf{x}'$ of $\mathbf{x}$ is 
-
-```{r}
-tx <- t(x)
-tx
-```
-
-where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vector. The transpose of `tx`. Notice the indices on the output of the row vector `tx`. The index operator `[1, ]` selects the first row to `tx` and the index operator `[, 1]` gives the first column `tx`. Taking the transpose again gives us back the original column vector
-
-```{r}
-t(tx)
-```
-
-
-#### Properties of Vectors
-
-1) **Scalar multiplication:**
-
-    a) For a scalar $a$ and a vector $\mathbf{x}$, we have 
-
-    $$
-    \begin{align*}
-    a \mathbf{x} & = a \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
-    & = \begin{pmatrix} a x_1 \\ a x_2 \\ \vdots \\ a x_n \end{pmatrix} 
-    \end{align*}
-    $$
-    
-    where the scalar $a$ is multiplied by each element of the vector. For example, 
-    
-    $$
-    \begin{align*}
-    4 \begin{pmatrix} 4 \\ 6 \\ 7 \\ 12 \end{pmatrix} 
-    & = \begin{pmatrix} 4 * 4 \\ 4 * 6 \\ 4 * 7 \\ 4 * 12 \end{pmatrix} \\
-    & = \begin{pmatrix} 16 \\ 24 \\ 28 \\ 48 \end{pmatrix} 
-    \end{align*}
-    $$
-    
-    In `R`, we can multiply the vector by a scalar as
-    
-    ```{r}
-    4 * c(4, 6, 7, 12)
-    ```
-    
-    or if the vector $\mathbf{x} = \left( 4, 6, 7, 12 \right)'$ we can write this as
-    
-    ```{r}
-    x <- c(4, 6, 7, 12)
-    4 * x
-    ```
-
-    b) For scalars $a$ and $b$ and a vector $\mathbf{x}$, we have 
-
-    $$
-    \begin{align*}
-    a (b \mathbf{x}) & = (ab) \mathbf{X}
-    \end{align*}
-    $$
-    
-    ```{r}
-    4 * (6 * x) 
-    (4 * 6) * x
-    ```
-    
-    c) For scalars $a$ and $b$ and a vector $\mathbf{x}$, we have 
-
-    $$
-    \begin{align*}
-    a (b \mathbf{x}) & = (ab) \mathbf{X}
-    \end{align*}
-    $$
-    
 
 
 
-2) **Vector Addition:** Two vectors of length $n$ can be added elementwise
-
-$$
-\begin{align*}
-\mathbf{x} + \mathbf{y} & = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} + \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix} \\
-& = \begin{pmatrix} x_1 + y_1 \\ x_2 + y_2 \\ \vdots \\ x_n + y_n \end{pmatrix} 
-\end{align*}
-$$
-
-For example, 
-
-$$
-\begin{align*}
-\begin{pmatrix} 3 \\ 1 \\ -4 \\ 3 \end{pmatrix} + \begin{pmatrix} -3 \\ 17 \\ -39 \\ 4 \end{pmatrix} & = \begin{pmatrix} 3 + (-3) \\ 1 + 17 \\ -4 + (-39) \\ 3 + 4 \end{pmatrix} \\
-& = \begin{pmatrix} 0 \\ 18 \\ -43 \\ 7 \end{pmatrix} 
-\end{align*}
-$$
-
-In `R`, we have
-
-```{r}
-x <- c(3, 1, -4, 3)
-y <- c(-3, 17, -39, 4)
-x + y
-``` 
-
-If two vectors $\mathbf{x}$ and $\mathbf{y}$ are of different lengths, then they cannot be added together. Using `R`, we get the following error:
-
-```{r}
-x <- c(1, 2, 3)
-y <- c(1, 2, 3, 4)
-x + y
-``` 
-
-The error is telling us that the vector $\mathbf{x}$ and the vector $\mathbf{y}$ do not have the same length. 
-
-Be careful when adding vectors in `R`. `R` uses "recycling" which means two vectors of different lengths can be added together if one vector is of a length that is a multiple of the other vector. For example, if $\mathbf{x} = (1, 2)'$ is a vector of length 2 and $\mathbf{y} = (1, 2, 3, 4)$ is a vector of length 4, `R` will add $\mathbf{x} + \mathbf{y}$ by replicating the vector $\mathbf{x}$ twice (i.e., $\mathbf{x} + \mathbf{y} = \left( \mathbf{x}', \mathbf{x}' \right)' = \left(1, 2, 1, 2 \right)' + \mathbf{y}$) 
-
-```{r}
-x <- c(1, 2)
-y <- c(1, 2, 3, 4)
-x + y
-# replicated x = c(1, 2, 1, 2)
-c(1, 2, 1, 2) + y
-```
-
-3) **Associativity of Addition:** For vectors $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ all of equal length $n$, we have
-
-$$
-\begin{align*}
-(\mathbf{x} + \mathbf{y}) + \mathbf{z} & = \mathbf{x} + (\mathbf{y} + \mathbf{z})
-\end{align*}
-$$
 
 
-```{r}
-x <- c(1, 2, 3, 4)
-y <- c(4, 3, 5, 1)
-z <- c(5, 2, 4, 6)
-
-(x + y) + z
-x + (y + z)
-```
-
-3) **Commutativity of Addition:** For vectors $\mathbf{x}$ and $\mathbf{y}$ of equal length $n$, we have
-
-$$
-\begin{align*}
-\mathbf{x} + \mathbf{y} & = \mathbf{y} + \mathbf{x}
-\end{align*}
-$$
-
-```{r}
-x + y
-y + x
-```
-
-3) **Identity Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $\mathbf{0}$, known as the *zero vector*, such that
-
-$$
-\begin{align*}
-\mathbf{x} + \mathbf{0} & = \mathbf{x}
-\end{align*}
-$$
-
-```{r}
-x + 0
-x + rep(0, 4)
-```
-
-3) **Inverse Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $-\mathbf{x}$, known as the *additive inverse* vector, such that
-
-$$
-\begin{align*}
-\mathbf{x} + (- \mathbf{x}) & = \mathbf{0}
-\end{align*}
-$$
-
-```{r}
-x + (-x)
-```
 
 11) **Transpose Transivity:** The transpose operator is transitive
 
@@ -275,6 +33,8 @@ $$
 $$
 
 ```{r}
+x <- c(4, 3, 5)
+y <- c(-4, 8, 7)
 t(x + y)
 t(x) + t(y)
 ```
@@ -294,6 +54,11 @@ drop(t(t(x)))
 ```
 
 4) 
+
+
+
+
+
 
 
 ### Matrices

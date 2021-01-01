@@ -18,6 +18,15 @@ biblio-style: apalike
 ```{r include = FALSE, echo = FALSE, message = FALSE}
 library(tidyverse)
 library(shiny)
+
+# if devtools package not installed, install the package
+if (!require(devtools)) {
+    install.packages("devtools")
+}
+# if dasc2594 package not installed, install the package
+if (!require(dasc2594)) {
+    devtools::install_github("jtipton25/dasc2594")
+}
 ```
 
 # Preface
