@@ -27,9 +27,13 @@ section-vector-spaces
 section-vectors
 section-properties-of-vectors
 section-vector-addition
-section-the-geometric-interpretation-of-vectors-in-mathcalrn
+section-the-geometric-interpretation-of-vectors-in-mathcalr2
 section-addition-of-vectors
+section-scalar-multiplication-of-vectors
+section-the-geometric-interpretation-of-vectors-in-mathcalr3
+section-the-geometric-interpretation-of-vectors-in-mathcalrn
 section-linear-combinations-of-vectors
+section-the-geometric-interpretation-of-linear-combinations-of-vectors
 section-bases
 section-planes-surfaces-and-lines-in-vector-spaces
 section-linear-transformations-matrix-arithmetic-and-matrix-rank
