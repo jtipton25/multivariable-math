@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Bases | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 5 Matrix equations | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Bases | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 5 Matrix equations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Bases | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 5 Matrix equations | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-03" />
+<meta name="date" content="2021-01-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,8 +172,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2.5</b> Linear Combinations of Vectors</a></li>
 <li class="chapter" data-level="4.2.6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
 </ul></li>
+<li class="chapter" data-level="4.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-span"><i class="fa fa-check"></i><b>4.3</b> Span</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-geometric-example-of-the-span"><i class="fa fa-check"></i><b>4.3.1</b> Geometric example of the span</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="section-bases.html"><a href="section-bases.html"><i class="fa fa-check"></i><b>5</b> Bases</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html"><i class="fa fa-check"></i><b>5</b> Matrix equations</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-matrix-equations"><i class="fa fa-check"></i><b>5.1</b> Solutions of matrix equations</a></li>
+<li class="chapter" data-level="5.2" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-existence-of-solutions"><i class="fa fa-check"></i><b>5.2</b> Existence of solutions</a></li>
+<li class="chapter" data-level="5.3" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-matrix-multiplication"><i class="fa fa-check"></i><b>5.3</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="5.4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>5.4</b> Properties of matrix-vector multiplication</a></li>
+<li class="chapter" data-level="5.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>5.5</b> Solutions of linear systems</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>5.5.1</b> Homogeneous linear systems of equations</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="section-planes-surfaces-and-lines-in-vector-spaces.html"><a href="section-planes-surfaces-and-lines-in-vector-spaces.html"><i class="fa fa-check"></i><b>6</b> Planes, Surfaces, and Lines in Vector spaces</a></li>
 <li class="chapter" data-level="7" data-path="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><a href="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations, Matrix Arithmetic, and Matrix Rank</a></li>
 <li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
@@ -205,10 +216,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-bases" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Bases</h1>
-<p>In this chapter, we introduce the fundamental concept of a basis.</p>
+<div id="section-matrix-equation" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Matrix equations</h1>
+<p>Here we introduce the concept of the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>. This equation is the most fundamental equation in all of statistics and data science. Given a matrix <span class="math inline">\(\mathbf{A}\)</span> and a vector of constants <span class="math inline">\(\mathbf{b}\)</span>, the goal is to solve for the value (or values) of <span class="math inline">\(\mathbf{x}\)</span> that are a solution to this equation. The equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is a matrix representation of the system of linear equations</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} \mathbf{x} &amp; = \mathbf{b} \\
+\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} &amp; = \mathbf{b} \\
+x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
+\end{align*}
+\]</span></p>
+<p>as long as the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> rows and <span class="math inline">\(K\)</span> columns and the vectors <span class="math inline">\(\mathbf{a}_k\)</span> are <span class="math inline">\(n\)</span>-dimensional.</p>
+<ul>
+<li><p><strong>Example: in class</strong></p></li>
+<li><p><strong>Example: in class</strong></p></li>
+</ul>
+<div id="section-solutions-of-matrix-equations" class="section level2">
+<h2><span class="header-section-number">5.1</span> Solutions of matrix equations</h2>
+<p>Because the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is equivalent to a linear system of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, we can solve the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> by writing the equation in an augmented matrix form
+<span class="math display">\[
+\begin{align*}
+\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}
+\end{align*}
+\]</span>
+and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
+<p><strong>Theorem:</strong> The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.</p>
+</div>
+<div id="section-existence-of-solutions" class="section level2">
+<h2><span class="header-section-number">5.2</span> Existence of solutions</h2>
+<p>A solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> exists if and only if <span class="math inline">\(\mathbf{b}\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span>. In other words, <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has a solution if and only if <span class="math inline">\(\mathbf{b}\)</span> is in the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_K\}\)</span>.</p>
+<ul>
+<li><strong>Example: in class</strong> Let <span class="math inline">\(\mathbf{A} =\ldots\)</span> and <span class="math inline">\(\mathbf{b} = \ldots\)</span>. Is the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> consistent?</li>
+</ul>
+<p><strong>Theorem:</strong> For the <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the following statements are equivalent:
+a) For each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^K\)</span>, the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has at least one solution
+b) Each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^K\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span>
+c) The columns of <span class="math inline">\(\mathbf{A}\)</span> span <span class="math inline">\(\mathcal{R}^K\)</span>
+d) <span class="math inline">\(\mathbf{A}\)</span> has a pivot in every row</p>
+</div>
+<div id="section-matrix-multiplication" class="section level2">
+<h2><span class="header-section-number">5.3</span> Matrix multiplication</h2>
+<p>To calculate <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>, we need to define matrix multiplication. The equivalence between the linear systems of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span> and the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> gives a hint in how to do this. First, recall the definition of <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{x}\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} = \begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1K} \\
+a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2K} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nK} \\
+\end{pmatrix} &amp;&amp; \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\end{align*}
+\]</span>
+The matrix product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the linear system of equations
+<span class="math display">\[
+\begin{align*}
+\mathbf{A}  \mathbf{x} &amp; = \begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1K} \\
+a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2K} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nK} \\
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
+&amp; = x_1\begin{pmatrix}
+a_{11} \\ a_{21} \\ \vdots \\ a_{n1} 
+\end{pmatrix} +
+x_2 \begin{pmatrix}
+a_{12} \\ a_{22} \\ \vdots \\ a_{n2} 
+\end{pmatrix} +
+\cdots + x_K \begin{pmatrix}
+a_{1K} \\ a_{nK} \\ \vdots \\ a_{nK} \end{pmatrix} \\
+&amp; =  \begin{pmatrix}
+a_{11} x_1 + a_{12} x_2 + \ldots + a_{1K} x_K \\
+a_{21} x_1 + a_{22} x_2 + \ldots + a_{2K} x_K \\
+\vdots \\
+a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
+\end{pmatrix}
+\end{align*}
+\]</span>
+Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
+<p><strong>Definition:</strong> The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span></p>
+<ul>
+<li><p><strong>Example: in class</strong></p></li>
+<li><p><strong>Example: in class</strong></p></li>
+<li><p><strong>Example: in R using loops</strong></p></li>
+<li><p><strong>Example: in R using <code>%*%</code></strong></p></li>
+</ul>
+</div>
+<div id="section-properties-of-matrix-vector-multiplication" class="section level2">
+<h2><span class="header-section-number">5.4</span> Properties of matrix-vector multiplication</h2>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times K\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^K\)</span> and <span class="math inline">\(c\)</span> is a scalar, then
+a) <span class="math inline">\(\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} + \mathbf{v}\)</span>
+b) <span class="math inline">\(\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}\)</span></p>
+<ul>
+<li><strong>Proof in class</strong></li>
+</ul>
+</div>
+<div id="section-solutions-of-linear-systems-1" class="section level2">
+<h2><span class="header-section-number">5.5</span> Solutions of linear systems</h2>
+<div id="section-homogeneous-linear-systems-of-equations" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Homogeneous linear systems of equations</h3>
+<p><strong>Definition:</strong> The matrix equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(K\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
 
+</div>
+</div>
 </div>
             </section>
 

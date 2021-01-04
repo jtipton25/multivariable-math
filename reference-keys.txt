@@ -34,7 +34,15 @@ section-the-geometric-interpretation-of-vectors-in-mathcalr3
 section-the-geometric-interpretation-of-vectors-in-mathcalrn
 section-linear-combinations-of-vectors
 section-the-geometric-interpretation-of-linear-combinations-of-vectors
-section-bases
+section-span
+section-geometric-example-of-the-span
+section-matrix-equation
+section-solutions-of-matrix-equations
+section-existence-of-solutions
+section-matrix-multiplication
+section-properties-of-matrix-vector-multiplication
+section-solutions-of-linear-systems-1
+section-homogeneous-linear-systems-of-equations
 section-planes-surfaces-and-lines-in-vector-spaces
 section-linear-transformations-matrix-arithmetic-and-matrix-rank
 section-solving-linear-equations-mathbfa-mathbfx-mathbfb

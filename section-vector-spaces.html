@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-03" />
+<meta name="date" content="2021-01-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-vectors-and-matrices.html"/>
-<link rel="next" href="section-bases.html"/>
+<link rel="next" href="section-matrix-equation.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -172,8 +172,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2.5</b> Linear Combinations of Vectors</a></li>
 <li class="chapter" data-level="4.2.6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
 </ul></li>
+<li class="chapter" data-level="4.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-span"><i class="fa fa-check"></i><b>4.3</b> Span</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-geometric-example-of-the-span"><i class="fa fa-check"></i><b>4.3.1</b> Geometric example of the span</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="section-bases.html"><a href="section-bases.html"><i class="fa fa-check"></i><b>5</b> Bases</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html"><i class="fa fa-check"></i><b>5</b> Matrix equations</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-matrix-equations"><i class="fa fa-check"></i><b>5.1</b> Solutions of matrix equations</a></li>
+<li class="chapter" data-level="5.2" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-existence-of-solutions"><i class="fa fa-check"></i><b>5.2</b> Existence of solutions</a></li>
+<li class="chapter" data-level="5.3" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-matrix-multiplication"><i class="fa fa-check"></i><b>5.3</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="5.4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>5.4</b> Properties of matrix-vector multiplication</a></li>
+<li class="chapter" data-level="5.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>5.5</b> Solutions of linear systems</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>5.5.1</b> Homogeneous linear systems of equations</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="section-planes-surfaces-and-lines-in-vector-spaces.html"><a href="section-planes-surfaces-and-lines-in-vector-spaces.html"><i class="fa fa-check"></i><b>6</b> Planes, Surfaces, and Lines in Vector spaces</a></li>
 <li class="chapter" data-level="7" data-path="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><a href="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations, Matrix Arithmetic, and Matrix Rank</a></li>
 <li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
@@ -209,9 +220,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Vectors spaces</h1>
 <div class="sourceCode" id="section-cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="section-vector-spaces.html#cb76-1"></a><span class="kw">library</span>(shiny)</span>
 <span id="cb76-2"><a href="section-vector-spaces.html#cb76-2"></a><span class="kw">library</span>(patchwork)</span>
-<span id="cb76-3"><a href="section-vector-spaces.html#cb76-3"></a><span class="co"># if gg3D package not installed, install the package</span></span>
-<span id="cb76-4"><a href="section-vector-spaces.html#cb76-4"></a><span class="kw">library</span>(gg3D)</span>
-<span id="cb76-5"><a href="section-vector-spaces.html#cb76-5"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<span id="cb76-3"><a href="section-vector-spaces.html#cb76-3"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb76-4"><a href="section-vector-spaces.html#cb76-4"></a><span class="co"># if gg3D package not installed, install the package</span></span>
+<span id="cb76-5"><a href="section-vector-spaces.html#cb76-5"></a><span class="kw">library</span>(gg3D)</span>
+<span id="cb76-6"><a href="section-vector-spaces.html#cb76-6"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <div id="section-vectors" class="section level2">
 <h2><span class="header-section-number">4.1</span> Vectors</h2>
 <p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
@@ -559,8 +571,6 @@ the system of equations can be written in an augmented matrix form as
 \]</span>
 Reducing the augmented matrix to reduced row echelon form gives</p>
 <div class="sourceCode" id="section-cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="section-vector-spaces.html#cb127-1"></a><span class="kw">rref</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">-2</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">-4</span>), <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## Warning in rref(matrix(c(3, 6, -2, 1, 9, -4), 2, 3)): The algorithm might be
-## numerically unstable. Treat the output with skepticism.</code></pre>
 <pre><code>##      [,1] [,2]        [,3]
 ## [1,]    1    0  0.06666667
 ## [2,]    0    1 -4.40000000</code></pre>
@@ -578,32 +588,43 @@ Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k
 <div id="section-the-geometric-interpretation-of-linear-combinations-of-vectors" class="section level3">
 <h3><span class="header-section-number">4.2.6</span> The geometric interpretation of linear combinations of vectors</h3>
 <p>Consider the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 1 \\ 1\end{pmatrix}\)</span> shown in the figure below on the left.</p>
-<div class="sourceCode" id="section-cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="section-vector-spaces.html#cb130-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>))</span>
-<span id="cb130-2"><a href="section-vector-spaces.html#cb130-2"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
-<span id="cb130-3"><a href="section-vector-spaces.html#cb130-3"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>), <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">2</span>)), <span class="dt">arrow =</span> <span class="kw">arrow</span>(), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb130-4"><a href="section-vector-spaces.html#cb130-4"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">1</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
-<span id="cb130-5"><a href="section-vector-spaces.html#cb130-5"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb130-6"><a href="section-vector-spaces.html#cb130-6"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
-<span id="cb130-7"><a href="section-vector-spaces.html#cb130-7"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb130-8"><a href="section-vector-spaces.html#cb130-8"></a><span class="st">    </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
-<span id="cb130-9"><a href="section-vector-spaces.html#cb130-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;u and v&quot;</span>)</span>
-<span id="cb130-10"><a href="section-vector-spaces.html#cb130-10"></a><span class="kw">expand.grid</span>(df)</span></code></pre></div>
-<pre><code>##          x         y
-## 1 1.414214 -1.414214
-## 2 1.000000 -1.414214
-## 3 1.414214  1.000000
-## 4 1.000000  1.000000</code></pre>
-<div class="sourceCode" id="section-cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="section-vector-spaces.html#cb132-1"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
-<span id="cb132-2"><a href="section-vector-spaces.html#cb132-2"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">-2</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">1</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
-<span id="cb132-3"><a href="section-vector-spaces.html#cb132-3"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">-2</span>, <span class="dt">xend =</span> <span class="dv">-2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">1</span>, <span class="dt">yend =</span> <span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb132-4"><a href="section-vector-spaces.html#cb132-4"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(), <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></span>
-<span id="cb132-5"><a href="section-vector-spaces.html#cb132-5"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb132-6"><a href="section-vector-spaces.html#cb132-6"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
-<span id="cb132-7"><a href="section-vector-spaces.html#cb132-7"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span></span>
-<span id="cb132-8"><a href="section-vector-spaces.html#cb132-8"></a><span class="st">    </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
-<span id="cb132-9"><a href="section-vector-spaces.html#cb132-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;v + u&quot;</span>)</span>
-<span id="cb132-10"><a href="section-vector-spaces.html#cb132-10"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
+## Using compatibility `.name_repair`.
+## [90mThis warning is displayed once every 8 hours.[39m
+## [90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m</code></pre>
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<ul>
+<li><strong>Exercise:</strong> Given <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>, estimate the linear combination of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> that gives the point <span class="math inline">\(\mathbf{w}\)</span> in the figure below.</li>
+</ul>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-span" class="section level2">
+<h2><span class="header-section-number">4.3</span> Span</h2>
+<p>Let <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. We say the vector <span class="math inline">\(\mathbf{w}\)</span> is in the span of <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> (<span class="math inline">\(\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}\)</span>) if there exists coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> such that <span class="math inline">\(\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k\)</span>.</p>
+<p>Example: While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, <span class="math inline">\(x\)</span>, and <span class="math inline">\(x^2\)</span>. Then, the functions <span class="math inline">\(-4 + 3x^2\)</span> (<span class="math inline">\(a_1 = -4, a_2 = 0, a_3 = 3\)</span>) and <span class="math inline">\(-3 + 4x - 2x^2\)</span> (<span class="math inline">\(a_1 = -3, a_2 = 4, a_3 = -2\)</span>) are in the span of functions <span class="math inline">\(\{1, x, x^2\}\)</span>, but the functions <span class="math inline">\(x^3\)</span>, <span class="math inline">\(x^4 - 2x^2\)</span>, etc., are not in the span of <span class="math inline">\(\{1, x, x^2\}\)</span> because you cannot write these as a linear combination of <span class="math inline">\(a_1 1 + a_2 x + a_3 x^2\)</span>.</p>
+<div id="section-geometric-example-of-the-span" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Geometric example of the span</h3>
+<ul>
+<li><strong>Example:</strong> Consider the vector <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\)</span>. Then, the vector <span class="math inline">\(\mathbf{w} = \begin{pmatrix} 4 \\ 2 \end{pmatrix}\)</span> is in the <span class="math inline">\(\mbox{span}\{\mathbf{u}\}\)</span> because <span class="math inline">\(\mathbf{w} = 2 \mathbf{u}\)</span> but the vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 4 \\ -4 \end{pmatrix}\)</span> is not in the <span class="math inline">\(\mbox{span}\{\mathbf{u}\}\)</span> because there is no coefficient <span class="math inline">\(a\)</span> such that <span class="math inline">\(\mathbf{w} = a \mathbf{u}\)</span>. In this example, the vector <span class="math inline">\(\mathbf{u}\)</span> is a 2-dimensional vector (lives in <span class="math inline">\(\mathcal{R}^2\)</span>–a plane) but the <span class="math inline">\(\mbox{span}\{\mathbf{u}\}\)</span> lives in 1-dimension (a line).</li>
+</ul>
+<div class="sourceCode" id="section-cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="section-vector-spaces.html#cb130-1"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb130-2"><a href="section-vector-spaces.html#cb130-2"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st">  </span></span>
+<span id="cb130-3"><a href="section-vector-spaces.html#cb130-3"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">1</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;inches&quot;</span>)), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb130-4"><a href="section-vector-spaces.html#cb130-4"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">4</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">2</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;inches&quot;</span>)), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb130-5"><a href="section-vector-spaces.html#cb130-5"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">4</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">-4</span>), <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;inches&quot;</span>)), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
+<span id="cb130-6"><a href="section-vector-spaces.html#cb130-6"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb130-7"><a href="section-vector-spaces.html#cb130-7"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb130-8"><a href="section-vector-spaces.html#cb130-8"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))  <span class="op">+</span></span>
+<span id="cb130-9"><a href="section-vector-spaces.html#cb130-9"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>),  <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">-4</span>), <span class="dt">text =</span> <span class="kw">c</span>(<span class="st">&quot;u&quot;</span>, <span class="st">&quot;w&quot;</span>, <span class="st">&quot;v&quot;</span>)),</span>
+<span id="cb130-10"><a href="section-vector-spaces.html#cb130-10"></a>              <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">label =</span> text), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb130-11"><a href="section-vector-spaces.html#cb130-11"></a>              <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;orange&quot;</span>)) <span class="op">+</span></span>
+<span id="cb130-12"><a href="section-vector-spaces.html#cb130-12"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;span{u} is the blue line </span><span class="ch">\n</span><span class="st">w is in span{u}</span><span class="ch">\n</span><span class="st">v is not in span{u}&quot;</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>From the example above, we can answer the question “Is the point (a, b) on the line defined by the vector <span class="math inline">\(\mathbf{u}\)</span>?” by asking whether the point (a, b) is in the <span class="math inline">\(span\{\mathbf{u}\}\)</span>. While this is trivial for such a simple problem, the use of the span will make things easier in higher dimensions.</p>
+<ul>
+<li><strong>Example: do in class</strong> 2 3-d vectors that are not scalar multiples of each other define a plane. Does a point lie within the plane? Use the span to answer this question.</li>
+</ul>
 
 </div>
 </div>
@@ -614,7 +635,7 @@ Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k
         </div>
       </div>
 <a href="section-vectors-and-matrices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-bases.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-matrix-equation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
