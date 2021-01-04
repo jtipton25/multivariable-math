@@ -3,6 +3,7 @@
 ```{r}
 library(shiny)
 library(patchwork)
+library(tidyverse)
 # if gg3D package not installed, install the package
 library(gg3D)
 library(dasc2594)
@@ -487,28 +488,162 @@ Equivalently, the set of vectors $\{\mathbf{x}_k\}_{k=1}^K$ can only be combined
 
 Consider the vectors $\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 1 \\ 1\end{pmatrix}$ shown in the figure below on the left.
 
-```{r}
+```{r, echo = FALSE}
 df <- data.frame(x = c(sqrt(2), 1), y = c(-sqrt(2), 1))
 p1 <- ggplot() +
-    geom_segment(aes(x = 0, xend = sqrt(2), y = 0, yend = -sqrt(2)), arrow = arrow(), color = "blue") +
-    geom_segment(aes(x = 0, xend = 1, y = 0, yend = 1), arrow = arrow(), color = "red") +
+    geom_segment(aes(x = 0, xend = sqrt(2), y = 0, yend = -sqrt(2)), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "blue") +
+    geom_segment(aes(x = 0, xend = 1, y = 0, yend = 1), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "red") +
     geom_vline(xintercept = 0) + 
     geom_hline(yintercept = 0) +
     coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4)) + 
-    geom_polygon(data = df, aes(x = x, y = y), fill = "grey", alpha = 0.5) +
     ggtitle("u and v")
-expand.grid(df)
 
-p2 <- ggplot() +
-    geom_segment(aes(x = 0, xend = -2, y = 0, yend = 1), arrow = arrow(), color = "red") +
-    geom_segment(aes(x = -2, xend = -2 + 3, y = 1, yend = 1 + 2), arrow = arrow(), color = "blue") +
-    geom_segment(aes(x = 0, xend = 3 - 2, y = 0, yend = 2 + 1), arrow = arrow(), color = "black") +
-    geom_vline(xintercept = 0) + 
-    geom_hline(yintercept = 0) +
-    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4)) +
-    geom_polygon(data = df, aes(x = x, y = y), fill = "grey", alpha = 0.5) +
-    ggtitle("v + u")
+transformation_matrix <- tribble(~ x, ~ y,
+                                 2, 1,
+                                 -2, 1) %>% 
+  as.matrix()
+
+grid_start <- construct_grid() %>% 
+  mutate(id = row_number())
+
+grid_trans <- grid_start %>% 
+  # need to `transform_df_coords()` twice as each segment is made up of 2 points
+  transform_df_coords(x, y, m = transformation_matrix) %>% 
+  transform_df_coords(xend, yend, m = transformation_matrix)
+
+grid_all <- bind_rows(
+  mutate(grid_start, time = 1),
+  mutate(grid_trans, time = 2)
+)
+
+basis_start <- tibble(
+  x = c(0, 0),
+  y = c(0, 0),
+  xend = c(1, 0),
+  yend = c(0, 1),
+  # `vec` is unnecessary, will just use to differentiate colors
+  vec = c("i", "j")
+) %>% 
+  mutate(id = nrow(grid_start) + row_number())
+
+basis_trans <- basis_start %>% 
+  transform_df_coords(x, y, m = transformation_matrix) %>% 
+  transform_df_coords(xend, yend, m = transformation_matrix)
+
+basis_all <- bind_rows(
+  mutate(basis_start, time = 1),
+  mutate(basis_trans, time = 2)
+)
+
+x_breaks <- unique(grid_start$x)
+y_breaks <- unique(grid_start$y)
+
+
+p2 <- ggplot(aes(x = x, y = y, group = id), data = filter(grid_all, time == 2))+
+    geom_segment(aes(xend = xend, yend = yend)) +
+    geom_segment(aes(xend = xend, yend = yend, color = vec), data = filter(basis_all, time == 2), arrow = arrow(length = unit(0.1, "inches")), size = 1.5) +
+    scale_color_manual(values = c("i" = "blue", "j" = "red")) +
+    scale_x_continuous(breaks = x_breaks, minor_breaks = NULL) +
+    scale_y_continuous(breaks = y_breaks, minor_breaks = NULL) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4)) + 
+    theme(legend.position = "none") +
+    ggtitle("integer linear combinations \nof u and v")
 p1 + p2
 ```
+
+
+
+* **Exercise:** Given $\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ and $\mathbf{v} = begin{pmatrix} 0 \\ 1 \end{pmatrix}$, estimate the linear combination of $\mathbf{u}$ and $\mathbf{v}$ that gives the point $\mathbf{w}$ in the figure below.
+
+
+```{r, echo = FALSE}
+transformation_matrix <- tribble(~ x, ~ y,
+                                 3, 0,
+                                 -1, 1) %>% 
+  as.matrix()
+
+grid_start <- construct_grid() %>% 
+  mutate(id = row_number())
+
+grid_trans <- grid_start %>% 
+  # need to `transform_df_coords()` twice as each segment is made up of 2 points
+  transform_df_coords(x, y, m = transformation_matrix) %>% 
+  transform_df_coords(xend, yend, m = transformation_matrix)
+
+grid_all <- bind_rows(
+  mutate(grid_start, time = 1),
+  mutate(grid_trans, time = 2)
+)
+
+basis_start <- tibble(
+  x = c(0, 0),
+  y = c(0, 0),
+  xend = c(1, 0),
+  yend = c(0, 1),
+  # `vec` is unnecessary, will just use to differentiate colors
+  vec = c("i", "j")
+) %>% 
+  mutate(id = nrow(grid_start) + row_number())
+
+basis_trans <- basis_start %>% 
+  transform_df_coords(x, y, m = transformation_matrix) %>% 
+  transform_df_coords(xend, yend, m = transformation_matrix)
+
+basis_all <- bind_rows(
+  mutate(basis_start, time = 1),
+  mutate(basis_trans, time = 2)
+)
+
+x_breaks <- unique(grid_start$x)
+y_breaks <- unique(grid_start$y)
+
+
+ggplot(aes(x = x, y = y, group = id), data = filter(grid_all, time == 2))+
+    geom_segment(aes(xend = xend, yend = yend)) +
+    geom_segment(aes(xend = xend, yend = yend, color = vec), data = filter(basis_all, time == 2), arrow = arrow(length = unit(0.1, "inches")), size = 1.5) +
+    geom_point(aes(x = -3, y = 3), size = 2, color = "orange") +
+    geom_text(data = data.frame(x = c(3, 0, -3), y = c(-1, 1, 3), text = c("u", "v", "w")),
+              aes(x = x + 0.25, y = y + 0.25, label = text), size = 5, inherit.aes = FALSE,
+              color = c("blue", "red", "orange")) +
+    # geom_text(data = data.frame(x = -3, y = 3, text = "w"),
+    #           aes(x = x, y = y, label = text), inherit.aes = FALSE) +
+    scale_color_manual(values = c("i" = "blue", "j" = "red")) +
+    scale_x_continuous(breaks = x_breaks, minor_breaks = NULL) +
+    scale_y_continuous(breaks = y_breaks, minor_breaks = NULL) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4)) + 
+    theme(legend.position = "none") +
+    ggtitle("integer linear combinations \nof u and v")
+```
+
+## Span
+
+Let $\mathbf{a}_1, \ldots, \mathbf{a}_K$ be vectors in $\mathcal{R}^n$. We say the vector $\mathbf{w}$ is in the span of $\mathbf{a}_1, \ldots, \mathbf{a}_K$ ($\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}$) if there exists coefficients $x_1, \ldots, x_K$ such that $\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k$.
+
+Example: While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, $x$, and $x^2$. Then, the functions $-4 + 3x^2$ ($a_1 = -4, a_2 = 0, a_3 = 3$) and $-3 + 4x - 2x^2$ ($a_1 = -3, a_2 = 4, a_3 = -2$) are in the span of functions $\{1, x, x^2\}$, but the functions $x^3$, $x^4 - 2x^2$, etc., are not in the span of $\{1, x, x^2\}$ because you cannot write these as a linear combination of $a_1 1 + a_2 x + a_3 x^2$. 
+
+### Geometric example of the span
+
+* **Example:** Consider the vector $\mathbf{u} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$. Then, the vector $\mathbf{w} = \begin{pmatrix} 4 \\ 2 \end{pmatrix}$ is in the $\mbox{span}\{\mathbf{u}\}$ because $\mathbf{w} = 2 \mathbf{u}$ but the vector $\mathbf{v} = \begin{pmatrix} 4 \\ -4 \end{pmatrix}$ is not in the $\mbox{span}\{\mathbf{u}\}$ because there is no coefficient $a$ such that $\mathbf{w} = a \mathbf{u}$. In this example, the vector $\mathbf{u}$ is a 2-dimensional vector (lives in $\mathcal{R}^2$--a plane) but the $\mbox{span}\{\mathbf{u}\}$ lives in 1-dimension (a line).
+
+
+```{r}
+ggplot() +
+    geom_abline(slope = 1/2, intercept = 0, color = "blue", size = 2) +  
+    geom_segment(aes(x = 0, xend = 2, y = 0, yend = 1), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "red") +
+    geom_segment(aes(x = 0, xend = 4, y = 0, yend = 2), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "red") +
+    geom_segment(aes(x = 0, xend = 4, y = 0, yend = -4), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "orange") +
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4))  +
+    geom_text(data = data.frame(x = c(2, 4, 4),  y = c(1, 2, -4), text = c("u", "w", "v")),
+              aes(x = x, y = y + 0.5, label = text), size = 5, inherit.aes = FALSE,
+              color = c("red", "red", "orange")) +
+    ggtitle("span{u} is the blue line \nw is in span{u}\nv is not in span{u}")
+```
+
+From the example above, we can answer the question "Is the point (a, b) on the line defined by the vector $\mathbf{u}$?" by asking whether the point (a, b) is in the $span\{\mathbf{u}\}$. While this is trivial for such a simple problem, the use of the span will make things easier in higher dimensions.
+
+* **Example: do in class** 2 3-d vectors that are not scalar multiples of each other define a plane. Does a point lie within the plane? Use the span to answer this question.
+
 
 

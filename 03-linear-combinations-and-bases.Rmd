@@ -1,4 +1,0 @@
-# Bases {#bases}
-
-In this chapter, we introduce the fundamental concept of a basis.
-

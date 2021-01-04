@@ -215,14 +215,8 @@
     "dasc2594": {
       "Package": "dasc2594",
       "Version": "0.1.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "dasc2594",
-      "RemoteUsername": "jtipton25",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "570df1420d521a896b6e885f01b1b548fbaa891d",
-      "Hash": "3770b79d547d7fe671713d166c386bd1"
+      "Source": "unknown",
+      "Hash": "d7eb9f9580c14511f743b0936dee9874"
     },
     "dbplyr": {
       "Package": "dbplyr",
