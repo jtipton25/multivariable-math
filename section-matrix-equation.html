@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-04" />
+<meta name="date" content="2021-01-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-vector-spaces.html"/>
-<link rel="next" href="section-planes-surfaces-and-lines-in-vector-spaces.html"/>
+<link rel="next" href="section-linear-independence.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -184,9 +184,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>5.5</b> Solutions of linear systems</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>5.5.1</b> Homogeneous linear systems of equations</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>5.6</b> Solutions to nonhomogeneous systems</a></li>
+<li class="chapter" data-level="5.7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-finding-solutions"><i class="fa fa-check"></i><b>5.7</b> Finding solutions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="section-planes-surfaces-and-lines-in-vector-spaces.html"><a href="section-planes-surfaces-and-lines-in-vector-spaces.html"><i class="fa fa-check"></i><b>6</b> Planes, Surfaces, and Lines in Vector spaces</a></li>
-<li class="chapter" data-level="7" data-path="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><a href="section-linear-transformations-matrix-arithmetic-and-matrix-rank.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations, Matrix Arithmetic, and Matrix Rank</a></li>
+<li class="chapter" data-level="6" data-path="section-linear-independence.html"><a href="section-linear-independence.html"><i class="fa fa-check"></i><b>6</b> Linear independence</a></li>
+<li class="chapter" data-level="7" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations</a></li>
 <li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
 <li class="chapter" data-level="9" data-path="section-inner-products-and-norms.html"><a href="section-inner-products-and-norms.html"><i class="fa fa-check"></i><b>9</b> Inner Products and Norms</a></li>
 <li class="chapter" data-level="10" data-path="section-projections-orthogonal-projections-and-least-squares.html"><a href="section-projections-orthogonal-projections-and-least-squares.html"><i class="fa fa-check"></i><b>10</b> Projections: Orthogonal Projections and Least Squares</a></li>
@@ -218,6 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-matrix-equation" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Matrix equations</h1>
+<div class="sourceCode" id="section-cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="section-matrix-equation.html#cb131-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>Here we introduce the concept of the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>. This equation is the most fundamental equation in all of statistics and data science. Given a matrix <span class="math inline">\(\mathbf{A}\)</span> and a vector of constants <span class="math inline">\(\mathbf{b}\)</span>, the goal is to solve for the value (or values) of <span class="math inline">\(\mathbf{x}\)</span> that are a solution to this equation. The equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is a matrix representation of the system of linear equations</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -314,9 +317,201 @@ b) <span class="math inline">\(\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathb
 <h2><span class="header-section-number">5.5</span> Solutions of linear systems</h2>
 <div id="section-homogeneous-linear-systems-of-equations" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Homogeneous linear systems of equations</h3>
-<p><strong>Definition:</strong> The matrix equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(K\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
-
+<p><strong>Definition:</strong> The matrix equation
+<span class="math display" id="eq:homogeneous">\[
+\begin{align}
+\tag{5.1}
+\mathbf{A}\mathbf{x} = \mathbf{0}
+\label{eq:homogeneous}
+\end{align}
+\]</span>
+is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(K\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
+<p>The homogeneous linear system of equations can be written in augmented matrix form
+<span class="math display">\[
+\begin{align*}
+\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{0} \end{pmatrix}
+\end{align*}
+\]</span>
+which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column must not be a pivot column. If every column were a pivot column, the reduced row echelon form of the augmented matrix would be
+<span class="math display">\[
+\begin{align*}
+\begin{pmatrix}
+1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; \ldots &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \ldots &amp; 1 &amp; 0 
+\end{pmatrix}
+\end{align*}
+\]</span>
+which implies the only solution is the trivial solution <span class="math inline">\(\mathbf{0}\)</span>.</p>
+<ul>
+<li><strong>Example: in class</strong></li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+3 x_1 - 2 x_2 + 4 x_3 = 0 \\
+- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
+5 x_1 - 6 x_2 + 6 x_3 = 0
+\end{align*}
+\]</span>
+* <strong>Example: in class</strong></p>
+<p>Consider the equation</p>
+<p><span class="math display">\[
+\begin{align*}
+2x_1 + 4 x_2 - x_3 = 0.
+\end{align*}
+\]</span>
+we can write this as
+<span class="math display">\[
+\begin{align*}
+x_1 = -2 x_2 + \frac{1}{2} x_3
+\end{align*}
+\]</span>
+where <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are free variables. Writing this as a solution <span class="math inline">\(\mathbf{x}\)</span> gives
+<span class="math display">\[
+\begin{align*}
+\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} -2 x_2 + \frac{1}{2} x_3 \\ x_2 \\ x_3 \end{pmatrix} = 
+x_2 \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
+\end{align*}
+\]</span>
+which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
+<p><strong>Definition:</strong> A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.</p>
 </div>
+</div>
+<div id="section-solutions-to-nonhomogeneous-systems" class="section level2">
+<h2><span class="header-section-number">5.6</span> Solutions to nonhomogeneous systems</h2>
+<p>Recall the simple linear equation
+<span class="math display">\[
+y = mx + b
+\]</span>
+where <span class="math inline">\(m\)</span> is the slope and <span class="math inline">\(b\)</span> is the y-intercept. Setting <span class="math inline">\(b = 0\)</span> gives a simple homogenous linear equation where the y-intercept goes through the origin (0, 0). When <span class="math inline">\(b\)</span> is nonzero, the line keeps the same slope but is shifted upward/downward by <span class="math inline">\(b\)</span>.</p>
+<div class="sourceCode" id="section-cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="section-matrix-equation.html#cb132-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
+<span id="cb132-2"><a href="section-matrix-equation.html#cb132-2"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb132-3"><a href="section-matrix-equation.html#cb132-3"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb132-4"><a href="section-matrix-equation.html#cb132-4"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">2</span>, <span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb132-5"><a href="section-matrix-equation.html#cb132-5"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">2</span>, <span class="dt">intercept =</span> <span class="dv">2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb132-6"><a href="section-matrix-equation.html#cb132-6"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))  <span class="op">+</span></span>
+<span id="cb132-7"><a href="section-matrix-equation.html#cb132-7"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
+<span id="cb132-8"><a href="section-matrix-equation.html#cb132-8"></a>        <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="dt">text =</span> <span class="kw">c</span>(<span class="st">&quot;homogeneous</span><span class="ch">\n</span><span class="st">solution&quot;</span>, <span class="st">&quot;inhomogeneous</span><span class="ch">\n</span><span class="st">solution&quot;</span>)),</span>
+<span id="cb132-9"><a href="section-matrix-equation.html#cb132-9"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="fl">1.75</span>, <span class="dv">-1</span>), <span class="dt">y =</span> y <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">label =</span> text), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb132-10"><a href="section-matrix-equation.html#cb132-10"></a>        <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></span>
+<span id="cb132-11"><a href="section-matrix-equation.html#cb132-11"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb132-12"><a href="section-matrix-equation.html#cb132-12"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">2</span>),</span>
+<span id="cb132-13"><a href="section-matrix-equation.html#cb132-13"></a>        <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;inches&quot;</span>)), </span>
+<span id="cb132-14"><a href="section-matrix-equation.html#cb132-14"></a>        <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
+<span id="cb132-15"><a href="section-matrix-equation.html#cb132-15"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
+<span id="cb132-16"><a href="section-matrix-equation.html#cb132-16"></a>        <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">text =</span> <span class="st">&quot;b&quot;</span>),</span>
+<span id="cb132-17"><a href="section-matrix-equation.html#cb132-17"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">y =</span> y, <span class="dt">label =</span> text), </span>
+<span id="cb132-18"><a href="section-matrix-equation.html#cb132-18"></a>        <span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb132-19"><a href="section-matrix-equation.html#cb132-19"></a>        <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) </span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p>This shift in location (but not in slope) is called a <strong>translation</strong></p>
+<ul>
+<li><strong>Example: in class</strong>
+Let’s revisit the example from before</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+3 x_1 - 2 x_2 + 4 x_3 = 0 \\
+- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
+5 x_1 - 6 x_2 + 6 x_3 = 0
+\end{align*}
+\]</span>
+but change this so that <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 4 \\ -2 \\ 1 \end{pmatrix}\)</span></p>
+<ul>
+<li><p><strong>Write this as a parametric solution with a mean shift</strong></p></li>
+<li><p><strong>Example:</strong> Show this shift for a system of linear equations where the solution set defines a plane. From example above,
+<span class="math display">\[
+\begin{align*}
+2x_1 + 4 x_2 - x_3 = 0.
+\end{align*}
+\]</span>
+has the parametric solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> with
+<span class="math display">\[
+\begin{align*}
+\mathbf{u} &amp; = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+\mathbf{v} &amp; = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
+\end{align*}
+\]</span></p></li>
+</ul>
+<p>Now, if we change the system of linear equations so that we have the inhomogeneous equation
+<span class="math display">\[
+\begin{align*}
+2x_1 + 4 x_2 - x_3 = 20.
+\end{align*}
+\]</span>
+we get the homogeneous solution set <span class="math inline">\(x_1 = -2 x_2 + \frac{1}{2} x_3 + 4\)</span> which can be written in parametric form as <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span>$ with
+<span class="math display">\[
+\begin{align*}
+\mathbf{u} &amp; = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+\mathbf{v} &amp; = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} \\
+\mathbf{p} &amp; = \begin{pmatrix} 20 \\ 0 \\ 0 \end{pmatrix}
+\end{align*}
+\]</span></p>
+<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-matrix-equation.html#cb133-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-2</span>, <span class="dv">5</span>, <span class="dv">-2</span>, <span class="dv">4</span>, <span class="dv">-6</span>, <span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">-6</span>, <span class="dv">8</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb133-2"><a href="section-matrix-equation.html#cb133-2"></a><span class="kw">rref</span>(A)</span></code></pre></div>
+<pre><code>## Warning in rref(A): The algorithm might be numerically unstable. Treat the
+## output with skepticism.
+
+## Warning in rref(A): The algorithm might be numerically unstable. Treat the
+## output with skepticism.</code></pre>
+<pre><code>##      [,1] [,2] [,3]  [,4]
+## [1,]    1    0 1.50 -0.50
+## [2,]    0    1 0.25 -1.75
+## [3,]    0    0 0.00  0.00</code></pre>
+<p><span class="math display">\[
+\begin{align*}
+x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
+x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
+\end{align*}
+\]</span>
+which was the same solution set as the homoegenous solution plus the additional vector <span class="math inline">\(\begin{pmatrix} 20 \\ 0 \\ 0 \end{pmatrix}\)</span>. Thus, the inhomogenous solution is now <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span> where <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{p} = \begin{pmatrix} 20\\ 0 \\ 0 \end{pmatrix}\)</span>.</p>
+<p>For plotting, we will solve these equations for <span class="math inline">\(x_3\)</span>. Thus, the homogeneous equation has the solution <span class="math inline">\(x_3 = 2x_1 + 4x_2\)</span> and the inhomogenous equation has the solution <span class="math inline">\(x_3 = 2x_1 + 4x_2 - 20\)</span>.</p>
+<p><strong>Don’t know why this figure isn’t working</strong></p>
+<div class="sourceCode" id="section-cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="section-matrix-equation.html#cb136-1"></a><span class="co"># uses gg3D library</span></span>
+<span id="cb136-2"><a href="section-matrix-equation.html#cb136-2"></a>n &lt;-<span class="st"> </span><span class="dv">60</span></span>
+<span id="cb136-3"><a href="section-matrix-equation.html#cb136-3"></a>x1 &lt;-<span class="st"> </span>x2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length =</span> n)</span>
+<span id="cb136-4"><a href="section-matrix-equation.html#cb136-4"></a>region &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x1 =</span> x1, <span class="dt">x2 =</span> x2)</span>
+<span id="cb136-5"><a href="section-matrix-equation.html#cb136-5"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb136-6"><a href="section-matrix-equation.html#cb136-6"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
+<span id="cb136-7"><a href="section-matrix-equation.html#cb136-7"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
+<span id="cb136-8"><a href="section-matrix-equation.html#cb136-8"></a>    <span class="dt">x3 =</span> <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2</span>
+<span id="cb136-9"><a href="section-matrix-equation.html#cb136-9"></a>)</span>
+<span id="cb136-10"><a href="section-matrix-equation.html#cb136-10"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb136-11"><a href="section-matrix-equation.html#cb136-11"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
+<span id="cb136-12"><a href="section-matrix-equation.html#cb136-12"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
+<span id="cb136-13"><a href="section-matrix-equation.html#cb136-13"></a>    <span class="dt">x3 =</span> <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2 <span class="op">-</span><span class="st"> </span><span class="dv">40</span></span>
+<span id="cb136-14"><a href="section-matrix-equation.html#cb136-14"></a>)</span>
+<span id="cb136-15"><a href="section-matrix-equation.html#cb136-15"></a></span>
+<span id="cb136-16"><a href="section-matrix-equation.html#cb136-16"></a><span class="co"># theta and phi set up the &quot;perspective/viewing angle&quot; of the 3D plot</span></span>
+<span id="cb136-17"><a href="section-matrix-equation.html#cb136-17"></a>theta &lt;-<span class="st"> </span><span class="dv">60</span></span>
+<span id="cb136-18"><a href="section-matrix-equation.html#cb136-18"></a>phi &lt;-<span class="st"> </span><span class="dv">20</span></span>
+<span id="cb136-19"><a href="section-matrix-equation.html#cb136-19"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">z =</span> x3)) <span class="op">+</span></span>
+<span id="cb136-20"><a href="section-matrix-equation.html#cb136-20"></a><span class="st">    </span><span class="kw">axes_3D</span>(<span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb136-21"><a href="section-matrix-equation.html#cb136-21"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(</span>
+<span id="cb136-22"><a href="section-matrix-equation.html#cb136-22"></a>        <span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb136-23"><a href="section-matrix-equation.html#cb136-23"></a>        <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb136-24"><a href="section-matrix-equation.html#cb136-24"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(</span>
+<span id="cb136-25"><a href="section-matrix-equation.html#cb136-25"></a>        <span class="dt">data =</span> df2, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">z =</span> x3),</span>
+<span id="cb136-26"><a href="section-matrix-equation.html#cb136-26"></a>        <span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb136-27"><a href="section-matrix-equation.html#cb136-27"></a><span class="st">    </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
+<span id="cb136-28"><a href="section-matrix-equation.html#cb136-28"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb136-29"><a href="section-matrix-equation.html#cb136-29"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), </span>
+<span id="cb136-30"><a href="section-matrix-equation.html#cb136-30"></a>            <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).
+
+## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+</div>
+<div id="section-finding-solutions" class="section level2">
+<h2><span class="header-section-number">5.7</span> Finding solutions</h2>
+<p>The following algorithm describes how to solve a linear system of equations.
+1) Put the system of equations in an augmented matrix form
+2) Reduce the augmented matrix to reduced row echelon form
+3) Express each determined variable as a function of the free variables.
+4) Write the solution in a general form where the determined variables are a function of the independent variables
+5) Decompose the solution <span class="math inline">\(\mathbf{x}\)</span> into a linear combination of free variables as parameters</p>
+
 </div>
 </div>
             </section>
@@ -325,7 +520,7 @@ b) <span class="math inline">\(\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathb
         </div>
       </div>
 <a href="section-vector-spaces.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-planes-surfaces-and-lines-in-vector-spaces.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-linear-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

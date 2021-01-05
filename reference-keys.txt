@@ -1,6 +1,7 @@
 fig:one-solution
 fig:no-solution
 fig:infinite-solutions
+eq:homogeneous
 section-preface
 section-outline
 section-linear-systems-of-equations
@@ -43,8 +44,10 @@ section-matrix-multiplication
 section-properties-of-matrix-vector-multiplication
 section-solutions-of-linear-systems-1
 section-homogeneous-linear-systems-of-equations
-section-planes-surfaces-and-lines-in-vector-spaces
-section-linear-transformations-matrix-arithmetic-and-matrix-rank
+section-solutions-to-nonhomogeneous-systems
+section-finding-solutions
+section-linear-independence
+section-linear-transformations
 section-solving-linear-equations-mathbfa-mathbfx-mathbfb
 section-inner-products-and-norms
 section-projections-orthogonal-projections-and-least-squares
