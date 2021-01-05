@@ -1,5 +1,9 @@
 # Matrix equations {#matrix-equation}
 
+```{r}
+library(tidyverse)
+```
+
 Here we introduce the concept of the linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$. This equation is the most fundamental equation in all of statistics and data science. Given a matrix $\mathbf{A}$ and a vector of constants $\mathbf{b}$, the goal is to solve for the value (or values) of $\mathbf{x}$ that are a solution to this equation. The equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ is a matrix representation of the system of linear equations
 
 $$
@@ -102,7 +106,207 @@ b) $\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}$
 
 ### Homogeneous linear systems of equations
 
-**Definition:** The matrix equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $K$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
+**Definition:** The matrix equation 
+$$
+\begin{align}
+(\#eq:homogeneous)
+\mathbf{A}\mathbf{x} = \mathbf{0}
+\label{eq:homogeneous}
+\end{align}
+$$ 
+is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $K$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
+
+The homogeneous linear system of equations can be written in augmented matrix form 
+$$
+\begin{align*}
+\begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{0} \end{pmatrix}
+\end{align*}
+$$
+which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column must not be a pivot column. If every column were a pivot column, the reduced row echelon form of the augmented matrix would be 
+$$
+\begin{align*}
+\begin{pmatrix}
+1 & 0 & \ldots & 0 & 0 \\
+0 & 1 & \ldots & 0 & 0 \\
+0 & 0 & \ldots & 1 & 0 
+\end{pmatrix}
+\end{align*}
+$$
+which implies the only solution is the trivial solution $\mathbf{0}$.
+
+* **Example: in class**
+
+$$
+\begin{align*}
+3 x_1 - 2 x_2 + 4 x_3 = 0 \\
+- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
+5 x_1 - 6 x_2 + 6 x_3 = 0
+\end{align*}
+$$
+* **Example: in class**
+
+Consider the equation
+
+$$
+\begin{align*}
+2x_1 + 4 x_2 - x_3 = 0.
+\end{align*}
+$$
+we can write this as 
+$$
+\begin{align*}
+x_1 = -2 x_2 + \frac{1}{2} x_3
+\end{align*}
+$$
+where $x_2$ and $x_3$ are free variables. Writing this as a solution $\mathbf{x}$ gives
+$$
+\begin{align*}
+\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} -2 x_2 + \frac{1}{2} x_3 \\ x_2 \\ x_3 \end{pmatrix} = 
+x_2 \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
+\end{align*}
+$$
+which is a linear combination of the vectors $\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}$. This implies that we can write the solution $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ for scalars $a$ and $b$. Therefore, the solution set $\mathbf{x}$ is contained in the $\mbox{span}\{\mathbf{u}, \mathbf{v}\}$. Because the vectors $\mathbf{u}$ and $\mathbf{v}$ are linearly independent (they don't point in the same direction), the set of all linear combinations of $c \mathbf{u} + d \mathbf{v}$ defines a plane. 
+
+**Definition:** A solution set of the form  $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ is called a **parametric vector solution**.
+
+
+
+## Solutions to nonhomogeneous systems
+
+Recall the simple linear equation
+$$
+y = mx + b
+$$
+where $m$ is the slope and $b$ is the y-intercept. Setting $b = 0$ gives a simple homogenous linear equation where the y-intercept goes through the origin (0, 0). When $b$ is nonzero, the line keeps the same slope but is shifted upward/downward by $b$. 
+
+```{r}
+ggplot(data = data.frame(x = 0, y = 0), aes(x, y)) +
+    geom_vline(xintercept = 0) +
+    geom_hline(yintercept = 0) +
+    geom_abline(slope = 2, intercept = 0, color = "red") +
+    geom_abline(slope = 2, intercept = 2, color = "blue") +
+    coord_cartesian(xlim = c(-4, 4), ylim = c(-4, 4))  +
+    geom_text(
+        data = data.frame(x = c(0, 0), y = c(0, 2), text = c("homogeneous\nsolution", "inhomogeneous\nsolution")),
+        aes(x = x + c(1.75, -1), y = y + 0.5, label = text), size = 5, inherit.aes = FALSE,
+        color = c("red", "blue")) +
+    geom_segment(
+        aes(x = 0, xend = 0, y = 0, yend = 2),
+        arrow = arrow(length = unit(0.1, "inches")), 
+        size = 1.5, color = "orange") +
+    geom_text(
+        data = data.frame(x = 0, y = 2, text = "b"),
+        aes(x = x + 0.5, y = y, label = text), 
+        size = 8, inherit.aes = FALSE,
+        color = "orange") 
+```
+
+This shift in location (but not in slope) is called a **translation**
+
+* **Example: in class** 
+Let's revisit the example from before
+
+$$
+\begin{align*}
+3 x_1 - 2 x_2 + 4 x_3 = 0 \\
+- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
+5 x_1 - 6 x_2 + 6 x_3 = 0
+\end{align*}
+$$
+but change this so that $\mathbf{b} = \begin{pmatrix} 4 \\ -2 \\ 1 \end{pmatrix}$
+
+* **Write this as a parametric solution with a mean shift**
+
+* **Example:** Show this shift for a system of linear equations where the solution set defines a plane. From example above, 
+$$
+\begin{align*}
+2x_1 + 4 x_2 - x_3 = 0.
+\end{align*}
+$$
+has the parametric solution $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ with
+$$
+\begin{align*}
+\mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+\mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
+\end{align*}
+$$
+
+Now, if we change the system of linear equations so that we have the inhomogeneous equation
+$$
+\begin{align*}
+2x_1 + 4 x_2 - x_3 = 20.
+\end{align*}
+$$
+we get the homogeneous solution set $x_1 = -2 x_2 + \frac{1}{2} x_3 + 4$ which can be written in parametric form as $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$$ with
+$$
+\begin{align*}
+\mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+\mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} \\
+\mathbf{p} & = \begin{pmatrix} 20 \\ 0 \\ 0 \end{pmatrix}
+\end{align*}
+$$
+
+
+```{r}
+A <- matrix(c(3, -2, 5, -2, 4, -6, 4, -2, 6, 2, -6, 8), 3, 4)
+rref(A)
+```
+$$
+\begin{align*}
+x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
+x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
+\end{align*}
+$$
+which was the same solution set as the homoegenous solution plus the additional vector $\begin{pmatrix} 20 \\ 0 \\ 0 \end{pmatrix}$. Thus, the inhomogenous solution is now $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ where $\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$, $\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}$, and  $\mathbf{p} = \begin{pmatrix} 20\\ 0 \\ 0 \end{pmatrix}$.
+
+For plotting, we will solve these equations for $x_3$. Thus, the homogeneous equation has the solution $x_3 = 2x_1 + 4x_2$ and the inhomogenous equation has the solution $x_3 = 2x_1 + 4x_2 - 20$.
+
+**Don't know why this figure isn't working**
+
+```{r}
+# uses gg3D library
+n <- 60
+x1 <- x2 <- seq(-10, 10, length = n)
+region <- expand.grid(x1 = x1, x2 = x2)
+df <- data.frame(
+    x1 = region$x1,
+    x2 = region$x2,
+    x3 = 2 * region$x1 + 4 * region$x2
+)
+df2 <- data.frame(
+    x1 = region$x1,
+    x2 = region$x2,
+    x3 = 2 * region$x1 + 4 * region$x2 - 40
+)
+
+# theta and phi set up the "perspective/viewing angle" of the 3D plot
+theta <- 60
+phi <- 20
+ggplot(df, aes(x = x1, y = x2, z = x3)) +
+    axes_3D(theta = theta, phi = phi) +
+    stat_wireframe(
+        alpha = 0.5, color = "red",
+        theta = theta, phi = phi) +
+    stat_wireframe(
+        data = df2, aes(x = x1, y = x2, z = x3),
+        alpha = 0.5, color = "blue", theta = theta, phi = phi) +
+    theme_void() +
+    theme(legend.position = "none") +
+    labs_3D(hjust=c(0,1,1), vjust=c(1, 1, -0.2), 
+            angle=c(0, 0, 90), theta = theta, phi = phi) 
+```
+
+
+## Finding solutions
+The following algorithm describes how to solve a linear system of equations.
+1) Put the system of equations in an augmented matrix form
+2) Reduce the augmented matrix to reduced row echelon form
+3) Express each determined variable as a function of the free variables. 
+4) Write the solution in a general form where the determined variables are a function of the independent variables
+5) Decompose the solution $\mathbf{x}$ into a linear combination of free variables as parameters
+
+
 
 
 

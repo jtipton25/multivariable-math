@@ -1,2 +1,0 @@
-# Planes, Surfaces, and Lines in Vector spaces
-

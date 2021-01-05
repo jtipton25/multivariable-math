@@ -1,2 +1,4 @@
-# Linear Transformations, Matrix Arithmetic, and Matrix Rank 
+# Linear Transformations {#linear-transformations}
+
+It is often useful to think of $\mathbf{A}\mathbf{x}$ as a linear transformation defined by the matrix $\mathbf{A}$ applied to the vector $\mathbf{x}$.
 
