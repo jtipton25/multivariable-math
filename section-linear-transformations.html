@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-linear-independence.html"/>
-<link rel="next" href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"/>
+<link rel="next" href="section-matrix-operations.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -155,9 +155,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>3</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="3.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-matrices"><i class="fa fa-check"></i><b>3.0.1</b> Matrices</a></li>
-<li class="chapter" data-level="3.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>3.0.2</b> Arrays</a></li>
-<li class="chapter" data-level="3.0.3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>3.0.3</b> Lists</a></li>
+<li class="chapter" data-level="3.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>3.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="3.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>3.0.2</b> Lists</a></li>
 <li class="chapter" data-level="3.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>3.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>4</b> Vectors spaces</a><ul>
@@ -198,9 +197,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>7.2.5</b> Projections</a></li>
 <li class="chapter" data-level="7.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>7.2.6</b> Identity</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>7.3</b> Properties of matrix transformations</a></li>
+<li class="chapter" data-level="7.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>7.3</b> Properties of matrix transformations</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-one-to-one-transformations"><i class="fa fa-check"></i><b>7.3.1</b> One-to-one transformations</a></li>
+<li class="chapter" data-level="7.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>7.3.2</b> Onto transformations</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrices"><i class="fa fa-check"></i><b>8.0.1</b> Matrices</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="section-inner-products-and-norms.html"><a href="section-inner-products-and-norms.html"><i class="fa fa-check"></i><b>9</b> Inner Products and Norms</a></li>
 <li class="chapter" data-level="10" data-path="section-projections-orthogonal-projections-and-least-squares.html"><a href="section-projections-orthogonal-projections-and-least-squares.html"><i class="fa fa-check"></i><b>10</b> Projections: Orthogonal Projections and Least Squares</a></li>
 <li class="chapter" data-level="11" data-path="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><a href="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><i class="fa fa-check"></i><b>11</b> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</a></li>
@@ -231,9 +235,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-linear-transformations" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Linear Transformations</h1>
-<div class="sourceCode" id="section-cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="section-linear-transformations.html#cb136-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb136-2"><a href="section-linear-transformations.html#cb136-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb136-3"><a href="section-linear-transformations.html#cb136-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
+<div class="sourceCode" id="section-cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="section-linear-transformations.html#cb102-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb102-2"><a href="section-linear-transformations.html#cb102-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb102-3"><a href="section-linear-transformations.html#cb102-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
+<pre><code>## Linking to ImageMagick 6.9.11.32
+## Enabled features: cairo, fontconfig, freetype, lcms, pango, rsvg, webp
+## Disabled features: fftw, ghostscript, x11</code></pre>
+<pre><code>## Using poppler version 0.73.0</code></pre>
 <p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 <p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a "<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>. For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
 <p><strong>Draw figure</strong></p>
@@ -356,13 +364,13 @@ x &amp; 0 \\
 <ul>
 <li>In the example below, we set <span class="math inline">\(x = 2\)</span> and generate the transformation.</li>
 </ul>
-<div class="sourceCode" id="section-cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="section-linear-transformations.html#cb140-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
-<span id="cb140-2"><a href="section-linear-transformations.html#cb140-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
-<span id="cb140-3"><a href="section-linear-transformations.html#cb140-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="cb140-4"><a href="section-linear-transformations.html#cb140-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb140-5"><a href="section-linear-transformations.html#cb140-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
-<span id="cb140-6"><a href="section-linear-transformations.html#cb140-6"></a></span>
-<span id="cb140-7"><a href="section-linear-transformations.html#cb140-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
+<div class="sourceCode" id="section-cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="section-linear-transformations.html#cb108-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb108-2"><a href="section-linear-transformations.html#cb108-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb108-3"><a href="section-linear-transformations.html#cb108-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb108-4"><a href="section-linear-transformations.html#cb108-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb108-5"><a href="section-linear-transformations.html#cb108-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb108-6"><a href="section-linear-transformations.html#cb108-6"></a></span>
+<span id="cb108-7"><a href="section-linear-transformations.html#cb108-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-animation-1.gif" /><!-- --></p>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-static-1.png" width="672" /></p>
 </div>
@@ -543,18 +551,183 @@ For the example below, we plot a horizontal shear with <span class="math inline"
 </div>
 <div id="section-projections" class="section level3">
 <h3><span class="header-section-number">7.2.5</span> Projections</h3>
+<p>A projection is a mapping <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> from one space (<span class="math inline">\(\mathbf{R}^n\)</span>) to itself (<span class="math inline">\(\mathbf{R}^n\)</span>) such that <span class="math inline">\(T^2 = T\)</span></p>
+<div id="section-project-onto-the-x-axis" class="section level4">
+<h4><span class="header-section-number">7.2.5.1</span> Project onto the x-axis</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}
+\]</span>
+For the example below, we plot a projection onto the x-axis</p>
+<p><img src="multivariable-math_files/figure-html/projection-x-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/projection-x-static-1.png" width="672" /></p>
+</div>
+<div id="section-project-onto-the-y-axis" class="section level4">
+<h4><span class="header-section-number">7.2.5.2</span> Project onto the y-axis</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span>
+For the example below, we plot a projection onto the y-axis</p>
+<p><img src="multivariable-math_files/figure-html/projection-y-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/projection-y-static-1.png" width="672" /></p>
+</div>
 </div>
 <div id="section-identity" class="section level3">
 <h3><span class="header-section-number">7.2.6</span> Identity</h3>
+<p>The identity transformation is the transformation that leaves the vector input unchanged. The identity matrix is typically written as <span class="math inline">\(\mathbf{I}\)</span></p>
+<p><span class="math display">\[
+\mathbf{I} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/identity-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/identity-static-1.png" width="672" /></p>
 </div>
 </div>
 <div id="section-properties-of-matrix-transformations" class="section level2">
 <h2><span class="header-section-number">7.3</span> Properties of matrix transformations</h2>
+<div id="section-one-to-one-transformations" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> One-to-one transformations</h3>
+<p><strong>Definition:</strong> A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><img src="images/one-to-one.png" /><!-- --></p>
+<p><img src="images/not-one-to-one.png" /><!-- --></p>
+<!-- ```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext='png', fig.cap='One-to-one.'} -->
+<!-- \begin{tikzpicture}[thin border nodes, scale=.75] -->
+<!--   \draw[grid lines] (-3,-3) grid (3,3); -->
+<!--   \node (A) at (0,-3.6) {$\R^n$}; -->
+<!--   \node (B) at (12,-3.6) {$\R^m$}; -->
+<!--   \draw[->] (A) -- (B) node[midway,above=1pt] {$T$}; -->
+<!--   \point["$x$" left] (x) at (1,1.5); -->
+<!--   \point["$y$" left] (y) at (-1,0); -->
+<!--   \point["$z$" left] (z) at (0,-2); -->
+<!--   \begin{scope}[myxyz, xshift=12cm] -->
+<!--     \path[clip, resetxy] (-3,-3) rectangle (3,3); -->
+<!--     \def\v{(-1,2,1)} -->
+<!--     \def\w{(0,1,-1)} -->
+<!--     \node[coordinate] (X) at \v {}; -->
+<!--     \node[coordinate] (Y) at \w {}; -->
+<!--     \draw[very thin] (-2,0,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,-2,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,0,-2) -- (0,0,0); -->
+<!--     \begin{scope}[x=(X), y=(Y), transformxy, -->
+<!--         every label/.style={font=\small,fill=none,inner sep=.5pt}] -->
+<!--       \fill[seq4!10, nearly opaque] (-1,-1) rectangle (1,1); -->
+<!--       \draw[step=.5cm, seq4!30, very thin] (-1,-1) grid (1,1); -->
+<!--       \point["$T(x)$" above] (Tx) at (.5,-.5); -->
+<!--       \point["$T(y)$" above] (Ty) at (.5,.5); -->
+<!--       \point["$T(z)$" above] (Tz) at (-.5,.75); -->
+<!--       \node[coordinate, -->
+<!--           pin={[pin edge={very thin,-}, -->
+<!--             pin distance=3mm,anchor=north,text=seq4]-70:range}] -->
+<!--         at (0.1,1) {}; -->
+<!--     \end{scope} -->
+<!--     \draw[->, very thin] (0,0,0) -- (2,0,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,2,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,0,2); -->
+<!--     \draw[resetxy] (-3,-3) rectangle (3,3); -->
+<!--   \end{scope} -->
+<!--   \begin{scope}[arrows={|->}, shorten=.35mm, every to/.style={out=0, in=180}] -->
+<!--     \draw (x) to (Tx); -->
+<!--     \draw (y) to (Ty); -->
+<!--     \draw (z) to (Tz); -->
+<!--   \end{scope} -->
+<!--   \node[seq-blue] at (6,2.5) {one-to-one}; -->
+<!-- \end{tikzpicture} -->
+<!-- ``` -->
 <ul>
-<li>One-to-one</li>
-<li>Onto</li>
+<li>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is one-to-one:</li>
 </ul>
+<ol style="list-style-type: lower-alpha">
+<li>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> (for every vector in the image), the equation <span class="math inline">\(T(\mathbf{x}]) = \mathbf{b}\)</span> has either zero or one solution</li>
+<li>Every different input into the function <span class="math inline">\(T(\cdot)\)</span> has a different output</li>
+<li>If <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span> then <span class="math inline">\(\mathbf{u} = \mathbf{v}\)</span></li>
+</ol>
+<p>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is <strong>not</strong> one-to-one:
+a) There exists as least one <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x}]) = \mathbf{b}\)</span> has more than one solution
+b) There are at least two different inputs into the function <span class="math inline">\(T(\cdot)\)</span> that have the same output
+c) There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p>
+<p><strong>Theorem:</strong> Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:
+1) <span class="math inline">\(T\)</span> is one-to-one.
+2) For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.
+3) For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> has a unique solution or is inconsistent.
+4) The equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only a trivial solution.
+5) The columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.
+6) <span class="math inline">\(\mathbf{A}\)</span> has a pivot in every column.
+7) The range of <span class="math inline">\(\mathbf{A}\)</span> has dimension <span class="math inline">\(n\)</span></p>
+<ul>
+<li><strong>Example:</strong> is the following matrix one-to-one?</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1 \\
+1 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li><strong>Example:</strong> is the following matrix one-to-one?</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p><strong>Note:</strong> Matrices that are wider than they are tall are not one-to-one transformations. (This does not mean that all tall matrices are one-to-one)</p>
+</div>
+<div id="section-onto-transformations" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Onto transformations</h3>
+<p><strong>Definition:</strong> A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
+<p><img src="images/onto.png" /><!-- --></p>
+<p><img src="images/not-onto.png" /><!-- --></p>
+<p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is onto:</p>
+<ol style="list-style-type: decimal">
+<li>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is equal to the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span></li>
+<li>Every vector in the codomain is the output of some input vector</li>
+</ol>
+<p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is not onto:</p>
+<ol style="list-style-type: decimal">
+<li>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is smaller than the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span>.</li>
+<li>There exists a vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x})\)</span> does not have a solution.</li>
+<li>There is a vector in the codomain that is not the ouput of any input vector.</li>
+</ol>
+<p><strong>Theorem:</strong> Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:
+1) <span class="math inline">\(T\)</span> is onto
+2) <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.
+3) The equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> is consistent for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.
+4) The columns of <span class="math inline">\(\mathbf{A}\)</span> span <span class="math inline">\(\mathcal{R}^m\)</span>
+6) <span class="math inline">\(\mathbf{A}\)</span> has a pivot in every row
+7) The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> has dimension <span class="math inline">\(m\)</span></p>
+<ul>
+<li><p><strong>Example:</strong></p></li>
+<li><p><strong>Example:</strong> is the following matrix onto?</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li><strong>Example:</strong> is the following matrix one-to-one?</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0  \\
+0 &amp; 1  \\
+1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p><strong>Note:</strong> Matrices that are taller than they are wide are not onto transformations. (This does not mean that all wide matrices are onto)</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -563,7 +736,7 @@ For the example below, we plot a horizontal shear with <span class="math inline"
         </div>
       </div>
 <a href="section-linear-independence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-matrix-operations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

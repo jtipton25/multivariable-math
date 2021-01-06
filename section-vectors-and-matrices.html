@@ -155,9 +155,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>3</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="3.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-matrices"><i class="fa fa-check"></i><b>3.0.1</b> Matrices</a></li>
-<li class="chapter" data-level="3.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>3.0.2</b> Arrays</a></li>
-<li class="chapter" data-level="3.0.3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>3.0.3</b> Lists</a></li>
+<li class="chapter" data-level="3.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>3.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="3.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>3.0.2</b> Lists</a></li>
 <li class="chapter" data-level="3.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>3.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>4</b> Vectors spaces</a><ul>
@@ -198,9 +197,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>7.2.5</b> Projections</a></li>
 <li class="chapter" data-level="7.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>7.2.6</b> Identity</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>7.3</b> Properties of matrix transformations</a></li>
+<li class="chapter" data-level="7.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>7.3</b> Properties of matrix transformations</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-one-to-one-transformations"><i class="fa fa-check"></i><b>7.3.1</b> One-to-one transformations</a></li>
+<li class="chapter" data-level="7.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>7.3.2</b> Onto transformations</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrices"><i class="fa fa-check"></i><b>8.0.1</b> Matrices</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="section-inner-products-and-norms.html"><a href="section-inner-products-and-norms.html"><i class="fa fa-check"></i><b>9</b> Inner Products and Norms</a></li>
 <li class="chapter" data-level="10" data-path="section-projections-orthogonal-projections-and-least-squares.html"><a href="section-projections-orthogonal-projections-and-least-squares.html"><i class="fa fa-check"></i><b>10</b> Projections: Orthogonal Projections and Least Squares</a></li>
 <li class="chapter" data-level="11" data-path="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><a href="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><i class="fa fa-check"></i><b>11</b> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</a></li>
@@ -274,345 +278,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="4" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div id="section-matrices" class="section level3">
-<h3><span class="header-section-number">3.0.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(n\)</span> rows and <span class="math inline">\(p\)</span> columns as</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
-\end{pmatrix},
-\end{align*}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{align*}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="section-cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="section-vectors-and-matrices.html#cb42-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb42-2"><a href="section-vectors-and-matrices.html#cb42-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb42-3"><a href="section-vectors-and-matrices.html#cb42-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb42-4"><a href="section-vectors-and-matrices.html#cb42-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb42-5"><a href="section-vectors-and-matrices.html#cb42-5"></a>)</span>
-<span id="cb42-6"><a href="section-vectors-and-matrices.html#cb42-6"></a></span>
-<span id="cb42-7"><a href="section-vectors-and-matrices.html#cb42-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="section-cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="section-vectors-and-matrices.html#cb44-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb44-2"><a href="section-vectors-and-matrices.html#cb44-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb44-3"><a href="section-vectors-and-matrices.html#cb44-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb44-4"><a href="section-vectors-and-matrices.html#cb44-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb44-5"><a href="section-vectors-and-matrices.html#cb44-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb44-6"><a href="section-vectors-and-matrices.html#cb44-6"></a>)</span>
-<span id="cb44-7"><a href="section-vectors-and-matrices.html#cb44-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="section-cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="section-vectors-and-matrices.html#cb46-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="section-cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="section-vectors-and-matrices.html#cb48-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^p\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^n\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{p} \right),
-\end{align*}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_p &amp; = \begin{pmatrix} a_{1p} \\ a_{2p} \\ \vdots \\ a_{np}
-\end{pmatrix}
-\end{align*}
-\]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="section-cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="section-vectors-and-matrices.html#cb50-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb50-2"><a href="section-vectors-and-matrices.html#cb50-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb50-3"><a href="section-vectors-and-matrices.html#cb50-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="section-cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="section-vectors-and-matrices.html#cb51-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{n} \end{pmatrix},
-\end{align*}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{21}, \ldots, a_{n1} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{12}, a_{22}, \ldots, a_{n2} \right) \\
-&amp; \vdots \\
-\mathbf{r}_n &amp; = \left( a_{1p}, a_{2p}, \ldots, a_{np} \right)
-\end{align*}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="section-cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="section-vectors-and-matrices.html#cb53-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb53-2"><a href="section-vectors-and-matrices.html#cb53-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb53-3"><a href="section-vectors-and-matrices.html#cb53-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb53-4"><a href="section-vectors-and-matrices.html#cb53-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="section-cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="section-vectors-and-matrices.html#cb54-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<p>Another way to represent matrices is using a block form. A block-representation of a matrix arises when the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is represented using smaller blocks as follows:</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} &amp; \cdots &amp; \mathbf{A}_{1K} \\
-\mathbf{A}_{21} &amp; \mathbf{A}_{22} &amp;  \cdots &amp; \mathbf{A}_{2K} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\mathbf{A}_{J1} &amp; \mathbf{A}_{J2} &amp; \cdots &amp; \mathbf{A}_{JK} \\
-\end{pmatrix} \\
-\end{align*}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{A}_{ij}\)</span> is a <span class="math inline">\(n_j \times p_k\)</span> matrix where <span class="math inline">\(\sum_{j=1}^J n_j = n\)</span> and <span class="math inline">\(\sum_{k=1}^K p_k = p\)</span>.</p>
-<p>For example, the matrix</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{align*}
-\]</span></p>
-<p>can be written in block diagonal form with</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = 
-\begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} \\
-\mathbf{A}_{21} &amp; \mathbf{A}_{22} \end{pmatrix} \\
-&amp; = \begin{pmatrix} \begin{bmatrix} 5 &amp; 7 \\
-5 &amp; -22 \end{bmatrix} &amp; 
-\begin{bmatrix} 1 \\
-2 \end{bmatrix} \\
-\begin{bmatrix}
--14 &amp; 5 \\
-42 &amp; -3 
-\end{bmatrix} &amp; 
-\begin{bmatrix} 99 \\ 0 \end{bmatrix}
-\end{pmatrix},
-\end{align*}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{A}_{11} = \begin{bmatrix} 5 &amp; 7 \\ 5 &amp; -22 \end{bmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, <span class="math inline">\(\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\)</span> is a <span class="math inline">\(1 \times 2\)</span> matrix, etc.</p>
-<div class="sourceCode" id="section-cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="section-vectors-and-matrices.html#cb56-1"></a>A_<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-22</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb56-2"><a href="section-vectors-and-matrices.html#cb56-2"></a>A_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb56-3"><a href="section-vectors-and-matrices.html#cb56-3"></a>A_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">5</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb56-4"><a href="section-vectors-and-matrices.html#cb56-4"></a>A_<span class="dv">22</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">0</span>)</span>
-<span id="cb56-5"><a href="section-vectors-and-matrices.html#cb56-5"></a></span>
-<span id="cb56-6"><a href="section-vectors-and-matrices.html#cb56-6"></a><span class="co">## bind columns then rows</span></span>
-<span id="cb56-7"><a href="section-vectors-and-matrices.html#cb56-7"></a><span class="kw">rbind</span>(</span>
-<span id="cb56-8"><a href="section-vectors-and-matrices.html#cb56-8"></a>    <span class="kw">cbind</span>(A_<span class="dv">11</span>, A_<span class="dv">12</span>),</span>
-<span id="cb56-9"><a href="section-vectors-and-matrices.html#cb56-9"></a>    <span class="kw">cbind</span>(A_<span class="dv">21</span>, A_<span class="dv">22</span>)</span>
-<span id="cb56-10"><a href="section-vectors-and-matrices.html#cb56-10"></a>)</span></code></pre></div>
-<pre><code>##              A_12
-## [1,]   5   7    1
-## [2,]   5 -22    2
-## [3,] -14   5   99
-## [4,]  42  -3    0</code></pre>
-<div class="sourceCode" id="section-cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="section-vectors-and-matrices.html#cb58-1"></a><span class="co">## bind rows then columns </span></span>
-<span id="cb58-2"><a href="section-vectors-and-matrices.html#cb58-2"></a><span class="kw">cbind</span>(</span>
-<span id="cb58-3"><a href="section-vectors-and-matrices.html#cb58-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
-<span id="cb58-4"><a href="section-vectors-and-matrices.html#cb58-4"></a>    <span class="kw">c</span>(A_<span class="dv">12</span>, A_<span class="dv">22</span>) <span class="co">## rbind on vectors is different than c()</span></span>
-<span id="cb58-5"><a href="section-vectors-and-matrices.html#cb58-5"></a>)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<div class="sourceCode" id="section-cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="section-vectors-and-matrices.html#cb60-1"></a><span class="co">## bind rows then columns </span></span>
-<span id="cb60-2"><a href="section-vectors-and-matrices.html#cb60-2"></a><span class="kw">cbind</span>(</span>
-<span id="cb60-3"><a href="section-vectors-and-matrices.html#cb60-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
-<span id="cb60-4"><a href="section-vectors-and-matrices.html#cb60-4"></a>    <span class="co">## convert the vectors to matrices for rbind</span></span>
-<span id="cb60-5"><a href="section-vectors-and-matrices.html#cb60-5"></a>    <span class="kw">rbind</span>(<span class="kw">as.matrix</span>(A_<span class="dv">12</span>), <span class="kw">as.matrix</span>(A_<span class="dv">22</span>)) </span>
-<span id="cb60-6"><a href="section-vectors-and-matrices.html#cb60-6"></a>)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<div id="section-properties-of-matrices" class="section level4">
-<h4><span class="header-section-number">3.0.1.1</span> Properties of matrices</h4>
-<ol style="list-style-type: decimal">
-<li><strong>Matrix Addition:</strong> If the matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (e.g., both <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same number of rows <span class="math inline">\(n\)</span> and the same number of columns <span class="math inline">\(p\)</span>), then</li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} + \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
-\end{pmatrix} + 
-\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1p} \\
-b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np}
-\end{pmatrix} \\
-&amp; = \begin{pmatrix} a_{11} + b_{11} &amp; b_{12} + b_{12} &amp; \cdots &amp; a_{1p} + b_{1p} \\
-a_{21} + b_{21} &amp; a_{22} + b_{22} &amp; \cdots &amp; a_{2p} + b_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} + b_{n1} &amp; a_{n2} + b_{n2} &amp; \cdots &amp; a_{np} + b_{np}
-\end{pmatrix} \\
-&amp; = \left\{ a_{ij} + b_{ij} \right\}
-\end{align*}
-\]</span></p>
-<p><strong>… Another way to </strong></p>
-<p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (same number of rows and columns) you can add the matrices together</p>
-<div class="sourceCode" id="section-cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="section-vectors-and-matrices.html#cb62-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb62-2"><a href="section-vectors-and-matrices.html#cb62-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">-9</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb62-3"><a href="section-vectors-and-matrices.html#cb62-3"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    4    2
-## [2,]    1    0
-## [3,]   33   -4</code></pre>
-<div class="sourceCode" id="section-cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="section-vectors-and-matrices.html#cb64-1"></a>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    7    9
-## [2,]  -24   11
-## [3,]    3   -9</code></pre>
-<div class="sourceCode" id="section-cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="section-vectors-and-matrices.html#cb66-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]   11   11
-## [2,]  -23   11
-## [3,]   36  -13</code></pre>
-<p>We can also write this using <code>for</code> loops</p>
-<div class="sourceCode" id="section-cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="section-vectors-and-matrices.html#cb68-1"></a><span class="co"># initialize an empty matrix to fill</span></span>
-<span id="cb68-2"><a href="section-vectors-and-matrices.html#cb68-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb68-3"><a href="section-vectors-and-matrices.html#cb68-3"></a></span>
-<span id="cb68-4"><a href="section-vectors-and-matrices.html#cb68-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {         <span class="co"># loop over the rows</span></span>
-<span id="cb68-5"><a href="section-vectors-and-matrices.html#cb68-5"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {     <span class="co"># loop over the columns</span></span>
-<span id="cb68-6"><a href="section-vectors-and-matrices.html#cb68-6"></a>        C[i, j] &lt;-<span class="st"> </span>A[i, j] <span class="op">+</span><span class="st"> </span>B[i, j]</span>
-<span id="cb68-7"><a href="section-vectors-and-matrices.html#cb68-7"></a>    }</span>
-<span id="cb68-8"><a href="section-vectors-and-matrices.html#cb68-8"></a>}</span>
-<span id="cb68-9"><a href="section-vectors-and-matrices.html#cb68-9"></a>C</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]   11   11
-## [2,]  -23   11
-## [3,]   36  -13</code></pre>
-<p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of different dimensions (they differ in either the number of rows or columns), <code>R</code> will return an error warning you that the matrices are of different sizes and can’t be added</p>
-<div class="sourceCode" id="section-cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="section-vectors-and-matrices.html#cb70-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb70-2"><a href="section-vectors-and-matrices.html#cb70-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb70-3"><a href="section-vectors-and-matrices.html#cb70-3"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    4    2
-## [2,]    1    0
-## [3,]   33   -4</code></pre>
-<div class="sourceCode" id="section-cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="section-vectors-and-matrices.html#cb72-1"></a>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    7    3
-## [2,]  -24    9</code></pre>
-<div class="sourceCode" id="section-cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="section-vectors-and-matrices.html#cb74-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
-<pre><code>## Error in A + B: non-conformable arrays</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Matrix Multiplication:</strong> If <span class="math inline">\(\mathbf{A} = \left\{ a_{ij} \right\}\)</span> is an <span class="math inline">\(n \times p\)</span> matrix and <span class="math inline">\(\mathbf{B} = \left\{ a_{jk} \right\}\)</span> is a <span class="math inline">\(p \times q\)</span> matrix, then the matrix product <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> is an <span class="math inline">\(n \times q\)</span> matrix where <span class="math inline">\(\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}\)</span></li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
-\end{pmatrix} 
-\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1q} \\
-b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2q} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-b_{p1} &amp; b_{p2} &amp; \cdots &amp; b_{pq}
-\end{pmatrix} \\
-&amp; = \begin{pmatrix} \sum_{j=1}^p a_{1j} b_{j1} &amp; \sum_{j=1}^p a_{1j} b_{j2} &amp; \cdots &amp; \sum_{j=1}^p a_{1j} b_{jq} \\
-\sum_{j=1}^p a_{2j} b_{j1} &amp;\sum_{j=1}^p a_{2j} b_{j2} &amp; \cdots &amp; \sum_{j=1}^p a_{2j} b_{jq} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\sum_{j=1}^p a_{nj} b_{j1} &amp;\sum_{j=1}^p a_{nj} b_{j2} &amp; \cdots &amp; \sum_{j=1}^p a_{nj} b_{jq}
-\end{pmatrix} \\
-&amp; = \left\{ \sum_{j=1}^p a_{ij} b_{jk} \right\}
-\end{align*}
-\]</span></p>
-<p>Another way to define matrix multiplication is through inner product notation. Define the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(p \times q\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span> as the partition</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{a}_{1}&#39; \\
-\mathbf{a}_{2}&#39; \\ 
-\vdots \\
-\mathbf{a}_{n} \end{pmatrix}
-&amp; \mbox{ and } 
-&amp;&amp; \mathbf{B} &amp; = \begin{pmatrix} \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{p} \end{pmatrix} 
-\end{align*}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{a}\)</span> and <span class="math inline">\(\mathbf{b}_k\)</span> are both <span class="math inline">\(p\)</span>-vectors. Then, we have <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B} = \left\{ c_{ik} \right\} = \left\{ \mathbf{a}_i&#39; \mathbf{b}_k \right\}\)</span> which has the matrix form</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} \mathbf{a}_1&#39; \mathbf{b}_1 &amp; \mathbf{a}_1&#39; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_1&#39; \mathbf{b}_q \\
-\mathbf{a}_2&#39; \mathbf{b}_1 &amp; \mathbf{a}_2&#39; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_2&#39; \mathbf{b}_q \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\mathbf{a}_n&#39; \mathbf{b}_1 &amp; \mathbf{a}_n&#39; \mathbf{b}_2  &amp; \cdots &amp; \mathbf{a}_n&#39; \mathbf{b}_q
-\end{pmatrix} \\
-&amp; = \left\{ \mathbf{a}_i&#39; \mathbf{b}_k  \right\}.
-\end{align*}
-\]</span></p>
-<p>Written in this notation, we arrive at the multiplication rule for <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> – the <span class="math inline">\(ik\)</span>th element <span class="math inline">\(c_{ik}\)</span> of <span class="math inline">\(\mathbf{C}\)</span> is the inner product of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(\mathbf{B}\)</span>.</p>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Direct Sums:</strong> For the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(m \times q\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span>, the direct sum is</li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{C} &amp; = \mathbf{A} \bigoplus \mathbf{B} \\
-&amp; = \begin{pmatrix} \mathbf{A} &amp; \mathbf{0}_{n \times q} \\
-\mathbf{0}_{m \times p} &amp; \mathbf{B}
-\end{pmatrix} \\
-\end{align*}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{0}_{n \times q}\)</span> and <span class="math inline">\(\mathbf{0}_{m \times p}\)</span> is an are <span class="math inline">\(n \times q\)</span> and <span class="math inline">\(m \times p\)</span> matrices of all 0s, respectively.</p>
-<p>The direct sum can be generalized to any arbitrary number of matrices as
-<span class="math display">\[
-\begin{align*}
-\mathbf{C} &amp; = \bigoplus_{i=1}^K \mathbf{A}_i \\
-&amp; = \begin{pmatrix} \mathbf{A}_1 &amp; \mathbf{0} &amp; \cdots &amp; \mathbf{0} \\
-\mathbf{0} &amp; \mathbf{A}_2 &amp;  \cdots &amp; \mathbf{0} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\mathbf{0} &amp; \mathbf{0} &amp; \cdots &amp; \mathbf{A}_K \\
-\end{pmatrix} \\
-\end{align*}
-\]</span></p>
-<p>where the matrices <span class="math inline">\(\mathbf{0}\)</span> are all zeros of the appropriate dimension.</p>
 <!--   -->
 <!--   -->
 <!--   -->
-</div>
-</div>
 <div id="section-arrays" class="section level3">
-<h3><span class="header-section-number">3.0.2</span> Arrays</h3>
+<h3><span class="header-section-number">3.0.1</span> Arrays</h3>
 <p>Higher order arrays (for example, tensors in the tensorflow library) can be represented using subscript notation where <span class="math inline">\([\mathbf{A}_1 | \mathbf{A}_2 | \cdots \mathbf{A}_n]\)</span> is a 3-dimensional array. Higher order arrays can be represented using additional subscripts.</p>
 </div>
 <div id="section-lists" class="section level3">
-<h3><span class="header-section-number">3.0.3</span> Lists</h3>
+<h3><span class="header-section-number">3.0.2</span> Lists</h3>
 <ul>
 <li>To add: vector addition, multiplication</li>
 <li>To add: matrix addition, multiplication</li>
