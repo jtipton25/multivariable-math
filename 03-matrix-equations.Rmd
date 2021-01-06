@@ -30,7 +30,7 @@ $$
 $$
 and then reducing the matrix to reduced row echelon form. This gives rise to the theorem
 
-**Theorem:** The matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, the vector equation $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K & = \mathbf{b}$, and the augmented matrix $\begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{b} \end{pmatrix}$ all have the same solution set.
+**Theorem:** The matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, the vector equation $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}$, and the augmented matrix $\begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{b} \end{pmatrix}$ all have the same solution set.
 
 ## Existence of solutions
 A solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ exists if and only if $\mathbf{b}$ is a linear combination of the columns of $\mathbf{A}$. In other words, $\mathbf{A} \mathbf{x} = \mathbf{b}$ has a solution if and only if $\mathbf{b}$ is in the $\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_K\}$.
@@ -97,7 +97,8 @@ Notice that the first row of the last matrix above has the sum first row of the 
 ## Properties of matrix-vector multiplication
 
 If $\mathbf{A}$ is a $n \times K$ matrix, $\mathbf{u}$ and $\mathbf{v}$ are vectors in $\mathcal{R}^K$ and $c$ is a scalar, then
-a) $\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} + \mathbf{v}$
+
+a) $\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v}$
 b) $\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}$
 
 * **Proof in class**
@@ -262,7 +263,6 @@ which was the same solution set as the homoegenous solution plus the additional 
 
 For plotting, we will solve these equations for $x_3$. Thus, the homogeneous equation has the solution $x_3 = 2x_1 + 4x_2$ and the inhomogenous equation has the solution $x_3 = 2x_1 + 4x_2 - 20$.
 
-**Don't know why this figure isn't working**
 
 ```{r}
 # uses gg3D library
@@ -272,25 +272,20 @@ region <- expand.grid(x1 = x1, x2 = x2)
 df <- data.frame(
     x1 = region$x1,
     x2 = region$x2,
-    x3 = 2 * region$x1 + 4 * region$x2
-)
-df2 <- data.frame(
-    x1 = region$x1,
-    x2 = region$x2,
-    x3 = 2 * region$x1 + 4 * region$x2 - 40
-)
+    x3 = c(
+        2 * region$x1 + 4 * region$x2,
+        2 * region$x1 + 4 * region$x2 - 20),
+    equation = rep(c("inhomogeneous", "homogeneous"), each = n^2))
 
 # theta and phi set up the "perspective/viewing angle" of the 3D plot
-theta <- 60
+theta <- 45
 phi <- 20
-ggplot(df, aes(x = x1, y = x2, z = x3)) +
+ggplot(df, aes(x = x1, y = x2, z = x3, color = equation)) +
     axes_3D(theta = theta, phi = phi) +
     stat_wireframe(
-        alpha = 0.5, color = "red",
+        alpha = 0.75,
         theta = theta, phi = phi) +
-    stat_wireframe(
-        data = df2, aes(x = x1, y = x2, z = x3),
-        alpha = 0.5, color = "blue", theta = theta, phi = phi) +
+    scale_color_manual(values = c("inhomogeneous" = "blue", "homogeneous" = "red")) +
     theme_void() +
     theme(legend.position = "none") +
     labs_3D(hjust=c(0,1,1), vjust=c(1, 1, -0.2), 

@@ -39,6 +39,8 @@ The motiviation for this text is to provide both a theoretical understanding of 
 
 ## Outline
 
+**Note: This is going to be revised and reformated throughout the class**
+
 1) Introduction to vectors and matrices and vector and matrix operations
 
 1) vector spaces and subspaces
@@ -79,4 +81,14 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+
+
+<!-- Notes for revision -->
+<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
+<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
+<!-- 3) Introduce systems of equations and rref  -->
+<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
+<!-- 5) Introduce linear combinations, spans, linear independence -->
+<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
 

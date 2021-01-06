@@ -221,8 +221,8 @@
       "RemoteRepo": "dasc2594",
       "RemoteUsername": "jtipton25",
       "RemoteRef": "HEAD",
-      "RemoteSha": "62677e71aac5b28ca4e1d9303a99d45b0b0c7efc",
-      "Hash": "ec42f74d105df4e34f914757e2af27df"
+      "RemoteSha": "a8935721add61cd022624d9a3ee227619058b6e2",
+      "Hash": "dba76e45de04726ff02ac3fa08201334"
     },
     "dbplyr": {
       "Package": "dbplyr",
@@ -361,6 +361,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "05129b4387282404780d2f8593636388"
+    },
+    "gifski": {
+      "Package": "gifski",
+      "Version": "0.8.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ca21682de4210b1c6b59fb010b94cf09"
     },
     "gitcreds": {
       "Package": "gitcreds",
