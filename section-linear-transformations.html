@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-finding-solutions"><i class="fa fa-check"></i><b>5.7</b> Finding solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="section-linear-independence.html"><a href="section-linear-independence.html"><i class="fa fa-check"></i><b>6</b> Linear independence</a></li>
-<li class="chapter" data-level="7" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations</a></li>
+<li class="chapter" data-level="7" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-linear-transformations-1"><i class="fa fa-check"></i><b>7.1</b> Linear Transformations</a></li>
+<li class="chapter" data-level="7.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-types-of-matrix-transformations"><i class="fa fa-check"></i><b>7.2</b> Types of matrix transformations</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-contractionsexpansions"><i class="fa fa-check"></i><b>7.2.1</b> Contractions/Expansions</a></li>
+<li class="chapter" data-level="7.2.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-rotations"><i class="fa fa-check"></i><b>7.2.2</b> Rotations</a></li>
+<li class="chapter" data-level="7.2.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-reflections"><i class="fa fa-check"></i><b>7.2.3</b> Reflections</a></li>
+<li class="chapter" data-level="7.2.4" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-shears"><i class="fa fa-check"></i><b>7.2.4</b> Shears</a></li>
+<li class="chapter" data-level="7.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>7.2.5</b> Projections</a></li>
+<li class="chapter" data-level="7.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>7.2.6</b> Identity</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>7.3</b> Properties of matrix transformations</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><a href="section-solving-linear-equations-mathbfa-mathbfx-mathbfb.html"><i class="fa fa-check"></i><b>8</b> Solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></a></li>
 <li class="chapter" data-level="9" data-path="section-inner-products-and-norms.html"><a href="section-inner-products-and-norms.html"><i class="fa fa-check"></i><b>9</b> Inner Products and Norms</a></li>
 <li class="chapter" data-level="10" data-path="section-projections-orthogonal-projections-and-least-squares.html"><a href="section-projections-orthogonal-projections-and-least-squares.html"><i class="fa fa-check"></i><b>10</b> Projections: Orthogonal Projections and Least Squares</a></li>
@@ -220,8 +231,331 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-linear-transformations" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Linear Transformations</h1>
+<div class="sourceCode" id="section-cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="section-linear-transformations.html#cb136-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb136-2"><a href="section-linear-transformations.html#cb136-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb136-3"><a href="section-linear-transformations.html#cb136-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
 <p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a "<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>. For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
+<p><strong>Draw figure</strong></p>
+<p><img src="images/transformation-1.jpg" /><!-- --></p>
+<p><img src="images/transformation-2.jpg" /><!-- --></p>
+<p>In the case of matrix transformations (linear transformations), the function <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is a <span class="math inline">\(n\)</span>-vector.</p>
+<ul>
+<li><strong>Question:</strong> What kind of object is <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>?
+<ul>
+<li>scalar</li>
+<li>vector</li>
+<li>matrix</li>
+<li>array</li>
+</ul></li>
+<li><strong>Question</strong> What are the dimensions of <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>?</li>
+</ul>
+<p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
+<ul>
+<li><strong>Example:</strong>
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} = \begin{pmatrix}
+2 &amp; 4 \\
+-3 &amp; 1 \\
+-1 &amp; 6
+\end{pmatrix}
+&amp;&amp; \mathbf{u} = \begin{pmatrix}
+1 \\
+3
+\end{pmatrix}
+&amp;&amp; \mathbf{b} = \begin{pmatrix}
+-2 \\
+-11 \\
+-15
+\end{pmatrix} &amp;&amp;
+\mathbf{c} = \begin{pmatrix}
+2 \\
+-2 \\
+-1
+\end{pmatrix}
+\end{align*}
+\]</span></li>
+</ul>
+<pre><code>##      [,1]
+## [1,]   14
+## [2,]    0
+## [3,]   17</code></pre>
+<pre><code>##           b
+## [1,] 1 0  3
+## [2,] 0 1 -2
+## [3,] 0 0  0</code></pre>
+<pre><code>##          c
+## [1,] 1 0 0
+## [2,] 0 1 0
+## [3,] 0 0 1</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Find the image of <span class="math inline">\(\mathbf{u}\)</span> using the matrix transformation <span class="math inline">\(T\)</span> (e.g., calculate <span class="math inline">\(T(\mathbf{u})\)</span>).</li>
+<li>Find a coefficient vector <span class="math inline">\(\mathbf{x} \in \mathcal{R}^2\)</span> such that <span class="math inline">\(T(\mathbf{x})\)</span>.</li>
+<li>Is there more than one <span class="math inline">\(\mathbf{x}\)</span> whose image under <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathbf{b}?\)</span> In other words, is the solution <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{b}\)</span> unique?</li>
+<li>Determine if <span class="math inline">\(\mathbf{c}\)</span> is in the range of <span class="math inline">\(T\)</span>. In other words, does the solution <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{c}\)</span> exist?</li>
+</ol>
+<div id="section-linear-transformations-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Linear Transformations</h2>
+<p><strong>Definition:</strong> A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></li>
+<li><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></li>
+</ol>
+<p>Note: Because a linear transformation is equivalent to a matrix transformation, the definition above is equivalent to the following matrix-vector multiplication properties</p>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^m\)</span> and <span class="math inline">\(c\)</span> is a scalar, then</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v}\)</span></li>
+<li><span class="math inline">\(\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}\)</span></li>
+</ol>
+<p>As a consequence of the previous definition, the following properties hold for scalars <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> and vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v} \in \mathcal{R}^m\)</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(T(\mathbf{0}) = \mathbf{0}\)</span></li>
+<li><span class="math inline">\(T(c \mathbf{u} + d \mathbf{v}) = c T(\mathbf{u}) + d T(\mathbf{v})\)</span></li>
+</ol>
+<ul>
+<li><strong>Show why in class</strong></li>
+</ul>
+<p>These properties give rise to the following statement for scalars <span class="math inline">\(c_1, \ldots, c_m\)</span> and vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_m \in \mathcal{R}^n\)</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li><span class="math inline">\(T(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 T(\mathbf{u}_1) + \ldots + c_m T(\mathbf{u}_m)\)</span></li>
+</ol>
+<p>The statements above for linear transformations are equivalent to the matrix statements where <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^m\)</span> and <span class="math inline">\(c\)</span> is a scalar:</p>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{A} \mathbf{0} = \mathbf{0}\)</span></li>
+<li><span class="math inline">\(\mathbf{A}(c \mathbf{u} + d \mathbf{v}) = c \mathbf{A} \mathbf{u} + d \mathbf{A} \mathbf{v}\)</span></li>
+</ol>
+<p>And for a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, scalars <span class="math inline">\(c_1, \ldots, c_m\)</span>, and vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_m \in \mathcal{R}^n\)</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{A}(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 \mathbf{A}\mathbf{u}_1 + \ldots + c_m \mathbf{A} \mathbf{u}_m\)</span></li>
+</ol>
+</div>
+<div id="section-types-of-matrix-transformations" class="section level2">
+<h2><span class="header-section-number">7.2</span> Types of matrix transformations</h2>
+<p>The basic types of matrix transformations include</p>
+<ol style="list-style-type: decimal">
+<li>contractions/expansions</li>
+<li>rotations</li>
+<li>reflections</li>
+<li>shears</li>
+<li>projections</li>
+</ol>
+<p>For the following examples, we will consider the unit vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span> and apply different linear transformations using the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>To build the matrix transformations, we use the <code>dasc2594</code> package and build matrix transformations based on code from <a href="https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/">https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/</a>.</p>
+<div id="section-contractionsexpansions" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Contractions/Expansions</h3>
+<div id="section-horizonal-expansion" class="section level4">
+<h4><span class="header-section-number">7.2.1.1</span> Horizonal Expansion</h4>
+<p>The matrix below gives a horizontal expansion when <span class="math inline">\(x &gt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+x &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 2\)</span> and generate the transformation.</li>
+</ul>
+<div class="sourceCode" id="section-cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="section-linear-transformations.html#cb140-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb140-2"><a href="section-linear-transformations.html#cb140-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb140-3"><a href="section-linear-transformations.html#cb140-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb140-4"><a href="section-linear-transformations.html#cb140-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb140-5"><a href="section-linear-transformations.html#cb140-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb140-6"><a href="section-linear-transformations.html#cb140-6"></a></span>
+<span id="cb140-7"><a href="section-linear-transformations.html#cb140-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/horizontal-expansion-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/horizontal-expansion-static-1.png" width="672" /></p>
+</div>
+<div id="section-horizonal-contraction" class="section level4">
+<h4><span class="header-section-number">7.2.1.2</span> Horizonal Contraction</h4>
+<p>The matrix below gives a horizontal contraction when <span class="math inline">\(x &lt; 1\)</span>
+* Horizontal contraction when <span class="math inline">\(x &lt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+x &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 0.5\)</span></li>
+</ul>
+<p><img src="multivariable-math_files/figure-html/horizontal-contraction-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/horizontal-contraction-static-1.png" width="672" /></p>
+</div>
+<div id="section-vertical-expansion" class="section level4">
+<h4><span class="header-section-number">7.2.1.3</span> Vertical Expansion</h4>
+<p>The matrix below gives a vertical expansion when <span class="math inline">\(x &gt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; x
+\end{pmatrix}
+\]</span>
+* In the example below, we set <span class="math inline">\(x = 2\)</span></p>
+<p><img src="multivariable-math_files/figure-html/vertical-expansion-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/vertical-expansion-static-1.png" width="672" /></p>
+</div>
+<div id="section-vertical-contraction" class="section level4">
+<h4><span class="header-section-number">7.2.1.4</span> Vertical Contraction</h4>
+<p>The matrix below gives a vertical contraction when <span class="math inline">\(x &lt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; x
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 0.5\)</span></li>
+</ul>
+<p><img src="multivariable-math_files/figure-html/vertical-contraction-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/vertical-contraction-static-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-rotations" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Rotations</h3>
+<div id="section-rotation-by-90-degrees" class="section level4">
+<h4><span class="header-section-number">7.2.2.1</span> Rotation by 90 degrees</h4>
+<p>Rotations in 2D of an angle <span class="math inline">\(\theta \in [0, 2\pi]\)</span> take the form of
+<span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+\cos(\theta) &amp; -\sin(\theta) \\
+\sin(\theta) &amp; \cos(\theta)
+\end{pmatrix}
+\]</span>
+For example, a rotation of 90 degrees counter-clockwise (<span class="math inline">\(\theta = \frac{\pi}{2}\)</span>) is given by the transformation matrix
+<span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+\cos(\frac{\pi}{2}) &amp; -\sin(\frac{\pi}{2}) \\
+\sin(\frac{\pi}{2}) &amp; \cos(\frac{\pi}{2})
+\end{pmatrix} = 
+\begin{pmatrix}
+0 &amp; -1 \\
+1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/rotate-90-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/rotate-90-static-1.png" width="672" /></p>
+<p>Another example is for a rotation of 45 degrees clockwise (<span class="math inline">\(\theta = -\frac{\pi}{4}\)</span>) is given by the transformation matrix
+<span class="math display">\[
+ = \begin{pmatrix}
+\cos(\frac{\pi}{4}) &amp; -\sin(\frac{\pi}{4}) \\
+\sin(\frac{\pi}{4}) &amp; \cos(\frac{\pi}{4})
+\end{pmatrix} = 
+\begin{pmatrix}
+\frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{2}}{2} \\
+\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/rotate-45-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/rotate-45-static-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-reflections" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Reflections</h3>
+<div id="section-reflection-across-the-x-axis" class="section level4">
+<h4><span class="header-section-number">7.2.3.1</span> Reflection across the x-axis</h4>
+<p>The matrix below gives a reflection about the x-axis</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/reflection-x-axis-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/reflection-x-axis-1.png" width="672" /></p>
+</div>
+<div id="section-reflection-across-the-y-axis" class="section level4">
+<h4><span class="header-section-number">7.2.3.2</span> Reflection across the y-axis</h4>
+<p>The matrix below gives a reflection about the y-axis</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+-1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/reflection-y-axis-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/reflection-y-axis-static-1.png" width="672" /></p>
+</div>
+<div id="section-reflection-across-the-line-y-x" class="section level4">
+<h4><span class="header-section-number">7.2.3.3</span> Reflection across the line y = x</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 0.5\)</span></li>
+</ul>
+<p><img src="multivariable-math_files/figure-html/reflection-line-y-equals-x-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/reflection-line-y-equals-x-static-1.png" width="672" /></p>
+</div>
+<div id="section-reflection-across-the-line-y---x" class="section level4">
+<h4><span class="header-section-number">7.2.3.4</span> Reflection across the line y = - x</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+0 &amp; -1 \\
+-1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/reflection-line-y-equals-minus-x-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/reflection-line-y-equals-minus-x-static-1.png" width="672" /></p>
+</div>
+<div id="section-reflection-across-the-origin-0-0" class="section level4">
+<h4><span class="header-section-number">7.2.3.5</span> Reflection across the origin (0, 0)</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+-1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\]</span></p>
+<p><img src="multivariable-math_files/figure-html/reflection-origin-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/reflection-origin-static-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-shears" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Shears</h3>
+<p>A shear transformation is like stretching play-dough if it was possible to stretch all parts of the dough uniformly (rather than some sections getting stretched more than others).</p>
+<div id="section-horizontal-shear" class="section level4">
+<h4><span class="header-section-number">7.2.4.1</span> Horizontal Shear</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; x \\
+0 &amp; 1
+\end{pmatrix}
+\]</span>
+For the example below, we plot a horizontal shear with <span class="math inline">\(x = 2\)</span>.</p>
+<p><img src="multivariable-math_files/figure-html/horizontal-shear-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/horizontal-shear-static-1.png" width="672" /></p>
+</div>
+<div id="section-vertical-shear" class="section level4">
+<h4><span class="header-section-number">7.2.4.2</span> Vertical Shear</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; x \\
+0 &amp; 1
+\end{pmatrix}
+\]</span>
+For the example below, we plot a horizontal shear with <span class="math inline">\(x = 2\)</span>.</p>
+<p><img src="multivariable-math_files/figure-html/vertical-shear-animation-1.gif" /><!-- --></p>
+<p><img src="multivariable-math_files/figure-html/vertical-shear-static-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-projections" class="section level3">
+<h3><span class="header-section-number">7.2.5</span> Projections</h3>
+</div>
+<div id="section-identity" class="section level3">
+<h3><span class="header-section-number">7.2.6</span> Identity</h3>
+</div>
+</div>
+<div id="section-properties-of-matrix-transformations" class="section level2">
+<h2><span class="header-section-number">7.3</span> Properties of matrix transformations</h2>
+<ul>
+<li>One-to-one</li>
+<li>Onto</li>
+</ul>
 
+</div>
 </div>
             </section>
 
