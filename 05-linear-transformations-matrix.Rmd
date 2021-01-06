@@ -578,12 +578,147 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "
 
 ### Projections
 
+A projection is a mapping $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ from one space ($\mathbf{R}^n$) to itself ($\mathbf{R}^n$) such that $T^2 = T$
+
+#### Project onto the x-axis
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+$$
+For the example below, we plot a projection onto the x-axis
+
+```{r projection-x-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, 0) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r projection-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+p  + gganimate::transition_states(time, wrap = FALSE) +
+  ggtitle("Projection onto the x-axis")
+```
+
+
+```{r projection-x-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Projection onto the x-axis"))) 
+```
+
+#### Project onto the y-axis
+
+$$
+\mathbf{A} = \begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+For the example below, we plot a projection onto the y-axis
+
+```{r projection-y-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  0, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r projection-y-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+p  + gganimate::transition_states(time, wrap = FALSE) +
+  ggtitle("Projection onto the y-axis")
+```
+
+
+```{r projection-y-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Projection onto the y-axis"))) 
+```
+
+
+
 ### Identity
+
+The identity transformation is the transformation that leaves the vector input unchanged. The identity matrix is typically written as $\mathbf{I}$
+
+$$
+\mathbf{I} = \begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+
+```{r identity-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r identity-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+p  + gganimate::transition_states(time, wrap = FALSE) +
+  ggtitle("Identity transformation")
+```
+
+
+```{r projection-y-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Identity transformation"))) 
+```
 
 
 ## Properties of matrix transformations
 
+**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called one-to-one if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has at most one solution in $\mathcal{R}^n$.
 
+* The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is one-to-one:
+a) For every $\mathbf{b} \in \mathcal{R}^m$ (for every vector in the image), the equation $T(\mathbf[x}]) = \mathbf{b}$ has either zero or one solution
+b) Every different input into the function $T(\cdot)$ has a different output
+c) If $T(\mathbf{u}) = T(\mathbf{v})$ then $\mathbf{u} = \mathbf{v}$ 
+
+The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is **not** one-to-one:
+a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf[x}]) = \mathbf{b}$ has more than one solution
+b) There are at least two  different inputs into the function $T(\cdot)$ that have the same output
+c) There exist vectors $\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n$ such that $T(\mathbf{u}) = T(\mathbf{v})$
+
+**Theorem:** Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+1) $T$ is one-to-one.
+2) For every $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has at most one solution.
+3) For every $\mathbf{b} \in \mathcal{R}^m$, the equation $\mathbf{A}\mathbf{x} = \mathbf{b}$ has a unique solution or is inconsistent.
+4) The equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ has only a trivial solution.
+5) The columns of $\mathbf{A}$ are linearly independent.
+6) $\mathbf{A}$ has a pivot in every column.
+7) The range of $\mathbf{A}$ has dimension $n$
+
+* **Example:** is the following matrix one-to-one?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+1 & 1
+\end{pmatrix}
+$$
+
+* **Example:** is the following matrix one-to-one?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 1 & 0
+\end{pmatrix}
+$$
+
+
+**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called onto 
 * One-to-one
 * Onto
 
