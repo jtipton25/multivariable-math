@@ -1,2 +1,0 @@
-# Solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$
-

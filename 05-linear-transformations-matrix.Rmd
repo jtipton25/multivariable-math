@@ -6,6 +6,11 @@ library(dasc2594)
 library(gifski)
 ```
 
+```{r, echo = FALSE}
+library(magick)
+library(pdftools)
+```
+
 It is often useful to think of $\mathbf{A}\mathbf{x}$ as a linear transformation defined by the matrix $\mathbf{A}$ applied to the vector $\mathbf{x}$.
 
 A linear transformation is mathematically defined as a function/mapping $T(\cdot)$ ($T$ for transformation) from a **domain** in $\mathcal{R}^n$ (function input) to a **codomain** in $\mathcal{R}^m$ (function output). In shorthand, this is written as $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ which is read a "$T$ maps inputs from the domain $\mathcal{R}^n$ to the codomain $\mathcal{R}^m$. For each $\mathbf{x} \in \mathcal{R}^n$ (in the domain), $T(\mathbf{x}) \in \mathcal{R}^m$ is known as the image of $\mathbf{x}$. The set of all $T(\mathbf{x})$ for all $\mathbf{x} \in \mathcal{R}^n$ is known as the range of $T(\mathbf{x})$. Note that it is possible that the range of $T(\mathbf{x})$ is not required to be the entire space $\mathcal{R}^m$ (i.e., the range of the transformation $T$ might be a subset of $\mathcal{R}^m$)
@@ -669,22 +674,93 @@ p  + gganimate::transition_states(time, wrap = FALSE) +
 ```
 
 
-```{r projection-y-static, echo = FALSE}
+```{r identity-static, echo = FALSE}
 p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Identity transformation"))) 
 ```
 
 
 ## Properties of matrix transformations
 
-**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called one-to-one if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has at most one solution in $\mathcal{R}^n$.
+### One-to-one transformations
+
+**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **one-to-one** if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at most** one solution in $\mathcal{R}^n$.
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("images/one-to-one.png")
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics("images/not-one-to-one.png")
+```
+
+<!-- ```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext='png', fig.cap='One-to-one.'} -->
+
+<!-- \begin{tikzpicture}[thin border nodes, scale=.75] -->
+<!--   \draw[grid lines] (-3,-3) grid (3,3); -->
+
+<!--   \node (A) at (0,-3.6) {$\R^n$}; -->
+<!--   \node (B) at (12,-3.6) {$\R^m$}; -->
+<!--   \draw[->] (A) -- (B) node[midway,above=1pt] {$T$}; -->
+
+<!--   \point["$x$" left] (x) at (1,1.5); -->
+<!--   \point["$y$" left] (y) at (-1,0); -->
+<!--   \point["$z$" left] (z) at (0,-2); -->
+
+<!--   \begin{scope}[myxyz, xshift=12cm] -->
+<!--     \path[clip, resetxy] (-3,-3) rectangle (3,3); -->
+
+<!--     \def\v{(-1,2,1)} -->
+<!--     \def\w{(0,1,-1)} -->
+
+<!--     \node[coordinate] (X) at \v {}; -->
+<!--     \node[coordinate] (Y) at \w {}; -->
+
+<!--     \draw[very thin] (-2,0,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,-2,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,0,-2) -- (0,0,0); -->
+
+<!--     \begin{scope}[x=(X), y=(Y), transformxy, -->
+<!--         every label/.style={font=\small,fill=none,inner sep=.5pt}] -->
+<!--       \fill[seq4!10, nearly opaque] (-1,-1) rectangle (1,1); -->
+<!--       \draw[step=.5cm, seq4!30, very thin] (-1,-1) grid (1,1); -->
+<!--       \point["$T(x)$" above] (Tx) at (.5,-.5); -->
+<!--       \point["$T(y)$" above] (Ty) at (.5,.5); -->
+<!--       \point["$T(z)$" above] (Tz) at (-.5,.75); -->
+<!--       \node[coordinate, -->
+<!--           pin={[pin edge={very thin,-}, -->
+<!--             pin distance=3mm,anchor=north,text=seq4]-70:range}] -->
+<!--         at (0.1,1) {}; -->
+<!--     \end{scope} -->
+
+<!--     \draw[->, very thin] (0,0,0) -- (2,0,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,2,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,0,2); -->
+
+<!--     \draw[resetxy] (-3,-3) rectangle (3,3); -->
+
+<!--   \end{scope} -->
+
+<!--   \begin{scope}[arrows={|->}, shorten=.35mm, every to/.style={out=0, in=180}] -->
+<!--     \draw (x) to (Tx); -->
+<!--     \draw (y) to (Ty); -->
+<!--     \draw (z) to (Tz); -->
+<!--   \end{scope} -->
+
+<!--   \node[seq-blue] at (6,2.5) {one-to-one}; -->
+
+<!-- \end{tikzpicture} -->
+<!-- ``` -->
+
+
 
 * The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is one-to-one:
-a) For every $\mathbf{b} \in \mathcal{R}^m$ (for every vector in the image), the equation $T(\mathbf[x}]) = \mathbf{b}$ has either zero or one solution
+a) For every $\mathbf{b} \in \mathcal{R}^m$ (for every vector in the image), the equation $T(\mathbf{x}]) = \mathbf{b}$ has either zero or one solution
 b) Every different input into the function $T(\cdot)$ has a different output
 c) If $T(\mathbf{u}) = T(\mathbf{v})$ then $\mathbf{u} = \mathbf{v}$ 
 
 The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is **not** one-to-one:
-a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf[x}]) = \mathbf{b}$ has more than one solution
+a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x}]) = \mathbf{b}$ has more than one solution
 b) There are at least two  different inputs into the function $T(\cdot)$ that have the same output
 c) There exist vectors $\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n$ such that $T(\mathbf{u}) = T(\mathbf{v})$
 
@@ -717,15 +793,61 @@ $$
 \end{pmatrix}
 $$
 
+**Note:** Matrices that are wider than they are tall are not one-to-one transformations. (This does not mean that all tall matrices are one-to-one)
 
-**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called onto 
-* One-to-one
-* Onto
+### Onto transformations
 
-
-
+**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **onto** if, for every vector $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at least** one solution $\mathbf{x} \in \mathcal{R}^n$
 
 
+```{r, echo = FALSE}
+knitr::include_graphics("images/onto.png")
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics("images/not-onto.png")
+```
 
 
+The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is onto:
 
+1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is equal to the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$
+2) Every vector in the codomain is the output of some input vector
+
+
+The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is not onto:
+
+1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is smaller than the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$.
+2) There exists a vector $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x})$ does not have a solution.
+3) There is a vector in the codomain that is not the ouput of any input vector.
+
+**Theorem:** Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+1) $T$ is onto
+2) $T(\mathbf{x}) = \mathbf{b}$ has at least one solution for every $\mathbf{b} \in \mathcal{R}^m$.
+3)  The equation $\mathbf{A}\mathbf{x} = \mathbf{b}$ is consistent for every $\mathbf{b} \in \mathcal{R}^m$.
+4) The columns of $\mathbf{A}$ span $\mathcal{R}^m$
+6) $\mathbf{A}$ has a pivot in every row
+7) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ has dimension $m$
+
+* **Example:**
+
+* **Example:** is the following matrix onto?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 1 & 0 \\
+0 & 1 & 1
+\end{pmatrix}
+$$
+
+* **Example:** is the following matrix one-to-one?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0  \\
+0 & 1  \\
+1 & 0
+\end{pmatrix}
+$$
+
+**Note:** Matrices that are taller than they are wide are not onto transformations. (This does not mean that all wide matrices are onto)

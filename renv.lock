@@ -523,6 +523,13 @@
       "Repository": "CRAN",
       "Hash": "5b5b02f621d39a499def7923a5aee746"
     },
+    "magick": {
+      "Package": "magick",
+      "Version": "2.5.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "857faefb4087451c588f37ee3f6f7312"
+    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "2.0.1",
@@ -599,6 +606,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "89ba3e06a77b8ac5f6e7879e4d2ff375"
+    },
+    "pdftools": {
+      "Package": "pdftools",
+      "Version": "2.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c395e2a35e1c2a4c9ba5424cd7cd26c7"
     },
     "pillar": {
       "Package": "pillar",
@@ -690,6 +704,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "97def703420c8ab10d8f0e6c72101e02"
+    },
+    "qpdf": {
+      "Package": "qpdf",
+      "Version": "1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "5a2907cd44279b5861ac5f813465b5c9"
     },
     "rappdirs": {
       "Package": "rappdirs",

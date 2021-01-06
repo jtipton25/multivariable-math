@@ -1,0 +1,365 @@
+# Matrix operations
+
+
+### Matrices
+
+We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $n$ rows and $p$ columns as
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix},
+\end{align*}
+$$
+
+with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and the $j$th column.
+
+If the matrix 
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{align*}
+$$
+
+the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc. 
+
+In `R`, we can define the matrix A using the `matrix()` function
+
+```{r}
+A <- matrix(
+    data = c(5, 5, -14, 42, 7, -22, 5, -3, 1, 2, 99, 0),
+    nrow = 4,
+    ncol = 3
+)
+
+A
+```
+
+Notice in the above creation of $\mathbf{A}$, we wrote defined the elements of the  $\mathbf{A}$ using the columns stacked on top of one another. If we want to fill in the elements of $\mathbf{A}$ using the rows, we can add the option `byrow = TRUE` to the `matrix()` function
+
+```{r}
+A <- matrix(
+    data  = c(5, 7, 1, 5, -22, 2, -14, 5, 99, 42, -3, 0), 
+    nrow  = 4,
+    ncol  = 3,
+    byrow = TRUE
+)
+A
+```
+
+To select the $ij$th elements of $\mathbf{A}$, we use the subset operator `[` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
+
+```{r}
+A[1, 1]
+```
+
+The element $a_{3, 3} = 99$ in the third row and third column can be selected using
+
+```{r}
+A[3, 3]
+```
+
+
+The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^p$ or row vectors $\{\mathbf{r}_i \}_{i=1}^n$. For example, the column vector representation is
+
+
+$$
+\begin{align*}
+\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{p} \right),
+\end{align*}
+$$
+
+where the notation $|$ is used to separate the vectors
+
+$$
+\begin{align*}
+\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1}
+\end{pmatrix},
+& \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2}
+\end{pmatrix}, 
+& \cdots, &
+& \mathbf{c}_p & = \begin{pmatrix} a_{1p} \\ a_{2p} \\ \vdots \\ a_{np}
+\end{pmatrix}
+\end{align*}
+$$
+
+In `R` you can extract the columns using the `[` selection operator
+
+```{r}
+c1 <- A[, 1] # first column
+c2 <- A[, 2] # second column
+c3 <- A[, 3] # third column
+```
+
+and you can give the column representation of the matrix `A` with with column bind function `cbind()`
+
+```{r}
+cbind(c1, c2, c3)
+```
+
+The row vector representation of $\mathbf{A}$ is 
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{n} \end{pmatrix},
+\end{align*}
+$$
+
+where the row vectors $\mathbf{r}_i$ are
+
+$$
+\begin{align*}
+\mathbf{r}_1 & = \left( a_{11}, a_{21}, \ldots, a_{n1} \right) \\
+\mathbf{r}_2 & = \left( a_{12}, a_{22}, \ldots, a_{n2} \right) \\
+& \vdots \\
+\mathbf{r}_n & = \left( a_{1p}, a_{2p}, \ldots, a_{np} \right)
+\end{align*}
+$$
+
+
+In `R` you can extract the rows using the `[` selection operator
+
+```{r}
+r1 <- A[1, ] # first row
+r2 <- A[2, ] # second row
+r3 <- A[3, ] # third row
+r4 <- A[4, ] # fourth row
+```
+
+and you can give the row representation of the matrix `A` with with row bind function `rbind()`
+
+```{r}
+rbind(r1, r2, r3, r4)
+```
+
+
+Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n$ and $\sum_{k=1}^K p_k = p$.
+
+For example, the matrix
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{align*}
+$$
+
+can be written in block diagonal form with
+
+$$
+\begin{align*}
+\mathbf{A} & = 
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\
+& = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\
+5 & -22 \end{bmatrix} & 
+\begin{bmatrix} 1 \\
+2 \end{bmatrix} \\
+\begin{bmatrix}
+-14 & 5 \\
+42 & -3 
+\end{bmatrix} & 
+\begin{bmatrix} 99 \\ 0 \end{bmatrix}
+\end{pmatrix},
+\end{align*}
+$$
+
+where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc.
+
+
+```{r}
+A_11 <- matrix(c(5, 5, 7, -22), 2, 2)
+A_12 <- c(1, 2)
+A_21 <- matrix(c(-14, 42, 5, -3), 2, 2)
+A_22 <- c(99, 0)
+
+## bind columns then rows
+rbind(
+    cbind(A_11, A_12),
+    cbind(A_21, A_22)
+)
+
+## bind rows then columns 
+cbind(
+    rbind(A_11, A_21),
+    c(A_12, A_22) ## rbind on vectors is different than c()
+)
+
+## bind rows then columns 
+cbind(
+    rbind(A_11, A_21),
+    ## convert the vectors to matrices for rbind
+    rbind(as.matrix(A_12), as.matrix(A_22)) 
+)
+```
+
+
+#### Properties of matrices
+
+1) **Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
+
+$$
+\begin{align*}
+\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix} + 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
+b_{21} & b_{22} & \cdots & b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & \cdots & b_{np}
+\end{pmatrix} \\
+& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1p} + b_{1p} \\
+a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2p} + b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{np} + b_{np}
+\end{pmatrix} \\
+& = \left\{ a_{ij} + b_{ij} \right\}
+\end{align*}
+$$
+
+**... Another way to **
+
+If $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (same number of rows and columns) you can add the matrices together
+
+```{r}
+A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
+B <- matrix(c(7, -24, 3, 9, 11, -9), 3, 2)
+A
+B
+A + B
+```
+
+
+We can also write this using `for` loops
+
+```{r}
+# initialize an empty matrix to fill
+C <- matrix(0, 3, 2)
+
+for (i in 1:nrow(A)) {         # loop over the rows
+    for (j in 1:ncol(A)) {     # loop over the columns
+        C[i, j] <- A[i, j] + B[i, j]
+    }
+}
+C
+```
+
+If $\mathbf{A}$ and $\mathbf{B}$ are of different dimensions (they differ in either the number of rows or columns), `R` will return an error warning you that the matrices are of different sizes and can't be added
+
+```{r, error = TRUE}
+A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
+B <- matrix(c(7, -24, 3, 9), 2, 2)
+A
+B
+A + B
+```
+
+
+
+
+
+2) **Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $n \times p$ matrix and $\mathbf{B} = \left\{ a_{jk} \right\}$ is a $p \times q$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $n \times q$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}$
+
+
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix} 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1q} \\
+b_{21} & b_{22} & \cdots & b_{2q} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{p1} & b_{p2} & \cdots & b_{pq}
+\end{pmatrix} \\
+& = \begin{pmatrix} \sum_{j=1}^p a_{1j} b_{j1} & \sum_{j=1}^p a_{1j} b_{j2} & \cdots & \sum_{j=1}^p a_{1j} b_{jq} \\
+\sum_{j=1}^p a_{2j} b_{j1} &\sum_{j=1}^p a_{2j} b_{j2} & \cdots & \sum_{j=1}^p a_{2j} b_{jq} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{j=1}^p a_{nj} b_{j1} &\sum_{j=1}^p a_{nj} b_{j2} & \cdots & \sum_{j=1}^p a_{nj} b_{jq}
+\end{pmatrix} \\
+& = \left\{ \sum_{j=1}^p a_{ij} b_{jk} \right\}
+\end{align*}
+$$
+
+Another way to define matrix multiplication is through inner product notation. Define the $n \times p$ matrix $\mathbf{A}$ and the $p \times q$ matrix $\mathbf{B}$ as the partition
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
+\mathbf{a}_{2}' \\ 
+\vdots \\
+\mathbf{a}_{n} \end{pmatrix}
+& \mbox{ and } 
+&& \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
+\end{align*}
+$$
+
+where $\mathbf{a}$ and $\mathbf{b}_k$ are both $p$-vectors. Then, we have $\mathbf{C} = \mathbf{A} \mathbf{B} = \left\{ c_{ik} \right\} =  \left\{ \mathbf{a}_i' \mathbf{b}_k \right\}$ which has the matrix form
+
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
+\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
+\end{pmatrix} \\
+& = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
+\end{align*}
+$$
+ 
+Written in this notation, we arrive at the multiplication rule for $\mathbf{C} = \mathbf{A} \mathbf{B}$ -- the $ik$th element $c_{ik}$ of $\mathbf{C}$ is the inner product of the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$.
+
+
+
+3) **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is
+
+$$
+\begin{align*}
+\mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\
+& = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\
+\mathbf{0}_{m \times p} & \mathbf{B}
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively. 
+
+The direct sum can be generalized to any arbitrary number of matrices as 
+$$
+\begin{align*}
+\mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\
+& = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension.
+
+
