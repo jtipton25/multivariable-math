@@ -13,7 +13,7 @@ bibliography:
 site: bookdown::bookdown_site
 runtime: shiny
 biblio-style: apalike
-header-includes: "preamble.tex"
+header-includes: preamble.tex
 ---
 
 ```{r include = FALSE, echo = FALSE, message = FALSE}

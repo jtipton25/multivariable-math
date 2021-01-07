@@ -1,7 +1,6 @@
-# Matrix operations
+# Matrix operations {matrix-operations}
 
-
-### Matrices
+## Matrices
 
 We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $n$ rows and $p$ columns as
 
@@ -140,6 +139,191 @@ rbind(r1, r2, r3, r4)
 ```
 
 
+
+
+
+
+## Properties of matrices
+
+### Matrix Addition
+
+**Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
+
+$$
+\begin{align*}
+\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix} + 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
+b_{21} & b_{22} & \cdots & b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & \cdots & b_{np}
+\end{pmatrix} \\
+& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1p} + b_{1p} \\
+a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2p} + b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{np} + b_{np}
+\end{pmatrix} \\
+& = \left\{ a_{ij} + b_{ij} \right\}
+\end{align*}
+$$
+
+**... Another way to **
+
+If $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (same number of rows and columns) you can add the matrices together
+
+```{r}
+A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
+B <- matrix(c(7, -24, 3, 9, 11, -9), 3, 2)
+A
+B
+A + B
+```
+
+
+We can also write this using `for` loops
+
+```{r}
+# initialize an empty matrix to fill
+C <- matrix(0, 3, 2)
+
+for (i in 1:nrow(A)) {         # loop over the rows
+    for (j in 1:ncol(A)) {     # loop over the columns
+        C[i, j] <- A[i, j] + B[i, j]
+    }
+}
+C
+```
+
+If $\mathbf{A}$ and $\mathbf{B}$ are of different dimensions (they differ in either the number of rows or columns), `R` will return an error warning you that the matrices are of different sizes and can't be added
+
+```{r, error = TRUE}
+A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
+B <- matrix(c(7, -24, 3, 9), 2, 2)
+A
+B
+A + B
+```
+
+
+**Theorem:** Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and let $a$ and $b$ be scalars, then:
+
+1) $\mathbf{A} + \mathbf{B}  = \mathbf{B} + \mathbf{A}$ \hfill [(commutivity of addition)]{style="float:right"}
+2)  $(\mathbf{A} + \mathbf{B}) + \mathbf{C} = \mathbf{A} + (\mathbf{B} + \mathbf{C})$ \hfill [(commutivity of addition)]{style="float:right"}
+3) $\mathbf{A} + \mathbf{0}  = \mathbf{A}$  \hfill [(additive identity)]{style="float:right"}
+4) $a (\mathbf{A} + \mathbf{B}) = a \mathbf{A} + a \mathbf{B}$ \hfill [(scalar ...)]{style="float:right"}
+5) $(a + b)\mathbf{A} = a \mathbf{A} + b \mathbf{A}$ \hfill [(scalar ...)]{style="float:right"} 
+6) $(ab)\mathbf{A} = a (b\mathbf{A})$ \hfill [(scalar ...)]{style="float:right"} 
+
+### Matrix Multipliation
+
+
+**Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $m \times n$ matrix and $\mathbf{B} = \left\{ a_{jk} \right\}$ is a $n \times p$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $m \times p$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}$
+
+
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix} 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
+b_{21} & b_{22} & \cdots & b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & \cdots & b_{np}
+\end{pmatrix} \\
+& = \begin{pmatrix} \sum_{j=1}^n a_{1j} b_{j1} & \sum_{j=1}^n a_{1j} b_{j2} & \cdots & \sum_{j=1}^n a_{1j} b_{jp} \\
+\sum_{j=1}^n a_{2j} b_{j1} &\sum_{j=1}^n a_{2j} b_{j2} & \cdots & \sum_{j=1}^n a_{2j} b_{jp} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
+\end{pmatrix} 
+\end{align*}
+$$
+
+
+Another way to define matrix multiplication is through inner product notation. Define the $m \times n$ matrix $\mathbf{A}$ and the $n \times p$ matrix $\mathbf{B}$ as the partition
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
+\mathbf{a}_{2}' \\ 
+\vdots \\
+\mathbf{a}_{m}' \end{pmatrix}
+& \mbox{ and } 
+&& \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
+\end{align*}
+$$
+
+where $\mathbf{a}_i$ and $\mathbf{b}_k$ are both $n$-vectors. Then, we have $\mathbf{C} = \mathbf{A} \mathbf{B}$ can be written as
+
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B}  = \mathbf{A} \begin{pmatrix} \mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_p
+\end{pmatrix}  = \begin{pmatrix} \mathbf{A} \mathbf{b}_1 & \mathbf{A} \mathbf{b}_2 & \cdots & \mathbf{A} \mathbf{b}_p
+\end{pmatrix} 
+\end{align*}
+$$
+ 
+ 
+$$
+\begin{align*}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
+\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
+\end{pmatrix} \\
+& = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
+\end{align*}
+$$
+ 
+Written in this notation, we arrive at the multiplication rule for $\mathbf{C} = \mathbf{A} \mathbf{B}$ -- the $ik$th element $c_{ik}$ of $\mathbf{C}$ is the inner product of the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$.
+
+
+
+3) **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is
+
+$$
+\begin{align*}
+\mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\
+& = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\
+\mathbf{0}_{m \times p} & \mathbf{B}
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively. 
+
+The direct sum can be generalized to any arbitrary number of matrices as 
+$$
+\begin{align*}
+\mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\
+& = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\
+\end{pmatrix} \\
+\end{align*}
+$$
+
+where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Block Matrices
+
 Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
 
 $$
@@ -213,153 +397,3 @@ cbind(
     rbind(as.matrix(A_12), as.matrix(A_22)) 
 )
 ```
-
-
-#### Properties of matrices
-
-1) **Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
-
-$$
-\begin{align*}
-\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
-a_{21} & a_{22} & \cdots & a_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{np}
-\end{pmatrix} + 
-\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
-b_{21} & b_{22} & \cdots & b_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-b_{n1} & b_{n2} & \cdots & b_{np}
-\end{pmatrix} \\
-& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1p} + b_{1p} \\
-a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2p} + b_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{np} + b_{np}
-\end{pmatrix} \\
-& = \left\{ a_{ij} + b_{ij} \right\}
-\end{align*}
-$$
-
-**... Another way to **
-
-If $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (same number of rows and columns) you can add the matrices together
-
-```{r}
-A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
-B <- matrix(c(7, -24, 3, 9, 11, -9), 3, 2)
-A
-B
-A + B
-```
-
-
-We can also write this using `for` loops
-
-```{r}
-# initialize an empty matrix to fill
-C <- matrix(0, 3, 2)
-
-for (i in 1:nrow(A)) {         # loop over the rows
-    for (j in 1:ncol(A)) {     # loop over the columns
-        C[i, j] <- A[i, j] + B[i, j]
-    }
-}
-C
-```
-
-If $\mathbf{A}$ and $\mathbf{B}$ are of different dimensions (they differ in either the number of rows or columns), `R` will return an error warning you that the matrices are of different sizes and can't be added
-
-```{r, error = TRUE}
-A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
-B <- matrix(c(7, -24, 3, 9), 2, 2)
-A
-B
-A + B
-```
-
-
-
-
-
-2) **Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $n \times p$ matrix and $\mathbf{B} = \left\{ a_{jk} \right\}$ is a $p \times q$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $n \times q$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}$
-
-
-$$
-\begin{align*}
-\mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
-a_{21} & a_{22} & \cdots & a_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{np}
-\end{pmatrix} 
-\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1q} \\
-b_{21} & b_{22} & \cdots & b_{2q} \\
-\vdots & \vdots & \ddots & \vdots \\
-b_{p1} & b_{p2} & \cdots & b_{pq}
-\end{pmatrix} \\
-& = \begin{pmatrix} \sum_{j=1}^p a_{1j} b_{j1} & \sum_{j=1}^p a_{1j} b_{j2} & \cdots & \sum_{j=1}^p a_{1j} b_{jq} \\
-\sum_{j=1}^p a_{2j} b_{j1} &\sum_{j=1}^p a_{2j} b_{j2} & \cdots & \sum_{j=1}^p a_{2j} b_{jq} \\
-\vdots & \vdots & \ddots & \vdots \\
-\sum_{j=1}^p a_{nj} b_{j1} &\sum_{j=1}^p a_{nj} b_{j2} & \cdots & \sum_{j=1}^p a_{nj} b_{jq}
-\end{pmatrix} \\
-& = \left\{ \sum_{j=1}^p a_{ij} b_{jk} \right\}
-\end{align*}
-$$
-
-Another way to define matrix multiplication is through inner product notation. Define the $n \times p$ matrix $\mathbf{A}$ and the $p \times q$ matrix $\mathbf{B}$ as the partition
-
-$$
-\begin{align*}
-\mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
-\mathbf{a}_{2}' \\ 
-\vdots \\
-\mathbf{a}_{n} \end{pmatrix}
-& \mbox{ and } 
-&& \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
-\end{align*}
-$$
-
-where $\mathbf{a}$ and $\mathbf{b}_k$ are both $p$-vectors. Then, we have $\mathbf{C} = \mathbf{A} \mathbf{B} = \left\{ c_{ik} \right\} =  \left\{ \mathbf{a}_i' \mathbf{b}_k \right\}$ which has the matrix form
-
-$$
-\begin{align*}
-\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
-\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
-\end{pmatrix} \\
-& = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
-\end{align*}
-$$
- 
-Written in this notation, we arrive at the multiplication rule for $\mathbf{C} = \mathbf{A} \mathbf{B}$ -- the $ik$th element $c_{ik}$ of $\mathbf{C}$ is the inner product of the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$.
-
-
-
-3) **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is
-
-$$
-\begin{align*}
-\mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\
-& = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\
-\mathbf{0}_{m \times p} & \mathbf{B}
-\end{pmatrix} \\
-\end{align*}
-$$
-
-where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively. 
-
-The direct sum can be generalized to any arbitrary number of matrices as 
-$$
-\begin{align*}
-\mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\
-& = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\
-\mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\
-\end{pmatrix} \\
-\end{align*}
-$$
-
-where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension.
-
-
