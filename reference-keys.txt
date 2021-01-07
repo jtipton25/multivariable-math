@@ -71,9 +71,12 @@ section-identity
 section-properties-of-matrix-transformations
 section-one-to-one-transformations
 section-onto-transformations
-section-matrix-operations
+section-matrix-operations-matrix-operations
 section-matrices
 section-properties-of-matrices
+section-matrix-addition
+section-matrix-multipliation
+section-block-matrices
 section-inner-products-and-norms
 section-projections-orthogonal-projections-and-least-squares
 section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky

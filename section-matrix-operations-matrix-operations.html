@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Matrix operations | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 8 Matrix operations {matrix-operations} | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Matrix operations | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 8 Matrix operations {matrix-operations} | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Matrix operations | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 8 Matrix operations {matrix-operations} | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-06" />
+<meta name="date" content="2021-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,8 +202,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>7.3.2</b> Onto transformations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations</a><ul>
-<li class="chapter" data-level="8.0.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrices"><i class="fa fa-check"></i><b>8.0.1</b> Matrices</a></li>
+<li class="chapter" data-level="8" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations {matrix-operations}</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrices"><i class="fa fa-check"></i><b>8.1</b> Matrices</a></li>
+<li class="chapter" data-level="8.2" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>8.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>8.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>8.2.2</b> Matrix Multipliation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-block-matrices"><i class="fa fa-check"></i><b>8.3</b> Block Matrices</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="section-inner-products-and-norms.html"><a href="section-inner-products-and-norms.html"><i class="fa fa-check"></i><b>9</b> Inner Products and Norms</a></li>
 <li class="chapter" data-level="10" data-path="section-projections-orthogonal-projections-and-least-squares.html"><a href="section-projections-orthogonal-projections-and-least-squares.html"><i class="fa fa-check"></i><b>10</b> Projections: Orthogonal Projections and Least Squares</a></li>
@@ -233,10 +238,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-matrix-operations" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Matrix operations</h1>
-<div id="section-matrices" class="section level3">
-<h3><span class="header-section-number">8.0.1</span> Matrices</h3>
+<div id="section-matrix-operations-matrix-operations" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Matrix operations {matrix-operations}</h1>
+<div id="section-matrices" class="section level2">
+<h2><span class="header-section-number">8.1</span> Matrices</h2>
 <p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(n\)</span> rows and <span class="math inline">\(p\)</span> columns as</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -259,36 +264,36 @@ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
 \]</span></p>
 <p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
 <p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="section-cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="section-matrix-operations.html#cb109-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb109-2"><a href="section-matrix-operations.html#cb109-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb109-3"><a href="section-matrix-operations.html#cb109-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb109-4"><a href="section-matrix-operations.html#cb109-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb109-5"><a href="section-matrix-operations.html#cb109-5"></a>)</span>
-<span id="cb109-6"><a href="section-matrix-operations.html#cb109-6"></a></span>
-<span id="cb109-7"><a href="section-matrix-operations.html#cb109-7"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="section-matrix-operations-matrix-operations.html#cb109-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
+<span id="cb109-2"><a href="section-matrix-operations-matrix-operations.html#cb109-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
+<span id="cb109-3"><a href="section-matrix-operations-matrix-operations.html#cb109-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb109-4"><a href="section-matrix-operations-matrix-operations.html#cb109-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
+<span id="cb109-5"><a href="section-matrix-operations-matrix-operations.html#cb109-5"></a>)</span>
+<span id="cb109-6"><a href="section-matrix-operations-matrix-operations.html#cb109-6"></a></span>
+<span id="cb109-7"><a href="section-matrix-operations-matrix-operations.html#cb109-7"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    7    1
 ## [2,]    5  -22    2
 ## [3,]  -14    5   99
 ## [4,]   42   -3    0</code></pre>
 <p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="section-cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="section-matrix-operations.html#cb111-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb111-2"><a href="section-matrix-operations.html#cb111-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb111-3"><a href="section-matrix-operations.html#cb111-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb111-4"><a href="section-matrix-operations.html#cb111-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb111-5"><a href="section-matrix-operations.html#cb111-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb111-6"><a href="section-matrix-operations.html#cb111-6"></a>)</span>
-<span id="cb111-7"><a href="section-matrix-operations.html#cb111-7"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="section-matrix-operations-matrix-operations.html#cb111-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
+<span id="cb111-2"><a href="section-matrix-operations-matrix-operations.html#cb111-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
+<span id="cb111-3"><a href="section-matrix-operations-matrix-operations.html#cb111-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
+<span id="cb111-4"><a href="section-matrix-operations-matrix-operations.html#cb111-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
+<span id="cb111-5"><a href="section-matrix-operations-matrix-operations.html#cb111-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
+<span id="cb111-6"><a href="section-matrix-operations-matrix-operations.html#cb111-6"></a>)</span>
+<span id="cb111-7"><a href="section-matrix-operations-matrix-operations.html#cb111-7"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    7    1
 ## [2,]    5  -22    2
 ## [3,]  -14    5   99
 ## [4,]   42   -3    0</code></pre>
 <p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="section-cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="section-matrix-operations.html#cb113-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="section-matrix-operations-matrix-operations.html#cb113-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="section-cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="section-matrix-operations.html#cb115-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="section-cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="section-matrix-operations-matrix-operations.html#cb115-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 99</code></pre>
 <p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^p\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^n\)</span>. For example, the column vector representation is</p>
 <p><span class="math display">\[
@@ -309,11 +314,11 @@ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
 \end{align*}
 \]</span></p>
 <p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="section-cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="section-matrix-operations.html#cb117-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb117-2"><a href="section-matrix-operations.html#cb117-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb117-3"><a href="section-matrix-operations.html#cb117-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="section-matrix-operations-matrix-operations.html#cb117-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
+<span id="cb117-2"><a href="section-matrix-operations-matrix-operations.html#cb117-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
+<span id="cb117-3"><a href="section-matrix-operations-matrix-operations.html#cb117-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
 <p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="section-cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="section-matrix-operations.html#cb118-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
+<div class="sourceCode" id="section-cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="section-matrix-operations-matrix-operations.html#cb118-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
 <pre><code>##       c1  c2 c3
 ## [1,]   5   7  1
 ## [2,]   5 -22  2
@@ -335,17 +340,180 @@ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
 \end{align*}
 \]</span></p>
 <p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="section-cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="section-matrix-operations.html#cb120-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb120-2"><a href="section-matrix-operations.html#cb120-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb120-3"><a href="section-matrix-operations.html#cb120-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb120-4"><a href="section-matrix-operations.html#cb120-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
+<div class="sourceCode" id="section-cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="section-matrix-operations-matrix-operations.html#cb120-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
+<span id="cb120-2"><a href="section-matrix-operations-matrix-operations.html#cb120-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
+<span id="cb120-3"><a href="section-matrix-operations-matrix-operations.html#cb120-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
+<span id="cb120-4"><a href="section-matrix-operations-matrix-operations.html#cb120-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
 <p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="section-cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="section-matrix-operations.html#cb121-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
+<div class="sourceCode" id="section-cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="section-matrix-operations-matrix-operations.html#cb121-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
 <pre><code>##    [,1] [,2] [,3]
 ## r1    5    7    1
 ## r2    5  -22    2
 ## r3  -14    5   99
 ## r4   42   -3    0</code></pre>
+</div>
+<div id="section-properties-of-matrices" class="section level2">
+<h2><span class="header-section-number">8.2</span> Properties of matrices</h2>
+<div id="section-matrix-addition" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Matrix Addition</h3>
+<p><strong>Matrix Addition:</strong> If the matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (e.g., both <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same number of rows <span class="math inline">\(n\)</span> and the same number of columns <span class="math inline">\(p\)</span>), then</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} + \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
+\end{pmatrix} + 
+\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1p} \\
+b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np}
+\end{pmatrix} \\
+&amp; = \begin{pmatrix} a_{11} + b_{11} &amp; b_{12} + b_{12} &amp; \cdots &amp; a_{1p} + b_{1p} \\
+a_{21} + b_{21} &amp; a_{22} + b_{22} &amp; \cdots &amp; a_{2p} + b_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} + b_{n1} &amp; a_{n2} + b_{n2} &amp; \cdots &amp; a_{np} + b_{np}
+\end{pmatrix} \\
+&amp; = \left\{ a_{ij} + b_{ij} \right\}
+\end{align*}
+\]</span></p>
+<p><strong>… Another way to </strong></p>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (same number of rows and columns) you can add the matrices together</p>
+<div class="sourceCode" id="section-cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="section-matrix-operations-matrix-operations.html#cb123-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb123-2"><a href="section-matrix-operations-matrix-operations.html#cb123-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">-9</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb123-3"><a href="section-matrix-operations-matrix-operations.html#cb123-3"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    4    2
+## [2,]    1    0
+## [3,]   33   -4</code></pre>
+<div class="sourceCode" id="section-cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="section-matrix-operations-matrix-operations.html#cb125-1"></a>B</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    9
+## [2,]  -24   11
+## [3,]    3   -9</code></pre>
+<div class="sourceCode" id="section-cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="section-matrix-operations-matrix-operations.html#cb127-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   11   11
+## [2,]  -23   11
+## [3,]   36  -13</code></pre>
+<p>We can also write this using <code>for</code> loops</p>
+<div class="sourceCode" id="section-cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="section-matrix-operations-matrix-operations.html#cb129-1"></a><span class="co"># initialize an empty matrix to fill</span></span>
+<span id="cb129-2"><a href="section-matrix-operations-matrix-operations.html#cb129-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb129-3"><a href="section-matrix-operations-matrix-operations.html#cb129-3"></a></span>
+<span id="cb129-4"><a href="section-matrix-operations-matrix-operations.html#cb129-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {         <span class="co"># loop over the rows</span></span>
+<span id="cb129-5"><a href="section-matrix-operations-matrix-operations.html#cb129-5"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {     <span class="co"># loop over the columns</span></span>
+<span id="cb129-6"><a href="section-matrix-operations-matrix-operations.html#cb129-6"></a>        C[i, j] &lt;-<span class="st"> </span>A[i, j] <span class="op">+</span><span class="st"> </span>B[i, j]</span>
+<span id="cb129-7"><a href="section-matrix-operations-matrix-operations.html#cb129-7"></a>    }</span>
+<span id="cb129-8"><a href="section-matrix-operations-matrix-operations.html#cb129-8"></a>}</span>
+<span id="cb129-9"><a href="section-matrix-operations-matrix-operations.html#cb129-9"></a>C</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   11   11
+## [2,]  -23   11
+## [3,]   36  -13</code></pre>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of different dimensions (they differ in either the number of rows or columns), <code>R</code> will return an error warning you that the matrices are of different sizes and can’t be added</p>
+<div class="sourceCode" id="section-cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="section-matrix-operations-matrix-operations.html#cb131-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb131-2"><a href="section-matrix-operations-matrix-operations.html#cb131-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb131-3"><a href="section-matrix-operations-matrix-operations.html#cb131-3"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    4    2
+## [2,]    1    0
+## [3,]   33   -4</code></pre>
+<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-matrix-operations-matrix-operations.html#cb133-1"></a>B</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    3
+## [2,]  -24    9</code></pre>
+<div class="sourceCode" id="section-cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="section-matrix-operations-matrix-operations.html#cb135-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
+<pre><code>## Error in A + B: non-conformable arrays</code></pre>
+<p><strong>Theorem:</strong> Let <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{C}\)</span> be <span class="math inline">\(m \times n\)</span> matrices and let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> be scalars, then:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}\)</span> </li>
+<li><span class="math inline">\((\mathbf{A} + \mathbf{B}) + \mathbf{C} = \mathbf{A} + (\mathbf{B} + \mathbf{C})\)</span> </li>
+<li><span class="math inline">\(\mathbf{A} + \mathbf{0} = \mathbf{A}\)</span> </li>
+<li><span class="math inline">\(a (\mathbf{A} + \mathbf{B}) = a \mathbf{A} + a \mathbf{B}\)</span> </li>
+<li><span class="math inline">\((a + b)\mathbf{A} = a \mathbf{A} + b \mathbf{A}\)</span> </li>
+<li><span class="math inline">\((ab)\mathbf{A} = a (b\mathbf{A})\)</span> </li>
+</ol>
+</div>
+<div id="section-matrix-multipliation" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Matrix Multipliation</h3>
+<p><strong>Matrix Multiplication:</strong> If <span class="math inline">\(\mathbf{A} = \left\{ a_{ij} \right\}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{B} = \left\{ a_{jk} \right\}\)</span> is a <span class="math inline">\(n \times p\)</span> matrix, then the matrix product <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> is an <span class="math inline">\(m \times p\)</span> matrix where <span class="math inline">\(\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix} 
+\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1p} \\
+b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np}
+\end{pmatrix} \\
+&amp; = \begin{pmatrix} \sum_{j=1}^n a_{1j} b_{j1} &amp; \sum_{j=1}^n a_{1j} b_{j2} &amp; \cdots &amp; \sum_{j=1}^n a_{1j} b_{jp} \\
+\sum_{j=1}^n a_{2j} b_{j1} &amp;\sum_{j=1}^n a_{2j} b_{j2} &amp; \cdots &amp; \sum_{j=1}^n a_{2j} b_{jp} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\sum_{j=1}^n a_{mj} b_{j1} &amp;\sum_{j=1}^n a_{nj} b_{j2} &amp; \cdots &amp; \sum_{j=1}^n a_{mj} b_{jp}
+\end{pmatrix} 
+\end{align*}
+\]</span></p>
+<p>Another way to define matrix multiplication is through inner product notation. Define the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span> as the partition</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \begin{pmatrix} \mathbf{a}_{1}&#39; \\
+\mathbf{a}_{2}&#39; \\ 
+\vdots \\
+\mathbf{a}_{m}&#39; \end{pmatrix}
+&amp; \mbox{ and } 
+&amp;&amp; \mathbf{B} &amp; = \begin{pmatrix} \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{p} \end{pmatrix} 
+\end{align*}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{a}_i\)</span> and <span class="math inline">\(\mathbf{b}_k\)</span> are both <span class="math inline">\(n\)</span>-vectors. Then, we have <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> can be written as</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} \mathbf{B}  = \mathbf{A} \begin{pmatrix} \mathbf{b}_1 &amp; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{b}_p
+\end{pmatrix}  = \begin{pmatrix} \mathbf{A} \mathbf{b}_1 &amp; \mathbf{A} \mathbf{b}_2 &amp; \cdots &amp; \mathbf{A} \mathbf{b}_p
+\end{pmatrix} 
+\end{align*}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} \mathbf{a}_1&#39; \mathbf{b}_1 &amp; \mathbf{a}_1&#39; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_1&#39; \mathbf{b}_q \\
+\mathbf{a}_2&#39; \mathbf{b}_1 &amp; \mathbf{a}_2&#39; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_2&#39; \mathbf{b}_q \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\mathbf{a}_n&#39; \mathbf{b}_1 &amp; \mathbf{a}_n&#39; \mathbf{b}_2  &amp; \cdots &amp; \mathbf{a}_n&#39; \mathbf{b}_q
+\end{pmatrix} \\
+&amp; = \left\{ \mathbf{a}_i&#39; \mathbf{b}_k  \right\}.
+\end{align*}
+\]</span></p>
+<p>Written in this notation, we arrive at the multiplication rule for <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> – the <span class="math inline">\(ik\)</span>th element <span class="math inline">\(c_{ik}\)</span> of <span class="math inline">\(\mathbf{C}\)</span> is the inner product of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(\mathbf{B}\)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Direct Sums:</strong> For the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(m \times q\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span>, the direct sum is</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{C} &amp; = \mathbf{A} \bigoplus \mathbf{B} \\
+&amp; = \begin{pmatrix} \mathbf{A} &amp; \mathbf{0}_{n \times q} \\
+\mathbf{0}_{m \times p} &amp; \mathbf{B}
+\end{pmatrix} \\
+\end{align*}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{0}_{n \times q}\)</span> and <span class="math inline">\(\mathbf{0}_{m \times p}\)</span> is an are <span class="math inline">\(n \times q\)</span> and <span class="math inline">\(m \times p\)</span> matrices of all 0s, respectively.</p>
+<p>The direct sum can be generalized to any arbitrary number of matrices as
+<span class="math display">\[
+\begin{align*}
+\mathbf{C} &amp; = \bigoplus_{i=1}^K \mathbf{A}_i \\
+&amp; = \begin{pmatrix} \mathbf{A}_1 &amp; \mathbf{0} &amp; \cdots &amp; \mathbf{0} \\
+\mathbf{0} &amp; \mathbf{A}_2 &amp;  \cdots &amp; \mathbf{0} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\mathbf{0} &amp; \mathbf{0} &amp; \cdots &amp; \mathbf{A}_K \\
+\end{pmatrix} \\
+\end{align*}
+\]</span></p>
+<p>where the matrices <span class="math inline">\(\mathbf{0}\)</span> are all zeros of the appropriate dimension.</p>
+</div>
+</div>
+<div id="section-block-matrices" class="section level2">
+<h2><span class="header-section-number">8.3</span> Block Matrices</h2>
 <p>Another way to represent matrices is using a block form. A block-representation of a matrix arises when the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is represented using smaller blocks as follows:</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -385,186 +553,43 @@ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
 \end{align*}
 \]</span></p>
 <p>where <span class="math inline">\(\mathbf{A}_{11} = \begin{bmatrix} 5 &amp; 7 \\ 5 &amp; -22 \end{bmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, <span class="math inline">\(\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\)</span> is a <span class="math inline">\(1 \times 2\)</span> matrix, etc.</p>
-<div class="sourceCode" id="section-cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="section-matrix-operations.html#cb123-1"></a>A_<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-22</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb123-2"><a href="section-matrix-operations.html#cb123-2"></a>A_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb123-3"><a href="section-matrix-operations.html#cb123-3"></a>A_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">5</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb123-4"><a href="section-matrix-operations.html#cb123-4"></a>A_<span class="dv">22</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">0</span>)</span>
-<span id="cb123-5"><a href="section-matrix-operations.html#cb123-5"></a></span>
-<span id="cb123-6"><a href="section-matrix-operations.html#cb123-6"></a><span class="co">## bind columns then rows</span></span>
-<span id="cb123-7"><a href="section-matrix-operations.html#cb123-7"></a><span class="kw">rbind</span>(</span>
-<span id="cb123-8"><a href="section-matrix-operations.html#cb123-8"></a>    <span class="kw">cbind</span>(A_<span class="dv">11</span>, A_<span class="dv">12</span>),</span>
-<span id="cb123-9"><a href="section-matrix-operations.html#cb123-9"></a>    <span class="kw">cbind</span>(A_<span class="dv">21</span>, A_<span class="dv">22</span>)</span>
-<span id="cb123-10"><a href="section-matrix-operations.html#cb123-10"></a>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="section-matrix-operations-matrix-operations.html#cb137-1"></a>A_<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-22</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb137-2"><a href="section-matrix-operations-matrix-operations.html#cb137-2"></a>A_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb137-3"><a href="section-matrix-operations-matrix-operations.html#cb137-3"></a>A_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">5</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb137-4"><a href="section-matrix-operations-matrix-operations.html#cb137-4"></a>A_<span class="dv">22</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">0</span>)</span>
+<span id="cb137-5"><a href="section-matrix-operations-matrix-operations.html#cb137-5"></a></span>
+<span id="cb137-6"><a href="section-matrix-operations-matrix-operations.html#cb137-6"></a><span class="co">## bind columns then rows</span></span>
+<span id="cb137-7"><a href="section-matrix-operations-matrix-operations.html#cb137-7"></a><span class="kw">rbind</span>(</span>
+<span id="cb137-8"><a href="section-matrix-operations-matrix-operations.html#cb137-8"></a>    <span class="kw">cbind</span>(A_<span class="dv">11</span>, A_<span class="dv">12</span>),</span>
+<span id="cb137-9"><a href="section-matrix-operations-matrix-operations.html#cb137-9"></a>    <span class="kw">cbind</span>(A_<span class="dv">21</span>, A_<span class="dv">22</span>)</span>
+<span id="cb137-10"><a href="section-matrix-operations-matrix-operations.html#cb137-10"></a>)</span></code></pre></div>
 <pre><code>##              A_12
 ## [1,]   5   7    1
 ## [2,]   5 -22    2
 ## [3,] -14   5   99
 ## [4,]  42  -3    0</code></pre>
-<div class="sourceCode" id="section-cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="section-matrix-operations.html#cb125-1"></a><span class="co">## bind rows then columns </span></span>
-<span id="cb125-2"><a href="section-matrix-operations.html#cb125-2"></a><span class="kw">cbind</span>(</span>
-<span id="cb125-3"><a href="section-matrix-operations.html#cb125-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
-<span id="cb125-4"><a href="section-matrix-operations.html#cb125-4"></a>    <span class="kw">c</span>(A_<span class="dv">12</span>, A_<span class="dv">22</span>) <span class="co">## rbind on vectors is different than c()</span></span>
-<span id="cb125-5"><a href="section-matrix-operations.html#cb125-5"></a>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="section-matrix-operations-matrix-operations.html#cb139-1"></a><span class="co">## bind rows then columns </span></span>
+<span id="cb139-2"><a href="section-matrix-operations-matrix-operations.html#cb139-2"></a><span class="kw">cbind</span>(</span>
+<span id="cb139-3"><a href="section-matrix-operations-matrix-operations.html#cb139-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
+<span id="cb139-4"><a href="section-matrix-operations-matrix-operations.html#cb139-4"></a>    <span class="kw">c</span>(A_<span class="dv">12</span>, A_<span class="dv">22</span>) <span class="co">## rbind on vectors is different than c()</span></span>
+<span id="cb139-5"><a href="section-matrix-operations-matrix-operations.html#cb139-5"></a>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    7    1
 ## [2,]    5  -22    2
 ## [3,]  -14    5   99
 ## [4,]   42   -3    0</code></pre>
-<div class="sourceCode" id="section-cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="section-matrix-operations.html#cb127-1"></a><span class="co">## bind rows then columns </span></span>
-<span id="cb127-2"><a href="section-matrix-operations.html#cb127-2"></a><span class="kw">cbind</span>(</span>
-<span id="cb127-3"><a href="section-matrix-operations.html#cb127-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
-<span id="cb127-4"><a href="section-matrix-operations.html#cb127-4"></a>    <span class="co">## convert the vectors to matrices for rbind</span></span>
-<span id="cb127-5"><a href="section-matrix-operations.html#cb127-5"></a>    <span class="kw">rbind</span>(<span class="kw">as.matrix</span>(A_<span class="dv">12</span>), <span class="kw">as.matrix</span>(A_<span class="dv">22</span>)) </span>
-<span id="cb127-6"><a href="section-matrix-operations.html#cb127-6"></a>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="section-matrix-operations-matrix-operations.html#cb141-1"></a><span class="co">## bind rows then columns </span></span>
+<span id="cb141-2"><a href="section-matrix-operations-matrix-operations.html#cb141-2"></a><span class="kw">cbind</span>(</span>
+<span id="cb141-3"><a href="section-matrix-operations-matrix-operations.html#cb141-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
+<span id="cb141-4"><a href="section-matrix-operations-matrix-operations.html#cb141-4"></a>    <span class="co">## convert the vectors to matrices for rbind</span></span>
+<span id="cb141-5"><a href="section-matrix-operations-matrix-operations.html#cb141-5"></a>    <span class="kw">rbind</span>(<span class="kw">as.matrix</span>(A_<span class="dv">12</span>), <span class="kw">as.matrix</span>(A_<span class="dv">22</span>)) </span>
+<span id="cb141-6"><a href="section-matrix-operations-matrix-operations.html#cb141-6"></a>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    7    1
 ## [2,]    5  -22    2
 ## [3,]  -14    5   99
 ## [4,]   42   -3    0</code></pre>
-<div id="section-properties-of-matrices" class="section level4">
-<h4><span class="header-section-number">8.0.1.1</span> Properties of matrices</h4>
-<ol style="list-style-type: decimal">
-<li><strong>Matrix Addition:</strong> If the matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (e.g., both <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same number of rows <span class="math inline">\(n\)</span> and the same number of columns <span class="math inline">\(p\)</span>), then</li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} + \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
-\end{pmatrix} + 
-\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1p} \\
-b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np}
-\end{pmatrix} \\
-&amp; = \begin{pmatrix} a_{11} + b_{11} &amp; b_{12} + b_{12} &amp; \cdots &amp; a_{1p} + b_{1p} \\
-a_{21} + b_{21} &amp; a_{22} + b_{22} &amp; \cdots &amp; a_{2p} + b_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} + b_{n1} &amp; a_{n2} + b_{n2} &amp; \cdots &amp; a_{np} + b_{np}
-\end{pmatrix} \\
-&amp; = \left\{ a_{ij} + b_{ij} \right\}
-\end{align*}
-\]</span></p>
-<p><strong>… Another way to </strong></p>
-<p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (same number of rows and columns) you can add the matrices together</p>
-<div class="sourceCode" id="section-cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="section-matrix-operations.html#cb129-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb129-2"><a href="section-matrix-operations.html#cb129-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">-9</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb129-3"><a href="section-matrix-operations.html#cb129-3"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    4    2
-## [2,]    1    0
-## [3,]   33   -4</code></pre>
-<div class="sourceCode" id="section-cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="section-matrix-operations.html#cb131-1"></a>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    7    9
-## [2,]  -24   11
-## [3,]    3   -9</code></pre>
-<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-matrix-operations.html#cb133-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]   11   11
-## [2,]  -23   11
-## [3,]   36  -13</code></pre>
-<p>We can also write this using <code>for</code> loops</p>
-<div class="sourceCode" id="section-cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="section-matrix-operations.html#cb135-1"></a><span class="co"># initialize an empty matrix to fill</span></span>
-<span id="cb135-2"><a href="section-matrix-operations.html#cb135-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb135-3"><a href="section-matrix-operations.html#cb135-3"></a></span>
-<span id="cb135-4"><a href="section-matrix-operations.html#cb135-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {         <span class="co"># loop over the rows</span></span>
-<span id="cb135-5"><a href="section-matrix-operations.html#cb135-5"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {     <span class="co"># loop over the columns</span></span>
-<span id="cb135-6"><a href="section-matrix-operations.html#cb135-6"></a>        C[i, j] &lt;-<span class="st"> </span>A[i, j] <span class="op">+</span><span class="st"> </span>B[i, j]</span>
-<span id="cb135-7"><a href="section-matrix-operations.html#cb135-7"></a>    }</span>
-<span id="cb135-8"><a href="section-matrix-operations.html#cb135-8"></a>}</span>
-<span id="cb135-9"><a href="section-matrix-operations.html#cb135-9"></a>C</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]   11   11
-## [2,]  -23   11
-## [3,]   36  -13</code></pre>
-<p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of different dimensions (they differ in either the number of rows or columns), <code>R</code> will return an error warning you that the matrices are of different sizes and can’t be added</p>
-<div class="sourceCode" id="section-cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="section-matrix-operations.html#cb137-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb137-2"><a href="section-matrix-operations.html#cb137-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb137-3"><a href="section-matrix-operations.html#cb137-3"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    4    2
-## [2,]    1    0
-## [3,]   33   -4</code></pre>
-<div class="sourceCode" id="section-cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="section-matrix-operations.html#cb139-1"></a>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    7    3
-## [2,]  -24    9</code></pre>
-<div class="sourceCode" id="section-cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="section-matrix-operations.html#cb141-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
-<pre><code>## Error in A + B: non-conformable arrays</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Matrix Multiplication:</strong> If <span class="math inline">\(\mathbf{A} = \left\{ a_{ij} \right\}\)</span> is an <span class="math inline">\(n \times p\)</span> matrix and <span class="math inline">\(\mathbf{B} = \left\{ a_{jk} \right\}\)</span> is a <span class="math inline">\(p \times q\)</span> matrix, then the matrix product <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> is an <span class="math inline">\(n \times q\)</span> matrix where <span class="math inline">\(\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}\)</span></li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
-\end{pmatrix} 
-\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1q} \\
-b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2q} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-b_{p1} &amp; b_{p2} &amp; \cdots &amp; b_{pq}
-\end{pmatrix} \\
-&amp; = \begin{pmatrix} \sum_{j=1}^p a_{1j} b_{j1} &amp; \sum_{j=1}^p a_{1j} b_{j2} &amp; \cdots &amp; \sum_{j=1}^p a_{1j} b_{jq} \\
-\sum_{j=1}^p a_{2j} b_{j1} &amp;\sum_{j=1}^p a_{2j} b_{j2} &amp; \cdots &amp; \sum_{j=1}^p a_{2j} b_{jq} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\sum_{j=1}^p a_{nj} b_{j1} &amp;\sum_{j=1}^p a_{nj} b_{j2} &amp; \cdots &amp; \sum_{j=1}^p a_{nj} b_{jq}
-\end{pmatrix} \\
-&amp; = \left\{ \sum_{j=1}^p a_{ij} b_{jk} \right\}
-\end{align*}
-\]</span></p>
-<p>Another way to define matrix multiplication is through inner product notation. Define the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(p \times q\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span> as the partition</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{a}_{1}&#39; \\
-\mathbf{a}_{2}&#39; \\ 
-\vdots \\
-\mathbf{a}_{n} \end{pmatrix}
-&amp; \mbox{ and } 
-&amp;&amp; \mathbf{B} &amp; = \begin{pmatrix} \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{p} \end{pmatrix} 
-\end{align*}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{a}\)</span> and <span class="math inline">\(\mathbf{b}_k\)</span> are both <span class="math inline">\(p\)</span>-vectors. Then, we have <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B} = \left\{ c_{ik} \right\} = \left\{ \mathbf{a}_i&#39; \mathbf{b}_k \right\}\)</span> which has the matrix form</p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} \mathbf{a}_1&#39; \mathbf{b}_1 &amp; \mathbf{a}_1&#39; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_1&#39; \mathbf{b}_q \\
-\mathbf{a}_2&#39; \mathbf{b}_1 &amp; \mathbf{a}_2&#39; \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_2&#39; \mathbf{b}_q \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\mathbf{a}_n&#39; \mathbf{b}_1 &amp; \mathbf{a}_n&#39; \mathbf{b}_2  &amp; \cdots &amp; \mathbf{a}_n&#39; \mathbf{b}_q
-\end{pmatrix} \\
-&amp; = \left\{ \mathbf{a}_i&#39; \mathbf{b}_k  \right\}.
-\end{align*}
-\]</span></p>
-<p>Written in this notation, we arrive at the multiplication rule for <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> – the <span class="math inline">\(ik\)</span>th element <span class="math inline">\(c_{ik}\)</span> of <span class="math inline">\(\mathbf{C}\)</span> is the inner product of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(\mathbf{B}\)</span>.</p>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Direct Sums:</strong> For the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(m \times q\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span>, the direct sum is</li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{C} &amp; = \mathbf{A} \bigoplus \mathbf{B} \\
-&amp; = \begin{pmatrix} \mathbf{A} &amp; \mathbf{0}_{n \times q} \\
-\mathbf{0}_{m \times p} &amp; \mathbf{B}
-\end{pmatrix} \\
-\end{align*}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{0}_{n \times q}\)</span> and <span class="math inline">\(\mathbf{0}_{m \times p}\)</span> is an are <span class="math inline">\(n \times q\)</span> and <span class="math inline">\(m \times p\)</span> matrices of all 0s, respectively.</p>
-<p>The direct sum can be generalized to any arbitrary number of matrices as
-<span class="math display">\[
-\begin{align*}
-\mathbf{C} &amp; = \bigoplus_{i=1}^K \mathbf{A}_i \\
-&amp; = \begin{pmatrix} \mathbf{A}_1 &amp; \mathbf{0} &amp; \cdots &amp; \mathbf{0} \\
-\mathbf{0} &amp; \mathbf{A}_2 &amp;  \cdots &amp; \mathbf{0} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\mathbf{0} &amp; \mathbf{0} &amp; \cdots &amp; \mathbf{A}_K \\
-\end{pmatrix} \\
-\end{align*}
-\]</span></p>
-<p>where the matrices <span class="math inline">\(\mathbf{0}\)</span> are all zeros of the appropriate dimension.</p>
 
-</div>
 </div>
 </div>
             </section>
