@@ -1,4 +1,4 @@
-# Matrix operations {matrix-operations}
+# Matrix operations {#matrix-operations}
 
 * **Note: add examples:**
 
@@ -291,85 +291,5 @@ $$
 
 
 
-
-
-
-
-
-<!-- ## Block Matrices -->
-
-<!-- Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows: -->
-
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- \mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\ -->
-<!-- \mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\ -->
-<!-- \vdots & \vdots & \ddots & \vdots \\ -->
-<!-- \mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\ -->
-<!-- \end{pmatrix} \\ -->
-<!-- \end{align*} -->
-<!-- $$ -->
-
-<!-- where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n$ and $\sum_{k=1}^K p_k = p$. -->
-
-<!-- For example, the matrix -->
-
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- \mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\ -->
-<!-- 5 & -22  & 2 \\ -->
-<!-- -14 & 5 & 99 \\ -->
-<!-- 42 & -3 & 0\end{pmatrix}, -->
-<!-- \end{align*} -->
-<!-- $$ -->
-
-<!-- can be written in block diagonal form with -->
-
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- \mathbf{A} & =  -->
-<!-- \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ -->
-<!-- \mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\ -->
-<!-- & = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\ -->
-<!-- 5 & -22 \end{bmatrix} &  -->
-<!-- \begin{bmatrix} 1 \\ -->
-<!-- 2 \end{bmatrix} \\ -->
-<!-- \begin{bmatrix} -->
-<!-- -14 & 5 \\ -->
-<!-- 42 & -3  -->
-<!-- \end{bmatrix} &  -->
-<!-- \begin{bmatrix} 99 \\ 0 \end{bmatrix} -->
-<!-- \end{pmatrix}, -->
-<!-- \end{align*} -->
-<!-- $$ -->
-
-<!-- where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc. -->
-
-
-<!-- ```{r} -->
-<!-- A_11 <- matrix(c(5, 5, 7, -22), 2, 2) -->
-<!-- A_12 <- c(1, 2) -->
-<!-- A_21 <- matrix(c(-14, 42, 5, -3), 2, 2) -->
-<!-- A_22 <- c(99, 0) -->
-
-<!-- ## bind columns then rows -->
-<!-- rbind( -->
-<!--     cbind(A_11, A_12), -->
-<!--     cbind(A_21, A_22) -->
-<!-- ) -->
-
-<!-- ## bind rows then columns  -->
-<!-- cbind( -->
-<!--     rbind(A_11, A_21), -->
-<!--     c(A_12, A_22) ## rbind on vectors is different than c() -->
-<!-- ) -->
-
-<!-- ## bind rows then columns  -->
-<!-- cbind( -->
-<!--     rbind(A_11, A_21), -->
-<!--     ## convert the vectors to matrices for rbind -->
-<!--     rbind(as.matrix(A_12), as.matrix(A_22))  -->
-<!-- ) -->
-<!-- ``` -->
 
 
