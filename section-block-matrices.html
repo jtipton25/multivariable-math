@@ -203,14 +203,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>7.3.2</b> Onto transformations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations {matrix-operations}</a><ul>
-<li class="chapter" data-level="8.1" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>8.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>8.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="8.1.2" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>8.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="8.1.3" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>8.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="8.1.4" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>8.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="8.1.5" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-powers"><i class="fa fa-check"></i><b>8.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="8.1.6" data-path="section-matrix-operations-matrix-operations.html"><a href="section-matrix-operations-matrix-operations.html#section-matrix-transpose"><i class="fa fa-check"></i><b>8.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="8" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>8.1</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>8.1.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>8.1.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="8.1.3" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>8.1.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="8.1.4" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>8.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="8.1.5" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-powers"><i class="fa fa-check"></i><b>8.1.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="8.1.6" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-transpose"><i class="fa fa-check"></i><b>8.1.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html"><i class="fa fa-check"></i><b>9</b> Matrix Inverses</a><ul>
@@ -248,7 +248,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-block-matrices" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Block Matrices</h1>
-<p>Block (or partitioned) matrices</p>
+<p>Another way to represent matrices is using a block (or partitioned) form. A block-representation of a matrix arises when the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is represented using smaller blocks as follows:</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} &amp; \cdots &amp; \mathbf{A}_{1K} \\
+\mathbf{A}_{21} &amp; \mathbf{A}_{22} &amp;  \cdots &amp; \mathbf{A}_{2K} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\mathbf{A}_{J1} &amp; \mathbf{A}_{J2} &amp; \cdots &amp; \mathbf{A}_{JK} \\
+\end{pmatrix} \\
+\end{align*}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{A}_{ij}\)</span> is a <span class="math inline">\(n_j \times p_k\)</span> matrix where <span class="math inline">\(\sum_{j=1}^J n_j = n\)</span> and <span class="math inline">\(\sum_{k=1}^K p_k = p\)</span>.</p>
+<p>For example, the matrix</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
+5 &amp; -22  &amp; 2 \\
+-14 &amp; 5 &amp; 99 \\
+42 &amp; -3 &amp; 0\end{pmatrix},
+\end{align*}
+\]</span></p>
+<p>can be written in block diagonal form with</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; =
+\begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} \\
+\mathbf{A}_{21} &amp; \mathbf{A}_{22} \end{pmatrix} \\
+&amp; = \begin{pmatrix} \begin{bmatrix} 5 &amp; 7 \\
+5 &amp; -22 \end{bmatrix} &amp;
+\begin{bmatrix} 1 \\
+2 \end{bmatrix} \\
+\begin{bmatrix}
+-14 &amp; 5 \\
+42 &amp; -3
+\end{bmatrix} &amp;
+\begin{bmatrix} 99 \\ 0 \end{bmatrix}
+\end{pmatrix},
+\end{align*}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{A}_{11} = \begin{bmatrix} 5 &amp; 7 \\ 5 &amp; -22 \end{bmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, <span class="math inline">\(\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\)</span> is a <span class="math inline">\(1 \times 2\)</span> matrix, etc.</p>
+<div class="sourceCode" id="section-cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="section-block-matrices.html#cb144-1"></a>A_<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-22</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb144-2"><a href="section-block-matrices.html#cb144-2"></a>A_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb144-3"><a href="section-block-matrices.html#cb144-3"></a>A_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">5</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb144-4"><a href="section-block-matrices.html#cb144-4"></a>A_<span class="dv">22</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">0</span>)</span>
+<span id="cb144-5"><a href="section-block-matrices.html#cb144-5"></a></span>
+<span id="cb144-6"><a href="section-block-matrices.html#cb144-6"></a><span class="co">## bind columns then rows</span></span>
+<span id="cb144-7"><a href="section-block-matrices.html#cb144-7"></a><span class="kw">rbind</span>(</span>
+<span id="cb144-8"><a href="section-block-matrices.html#cb144-8"></a>    <span class="kw">cbind</span>(A_<span class="dv">11</span>, A_<span class="dv">12</span>),</span>
+<span id="cb144-9"><a href="section-block-matrices.html#cb144-9"></a>    <span class="kw">cbind</span>(A_<span class="dv">21</span>, A_<span class="dv">22</span>)</span>
+<span id="cb144-10"><a href="section-block-matrices.html#cb144-10"></a>)</span></code></pre></div>
+<pre><code>##              A_12
+## [1,]   5   7    1
+## [2,]   5 -22    2
+## [3,] -14   5   99
+## [4,]  42  -3    0</code></pre>
+<div class="sourceCode" id="section-cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="section-block-matrices.html#cb146-1"></a><span class="co">## bind rows then columns</span></span>
+<span id="cb146-2"><a href="section-block-matrices.html#cb146-2"></a><span class="kw">cbind</span>(</span>
+<span id="cb146-3"><a href="section-block-matrices.html#cb146-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
+<span id="cb146-4"><a href="section-block-matrices.html#cb146-4"></a>    <span class="kw">c</span>(A_<span class="dv">12</span>, A_<span class="dv">22</span>) <span class="co">## rbind on vectors is different than c()</span></span>
+<span id="cb146-5"><a href="section-block-matrices.html#cb146-5"></a>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    7    1
+## [2,]    5  -22    2
+## [3,]  -14    5   99
+## [4,]   42   -3    0</code></pre>
+<div class="sourceCode" id="section-cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="section-block-matrices.html#cb148-1"></a><span class="co">## bind rows then columns</span></span>
+<span id="cb148-2"><a href="section-block-matrices.html#cb148-2"></a><span class="kw">cbind</span>(</span>
+<span id="cb148-3"><a href="section-block-matrices.html#cb148-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
+<span id="cb148-4"><a href="section-block-matrices.html#cb148-4"></a>    <span class="co">## convert the vectors to matrices for rbind</span></span>
+<span id="cb148-5"><a href="section-block-matrices.html#cb148-5"></a>    <span class="kw">rbind</span>(<span class="kw">as.matrix</span>(A_<span class="dv">12</span>), <span class="kw">as.matrix</span>(A_<span class="dv">22</span>))</span>
+<span id="cb148-6"><a href="section-block-matrices.html#cb148-6"></a>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    7    1
+## [2,]    5  -22    2
+## [3,]  -14    5   99
+## [4,]   42   -3    0</code></pre>
 
 </div>
             </section>

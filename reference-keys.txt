@@ -72,7 +72,7 @@ section-identity
 section-properties-of-matrix-transformations
 section-one-to-one-transformations
 section-onto-transformations
-section-matrix-operations-matrix-operations
+section-matrix-operations
 section-properties-of-matrices
 section-matrix-addition
 section-matrix-multipliation
