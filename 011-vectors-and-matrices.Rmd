@@ -24,42 +24,6 @@ The fundamental objects in this text are scalars, vectors, and matrices.
 
 
 
-11) **Transpose Transivity:** The transpose operator is transitive
-
-$$
-\begin{align*}
-(\mathbf{x} + \mathbf{y})' & = \mathbf{x}' + \mathbf{y}' 
-\end{align*}
-$$
-
-```{r}
-x <- c(4, 3, 5)
-y <- c(-4, 8, 7)
-t(x + y)
-t(x) + t(y)
-```
-
-In addition, the transpose of a transpose is the identity operator $\left( \mathbf{x}' \right)' = \mathbf{x}$.
-
-```{r}
-x
-t(x)
-t(t(x))
-```
-
-* **Note:** `R` can be finicky about vectors and matrices. The transpose converts the vector $\mathbf{x}$ to a matrix $\mathbf{x}'$ with one row. Thus, `t(t(x))` gives a matrix with one column (which is a not quite the same as a vector). To force `t(t(x))` to be a vector, you can drop the dimension with `drop()`
-
-```{r}
-drop(t(t(x)))
-```
-
-4) 
-
-
-
-
-
-
 
 
 

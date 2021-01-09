@@ -1,0 +1,245 @@
+# Matrix Inverses {#matrix-inverse}
+
+```{r, message = FALSE}
+library(dasc2594)
+library(tidyverse)
+```
+
+For scalars, the multiplicative identity is 
+$$
+a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
+$$
+where $a^{-1}$ is the inverse of $a$.
+
+The $n \times n$ **square** matrix $\mathbf{A}$ is said to be **invertible** if there exists a $n \times n$ matrix $\mathbf{C}$( which we call $\mathbf{A}^{-1}$ once we verify the inverse exists) such that 
+$$
+\begin{align*}
+\mathbf{C}\mathbf{A} = \mathbf{A} \mathbf{C} & = \mathbf{I} \\
+\mathbf{A}^{-1} \mathbf{A} = \mathbf{A} \mathbf{A}^{-1} & = \mathbf{I}
+\end{align*}
+$$
+where $\mathbf{I}$ is the $n \times n$ identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
+
+In `R`, an identity matrix is easy to construct. An $n \times n$ identity matrix can be constructed using the `diag()` function
+```{r}
+n <- 4
+I <- diag(n)
+I
+```
+
+* **Example:**
+
+```{r, echo = FALSE}
+A <- matrix(c(1, 2, -1, -3), 2, 2)
+B <- matrix(c(3, 2, -1, -1), 2, 2) 
+```
+
+$$
+\begin{align*}
+\mathbf{A} = `r array_to_latex(A)` && \mathbf{B} = `r array_to_latex(A)`
+\end{align*}
+$$
+
+**Theorem:** Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. If $ad - bc \neq 0$ then $\mathbf{A}$ is invertible and 
+$$
+\begin{align*}
+\mathbf{A} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+\end{align*}
+$$
+If $ad - bc = 0$, then the matrix is not invertible.
+
+* **Question:** why is the matrix not invertible when $ad - bc = 0$? Have you heard of "singular" or "singularity" before?
+    * Black holes are called singularities. Why is this?
+    * Square matrices that are not invertible are call "singular"
+    
+**Definition:** For the $2 \times 2$ matrix $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, the term $ad - bc$ is called the **determinant** of the matrix $\mathbf{A}$ and is written as $\operatorname{det}(\mathbf{A})$. Sometimes the determinant is written as $| \mathbf{A}|$
+
+A consequence of the above theorem is that a $2 \times 2$ matrix is invertible only if its determinant is nonzero.
+    
+* **Example: in class** Determine if the following $2 \times 2$ matrix is invertible
+
+**Theorem:** If the $n \times n$ matrix $\mathbf{A}$ is invertible, then for each $\mathbf{b} \in \mathcal{R}^n$, the matrix equation
+$$
+\mathbf{A} \mathbf{x} = \mathbf{b}
+$$
+has the unique solution $\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}$. 
+
+* **Proof: in class**
+
+* **Example in R: in class**
+
+**Theorem:**
+
+1) If $\mathbf{A}$ is an invertible matrix, then $\mathbf{A}^{-1}$ is invertible and $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
+
+2) If $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ invertible matrices, then $\mathbf{A} \mathbf{B}$ is also an invertible matrix whose inverse is 
+$$
+(\mathbf{A}\mathbf{B})^{-1} = \mathbf{B}^{-1}\mathbf{A}^{-1}
+$$
+which is the inverse of the matrices in reverse order.
+
+3) If $\mathbf{A}$ is an invertible matrix, then the transpose $\mathbf{A}'$ is also invertible and the inverse of $\mathbf{A}'$ is the transpose of $\mathbf{A}^{-1}$. Equivalently,
+$$
+(\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'
+$$
+
+* **Proof: in class**
+
+***Note:** The product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1$
+
+## Elementary matrices
+
+* Elementary matrices are matrices that perform basic row operations (i.e., we can write the reduced row echelon algorithm as a produce of elementary matrices).
+
+Recall the elementary row operations:
+
+1) swaps: swapping two rows. 
+2) sums: replacing a row by the sum itself and a multiple of another row.
+3) scalar multiplication: replacing a row by a scalar multiple times itself.
+
+* **Example:** Consider a $3 \times 3$ matrix 
+
+    ```{r}
+    A <- matrix(c(4, 5, 9, -2, -4, 1, 4, 6, -2), 3, 3)
+    ```
+    
+    $\mathbf{A} = `r array_to_latex(A)`$
+    
+    
+    1) What is the elementary matrix (let's call it $\mathbf{E}_1$ that swaps the first and second rows of $\mathbf{A}$?
+    
+    ```{r}
+    E_1 <- matrix(c(0, 1, 0, 1, 0, 0,  0, 0, 1), 3, 3)
+    ```
+    $\mathbf{E}_1 = `r array_to_latex(E_1)`$
+    
+    ```{r}
+    A
+    ## left multiple A by E_1
+    E_1 %*% A
+    ```
+    
+    Thus, the matrix $\mathbf{E}_1 = `r array_to_latex(E_1)`$ is the matrix that swaps the first and second row.
+    
+    2) What is the elementary matrix (let's call it $\mathbf{E}_2$ that adds two times the first of $\mathbf{A}$ to the third row of $\mathbf{A}$?
+    
+    ```{r}
+    E_2 <- matrix(c(1, 0, 2, 0, 1, 0, 0, 0, 1), 3, 3)
+    ```
+    $\mathbf{E}_2 = `r array_to_latex(E_2)`$
+    
+    ```{r}
+    A
+    ## left multiple A by E_2
+    E_2 %*% A
+    ```
+    
+    Thus, the matrix $\mathbf{E}_2 = `r array_to_latex(E_2)`$ is the matrix that adds two times the first of $\mathbf{A}$ to the third row of $\mathbf{A}$
+    
+    3) What is the elementary matrix (let's call it $\mathbf{E}_3$ that mutliples the second row of $\mathbf{A}$ by 3?
+    
+    ```{r}
+    E_3 <- matrix(c(1, 0, 0, 0, 3, 0, 0, 0, 1), 3, 3)
+    ```
+    $\mathbf{E}_3 = `r array_to_latex(E_3)`$
+    
+    ```{r}
+    A
+    ## left multiple A by E_3
+    E_3 %*% A
+    ```
+    
+    Thus, the matrix $\mathbf{E}_3 = `r array_to_latex(E_3)`$ is the matrix that  mutliples the second row of $\mathbf{A}$ by 3.
+    
+* **Question:** Do you see any patterns with how the example elementary matrices look?
+
+$$
+\begin{align*}
+\mathbf{E_1} = `r array_to_latex(E_1)` && \mathbf{E_2} = `r array_to_latex(E_2)` && \mathbf{E_3} = `r array_to_latex(E_3)`
+\end{align*}
+$$    
+    
+* The elementary matrices look like the identity matrix $\mathbf{I}$ with an elementary row operation applied to $\mathbf{I}$. In fact, this leads us to this general fact:
+
+**Fact:** If an elementary row matrix is applied to the $m \times n$ matrix $\mathbf{A}$, the result of this elementary row operation applied to $\mathbf{A}$ can be written as $\mathbf{E} \mathbf{A}$ where $\mathbf{E}$ is the $m \times m$ identity matrix $\mathbf{I}$ with the respective elementary row operation applied to $\mathbf{I}$.
+
+**Fact:** Each elementary matrix $\mathbf{E}$ is invertible
+
+**Example: in class**
+
+The next theorem is quite important as the result gives an algorithm for calculating the inverse of a $n \times n$ matrix $\mathbf{A}$ which also makes it possible to solve matrix equations $\mathbf{A}\mathbf{x} = \mathbf{b}$
+
+**Theorem:** If an $n \times n$ matrix $\mathbf{A}$ is invertible, then $\mathbf{A}$ is row-equivalent to $\mathbf{I}$ ($\mathbf{A} \sim \mathbf{I}$; row-equivalent means $\mathbf{A}$ can be reduced to $\mathbf{I}$ using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices $\mathbf{E}_1, \ldots, \mathbf{E}_k$) that converts $\mathbf{A}$ to $\mathbf{I}$. In addition, the application of these row matrices to $\mathbf{I}$ transforms $\mathbf{I}$ to the matrix inverse $\mathbf{A}^{-1}$.
+
+* **Proof: in class**
+
+## Finding the inverse of $\mathbf{A}$
+
+The previous theorem states that for a $n \times n$ invertible matrix $\mathbf{A}$, the elementary row operations that covert $\mathbf{A}$ to $\mathbf{I}$ also convert $\mathbf{I}$ to $\mathbf{A}^{-1}$. This suggests an algorithm for finding the inverse $\mathbf{A}^{-1}$ of $\mathbf{A}$:
+
+Create the augmented matrix $\begin{pmatrix} \mathbf{A} & \mathbf{I} \end{pmatrix}$ and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form $\begin{pmatrix} \mathbf{I} & \mathbf{A}^{-1} \end{pmatrix}$ then $\mathbf{A}^{-1}$ is the inverse of $\mathbf{A}$. If the leading matrix in the augmented matrix is not the identity matrix $\mathbf{I}$, then $\mathbf{A}$ is not row equivalent to $\mathbf{I}$ and is therefore not invertible.
+
+* **Example:**
+```{r, echo = FALSE, include = FALSE}
+set.seed(2021)
+A <- matrix(sample(-9:9, 9, replace = TRUE), 3, 3)
+solve(A)
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$. Does $\mathbf{A}$ have an inverse, and if so, what is it?
+
+
+* **Example in `R`**
+
+
+## The Invertible Matrix Theorem
+
+**The Invertible Matrix Theorem:** Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
+
+1) $\mathbf{A}$ is an invertible matrix.
+
+2) $\mathbf{A}$ is row equivalent to the $n \times n$ identity matrix $\mathbf{I}$ ($\mathbf{A} \sim \mathbf{I}$).
+
+3) $\mathbf{A}$ and $n$ pivot columns.
+
+4) The homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ has only the trivial solution $\mathbf{x} = \mathbf{0}$.
+
+5) The columns of $\mathbf{A}$ are linearly independent.
+
+6) The linear transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ given by the matrix transformation $\mathbf{x} \rightarrow \mathbf{A}\mathbf{x}$ is one-to-one.
+
+7) The inhomogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has a unique solution for all $\mathbf{b} \in \mathcal{R}^n$.
+
+8) The columns of $\mathbf{A}$ span $\mathcal{R}^n$.
+
+9) The linear transformation $\mathbf{x} \rightarrow \mathbf{A} \mathbf{x}$ maps $\mathcal{R}^n$ onto $\mathcal{R}^n$.
+
+10) There is an $n \times n$ matrix $\mathbf{C}$ such that $\mathbf{C}\mathbf{A} = \mathbf{I}$.
+
+11) There is an $n \times n$ matrix $\mathbf{D}$ such that $\mathbf{A}\mathbf{D} = \mathbf{I}$.
+
+12) $\mathbf{A}'$ is an invertible matrix.
+
+
+* **Proof: in class**
+
+A result of the invertible matrix theorem is that if $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ matrices with $\mathbf{A} \mathbf{B} = \mathbf{I}$ then $\mathbf{A} = \mathbf{B}^{-1}$ and $\mathbf{B} = \mathbf{A}^{-1}$.
+
+
+## Invertible Linear Transformations
+
+**Definition:** A linear transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ is said to be invertible if there exists a transformation $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$ such that
+
+$$
+\begin{align*}
+S(T(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n
+T(S(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
+\end{align*}
+$$
+
+* **Draw figure in class**
+
+**Theorem:** Let $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ be a linear transformation and let $\mathbf{A}$ be the matrix representing the transformation $T$. Then the transformation $T$ is invertible if and only if the matrix $\mathbf{A}$ is invertible. Therefore, the matrix that represents $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$, the inverse transformation of $T$, is unique and is represented by the matrix $\mathbf{A}^{-1}$.
+
+
+
+

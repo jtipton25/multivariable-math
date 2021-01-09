@@ -1,0 +1,4 @@
+# Block Matrices {#block-matrices}
+
+Block (or partitioned) matrices
+

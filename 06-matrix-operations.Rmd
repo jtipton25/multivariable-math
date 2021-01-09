@@ -1,144 +1,6 @@
 # Matrix operations {matrix-operations}
 
-## Matrices
-
-We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $n$ rows and $p$ columns as
-
-$$
-\begin{align*}
-\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
-a_{21} & a_{22} & \cdots & a_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{np}
-\end{pmatrix},
-\end{align*}
-$$
-
-with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and the $j$th column.
-
-If the matrix 
-
-$$
-\begin{align*}
-\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
-5 & -22  & 2 \\
--14 & 5 & 99 \\
-42 & -3 & 0\end{pmatrix},
-\end{align*}
-$$
-
-the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc. 
-
-In `R`, we can define the matrix A using the `matrix()` function
-
-```{r}
-A <- matrix(
-    data = c(5, 5, -14, 42, 7, -22, 5, -3, 1, 2, 99, 0),
-    nrow = 4,
-    ncol = 3
-)
-
-A
-```
-
-Notice in the above creation of $\mathbf{A}$, we wrote defined the elements of the  $\mathbf{A}$ using the columns stacked on top of one another. If we want to fill in the elements of $\mathbf{A}$ using the rows, we can add the option `byrow = TRUE` to the `matrix()` function
-
-```{r}
-A <- matrix(
-    data  = c(5, 7, 1, 5, -22, 2, -14, 5, 99, 42, -3, 0), 
-    nrow  = 4,
-    ncol  = 3,
-    byrow = TRUE
-)
-A
-```
-
-To select the $ij$th elements of $\mathbf{A}$, we use the subset operator `[` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
-
-```{r}
-A[1, 1]
-```
-
-The element $a_{3, 3} = 99$ in the third row and third column can be selected using
-
-```{r}
-A[3, 3]
-```
-
-
-The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^p$ or row vectors $\{\mathbf{r}_i \}_{i=1}^n$. For example, the column vector representation is
-
-
-$$
-\begin{align*}
-\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{p} \right),
-\end{align*}
-$$
-
-where the notation $|$ is used to separate the vectors
-
-$$
-\begin{align*}
-\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1}
-\end{pmatrix},
-& \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2}
-\end{pmatrix}, 
-& \cdots, &
-& \mathbf{c}_p & = \begin{pmatrix} a_{1p} \\ a_{2p} \\ \vdots \\ a_{np}
-\end{pmatrix}
-\end{align*}
-$$
-
-In `R` you can extract the columns using the `[` selection operator
-
-```{r}
-c1 <- A[, 1] # first column
-c2 <- A[, 2] # second column
-c3 <- A[, 3] # third column
-```
-
-and you can give the column representation of the matrix `A` with with column bind function `cbind()`
-
-```{r}
-cbind(c1, c2, c3)
-```
-
-The row vector representation of $\mathbf{A}$ is 
-
-$$
-\begin{align*}
-\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{n} \end{pmatrix},
-\end{align*}
-$$
-
-where the row vectors $\mathbf{r}_i$ are
-
-$$
-\begin{align*}
-\mathbf{r}_1 & = \left( a_{11}, a_{21}, \ldots, a_{n1} \right) \\
-\mathbf{r}_2 & = \left( a_{12}, a_{22}, \ldots, a_{n2} \right) \\
-& \vdots \\
-\mathbf{r}_n & = \left( a_{1p}, a_{2p}, \ldots, a_{np} \right)
-\end{align*}
-$$
-
-
-In `R` you can extract the rows using the `[` selection operator
-
-```{r}
-r1 <- A[1, ] # first row
-r2 <- A[2, ] # second row
-r3 <- A[3, ] # third row
-r4 <- A[4, ] # fourth row
-```
-
-and you can give the row representation of the matrix `A` with with row bind function `rbind()`
-
-```{r}
-rbind(r1, r2, r3, r4)
-```
-
-
+* **Note: add examples:**
 
 
 
@@ -147,24 +9,24 @@ rbind(r1, r2, r3, r4)
 
 ### Matrix Addition
 
-**Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $n$ and the same number of columns $p$), then
+**Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $m$ and the same number of columns $n$), then
 
 $$
 \begin{align*}
-\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
-a_{21} & a_{22} & \cdots & a_{2p} \\
+\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{np}
+a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix} + 
-\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
-b_{21} & b_{22} & \cdots & b_{2p} \\
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1n} \\
+b_{21} & b_{22} & \cdots & b_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
-b_{n1} & b_{n2} & \cdots & b_{np}
+b_{m1} & b_{m2} & \cdots & b_{mn}
 \end{pmatrix} \\
-& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1p} + b_{1p} \\
-a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2p} + b_{2p} \\
+& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
-a_{n1} + b_{n1} & a_{n2} + b_{n2} & \cdots & a_{np} + b_{np}
+a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
 \end{pmatrix} \\
 & = \left\{ a_{ij} + b_{ij} \right\}
 \end{align*}
@@ -267,6 +129,7 @@ $$
 \end{align*}
 $$
  
+Note that in this representation, each column of the matrix $\mathbf{A}\mathbf{B}$ is a linear combination the the columns of $\mathbf{A}$ with coefficients given by the corresponding column of $\mathbf{B}$.
  
 $$
 \begin{align*}
@@ -282,118 +145,231 @@ $$
 Written in this notation, we arrive at the multiplication rule for $\mathbf{C} = \mathbf{A} \mathbf{B}$ -- the $ik$th element $c_{ik}$ of $\mathbf{C}$ is the inner product of the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$.
 
 
+### Properties of Matrix Multiplication
 
-3) **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is
+Define the $m \times m$ **identity matrix** $\mathbf{I}_m$ with ones on the diagonal and zeros off diagonal as
+$$
+\mathbf{I}_m = \begin{pmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ 0 & 0 & \ddots & 0 \\ 0 & 0 & \cdots & 1\end{pmatrix}
+$$
+Let $\mathbf{A}$ be an $m \times n$ matrix, then:
+
+1) Let $\mathbf{B}$ be an $n \times p$ matrix and $\mathbf{C}$ a $p \times q$ matrix. Then $\mathbf{A}(\mathbf{B}\mathbf{C}) = (\mathbf{A}\mathbf{B})\mathbf{C}$ is an $m \times q$ matrix.
+
+2) Let $\mathbf{B}$ and $\mathbf{C}$ be $n \times p$ matrices. Then $\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}$ is an $m \times p$ matrix.
+
+3) Let $\mathbf{B}$ and $\mathbf{C}$ be $p \times m$ matrices. Then $(\mathbf{B} + \mathbf{C})\mathbf{A} = \mathbf{B}\mathbf{A} + \mathbf{C}\mathbf{A}$ is an $p \times m$ matrix.
+
+4) Let $\mathbf{B}$ be an $p \times m$ matrix and $c$ a scalar. Then $c(\mathbf{A} \mathbf{B}) = (c \mathbf{A}) \mathbf{B} = \mathbf{A}(c\mathbf{B})$ is an $p \times m$ matrix.
+
+5) $\mathbf{I}_m \mathbf{A} = \mathbf{A} \mathbf{I}_n = \mathbf{A}$
+
+
+**Examples: in class**
+
+**Note:** Matrix multiplication violates some of the rules of multiplication that you might be used to. Pay attention for the following:
+
+1) In general $\mathbf{A} \mathbf{B} \neq \mathbf{B} \mathbf{A}$ (sometimes these are equal, but usually are not)
+
+2) $\mathbf{A}\mathbf{B} = \mathbf{A} \mathbf{C}$ **does not** imply $\mathbf{B} = \mathbf{C}$
+
+3) $\mathbf{A}\mathbf{B} = \mathbf{0}$ does not imply that $\mathbf{A} = \mathbf{0}$ or $\mathbf{B} = \mathbf{0}$
+
+
+
+### Matrix Multiplication complexity (Big O notation)
+
+In the study of algorithms, the notation $O(n)$ is used to describe the number of calculations that need to be done to evaluate the equation. As an example, consider $\mathbf{A} = \begin{pmatrix}3 & 1 \\ 2 & -3 \end{pmatrix}$, $\mathbf{B} = \begin{pmatrix} -2 & 4 \\ -1 & 2 \end{pmatrix}$, and $\mathbf{x} = \begin{pmatrix} -3 \\ 1 \end{pmatrix}$. 
+
+**By hand:** Calculate 
+
+1) $(\mathbf{A} \mathbf{B}) \mathbf{x}$
+
+2) $\mathbf{A} (\mathbf{B} \mathbf{x})$
+
+Which was easier? Which required less calculation?
+
+* Matrix-matrix multiplication of and $m \times n$ matrix $\mathbf{A}$ and an $m \times p$ matrix $\mathbf{B}$ has complexity $O(m n p)$.
+
+* Matrix-vector multiplication of and $m \times n$ matrix $\mathbf{A}$ and an $p$-vector $\mathbf{x}$ has complexity $O(n m)$.
+
+From example above:
+
+1) $O(m n p)$ matrix-matrix multiplication $(\mathbf{A} \mathbf{B})$ followed by $O(m n)$ matrix-vector multiplication $(\mathbf{A} \mathbf{B}) \mathbf{x}$ which has computational complexity $O(m n p) + O(m n)$
+
+2) $O(m n)$ matrix-vector multiplication $(\mathbf{B} \mathbf{x})$ followed by $O(m n)$ matrix-vector multiplication $\mathbf{A} (\mathbf{B} \mathbf{x})$ which has computational complexity $O(m n) + O(m n)$
+
+
+### Matrix powers
+
+Powers of a $n \times n$ (square) matrix are defined as the product of $\mathbf{A}$ multiplied $k$ times
+$$
+\mathbf{A}^k = \underbrace{\mathbf{A} \cdots \mathbf{A}}_k
+$$
+
+### Matrix Transpose
+
+
+The matrix transpose is an operator that swaps the rows and columns of a matrix. If $\mathbf{A}$ is an $m \times n$ matrix, then $\mathbf{A}'$ is a $\m \times n$ matrix (Note: some use $\mathbf{A}^T$ to denote a transpose; I prefer the $'$ notation as it is much simpler and cleaner notation). The matrix 
 
 $$
 \begin{align*}
-\mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\
-& = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\
-\mathbf{0}_{m \times p} & \mathbf{B}
-\end{pmatrix} \\
-\end{align*}
-$$
-
-where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively. 
-
-The direct sum can be generalized to any arbitrary number of matrices as 
-$$
-\begin{align*}
-\mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\
-& = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\
-\mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
+a_{21} & a_{22} & \cdots & a_{2p} \\
 \vdots & \vdots & \ddots & \vdots \\
-\mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\
-\end{pmatrix} \\
+a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix}
 \end{align*}
 $$
-
-where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension.
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Block Matrices
-
-Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
+has transpose
 
 $$
 \begin{align*}
-\mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\
-\mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\
+\mathbf{A}' & = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{p1} \\
+a_{12} & a_{22} & \cdots & a_{p2} \\
 \vdots & \vdots & \ddots & \vdots \\
-\mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\
-\end{pmatrix} \\
-\end{align*}
-$$
-
-where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n$ and $\sum_{k=1}^K p_k = p$.
-
-For example, the matrix
-
-$$
-\begin{align*}
-\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
-5 & -22  & 2 \\
--14 & 5 & 99 \\
-42 & -3 & 0\end{pmatrix},
-\end{align*}
-$$
-
-can be written in block diagonal form with
-
-$$
-\begin{align*}
-\mathbf{A} & = 
-\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\
-\mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\
-& = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\
-5 & -22 \end{bmatrix} & 
-\begin{bmatrix} 1 \\
-2 \end{bmatrix} \\
-\begin{bmatrix}
--14 & 5 \\
-42 & -3 
-\end{bmatrix} & 
-\begin{bmatrix} 99 \\ 0 \end{bmatrix}
+a_{1n} & a_{2n} & \cdots & a_{pn}
 \end{pmatrix},
 \end{align*}
 $$
 
-where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc.
+**Theorem:** Let $\mathbf{A}$ be an $m \times n$ matrix, then
+
+1) $(\mathbf{A}')' = \mathbf{A}$.
+
+2) Let $\mathbf{B}$ be an $m \times n$ matrix, then $(\mathbf{A} + \mathbf{B})' = \mathbf{A}' + \mathbf{B}'$.
+
+3) For any scalar $c$, $(c \mathbf{A})' = c \mathbf{A}'$.
+
+4) Let $\mathbf{B}$ be an $n \times p$ matrix, then $( \mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'$ is an $p \times m$ matrix.
 
 
-```{r}
-A_11 <- matrix(c(5, 5, 7, -22), 2, 2)
-A_12 <- c(1, 2)
-A_21 <- matrix(c(-14, 42, 5, -3), 2, 2)
-A_22 <- c(99, 0)
+**Note:** The power of video games: GPUs and modern CPUs are becoming more and more parallelized. Because the $ij$th element of $\mathbf{A}\mathbf{B}$ requires only the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$, matrix multiplication is easily parallelized under modern computing architectures. Thanks to video games, this parallelization has been made faster than ever.
 
-## bind columns then rows
-rbind(
-    cbind(A_11, A_12),
-    cbind(A_21, A_22)
-)
 
-## bind rows then columns 
-cbind(
-    rbind(A_11, A_21),
-    c(A_12, A_22) ## rbind on vectors is different than c()
-)
+**Examples: in class**
 
-## bind rows then columns 
-cbind(
-    rbind(A_11, A_21),
-    ## convert the vectors to matrices for rbind
-    rbind(as.matrix(A_12), as.matrix(A_22)) 
-)
-```
+
+
+
+
+
+
+
+<!-- ## Direct Sums -->
+
+<!-- **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is -->
+
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\ -->
+<!-- & = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\ -->
+<!-- \mathbf{0}_{m \times p} & \mathbf{B} -->
+<!-- \end{pmatrix} \\ -->
+<!-- \end{align*} -->
+<!-- $$ -->
+
+<!-- where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively.  -->
+
+<!-- The direct sum can be generalized to any arbitrary number of matrices as  -->
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\ -->
+<!-- & = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\ -->
+<!-- \mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\ -->
+<!-- \vdots & \vdots & \ddots & \vdots \\ -->
+<!-- \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\ -->
+<!-- \end{pmatrix} \\ -->
+<!-- \end{align*} -->
+<!-- $$ -->
+
+<!-- where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ## Block Matrices -->
+
+<!-- Another way to represent matrices is using a block form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows: -->
+
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\ -->
+<!-- \mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\ -->
+<!-- \vdots & \vdots & \ddots & \vdots \\ -->
+<!-- \mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\ -->
+<!-- \end{pmatrix} \\ -->
+<!-- \end{align*} -->
+<!-- $$ -->
+
+<!-- where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n$ and $\sum_{k=1}^K p_k = p$. -->
+
+<!-- For example, the matrix -->
+
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\ -->
+<!-- 5 & -22  & 2 \\ -->
+<!-- -14 & 5 & 99 \\ -->
+<!-- 42 & -3 & 0\end{pmatrix}, -->
+<!-- \end{align*} -->
+<!-- $$ -->
+
+<!-- can be written in block diagonal form with -->
+
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \mathbf{A} & =  -->
+<!-- \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ -->
+<!-- \mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\ -->
+<!-- & = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\ -->
+<!-- 5 & -22 \end{bmatrix} &  -->
+<!-- \begin{bmatrix} 1 \\ -->
+<!-- 2 \end{bmatrix} \\ -->
+<!-- \begin{bmatrix} -->
+<!-- -14 & 5 \\ -->
+<!-- 42 & -3  -->
+<!-- \end{bmatrix} &  -->
+<!-- \begin{bmatrix} 99 \\ 0 \end{bmatrix} -->
+<!-- \end{pmatrix}, -->
+<!-- \end{align*} -->
+<!-- $$ -->
+
+<!-- where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc. -->
+
+
+<!-- ```{r} -->
+<!-- A_11 <- matrix(c(5, 5, 7, -22), 2, 2) -->
+<!-- A_12 <- c(1, 2) -->
+<!-- A_21 <- matrix(c(-14, 42, 5, -3), 2, 2) -->
+<!-- A_22 <- c(99, 0) -->
+
+<!-- ## bind columns then rows -->
+<!-- rbind( -->
+<!--     cbind(A_11, A_12), -->
+<!--     cbind(A_21, A_22) -->
+<!-- ) -->
+
+<!-- ## bind rows then columns  -->
+<!-- cbind( -->
+<!--     rbind(A_11, A_21), -->
+<!--     c(A_12, A_22) ## rbind on vectors is different than c() -->
+<!-- ) -->
+
+<!-- ## bind rows then columns  -->
+<!-- cbind( -->
+<!--     rbind(A_11, A_21), -->
+<!--     ## convert the vectors to matrices for rbind -->
+<!--     rbind(as.matrix(A_12), as.matrix(A_22))  -->
+<!-- ) -->
+<!-- ``` -->
+
+

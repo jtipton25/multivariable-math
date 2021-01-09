@@ -38,43 +38,186 @@ The motiviation for this text is to provide both a theoretical understanding of 
 
 
 
-## Outline
+## Getting started in `R`
 
-**Note: This is going to be revised and reformated throughout the class**
+## Matrices
 
-1) Introduction to vectors and matrices and vector and matrix operations
+We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $m$ rows and $n$ columns as
 
-1) vector spaces and subspaces
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix},
+\end{align*}
+$$
 
-2) dot products, cross products, projections
+with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and the $j$th column.
 
-3) linear combinations, linear independence, bases, coordinate systems
+If the matrix 
 
-4) planes, surfaces, and lines in space
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{align*}
+$$
 
-5) linear transformations, matrix arithmetic, and matrix rank
+the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc. 
 
-6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$
+In `R`, we can define the matrix A using the `matrix()` function
 
-7) innner products, outer products, and norms
+```{r}
+A <- matrix(
+    data = c(5, 5, -14, 42, 7, -22, 5, -3, 1, 2, 99, 0),
+    nrow = 4,
+    ncol = 3
+)
 
-8) projections - orthogonal projections and least squares
+A
+```
 
-9) matrix decompositoins: Eigen, Cholesky, principal components, 
-singular value decomposition, pre-whitening
+Notice in the above creation of $\mathbf{A}$, we wrote defined the elements of the  $\mathbf{A}$ using the columns stacked on top of one another. If we want to fill in the elements of $\mathbf{A}$ using the rows, we can add the option `byrow = TRUE` to the `matrix()` function
 
-10) matrix decompositoins: Eigen, Cholesky, principal components, 
-singular value decomposition, pre-whitening
+```{r}
+A <- matrix(
+    data  = c(5, 7, 1, 5, -22, 2, -14, 5, 99, 42, -3, 0), 
+    nrow  = 4,
+    ncol  = 3,
+    byrow = TRUE
+)
+A
+```
 
-11) limits, continuity, and partial derivatives
+To select the $ij$th elements of $\mathbf{A}$, we use the subset operator `[` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
 
-12) chain rule, directional derivatives
+```{r}
+A[1, 1]
+```
 
-13) tangent planes, linear approximations, Taylor Series
+The element $a_{3, 3} = 99$ in the third row and third column can be selected using
 
-14) double/triple integrals, change of variables, Jacobian transformation
+```{r}
+A[3, 3]
+```
 
-15) double/triple integrals, change of variables, Jacobian transformation
+
+The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^p$ or row vectors $\{\mathbf{r}_i \}_{i=1}^n$. For example, the column vector representation is
+
+
+$$
+\begin{align*}
+\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{p} \right),
+\end{align*}
+$$
+
+where the notation $|$ is used to separate the vectors
+
+$$
+\begin{align*}
+\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1}
+\end{pmatrix},
+& \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2}
+\end{pmatrix}, 
+& \cdots, &
+& \mathbf{c}_p & = \begin{pmatrix} a_{1p} \\ a_{2p} \\ \vdots \\ a_{np}
+\end{pmatrix}
+\end{align*}
+$$
+
+In `R` you can extract the columns using the `[` selection operator
+
+```{r}
+c1 <- A[, 1] # first column
+c2 <- A[, 2] # second column
+c3 <- A[, 3] # third column
+```
+
+and you can give the column representation of the matrix `A` with with column bind function `cbind()`
+
+```{r}
+cbind(c1, c2, c3)
+```
+
+The row vector representation of $\mathbf{A}$ is 
+
+$$
+\begin{align*}
+\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{n} \end{pmatrix},
+\end{align*}
+$$
+
+where the row vectors $\mathbf{r}_i$ are
+
+$$
+\begin{align*}
+\mathbf{r}_1 & = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
+\mathbf{r}_2 & = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
+& \vdots \\
+\mathbf{r}_m & = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
+\end{align*}
+$$
+
+
+In `R` you can extract the rows using the `[` selection operator
+
+```{r}
+r1 <- A[1, ] # first row
+r2 <- A[2, ] # second row
+r3 <- A[3, ] # third row
+r4 <- A[4, ] # fourth row
+```
+
+and you can give the row representation of the matrix `A` with with row bind function `rbind()`
+
+```{r}
+rbind(r1, r2, r3, r4)
+```
+
+
+
+
+<!-- ## Outline -->
+
+<!-- **Note: This is going to be revised and reformated throughout the class** -->
+
+<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
+
+<!-- 1) vector spaces and subspaces -->
+
+<!-- 2) dot products, cross products, projections -->
+
+<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
+
+<!-- 4) planes, surfaces, and lines in space -->
+
+<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
+
+<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
+
+<!-- 7) innner products, outer products, and norms -->
+
+<!-- 8) projections - orthogonal projections and least squares -->
+
+<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
+<!-- singular value decomposition, pre-whitening -->
+
+<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
+<!-- singular value decomposition, pre-whitening -->
+
+<!-- 11) limits, continuity, and partial derivatives -->
+
+<!-- 12) chain rule, directional derivatives -->
+
+<!-- 13) tangent planes, linear approximations, Taylor Series -->
+
+<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
+
+<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
