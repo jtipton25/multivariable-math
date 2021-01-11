@@ -21,7 +21,7 @@ if (!require(dasc2594)) {
 }
 ```
 
-## Liner Systems of equations
+## Linear Systems of equations
 ### Linear equations
 
 Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say

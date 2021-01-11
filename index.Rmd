@@ -38,7 +38,83 @@ The motiviation for this text is to provide both a theoretical understanding of 
 
 
 
-## Getting started in `R`
+# Getting started in `R`
+
+TBD
+
+# Notation
+
+For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
+
+$$
+\begin{align*}
+\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+\end{align*}
+$$
+
+where the elements $x_1, \ldots, x_n$ are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the $x_i$s are stacked on top of one another) and the order matters. For example, the vector 
+
+$$
+\begin{align*}
+\mathbf{x} & = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+\end{align*}
+$$
+
+has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3 = 8$. Note that the vector $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is not the same as the vector $\begin{pmatrix}  8 \\ 2 \\ 5 \end{pmatrix}$ because the order of the elements matters.
+
+We can also write the vector as  
+
+$$
+\begin{align*}
+\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
+\end{align*}
+$$
+
+where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
+
+
+To create a vector we can use the concatenate function `c()`. For example, the vector $\mathbf{x} = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ can be created as the `R` object using
+
+```{r}
+x <- c(5, 2, 8)
+```
+
+where the `<-` assigns the values in the vector `c(5, 2, 8)` to the object named `x`. To print the values of `x`, we can use
+
+```{r}
+x
+```
+
+which prints the elements of x. Notice that `R` prints the elements of $\mathbf{x}$ in a row; however, $\mathbf{x}$ is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a `data.frame`, then the vector will be presented as a column vector
+
+```{r}
+data.frame(x)
+```
+
+One can use the index operator $[\hspace{2mm}]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
+
+```{r}
+x[1]
+```
+
+and the third element of $\mathbf{x}$, $x_3$, is
+
+```{r}
+x[3]
+```
+
+The transpose function `t()` turns a column vector into a row vector (or a row vector into a column vector). For example the transpose $\mathbf{x}'$ of $\mathbf{x}$ is 
+
+```{r}
+tx <- t(x)
+tx
+```
+
+where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vector. The transpose of `tx`. Notice the indices on the output of the row vector `tx`. The index operator `[1, ]` selects the first row to `tx` and the index operator `[, 1]` gives the first column `tx`. Taking the transpose again gives us back the original column vector
+
+```{r}
+t(tx)
+```
 
 ## Matrices
 
@@ -106,12 +182,12 @@ A[3, 3]
 ```
 
 
-The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^p$ or row vectors $\{\mathbf{r}_i \}_{i=1}^n$. For example, the column vector representation is
+The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^n$ or row vectors $\{\mathbf{r}_i \}_{i=1}^m$. For example, the column vector representation is
 
 
 $$
 \begin{align*}
-\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{p} \right),
+\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
 \end{align*}
 $$
 
@@ -119,12 +195,12 @@ where the notation $|$ is used to separate the vectors
 
 $$
 \begin{align*}
-\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1}
+\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
 \end{pmatrix},
-& \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{n2}
+& \mathbf{c}_2 & = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
 \end{pmatrix}, 
 & \cdots, &
-& \mathbf{c}_p & = \begin{pmatrix} a_{1p} \\ a_{2p} \\ \vdots \\ a_{np}
+& \mathbf{c}_n & = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
 \end{pmatrix}
 \end{align*}
 $$
@@ -147,7 +223,7 @@ The row vector representation of $\mathbf{A}$ is
 
 $$
 \begin{align*}
-\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{n} \end{pmatrix},
+\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
 \end{align*}
 $$
 
