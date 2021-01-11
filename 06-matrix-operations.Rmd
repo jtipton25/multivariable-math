@@ -13,6 +13,7 @@
 
 $$
 \begin{align*}
+(\#eq:matrix-addition)
 \mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -70,14 +71,21 @@ A + B
 ```
 
 
-**Theorem:** Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and let $a$ and $b$ be scalars, then:
+```{theorem}
+Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and let $a$ and $b$ be scalars, then:
 
 1) $\mathbf{A} + \mathbf{B}  = \mathbf{B} + \mathbf{A}$ \hfill [(commutivity of addition)]{style="float:right"}
+
 2)  $(\mathbf{A} + \mathbf{B}) + \mathbf{C} = \mathbf{A} + (\mathbf{B} + \mathbf{C})$ \hfill [(commutivity of addition)]{style="float:right"}
+
 3) $\mathbf{A} + \mathbf{0}  = \mathbf{A}$  \hfill [(additive identity)]{style="float:right"}
+
 4) $a (\mathbf{A} + \mathbf{B}) = a \mathbf{A} + a \mathbf{B}$ \hfill [(scalar ...)]{style="float:right"}
+
 5) $(a + b)\mathbf{A} = a \mathbf{A} + b \mathbf{A}$ \hfill [(scalar ...)]{style="float:right"} 
+
 6) $(ab)\mathbf{A} = a (b\mathbf{A})$ \hfill [(scalar ...)]{style="float:right"} 
+```
 
 ### Matrix Multipliation
 
@@ -86,7 +94,8 @@ A + B
 
 
 $$
-\begin{align*}
+\begin{align}
+(\#eq:matrix-multiplication)
 \mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -102,7 +111,7 @@ b_{n1} & b_{n2} & \cdots & b_{np}
 \vdots & \vdots & \ddots & \vdots \\
 \sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
 \end{pmatrix} 
-\end{align*}
+\end{align}
 $$
 
 
@@ -232,7 +241,8 @@ a_{1n} & a_{2n} & \cdots & a_{pn}
 \end{align*}
 $$
 
-**Theorem:** Let $\mathbf{A}$ be an $m \times n$ matrix, then
+```{theorem}
+Let $\mathbf{A}$ be an $m \times n$ matrix, then
 
 1) $(\mathbf{A}')' = \mathbf{A}$.
 
@@ -241,7 +251,7 @@ $$
 3) For any scalar $c$, $(c \mathbf{A})' = c \mathbf{A}'$.
 
 4) Let $\mathbf{B}$ be an $n \times p$ matrix, then $( \mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'$ is an $p \times m$ matrix.
-
+```
 
 **Note:** The power of video games: GPUs and modern CPUs are becoming more and more parallelized. Because the $ij$th element of $\mathbf{A}\mathbf{B}$ requires only the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$, matrix multiplication is easily parallelized under modern computing architectures. Thanks to video games, this parallelization has been made faster than ever.
 

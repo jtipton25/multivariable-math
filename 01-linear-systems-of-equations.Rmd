@@ -28,7 +28,7 @@ Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \l
 
 $$
 \begin{align}
-\label{eq:linear}
+(\#eq:linear)
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
 \end{align}
 $$
@@ -81,7 +81,7 @@ x_1 + x_2 - x_1 x_2 & = 16
 \end{align*}
 $$
 
-are not linear equations because they do not meet the form of \ref{eq:linear} (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
+are not linear equations because they do not meet the form of \@ref(eq:linear) (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
 
 ### Systems of linear equations
 
@@ -204,9 +204,13 @@ Typically, there are 3 cases for the solutions to a system of linear equations
 2) There is one solution (Figure \@ref(fig:one-solution))
 3) There are infinitely many solutions
 
-**Definition:** A linear system of equations is called **consistent** if the system has either one or infinitely many solutions and is called **inconsistent** if the system has no solution.
+```{definition}
+A linear system of equations is called **consistent** if the system has either one or infinitely many solutions and is called **inconsistent** if the system has no solution.
+```
 
-**There are no solutions:** Consider the system of linear equations
+#### There are no solutions:
+
+Consider the system of linear equations
 
 $$
 \begin{align*}
@@ -235,9 +239,13 @@ dat %>%
 
 In this case, the linear equations are parallel lines and will never intersect so therefore there is no solution.
 
-**There is one solution:** We have seen this example in Figure \@ref(fig:one-solution)
+#### There is one solution:
 
-**There are infinitely many solutions:** Consider the system of linear equations
+We have seen this example in Figure \@ref(fig:one-solution)
+
+#### There are infinitely many solutions:
+
+Consider the system of linear equations
 
 $$
 \begin{align*}
@@ -266,7 +274,9 @@ dat %>%
 
 In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).
 
-**Definition:** Two linear systems of equations are called **equivalent** if both systems share the same **solution set**.
+```{definition}
+Two linear systems of equations are called **equivalent** if both systems share the same **solution set**.
+```
 
 For example, the system of equations
 $$
@@ -429,7 +439,9 @@ ggplot(df, aes(x1, x2, z = x3)) +
 
 ### Existence and Uniqueness
 
-**Definition:** A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a **unique** solution if only one solution exists. 
+```{definition}
+A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a **unique** solution if only one solution exists. 
+```
 
 * Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
 
@@ -457,25 +469,40 @@ $$
 Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc. 
 
 
-**Definition:** A matrix is said to be in **echelon** form if 
+```{definition}
+
+A matrix is said to be in **echelon** form if 
+
 1) all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)
+
 2) the leading entry/coefficient of a nonzero row (called the **pivot**) is always *strictly* to the right of the leading entry/coefficient of the row above
+```
 
 * Example: **echelon matrix example in class**
 
-**Definition:** A matrix is in **reduced row echelon form** if it is in echelon form and
+```{definition}
+A matrix is in **reduced row echelon form** if it is in echelon form and
+
 1) the leading entry/coefficient of each row is 1
+
 2) The leading entry/coefficient of 1 is the only nonzero entry in its column.
+```
 
 * Example: **rref matrix example in class**
 
-**Definition:** Echelon matrices have the property of being **upper diagonal**. A matrix is said to be **upper diagonal** if all entries of the matrix at or above the diagonal are nonzero. 
+```{definition}
+Echelon matrices have the property of being **upper diagonal**. A matrix is said to be **upper diagonal** if all entries of the matrix at or above the diagonal are nonzero. 
+```
 
 * Example: **lower and non-lower diagonal matrices 
 
-**Definition:** Two matrices are **row-equivalent** if one matrix can be transformed to the other through elementary row operations.
+```{definition}
+Two matrices are **row-equivalent** if one matrix can be transformed to the other through elementary row operations.
+```
 
-**Theorem:** A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
+```{theorem}
+A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
+```
 
 * **Exercise:** using elementary row operations, calculate the reduced row echelon form of the following matrices
 1) **fill in later**
@@ -487,7 +514,9 @@ Reducing a matrix to row echelon form is a useful technique for working with mat
 
 The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.
 
-**Definition:** In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
+```{definition}
+In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
+```
 
 * **Example: pivot position and pivot columns**
 
@@ -550,7 +579,9 @@ $$
 
 **Do same steps**
 
-* **Definition:** In a system of linear equations that is underdetermined (fewer equations than unknowns), the **determined/basic variables** are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called **free variable**.
+```{definition}
+In a system of linear equations that is underdetermined (fewer equations than unknowns), the **determined/basic variables** are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called **free variable**.
+```
 
 * **Example in class**
 
@@ -562,8 +593,9 @@ $$
 $$
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem
 
-**Theorem:** A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
-
+```{theorem}
+A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
+```
 
 * **Example: consistent system of equations**
 

@@ -2,6 +2,7 @@
 
 ```{r}
 library(tidyverse)
+library(dasc2594)
 ```
 
 Here we introduce the concept of the linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$. This equation is the most fundamental equation in all of statistics and data science. Given a matrix $\mathbf{A}$ and a vector of constants $\mathbf{b}$, the goal is to solve for the value (or values) of $\mathbf{x}$ that are a solution to this equation. The equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ is a matrix representation of the system of linear equations
@@ -30,20 +31,28 @@ $$
 $$
 and then reducing the matrix to reduced row echelon form. This gives rise to the theorem
 
-**Theorem:** The matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, the vector equation $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}$, and the augmented matrix $\begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{b} \end{pmatrix}$ all have the same solution set.
+```{theorem}
+The matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, the vector equation $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}$, and the augmented matrix $\begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{b} \end{pmatrix}$ all have the same solution set.
+```
 
 ## Existence of solutions
 A solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ exists if and only if $\mathbf{b}$ is a linear combination of the columns of $\mathbf{A}$. In other words, $\mathbf{A} \mathbf{x} = \mathbf{b}$ has a solution if and only if $\mathbf{b}$ is in the $\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_K\}$.
 
 * **Example: in class** Let $\mathbf{A} =\ldots$ and $\mathbf{b} = \ldots$. Is the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ consistent?
 
-**Theorem:** For the $n \times K$ matrix $\mathbf{A}$, the following statements are equivalent:
-a) For each $\mathbf{b} \in \mathcal{R}^K$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
-b) Each $\mathbf{b} \in \mathcal{R}^K$ is a linear combination of the columns of $\mathbf{A}$
-c)  The columns of $\mathbf{A}$ span $\mathcal{R}^K$
-d) $\mathbf{A}$ has a pivot in every row
+```{theorem}
+For the $n \times K$ matrix $\mathbf{A}$, the following statements are equivalent:
 
-## Matrix multiplication
+a) For each $\mathbf{b} \in \mathcal{R}^K$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
+
+b) Each $\mathbf{b} \in \mathcal{R}^K$ is a linear combination of the columns of $\mathbf{A}$
+    
+c)  The columns of $\mathbf{A}$ span $\mathcal{R}^K$
+    
+d) $\mathbf{A}$ has a pivot in every row
+```
+
+## Matrix-vector multiplication
 
 To calculate $\mathbf{A} \mathbf{x}$, we need to define matrix multiplication. The equivalence between the linear systems of equations $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}$ and the matrix equation $\mathbf{A} \mathbf{x}$ gives a hint in how to do this. First, recall the definition of $\mathbf{A}$ and $\mathbf{x}$
 
@@ -84,7 +93,9 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 $$
 Notice that the first row of the last matrix above has the sum first row of the matrix $\mathbf{A}$ multiplied by the corresponding elements in $\mathbf{x}$ (i.e., first element $a_{11}$ of the first row of $\mathbf{A}$ times the first element $x_1$ of $\mathbf{x}$ plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product $\mathbf{A} \mathbf{x}$.
 
-**Definition:** The product $\mathbf{A}\mathbf{x}$ of a $n \times K$ matrix $\mathbf{A}$ with a $K$-vector $\mathbf{x}$ is a $n$-vector where the $i$th element of $\mathbf{A}\mathbf{x}$ is the sum of the $i$th row of $\mathbf{A}$ times the corresponding elements of the vector $\mathbf{x}$
+```{definition}
+The product $\mathbf{A}\mathbf{x}$ of a $n \times K$ matrix $\mathbf{A}$ with a $K$-vector $\mathbf{x}$ is a $n$-vector where the $i$th element of $\mathbf{A}\mathbf{x}$ is the sum of the $i$th row of $\mathbf{A}$ times the corresponding elements of the vector $\mathbf{x}$
+```
 
 * **Example: in class**
 
@@ -107,15 +118,16 @@ b) $\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}$
 
 ### Homogeneous linear systems of equations
 
-**Definition:** The matrix equation 
+```{definition}
+The matrix equation 
 $$
 \begin{align}
 (\#eq:homogeneous)
 \mathbf{A}\mathbf{x} = \mathbf{0}
-\label{eq:homogeneous}
 \end{align}
 $$ 
 is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $K$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
+```
 
 The homogeneous linear system of equations can be written in augmented matrix form 
 $$
@@ -169,7 +181,9 @@ x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 $$
 which is a linear combination of the vectors $\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}$. This implies that we can write the solution $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ for scalars $a$ and $b$. Therefore, the solution set $\mathbf{x}$ is contained in the $\mbox{span}\{\mathbf{u}, \mathbf{v}\}$. Because the vectors $\mathbf{u}$ and $\mathbf{v}$ are linearly independent (they don't point in the same direction), the set of all linear combinations of $c \mathbf{u} + d \mathbf{v}$ defines a plane. 
 
-**Definition:** A solution set of the form  $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ is called a **parametric vector solution**.
+```{definition}
+ A solution set of the form  $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ is called a **parametric vector solution**.
+```
 
 
 

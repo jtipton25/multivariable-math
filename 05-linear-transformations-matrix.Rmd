@@ -84,10 +84,13 @@ d) Determine if $\mathbf{c}$ is in the range of $T$. In other words, does the so
 
 ## Linear Transformations
 
-**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is linear if
+```{definition} 
+A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is linear if
 
 1) $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$ for all $\mathbf{u}$ and $\mathbf{v}$ in the domain of $T$
+  
 2) $T(c \mathbf{u}) = c T(\mathbf{u})$ for all scalars $c$ and all vectors $\mathbf{u}$ in the domain of $T$
+```
 
 Note: Because a linear transformation is equivalent to a matrix transformation, the definition above is equivalent to the following matrix-vector multiplication properties
 
@@ -683,7 +686,9 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "
 
 ### One-to-one transformations
 
-**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **one-to-one** if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at most** one solution in $\mathcal{R}^n$.
+```{definition} 
+A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **one-to-one** if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at most** one solution in $\mathcal{R}^n$.
+```
 
 
 ```{r, echo = FALSE}
@@ -764,14 +769,23 @@ a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equati
 b) There are at least two  different inputs into the function $T(\cdot)$ that have the same output
 c) There exist vectors $\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n$ such that $T(\mathbf{u}) = T(\mathbf{v})$
 
-**Theorem:** Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+```{theorem}
+Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+
 1) $T$ is one-to-one.
+
 2) For every $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has at most one solution.
+
 3) For every $\mathbf{b} \in \mathcal{R}^m$, the equation $\mathbf{A}\mathbf{x} = \mathbf{b}$ has a unique solution or is inconsistent.
+
 4) The equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ has only a trivial solution.
+
 5) The columns of $\mathbf{A}$ are linearly independent.
+
 6) $\mathbf{A}$ has a pivot in every column.
+
 7) The range of $\mathbf{A}$ has dimension $n$
+```
 
 * **Example:** is the following matrix one-to-one?
 
@@ -797,7 +811,9 @@ $$
 
 ### Onto transformations
 
-**Definition:** A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **onto** if, for every vector $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at least** one solution $\mathbf{x} \in \mathcal{R}^n$
+```{definition}
+A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **onto** if, for every vector $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at least** one solution $\mathbf{x} \in \mathcal{R}^n$
+```
 
 
 ```{r, echo = FALSE}
@@ -819,15 +835,24 @@ The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \m
 
 1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is smaller than the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$.
 2) There exists a vector $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x})$ does not have a solution.
-3) There is a vector in the codomain that is not the ouput of any input vector.
+3) There is a vector in the codomain that is not the output of any input vector.
 
-**Theorem:** Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+```{theorem} 
+Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+  
 1) $T$ is onto
+
 2) $T(\mathbf{x}) = \mathbf{b}$ has at least one solution for every $\mathbf{b} \in \mathcal{R}^m$.
+
 3)  The equation $\mathbf{A}\mathbf{x} = \mathbf{b}$ is consistent for every $\mathbf{b} \in \mathcal{R}^m$.
+
 4) The columns of $\mathbf{A}$ span $\mathcal{R}^m$
+  
 6) $\mathbf{A}$ has a pivot in every row
+
 7) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ has dimension $m$
+```
+
 
 * **Example:**
 

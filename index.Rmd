@@ -38,11 +38,11 @@ The motiviation for this text is to provide both a theoretical understanding of 
 
 
 
-# Getting started in `R`
+## Getting started in `R`
 
 TBD
 
-# Notation
+## Notation
 
 For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
 
@@ -116,7 +116,7 @@ where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vect
 t(tx)
 ```
 
-## Matrices
+### Matrices
 
 We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $m$ rows and $n$ columns as
 

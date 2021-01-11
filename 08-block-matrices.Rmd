@@ -25,7 +25,7 @@ $$
 \end{align*}
 $$
 
-can be written in block diagonal form with
+can be written in block matrix form with
 
 $$
 \begin{align*}
@@ -74,4 +74,153 @@ cbind(
 )
 ```
 
+## Block Matrix Addition
+
+If $\mathbf{A}$ and $\mathbf{B}$ are both $m \times n$ block matrices with blocks in $r$ rows and $c$ columns where
+
+$$
+\begin{align*}
+\mathbf{A} & =
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
+\mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{r1} & \mathbf{A}_{r2} &\cdots & \mathbf{A}_{rc} \\
+\end{pmatrix} &
+\mathbf{B} & =
+\begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} & \cdots & \mathbf{B}_{1c}\\
+\mathbf{B}_{21} & \mathbf{B}_{22} &\cdots & \mathbf{B}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
+\end{pmatrix} \\
+\end{align*}
+$$
+and each block $\mathbf{A}_{ij}$ and $\mathbf{B}_ij$ have the same dimension, then 
+
+$$
+\begin{align}
+(\#eq:block-matrix-addition)
+\mathbf{A} + \mathbf{B} & =
+\begin{pmatrix} \mathbf{A}_{11} + \mathbf{B}_{11} & \mathbf{A}_{12} + \mathbf{B}_{12} & \cdots & \mathbf{A}_{1c} + \mathbf{B}_{1c}\\
+\mathbf{A}_{21} + \mathbf{B}_{21} & \mathbf{A}_{22} + \mathbf{B}_{22} & \cdots & \mathbf{A}_{2c} + \mathbf{B}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{r1} + \mathbf{B}_{r1} & \mathbf{A}_{r2} + \mathbf{B}_{r2} & \cdots & \mathbf{A}_{rc} + \mathbf{B}_{rc} \\
+\end{pmatrix}
+\end{align}
+$$
+which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation \@ref(eq:matrix-addition) above to  \@ref(eq:block-matrix-addition)). The one requirement is that each of the blocks $\mathbf{A}_{ij}$ and $\mathbf{B}_ij$ have the same dimension. When this is true, we say that $\mathbf{A}$ and $\mathbf{B}$ are **conformable for block matrix addition**. 
+
+## Block Matrix Multiplication
+
+If $\mathbf{A}$ and $\mathbf{B}$ are both $m \times n$ block matrices with blocks in $r$ rows and $c$ columns (same as above) where
+$$
+\begin{align*}
+\mathbf{A} & =
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
+\mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{r1} & \mathbf{A}_{r2} &\cdots & \mathbf{A}_{rc} \\
+\end{pmatrix} &
+\mathbf{B} & =
+\begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} & \cdots & \mathbf{B}_{1c}\\
+\mathbf{B}_{21} & \mathbf{B}_{22} &\cdots & \mathbf{B}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
+\end{pmatrix} \\
+\end{align*}
+$$
+and each row of blocks $\mathbf{A}_{ij}$ has the same number of columns as the block $\mathbf{B}_ij$ has rows, then the block matrices $\mathbf{A}$ and $\mathbf{B}$ are said to be **conformable for block matrix multiplication**. A consequence of this is that $r = c$. When this is the case, the matrix products is
+
+$$
+\begin{align*}
+(\#eq:block-matrix-multiplication)
+\mathbf{A} \mathbf{B} & =
+\begin{pmatrix} \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{jc} \\
+\sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{jc} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{jc} 
+\end{pmatrix}  
+\end{align*}
+$$
+which can be said in words as "each block-element (the $ij$th element ($\mathbf{A} \mathbf{B}$)_{ij}) of the block-matrix product $\mathbf{A} \mathbf{B}$ is the sum of the $i$th block-row of $\mathbf{A}$ and the $j$th block column of $\mathbf{B}$ .Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \@ref(eq:matrix-multiplication) above to  \@ref(eq:block-matrix-multiplication)).
+
+```{example}
+in class
+```
+
+## The column-row matrix product
+
+
+```{theorem}
+The matrix product $\mathbf{A}\mathbf{B}$ of an $m \times n$ matrix $\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}$ with columns $\{\mathbf{a}_i\}_{i=1}^n$ and an $n \times p$ matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}$ with rows $\{\mathbf{b}_i'\}_{i=1}^n$ can be written as the column-row expansion below:
+$$
+\begin{align*}
+(\#eq:block-matrix-multiplication)
+\mathbf{A} \mathbf{B} & =
+\begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix} \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix} \\
+& = \mathbf{a}_1 \mathbf{b}_1' + \mathbf{a}_2 \mathbf{b}_2' + \cdots + \mathbf{a}_n \mathbf{b}_n'
+\end{align*} 
+$$
+```
+
+**Note:** The notation $\mathbf{b}_i'$ has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
+
+```{example}
+in class
+```
+
+## Special Block Matrices
+
+There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices. 
+
+```{definition}
+The matrix $\mathbf{A}$ is said to be block diagonal if
+$$
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+\mathbf{A}_1 & \mathbf{O} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{A}_2 & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{0} & \mathbf{A}_3 & \cdots & \mathbf{0} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_n \\
+\end{pmatrix}
+\end{align*}
+$$    
+```
+
+```{definition}
+The matrix $\mathbf{A}$ is said to be block (upper) triangular if
+$$
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+\mathbf{A}_{11} & \mathbf{A}_{12} & \mathbf{A}_{13} & \cdots & \mathbf{A}_{1n} \\
+\mathbf{0} & \mathbf{A}_{22} & \mathbf{A}_{23} & \cdots & \mathbf{A}_{2n} \\
+\mathbf{0} & \mathbf{0} & \mathbf{A}_{33} & \cdots & \mathbf{A}_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_{nn} \\
+\end{pmatrix}
+\end{align*}
+$$    
+    
+$\mathbf{A}$ is block (lower) triangular if    
+$$
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+\mathbf{A}_{11} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{A}_{31} & \mathbf{A}_{32} & \mathbf{A}_{33} & \cdots & \mathbf{0} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{m1} & \mathbf{A}_{m2} & \mathbf{A}_{m3} & \cdots & \mathbf{A}_{mn} \\
+\end{pmatrix}
+\end{align*}
+$$    
+```
+
+
+```{example}
+Assume that $\mathbf{A}$, which has the form
+$$
+\mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix},  
+$$    
+is an invertible matrix with $\mathbf{A}_{11}$ a $p \times p$ matrix, $\mathbf{A}_{12}$ a $p \times q$ matrix, and $\mathbf{A}_{22} a $q \times q$ matrix. Solve for $\mathbf{A}^{-1}
+```
 
