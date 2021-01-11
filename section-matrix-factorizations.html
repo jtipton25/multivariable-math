@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Linear independence | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 10 Matrix Factorizations | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Linear independence | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 10 Matrix Factorizations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Linear independence | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 10 Matrix Factorizations | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-matrix-equation.html"/>
-<link rel="next" href="section-linear-transformations.html"/>
+<link rel="prev" href="section-block-matrices.html"/>
+<link rel="next" href="section-limits-continuity-and-partial-derivatives.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -253,60 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-linear-independence" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Linear independence</h1>
-Recall the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> can be written as a linear combination of coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> and vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> where
-<span class="math display">\[
-\begin{align*}
-\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}
-\end{align*}
-\]</span>
-
-<div class="definition">
-<span id="section-def:unnamed-chunk-74" class="definition"><strong>Definition 5.1  </strong></span>The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly independent</strong> if the only solution to the vector equation <span class="math inline">\(\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}\)</span> is the trivial solution. The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly dependent</strong> if there are coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> that are not all zero.
-</div>
-
-<ul>
-<li><p><strong>Example: in class</strong></p></li>
-<li><p>What does it mean for a set of vectors to be <strong>linearly dependent</strong>? This means that there is at least one vector <span class="math inline">\(\mathbf{a}_k\)</span> that can be written as a sum of the other vectors with coefficients <span class="math inline">\(z_k\)</span>:
-<span class="math display">\[
-\begin{align*}
-\mathbf{a}_k = \sum_{k&#39; \neq k} z_{k&#39;} \mathbf{a}_{k&#39;}
-\end{align*}
-\]</span>
-Note: this does not imply that all vectors <span class="math inline">\(\mathbf{a}_{k}\)</span> can be written as a linear combination of other vectors.</p></li>
-<li><p><strong>Example: in class – determine if the vectors are linearly independent and solve the dependence relation</strong></p></li>
-</ul>
-
-<div class="theorem">
-<span id="section-thm:unnamed-chunk-75" class="theorem"><strong>Theorem 5.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A}\)</span> has linearly independent columns if and only if the equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only the trivial solution.
-</div>
-
-<ul>
-<li><p><strong>Example: in class</strong> A set of a single vector</p></li>
-<li><p><strong>Example: in class</strong> A set of two vectors</p>
-<ul>
-<li><p>linearly independent if:</p></li>
-<li><p>linearly dependent if one vector is a scalar multiple of the other:</p></li>
-</ul></li>
-</ul>
-
-<div class="theorem">
-<span id="section-thm:unnamed-chunk-76" class="theorem"><strong>Theorem 5.2  </strong></span>If an <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(K &gt; n\)</span>, then the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly dependent. In other words, if a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains more vectors than entries within vectors, the set of vectors is linearly dependent.
-</div>
-
-<ul>
-<li><strong>Proof:</strong> If <span class="math inline">\(K&gt;n\)</span>, there are more variables (<span class="math inline">\(K\)</span>) than equations (<span class="math inline">\(n\)</span>). Therefore, there is at least one free variable and this implies that the homogeneous equation <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> has a non-trivial solution <a href="section-matrix-equation.html#eq:homogeneous">(4.1)</a></li>
-</ul>
-
-<div class="theorem">
-<span id="section-thm:unnamed-chunk-77" class="theorem"><strong>Theorem 5.3  </strong></span>If a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains the <span class="math inline">\(\mathbf{0}\)</span> vector, then the the set of vectors is linearly dependent.
-</div>
-
-<ul>
-<li><p><strong>Proof: in class</strong></p></li>
-<li><p><strong>Example: in class</strong> Determine whether the following sets of vectors are linearly dependent</p></li>
-</ul>
+<div id="section-matrix-factorizations" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Matrix Factorizations</h1>
 
 </div>
             </section>
@@ -314,8 +262,8 @@ Note: this does not imply that all vectors <span class="math inline">\(\mathbf{a
           </div>
         </div>
       </div>
-<a href="section-matrix-equation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-linear-transformations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-block-matrices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-limits-continuity-and-partial-derivatives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

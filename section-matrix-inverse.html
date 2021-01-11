@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Matrix Inverses | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 8 Matrix Inverses | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Matrix Inverses | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 8 Matrix Inverses | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Matrix Inverses | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 8 Matrix Inverses | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -134,99 +134,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Multivariable Mathematics for Data Science</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="section-getting-started-in-r.html"><a href="section-getting-started-in-r.html"><i class="fa fa-check"></i><b>2</b> Getting started in <code>R</code></a></li>
-<li class="chapter" data-level="3" data-path="section-notation.html"><a href="section-notation.html"><i class="fa fa-check"></i><b>3</b> Notation</a><ul>
-<li class="chapter" data-level="3.1" data-path="section-notation.html"><a href="section-notation.html#section-matrices"><i class="fa fa-check"></i><b>3.1</b> Matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html"><i class="fa fa-check"></i><b>4</b> Linear Systems of Equations</a><ul>
-<li class="chapter" data-level="4.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-systems-of-equations-1"><i class="fa fa-check"></i><b>4.1</b> Linear Systems of equations</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-equations"><i class="fa fa-check"></i><b>4.1.1</b> Linear equations</a></li>
-<li class="chapter" data-level="4.1.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-systems-of-linear-equations"><i class="fa fa-check"></i><b>4.1.2</b> Systems of linear equations</a></li>
-<li class="chapter" data-level="4.1.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-solutions-of-linear-systems"><i class="fa fa-check"></i><b>4.1.3</b> Solutions of linear systems</a></li>
-<li class="chapter" data-level="4.1.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-types-of-solutions"><i class="fa fa-check"></i><b>4.1.4</b> Types of solutions</a></li>
-<li class="chapter" data-level="4.1.5" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>4.1.5</b> Elementary row and column operations on matrices</a></li>
-<li class="chapter" data-level="4.1.6" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>4.1.6</b> The Augmented matrix form of a system of equations</a></li>
-<li class="chapter" data-level="4.1.7" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniqueness"><i class="fa fa-check"></i><b>4.1.7</b> Existence and Uniqueness</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-reduce-row-echelon-form"><i class="fa fa-check"></i><b>4.2</b> Reduce row echelon form</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-pivot-positions"><i class="fa fa-check"></i><b>4.2.1</b> Pivot positions</a></li>
-<li class="chapter" data-level="4.2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.2</b> Finding the reduced row echelon form</a></li>
-<li class="chapter" data-level="4.2.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>4.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
-<li class="chapter" data-level="4.2.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniquenss-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.4</b> Existence and uniquenss from reduced row echelon form</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-getting-started-in-r"><i class="fa fa-check"></i><b>1.1</b> Getting started in <code>R</code></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#section-notation"><i class="fa fa-check"></i><b>1.2</b> Notation</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#section-matrices"><i class="fa fa-check"></i><b>1.2.1</b> Matrices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>5</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>5.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="5.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>5.0.2</b> Lists</a></li>
-<li class="chapter" data-level="5.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>5.1</b> Exercises</a></li>
+<li class="chapter" data-level="2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html"><i class="fa fa-check"></i><b>2</b> Linear Systems of Equations</a><ul>
+<li class="chapter" data-level="2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-systems-of-equations-1"><i class="fa fa-check"></i><b>2.1</b> Linear Systems of equations</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-equations"><i class="fa fa-check"></i><b>2.1.1</b> Linear equations</a></li>
+<li class="chapter" data-level="2.1.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.1.2</b> Systems of linear equations</a></li>
+<li class="chapter" data-level="2.1.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-solutions-of-linear-systems"><i class="fa fa-check"></i><b>2.1.3</b> Solutions of linear systems</a></li>
+<li class="chapter" data-level="2.1.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-types-of-solutions"><i class="fa fa-check"></i><b>2.1.4</b> Types of solutions</a></li>
+<li class="chapter" data-level="2.1.5" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>2.1.5</b> Elementary row and column operations on matrices</a></li>
+<li class="chapter" data-level="2.1.6" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>2.1.6</b> The Augmented matrix form of a system of equations</a></li>
+<li class="chapter" data-level="2.1.7" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniqueness"><i class="fa fa-check"></i><b>2.1.7</b> Existence and Uniqueness</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>6</b> Vectors spaces</a><ul>
-<li class="chapter" data-level="6.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vectors"><i class="fa fa-check"></i><b>6.1</b> Vectors</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-properties-of-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Properties of Vectors</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vector-addition"><i class="fa fa-check"></i><b>6.2</b> Vector addition</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>6.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
-<li class="chapter" data-level="6.2.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>6.2.2</b> Scalar multiplication of vectors</a></li>
-<li class="chapter" data-level="6.2.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>6.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
-<li class="chapter" data-level="6.2.4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>6.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
-<li class="chapter" data-level="6.2.5" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>6.2.5</b> Linear Combinations of Vectors</a></li>
-<li class="chapter" data-level="6.2.6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>6.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-span"><i class="fa fa-check"></i><b>6.3</b> Span</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-geometric-example-of-the-span"><i class="fa fa-check"></i><b>6.3.1</b> Geometric example of the span</a></li>
+<li class="chapter" data-level="2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-reduce-row-echelon-form"><i class="fa fa-check"></i><b>2.2</b> Reduce row echelon form</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-pivot-positions"><i class="fa fa-check"></i><b>2.2.1</b> Pivot positions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>2.2.2</b> Finding the reduced row echelon form</a></li>
+<li class="chapter" data-level="2.2.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
+<li class="chapter" data-level="2.2.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniquenss-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>2.2.4</b> Existence and uniquenss from reduced row echelon form</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html"><i class="fa fa-check"></i><b>7</b> Matrix equations</a><ul>
-<li class="chapter" data-level="7.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-matrix-equations"><i class="fa fa-check"></i><b>7.1</b> Solutions of matrix equations</a></li>
-<li class="chapter" data-level="7.2" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-existence-of-solutions"><i class="fa fa-check"></i><b>7.2</b> Existence of solutions</a></li>
-<li class="chapter" data-level="7.3" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-matrix-multiplication"><i class="fa fa-check"></i><b>7.3</b> Matrix multiplication</a></li>
-<li class="chapter" data-level="7.4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>7.4</b> Properties of matrix-vector multiplication</a></li>
-<li class="chapter" data-level="7.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>7.5</b> Solutions of linear systems</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>7.5.1</b> Homogeneous linear systems of equations</a></li>
+<li class="chapter" data-level="3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>3</b> Vectors spaces</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-properties-of-vectors"><i class="fa fa-check"></i><b>3.1.1</b> Properties of Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>7.6</b> Solutions to nonhomogeneous systems</a></li>
-<li class="chapter" data-level="7.7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-finding-solutions"><i class="fa fa-check"></i><b>7.7</b> Finding solutions</a></li>
+<li class="chapter" data-level="3.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vector-addition"><i class="fa fa-check"></i><b>3.2</b> Vector addition</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>3.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>3.2.2</b> Scalar multiplication of vectors</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>3.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>3.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>3.2.5</b> Linear Combinations of Vectors</a></li>
+<li class="chapter" data-level="3.2.6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>3.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="section-linear-independence.html"><a href="section-linear-independence.html"><i class="fa fa-check"></i><b>8</b> Linear independence</a></li>
-<li class="chapter" data-level="9" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>9</b> Linear Transformations</a><ul>
-<li class="chapter" data-level="9.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-linear-transformations-1"><i class="fa fa-check"></i><b>9.1</b> Linear Transformations</a></li>
-<li class="chapter" data-level="9.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-types-of-matrix-transformations"><i class="fa fa-check"></i><b>9.2</b> Types of matrix transformations</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-contractionsexpansions"><i class="fa fa-check"></i><b>9.2.1</b> Contractions/Expansions</a></li>
-<li class="chapter" data-level="9.2.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-rotations"><i class="fa fa-check"></i><b>9.2.2</b> Rotations</a></li>
-<li class="chapter" data-level="9.2.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-reflections"><i class="fa fa-check"></i><b>9.2.3</b> Reflections</a></li>
-<li class="chapter" data-level="9.2.4" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-shears"><i class="fa fa-check"></i><b>9.2.4</b> Shears</a></li>
-<li class="chapter" data-level="9.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>9.2.5</b> Projections</a></li>
-<li class="chapter" data-level="9.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>9.2.6</b> Identity</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>9.3</b> Properties of matrix transformations</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-one-to-one-transformations"><i class="fa fa-check"></i><b>9.3.1</b> One-to-one transformations</a></li>
-<li class="chapter" data-level="9.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>9.3.2</b> Onto transformations</a></li>
+<li class="chapter" data-level="3.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-span"><i class="fa fa-check"></i><b>3.3</b> Span</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-geometric-example-of-the-span"><i class="fa fa-check"></i><b>3.3.1</b> Geometric example of the span</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>10</b> Matrix operations</a><ul>
-<li class="chapter" data-level="10.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>10.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>10.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="10.1.2" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>10.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="10.1.3" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>10.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="10.1.4" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>10.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="10.1.5" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-powers"><i class="fa fa-check"></i><b>10.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="10.1.6" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-transpose"><i class="fa fa-check"></i><b>10.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html"><i class="fa fa-check"></i><b>4</b> Matrix equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-matrix-equations"><i class="fa fa-check"></i><b>4.1</b> Solutions of matrix equations</a></li>
+<li class="chapter" data-level="4.2" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-existence-of-solutions"><i class="fa fa-check"></i><b>4.2</b> Existence of solutions</a></li>
+<li class="chapter" data-level="4.3" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-matrix-vector-multiplication"><i class="fa fa-check"></i><b>4.3</b> Matrix-vector multiplication</a></li>
+<li class="chapter" data-level="4.4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>4.4</b> Properties of matrix-vector multiplication</a></li>
+<li class="chapter" data-level="4.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>4.5</b> Solutions of linear systems</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>4.5.1</b> Homogeneous linear systems of equations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>4.6</b> Solutions to nonhomogeneous systems</a></li>
+<li class="chapter" data-level="4.7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-finding-solutions"><i class="fa fa-check"></i><b>4.7</b> Finding solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-linear-independence.html"><a href="section-linear-independence.html"><i class="fa fa-check"></i><b>5</b> Linear independence</a></li>
+<li class="chapter" data-level="6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>6</b> Linear Transformations</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-linear-transformations-1"><i class="fa fa-check"></i><b>6.1</b> Linear Transformations</a></li>
+<li class="chapter" data-level="6.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-types-of-matrix-transformations"><i class="fa fa-check"></i><b>6.2</b> Types of matrix transformations</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-contractionsexpansions"><i class="fa fa-check"></i><b>6.2.1</b> Contractions/Expansions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-rotations"><i class="fa fa-check"></i><b>6.2.2</b> Rotations</a></li>
+<li class="chapter" data-level="6.2.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-reflections"><i class="fa fa-check"></i><b>6.2.3</b> Reflections</a></li>
+<li class="chapter" data-level="6.2.4" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-shears"><i class="fa fa-check"></i><b>6.2.4</b> Shears</a></li>
+<li class="chapter" data-level="6.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>6.2.5</b> Projections</a></li>
+<li class="chapter" data-level="6.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>6.2.6</b> Identity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>6.3</b> Properties of matrix transformations</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-one-to-one-transformations"><i class="fa fa-check"></i><b>6.3.1</b> One-to-one transformations</a></li>
+<li class="chapter" data-level="6.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>6.3.2</b> Onto transformations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html"><i class="fa fa-check"></i><b>11</b> Matrix Inverses</a><ul>
-<li class="chapter" data-level="11.1" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-elementary-matrices"><i class="fa fa-check"></i><b>11.1</b> Elementary matrices</a></li>
-<li class="chapter" data-level="11.2" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>11.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
-<li class="chapter" data-level="11.3" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>11.3</b> The Invertible Matrix Theorem</a></li>
-<li class="chapter" data-level="11.4" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-invertible-linear-transformations"><i class="fa fa-check"></i><b>11.4</b> Invertible Linear Transformations</a></li>
+<li class="chapter" data-level="7" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.1.2" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.1.3" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.1.4" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.1.5" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.1.6" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="section-block-matrices.html"><a href="section-block-matrices.html"><i class="fa fa-check"></i><b>12</b> Block Matrices</a></li>
-<li class="chapter" data-level="13" data-path="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><a href="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><i class="fa fa-check"></i><b>13</b> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</a></li>
-<li class="chapter" data-level="14" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>14</b> Limits, Continuity, and Partial Derivatives</a></li>
-<li class="chapter" data-level="15" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>15</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
-<li class="chapter" data-level="16" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>16</b> Tangent Planes and Taylor Linearization</a></li>
-<li class="chapter" data-level="17" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>17</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-elementary-matrices"><i class="fa fa-check"></i><b>8.1</b> Elementary matrices</a></li>
+<li class="chapter" data-level="8.2" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>8.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
+<li class="chapter" data-level="8.3" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>8.3</b> The Invertible Matrix Theorem</a></li>
+<li class="chapter" data-level="8.4" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-invertible-linear-transformations"><i class="fa fa-check"></i><b>8.4</b> Invertible Linear Transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-block-matrices.html"><a href="section-block-matrices.html"><i class="fa fa-check"></i><b>9</b> Block Matrices</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-block-matrix-addition"><i class="fa fa-check"></i><b>9.1</b> Block Matrix Addition</a></li>
+<li class="chapter" data-level="9.2" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-block-matrix-multiplication"><i class="fa fa-check"></i><b>9.2</b> Block Matrix Multiplication</a></li>
+<li class="chapter" data-level="9.3" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-the-column-row-matrix-product"><i class="fa fa-check"></i><b>9.3</b> The column-row matrix product</a></li>
+<li class="chapter" data-level="9.4" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-special-block-matrices"><i class="fa fa-check"></i><b>9.4</b> Special Block Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a></li>
+<li class="chapter" data-level="11" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>11</b> Limits, Continuity, and Partial Derivatives</a></li>
+<li class="chapter" data-level="12" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>12</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
+<li class="chapter" data-level="13" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>13</b> Tangent Planes and Taylor Linearization</a></li>
+<li class="chapter" data-level="14" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>14</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
 <li class="chapter" data-level="" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="15" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>15</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="15.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>15.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="15.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>15.0.2</b> Lists</a></li>
+<li class="chapter" data-level="15.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>15.1</b> Exercises</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -248,9 +254,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="section-matrix-inverse" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Matrix Inverses</h1>
-<div class="sourceCode" id="section-cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="section-matrix-inverse.html#cb125-1"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb125-2"><a href="section-matrix-inverse.html#cb125-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<h1><span class="header-section-number">Chapter 8</span> Matrix Inverses</h1>
+<div class="sourceCode" id="section-cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="section-matrix-inverse.html#cb123-1"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb123-2"><a href="section-matrix-inverse.html#cb123-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>For scalars, the multiplicative identity is
 <span class="math display">\[
 a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
@@ -265,9 +271,9 @@ where <span class="math inline">\(a^{-1}\)</span> is the inverse of <span class=
 \]</span>
 where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math inline">\(n \times n\)</span> identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).</p>
 <p>In <code>R</code>, an identity matrix is easy to construct. An <span class="math inline">\(n \times n\)</span> identity matrix can be constructed using the <code>diag()</code> function</p>
-<div class="sourceCode" id="section-cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="section-matrix-inverse.html#cb126-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb126-2"><a href="section-matrix-inverse.html#cb126-2"></a>I &lt;-<span class="st"> </span><span class="kw">diag</span>(n)</span>
-<span id="cb126-3"><a href="section-matrix-inverse.html#cb126-3"></a>I</span></code></pre></div>
+<div class="sourceCode" id="section-cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="section-matrix-inverse.html#cb124-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb124-2"><a href="section-matrix-inverse.html#cb124-2"></a>I &lt;-<span class="st"> </span><span class="kw">diag</span>(n)</span>
+<span id="cb124-3"><a href="section-matrix-inverse.html#cb124-3"></a>I</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -281,13 +287,17 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 \mathbf{A} = \begin{pmatrix} 1 &amp; -1 \\ 2 &amp; -3 \end{pmatrix} &amp;&amp; \mathbf{B} = \begin{pmatrix} 1 &amp; -1 \\ 2 &amp; -3 \end{pmatrix}
 \end{align*}
 \]</span></p>
-<p><strong>Theorem:</strong> Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-100" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}
 \end{align*}
 \]</span>
-If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not invertible.</p>
+If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not invertible.
+</div>
+
 <ul>
 <li><strong>Question:</strong> why is the matrix not invertible when <span class="math inline">\(ad - bc = 0\)</span>? Have you heard of “singular” or “singularity” before?
 <ul>
@@ -295,23 +305,33 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 <li>Square matrices that are not invertible are call “singular”</li>
 </ul></li>
 </ul>
-<p><strong>Definition:</strong> For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span></p>
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-101" class="definition"><strong>Definition 8.1  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
+</div>
+
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
 <ul>
 <li><strong>Example: in class</strong> Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</li>
 </ul>
-<p><strong>Theorem:</strong> If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-102" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
 <span class="math display">\[
 \mathbf{A} \mathbf{x} = \mathbf{b}
 \]</span>
-has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}\)</span>.</p>
+has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}\)</span>.
+</div>
+
 <ul>
 <li><p><strong>Proof: in class</strong></p></li>
 <li><p><strong>Example in R: in class</strong></p></li>
 </ul>
-<p><strong>Theorem:</strong></p>
-<ol style="list-style-type: decimal">
-<li><p>If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is invertible and <span class="math inline">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span></p></li>
+
+<div class="theorem">
+<p><span id="section-thm:unnamed-chunk-103" class="theorem"><strong>Theorem 8.3  </strong></span>
+1) If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is invertible and <span class="math inline">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span></p>
+<ol start="2" style="list-style-type: decimal">
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> invertible matrices, then <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is also an invertible matrix whose inverse is
 <span class="math display">\[
 (\mathbf{A}\mathbf{B})^{-1} = \mathbf{B}^{-1}\mathbf{A}^{-1}
@@ -320,14 +340,15 @@ which is the inverse of the matrices in reverse order.</p></li>
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then the transpose <span class="math inline">\(\mathbf{A}&#39;\)</span> is also invertible and the inverse of <span class="math inline">\(\mathbf{A}&#39;\)</span> is the transpose of <span class="math inline">\(\mathbf{A}^{-1}\)</span>. Equivalently,
 <span class="math display">\[
 (\mathbf{A}&#39;)^{-1} = (\mathbf{A}^{-1})&#39;
-\]</span></p></li>
+\]</span></p>
+</div></li>
 </ol>
 <ul>
 <li><strong>Proof: in class</strong></li>
 </ul>
 <p>*<strong>Note:</strong> The product of <span class="math inline">\(k\)</span> invertible <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k\)</span> has inverse <span class="math inline">\(\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1\)</span></p>
 <div id="section-elementary-matrices" class="section level2">
-<h2><span class="header-section-number">11.1</span> Elementary matrices</h2>
+<h2><span class="header-section-number">8.1</span> Elementary matrices</h2>
 <ul>
 <li>Elementary matrices are matrices that perform basic row operations (i.e., we can write the reduced row echelon algorithm as a produce of elementary matrices).</li>
 </ul>
@@ -339,20 +360,20 @@ which is the inverse of the matrices in reverse order.</p></li>
 </ol>
 <ul>
 <li><p><strong>Example:</strong> Consider a <span class="math inline">\(3 \times 3\)</span> matrix</p>
-<div class="sourceCode" id="section-cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="section-matrix-inverse.html#cb128-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="section-matrix-inverse.html#cb126-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -2 &amp; 4 \\ 5 &amp; -4 &amp; 6 \\ 9 &amp; 1 &amp; -2 \end{pmatrix}\)</span></p>
 <ol style="list-style-type: decimal">
 <li>What is the elementary matrix (let’s call it <span class="math inline">\(\mathbf{E}_1\)</span> that swaps the first and second rows of <span class="math inline">\(\mathbf{A}\)</span>?</li>
 </ol>
-<div class="sourceCode" id="section-cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="section-matrix-inverse.html#cb129-1"></a>E_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="section-matrix-inverse.html#cb127-1"></a>E_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{E}_1 = \begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p>
-<div class="sourceCode" id="section-cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="section-matrix-inverse.html#cb130-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="section-matrix-inverse.html#cb128-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
 ## [3,]    9    1   -2</code></pre>
-<div class="sourceCode" id="section-cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="section-matrix-inverse.html#cb132-1"></a><span class="co">## left multiple A by E_1</span></span>
-<span id="cb132-2"><a href="section-matrix-inverse.html#cb132-2"></a>E_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="section-matrix-inverse.html#cb130-1"></a><span class="co">## left multiple A by E_1</span></span>
+<span id="cb130-2"><a href="section-matrix-inverse.html#cb130-2"></a>E_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5   -4    6
 ## [2,]    4   -2    4
@@ -361,15 +382,15 @@ which is the inverse of the matrices in reverse order.</p></li>
 <ol start="2" style="list-style-type: decimal">
 <li>What is the elementary matrix (let’s call it <span class="math inline">\(\mathbf{E}_2\)</span> that adds two times the first of <span class="math inline">\(\mathbf{A}\)</span> to the third row of <span class="math inline">\(\mathbf{A}\)</span>?</li>
 </ol>
-<div class="sourceCode" id="section-cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="section-matrix-inverse.html#cb134-1"></a>E_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="section-matrix-inverse.html#cb132-1"></a>E_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{E}_2 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 2 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p>
-<div class="sourceCode" id="section-cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="section-matrix-inverse.html#cb135-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-matrix-inverse.html#cb133-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
 ## [3,]    9    1   -2</code></pre>
-<div class="sourceCode" id="section-cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="section-matrix-inverse.html#cb137-1"></a><span class="co">## left multiple A by E_2</span></span>
-<span id="cb137-2"><a href="section-matrix-inverse.html#cb137-2"></a>E_<span class="dv">2</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="section-matrix-inverse.html#cb135-1"></a><span class="co">## left multiple A by E_2</span></span>
+<span id="cb135-2"><a href="section-matrix-inverse.html#cb135-2"></a>E_<span class="dv">2</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
@@ -378,15 +399,15 @@ which is the inverse of the matrices in reverse order.</p></li>
 <ol start="3" style="list-style-type: decimal">
 <li>What is the elementary matrix (let’s call it <span class="math inline">\(\mathbf{E}_3\)</span> that mutliples the second row of <span class="math inline">\(\mathbf{A}\)</span> by 3?</li>
 </ol>
-<div class="sourceCode" id="section-cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="section-matrix-inverse.html#cb139-1"></a>E_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="section-matrix-inverse.html#cb137-1"></a>E_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{E}_3 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p>
-<div class="sourceCode" id="section-cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="section-matrix-inverse.html#cb140-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="section-matrix-inverse.html#cb138-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
 ## [3,]    9    1   -2</code></pre>
-<div class="sourceCode" id="section-cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="section-matrix-inverse.html#cb142-1"></a><span class="co">## left multiple A by E_3</span></span>
-<span id="cb142-2"><a href="section-matrix-inverse.html#cb142-2"></a>E_<span class="dv">3</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="section-matrix-inverse.html#cb140-1"></a><span class="co">## left multiple A by E_3</span></span>
+<span id="cb140-2"><a href="section-matrix-inverse.html#cb140-2"></a>E_<span class="dv">3</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]   15  -12   18
@@ -406,13 +427,17 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p><strong>Fact:</strong> Each elementary matrix <span class="math inline">\(\mathbf{E}\)</span> is invertible</p>
 <p><strong>Example: in class</strong></p>
 <p>The next theorem is quite important as the result gives an algorithm for calculating the inverse of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which also makes it possible to solve matrix equations <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span></p>
-<p><strong>Theorem:</strong> If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p>
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-111" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+</div>
+
 <ul>
 <li><strong>Proof: in class</strong></li>
 </ul>
 </div>
 <div id="section-finding-the-inverse-of-mathbfa" class="section level2">
-<h2><span class="header-section-number">11.2</span> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></h2>
+<h2><span class="header-section-number">8.2</span> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></h2>
 <p>The previous theorem states that for a <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(\mathbf{A}\)</span>, the elementary row operations that covert <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span> also convert <span class="math inline">\(\mathbf{I}\)</span> to <span class="math inline">\(\mathbf{A}^{-1}\)</span>. This suggests an algorithm for finding the inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span> of <span class="math inline">\(\mathbf{A}\)</span>:</p>
 <p>Create the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{A} &amp; \mathbf{I} \end{pmatrix}\)</span> and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form <span class="math inline">\(\begin{pmatrix} \mathbf{I} &amp; \mathbf{A}^{-1} \end{pmatrix}\)</span> then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is the inverse of <span class="math inline">\(\mathbf{A}\)</span>. If the leading matrix in the augmented matrix is not the identity matrix <span class="math inline">\(\mathbf{I}\)</span>, then <span class="math inline">\(\mathbf{A}\)</span> is not row equivalent to <span class="math inline">\(\mathbf{I}\)</span> and is therefore not invertible.</p>
 <ul>
@@ -424,7 +449,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 </ul>
 </div>
 <div id="section-the-invertible-matrix-theorem" class="section level2">
-<h2><span class="header-section-number">11.3</span> The Invertible Matrix Theorem</h2>
+<h2><span class="header-section-number">8.3</span> The Invertible Matrix Theorem</h2>
 <p><strong>The Invertible Matrix Theorem:</strong> Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix.</p></li>
@@ -446,18 +471,26 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p>A result of the invertible matrix theorem is that if <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices with <span class="math inline">\(\mathbf{A} \mathbf{B} = \mathbf{I}\)</span> then <span class="math inline">\(\mathbf{A} = \mathbf{B}^{-1}\)</span> and <span class="math inline">\(\mathbf{B} = \mathbf{A}^{-1}\)</span>.</p>
 </div>
 <div id="section-invertible-linear-transformations" class="section level2">
-<h2><span class="header-section-number">11.4</span> Invertible Linear Transformations</h2>
-<p><strong>Definition:</strong> A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
-<p><span class="math display">\[
+<h2><span class="header-section-number">8.4</span> Invertible Linear Transformations</h2>
+
+<div class="definition">
+<p><span id="section-def:unnamed-chunk-113" class="definition"><strong>Definition 8.2  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
+<span class="math display">\[
 \begin{align*}
 S(T(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n
 T(S(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
 \end{align*}
-\]</span></p>
+\]</span>
+</div>
+
 <ul>
 <li><strong>Draw figure in class</strong></li>
 </ul>
-<p><strong>Theorem:</strong> Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p>
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-114" class="theorem"><strong>Theorem 8.5  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+</div>
+
 
 </div>
 </div>
