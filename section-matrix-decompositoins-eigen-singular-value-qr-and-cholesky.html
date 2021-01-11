@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 13 Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 13 Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 13 Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-09" />
+<meta name="date" content="2021-01-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -134,97 +134,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Multivariable Mathematics for Data Science</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#section-getting-started-in-r"><i class="fa fa-check"></i><b>1.1</b> Getting started in <code>R</code></a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#section-matrices"><i class="fa fa-check"></i><b>1.2</b> Matrices</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="section-getting-started-in-r.html"><a href="section-getting-started-in-r.html"><i class="fa fa-check"></i><b>2</b> Getting started in <code>R</code></a></li>
+<li class="chapter" data-level="3" data-path="section-notation.html"><a href="section-notation.html"><i class="fa fa-check"></i><b>3</b> Notation</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-notation.html"><a href="section-notation.html#section-matrices"><i class="fa fa-check"></i><b>3.1</b> Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html"><i class="fa fa-check"></i><b>2</b> Linear Systems of Equations</a><ul>
-<li class="chapter" data-level="2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-liner-systems-of-equations"><i class="fa fa-check"></i><b>2.1</b> Liner Systems of equations</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-equations"><i class="fa fa-check"></i><b>2.1.1</b> Linear equations</a></li>
-<li class="chapter" data-level="2.1.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.1.2</b> Systems of linear equations</a></li>
-<li class="chapter" data-level="2.1.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-solutions-of-linear-systems"><i class="fa fa-check"></i><b>2.1.3</b> Solutions of linear systems</a></li>
-<li class="chapter" data-level="2.1.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-types-of-solutions"><i class="fa fa-check"></i><b>2.1.4</b> Types of solutions</a></li>
-<li class="chapter" data-level="2.1.5" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>2.1.5</b> Elementary row and column operations on matrices</a></li>
-<li class="chapter" data-level="2.1.6" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>2.1.6</b> The Augmented matrix form of a system of equations</a></li>
-<li class="chapter" data-level="2.1.7" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniqueness"><i class="fa fa-check"></i><b>2.1.7</b> Existence and Uniqueness</a></li>
+<li class="chapter" data-level="4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html"><i class="fa fa-check"></i><b>4</b> Linear Systems of Equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-systems-of-equations-1"><i class="fa fa-check"></i><b>4.1</b> Linear Systems of equations</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-linear-equations"><i class="fa fa-check"></i><b>4.1.1</b> Linear equations</a></li>
+<li class="chapter" data-level="4.1.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-systems-of-linear-equations"><i class="fa fa-check"></i><b>4.1.2</b> Systems of linear equations</a></li>
+<li class="chapter" data-level="4.1.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-solutions-of-linear-systems"><i class="fa fa-check"></i><b>4.1.3</b> Solutions of linear systems</a></li>
+<li class="chapter" data-level="4.1.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-types-of-solutions"><i class="fa fa-check"></i><b>4.1.4</b> Types of solutions</a></li>
+<li class="chapter" data-level="4.1.5" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>4.1.5</b> Elementary row and column operations on matrices</a></li>
+<li class="chapter" data-level="4.1.6" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>4.1.6</b> The Augmented matrix form of a system of equations</a></li>
+<li class="chapter" data-level="4.1.7" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniqueness"><i class="fa fa-check"></i><b>4.1.7</b> Existence and Uniqueness</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-reduce-row-echelon-form"><i class="fa fa-check"></i><b>2.2</b> Reduce row echelon form</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-pivot-positions"><i class="fa fa-check"></i><b>2.2.1</b> Pivot positions</a></li>
-<li class="chapter" data-level="2.2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>2.2.2</b> Finding the reduced row echelon form</a></li>
-<li class="chapter" data-level="2.2.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
-<li class="chapter" data-level="2.2.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniquenss-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>2.2.4</b> Existence and uniquenss from reduced row echelon form</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>3</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="3.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>3.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="3.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>3.0.2</b> Lists</a></li>
-<li class="chapter" data-level="3.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>3.1</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>4</b> Vectors spaces</a><ul>
-<li class="chapter" data-level="4.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vectors"><i class="fa fa-check"></i><b>4.1</b> Vectors</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-properties-of-vectors"><i class="fa fa-check"></i><b>4.1.1</b> Properties of Vectors</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vector-addition"><i class="fa fa-check"></i><b>4.2</b> Vector addition</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>4.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
-<li class="chapter" data-level="4.2.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>4.2.2</b> Scalar multiplication of vectors</a></li>
-<li class="chapter" data-level="4.2.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>4.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
-<li class="chapter" data-level="4.2.4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>4.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
-<li class="chapter" data-level="4.2.5" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2.5</b> Linear Combinations of Vectors</a></li>
-<li class="chapter" data-level="4.2.6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>4.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-span"><i class="fa fa-check"></i><b>4.3</b> Span</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-geometric-example-of-the-span"><i class="fa fa-check"></i><b>4.3.1</b> Geometric example of the span</a></li>
+<li class="chapter" data-level="4.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-reduce-row-echelon-form"><i class="fa fa-check"></i><b>4.2</b> Reduce row echelon form</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-pivot-positions"><i class="fa fa-check"></i><b>4.2.1</b> Pivot positions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.2</b> Finding the reduced row echelon form</a></li>
+<li class="chapter" data-level="4.2.3" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>4.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="section-linear-systems-of-equations.html"><a href="section-linear-systems-of-equations.html#section-existence-and-uniquenss-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.4</b> Existence and uniquenss from reduced row echelon form</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html"><i class="fa fa-check"></i><b>5</b> Matrix equations</a><ul>
-<li class="chapter" data-level="5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-matrix-equations"><i class="fa fa-check"></i><b>5.1</b> Solutions of matrix equations</a></li>
-<li class="chapter" data-level="5.2" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-existence-of-solutions"><i class="fa fa-check"></i><b>5.2</b> Existence of solutions</a></li>
-<li class="chapter" data-level="5.3" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-matrix-multiplication"><i class="fa fa-check"></i><b>5.3</b> Matrix multiplication</a></li>
-<li class="chapter" data-level="5.4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>5.4</b> Properties of matrix-vector multiplication</a></li>
-<li class="chapter" data-level="5.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>5.5</b> Solutions of linear systems</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>5.5.1</b> Homogeneous linear systems of equations</a></li>
+<li class="chapter" data-level="5" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>5</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>5.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="5.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>5.0.2</b> Lists</a></li>
+<li class="chapter" data-level="5.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>5.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>5.6</b> Solutions to nonhomogeneous systems</a></li>
-<li class="chapter" data-level="5.7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-finding-solutions"><i class="fa fa-check"></i><b>5.7</b> Finding solutions</a></li>
+<li class="chapter" data-level="6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html"><i class="fa fa-check"></i><b>6</b> Vectors spaces</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vectors"><i class="fa fa-check"></i><b>6.1</b> Vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-properties-of-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Properties of Vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="section-linear-independence.html"><a href="section-linear-independence.html"><i class="fa fa-check"></i><b>6</b> Linear independence</a></li>
-<li class="chapter" data-level="7" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>7</b> Linear Transformations</a><ul>
-<li class="chapter" data-level="7.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-linear-transformations-1"><i class="fa fa-check"></i><b>7.1</b> Linear Transformations</a></li>
-<li class="chapter" data-level="7.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-types-of-matrix-transformations"><i class="fa fa-check"></i><b>7.2</b> Types of matrix transformations</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-contractionsexpansions"><i class="fa fa-check"></i><b>7.2.1</b> Contractions/Expansions</a></li>
-<li class="chapter" data-level="7.2.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-rotations"><i class="fa fa-check"></i><b>7.2.2</b> Rotations</a></li>
-<li class="chapter" data-level="7.2.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-reflections"><i class="fa fa-check"></i><b>7.2.3</b> Reflections</a></li>
-<li class="chapter" data-level="7.2.4" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-shears"><i class="fa fa-check"></i><b>7.2.4</b> Shears</a></li>
-<li class="chapter" data-level="7.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>7.2.5</b> Projections</a></li>
-<li class="chapter" data-level="7.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>7.2.6</b> Identity</a></li>
+<li class="chapter" data-level="6.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-vector-addition"><i class="fa fa-check"></i><b>6.2</b> Vector addition</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>6.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>6.2.2</b> Scalar multiplication of vectors</a></li>
+<li class="chapter" data-level="6.2.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>6.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
+<li class="chapter" data-level="6.2.4" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>6.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
+<li class="chapter" data-level="6.2.5" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>6.2.5</b> Linear Combinations of Vectors</a></li>
+<li class="chapter" data-level="6.2.6" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>6.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>7.3</b> Properties of matrix transformations</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-one-to-one-transformations"><i class="fa fa-check"></i><b>7.3.1</b> One-to-one transformations</a></li>
-<li class="chapter" data-level="7.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>7.3.2</b> Onto transformations</a></li>
+<li class="chapter" data-level="6.3" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-span"><i class="fa fa-check"></i><b>6.3</b> Span</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="section-vector-spaces.html"><a href="section-vector-spaces.html#section-geometric-example-of-the-span"><i class="fa fa-check"></i><b>6.3.1</b> Geometric example of the span</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>8</b> Matrix operations</a><ul>
-<li class="chapter" data-level="8.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>8.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>8.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="8.1.2" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>8.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="8.1.3" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>8.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="8.1.4" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>8.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="8.1.5" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-powers"><i class="fa fa-check"></i><b>8.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="8.1.6" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-transpose"><i class="fa fa-check"></i><b>8.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html"><i class="fa fa-check"></i><b>7</b> Matrix equations</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-matrix-equations"><i class="fa fa-check"></i><b>7.1</b> Solutions of matrix equations</a></li>
+<li class="chapter" data-level="7.2" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-existence-of-solutions"><i class="fa fa-check"></i><b>7.2</b> Existence of solutions</a></li>
+<li class="chapter" data-level="7.3" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-matrix-multiplication"><i class="fa fa-check"></i><b>7.3</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="7.4" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>7.4</b> Properties of matrix-vector multiplication</a></li>
+<li class="chapter" data-level="7.5" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>7.5</b> Solutions of linear systems</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>7.5.1</b> Homogeneous linear systems of equations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>7.6</b> Solutions to nonhomogeneous systems</a></li>
+<li class="chapter" data-level="7.7" data-path="section-matrix-equation.html"><a href="section-matrix-equation.html#section-finding-solutions"><i class="fa fa-check"></i><b>7.7</b> Finding solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-linear-independence.html"><a href="section-linear-independence.html"><i class="fa fa-check"></i><b>8</b> Linear independence</a></li>
+<li class="chapter" data-level="9" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html"><i class="fa fa-check"></i><b>9</b> Linear Transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-linear-transformations-1"><i class="fa fa-check"></i><b>9.1</b> Linear Transformations</a></li>
+<li class="chapter" data-level="9.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-types-of-matrix-transformations"><i class="fa fa-check"></i><b>9.2</b> Types of matrix transformations</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-contractionsexpansions"><i class="fa fa-check"></i><b>9.2.1</b> Contractions/Expansions</a></li>
+<li class="chapter" data-level="9.2.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-rotations"><i class="fa fa-check"></i><b>9.2.2</b> Rotations</a></li>
+<li class="chapter" data-level="9.2.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-reflections"><i class="fa fa-check"></i><b>9.2.3</b> Reflections</a></li>
+<li class="chapter" data-level="9.2.4" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-shears"><i class="fa fa-check"></i><b>9.2.4</b> Shears</a></li>
+<li class="chapter" data-level="9.2.5" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-projections"><i class="fa fa-check"></i><b>9.2.5</b> Projections</a></li>
+<li class="chapter" data-level="9.2.6" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-identity"><i class="fa fa-check"></i><b>9.2.6</b> Identity</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-properties-of-matrix-transformations"><i class="fa fa-check"></i><b>9.3</b> Properties of matrix transformations</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-one-to-one-transformations"><i class="fa fa-check"></i><b>9.3.1</b> One-to-one transformations</a></li>
+<li class="chapter" data-level="9.3.2" data-path="section-linear-transformations.html"><a href="section-linear-transformations.html#section-onto-transformations"><i class="fa fa-check"></i><b>9.3.2</b> Onto transformations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html"><i class="fa fa-check"></i><b>9</b> Matrix Inverses</a><ul>
-<li class="chapter" data-level="9.1" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-elementary-matrices"><i class="fa fa-check"></i><b>9.1</b> Elementary matrices</a></li>
-<li class="chapter" data-level="9.2" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>9.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
-<li class="chapter" data-level="9.3" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>9.3</b> The Invertible Matrix Theorem</a></li>
-<li class="chapter" data-level="9.4" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-invertible-linear-transformations"><i class="fa fa-check"></i><b>9.4</b> Invertible Linear Transformations</a></li>
+<li class="chapter" data-level="10" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html"><i class="fa fa-check"></i><b>10</b> Matrix operations</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrices"><i class="fa fa-check"></i><b>10.1</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-addition"><i class="fa fa-check"></i><b>10.1.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="10.1.2" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multipliation"><i class="fa fa-check"></i><b>10.1.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>10.1.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="10.1.4" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>10.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="10.1.5" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-powers"><i class="fa fa-check"></i><b>10.1.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="10.1.6" data-path="section-matrix-operations.html"><a href="section-matrix-operations.html#section-matrix-transpose"><i class="fa fa-check"></i><b>10.1.6</b> Matrix Transpose</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-block-matrices.html"><a href="section-block-matrices.html"><i class="fa fa-check"></i><b>10</b> Block Matrices</a></li>
-<li class="chapter" data-level="11" data-path="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><a href="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><i class="fa fa-check"></i><b>11</b> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</a></li>
-<li class="chapter" data-level="12" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>12</b> Limits, Continuity, and Partial Derivatives</a></li>
-<li class="chapter" data-level="13" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>13</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
-<li class="chapter" data-level="14" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>14</b> Tangent Planes and Taylor Linearization</a></li>
-<li class="chapter" data-level="15" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>15</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html"><i class="fa fa-check"></i><b>11</b> Matrix Inverses</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-elementary-matrices"><i class="fa fa-check"></i><b>11.1</b> Elementary matrices</a></li>
+<li class="chapter" data-level="11.2" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>11.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
+<li class="chapter" data-level="11.3" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>11.3</b> The Invertible Matrix Theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="section-matrix-inverse.html"><a href="section-matrix-inverse.html#section-invertible-linear-transformations"><i class="fa fa-check"></i><b>11.4</b> Invertible Linear Transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="section-block-matrices.html"><a href="section-block-matrices.html"><i class="fa fa-check"></i><b>12</b> Block Matrices</a></li>
+<li class="chapter" data-level="13" data-path="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><a href="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky.html"><i class="fa fa-check"></i><b>13</b> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</a></li>
+<li class="chapter" data-level="14" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>14</b> Limits, Continuity, and Partial Derivatives</a></li>
+<li class="chapter" data-level="15" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>15</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
+<li class="chapter" data-level="16" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>16</b> Tangent Planes and Taylor Linearization</a></li>
+<li class="chapter" data-level="17" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>17</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
 <li class="chapter" data-level="" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -247,7 +248,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="section-matrix-decompositoins-eigen-singular-value-qr-and-cholesky" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</h1>
+<h1><span class="header-section-number">Chapter 13</span> Matrix Decompositoins: Eigen, Singular Value, QR, and Cholesky</h1>
 
 </div>
             </section>

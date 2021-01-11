@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 3 Notation | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 3 Notation | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 3 Notation | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"/>
-
+<link rel="prev" href="section-getting-started-in-r.html"/>
+<link rel="next" href="section-linear-systems-of-equations.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -247,17 +247,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="section-notation" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Notation</h1>
+<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
+<p><span class="math display">\[
+\begin{align*}
+\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+\end{align*}
+\]</span></p>
+<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+\end{align*}
+\]</span></p>
+<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
+<p>We can also write the vector as</p>
+<p><span class="math display">\[
+\begin{align*}
+\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
+\end{align*}
+\]</span></p>
+<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
+<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
+<div class="sourceCode" id="section-cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="section-notation.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
+<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
+<div class="sourceCode" id="section-cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="section-notation.html#cb2-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 5 2 8</code></pre>
+<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
+<div class="sourceCode" id="section-cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="section-notation.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
+<pre><code>##   x
+## 1 5
+## 2 2
+## 3 8</code></pre>
+<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
+<div class="sourceCode" id="section-cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="section-notation.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
+<div class="sourceCode" id="section-cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="section-notation.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
+<div class="sourceCode" id="section-cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="section-notation.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
+<span id="cb10-2"><a href="section-notation.html#cb10-2"></a>tx</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    2    8</code></pre>
+<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
+<div class="sourceCode" id="section-cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="section-notation.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    5
+## [2,]    2
+## [3,]    8</code></pre>
+<div id="section-matrices" class="section level2">
+<h2><span class="header-section-number">3.1</span> Matrices</h2>
+<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix},
+\end{align*}
+\]</span></p>
+<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
+<p>If the matrix</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
+5 &amp; -22  &amp; 2 \\
+-14 &amp; 5 &amp; 99 \\
+42 &amp; -3 &amp; 0\end{pmatrix},
+\end{align*}
+\]</span></p>
+<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
+<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
+<div class="sourceCode" id="section-cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="section-notation.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
+<span id="cb14-2"><a href="section-notation.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
+<span id="cb14-3"><a href="section-notation.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb14-4"><a href="section-notation.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
+<span id="cb14-5"><a href="section-notation.html#cb14-5"></a>)</span>
+<span id="cb14-6"><a href="section-notation.html#cb14-6"></a></span>
+<span id="cb14-7"><a href="section-notation.html#cb14-7"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    7    1
+## [2,]    5  -22    2
+## [3,]  -14    5   99
+## [4,]   42   -3    0</code></pre>
+<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
+<div class="sourceCode" id="section-cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="section-notation.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
+<span id="cb16-2"><a href="section-notation.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
+<span id="cb16-3"><a href="section-notation.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
+<span id="cb16-4"><a href="section-notation.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
+<span id="cb16-5"><a href="section-notation.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
+<span id="cb16-6"><a href="section-notation.html#cb16-6"></a>)</span>
+<span id="cb16-7"><a href="section-notation.html#cb16-7"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    7    1
+## [2,]    5  -22    2
+## [3,]  -14    5   99
+## [4,]   42   -3    0</code></pre>
+<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
+<div class="sourceCode" id="section-cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="section-notation.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
+<div class="sourceCode" id="section-cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="section-notation.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 99</code></pre>
+<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
+\end{align*}
+\]</span></p>
+<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
+\end{pmatrix},
+&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
+\end{pmatrix}, 
+&amp; \cdots, &amp;
+&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
+\end{pmatrix}
+\end{align*}
+\]</span></p>
+<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
+<div class="sourceCode" id="section-cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="section-notation.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
+<span id="cb22-2"><a href="section-notation.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
+<span id="cb22-3"><a href="section-notation.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
+<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
+<div class="sourceCode" id="section-cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="section-notation.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
+<pre><code>##       c1  c2 c3
+## [1,]   5   7  1
+## [2,]   5 -22  2
+## [3,] -14   5 99
+## [4,]  42  -3  0</code></pre>
+<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
+\end{align*}
+\]</span></p>
+<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
+\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
+&amp; \vdots \\
+\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
+\end{align*}
+\]</span></p>
+<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
+<div class="sourceCode" id="section-cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="section-notation.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
+<span id="cb25-2"><a href="section-notation.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
+<span id="cb25-3"><a href="section-notation.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
+<span id="cb25-4"><a href="section-notation.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
+<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
+<div class="sourceCode" id="section-cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="section-notation.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
+<pre><code>##    [,1] [,2] [,3]
+## r1    5    7    1
+## r2    5  -22    2
+## r3  -14    5   99
+## r4   42   -3    0</code></pre>
+<!-- ## Outline -->
+<!-- **Note: This is going to be revised and reformated throughout the class** -->
+<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
+<!-- 1) vector spaces and subspaces -->
+<!-- 2) dot products, cross products, projections -->
+<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
+<!-- 4) planes, surfaces, and lines in space -->
+<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
+<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
+<!-- 7) innner products, outer products, and norms -->
+<!-- 8) projections - orthogonal projections and least squares -->
+<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
+<!-- singular value decomposition, pre-whitening -->
+<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
+<!-- singular value decomposition, pre-whitening -->
+<!-- 11) limits, continuity, and partial derivatives -->
+<!-- 12) chain rule, directional derivatives -->
+<!-- 13) tangent planes, linear approximations, Taylor Series -->
+<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
+<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
+<!-- Notes for revision -->
+<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
+<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
+<!-- 3) Introduce systems of equations and rref  -->
+<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
+<!-- 5) Introduce linear combinations, spans, linear independence -->
+<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="section-getting-started-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-linear-systems-of-equations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

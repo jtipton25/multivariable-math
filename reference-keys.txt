@@ -4,9 +4,10 @@ fig:infinite-solutions
 eq:homogeneous
 section-preface
 section-getting-started-in-r
+section-notation
 section-matrices
 section-linear-systems-of-equations
-section-liner-systems-of-equations
+section-linear-systems-of-equations-1
 section-linear-equations
 section-systems-of-linear-equations
 section-solutions-of-linear-systems
