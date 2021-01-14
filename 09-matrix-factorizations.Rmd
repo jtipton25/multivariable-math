@@ -1,2 +1,79 @@
 # Matrix Factorizations {#matrix-factorizations}
 
+```{r}
+library(tidyverse)
+library(dasc2594)
+```
+
+In scalar mathematics, a factorization is an expression that writes a scalar $a$ as a product of two or more scalars. For example, the scalar 2 has a square-root factorization of $2  =\sqrt{2} * \sqrt{2}$ and 15 has a prime factorization of $15 = 3 * 5$. A matrix factorization is a similar concept where a matrix $\mathbf{A}$ can be represented by a product or two or more matrices (e.g., $\mathbf{A} = \mathbf{B} \mathbf{C}$). In data science, matrix factorizations are fundamental to working with data. 
+
+## The LU factorization
+
+First, we define lower and upper triangular matrices. 
+
+```{definition}
+The matrix $\mathbf{A}$ is said to be lower triangular if
+$$
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+a_{11} & 0 & 0 & \cdots & 0 \\
+a_{21} & a_{22} & 0 & \cdots & 0 \\
+a_{31} & a_{32} & a_{33} & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \cdots & a_{nn} \\
+\end{pmatrix}
+\end{align*}
+$$    
+Similarly, the matrix $\mathbf{A}$ is said to be upper triangular if
+$$
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+0 & a_{22} & a_{23} & \cdots & a_{2n} \\
+0 & 0 & a_{33} & \cdots & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & a_{nn} \\
+\end{pmatrix}
+\end{align*}
+$$    
+```
+
+
+
+The LU factorization of a matrix $\mathbf{A}$ reduces the matrix $\mathbf{A}$ into two components. The first component $\mathbf{L}$ is a lower-triangular matrix and the second component $\mathbf{U}$ is an upper triangular matrix.
+
+Using the LU factorization, the matrix factorization $\mathbf{A} = \mathbf{L} \mathbf{U}$ can be used in the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{L} \mathbf{U}\mathbf{x} = \mathbf{b}$ by first solving the sub-equation $\mathbf{L} \mathbf{y} = \mathbf{b}$ and then solving the second sub-equation $\mathbf{U} \mathbf{x} = \mathbf{y}$ for $\mathbf{x}$. Thus, the matrix factorization applied to the matrix equation gives the pair of equations
+
+$$
+\begin{align*}
+(\#eq:LU)
+\mathbf{L} \mathbf{y} & = \mathbf{b} \\
+\mathbf{U} \mathbf{x} & = \mathbf{y}
+\end{align*}
+$$
+
+At first glance, this seems like we are trading the challenge of solving one system of equations $\mathbf{A}\mathbf{x}$ \@ref(eq:matrix-equation) for the two equations in \@ref(eq:LU). However, the computational benefits arise due to the fact that $\mathbf{L}$ and $\mathbf{U}$ are triangular matrices and solving matrix equations with triangular matrices is much faster. 
+
+```{r, echo = FALSE, include = FALSE}
+# create a LU matrix
+set.seed(11)
+L <- matrix(sample(-3:3, 16, replace = TRUE), 4, 4)
+L[upper.tri(L)] <- 0
+U <- matrix(sample(-3:3, 16, replace = TRUE), 4, 4)
+U[lower.tri(U)] <- 0
+A <- L %*% U
+```
+
+
+```{example}
+in class:
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$ which has the LU decomposition
+
+$$
+\begin{align*}
+\mathbf{A} = `r array_to_latex(A)` = `r array_to_latex(L)` `r array_to_latex(U)`
+\end{align*}
+$$
+* solve $\mathbf{L} \mathbf{y} = \mathbf{b}$ using augmented matrix
+* solve $\mathbf{U} \mathbf{x} = \mathbf{y}$ using augmented matrix 
