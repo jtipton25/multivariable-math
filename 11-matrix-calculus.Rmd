@@ -1,2 +1,0 @@
-# Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes
-

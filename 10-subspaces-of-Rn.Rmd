@@ -1,0 +1,114 @@
+# Subspaces of $\mathcal{R}^n$ {#subspaces-Rn}
+
+```{r, message = FALSE}
+```
+
+First, let's recall the definition of a subset. A set $A$ is a subset of a set $B$ if all elements of $A$ are also members of $B$. For example, the integers $\mathcal{Z}$ are a subset of the real numbers $\mathbf{R}$ ($\mathcal{Z} \subset \mathcal{R}$) and the real numbers are a subset of the complex numbers $\mathcal{C}$ ($\mathcal{R} \subset \mathcal{C}$). 
+
+Subspaces are a generalization of the idea of subsets that are useful for understanding vector spaces. 
+
+```{definition}
+A subspace $\mathcal{H}$ of $\mathcal{R}^n$ is a set that has the properties
+
+1) The zero vector $\mathbf{0} \in \mathcal{H}$ \hfill \hfill [(additive identity)]{style="float:right"}
+    
+2) For each $\mathbf{u}, \mathbf{v} \in \mathcal{H}$, the sum $\mathbf{u} + \mathbf{v}$ is in $\mathcal{H}$ \hfill [(closed under vector addition)]{style="float:right"}
+
+3) For each $\mathbf{u} \in \mathcal{H}$ and scalar $c$, the scalar multiple $c \mathbf{u}$ is in $\mathcal{H}$ \hfill [(closed under scalar multiplication)]{style="float:right"}
+
+```
+
+
+```{example}
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector space defined by span$\{\mathbf{u}, \mathbf{v} \}$ is a subspace of $\mathcal{R}^n$
+```
+
+* Show this in class.
+
+```{exercise}
+* Is a line through the origin a subspace?
+* Is a line **not** through the origin a subspace?
+```
+
+* **Note:** For any vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k \in \mathcal{R}^n$, the span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$ is a subspace of $\mathcal{R}^n$.
+
+
+## Special subspaces: column space and null space
+
+```{definition}
+The **column space** of a $m \times n$ matrix $\mathbf{A}$ which has columns $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m$ is the set of vectors that are linear combinations of the columns of $\mathbf{A}$ which is equivalent to the span$\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$.
+```
+
+```{example}
+in class
+```
+
+
+```{definition}
+The **null space** of a matrix $\mathbf{A}$ is the set of all solutions to the homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$.
+```
+While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by $\mathbf{A}$ maps to $\mathbf{0}$. 
+
+```{theorem}
+The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$. 
+```
+
+```{proof}
+Do in class
+```
+
+* Example: give $\mathbf{A}$ and $\mathbf{x}$ and determine if $\mathbf{x}$ is in the null space of $\mathbf{A}$ using `R`
+
+
+## The basis of a subspace
+
+```{definition}
+A **basis** for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ is a linearly independent set in $\mathcal{H}$ that spans $\mathbf{H}$. Equivlently, a baisis is a set of linearly independent vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k$ such that span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}$.
+```
+
+The requirement that the vectors of a basis are linearly independent while spanning a subspace $\mathcal{H}$ means that a basis is a **minimal spanning set** for the subspace $\mathcal{H}$
+
+* **Question:** Is a basis unique?
+
+```{definition}
+The standard basis for $\mathcal{R}^n$
+```
+
+```{example}
+Basis for $\mathcal{R}^3$
+```
+
+```{example}
+Do the following set of vectors form a basis for $\mathcal{R}^3$?
+    
+* in class
+```
+
+
+
+```{example}
+Using `R`, find a basis for the null space of the matrix
+$$
+\mathbf{A} = \begin{pmatrix} 2 & 4 & 1 & 3 \\ -1 & -2 & 6 & 5 \\ 1 & 2 & -3 & 2 \end{pmatrix}
+$$    
+```
+
+
+```{theorem}
+The pivot columns of a matrix $\mathbf{A}$ for a basis for the column space of $\mathbf{A}$.
+```
+
+**Note:** Use the columns of $\mathbf{A}$, not the columns of the matrix in echelon form.
+
+corollary
+
+```{corollary}
+```
+
+```{example}
+Using `R`, find a basis for the column space of the matrix
+$$
+\mathbf{A} = \begin{pmatrix} 3 & 1 & 2 & -3 \\ 4 & 1 & -3 & -2 \\ 4 & -1 & -3 & 1 \end{pmatrix}
+$$    
+```
+
