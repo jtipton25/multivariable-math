@@ -13,6 +13,7 @@ thm:unnamed-chunk-32
 def:unnamed-chunk-33
 def:unnamed-chunk-37
 thm:unnamed-chunk-38
+eq:matrix-equation
 thm:unnamed-chunk-66
 thm:unnamed-chunk-67
 def:unnamed-chunk-68
@@ -47,6 +48,9 @@ exm:unnamed-chunk-118
 def:unnamed-chunk-119
 def:unnamed-chunk-120
 exm:unnamed-chunk-121
+def:unnamed-chunk-123
+eq:LU
+exm:unnamed-chunk-125
 section-preface
 section-getting-started-in-r
 section-notation
@@ -136,6 +140,7 @@ section-block-matrix-multiplication
 section-the-column-row-matrix-product
 section-special-block-matrices
 section-matrix-factorizations
+section-the-lu-factorization
 section-limits-continuity-and-partial-derivatives
 section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes
 section-tangent-planes-and-taylor-linearization

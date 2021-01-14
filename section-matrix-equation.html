@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -222,7 +222,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-the-column-row-matrix-product"><i class="fa fa-check"></i><b>9.3</b> The column-row matrix product</a></li>
 <li class="chapter" data-level="9.4" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-special-block-matrices"><i class="fa fa-check"></i><b>9.4</b> Special Block Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a></li>
+<li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>11</b> Limits, Continuity, and Partial Derivatives</a></li>
 <li class="chapter" data-level="12" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>12</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
 <li class="chapter" data-level="13" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>13</b> Tangent Planes and Taylor Linearization</a></li>
@@ -256,10 +258,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-matrix-equation" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Matrix equations</h1>
 <div class="sourceCode" id="section-cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="section-matrix-equation.html#cb96-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb96-2"><a href="section-matrix-equation.html#cb96-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<span id="cb96-2"><a href="section-matrix-equation.html#cb96-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb96-3"><a href="section-matrix-equation.html#cb96-3"></a><span class="kw">library</span>(gg3D)</span></code></pre></div>
 <p>Here we introduce the concept of the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>. This equation is the most fundamental equation in all of statistics and data science. Given a matrix <span class="math inline">\(\mathbf{A}\)</span> and a vector of constants <span class="math inline">\(\mathbf{b}\)</span>, the goal is to solve for the value (or values) of <span class="math inline">\(\mathbf{x}\)</span> that are a solution to this equation. The equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is a matrix representation of the system of linear equations</p>
-<p><span class="math display">\[
+<p><span class="math display" id="eq:matrix-equation">\[
 \begin{align*}
+\tag{4.1}
 \mathbf{A} \mathbf{x} &amp; = \mathbf{b} \\
 \begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} &amp; = \mathbf{b} \\
 x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
@@ -373,7 +377,7 @@ Notice that the first row of the last matrix above has the sum first row of the 
 <span id="section-def:unnamed-chunk-69" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
 <span class="math display" id="eq:homogeneous">\[
 \begin{align}
-\tag{4.1}
+\tag{4.2}
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{align}
 \]</span>

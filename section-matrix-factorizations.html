@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -222,7 +222,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-the-column-row-matrix-product"><i class="fa fa-check"></i><b>9.3</b> The column-row matrix product</a></li>
 <li class="chapter" data-level="9.4" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-special-block-matrices"><i class="fa fa-check"></i><b>9.4</b> Special Block Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a></li>
+<li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a><ul>
+<li class="chapter" data-level="10.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>11</b> Limits, Continuity, and Partial Derivatives</a></li>
 <li class="chapter" data-level="12" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>12</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
 <li class="chapter" data-level="13" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>13</b> Tangent Planes and Taylor Linearization</a></li>
@@ -255,7 +257,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-matrix-factorizations" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Matrix Factorizations</h1>
+<div class="sourceCode" id="section-cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="section-matrix-factorizations.html#cb148-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb148-2"><a href="section-matrix-factorizations.html#cb148-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<p>In scalar mathematics, a factorization is an expression that writes a scalar <span class="math inline">\(a\)</span> as a product of two or more scalars. For example, the scalar 2 has a square-root factorization of <span class="math inline">\(2 =\sqrt{2} * \sqrt{2}\)</span> and 15 has a prime factorization of <span class="math inline">\(15 = 3 * 5\)</span>. A matrix factorization is a similar concept where a matrix <span class="math inline">\(\mathbf{A}\)</span> can be represented by a product or two or more matrices (e.g., <span class="math inline">\(\mathbf{A} = \mathbf{B} \mathbf{C}\)</span>). In data science, matrix factorizations are fundamental to working with data.</p>
+<div id="section-the-lu-factorization" class="section level2">
+<h2><span class="header-section-number">10.1</span> The LU factorization</h2>
+<p>First, we define lower and upper triangular matrices.</p>
 
+<div class="definition">
+<span id="section-def:unnamed-chunk-123" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+a_{11} &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+a_{21} &amp; a_{22} &amp; 0 &amp; \cdots &amp; 0 \\
+a_{31} &amp; a_{32} &amp; a_{33} &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; a_{n3} &amp; \cdots &amp; a_{nn} \\
+\end{pmatrix}
+\end{align*}
+\]</span><br />
+Similarly, the matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be upper triangular if
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 
+a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
+0 &amp; a_{22} &amp; a_{23} &amp; \cdots &amp; a_{2n} \\
+0 &amp; 0 &amp; a_{33} &amp; \cdots &amp; a_{3n} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; a_{nn} \\
+\end{pmatrix}
+\end{align*}
+\]</span>
+</div>
+
+<p>The LU factorization of a matrix <span class="math inline">\(\mathbf{A}\)</span> reduces the matrix <span class="math inline">\(\mathbf{A}\)</span> into two components. The first component <span class="math inline">\(\mathbf{L}\)</span> is a lower-triangular matrix and the second component <span class="math inline">\(\mathbf{U}\)</span> is an upper triangular matrix.</p>
+<p>Using the LU factorization, the matrix factorization <span class="math inline">\(\mathbf{A} = \mathbf{L} \mathbf{U}\)</span> can be used in the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{L} \mathbf{U}\mathbf{x} = \mathbf{b}\)</span> by first solving the sub-equation <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> and then solving the second sub-equation <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>. Thus, the matrix factorization applied to the matrix equation gives the pair of equations</p>
+<p><span class="math display" id="eq:LU">\[
+\begin{align*}
+\tag{10.1}
+\mathbf{L} \mathbf{y} &amp; = \mathbf{b} \\
+\mathbf{U} \mathbf{x} &amp; = \mathbf{y}
+\end{align*}
+\]</span></p>
+<p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="section-matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="section-matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-125" class="example"><strong>Example 10.1  </strong></span>in class:
+</div>
+
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -2 &amp; 4 &amp; -6 &amp; 2 \\ -2 &amp; 4 &amp; -6 &amp; 2 \\ -3 &amp; 0 &amp; -1 &amp; -3 \\ -3 &amp; 6 &amp; -5 &amp; -1 \end{pmatrix}\)</span> which has the LU decomposition</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} -2 &amp; 4 &amp; -6 &amp; 2 \\ -2 &amp; 4 &amp; -6 &amp; 2 \\ -3 &amp; 0 &amp; -1 &amp; -3 \\ -3 &amp; 6 &amp; -5 &amp; -1 \end{pmatrix} = \begin{pmatrix} -2 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; 0 &amp; 0 &amp; 0 \\ -3 &amp; 2 &amp; 2 &amp; 0 \\ -3 &amp; 0 &amp; 2 &amp; -1 \end{pmatrix} \begin{pmatrix} 1 &amp; -2 &amp; 3 &amp; -1 \\ 0 &amp; -3 &amp; 2 &amp; -1 \\ 0 &amp; 0 &amp; 2 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{align*}
+\]</span>
+* solve <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> using augmented matrix
+* solve <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> using augmented matrix</p>
+
+</div>
 </div>
             </section>
 
