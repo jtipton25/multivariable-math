@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 12 Dimension and Rank | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 12 Dimension and Rank | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 12 Dimension and Rank | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-14" />
+<meta name="date" content="2021-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-limits-continuity-and-partial-derivatives.html"/>
+<link rel="prev" href="section-subspaces-Rn.html"/>
 <link rel="next" href="section-tangent-planes-and-taylor-linearization.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -223,10 +223,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-special-block-matrices"><i class="fa fa-check"></i><b>9.4</b> Special Block Matrices</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a><ul>
-<li class="chapter" data-level="10.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a></li>
+<li class="chapter" data-level="10.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-geometric-interpretation-of-the-lu-factorization"><i class="fa fa-check"></i><b>10.1.1</b> Geometric interpretation of the LU factorization</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>11</b> Limits, Continuity, and Partial Derivatives</a></li>
-<li class="chapter" data-level="12" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>12</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
+<li class="chapter" data-level="10.2" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-obtaining-the-lu-factorization"><i class="fa fa-check"></i><b>10.2</b> Obtaining the LU factorization</a></li>
+<li class="chapter" data-level="10.3" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-cholesky-factor"><i class="fa fa-check"></i><b>10.3</b> The Cholesky factor</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html"><i class="fa fa-check"></i><b>11</b> Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></a><ul>
+<li class="chapter" data-level="11.1" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html#section-special-subspaces-column-space-and-null-space"><i class="fa fa-check"></i><b>11.1</b> Special subspaces: column space and null space</a></li>
+<li class="chapter" data-level="11.2" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html#section-the-basis-of-a-subspace"><i class="fa fa-check"></i><b>11.2</b> The basis of a subspace</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a></li>
 <li class="chapter" data-level="13" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>13</b> Tangent Planes and Taylor Linearization</a></li>
 <li class="chapter" data-level="14" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>14</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
 <li class="chapter" data-level="" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i>References</a></li>
@@ -255,8 +262,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</h1>
+<div id="section-dimension-and-rank" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Dimension and Rank</h1>
 
 </div>
             </section>
@@ -264,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="section-limits-continuity-and-partial-derivatives.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-subspaces-Rn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="section-tangent-planes-and-taylor-linearization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

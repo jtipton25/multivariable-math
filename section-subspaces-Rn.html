@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Limits, Continuity, and Partial Derivatives | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 11 Subspaces of \(\mathcal{R}^n\) | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Limits, Continuity, and Partial Derivatives | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 11 Subspaces of \(\mathcal{R}^n\) | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Limits, Continuity, and Partial Derivatives | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 11 Subspaces of \(\mathcal{R}^n\) | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-14" />
+<meta name="date" content="2021-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-matrix-factorizations.html"/>
-<link rel="next" href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"/>
+<link rel="next" href="section-dimension-and-rank.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -223,10 +223,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="section-block-matrices.html"><a href="section-block-matrices.html#section-special-block-matrices"><i class="fa fa-check"></i><b>9.4</b> Special Block Matrices</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a><ul>
-<li class="chapter" data-level="10.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a></li>
+<li class="chapter" data-level="10.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-geometric-interpretation-of-the-lu-factorization"><i class="fa fa-check"></i><b>10.1.1</b> Geometric interpretation of the LU factorization</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="section-limits-continuity-and-partial-derivatives.html"><a href="section-limits-continuity-and-partial-derivatives.html"><i class="fa fa-check"></i><b>11</b> Limits, Continuity, and Partial Derivatives</a></li>
-<li class="chapter" data-level="12" data-path="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html"><i class="fa fa-check"></i><b>12</b> Matrix Calculus: Gradients, the Chain Rule, Directional Derivatives, and Tangent Planes</a></li>
+<li class="chapter" data-level="10.2" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-obtaining-the-lu-factorization"><i class="fa fa-check"></i><b>10.2</b> Obtaining the LU factorization</a></li>
+<li class="chapter" data-level="10.3" data-path="section-matrix-factorizations.html"><a href="section-matrix-factorizations.html#section-the-cholesky-factor"><i class="fa fa-check"></i><b>10.3</b> The Cholesky factor</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html"><i class="fa fa-check"></i><b>11</b> Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></a><ul>
+<li class="chapter" data-level="11.1" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html#section-special-subspaces-column-space-and-null-space"><i class="fa fa-check"></i><b>11.1</b> Special subspaces: column space and null space</a></li>
+<li class="chapter" data-level="11.2" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html#section-the-basis-of-a-subspace"><i class="fa fa-check"></i><b>11.2</b> The basis of a subspace</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a></li>
 <li class="chapter" data-level="13" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>13</b> Tangent Planes and Taylor Linearization</a></li>
 <li class="chapter" data-level="14" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>14</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
 <li class="chapter" data-level="" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i>References</a></li>
@@ -255,9 +262,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-limits-continuity-and-partial-derivatives" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Limits, Continuity, and Partial Derivatives</h1>
+<div id="section-subspaces-Rn" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></h1>
+<p>First, let’s recall the definition of a subset. A set <span class="math inline">\(A\)</span> is a subset of a set <span class="math inline">\(B\)</span> if all elements of <span class="math inline">\(A\)</span> are also members of <span class="math inline">\(B\)</span>. For example, the integers <span class="math inline">\(\mathcal{Z}\)</span> are a subset of the real numbers <span class="math inline">\(\mathbf{R}\)</span> (<span class="math inline">\(\mathcal{Z} \subset \mathcal{R}\)</span>) and the real numbers are a subset of the complex numbers <span class="math inline">\(\mathcal{C}\)</span> (<span class="math inline">\(\mathcal{R} \subset \mathcal{C}\)</span>).</p>
+<p>Subspaces are a generalization of the idea of subsets that are useful for understanding vector spaces.</p>
 
+<div class="definition">
+<p><span id="section-def:unnamed-chunk-130" class="definition"><strong>Definition 11.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a set that has the properties</p>
+<ol style="list-style-type: decimal">
+<li><p>The zero vector <span class="math inline">\(\mathbf{0} \in \mathcal{H}\)</span> </p></li>
+<li><p>For each <span class="math inline">\(\mathbf{u}, \mathbf{v} \in \mathcal{H}\)</span>, the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span> </p></li>
+<li><p>For each <span class="math inline">\(\mathbf{u} \in \mathcal{H}\)</span> and scalar <span class="math inline">\(c\)</span>, the scalar multiple <span class="math inline">\(c \mathbf{u}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span> </p></li>
+</ol>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-131" class="example"><strong>Example 11.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector space defined by span<span class="math inline">\(\{\mathbf{u}, \mathbf{v} \}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>
+</div>
+
+<ul>
+<li>Show this in class.</li>
+</ul>
+
+<div class="exercise">
+<span id="section-exr:unnamed-chunk-132" class="exercise"><strong>Exercise 11.1  </strong></span>* Is a line through the origin a subspace?
+* Is a line <strong>not</strong> through the origin a subspace?
+</div>
+
+<ul>
+<li><strong>Note:</strong> For any vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k \in \mathcal{R}^n\)</span>, the span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</li>
+</ul>
+<div id="section-special-subspaces-column-space-and-null-space" class="section level2">
+<h2><span class="header-section-number">11.1</span> Special subspaces: column space and null space</h2>
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-133" class="definition"><strong>Definition 11.2  </strong></span>The <strong>column space</strong> of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-134" class="example"><strong>Example 11.2  </strong></span>in class
+</div>
+
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-135" class="definition"><strong>Definition 11.3  </strong></span>The <strong>null space</strong> of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions to the homogeneous matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.
+</div>
+
+<p>While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>.</p>
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-136" class="theorem"><strong>Theorem 11.1  </strong></span>The null space of a n <span class="math inline">\(m \times m\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> Do in class
+</div>
+
+<ul>
+<li>Example: give <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{x}\)</span> and determine if <span class="math inline">\(\mathbf{x}\)</span> is in the null space of <span class="math inline">\(\mathbf{A}\)</span> using <code>R</code></li>
+</ul>
+</div>
+<div id="section-the-basis-of-a-subspace" class="section level2">
+<h2><span class="header-section-number">11.2</span> The basis of a subspace</h2>
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-138" class="definition"><strong>Definition 11.4  </strong></span>A <strong>basis</strong> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> that spans <span class="math inline">\(\mathbf{H}\)</span>. Equivlently, a baisis is a set of linearly independent vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> such that span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\)</span>.
+</div>
+
+<p>The requirement that the vectors of a basis are linearly independent while spanning a subspace <span class="math inline">\(\mathcal{H}\)</span> means that a basis is a <strong>minimal spanning set</strong> for the subspace <span class="math inline">\(\mathcal{H}\)</span></p>
+<ul>
+<li><strong>Question:</strong> Is a basis unique?</li>
+</ul>
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-139" class="definition"><strong>Definition 11.5  </strong></span>The standard basis for <span class="math inline">\(\mathcal{R}^n\)</span>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-140" class="example"><strong>Example 11.3  </strong></span>Basis for <span class="math inline">\(\mathcal{R}^3\)</span>
+</div>
+
+
+<div class="example">
+<p><span id="section-exm:unnamed-chunk-141" class="example"><strong>Example 11.4  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<ul>
+<li>in class
+</div></li>
+</ul>
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-142" class="example"><strong>Example 11.5  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
+<span class="math display">\[
+\mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; 1 &amp; 3 \\ -1 &amp; -2 &amp; 6 &amp; 5 \\ 1 &amp; 2 &amp; -3 &amp; 2 \end{pmatrix}
+\]</span>
+</div>
+
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-143" class="theorem"><strong>Theorem 11.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.
+</div>
+
+<p><strong>Note:</strong> Use the columns of <span class="math inline">\(\mathbf{A}\)</span>, not the columns of the matrix in echelon form.</p>
+<p>corollary</p>
+
+<div class="corollary">
+<span id="section-cor:unnamed-chunk-144" class="corollary"><strong>Corollary 11.1  </strong></span>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-145" class="example"><strong>Example 11.6  </strong></span>Using <code>R</code>, find a basis for the column space of the matrix
+<span class="math display">\[
+\mathbf{A} = \begin{pmatrix} 3 &amp; 1 &amp; 2 &amp; -3 \\ 4 &amp; 1 &amp; -3 &amp; -2 \\ 4 &amp; -1 &amp; -3 &amp; 1 \end{pmatrix}
+\]</span>
+</div>
+
+
+</div>
 </div>
             </section>
 
@@ -265,7 +390,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="section-matrix-factorizations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-matrix-calculus-gradients-the-chain-rule-directional-derivatives-and-tangent-planes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-dimension-and-rank.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
