@@ -222,9 +222,14 @@
     "dasc2594": {
       "Package": "dasc2594",
       "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "MRAN",
-      "Hash": "aa4f0136693c1886638683ab366f57ea"
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "dasc2594",
+      "RemoteUsername": "jtipton25",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "62b7e02ba3e0fc8d8f8134e05a513f9f3abff673",
+      "Hash": "9f22dbbb70172ab89b8345f12dca39b3"
     },
     "dbplyr": {
       "Package": "dbplyr",
