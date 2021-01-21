@@ -1,2 +1,110 @@
 # Dimension and Rank
 
+## Coordinate systems
+
+Recall the idea of polynomials (e.g., a polynomial of order $p$ is $a_1x^p + a_2x^{p-1} + \ldots + a_p x^1 + a_{p+1} x^0$) where the polynomials $x^p, x^{p-1}, \ldots, x^1, x^0$ form a set of powers up to the power $p$ of $x$ from which the coefficients $a_p, \ldots, a_{p+1}$ can be used to make any polynomial of order $p$. It can be said that the powers of $x$ ($x^p, x^{p-1}, \ldots, x^1, x^0$) form a basis for all polynomials of order $p$. 
+
+In the previous section, we extended this analogy to vector spaces using the concept of a minimal spanning set. Consider the basis  $\mathbf{b}_1, \ldots, \mathbf{b}_k$ for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ where span$\{\mathbf{b}_1, \ldots, \mathbf{b}_k\} = \mathcal{H}$. Because the set $\mathbf{b}_1, \ldots, \mathbf{b}_k$ is a basis, the set of vectors is linearly independent. Then, because the set $\mathbf{b}_1, \ldots, \mathbf{b}_k$ is a basis, we have the following result. 
+
+```{theorem}
+For each vector $\mathbf{x}$ in the subspace $\mathcal{H}$ of $\mathcal{R}^n$, and a basis $\mathbf{b}_1, \ldots, \mathbf{b}_k$, there is a unique set of coefficients $a_1, \ldots, a_k$ such that 
+\begin{align*}
+\mathbf{x} & = a_1 \mathbf{b}_1 + \cdots + a_k \mathbf{b}_k
+\end{align*}
+
+```
+
+
+```{proof}
+In class: assume contradiction that there are two ways $a_1, \ldots, a_k$ and $b_1, \ldots, b_k$...
+```
+
+```{definition}
+Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}$ be a basis for a subspace $\mathcal{H}$ of $\mathcal{R}^n$. Then, for each $\mathbf{x} \in \mathcal{H}$, the **coordinates** of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ are the set of coefficients $\{a_1, \ldots, a_k\}$ where
+\begin{align*}
+\mathbf{x} & = a_1 \mathbf{b}_1 + \cdots + a_k \mathbf{b}_k.
+\end{align*}
+```
+
+
+```{example}
+Let $\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1\end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1\end{pmatrix} \right\}$ and $\mathbf{x} = \begin{pmatrix} 5 \\ 6 \\ 1\end{pmatrix}$. What are the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$?
+```
+
+```{solution}
+In class: write out vector equation with coefficients, put in augmented matrix form, find consistent solution
+```
+
+
+## Dimension of a subspace
+
+
+```{definition}
+The dimension $\operatorname{dim}(\mathcal{H})$ of a nonzero subspace $\mathcal{H}$ of $\mathcal{R}^n$ is the number of (nonzero) vectors that make up a basis $\mathcal{B}$ for $\mathcal{H}$. The dimension of the subspace $\mathcal{H} = \{\mathbf{0}\}$ is 0.
+```
+
+Note that under this definition, the basis $\mathcal{B}$ is not unique. For example, the following bases for the 2-dimensional subspace $\mathcal{H}$ of $\mathcal{R}^3$ both have two linearly independent vectors.
+
+\begin{align*}
+\mathcal{B}_1 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} 
+\end{align*}
+
+For example, let $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$. Then under the basis $\mathcal{B}_1$, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$ are $a_1 = 3$ and $a_2 = 4$ because 
+\begin{align*}
+\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+\end{align*}
+while the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are $a_1 = 3$ and $a_2 = 1$ because
+\begin{align*}
+\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}.
+\end{align*}
+
+
+```{exercise}
+What is the dimension of a basis for $\mathcal{R}^n$?
+```
+
+```{exercise}
+What is the dimension of a subspace that is a plane in 3 dimensions?
+```
+
+```{definition}
+The **rank** $\operatorname{rank}(\mathbf{A})$ of a matrix $\mathbf{A}$ is the dimension of the column space of $\mathcal{A}$.
+```
+
+Recall that the pivot columns of $\mathbf{A}$ form a basis for the column space of $\mathbf{A}$. Hence, the number of pivot columns in the matrix $\mathbf{A}$ is the rank of the matrix $\mathbf{A}$.
+
+```{example}
+Determine the rank of the following matrix: **in class example**
+```
+
+
+```{theorem, name = "The Rank Theorem"}
+If a matrix $\mathbf{A}$ has $n$ columns, then $\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n$
+```
+
+```{proof}
+in class: sketch-- rank(A) is number of linearly independent columns. null(A) is number of linearly dependent columns (solutions to Ax=0)
+```
+
+The following theorem states that any $p$ vectors in $\mathcal{R}^p$ that are linearly independent must span $\mathcal{R}^p$.
+
+```{theorem, name = "The Basis Theorem"}
+Let $\mathcal{H}$ be a p-dimensional subspace of $\mathcal{R}^n$. Then any linearly independent set of $p$ elements in $\mathcal{H}$ is a basis for $\mathcal{H}$. Equivalently, any set of $p$ elements of $\mathcal{H}$ that span $\mathcal{H}$ is a basis for $\mathcal{H}$
+```
+
+```{theorem, name = "Invertible Matrix Theorem (again)"}
+Let $\mathbf{A}$ be a $n \times n$ matrix. The the following statements are equivalent to $\mathbf{A}$ being an invertible matrix:
+    
+a) The columns of $\mathbf{A}$ form a basis for $\mathcal{R}^n$
+    
+b) $\operatorname{col}(\mathbf{A}) = \mathcal{R}^n$
+    
+c) $\operatorname{dim}(\operatorname{col}(\mathbf{A})) = n$
+    
+d) $\operatorname{rank}(\mathbf{A}) = n$
+    
+e) $\operatorname{null}(\mathbf{A}) = \{\mathbf{0}\}$    
+
+f) $\operatorname{dim}(\operatorname{null}(\mathbf{A})) = 0$    
+```
+

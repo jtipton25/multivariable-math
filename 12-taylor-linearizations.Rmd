@@ -1,2 +1,0 @@
-# Tangent Planes and Taylor Linearization
-

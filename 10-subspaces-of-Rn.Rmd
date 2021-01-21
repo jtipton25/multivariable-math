@@ -36,7 +36,7 @@ Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector
 ## Special subspaces: column space and null space
 
 ```{definition}
-The **column space** of a $m \times n$ matrix $\mathbf{A}$ which has columns $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m$ is the set of vectors that are linear combinations of the columns of $\mathbf{A}$ which is equivalent to the span$\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$.
+The **column space**, denoted $\operatorname{col}(\mathbf{A})$, of a $m \times n$ matrix $\mathbf{A}$ which has columns $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m$ is the set of vectors that are linear combinations of the columns of $\mathbf{A}$ which is equivalent to the span$\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$.
 ```
 
 ```{example}
@@ -45,7 +45,7 @@ in class
 
 
 ```{definition}
-The **null space** of a matrix $\mathbf{A}$ is the set of all solutions to the homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$.
+The **null space**, denoted $\operatorname{null}(\mathbf{A})$, of a matrix $\mathbf{A}$ is the set of all solutions to the homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$.
 ```
 While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by $\mathbf{A}$ maps to $\mathbf{0}$. 
 
