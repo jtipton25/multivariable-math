@@ -517,7 +517,7 @@ a x_n + b y_n \\
 <p>is called a linear combination. The idea of a linear combination can be extended to <span class="math inline">\(K\)</span> different scalars <span class="math inline">\(\{ a_1, \ldots, a_K \}\)</span> and <span class="math inline">\(K\)</span> different vectors <span class="math inline">\(\{ \mathbf{x}_1, \ldots, \mathbf{x}_K\}\)</span> each of length <span class="math inline">\(n\)</span> as</p>
 <p><span class="math display">\[
  \begin{align*}
-a_1 \mathbf{x}_1 + a_2 + \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = 
+a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = 
 \sum_{k=1}^K a_k \mathbf{x}_k &amp; = \begin{pmatrix}
 \sum_{k=1}^K a_k x_{k1} \\
 \sum_{k=1}^K a_k x_{k2} \\
@@ -534,7 +534,7 @@ The scalars <span class="math inline">\(a_k\)</span> are called <strong>coeffici
 \begin{align*}
 \mathbf{u} = \begin{pmatrix} 3 \\ 6\end{pmatrix} &amp;&amp; \mathbf{v} = \begin{pmatrix} -2 \\ 1\end{pmatrix}. \end{align*}
 \]</span>
-Are there values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such <span class="math inline">\(a \mathbf{x}_1 + b \mathbf{x}_2 = \begin{pmatrix} 9 \\ - 4 \end{pmatrix}\)</span>? To answer this question, we can write the linear combination as
+Are there values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such <span class="math inline">\(a \mathbf{u} + b \mathbf{v} = \begin{pmatrix} 9 \\ - 4 \end{pmatrix}\)</span>? To answer this question, we can write the linear combination as
 <span class="math display">\[
 \begin{align*}
 a \begin{pmatrix} 3 \\ 6\end{pmatrix} + b \begin{pmatrix} -2 \\ 1\end{pmatrix} &amp; = \begin{pmatrix} 9 \\ -4 \end{pmatrix} 
@@ -575,7 +575,7 @@ Reducing the augmented matrix to reduced row echelon form gives</p>
 ## [2,]    0    1 -4.40000000</code></pre>
 <p>which has solutions <span class="math inline">\(a = 0.0667\)</span> and <span class="math inline">\(b = -4.4\)</span>.</p>
 <ul>
-<li><strong>Result:</strong> Any vector equation <span class="math inline">\(a_1 \mathbf{x}_1 + a_2 + \mathbf{x}_2 + \ldots + a_K \mathbf{x}_K = \mathbf{c}\)</span> for a given constant vector <span class="math inline">\(\mathbf{b}\)</span> has the same solution set as the augmented matrix</li>
+<li><strong>Result:</strong> Any vector equation <span class="math inline">\(a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 + \ldots + a_K \mathbf{x}_K = \mathbf{c}\)</span> for a given constant vector <span class="math inline">\(\mathbf{b}\)</span> has the same solution set as the augmented matrix</li>
 </ul>
 <p><span class="math display">\[
 \begin{align*}
@@ -586,10 +586,10 @@ Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k
 </div>
 <div id="section-the-geometric-interpretation-of-linear-combinations-of-vectors" class="section level3">
 <h3><span class="header-section-number">3.2.6</span> The geometric interpretation of linear combinations of vectors</h3>
-<p>Consider the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 1 \\ 1\end{pmatrix}\)</span> shown in the figure below on the left.</p>
+<p>Consider the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span> shown in the figure below on the left.</p>
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <ul>
-<li><strong>Exercise:</strong> Given <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>, estimate the linear combination of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> that gives the point <span class="math inline">\(\mathbf{w}\)</span> in the figure below.</li>
+<li><strong>Exercise:</strong> Given <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>, estimate the linear combination of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> that gives the point <span class="math inline">\(\mathbf{w}\)</span> in the figure below.</li>
 </ul>
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 </div>
