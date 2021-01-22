@@ -346,7 +346,7 @@ is called a linear combination. The idea of a linear combination can be extended
 
 $$
  \begin{align*}
-a_1 \mathbf{x}_1 + a_2 + \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = 
+a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = 
 \sum_{k=1}^K a_k \mathbf{x}_k & = \begin{pmatrix}
 \sum_{k=1}^K a_k x_{k1} \\
 \sum_{k=1}^K a_k x_{k2} \\
@@ -363,7 +363,7 @@ $$
 \begin{align*}
 \mathbf{u} = \begin{pmatrix} 3 \\ 6\end{pmatrix} && \mathbf{v} = \begin{pmatrix} -2 \\ 1\end{pmatrix}. \end{align*}
 $$
-Are there values of $a$ and $b$ such $a \mathbf{x}_1 + b \mathbf{x}_2 = \begin{pmatrix} 9 \\ - 4 \end{pmatrix}$? To answer this question, we can write the linear combination as 
+Are there values of $a$ and $b$ such $a \mathbf{u} + b \mathbf{v} = \begin{pmatrix} 9 \\ - 4 \end{pmatrix}$? To answer this question, we can write the linear combination as 
 $$
 \begin{align*}
 a \begin{pmatrix} 3 \\ 6\end{pmatrix} + b \begin{pmatrix} -2 \\ 1\end{pmatrix} & = \begin{pmatrix} 9 \\ -4 \end{pmatrix} 
@@ -403,7 +403,7 @@ rref(matrix(c(3, 6, -2, 1, 9, -4), 2, 3))
 ```
 which has solutions $a = 0.0667$ and $b = -4.4$.
 
-* **Result:** Any vector equation $a_1 \mathbf{x}_1 + a_2 + \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = \mathbf{c}$ for a given constant vector $\mathbf{b}$ has the same solution set as the augmented matrix
+* **Result:** Any vector equation $a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = \mathbf{c}$ for a given constant vector $\mathbf{b}$ has the same solution set as the augmented matrix
 
 $$
 \begin{align*}
@@ -414,7 +414,7 @@ Equivalently, the set of vectors $\{\mathbf{x}_k\}_{k=1}^K$ can only be combined
 
 ### The geometric interpretation of linear combinations of vectors
 
-Consider the vectors $\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 1 \\ 1\end{pmatrix}$ shown in the figure below on the left.
+Consider the vectors $\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ shown in the figure below on the left.
 
 ```{r, echo = FALSE}
 df <- data.frame(x = c(sqrt(2), 1), y = c(-sqrt(2), 1))
@@ -481,7 +481,7 @@ p1 + p2
 
 
 
-* **Exercise:** Given $\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ and $\mathbf{v} = begin{pmatrix} 0 \\ 1 \end{pmatrix}$, estimate the linear combination of $\mathbf{u}$ and $\mathbf{v}$ that gives the point $\mathbf{w}$ in the figure below.
+* **Exercise:** Given $\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, estimate the linear combination of $\mathbf{u}$ and $\mathbf{v}$ that gives the point $\mathbf{w}$ in the figure below.
 
 
 ```{r, echo = FALSE}
