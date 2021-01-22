@@ -20,17 +20,17 @@ jobs:
         run: |
           brew install [--cask] xquartz
       
+      - name: Install image magick
+        run: |
+          brew install imagemagick@6
+          
       - name: Cache Renv packages
         uses: actions/cache@v2
         with:
           path: ~/local/share/renv
           key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
-          
-      - name: Install image magick
-        run: |
-          brew install imagemagick@6
-              
+          restore-keys: r-    
+             
       - name: Install R packages with renv
         run: |
           Rscript -e "install.packages('renv', repos = 'https://muug.ca/mirror/cran/')"
