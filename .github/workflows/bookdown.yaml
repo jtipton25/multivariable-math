@@ -27,6 +27,10 @@ jobs:
           key: r-${{ hashFiles('renv.lock') }}
           restore-keys: r-
           
+      - name: Install image magick
+        run: |
+          brew install imagemagick@6
+              
       - name: Install R packages with renv
         run: |
           Rscript -e "install.packages('renv', repos = 'https://muug.ca/mirror/cran/')"
