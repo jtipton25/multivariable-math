@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2021-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-subspaces-Rn.html"/>
-<link rel="next" href="section-tangent-planes-and-taylor-linearization.html"/>
+<link rel="next" href="section-determinants.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -233,14 +233,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html#section-special-subspaces-column-space-and-null-space"><i class="fa fa-check"></i><b>11.1</b> Special subspaces: column space and null space</a></li>
 <li class="chapter" data-level="11.2" data-path="section-subspaces-Rn.html"><a href="section-subspaces-Rn.html#section-the-basis-of-a-subspace"><i class="fa fa-check"></i><b>11.2</b> The basis of a subspace</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a></li>
-<li class="chapter" data-level="13" data-path="section-tangent-planes-and-taylor-linearization.html"><a href="section-tangent-planes-and-taylor-linearization.html"><i class="fa fa-check"></i><b>13</b> Tangent Planes and Taylor Linearization</a></li>
-<li class="chapter" data-level="14" data-path="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><a href="section-double-and-triple-integrals-and-change-of-variables-jacobian.html"><i class="fa fa-check"></i><b>14</b> Double and Triple Integrals and Change of Variables (Jacobian)</a></li>
-<li class="chapter" data-level="" data-path="section-references.html"><a href="section-references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="15" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>15</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="15.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>15.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="15.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>15.0.2</b> Lists</a></li>
-<li class="chapter" data-level="15.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>15.1</b> Exercises</a></li>
+<li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
+<li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
+<li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a></li>
+<li class="chapter" data-level="14" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>14</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="14.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>14.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="14.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>14.0.2</b> Lists</a></li>
+<li class="chapter" data-level="14.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>14.1</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -264,7 +265,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-dimension-and-rank" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> Dimension and Rank</h1>
+<div id="section-coordinate-systems" class="section level2">
+<h2><span class="header-section-number">12.1</span> Coordinate systems</h2>
+<p>Recall the idea of polynomials (e.g., a polynomial of order <span class="math inline">\(p\)</span> is <span class="math inline">\(a_1x^p + a_2x^{p-1} + \ldots + a_p x^1 + a_{p+1} x^0\)</span>) where the polynomials <span class="math inline">\(x^p, x^{p-1}, \ldots, x^1, x^0\)</span> form a set of powers up to the power <span class="math inline">\(p\)</span> of <span class="math inline">\(x\)</span> from which the coefficients <span class="math inline">\(a_p, \ldots, a_{p+1}\)</span> can be used to make any polynomial of order <span class="math inline">\(p\)</span>. It can be said that the powers of <span class="math inline">\(x\)</span> (<span class="math inline">\(x^p, x^{p-1}, \ldots, x^1, x^0\)</span>) form a basis for all polynomials of order <span class="math inline">\(p\)</span>.</p>
+<p>In the previous section, we extended this analogy to vector spaces using the concept of a minimal spanning set. Consider the basis <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> where span<span class="math inline">\(\{\mathbf{b}_1, \ldots, \mathbf{b}_k\} = \mathcal{H}\)</span>. Because the set <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span> is a basis, the set of vectors is linearly independent. Then, because the set <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span> is a basis, we have the following result.</p>
 
+<div class="theorem">
+<p><span id="section-thm:unnamed-chunk-146" class="theorem"><strong>Theorem 12.1  </strong></span>For each vector <span class="math inline">\(\mathbf{x}\)</span> in the subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>, and a basis <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span>, there is a unique set of coefficients <span class="math inline">\(a_1, \ldots, a_k\)</span> such that
+<span class="math display">\[\begin{align*}
+\mathbf{x} &amp; = a_1 \mathbf{b}_1 + \cdots + a_k \mathbf{b}_k
+\end{align*}\]</span></p>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> In class: assume contradiction that there are two ways <span class="math inline">\(a_1, \ldots, a_k\)</span> and <span class="math inline">\(b_1, \ldots, b_k\)</span>…
+</div>
+
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-148" class="definition"><strong>Definition 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}\)</span> be a basis for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then, for each <span class="math inline">\(\mathbf{x} \in \mathcal{H}\)</span>, the <strong>coordinates</strong> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> are the set of coefficients <span class="math inline">\(\{a_1, \ldots, a_k\}\)</span> where
+<span class="math display">\[\begin{align*}
+\mathbf{x} &amp; = a_1 \mathbf{b}_1 + \cdots + a_k \mathbf{b}_k.
+\end{align*}\]</span>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-149" class="example"><strong>Example 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1\end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1\end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 6 \\ 1\end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solution. </em></span> In class: write out vector equation with coefficients, put in augmented matrix form, find consistent solution
+</div>
+
+</div>
+<div id="section-dimension-of-a-subspace" class="section level2">
+<h2><span class="header-section-number">12.2</span> Dimension of a subspace</h2>
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-151" class="definition"><strong>Definition 12.2  </strong></span>The dimension <span class="math inline">\(\operatorname{dim}(\mathcal{H})\)</span> of a nonzero subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is the number of (nonzero) vectors that make up a basis <span class="math inline">\(\mathcal{B}\)</span> for <span class="math inline">\(\mathcal{H}\)</span>. The dimension of the subspace <span class="math inline">\(\mathcal{H} = \{\mathbf{0}\}\)</span> is 0.
+</div>
+
+<p>Note that under this definition, the basis <span class="math inline">\(\mathcal{B}\)</span> is not unique. For example, the following bases for the 2-dimensional subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^3\)</span> both have two linearly independent vectors.</p>
+<p><span class="math display">\[\begin{align*}
+\mathcal{B}_1 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} &amp;&amp; \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} 
+\end{align*}\]</span></p>
+<p>For example, let <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}\)</span>. Then under the basis <span class="math inline">\(\mathcal{B}_1\)</span>, the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}_1\)</span> are <span class="math inline">\(a_1 = 3\)</span> and <span class="math inline">\(a_2 = 4\)</span> because
+<span class="math display">\[\begin{align*}
+\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+\end{align*}\]</span>
+while the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}_2\)</span> are <span class="math inline">\(a_1 = 3\)</span> and <span class="math inline">\(a_2 = 1\)</span> because
+<span class="math display">\[\begin{align*}
+\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}.
+\end{align*}\]</span></p>
+
+<div class="exercise">
+<span id="section-exr:unnamed-chunk-152" class="exercise"><strong>Exercise 12.1  </strong></span>What is the dimension of a basis for <span class="math inline">\(\mathcal{R}^n\)</span>?
+</div>
+
+
+<div class="exercise">
+<span id="section-exr:unnamed-chunk-153" class="exercise"><strong>Exercise 12.2  </strong></span>What is the dimension of a subspace that is a plane in 3 dimensions?
+</div>
+
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-154" class="definition"><strong>Definition 12.3  </strong></span>The <strong>rank</strong> <span class="math inline">\(\operatorname{rank}(\mathbf{A})\)</span> of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the dimension of the column space of <span class="math inline">\(\mathcal{A}\)</span>.
+</div>
+
+<p>Recall that the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>. Hence, the number of pivot columns in the matrix <span class="math inline">\(\mathbf{A}\)</span> is the rank of the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-155" class="example"><strong>Example 12.2  </strong></span>Determine the rank of the following matrix: <strong>in class example</strong>
+</div>
+
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-156" class="theorem"><strong>Theorem 12.2  (The Rank Theorem)  </strong></span>If a matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n\)</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> in class: sketch– rank(A) is number of linearly independent columns. null(A) is number of linearly dependent columns (solutions to Ax=0)
+</div>
+
+<p>The following theorem states that any <span class="math inline">\(p\)</span> vectors in <span class="math inline">\(\mathcal{R}^p\)</span> that are linearly independent must span <span class="math inline">\(\mathcal{R}^p\)</span>.</p>
+
+<div class="theorem">
+<span id="section-thm:unnamed-chunk-158" class="theorem"><strong>Theorem 12.3  (The Basis Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a p-dimensional subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then any linearly independent set of <span class="math inline">\(p\)</span> elements in <span class="math inline">\(\mathcal{H}\)</span> is a basis for <span class="math inline">\(\mathcal{H}\)</span>. Equivalently, any set of <span class="math inline">\(p\)</span> elements of <span class="math inline">\(\mathcal{H}\)</span> that span <span class="math inline">\(\mathcal{H}\)</span> is a basis for <span class="math inline">\(\mathcal{H}\)</span>
+</div>
+
+
+<div class="theorem">
+<p><span id="section-thm:unnamed-chunk-159" class="theorem"><strong>Theorem 12.4  (Invertible Matrix Theorem (again))  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The the following statements are equivalent to <span class="math inline">\(\mathbf{A}\)</span> being an invertible matrix:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{col}(\mathbf{A}) = \mathcal{R}^n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{dim}(\operatorname{col}(\mathbf{A})) = n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{rank}(\mathbf{A}) = n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{null}(\mathbf{A}) = \{\mathbf{0}\}\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{dim}(\operatorname{null}(\mathbf{A})) = 0\)</span></p>
+</div></li>
+</ol>
+
+</div>
 </div>
             </section>
 
@@ -272,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="section-subspaces-Rn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-tangent-planes-and-taylor-linearization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-determinants.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
