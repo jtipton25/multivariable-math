@@ -574,4 +574,11 @@ From the example above, we can answer the question "Is the point (a, b) on the l
 * **Example: do in class** 2 3-d vectors that are not scalar multiples of each other define a plane. Does a point lie within the plane? Use the span to answer this question.
 
 
+The shiny app below demonstrates how the concept of span can be understood in 2 dimensions. The app can be downloaded and run
+
+```{r, eval = FALSE}
+library(shiny)
+runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/span") 
+```
+
 
