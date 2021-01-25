@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-22" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -296,54 +296,54 @@ a_{m1} + b_{m1} &amp; a_{m2} + b_{m2} &amp; \cdots &amp; a_{mn} + b_{mn}
 \]</span></p>
 <p><strong>… Another way to </strong></p>
 <p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (same number of rows and columns) you can add the matrices together</p>
-<div class="sourceCode" id="section-cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="section-matrix-operations.html#cb109-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb109-2"><a href="section-matrix-operations.html#cb109-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">-9</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb109-3"><a href="section-matrix-operations.html#cb109-3"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="section-matrix-operations.html#cb110-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb110-2"><a href="section-matrix-operations.html#cb110-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">-9</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb110-3"><a href="section-matrix-operations.html#cb110-3"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    4    2
 ## [2,]    1    0
 ## [3,]   33   -4</code></pre>
-<div class="sourceCode" id="section-cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="section-matrix-operations.html#cb111-1"></a>B</span></code></pre></div>
+<div class="sourceCode" id="section-cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="section-matrix-operations.html#cb112-1"></a>B</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    7    9
 ## [2,]  -24   11
 ## [3,]    3   -9</code></pre>
-<div class="sourceCode" id="section-cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="section-matrix-operations.html#cb113-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
+<div class="sourceCode" id="section-cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="section-matrix-operations.html#cb114-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   11   11
 ## [2,]  -23   11
 ## [3,]   36  -13</code></pre>
 <p>We can also write this using <code>for</code> loops</p>
-<div class="sourceCode" id="section-cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="section-matrix-operations.html#cb115-1"></a><span class="co"># initialize an empty matrix to fill</span></span>
-<span id="cb115-2"><a href="section-matrix-operations.html#cb115-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb115-3"><a href="section-matrix-operations.html#cb115-3"></a></span>
-<span id="cb115-4"><a href="section-matrix-operations.html#cb115-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {         <span class="co"># loop over the rows</span></span>
-<span id="cb115-5"><a href="section-matrix-operations.html#cb115-5"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {     <span class="co"># loop over the columns</span></span>
-<span id="cb115-6"><a href="section-matrix-operations.html#cb115-6"></a>        C[i, j] &lt;-<span class="st"> </span>A[i, j] <span class="op">+</span><span class="st"> </span>B[i, j]</span>
-<span id="cb115-7"><a href="section-matrix-operations.html#cb115-7"></a>    }</span>
-<span id="cb115-8"><a href="section-matrix-operations.html#cb115-8"></a>}</span>
-<span id="cb115-9"><a href="section-matrix-operations.html#cb115-9"></a>C</span></code></pre></div>
+<div class="sourceCode" id="section-cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="section-matrix-operations.html#cb116-1"></a><span class="co"># initialize an empty matrix to fill</span></span>
+<span id="cb116-2"><a href="section-matrix-operations.html#cb116-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb116-3"><a href="section-matrix-operations.html#cb116-3"></a></span>
+<span id="cb116-4"><a href="section-matrix-operations.html#cb116-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(A)) {         <span class="co"># loop over the rows</span></span>
+<span id="cb116-5"><a href="section-matrix-operations.html#cb116-5"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(A)) {     <span class="co"># loop over the columns</span></span>
+<span id="cb116-6"><a href="section-matrix-operations.html#cb116-6"></a>        C[i, j] &lt;-<span class="st"> </span>A[i, j] <span class="op">+</span><span class="st"> </span>B[i, j]</span>
+<span id="cb116-7"><a href="section-matrix-operations.html#cb116-7"></a>    }</span>
+<span id="cb116-8"><a href="section-matrix-operations.html#cb116-8"></a>}</span>
+<span id="cb116-9"><a href="section-matrix-operations.html#cb116-9"></a>C</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   11   11
 ## [2,]  -23   11
 ## [3,]   36  -13</code></pre>
 <p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of different dimensions (they differ in either the number of rows or columns), <code>R</code> will return an error warning you that the matrices are of different sizes and can’t be added</p>
-<div class="sourceCode" id="section-cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="section-matrix-operations.html#cb117-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb117-2"><a href="section-matrix-operations.html#cb117-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb117-3"><a href="section-matrix-operations.html#cb117-3"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="section-matrix-operations.html#cb118-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">33</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-4</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb118-2"><a href="section-matrix-operations.html#cb118-2"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">-24</span>, <span class="dv">3</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb118-3"><a href="section-matrix-operations.html#cb118-3"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    4    2
 ## [2,]    1    0
 ## [3,]   33   -4</code></pre>
-<div class="sourceCode" id="section-cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="section-matrix-operations.html#cb119-1"></a>B</span></code></pre></div>
+<div class="sourceCode" id="section-cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="section-matrix-operations.html#cb120-1"></a>B</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    7    3
 ## [2,]  -24    9</code></pre>
-<div class="sourceCode" id="section-cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="section-matrix-operations.html#cb121-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
+<div class="sourceCode" id="section-cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="section-matrix-operations.html#cb122-1"></a>A <span class="op">+</span><span class="st"> </span>B</span></code></pre></div>
 <pre><code>## Error in A + B: non-conformable arrays</code></pre>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-95" class="theorem"><strong>Theorem 7.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{C}\)</span> be <span class="math inline">\(m \times n\)</span> matrices and let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> be scalars, then:</p>
+<p><span id="section-thm:unnamed-chunk-96" class="theorem"><strong>Theorem 7.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{C}\)</span> be <span class="math inline">\(m \times n\)</span> matrices and let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> be scalars, then:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}\)</span> </p></li>
 <li><p><span class="math inline">\((\mathbf{A} + \mathbf{B}) + \mathbf{C} = \mathbf{A} + (\mathbf{B} + \mathbf{C})\)</span> </p></li>
@@ -481,7 +481,7 @@ a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{pn}
 \]</span></p>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-96" class="theorem"><strong>Theorem 7.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(m \times n\)</span> matrix, then</p>
+<p><span id="section-thm:unnamed-chunk-97" class="theorem"><strong>Theorem 7.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(m \times n\)</span> matrix, then</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\((\mathbf{A}&#39;)&#39; = \mathbf{A}\)</span>.</p></li>
 <li><p>Let <span class="math inline">\(\mathbf{B}\)</span> be an <span class="math inline">\(m \times n\)</span> matrix, then <span class="math inline">\((\mathbf{A} + \mathbf{B})&#39; = \mathbf{A}&#39; + \mathbf{B}&#39;\)</span>.</p></li>

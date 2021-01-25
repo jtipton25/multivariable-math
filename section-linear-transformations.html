@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-22" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,9 +265,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-linear-transformations" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Linear Transformations</h1>
-<div class="sourceCode" id="section-cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="section-linear-transformations.html#cb102-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb102-2"><a href="section-linear-transformations.html#cb102-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb102-3"><a href="section-linear-transformations.html#cb102-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
+<div class="sourceCode" id="section-cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="section-linear-transformations.html#cb103-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb103-2"><a href="section-linear-transformations.html#cb103-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb103-3"><a href="section-linear-transformations.html#cb103-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
 <pre><code>## Linking to ImageMagick 6.9.11.48
 ## Enabled features: freetype, ghostscript, lcms, webp
 ## Disabled features: cairo, fontconfig, fftw, pango, rsvg, x11</code></pre>
@@ -337,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Linear Transformations</h2>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-83" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<p><span id="section-def:unnamed-chunk-84" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
 <li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p>
@@ -397,13 +397,13 @@ x &amp; 0 \\
 <ul>
 <li>In the example below, we set <span class="math inline">\(x = 2\)</span> and generate the transformation.</li>
 </ul>
-<div class="sourceCode" id="section-cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="section-linear-transformations.html#cb108-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
-<span id="cb108-2"><a href="section-linear-transformations.html#cb108-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
-<span id="cb108-3"><a href="section-linear-transformations.html#cb108-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="cb108-4"><a href="section-linear-transformations.html#cb108-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb108-5"><a href="section-linear-transformations.html#cb108-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
-<span id="cb108-6"><a href="section-linear-transformations.html#cb108-6"></a></span>
-<span id="cb108-7"><a href="section-linear-transformations.html#cb108-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
+<div class="sourceCode" id="section-cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="section-linear-transformations.html#cb109-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb109-2"><a href="section-linear-transformations.html#cb109-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb109-3"><a href="section-linear-transformations.html#cb109-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb109-4"><a href="section-linear-transformations.html#cb109-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb109-5"><a href="section-linear-transformations.html#cb109-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb109-6"><a href="section-linear-transformations.html#cb109-6"></a></span>
+<span id="cb109-7"><a href="section-linear-transformations.html#cb109-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-animation-1.gif" /><!-- --></p>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-static-1.png" width="672" /></p>
 </div>
@@ -629,7 +629,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <h3><span class="header-section-number">6.3.1</span> One-to-one transformations</h3>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-84" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.
+<span id="section-def:unnamed-chunk-85" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.
 </div>
 
 <p><img src="images/one-to-one.png" /><!-- --></p>
@@ -691,7 +691,7 @@ b) There are at least two different inputs into the function <span class="math i
 c) There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-87" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="section-thm:unnamed-chunk-88" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
@@ -728,7 +728,7 @@ c) There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \i
 <h3><span class="header-section-number">6.3.2</span> Onto transformations</h3>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-88" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>
+<span id="section-def:unnamed-chunk-89" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>
 </div>
 
 <p><img src="images/onto.png" /><!-- --></p>
@@ -746,7 +746,7 @@ c) There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \i
 </ol>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-91" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="section-thm:unnamed-chunk-92" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is onto</p></li>
 <li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>

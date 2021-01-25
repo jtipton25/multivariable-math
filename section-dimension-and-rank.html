@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-22" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -271,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the previous section, we extended this analogy to vector spaces using the concept of a minimal spanning set. Consider the basis <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> where span<span class="math inline">\(\{\mathbf{b}_1, \ldots, \mathbf{b}_k\} = \mathcal{H}\)</span>. Because the set <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span> is a basis, the set of vectors is linearly independent. Then, because the set <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span> is a basis, we have the following result.</p>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-146" class="theorem"><strong>Theorem 12.1  </strong></span>For each vector <span class="math inline">\(\mathbf{x}\)</span> in the subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>, and a basis <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span>, there is a unique set of coefficients <span class="math inline">\(a_1, \ldots, a_k\)</span> such that
+<p><span id="section-thm:unnamed-chunk-147" class="theorem"><strong>Theorem 12.1  </strong></span>For each vector <span class="math inline">\(\mathbf{x}\)</span> in the subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>, and a basis <span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_k\)</span>, there is a unique set of coefficients <span class="math inline">\(a_1, \ldots, a_k\)</span> such that
 <span class="math display">\[\begin{align*}
 \mathbf{x} &amp; = a_1 \mathbf{b}_1 + \cdots + a_k \mathbf{b}_k
 \end{align*}\]</span></p>
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-148" class="definition"><strong>Definition 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}\)</span> be a basis for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then, for each <span class="math inline">\(\mathbf{x} \in \mathcal{H}\)</span>, the <strong>coordinates</strong> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> are the set of coefficients <span class="math inline">\(\{a_1, \ldots, a_k\}\)</span> where
+<span id="section-def:unnamed-chunk-149" class="definition"><strong>Definition 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}\)</span> be a basis for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then, for each <span class="math inline">\(\mathbf{x} \in \mathcal{H}\)</span>, the <strong>coordinates</strong> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> are the set of coefficients <span class="math inline">\(\{a_1, \ldots, a_k\}\)</span> where
 <span class="math display">\[\begin{align*}
 \mathbf{x} &amp; = a_1 \mathbf{b}_1 + \cdots + a_k \mathbf{b}_k.
 \end{align*}\]</span>
@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-149" class="example"><strong>Example 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1\end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1\end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 6 \\ 1\end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?
+<span id="section-exm:unnamed-chunk-150" class="example"><strong>Example 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1\end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1\end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 6 \\ 1\end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?
 </div>
 
 
@@ -305,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.2</span> Dimension of a subspace</h2>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-151" class="definition"><strong>Definition 12.2  </strong></span>The dimension <span class="math inline">\(\operatorname{dim}(\mathcal{H})\)</span> of a nonzero subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is the number of (nonzero) vectors that make up a basis <span class="math inline">\(\mathcal{B}\)</span> for <span class="math inline">\(\mathcal{H}\)</span>. The dimension of the subspace <span class="math inline">\(\mathcal{H} = \{\mathbf{0}\}\)</span> is 0.
+<span id="section-def:unnamed-chunk-152" class="definition"><strong>Definition 12.2  </strong></span>The dimension <span class="math inline">\(\operatorname{dim}(\mathcal{H})\)</span> of a nonzero subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is the number of (nonzero) vectors that make up a basis <span class="math inline">\(\mathcal{B}\)</span> for <span class="math inline">\(\mathcal{H}\)</span>. The dimension of the subspace <span class="math inline">\(\mathcal{H} = \{\mathbf{0}\}\)</span> is 0.
 </div>
 
 <p>Note that under this definition, the basis <span class="math inline">\(\mathcal{B}\)</span> is not unique. For example, the following bases for the 2-dimensional subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^3\)</span> both have two linearly independent vectors.</p>
@@ -322,28 +322,28 @@ while the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with re
 \end{align*}\]</span></p>
 
 <div class="exercise">
-<span id="section-exr:unnamed-chunk-152" class="exercise"><strong>Exercise 12.1  </strong></span>What is the dimension of a basis for <span class="math inline">\(\mathcal{R}^n\)</span>?
+<span id="section-exr:unnamed-chunk-153" class="exercise"><strong>Exercise 12.1  </strong></span>What is the dimension of a basis for <span class="math inline">\(\mathcal{R}^n\)</span>?
 </div>
 
 
 <div class="exercise">
-<span id="section-exr:unnamed-chunk-153" class="exercise"><strong>Exercise 12.2  </strong></span>What is the dimension of a subspace that is a plane in 3 dimensions?
+<span id="section-exr:unnamed-chunk-154" class="exercise"><strong>Exercise 12.2  </strong></span>What is the dimension of a subspace that is a plane in 3 dimensions?
 </div>
 
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-154" class="definition"><strong>Definition 12.3  </strong></span>The <strong>rank</strong> <span class="math inline">\(\operatorname{rank}(\mathbf{A})\)</span> of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the dimension of the column space of <span class="math inline">\(\mathcal{A}\)</span>.
+<span id="section-def:unnamed-chunk-155" class="definition"><strong>Definition 12.3  </strong></span>The <strong>rank</strong> <span class="math inline">\(\operatorname{rank}(\mathbf{A})\)</span> of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the dimension of the column space of <span class="math inline">\(\mathcal{A}\)</span>.
 </div>
 
 <p>Recall that the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>. Hence, the number of pivot columns in the matrix <span class="math inline">\(\mathbf{A}\)</span> is the rank of the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-155" class="example"><strong>Example 12.2  </strong></span>Determine the rank of the following matrix: <strong>in class example</strong>
+<span id="section-exm:unnamed-chunk-156" class="example"><strong>Example 12.2  </strong></span>Determine the rank of the following matrix: <strong>in class example</strong>
 </div>
 
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-156" class="theorem"><strong>Theorem 12.2  (The Rank Theorem)  </strong></span>If a matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n\)</span>
+<span id="section-thm:unnamed-chunk-157" class="theorem"><strong>Theorem 12.2  (The Rank Theorem)  </strong></span>If a matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n\)</span>
 </div>
 
 
@@ -354,12 +354,12 @@ while the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with re
 <p>The following theorem states that any <span class="math inline">\(p\)</span> vectors in <span class="math inline">\(\mathcal{R}^p\)</span> that are linearly independent must span <span class="math inline">\(\mathcal{R}^p\)</span>.</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-158" class="theorem"><strong>Theorem 12.3  (The Basis Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a p-dimensional subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then any linearly independent set of <span class="math inline">\(p\)</span> elements in <span class="math inline">\(\mathcal{H}\)</span> is a basis for <span class="math inline">\(\mathcal{H}\)</span>. Equivalently, any set of <span class="math inline">\(p\)</span> elements of <span class="math inline">\(\mathcal{H}\)</span> that span <span class="math inline">\(\mathcal{H}\)</span> is a basis for <span class="math inline">\(\mathcal{H}\)</span>
+<span id="section-thm:unnamed-chunk-159" class="theorem"><strong>Theorem 12.3  (The Basis Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a p-dimensional subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then any linearly independent set of <span class="math inline">\(p\)</span> elements in <span class="math inline">\(\mathcal{H}\)</span> is a basis for <span class="math inline">\(\mathcal{H}\)</span>. Equivalently, any set of <span class="math inline">\(p\)</span> elements of <span class="math inline">\(\mathcal{H}\)</span> that span <span class="math inline">\(\mathcal{H}\)</span> is a basis for <span class="math inline">\(\mathcal{H}\)</span>
 </div>
 
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-159" class="theorem"><strong>Theorem 12.4  (Invertible Matrix Theorem (again))  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The the following statements are equivalent to <span class="math inline">\(\mathbf{A}\)</span> being an invertible matrix:</p>
+<p><span id="section-thm:unnamed-chunk-160" class="theorem"><strong>Theorem 12.4  (Invertible Matrix Theorem (again))  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The the following statements are equivalent to <span class="math inline">\(\mathbf{A}\)</span> being an invertible matrix:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>The columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span></p></li>
 <li><p><span class="math inline">\(\operatorname{col}(\mathbf{A}) = \mathcal{R}^n\)</span></p></li>
