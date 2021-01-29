@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Linear independence | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 14 Determinants and volumes | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Linear independence | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 14 Determinants and volumes | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Linear independence | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 14 Determinants and volumes | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-matrix-equation.html"/>
-<link rel="next" href="section-linear-transformations.html"/>
+<link rel="prev" href="section-determinants.html"/>
+<link rel="next" href="section-vectors-and-matrices.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -272,69 +272,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-linear-independence" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Linear independence</h1>
-Recall the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> can be written as a linear combination of coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> and vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> where
-<span class="math display">\[
-\begin{align*}
-\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}
-\end{align*}
-\]</span>
-
+<div id="section-determinants-and-volumes" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Determinants and volumes</h1>
+<div class="sourceCode" id="section-cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="section-determinants-and-volumes.html#cb154-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb154-2"><a href="section-determinants-and-volumes.html#cb154-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <div class="definition">
-<span id="section-def:unnamed-chunk-75" class="definition"><strong>Definition 5.1  </strong></span>The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly independent</strong> if the only solution to the vector equation <span class="math inline">\(\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}\)</span> is the trivial solution. The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly dependent</strong> if there are coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> that are not all zero.
+<p><span id="section-def:unlabeled-div-82" class="definition"><strong>Definition 14.1  </strong></span>The <strong>parallelpiped</strong> defined by <span class="math inline">\(n\)</span> vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_n, \ldots, \mathbf{a}_n \in \mathcal{R}^n\)</span> with coefficients <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> is the subset</p>
+<p><span class="math display">\[\begin{align*}
+\mathcal{P} + \{x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n | 0 \leq x_1, x_2, \ldots, x_n \leq 1 \}
+\end{align*}\]</span></p>
 </div>
-
-<ul>
-<li><p><strong>Example: in class</strong></p></li>
-<li><p>What does it mean for a set of vectors to be <strong>linearly dependent</strong>? This means that there is at least one vector <span class="math inline">\(\mathbf{a}_k\)</span> that can be written as a sum of the other vectors with coefficients <span class="math inline">\(z_k\)</span>:
-<span class="math display">\[
-\begin{align*}
-\mathbf{a}_k = \sum_{k&#39; \neq k} z_{k&#39;} \mathbf{a}_{k&#39;}
-\end{align*}
-\]</span>
-Note: this does not imply that all vectors <span class="math inline">\(\mathbf{a}_{k}\)</span> can be written as a linear combination of other vectors.</p></li>
-<li><p><strong>Example: in class – determine if the vectors are linearly independent and solve the dependence relation</strong></p></li>
-</ul>
+<p>The determinant is a function that takes the vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span> that make up the columns of <span class="math inline">\(\mathbf{A}\)</span> and returns the volume of the parallelpiped <span class="math inline">\(\mathcal{P}\)</span> defined above <strong>add link</strong></p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-83" class="example"><strong>Example 14.1  </strong></span>The unit cube: in class–use standard vectors <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2\)</span>, and <span class="math inline">\(\mathbf{e}_3\)</span></p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-84" class="example"><strong>Example 14.2  </strong></span>parallelograms in <span class="math inline">\(\mathcal{R}^2\)</span>: the unit square</p>
+<div class="sourceCode" id="section-cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="section-determinants-and-volumes.html#cb155-1"></a>df_vector &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb155-2"><a href="section-determinants-and-volumes.html#cb155-2"></a>df_polygon &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb155-3"><a href="section-determinants-and-volumes.html#cb155-3"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb155-4"><a href="section-determinants-and-volumes.html#cb155-4"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> df_vector<span class="op">$</span>x[<span class="dv">1</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> df_vector<span class="op">$</span>y[<span class="dv">1</span>]), <span class="dt">arrow =</span> <span class="kw">arrow</span>()) <span class="op">+</span></span>
+<span id="cb155-5"><a href="section-determinants-and-volumes.html#cb155-5"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> df_vector<span class="op">$</span>x[<span class="dv">2</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> df_vector<span class="op">$</span>y[<span class="dv">2</span>]), <span class="dt">arrow =</span> <span class="kw">arrow</span>()) <span class="op">+</span></span>
+<span id="cb155-6"><a href="section-determinants-and-volumes.html#cb155-6"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb155-7"><a href="section-determinants-and-volumes.html#cb155-7"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb155-8"><a href="section-determinants-and-volumes.html#cb155-8"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb155-9"><a href="section-determinants-and-volumes.html#cb155-9"></a><span class="st">    </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> df_polygon, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), </span>
+<span id="cb155-10"><a href="section-determinants-and-volumes.html#cb155-10"></a>                 <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb155-11"><a href="section-determinants-and-volumes.html#cb155-11"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Area of unit cube&quot;</span>)</span>
+<span id="cb155-12"><a href="section-determinants-and-volumes.html#cb155-12"></a>p1</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
+<p>Which implies that if <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}\)</span> has <span class="math inline">\(\det(\mathbf{A}) = 1\)</span> because <span class="math inline">\(\mathbf{A} = \mathbf{I}\)</span> the identity matrix.</p>
+<div class="sourceCode" id="section-cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="section-determinants-and-volumes.html#cb156-1"></a><span class="kw">det</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-85" class="example"><strong>Example 14.3  </strong></span>parallelograms in <span class="math inline">\(\mathcal{R}^2\)</span>: A larger square</p>
+<div class="sourceCode" id="section-cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="section-determinants-and-volumes.html#cb158-1"></a>df_vector &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb158-2"><a href="section-determinants-and-volumes.html#cb158-2"></a>df_polygon &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb158-3"><a href="section-determinants-and-volumes.html#cb158-3"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb158-4"><a href="section-determinants-and-volumes.html#cb158-4"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> df_vector<span class="op">$</span>x[<span class="dv">1</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> df_vector<span class="op">$</span>y[<span class="dv">1</span>]), <span class="dt">arrow =</span> <span class="kw">arrow</span>()) <span class="op">+</span></span>
+<span id="cb158-5"><a href="section-determinants-and-volumes.html#cb158-5"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> df_vector<span class="op">$</span>x[<span class="dv">2</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> df_vector<span class="op">$</span>y[<span class="dv">2</span>]), <span class="dt">arrow =</span> <span class="kw">arrow</span>()) <span class="op">+</span></span>
+<span id="cb158-6"><a href="section-determinants-and-volumes.html#cb158-6"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb158-7"><a href="section-determinants-and-volumes.html#cb158-7"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb158-8"><a href="section-determinants-and-volumes.html#cb158-8"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb158-9"><a href="section-determinants-and-volumes.html#cb158-9"></a><span class="st">    </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> df_polygon, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), </span>
+<span id="cb158-10"><a href="section-determinants-and-volumes.html#cb158-10"></a>                 <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb158-11"><a href="section-determinants-and-volumes.html#cb158-11"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Area of unit cube&quot;</span>)</span>
+<span id="cb158-12"><a href="section-determinants-and-volumes.html#cb158-12"></a>p1</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
+<p>Which implies that if <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}\)</span> has <span class="math inline">\(\det(\mathbf{A}) = 4\)</span> because <span class="math inline">\(\mathbf{A} = 2 \mathbf{I}\)</span> and the rule is for a constant <span class="math inline">\(c, \det(c\mathbf{A}) = c^n \det(\mathbf{A})\)</span></p>
+<div class="sourceCode" id="section-cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="section-determinants-and-volumes.html#cb159-1"></a><span class="kw">det</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+<p>The Shiny app below allows you to plot the vector for any <span class="math inline">\((x, y)\)</span> pair of your choosing.</p>
+<!-- ::: {.theorem} -->
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-76" class="theorem"><strong>Theorem 5.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A}\)</span> has linearly independent columns if and only if the equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only the trivial solution.
+<p><span id="section-thm:unnamed-chunk-173" class="theorem"><strong>Theorem 14.1  (Determinants and Volume)  </strong></span>Let <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>, let <span class="math inline">\(\mathcal{P}\)</span> be the parallelpiped determined by these vectors, and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix with columns <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span>. Then, the absolute value of the determinant of <span class="math inline">\(\mathbf{A}\)</span> is the volume of the parallelpiped <span class="math inline">\(\mathcal{P}\)</span>:</p>
+<span class="math display">\[\begin{align*}
+|\det(\mathbf{A})| = \operatorname{volume}(\mathcal)
+\end{align*}\]</span>
 </div>
 
-<ul>
-<li><p><strong>Example: in class</strong> A set of a single vector</p></li>
-<li><p><strong>Example: in class</strong> A set of two vectors</p>
-<ul>
-<li><p>linearly independent if:</p></li>
-<li><p>linearly dependent if one vector is a scalar multiple of the other:</p></li>
-</ul></li>
-</ul>
+<!-- ::: -->
+<div class="proof">
+<p><span id="section-unlabeled-div-87" class="proof"><em>Proof</em>. </span>Recall the 4 defining properties (<strong>link to definition</strong>) that characterize the determinant. These properties also characterize the absolute value of the determinant.</p>
+<p>From the 4 defining properties, the absolute value of the determinant <span class="math inline">\(|\det|\)</span> is a function on square <span class="math inline">\(n \times n\)</span> matrices that satisfies the properties</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Row replacement (e.g., row i = row i + c * row j) of <span class="math inline">\(\mathbf{A}\)</span> does not change <span class="math inline">\(|\det(\mathbf{A})|\)</span></p></li>
+<li><p>Scaling a row of <span class="math inline">\(\mathbf{A}\)</span> by a scalar <span class="math inline">\(c\)</span> changes <span class="math inline">\(|\det(\mathbf{A})|\)</span> by multiplication by <span class="math inline">\(|c|\)</span></p></li>
+<li><p>Swapping two rows of <span class="math inline">\(\mathbf{A}\)</span> does not change <span class="math inline">\(|\det(\mathbf{A})|\)</span></p></li>
+<li><p>The determinant of the identity matrix <span class="math inline">\(\mathbf{I}\)</span> is 1</p></li>
+</ol>
+<p>Like the determinant and its 4 defining characteristics (<strong>link back here</strong>), the absolute value of the determinant is the only function that satisfies this relationship. Define <span class="math inline">\(vol(\mathcal{P}_A)\)</span> as the volume of the parallelpiped defined by the rows of the square matrix <span class="math inline">\(\mathbf{A}\)</span>. In what follows, we will show that <span class="math inline">\(vol(\mathcal{P}_A)\)</span> also satisfies the 4 defining characteristics of the absolute value of the determinant and, by the uniqueness of the function of the absolute value of the determinant, is equivalent to the absolute value of the determinant.</p>
+<p>c) We start with showing that row swaps have no impact of the volume of the parallelpiped. Swapping two rows of <span class="math inline">\(\mathbf{A}\)</span> just reorders the vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span> and the order has no impact of the calculation of the volume (e.g., area in 2d = length * width = width * length)</p>
+<p>a) Consider a row replacement of <span class="math inline">\(\mathbf{a}_i \leftarrow \mathbf{a}_i + c \mathbf{a}_j\)</span> for some <span class="math inline">\(j \neq i\)</span>. Because reordering has no effect on the volume of the parallelpiped, assume WLOG (without loss of generality–fancy math speak for this one case works for all the other possible cases) that we are replacing the last row (<span class="math inline">\(\mathbf{a}_n \leftarrow \mathbf{a}_n + c \mathbf{a}_j\)</span>). Then, the area of the parallelpiped is defined as the base times the height. Let the “base” be the set of vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots \mathbf{a}_{n-1}\)</span> which are the same for the original matrix and the row-replaced matrix. Therefore, if there is a difference in volume of the parallelpiped, it must be due to a difference in height. By definition, <span class="math inline">\(\mathbf{a}_j \in \operatorname{span}\{\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_{n-1}\}\)</span> so <span class="math inline">\(c \mathbf{a}_j\)</span> is a vector that points in the same direction as the “base” which implies that translation of <span class="math inline">\(\mathbf{a}_n\)</span> by <span class="math inline">\(c \mathbf{a}_j\)</span> is parallel to the “base”. As this is a parallel translation, the distance from the “base” to <span class="math inline">\(\mathbf{a}_n\)</span> must be equal to the distance from the “base” to <span class="math inline">\(\mathbf{a}_n + c \mathbf{a}_j\)</span> (the definition of parallel) which means the height is unchanged and therefore the volume of <span class="math inline">\(vol(\mathcal{P}_A)\)</span> is unchanged by row replacement.</p>
+<p><strong>Draw an example here</strong></p>
+<p>b) WLOG assume we are scaling the last row <span class="math inline">\(\mathbf{a}_n\)</span> (we can always swap rows without changing volume so this is ok). Scaling <span class="math inline">\(\mathbf{a}_n\)</span> by a scalar <span class="math inline">\(c\)</span> leaves the “base” of the parallelpiped unchanged (the “base” is defined as <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_{n-1}\)</span> which are unchanged). Therefore, the only question is whether the height from the base is changed when scaling <span class="math inline">\(\mathbf{a}_n\)</span> by <span class="math inline">\(|c|\)</span>. In fact, scaling the vector <span class="math inline">\(\mathbf{a}_n\)</span> by <span class="math inline">\(|c|\)</span> changes the height by <span class="math inline">\(|c|\)</span> and therefore the volume <span class="math inline">\(vol(\mathcal{P}_A)\)</span> is scaled by <span class="math inline">\(|c|\)</span>.</p>
+<p><strong>Draw an example in class</strong></p>
+<p>d) The identity matrix having volume 1 is easy. The vectors of the identity matrix <span class="math inline">\(\mathbf{I}\)</span> define a unit cube (technically a hypercube) which has area equal to the product of the lengths of each of their sides, which are each 1.</p>
+<p>Because the absolute value of the determinant <span class="math inline">\(|\det|\)</span> is the only function that satisfies, these properties, we have</p>
+<p><span class="math display">\[\begin{align*}
+vol(\mathcal{P}_A) = |\det(\mathbf{A})|
+\end{align*}\]</span></p>
+</div>
+<p><strong>Note:</strong> Because <span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span>, the absolute value of the determinant is equal to the volume of the parallelpiped defined by the columns of <span class="math inline">\(\mathbf{A}\)</span> (we could just have easily done all the calculations on the columns of <span class="math inline">\(\mathbf{A}\)</span> as the rows of <span class="math inline">\(\mathbf{A}\)</span>).</p>
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-174" class="example"><strong>Example 14.4  </strong></span>1 by 1 matrix <span class="math inline">\(a\)</span> (length) has <span class="math inline">\(\det(a) = a\)</span>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-175" class="example"><strong>Example 14.5  </strong></span>2 by 2 matrix <span class="math inline">\(a b c d\)</span> <strong>in class</strong>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-176" class="example"><strong>Example 14.6  </strong></span>Find the area of a parallelogram with sides defined by the vectors <span class="math inline">\(\begin{pmatrix} 2 \\ 4 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} -1 \\ 2 \end{pmatrix}\)</span>
+</div>
+
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-177" class="example"><strong>Example 14.7  </strong></span>area of a triangle – choose two sides and find area of parallelogram and divide by 2
+</div>
+
+
+<div class="example">
+<p><span id="section-exm:unnamed-chunk-178" class="example"><strong>Example 14.8  </strong></span>Recall that in data science, a probability distribution is function that has volume under the surface of one. For common distributions, particularly the normal/Gaussian distribution, the determinant is the factor that scales the function so that the volume under the surface is one.</p>
+<p>The vector <span class="math inline">\(\mathbf{y}\)</span> is said to have a multivariate normal distribution with mean <span class="math inline">\(\boldsymbol{\mu}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> if the probability density function of <span class="math inline">\(\mathbf{y}\)</span> is
+<span class="math display">\[\begin{align*}
+f(\mathbf{y}) = \frac{1}{\sqrt{2 \pi}} |\det(\boldsymbol{\Sigma})|^{-1/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})}
+\end{align*}\]</span></p>
+<p>Notice in this equation that the determinant <span class="math inline">\(\det(\boldsymbol{\Sigma})\)</span> plays a key role in the definition of the probability distribution. This is because</p>
+<p><span class="math display">\[\begin{align*}
+\int_{\mathbf{y}} \frac{1}{\sqrt{2 \pi}} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{-1/2}
+\end{align*}\]</span>
+which implies that
+<span class="math display">\[\begin{align*}
+\frac{\int_{\mathbf{y}} \frac{1}{\sqrt{2 \pi}} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{-1/2}} = 1
+\end{align*}\]</span></p>
+In probability and statistics, the denominator is known as the <a href="https://en.wikipedia.org/wiki/Normalizing_constant">“normalizing constant.”</a>
+</div>
+
+<div id="section-volumes-of-parallelpipeds" class="section level2">
+<h2><span class="header-section-number">14.1</span> Volumes of Parallelpipeds</h2>
+<div class="proposition">
+<p><span id="section-prp:unlabeled-div-93" class="proposition"><strong>Proposition 14.1  </strong></span>Let <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> be nonzero vectors. Then, for any scalar <span class="math inline">\(c\)</span>, the area of the parallelpiped defined by <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> is the same as the area of the parallelpiped defined by the vectors <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2 + c \mathbf{a}_1\)</span> (an elementary column operation).</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-94" class="example"><strong>Example 14.9  </strong></span>Draw a parallelpiped in class. recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.</p>
+</div>
+</div>
+<div id="section-volumes-of-linear-transformations" class="section level2">
+<h2><span class="header-section-number">14.2</span> Volumes of Linear Transformations</h2>
+<p>Recall linear transformations <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> (Section <a href="section-linear-transformations.html#section-linear-transformations">6</a>) where for any <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (the domain), <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x} \in \mathcal{R}^n\)</span> (the codomain).</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-77" class="theorem"><strong>Theorem 5.2  </strong></span>If an <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(K &gt; n\)</span>, then the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly dependent. In other words, if a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains more vectors than entries within vectors, the set of vectors is linearly dependent.
+<span id="section-thm:unnamed-chunk-179" class="theorem"><strong>Theorem 14.2  </strong></span>Let <span class="math inline">\(\mathcal{S}\)</span> be a set in the domain that has a volume <span class="math inline">\(vol(\mathcal{S})\)</span>. Then, the volume of the image of the set under the transformation <span class="math inline">\(T(\mathcal{S})\)</span> is <span class="math inline">\(vol(T(\mathcal{S})) = |\det(\mathbf{A})|vol(\mathcal{S})\)</span>
 </div>
 
-<ul>
-<li><strong>Proof:</strong> If <span class="math inline">\(K&gt;n\)</span>, there are more variables (<span class="math inline">\(K\)</span>) than equations (<span class="math inline">\(n\)</span>). Therefore, there is at least one free variable and this implies that the homogeneous equation <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> has a non-trivial solution <a href="section-matrix-equation.html#eq:homogeneous">(4.2)</a></li>
-</ul>
 
-<div class="theorem">
-<span id="section-thm:unnamed-chunk-78" class="theorem"><strong>Theorem 5.3  </strong></span>If a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains the <span class="math inline">\(\mathbf{0}\)</span> vector, then the the set of vectors is linearly dependent.
 </div>
-
-<ul>
-<li><p><strong>Proof: in class</strong></p></li>
-<li><p><strong>Example: in class</strong> Determine whether the following sets of vectors are linearly dependent</p></li>
-</ul>
-
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="section-matrix-equation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-linear-transformations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-determinants.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
