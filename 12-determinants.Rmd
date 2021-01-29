@@ -1,3 +1,204 @@
-# Determinants
+# Determinants {#determinants}
+
+```{r, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+```
+
+The determinant $\operatorname{det}(\mathbf{A})$ of a square $n \times n$ matrix $\mathbf{A}$ is a real number. 
+```{definition}
+The determinant is a fuction of a square $n \times n$ matrix that satisfies the following properties
+
+a) If a scalar multiple of one row of $\mathbf{A}$ is added to another row of $\mathbf{A}$, then the determinant $\operatorname{det}(\mathbf{A})$ is unchanged.
+
+b) Scaling a row of $\mathbf{A}$ by a constant $c$ multiples the determinant by $c$
+
+c) Swapping two rows of a matrix $\mathbf{A}$ multiplies the determinant by -1
+
+d) The determinant of the $n \times n$ identity matrix $\mathbf{I}$ is equal to 1
+```
+
+The determinant is the unique function mapping square matrices to the real number line that satisfies the above definition.
+
+::: {.example}
+Let $\mathbf{A} = \begin{pmatrix} 5 & 3 \\ 1 & -3 \end{pmatrix}$. Then, we can calculate the determinant $\operatorname{det}(\mathbf{A})$ using row operations to get to reduced row echelon form.
+
+\begin{align*}
+&& \begin{pmatrix} 5 & 3 \\ 1 & -3 \end{pmatrix} && \operatorname{det} = x \\
+\mbox{swap row 1 and row 2} && \begin{pmatrix} 1 & -3 \\ 5 & 3  \end{pmatrix} && \operatorname{det} = -x \\
+\mbox{row 2 = -5 * row 1 + row 2} && \begin{pmatrix} 1 & -3 \\ 0 & 18  \end{pmatrix} && \operatorname{det} = -x \\
+\mbox{row 2 \div 18} && \begin{pmatrix} 1 & -3 \\ 0 & 1  \end{pmatrix} && \operatorname{det} = -\frac{x}{18} \\
+\mbox{row 1 = row 1 + 3 * row 2} && \begin{pmatrix} 1 & 0 \\ 0 & 1  \end{pmatrix} && \operatorname{det} = -\frac{x}{18} 
+\end{align*}
+where the last matrix is in reduced row echelon form and is the identity matrix which has determinant $\operatorname{det}(\mathbf{I}) = 1$. Therefore $-\frac{x}{18} = 1$ which implies that $x = -18$ so that $\operatorname{det}(\mathbf{A}) = -18$
+Let's check our answer in R
+
+````{r}
+A <- matrix(c(5, 1, 3, -3), 2, 2)
+det(A)
+````
+:::
+
+::: {.example}
+In class
+:::
+
+## Determinants of $2 \times 2$ matrices
+
+::: {.definition}
+If $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is a $2 \times 2$ matrix, the determinant $\operatorname{det}(\mathbf{A}) = ad - bc$ 
+:::
+```{r, echo = FALSE}
+A <- matrix(c(5, 1, 3, -3), 2, 2)
+```
+
+::: {.example}
+Let $\mathbf{A} = `r array_to_latex(A)`$, then $\det(\mathbf{A}) = (5 * -3) - (3 * 1) = -18$
+:::
 
 
+::: {.example}
+Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. Then
+
+a) If $a$ = 0
+
+b) $a \neq 0$
+
+show steps in class
+:::
+
+## Determinants of $n \times n$ matrices
+
+To better understand determinants of $n \times n$ matrices, we need to define the two concepts of a matrix **minor** and **cofactor**.
+
+::: {.definition}
+For an $n \times n$ matrix $\mathbf{A}$, 
+
+a) The (i, j) **minor** $\mathbf{A}_{-i-j}$ is the $(n-1) \times (n-1)$ matrix obtained by deleting the $i$th row and the $j$ column from $\mathbf{A}$
+
+b) The (i, j) **cofactor** $c_{ij}$ is defined using the determinant of the  minor where 
+\begin{align*}
+c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
+\end{align*}
+:::
+
+Note: The cofactor of a scalar $a$ (a $1 \times 1$ matrix) is defined as $\mathbf{C}_{ij} = (-1)^{1 + 1} \det(a) = a$.
+
+Note: The leading term in the cofactor definition $\mathbf(-1)^{i + j}$ defines a checkerboard pattern shown below
+\begin{align*}
+\begin{pmatrix}
++ & - & + & - & \cdots \\
+- & + & - & + & \cdots \\
++ & - & + & - & \cdots \\
+- & + & - & + & \cdots \\
+\vdots & \vdots & \vdots & \vdots & \ddots \\
++ & - & + & - & \cdots \\
+\end{pmatrix}
+\end{align*}
+
+
+::: {.example}
+Let $\mathbf{A}$ be the $3 \times 3$ matrix... (in class)
+
+a) Find the minor $\mathbf{A}_{-2-3}$
+
+b) Find the cofactor $c_{23}$
+:::
+
+Note that in the cofactor definition of a $n \times n$ matrix it is assumed that you can calculate the determinant of the $n-1 \times n-1$ minor $\mathbf{A}_{-i-j}$. From this we see that each of the $n \times n$ cofactors of $\mathbf{A}$ are themselves the (signed) determinants of $n-1 \times n-1$ submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated. 
+
+::: {.theorem, name = "Cofactor exapansion"}
+Let $\mathbf{A}$ be an $n \times n$ matrix with $ij$th elements $a_ij$. Then
+
+a) The **cofactor expansion along the $i$th row** (for any fixed row $i$) is 
+\begin{align*}
+\det(\mathbf{A}) = \sum_{j=1}^n a_{ij} c_{ij} = a_{i1} c_{i1} + a_{i2} c_{i2} + \cdots + a_{in} c_{in}
+\end{align*}
+
+b) The **cofactor expansion along the $j$th column** (for any fixed column $j$) is 
+\begin{align*}
+\det(\mathbf{A}) = \sum_{i=1}^n a_{ij} c_{ij} = a_{1j} c_{1j} + a_{2j} c_{2j} + \cdots + a_{nj} c_{nj}
+\end{align*}
+:::
+
+
+::: {.proof}
+This is quite complex. For those interested, an example is available [here](https://textbooks.math.gatech.edu/ila/determinants-cofactors.html)
+:::
+
+
+::: {.note}
+The above theorem states that there are actually $2n$ ways to calcuate the determinant--one for each row and column of $\mathbf{A}$.
+:::
+
+::: {.example}
+in class: Use the minor/cofactor defintion to calculate the determinant of tha $2 \times 2$ matrix
+:::
+
+
+::: {.example}
+in class: Use the minor/cofactor defintion to calculate the determinant of tha $3 \times 3$ matrix
+:::
+
+
+::: {.example}
+in class: determinant of a matrix with a row (or column) of zeros
+:::
+
+
+::: {.example}
+in class: determinant of a matrix where at least one row is a linear combination of the other rows
+:::
+
+::: {.theorem}
+in class: determinant of a matrix is equal to the determinant of its transpose
+:::
+
+::: {.proof}
+Follows directly from cofactor expansion theorem
+:::
+
+
+## Properties of determinants
+
+::: {.theorem}
+A $n \times n$ square matrix $\mathbf{A}$ is invertible if and only if $\det(\mathbf{A}) \neq 0$
+:::
+
+::: {.proof}
+From the invertible matrix theorem **link to this in notes**, we know that the matrix $\mathbf{A}$ is invertible if and only if every column of $\mathbf{A}$ is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of $\mathbf{A}$ are linearly independent and the matrix is invertible.
+:::
+
+::: {.theorem}
+If $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ matrices, $\mathbf{I}$ is an $n \times n$ identity matrix, and $c$ is a scalar, we have
+
+a) $\det(\mathbf{I}) = 1$
+
+b) $\det(\mathbf{A}) = \det(\mathbf{A}')$
+
+c) $\det(\mathbf{A}^{-1}) = 1 / \det(\mathbf{A})$ if $\det(\mathbf{A}) \neq 0$ ($\mathbf{A}$ is invertible)
+
+d) $\det(\mathbf{A}\mathbf{B}) = \det(\mathbf{A})\det(\mathbf{B})$
+
+e) $\det(c\mathbf{A}) = c^n \det(\mathbf{A})$
+
+:::
+
+## Cramer's Rule and Determinants
+
+While commonly used for theoretical results, Cramer's rule is not commonly used in applied linear algebra. As such, we will mention Cramer's rule but not focus on it.
+
+```{theorem, name = "Cramer's Rule"}
+Let $\mathbf{A}$ be a $n \times n$ invertible matrix. Define $\mathbf{A}_i(\mathbf{b})$ as the matrix $\mathbf{A}$ with the $i$th column replace by the vector $\mathbf{b}$. For example, $\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 & \cdots & \mathbf{a}_{i-1} & \mathbf{b} & \mathbf{a}_{i+1} & \cdots & \mathbf{a}_n \end{pmatrix}$. Then, for any $\mathbf{b} \in \mathcal{R}^n$, the unique solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$ has entries given by 
+\begin{align*}
+x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} & \mbox{ for } i = 1, 2, \ldots, n
+\end{align*}
+```
+
+```{example}
+In Cramer's rule, why do we know
+
+* the solution is unique for any $\mathbf{b}$? 
+
+* the determinant $\det(\mathbf{A}) \neq 0$?
+```

@@ -1,4 +1,4 @@
-# Dimension and Rank
+# Dimension and Rank {#dimension-and-rank}
 
 ## Coordinate systems
 

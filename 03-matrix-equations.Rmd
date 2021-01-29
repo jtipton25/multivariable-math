@@ -51,7 +51,7 @@ b) Each $\mathbf{b} \in \mathcal{R}^K$ is a linear combination of the columns of
     
 c)  The columns of $\mathbf{A}$ span $\mathcal{R}^K$
     
-d) $\mathbf{A}$ has a pivot in every row
+d) $\mathbf{A}$ has a pivot in every column
 ```
 
 ## Matrix-vector multiplication
@@ -65,7 +65,7 @@ a_{11} & a_{12} & \ldots & a_{1K} \\
 a_{21} & a_{22} & \ldots & a_{2K} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{n1} & a_{n2} & \ldots & a_{nK} \\
-\end{pmatrix} && \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\end{pmatrix} && \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_K \end{pmatrix}
 \end{align*}
 $$
 The matrix product $\mathbf{A}\mathbf{x}$ is the linear system of equations
