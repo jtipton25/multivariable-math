@@ -221,20 +221,6 @@ ggplot(data = data.frame(x = 0, y = 0), aes(x, y)) +
 
 This shift in location (but not in slope) is called a **translation**
 
-* **Example: in class** 
-Let's revisit the example from before
-
-$$
-\begin{align*}
-3 x_1 - 2 x_2 + 4 x_3 = 0 \\
-- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
-5 x_1 - 6 x_2 + 6 x_3 = 0
-\end{align*}
-$$
-but change this so that $\mathbf{b} = \begin{pmatrix} 4 \\ -2 \\ 1 \end{pmatrix}$
-
-* **Write this as a parametric solution with a mean shift**
-
 * **Example:** Show this shift for a system of linear equations where the solution set defines a plane. From example above, 
 $$
 \begin{align*}
@@ -244,7 +230,7 @@ $$
 has the parametric solution $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ with
 $$
 \begin{align*}
-\mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
+\mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} &
 \mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 \end{align*}
 $$
@@ -255,29 +241,16 @@ $$
 2x_1 + 4 x_2 - x_3 = 20.
 \end{align*}
 $$
-we get the homogeneous solution set $x_1 = -2 x_2 + \frac{1}{2} x_3 + 4$ which can be written in parametric form as $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$$ with
+we get the homogeneous solution set $x_1 = -2 x_2 + \frac{1}{2} x_3 + 10$ which can be written in parametric form as $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ with
 $$
 \begin{align*}
-\mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
-\mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} \\
-\mathbf{p} & = \begin{pmatrix} 20 \\ 0 \\ 0 \end{pmatrix}
+\mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} & 
+\mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} & 
+\mathbf{p} & = \begin{pmatrix} 10 \\ 0 \\ 0 \end{pmatrix}
 \end{align*}
 $$
 
-
-```{r}
-A <- matrix(c(3, -2, 5, -2, 4, -6, 4, -2, 6, 2, -6, 8), 3, 4)
-rref(A)
-```
-$$
-\begin{align*}
-x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
-x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
-\end{align*}
-$$
-which was the same solution set as the homoegenous solution plus the additional vector $\begin{pmatrix} 20 \\ 0 \\ 0 \end{pmatrix}$. Thus, the inhomogenous solution is now $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ where $\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$, $\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}$, and  $\mathbf{p} = \begin{pmatrix} 20\\ 0 \\ 0 \end{pmatrix}$.
-
-For plotting, we will solve these equations for $x_3$. Thus, the homogeneous equation has the solution $x_3 = 2x_1 + 4x_2$ and the inhomogenous equation has the solution $x_3 = 2x_1 + 4x_2 - 20$.
+For plotting, we will solve these equations for $x_3$, letting $x_1$ and $x_2$ be free variables (this is just for the requirements of the plotting function). Thus, the homogeneous equation has the solution $x_3 = 2x_1 + 4x_2$ and the inhomogenous equation has the solution $x_3 = 2x_1 + 4x_2 - 20$.
 
 
 ```{r}
@@ -303,18 +276,57 @@ ggplot(df, aes(x = x1, y = x2, z = x3, color = equation)) +
         theta = theta, phi = phi) +
     scale_color_manual(values = c("inhomogeneous" = "blue", "homogeneous" = "red")) +
     theme_void() +
-    theme(legend.position = "none") +
     labs_3D(hjust=c(0,1,1), vjust=c(1, 1, -0.2), 
             angle=c(0, 0, 90), theta = theta, phi = phi) 
 ```
 
 
+* **Example: in class** 
+Let's revisit the example from before
+
+$$
+\begin{align*}
+3 x_1 - 2 x_2 + 4 x_3 = 0 \\
+- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
+5 x_1 - 6 x_2 + 6 x_3 = 0
+\end{align*}
+$$
+but change this so that $\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}$
+
+* **Write this as a parametric solution with a mean shift**
+
+
+```{r}
+A <- matrix(c(3, -2, 5, -2, 4, -6, 4, -2, 6, 2, -6, 8), 3, 4)
+rref(A)
+```
+$$
+\begin{align*}
+x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
+x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
+\end{align*}
+$$
+which was the same solution set as the homoegenous solution plus the additional vector $\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}$. Thus, the inhomogenous solution is now $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ where 
+$$
+\begin{align*}
+\mathbf{u} &= \begin{pmatrix} 1 \\ 0 \\ \frac{3}{2} \end{pmatrix} & 
+\mathbf{v} &= \begin{pmatrix} 0 \\ 1 \\ \frac{1}{4} \end{pmatrix} & 
+\mathbf{p} &= \begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix} 
+\end{align*}
+$$
+
 ## Finding solutions
+
 The following algorithm describes how to solve a linear system of equations.
+
 1) Put the system of equations in an augmented matrix form
+
 2) Reduce the augmented matrix to reduced row echelon form
+
 3) Express each determined variable as a function of the free variables. 
+
 4) Write the solution in a general form where the determined variables are a function of the independent variables
+
 5) Decompose the solution $\mathbf{x}$ into a linear combination of free variables as parameters
 
 
