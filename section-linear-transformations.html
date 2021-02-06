@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-01-30" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -277,12 +277,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="section-cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="section-linear-transformations.html#cb103-1"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb103-2"><a href="section-linear-transformations.html#cb103-2"></a><span class="kw">library</span>(dasc2594)</span>
 <span id="cb103-3"><a href="section-linear-transformations.html#cb103-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
-<pre><code>## Linking to ImageMagick 6.9.11.58
+<pre><code>## Linking to ImageMagick 6.9.11.60
 ## Enabled features: freetype, ghostscript, lcms, webp
 ## Disabled features: cairo, fontconfig, fftw, pango, rsvg, x11</code></pre>
 <pre><code>## Using poppler version 0.73.0</code></pre>
 <p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
-<p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a "<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>. For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
+<p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a “<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>.” For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
 <p><strong>Draw figure</strong></p>
 <p><img src="images/transformation-1.jpg" /><!-- --></p>
 <p><img src="images/transformation-2.jpg" /><!-- --></p>
@@ -582,8 +582,8 @@ For the example below, we plot a horizontal shear with <span class="math inline"
 <h4><span class="header-section-number">6.2.4.2</span> Vertical Shear</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
-1 &amp; x \\
-0 &amp; 1
+1 &amp; 0 \\
+x &amp; 1
 \end{pmatrix}
 \]</span>
 For the example below, we plot a horizontal shear with <span class="math inline">\(x = 2\)</span>.</p>
@@ -686,18 +686,18 @@ For the example below, we plot a projection onto the y-axis</p>
 <!--   \node[seq-blue] at (6,2.5) {one-to-one}; -->
 <!-- \end{tikzpicture} -->
 <!-- ``` -->
-<ul>
-<li>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is one-to-one:</li>
-</ul>
+<p>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is one-to-one:</p>
 <ol style="list-style-type: lower-alpha">
-<li>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> (for every vector in the image), the equation <span class="math inline">\(T(\mathbf{x}]) = \mathbf{b}\)</span> has either zero or one solution</li>
-<li>Every different input into the function <span class="math inline">\(T(\cdot)\)</span> has a different output</li>
-<li>If <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span> then <span class="math inline">\(\mathbf{u} = \mathbf{v}\)</span></li>
+<li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> (for every vector in the image), the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has either zero or one solution</p></li>
+<li><p>Every different input into the function <span class="math inline">\(T(\cdot)\)</span> has a different output</p></li>
+<li><p>If <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span> then <span class="math inline">\(\mathbf{u} = \mathbf{v}\)</span></p></li>
 </ol>
-<p>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is <strong>not</strong> one-to-one:
-a) There exists as least one <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x}]) = \mathbf{b}\)</span> has more than one solution
-b) There are at least two different inputs into the function <span class="math inline">\(T(\cdot)\)</span> that have the same output
-c) There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p>
+<p>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is <strong>not</strong> one-to-one:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>There exists as least one <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has more than one solution</p></li>
+<li><p>There are at least two different inputs into the function <span class="math inline">\(T(\cdot)\)</span> that have the same output</p></li>
+<li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
+</ol>
 
 <div class="theorem">
 <p><span id="section-thm:unnamed-chunk-88" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
@@ -744,14 +744,14 @@ c) There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \i
 <p><img src="images/not-onto.png" /><!-- --></p>
 <p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is onto:</p>
 <ol style="list-style-type: decimal">
-<li>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is equal to the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span></li>
-<li>Every vector in the codomain is the output of some input vector</li>
+<li><p>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is equal to the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span></p></li>
+<li><p>Every vector in the codomain is the output of some input vector</p></li>
 </ol>
 <p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is not onto:</p>
 <ol style="list-style-type: decimal">
-<li>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is smaller than the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span>.</li>
-<li>There exists a vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x})\)</span> does not have a solution.</li>
-<li>There is a vector in the codomain that is not the output of any input vector.</li>
+<li><p>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is smaller than the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span>.</p></li>
+<li><p>There exists a vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x})\)</span> does not have a solution.</p></li>
+<li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
 </ol>
 
 <div class="theorem">
