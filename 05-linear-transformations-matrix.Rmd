@@ -13,7 +13,7 @@ library(pdftools)
 
 It is often useful to think of $\mathbf{A}\mathbf{x}$ as a linear transformation defined by the matrix $\mathbf{A}$ applied to the vector $\mathbf{x}$.
 
-A linear transformation is mathematically defined as a function/mapping $T(\cdot)$ ($T$ for transformation) from a **domain** in $\mathcal{R}^n$ (function input) to a **codomain** in $\mathcal{R}^m$ (function output). In shorthand, this is written as $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ which is read a "$T$ maps inputs from the domain $\mathcal{R}^n$ to the codomain $\mathcal{R}^m$. For each $\mathbf{x} \in \mathcal{R}^n$ (in the domain), $T(\mathbf{x}) \in \mathcal{R}^m$ is known as the image of $\mathbf{x}$. The set of all $T(\mathbf{x})$ for all $\mathbf{x} \in \mathcal{R}^n$ is known as the range of $T(\mathbf{x})$. Note that it is possible that the range of $T(\mathbf{x})$ is not required to be the entire space $\mathcal{R}^m$ (i.e., the range of the transformation $T$ might be a subset of $\mathcal{R}^m$)
+A linear transformation is mathematically defined as a function/mapping $T(\cdot)$ ($T$ for transformation) from a **domain** in $\mathcal{R}^n$ (function input) to a **codomain** in $\mathcal{R}^m$ (function output). In shorthand, this is written as $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ which is read a "$T$ maps inputs from the domain $\mathcal{R}^n$ to the codomain $\mathcal{R}^m$." For each $\mathbf{x} \in \mathcal{R}^n$ (in the domain), $T(\mathbf{x}) \in \mathcal{R}^m$ is known as the image of $\mathbf{x}$. The set of all $T(\mathbf{x})$ for all $\mathbf{x} \in \mathcal{R}^n$ is known as the range of $T(\mathbf{x})$. Note that it is possible that the range of $T(\mathbf{x})$ is not required to be the entire space $\mathcal{R}^m$ (i.e., the range of the transformation $T$ might be a subset of $\mathcal{R}^m$)
 
 
 **Draw figure**
@@ -435,8 +435,8 @@ $$
 ```{r reflection-line-y-equals-x-matrix, cache = TRUE, echo = FALSE}
 transformation_matrix <- tribble(
   ~ x, ~ y,
-  1, 0,
-  0, 1) %>% 
+  0, 1,
+  1, 0) %>% 
   as.matrix()
 
 p <- plot_transformation(transformation_matrix)
@@ -555,8 +555,8 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "
 
 $$
 \mathbf{A} = \begin{pmatrix}
-1 & x \\
-0 & 1
+1 & 0 \\
+x & 1
 \end{pmatrix}
 $$
 For the example below, we plot a horizontal shear with $x = 2$.
@@ -564,8 +564,8 @@ For the example below, we plot a horizontal shear with $x = 2$.
 ```{r vertical-shear-matrix, cache = TRUE, echo = FALSE}
 transformation_matrix <- tribble(
   ~ x, ~ y,
-  1, 2,
-  0, 1) %>% 
+  1, 0,
+  2, 1) %>% 
   as.matrix()
 
 p <- plot_transformation(transformation_matrix)
@@ -759,14 +759,20 @@ knitr::include_graphics("images/not-one-to-one.png")
 
 
 
-* The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is one-to-one:
-a) For every $\mathbf{b} \in \mathcal{R}^m$ (for every vector in the image), the equation $T(\mathbf{x}]) = \mathbf{b}$ has either zero or one solution
+The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is one-to-one:
+
+a) For every $\mathbf{b} \in \mathcal{R}^m$ (for every vector in the image), the equation $T(\mathbf{x}) = \mathbf{b}$ has either zero or one solution
+
 b) Every different input into the function $T(\cdot)$ has a different output
+
 c) If $T(\mathbf{u}) = T(\mathbf{v})$ then $\mathbf{u} = \mathbf{v}$ 
 
 The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is **not** one-to-one:
-a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x}]) = \mathbf{b}$ has more than one solution
+
+a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x}) = \mathbf{b}$ has more than one solution
+
 b) There are at least two  different inputs into the function $T(\cdot)$ that have the same output
+
 c) There exist vectors $\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n$ such that $T(\mathbf{u}) = T(\mathbf{v})$
 
 ```{theorem}
@@ -828,13 +834,16 @@ knitr::include_graphics("images/not-onto.png")
 The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is onto:
 
 1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is equal to the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$
+
 2) Every vector in the codomain is the output of some input vector
 
 
 The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is not onto:
 
 1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is smaller than the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$.
+
 2) There exists a vector $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x})$ does not have a solution.
+
 3) There is a vector in the codomain that is not the output of any input vector.
 
 ```{theorem} 
