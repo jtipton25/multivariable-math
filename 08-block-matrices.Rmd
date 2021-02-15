@@ -45,7 +45,7 @@ $$
 \end{align*}
 $$
 
-where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $1 \times 2$ matrix, etc.
+where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $2 \times 1$ matrix, etc.
 
 
 ```{r}
