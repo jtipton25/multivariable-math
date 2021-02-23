@@ -1,5 +1,10 @@
 #  Vector Spaces and Subspaces
 
+```{r, echo = FALSE}
+library(tidyverse)
+library(dasc2594)
+```
+
 Recall the definition of a subspace:
 
 ::: {.definition}
@@ -56,10 +61,32 @@ As a consequence, there will exist a set of vectors that span the null space nul
 Find a spanning set for null($\mathbf{A}$) where
 
 \begin{align*}
-\mathbf{A} = \begin{pmatrix} 6 & 0 & 4 \\ 5 & -1 & -9 \\ -4 & 7 & 4 \\ 6 & 2 & 9 \end{pmatrix}
+\mathbf{A} = \begin{pmatrix} 7 & -2 & 7 & -4 & 5 \\ 2 & 0 & 3 & 3 & 9 \\ -5 & 2 & -5 & 7 & -2 \end{pmatrix}
 \end{align*}
 
 * Find solution to system of homogeneous system of equations
+
+```{r}
+A <- matrix(c(7, 2, -5, -2, 0, 2, 7, 3, -5, -4, 3, 7, 5, 9, -2), 3, 5)
+rref(cbind(A, 0))
+```
+
+* Take the general solution and write as a linear combination of vectors where the coefficients are the free variables.
+
+* general solution $x_1 = -1.5 x_4 + 4.5 x_5$, $x_2 = -7.25 x_4 - 2.75 x_5$, $x_3 = -6 x_5$ and both $x_4$ and $x_5$ are free. Write out the general solution in vector form.
+
+\begin{align*}
+\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} -1.5 x_4 + 4.5 x_5\\ -7.25 x_4 - 2.75 x_5 \\ -6 x_5 \\ x_4 \\ x_5 \end{pmatrix} = x_4 \begin{pmatrix} -1.5 \\ -7.25 \\ 0 \\ 1 \\ 0 \end{pmatrix} + x_5 \begin{pmatrix} 4.5 \\ 2.75 \\ -6 \\ 0 \\ 1 \end{pmatrix}
+\end{align*}
+
+* From above, the free variables $x_4$ and $x_5$ are multiplied by the vectors $\mathbf{u} =  \begin{pmatrix} -1.5 \\ -7.25 \\ 0 \\ 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 4.5 \\ 2.75 \\ -6 \\ 0 \\ 1 \end{pmatrix}$ where $\{ \mathbf{u}, \mathbf{v} \}$ are a spanning set for the null($\mathbf{A}$)
+
+:::
+
+:::{.example}
+* In class -- do another
+Find a spanning set for null($\mathbf{A}$) where
+
 :::
 
 

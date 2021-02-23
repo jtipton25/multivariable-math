@@ -61,14 +61,15 @@ b) As the vectors in $\mathcal{S}$ span $\mathcal{H}$, if there is a linearly de
 ## Bases for null($\mathbf{A}$) and col($\mathbf{A}$)
 
 :::{.example}
-Find a basis for the null($\mathbf{A}$) where
+Find a basis for the col($\mathbf{A}$) where
 ```{r}
 set.seed(2021)
-A <- matrix(sample(-9:9, 15, replace = TRUE), 3, 5)
+A <- matrix(sample(-9:9, 15, replace = TRUE), 5, 3)
 ```
 \begin{align*}
 \mathbf{A} = `r array_to_latex(A)`
 \end{align*}
-
 :::
+
+
 
