@@ -1,0 +1,126 @@
+#  Vector Spaces and Subspaces
+
+Recall the definition of a subspace:
+
+::: {.definition}
+A subspace $\mathcal{H}$ of a vector space $\mathcal{V}$ is a subset of $\mathcal{V}$ such that
+
+* $\mathcal{H}$ contains the zero vector -- $\mathbf{0} \in \mathcal{H}$
+
+* $\mathcal{H}$ is closed under vector addition. Therefore, for $\mathbf{u}$ and $\mathbf{v}$ in $\mathcal{H}$, the sum $\mathbf{u} + \mathbf{v}$ is in $\mathcal{H}$
+
+* $\mathcal{H}$ is closed under scalar multiplication. Therefore, for $\mathbf{u}$ in $\mathcal{H}$ and a scalar $a$, the product $a \mathbf{u}$ is in $\mathcal{H}$
+:::
+
+A consequence of this definition is that a subspace $\mathcal{H}$ is closed under linear combinations. 
+
+
+## Null space and column space
+
+Also, recall the special subspaces of the column space and the null space. 
+
+
+### Null space
+
+::: {.definition}
+The null space null($\mathbf{A}$) of an $m \times n$ $\mathbf{A}$ is the set of all solutions of the homogeneous equation $\mathbf{A} \mathbf{x} = \mathbf{0}$
+
+Another way to write null($\mathbf{A}$) is 
+\begin{align*}
+\mbox{null}(\mathbf{A}) = \{\mathbf{x} : \mathbf{x} \in \mathcal{R}^n \mbox{ and } \mathbf{A} \mathbf{x} = \mathbf{0} \}
+\end{align*}
+:::
+
+
+
+:::{.theorem}
+The null space of an $m \times n$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$.
+:::
+
+:::{.proof}
+Do in class
+
+* $\mathbf{0}$ vector
+
+* sum of vectors
+
+* scalar multiplication
+:::
+
+
+As a consequence, there will exist a set of vectors that span the null space null($\mathbf{A}$). However, the null space of $\mathbf{A}$ is defined implicitly. This means that the null space of $\mathbf{A}$ is not obvious given the vectors of $\mathbf{A}$ and must be checked/calculated.
+
+:::{.example}
+* In class
+
+Find a spanning set for null($\mathbf{A}$) where
+
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 6 & 0 & 4 \\ 5 & -1 & -9 \\ -4 & 7 & 4 \\ 6 & 2 & 9 \end{pmatrix}
+\end{align*}
+
+* Find solution to system of homogeneous system of equations
+:::
+
+
+
+### Column space
+
+::: {.definition}
+The columns space col($\mathbf{A}$) of an $m \times n$ $\mathbf{A}$ is the set of all linear combinations of the columns of $\mathbf{A}$. 
+
+If $\{ \mathbf{a}_1, \ldots, \mathbf{a}_n\}$ are the columns of $\mathbf{A}$, then 
+\begin{align*}
+\mbox{col}(\mathbf{A}) = \mbox{span}(\mathbf{A})
+\end{align*}
+this can be written in set notation as 
+\begin{align*}
+\mbox{col}(\mathbf{A}) = \{ \mathbf{b} : \mathbf{A} \mathbf{x} = \mathbf{b} \mbox{ for some } $\mathbf{x} \in \mathcal{R}^n \}
+\end{align*}
+:::
+
+:::{.theorem}
+The column space of an $m \times n$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$.
+:::
+
+:::{.proof}
+Do in class
+
+* $\mathbf{0}$ vector
+
+* sum of vectors
+
+* scalar multiplication
+:::
+
+
+Compared to the null space, the column space is defined explicitly--it is the span of the columns of $\mathbf{A}$. The definition of the column space results in the fact that col($\mathbf{A}$) is the range of the linear transformation $\mathbf{x} \rightarrow \mathbf{A} \mathbf{x}$.
+
+:::{.example}
+* In class
+
+Find a spanning set for col($\mathbf{A}$) where
+
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 6 & 0 & 4 \\ 5 & -1 & -9 \\ -4 & 7 & 4 \\ 6 & 2 & 9 \end{pmatrix}
+\end{align*}
+:::
+
+
+### Understanding the differerneces between the column space and the null space
+
+```{r, echo = FALSE}
+knitr::include_graphics(here::here("images", "null-column.jpg"))
+```
+
+
+
+
+
+
+
+
+
+
+
+

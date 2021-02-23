@@ -1,0 +1,74 @@
+# Linearly independent sets and bases
+
+```{r, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+```
+
+Recall that a set of vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly independent if the only solution to the system of equations 
+
+\begin{align*}
+x_1 \mathbf{v}_1 + \cdots + x_n \mathbf{v}_n = \mathbf{0}
+\end{align*}
+is the trivial solution $\mathbf{x} = \mathbf{0}$. In other words, it is not possible to write any of the vectors in the set $\{ \mathbf{v}_1, \ldots, \mathbf{v}_n\}$ as a linear combination of the other vectors. 
+
+
+:::{.definition}
+Let $\mathcal{H}$ be a subspace of a vector space $\mathcal{V}$. Then, the set of vectors $\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}$ is a **basis** for $\mathcal{H}$ if
+
+* The set of vectors $\mathcal{B}$ are linearly independent
+
+* The subspace spanned by $\mathcal{B}$ is $\mathcal{H}$. In other words
+\begin{align*}
+\mbox{span}(\mathbf{v}_1, \ldots, \mathbf{v}_n) = \mathcal{H}
+\end{align*}
+:::
+
+
+:::{.example}
+* in class--standard basis $\mathbf{e}_1, \ldots \mathbf{e}_n$ which are the columns of the $n \times n$ identity matrix$\mathbf{I}$.
+:::
+
+:::{.example}
+* in class--pick 3 vectors of length 3. Are they a basis for $\mathcal{R}^3$? What about $\mathcal{R}^4$?
+:::
+
+
+```{theorem, name = "The Spanning Set Theorem"}
+Let $\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ be vectors in the vector space $\mathcal{V}$ and let $\mathcal{H}$ = span($\mathbf{v}_1, \ldots, \mathbf{v}_n$)
+
+a) If one of the vectors, say $\mathbf{v}_k$, of $\mathcal{S}$ is a linear combination of the remaining vectors of $\mathcal{S}$, then the set formed by removing the vector $\mathbf{v}_k$ still spans $\mathcal{H}$
+    
+b) If $\mathcal{H} \neq \{\mathbf{0}\}$, then some subset of $\mathcal{S}$ spans $\mathcal{H}$.
+```
+
+```{proof}
+a) WLOG assume $\mathbf{v}_n$ is a linear combination of $\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}$ (if not, permute the labels to make the linearly dependent vector the $n$th vector). Then
+\begin{align}
+(\#eq:span-set-theorem1)
+\mathbf{v}_n = x_1 \mathbf{v}_1 + \cdots + x_{n-1} \mathbf{v}_{n-1}
+\end{align}
+Because the vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ span $\mathcal{H}$, any vector $\mathbf{b}\in \mathcal{H}$ can be written as 
+\begin{align}
+(\#eq:span-set-theorem2)
+\mathbf{b} = c_1 \mathbf{v}_1 + \cdots + c_{n} \mathbf{v}_{n}
+\end{align}
+for scalars $c_1, \ldots, c_n$. Plugging the result from \@ref(eq:span-set-theorem1) into \@ref(eq:span-set-theorem2) shows that any vector $\mathbf{b}$ in $\mathcal{H}$ can be written only using the vectors $\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}$
+
+b) As the vectors in $\mathcal{S}$ span $\mathcal{H}$, if there is a linearly dependent vector in $\mathcal{S}$, this vector can be removed from $\mathcal{S}$ and the span of this subset of $\mathcal{S}$ will still span $\mathcal{H}$. As long as $\mathbf{H} \neq \{\mathbf{0}\}$, there must be a least one nonzero vector in $\mathbf{S}$ so the removing of linearly dependent vectors will stop with at least one vector. As all of the linearly dependent vectors have been removed, the subset of $\mathcal{S}$ created in this manner will be a set of linearly independent vectors that span $\mathcal{H}$.
+```
+
+## Bases for null($\mathbf{A}$) and col($\mathbf{A}$)
+
+:::{.example}
+Find a basis for the null($\mathbf{A}$) where
+```{r}
+set.seed(2021)
+A <- matrix(sample(-9:9, 15, replace = TRUE), 3, 5)
+```
+\begin{align*}
+\mathbf{A} = `r array_to_latex(A)`
+\end{align*}
+
+:::
+
