@@ -74,7 +74,7 @@ has the unique solution $\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}$.
 
 * **Example in R: in class**
 
-```{theorem, invertible-matrix, name = "Invertible Matrix Theorem"}
+```{theorem, name = "Invertible Matrix Theorem"}
 
 1) If $\mathbf{A}$ is an invertible matrix, then $\mathbf{A}^{-1}$ is invertible and $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
 
@@ -202,7 +202,8 @@ Let $\mathbf{A} = `r array_to_latex(A)`$. Does $\mathbf{A}$ have an inverse, and
 
 ## The Invertible Matrix Theorem
 
-**The Invertible Matrix Theorem:** Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
+```{theorem, invertible-matrix, name = "The Invertible Matrix Theorem"}
+Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
 
 1) $\mathbf{A}$ is an invertible matrix.
 
@@ -227,7 +228,7 @@ Let $\mathbf{A} = `r array_to_latex(A)`$. Does $\mathbf{A}$ have an inverse, and
 11) There is an $n \times n$ matrix $\mathbf{D}$ such that $\mathbf{A}\mathbf{D} = \mathbf{I}$.
 
 12) $\mathbf{A}'$ is an invertible matrix.
-
+```
 
 * **Proof: in class**
 

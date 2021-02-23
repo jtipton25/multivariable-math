@@ -69,7 +69,70 @@ A <- matrix(sample(-9:9, 15, replace = TRUE), 5, 3)
 \begin{align*}
 \mathbf{A} = `r array_to_latex(A)`
 \end{align*}
+
+* Calculate row echelon form and identify the pivot columns. The vectors $\mathbf{a}_1, \ldots, \mathbf{a}_n$ that make up the columns of $\mathbf{A}$ that are in the pivot columns form a basis for $\mathbf{A}$
+
+* Why is this? Think about the relationship between the columns of $\mathbf{A}$ and the vector $\mathbf{b}$ in $\mathbf{A} \mathbf{x} = \mathbf{b}$ that result in a consistent solution.
+
 :::
 
+:::{.example}
+Find a basis for the null($\mathbf{A}$) where
+```{r}
+set.seed(2021)
+A <- matrix(sample(-9:9, 15, replace = TRUE), 5, 3)
+```
+\begin{align*}
+\mathbf{A} = `r array_to_latex(A)`
+\end{align*}
 
+* Calculate solutions to homogeneous system of equations, write solution in vector equation form. Vectors form a basis for null($\mathbf{A}$)
+:::
+
+* **note:** Facts about the basis for the null space null($\mathbf{A}$)
+
+1) The spanning set produced using the method above produces a linearly independent set because the free variables are weights on the spanning vectors. 
+
+2) When null($\mathbf{A}$) contains nonzero vectors, the number of vectors in the spanning set for null($\mathbf{A}$) is the number of free variables in the solution of $\mathbf{A} \mathbf{x} = \mathbf{0}$.
+
+:::{.example}
+The matrix $4 \times 5$ $\mathbf{A}$ has columns given by the vectors $\mathbf{a}_1, \ldots, \mathbf{a}_5$ and is row equivalent to the matrix 
+\begin{align*}
+\mathbf{A} = \begin{pmatrix} 1 & 0 & 3 & -2 & 1 \\ 0 & 0 & 3 & -2 & 5 \\ 0 & 0 & 0 & -1 & -2 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}
+\end{align*}
+What is a basis for col($\mathbf{A}$) in terms of the vectors $\mathbf{a}_1, \ldots, \mathbf{a}_5$ 
+:::
+
+* Note that two matrices that are row equivalent have the same linear dependence relationsihps between their vectors (but the basis for their column space is different)
+
+
+:::{.example}
+
+The matrix $\mathbf{A}$ is row equivalent to the matrix $\mathbf{B}$
+```{r, echo = TRUE}
+A <- matrix(c(1, 3, 2, 5, 4, 12 , 8, 20, 0, 1, 1, 2, 2, 5, 3, 8, -1, 5, 2, 8), 4, 5)
+B <- rref(A)
+```
+\begin{align*}
+\mathbf{A} = `r array_to_latex(A)` & \mathbf{B} = `r array_to_latex(B)` \\
+\end{align*}
+
+* What is a basis for col($\mathbf{A}$)?
+
+* What is a basis for col($\mathbf{B}$)? 
+
+* What is span($\mathbf{a}_1, \ldots, \mathbf{a}_5$)?
+
+* What is span($\mathbf{b}_1, \ldots, \mathbf{b}_5$)?
+
+* Are the spaces spanned by the columns of $\mathbf{A}$ and the columns of $\mathbf{B}$ the same space?
+:::
+
+:::{.theorem}
+The pivot columns of a matrix $\mathbf{A}$ for a basis for col($\mathbf{A}$)
+:::
+
+:::{.proof}
+sketch: $\mathbf{B}$ rref of $\mathbf{A}$, linearly independent columns of $\mathbf{B}$ are same as linearly independent columns in $\mathbf{A}$. Other (non-pviot) columns are linearly dependent. By spanning set theorem, non-pivot columns can be removed from the spanning set without changing the span, leaving only the pivot columns of $\mathbf{A}$ as a basis for col($\)
+:::
 

@@ -1,0 +1,35 @@
+# Change of basis
+
+Consider two bases $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ and $\mathcal{c} = \{ \mathbf{c}_1, \ldots, \mathbf{c}_n \}$ for a vector space $\mathcal{V}$. If we have a vector $\mathbf{x}$ with coordinates in $\mathcal{B}$, what are the coordinates of $\mathbf{x}$ with respect to $\mathcal{C}$?
+
+* Recall: we know how to change from the standard coordinates to the basis $\mathcal{B}$. If $\mathbf{x}$ is a vector in the standard coordinates and $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}$ is a matrix with columns given by the basis $\mathbf{B}$, the coordinates of $\mathbf{f}$ of the vector$\mathbf{x}$ with respect to the basis $\mathcal{B}$ are 
+\begin{align*}
+\mathbf{f} = \mathbf{P}_B^{-1} \mathbf{x}
+\end{align*}
+and, as a consequence, given a vector $\mathbf{f}$ with coordinates with respect to the basis $\mathcal{B}$, the vector of coefficients $\mathbf{x}$ with standard coordinates is given by 
+\begin{align*}
+\mathbf{x} = \mathbf{P}_B \mathbf{f}.
+\end{align*}
+
+Notice that change of coordinates is a linear transformation from $\mathcal{B}$ to $\mathcal{C}$ with transformation matrix $\mathbf{A}$. Despite the more complex notation, this is just another linear transformation [[link](https://www.youtube.com/watch?v=VGhij2qmOs4)]. 
+
+
+**Draw diagram**
+
+Now, we can combine these ideas. Given a vector $\mathbf{f}$ written with coordinates with respect to the basis $\mathcal{B}$, we can find the coordinates of $\mathbf{g}$ with respect to the basis $\mathcal{C}$. First, we find the coordinates of the vector  $\mathbf{x}$ with respect to the standard basis then find the coordinates of $\mathbf{g}$ with respect to the basis $\mathcal{C}$. Let $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}$ and $\mathbf{P}_C = \begin{pmatrix} \mathbf{c}_1 & \ldots & \mathbf{c}_n \end{pmatrix}$, then given a vector $\mathbf{f}$ with coordinates with respect to the basis $\mathcal{B}$, the coordinates $\mathbf{g}$ of this vector with respect to the basis $\mathcal{C}$ is 
+\begin{align*}
+\mathbf{g} = \mathbf{P}_C^{-1} \mathbf{P}_B \mathbf{f}.
+\end{align*}
+
+**Draw diagram**
+
+:::{.example}
+2-d change of basis
+:::
+:::{.example}
+3-d change of basis
+:::
+
+
+
+
