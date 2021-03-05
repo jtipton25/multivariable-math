@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Matrix equations | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Matrix equations | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Matrix equations | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-vector-spaces.html"/>
-<link rel="next" href="section-linear-independence.html"/>
+<link rel="prev" href="section-eigenvectors-and-eigenvalues.html"/>
+<link rel="next" href="section-section.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -318,321 +318,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-matrix-equation" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Matrix equations</h1>
-<div class="sourceCode" id="section-cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="section-matrix-equation.html#cb95-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb95-2"><a href="section-matrix-equation.html#cb95-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb95-3"><a href="section-matrix-equation.html#cb95-3"></a><span class="kw">library</span>(gg3D)</span></code></pre></div>
-<p>Here we introduce the concept of the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>. This equation is the most fundamental equation in all of statistics and data science. Given a matrix <span class="math inline">\(\mathbf{A}\)</span> and a vector of constants <span class="math inline">\(\mathbf{b}\)</span>, the goal is to solve for the value (or values) of <span class="math inline">\(\mathbf{x}\)</span> that are a solution to this equation. The equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is a matrix representation of the system of linear equations</p>
-<p><span class="math display" id="eq:matrix-equation">\[
-\begin{align*}
-\tag{4.1}
-\mathbf{A} \mathbf{x} &amp; = \mathbf{b} \\
-\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} &amp; = \mathbf{b} \\
-x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
-\end{align*}
-\]</span></p>
-<p>as long as the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> rows and <span class="math inline">\(K\)</span> columns and the vectors <span class="math inline">\(\mathbf{a}_k\)</span> are <span class="math inline">\(n\)</span>-dimensional.</p>
+<div id="section-the-characteristic-equation" class="section level1">
+<h1><span class="header-section-number">Chapter 21</span> The Characteristic Equation</h1>
+<div class="sourceCode" id="section-cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="section-the-characteristic-equation.html#cb175-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb175-2"><a href="section-the-characteristic-equation.html#cb175-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<p>The characteristic equation/polynomial encodes information about the eigenvalues of the characteristic equation. In the previous chapter, we showed how we can decide if a scalar <span class="math inline">\(\lambda\)</span> is an eigenvalue of a matrix and how to find the vectors associated with the eigenvalue. However, we did not learn how to find eigenvalues (other than to just randomly try <span class="math inline">\(\lambda\)</span>). The characteristic equation/polynomial allows for determining the eigenvalues <span class="math inline">\(\lambda\)</span>.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-153" class="definition"><strong>Definition 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The characteristic equation/polynomial of <span class="math inline">\(\mathbf{A}\)</span> is the function <span class="math inline">\(f(\lambda)\)</span> given by
+<span class="math display">\[\begin{align*}
+f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
+\end{align*}\]</span></p>
+</div>
+<p>While not obvious, the function <span class="math inline">\(f(\lambda)\)</span> is a polynomial of <span class="math inline">\(\lambda\)</span> but requires computing the determinant of the matrix <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> which contains an unknown value <span class="math inline">\(\lambda\)</span>.</p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-154" class="example"><strong>Example 21.1  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span></p>
 <ul>
-<li><p><strong>Example: in class</strong></p></li>
-<li><p><strong>Example: in class</strong></p></li>
+<li>do in class</li>
 </ul>
-<div id="section-solutions-of-matrix-equations" class="section level2">
-<h2><span class="header-section-number">4.1</span> Solutions of matrix equations</h2>
-<p>Because the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is equivalent to a linear system of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, we can solve the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> by writing the equation in an augmented matrix form
-<span class="math display">\[
-\begin{align*}
-\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}
-\end{align*}
-\]</span>
-and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
-
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-155" class="example"><strong>Example 21.2  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span></p>
+<ul>
+<li>do in class (expand cofactors along the third column)</li>
+</ul>
+</div>
+<p>Once the characteristic equation is defined, we can use the equation to solve for the eigenvalues.</p>
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-67" class="theorem"><strong>Theorem 4.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.
+<p><span id="section-thm:unlabeled-div-156" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})\)</span> be a characteristic polynomial. Then, the number <span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(f(\lambda_0) = 0\)</span>.</p>
 </div>
-
-</div>
-<div id="section-existence-of-solutions" class="section level2">
-<h2><span class="header-section-number">4.2</span> Existence of solutions</h2>
-<p>A solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> exists if and only if <span class="math inline">\(\mathbf{b}\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span>. In other words, <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has a solution if and only if <span class="math inline">\(\mathbf{b}\)</span> is in the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_K\}\)</span>.</p>
+<div class="proof">
+<p><span id="section-unlabeled-div-157" class="proof"><em>Proof</em>. </span>By the invertible matrix theorem, the matrix <span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution if and only if <span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span>. Therefore, the following statements are equivalent:</p>
 <ul>
-<li><strong>Example: in class</strong> Let <span class="math inline">\(\mathbf{A} =\ldots\)</span> and <span class="math inline">\(\mathbf{b} = \ldots\)</span>. Is the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> consistent?</li>
+<li><p><span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda_0 \mathbf{x}\)</span> has a nontrivial solution</p></li>
+<li><p><span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution</p></li>
+<li><p><span class="math inline">\(\mathbf{A} - \lambda_0 \mathbf{I}\)</span> is not invertible</p></li>
+<li><p><span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) = \mathbf{0}\)</span></p></li>
+<li><p><span class="math inline">\(f(\lambda_0) = 0\)</span></p></li>
 </ul>
-
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-158" class="example"><strong>Example 21.3  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
+<ul>
+<li>do in class</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-159" class="example"><strong>Example 21.4  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
+<ul>
+<li>do in class (expand cofactors along the third column)</li>
+</ul>
+</div>
+<div id="section-similarity" class="section level2">
+<h2><span class="header-section-number">21.1</span> Similarity</h2>
+<p>The idea behind similar matrices is to understand how the linear transformations implied by the transformation behave. Two matrices are similar if their transformation behavior (rotation, expansion/contraction, etc.) is the same but the coordinates on which the matrix operates are different.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-160" class="definition"><strong>Definition 21.2  </strong></span>The matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are said to be similar if there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> where
+<span class="math display">\[\begin{align*}
+\mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
+\end{align*}\]</span>
+or equivalently
+<span class="math display">\[\begin{align*}
+\mathbf{P}^{-1} \mathbf{A} \mathbf{P}=  \mathbf{B} 
+\end{align*}\]</span></p>
+</div>
+<p>Therefore, it is possible to change <span class="math inline">\(\mathbf{A}\)</span> into <span class="math inline">\(\mathbf{B}\)</span> with an invertible (one-to-one and onto) transformation.</p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-161" class="example"><strong>Example 21.5  </strong></span>Consider the following example with matrices <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> defined as below:</p>
+<div class="sourceCode" id="section-cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="section-the-characteristic-equation.html#cb176-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb176-2"><a href="section-the-characteristic-equation.html#cb176-2"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    0
+## [2,]    0   -2</code></pre>
+<div class="sourceCode" id="section-cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="section-the-characteristic-equation.html#cb178-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">12</span>, <span class="dv">-10</span>, <span class="dv">15</span>, <span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb178-2"><a href="section-the-characteristic-equation.html#cb178-2"></a>B</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  -12   15
+## [2,]  -10   13</code></pre>
+<div class="sourceCode" id="section-cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="section-the-characteristic-equation.html#cb180-1"></a>P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb180-2"><a href="section-the-characteristic-equation.html#cb180-2"></a>P</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   -2    3
+## [2,]    1   -1</code></pre>
+<div class="sourceCode" id="section-cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="section-the-characteristic-equation.html#cb182-1"></a>P <span class="op">%*%</span><span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    0
+## [2,]    0   -2</code></pre>
+<div class="sourceCode" id="section-cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="section-the-characteristic-equation.html#cb184-1"></a><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  -12   15
+## [2,]  -10   13</code></pre>
+</div>
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-68" class="theorem"><strong>Theorem 4.2  </strong></span>For the <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the following statements are equivalent:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>For each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^K\)</span>, the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has at least one solution</p></li>
-<li><p>Each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^K\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span></p></li>
-<li><p>The columns of <span class="math inline">\(\mathbf{A}\)</span> span <span class="math inline">\(\mathcal{R}^K\)</span></p></li>
-<li><p><span class="math inline">\(\mathbf{A}\)</span> has a pivot in every column</p>
-</div></li>
-</ol>
+<p><span id="section-thm:unlabeled-div-162" class="theorem"><strong>Theorem 21.2  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> similar matrices, then <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> will have the same characteristic polynomial and therefore the same eigenvalues.</p>
 </div>
-<div id="section-matrix-vector-multiplication" class="section level2">
-<h2><span class="header-section-number">4.3</span> Matrix-vector multiplication</h2>
-<p>To calculate <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>, we need to define matrix multiplication. The equivalence between the linear systems of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span> and the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> gives a hint in how to do this. First, recall the definition of <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{x}\)</span></p>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{A} = \begin{pmatrix}
-a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1K} \\
-a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2K} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nK} \\
-\end{pmatrix} &amp;&amp; \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_K \end{pmatrix}
-\end{align*}
-\]</span>
-The matrix product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the linear system of equations
-<span class="math display">\[
-\begin{align*}
-\mathbf{A}  \mathbf{x} &amp; = \begin{pmatrix}
-a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1K} \\
-a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2K} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nK} \\
-\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
-&amp; = x_1\begin{pmatrix}
-a_{11} \\ a_{21} \\ \vdots \\ a_{n1} 
-\end{pmatrix} +
-x_2 \begin{pmatrix}
-a_{12} \\ a_{22} \\ \vdots \\ a_{n2} 
-\end{pmatrix} +
-\cdots + x_K \begin{pmatrix}
-a_{1K} \\ a_{nK} \\ \vdots \\ a_{nK} \end{pmatrix} \\
-&amp; =  \begin{pmatrix}
-a_{11} x_1 + a_{12} x_2 + \ldots + a_{1K} x_K \\
-a_{21} x_1 + a_{22} x_2 + \ldots + a_{2K} x_K \\
-\vdots \\
-a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
-\end{pmatrix}
-\end{align*}
-\]</span>
-Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
-
-<div class="definition">
-<span id="section-def:unnamed-chunk-69" class="definition"><strong>Definition 4.1  </strong></span>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span>
-</div>
-
-<ul>
-<li><p><strong>Example: in class</strong></p></li>
-<li><p><strong>Example: in class</strong></p></li>
-<li><p><strong>Example: in R using loops</strong></p></li>
-<li><p><strong>Example: in R using <code>%*%</code></strong></p></li>
-</ul>
-</div>
-<div id="section-properties-of-matrix-vector-multiplication" class="section level2">
-<h2><span class="header-section-number">4.4</span> Properties of matrix-vector multiplication</h2>
-<p>If <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times K\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^K\)</span> and <span class="math inline">\(c\)</span> is a scalar, then</p>
-<ol style="list-style-type: lower-alpha">
-<li><span class="math inline">\(\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v}\)</span></li>
-<li><span class="math inline">\(\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}\)</span></li>
-</ol>
-<ul>
-<li><strong>Proof in class</strong></li>
-</ul>
-</div>
-<div id="section-solutions-of-linear-systems-1" class="section level2">
-<h2><span class="header-section-number">4.5</span> Solutions of linear systems</h2>
-<div id="section-homogeneous-linear-systems-of-equations" class="section level3">
-<h3><span class="header-section-number">4.5.1</span> Homogeneous linear systems of equations</h3>
-
-<div class="definition">
-<span id="section-def:unnamed-chunk-70" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
-<span class="math display" id="eq:homogeneous">\[
-\begin{align}
-\tag{4.2}
-\mathbf{A}\mathbf{x} = \mathbf{0}
-\end{align}
-\]</span>
-is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(K\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.
-</div>
-
-<p>The homogeneous linear system of equations can be written in augmented matrix form
-<span class="math display">\[
-\begin{align*}
-\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{0} \end{pmatrix}
-\end{align*}
-\]</span>
-which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column must not be a pivot column. If every column were a pivot column, the reduced row echelon form of the augmented matrix would be
-<span class="math display">\[
-\begin{align*}
-\begin{pmatrix}
-1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; \ldots &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; \ldots &amp; 1 &amp; 0 
-\end{pmatrix}
-\end{align*}
-\]</span>
-which implies the only solution is the trivial solution <span class="math inline">\(\mathbf{0}\)</span>.</p>
-<ul>
-<li><strong>Example: in class</strong></li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-3 x_1 - 2 x_2 + 4 x_3 = 0 \\
-- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
-5 x_1 - 6 x_2 + 6 x_3 = 0
-\end{align*}
-\]</span>
-* <strong>Example: in class</strong></p>
-<p>Consider the equation</p>
-<p><span class="math display">\[
-\begin{align*}
-2x_1 + 4 x_2 - x_3 = 0.
-\end{align*}
-\]</span>
-we can write this as
-<span class="math display">\[
-\begin{align*}
-x_1 = -2 x_2 + \frac{1}{2} x_3
-\end{align*}
-\]</span>
-where <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are free variables. Writing this as a solution <span class="math inline">\(\mathbf{x}\)</span> gives
-<span class="math display">\[
-\begin{align*}
-\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} -2 x_2 + \frac{1}{2} x_3 \\ x_2 \\ x_3 \end{pmatrix} = 
-x_2 \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
-x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
-\end{align*}
-\]</span>
-which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
-
-<div class="definition">
-<span id="section-def:unnamed-chunk-71" class="definition"><strong>Definition 4.3  </strong></span> A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.
-</div>
-
+<div class="proof">
+<p><span id="section-unlabeled-div-163" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are similar, then there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> such that
+<span class="math display">\[\begin{align*}
+\mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
+\end{align*}\]</span>
+Therefore
+<span class="math display">\[\begin{align*}
+\mathbf{A}  - \lambda \mathbf{I} &amp; = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{I} \\
+&amp; = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P} \mathbf{P}^{-1} \\
+&amp; =  \mathbf{P} \left( \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P}^{-1} \right) \\
+&amp; =  \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1}\\
+\end{align*}\]</span>
+To get the characteristic equation, we need to solve for the determinant
+<span class="math display">\[\begin{align*}
+det\left( \mathbf{A}  - \lambda \mathbf{I} \right) &amp; = det\left( \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1} \right) \\
+&amp; = det\left( \mathbf{P} \right)  det\left( \mathbf{B} - \lambda \mathbf{I} \right) det\left(\mathbf{P}^{-1} \right) \\
+\end{align*}\]</span>
+We know that <span class="math inline">\(det\left(\mathbf{P}^{-1} \right)\)</span> = <span class="math inline">\(\frac{1}{det\left(\mathbf{P} \right)}\)</span> (or, equivalently <span class="math inline">\(det\left(\mathbf{P} \right) det\left(\mathbf{P}^{-1} \right) = det\left(\mathbf{P} \mathbf{P}^{-1} \right) = det(\mathbf{I}) = 1\)</span>), we have <span class="math inline">\(det\left( \mathbf{A} - \lambda \mathbf{I} \right) = det\left( \mathbf{B} - \lambda \mathbf{I} \right)\)</span> so that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same characteristic polynomial (and the same eigenvalues).</p>
 </div>
 </div>
-<div id="section-solutions-to-nonhomogeneous-systems" class="section level2">
-<h2><span class="header-section-number">4.6</span> Solutions to nonhomogeneous systems</h2>
-<p>Recall the simple linear equation
-<span class="math display">\[
-y = mx + b
-\]</span>
-where <span class="math inline">\(m\)</span> is the slope and <span class="math inline">\(b\)</span> is the y-intercept. Setting <span class="math inline">\(b = 0\)</span> gives a simple homogenous linear equation where the y-intercept goes through the origin (0, 0). When <span class="math inline">\(b\)</span> is nonzero, the line keeps the same slope but is shifted upward/downward by <span class="math inline">\(b\)</span>.</p>
-<div class="sourceCode" id="section-cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="section-matrix-equation.html#cb96-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
-<span id="cb96-2"><a href="section-matrix-equation.html#cb96-2"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
-<span id="cb96-3"><a href="section-matrix-equation.html#cb96-3"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
-<span id="cb96-4"><a href="section-matrix-equation.html#cb96-4"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">2</span>, <span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
-<span id="cb96-5"><a href="section-matrix-equation.html#cb96-5"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">2</span>, <span class="dt">intercept =</span> <span class="dv">2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb96-6"><a href="section-matrix-equation.html#cb96-6"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))  <span class="op">+</span></span>
-<span id="cb96-7"><a href="section-matrix-equation.html#cb96-7"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
-<span id="cb96-8"><a href="section-matrix-equation.html#cb96-8"></a>        <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="dt">text =</span> <span class="kw">c</span>(<span class="st">&quot;homogeneous</span><span class="ch">\n</span><span class="st">solution&quot;</span>, <span class="st">&quot;inhomogeneous</span><span class="ch">\n</span><span class="st">solution&quot;</span>)),</span>
-<span id="cb96-9"><a href="section-matrix-equation.html#cb96-9"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="fl">1.75</span>, <span class="dv">-1</span>), <span class="dt">y =</span> y <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">label =</span> text), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb96-10"><a href="section-matrix-equation.html#cb96-10"></a>        <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></span>
-<span id="cb96-11"><a href="section-matrix-equation.html#cb96-11"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb96-12"><a href="section-matrix-equation.html#cb96-12"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">2</span>),</span>
-<span id="cb96-13"><a href="section-matrix-equation.html#cb96-13"></a>        <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;inches&quot;</span>)), </span>
-<span id="cb96-14"><a href="section-matrix-equation.html#cb96-14"></a>        <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
-<span id="cb96-15"><a href="section-matrix-equation.html#cb96-15"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
-<span id="cb96-16"><a href="section-matrix-equation.html#cb96-16"></a>        <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">text =</span> <span class="st">&quot;b&quot;</span>),</span>
-<span id="cb96-17"><a href="section-matrix-equation.html#cb96-17"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">y =</span> y, <span class="dt">label =</span> text), </span>
-<span id="cb96-18"><a href="section-matrix-equation.html#cb96-18"></a>        <span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb96-19"><a href="section-matrix-equation.html#cb96-19"></a>        <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) </span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
-<p>This shift in location (but not in slope) is called a <strong>translation</strong></p>
-<ul>
-<li><strong>Example:</strong> Show this shift for a system of linear equations where the solution set defines a plane. From example above,
-<span class="math display">\[
-\begin{align*}
-2x_1 + 4 x_2 - x_3 = 0.
-\end{align*}
-\]</span>
-has the parametric solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> with
-<span class="math display">\[
-\begin{align*}
-\mathbf{u} &amp; = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} &amp;
-\mathbf{v} &amp; = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
-\end{align*}
-\]</span></li>
-</ul>
-<p>Now, if we change the system of linear equations so that we have the inhomogeneous equation
-<span class="math display">\[
-\begin{align*}
-2x_1 + 4 x_2 - x_3 = 20.
-\end{align*}
-\]</span>
-we get the homogeneous solution set <span class="math inline">\(x_1 = -2 x_2 + \frac{1}{2} x_3 + 10\)</span> which can be written in parametric form as <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span> with
-<span class="math display">\[
-\begin{align*}
-\mathbf{u} &amp; = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} &amp; 
-\mathbf{v} &amp; = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} &amp; 
-\mathbf{p} &amp; = \begin{pmatrix} 10 \\ 0 \\ 0 \end{pmatrix}
-\end{align*}
-\]</span></p>
-<p>For plotting, we will solve these equations for <span class="math inline">\(x_3\)</span>, letting <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> be free variables (this is just for the requirements of the plotting function). Thus, the homogeneous equation has the solution <span class="math inline">\(x_3 = 2x_1 + 4x_2\)</span> and the inhomogenous equation has the solution <span class="math inline">\(x_3 = 2x_1 + 4x_2 - 20\)</span>.</p>
-<div class="sourceCode" id="section-cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="section-matrix-equation.html#cb97-1"></a><span class="co"># uses gg3D library</span></span>
-<span id="cb97-2"><a href="section-matrix-equation.html#cb97-2"></a>n &lt;-<span class="st"> </span><span class="dv">60</span></span>
-<span id="cb97-3"><a href="section-matrix-equation.html#cb97-3"></a>x1 &lt;-<span class="st"> </span>x2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length =</span> n)</span>
-<span id="cb97-4"><a href="section-matrix-equation.html#cb97-4"></a>region &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x1 =</span> x1, <span class="dt">x2 =</span> x2)</span>
-<span id="cb97-5"><a href="section-matrix-equation.html#cb97-5"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb97-6"><a href="section-matrix-equation.html#cb97-6"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
-<span id="cb97-7"><a href="section-matrix-equation.html#cb97-7"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
-<span id="cb97-8"><a href="section-matrix-equation.html#cb97-8"></a>    <span class="dt">x3 =</span> <span class="kw">c</span>(</span>
-<span id="cb97-9"><a href="section-matrix-equation.html#cb97-9"></a>        <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2,</span>
-<span id="cb97-10"><a href="section-matrix-equation.html#cb97-10"></a>        <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2 <span class="op">-</span><span class="st"> </span><span class="dv">20</span>),</span>
-<span id="cb97-11"><a href="section-matrix-equation.html#cb97-11"></a>    <span class="dt">equation =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;inhomogeneous&quot;</span>, <span class="st">&quot;homogeneous&quot;</span>), <span class="dt">each =</span> n<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb97-12"><a href="section-matrix-equation.html#cb97-12"></a></span>
-<span id="cb97-13"><a href="section-matrix-equation.html#cb97-13"></a><span class="co"># theta and phi set up the &quot;perspective/viewing angle&quot; of the 3D plot</span></span>
-<span id="cb97-14"><a href="section-matrix-equation.html#cb97-14"></a>theta &lt;-<span class="st"> </span><span class="dv">45</span></span>
-<span id="cb97-15"><a href="section-matrix-equation.html#cb97-15"></a>phi &lt;-<span class="st"> </span><span class="dv">20</span></span>
-<span id="cb97-16"><a href="section-matrix-equation.html#cb97-16"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">z =</span> x3, <span class="dt">color =</span> equation)) <span class="op">+</span></span>
-<span id="cb97-17"><a href="section-matrix-equation.html#cb97-17"></a><span class="st">    </span><span class="kw">axes_3D</span>(<span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
-<span id="cb97-18"><a href="section-matrix-equation.html#cb97-18"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(</span>
-<span id="cb97-19"><a href="section-matrix-equation.html#cb97-19"></a>        <span class="dt">alpha =</span> <span class="fl">0.75</span>,</span>
-<span id="cb97-20"><a href="section-matrix-equation.html#cb97-20"></a>        <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
-<span id="cb97-21"><a href="section-matrix-equation.html#cb97-21"></a><span class="st">    </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;inhomogeneous&quot;</span> =<span class="st"> &quot;blue&quot;</span>, <span class="st">&quot;homogeneous&quot;</span> =<span class="st"> &quot;red&quot;</span>)) <span class="op">+</span></span>
-<span id="cb97-22"><a href="section-matrix-equation.html#cb97-22"></a><span class="st">    </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
-<span id="cb97-23"><a href="section-matrix-equation.html#cb97-23"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), </span>
-<span id="cb97-24"><a href="section-matrix-equation.html#cb97-24"></a>            <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
-<pre><code>## Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
-<ul>
-<li><strong>Example: in class</strong>
-Let’s revisit the example from before</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-3 x_1 - 2 x_2 + 4 x_3 = 0 \\
-- 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
-5 x_1 - 6 x_2 + 6 x_3 = 0
-\end{align*}
-\]</span>
-but change this so that <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}\)</span></p>
-<ul>
-<li><strong>Write this as a parametric solution with a mean shift</strong></li>
-</ul>
-<div class="sourceCode" id="section-cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="section-matrix-equation.html#cb99-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-2</span>, <span class="dv">5</span>, <span class="dv">-2</span>, <span class="dv">4</span>, <span class="dv">-6</span>, <span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">-6</span>, <span class="dv">8</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb99-2"><a href="section-matrix-equation.html#cb99-2"></a><span class="kw">rref</span>(A)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]  [,4]
-## [1,]    1    0 1.50 -0.50
-## [2,]    0    1 0.25 -1.75
-## [3,]    0    0 0.00  0.00</code></pre>
-<p><span class="math display">\[
-\begin{align*}
-x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
-x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
-\end{align*}
-\]</span>
-which was the same solution set as the homoegenous solution plus the additional vector <span class="math inline">\(\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}\)</span>. Thus, the inhomogenous solution is now <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span> where
-<span class="math display">\[
-\begin{align*}
-\mathbf{u} &amp;= \begin{pmatrix} 1 \\ 0 \\ \frac{3}{2} \end{pmatrix} &amp; 
-\mathbf{v} &amp;= \begin{pmatrix} 0 \\ 1 \\ \frac{1}{4} \end{pmatrix} &amp; 
-\mathbf{p} &amp;= \begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix} 
-\end{align*}
-\]</span></p>
-</div>
-<div id="section-finding-solutions" class="section level2">
-<h2><span class="header-section-number">4.7</span> Finding solutions</h2>
-<p>The following algorithm describes how to solve a linear system of equations.</p>
-<ol style="list-style-type: decimal">
-<li><p>Put the system of equations in an augmented matrix form</p></li>
-<li><p>Reduce the augmented matrix to reduced row echelon form</p></li>
-<li><p>Express each determined variable as a function of the free variables.</p></li>
-<li><p>Write the solution in a general form where the determined variables are a function of the independent variables</p></li>
-<li><p>Decompose the solution <span class="math inline">\(\mathbf{x}\)</span> into a linear combination of free variables as parameters</p></li>
-</ol>
+<div id="section-the-geometric-interpetation-of-similar-matrices" class="section level2">
+<h2><span class="header-section-number">21.2</span> The geometric interpetation of similar matrices</h2>
+<p>In general, similar matrices do similar things in different spaces (different spaces in terms of different bases).</p>
+<p><a href="https://textbooks.math.gatech.edu/ila/similarity.html">Example here</a></p>
 
 </div>
 </div>
@@ -641,8 +444,8 @@ which was the same solution set as the homoegenous solution plus the additional 
           </div>
         </div>
       </div>
-<a href="section-vector-spaces.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-linear-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-eigenvectors-and-eigenvalues.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-section.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
