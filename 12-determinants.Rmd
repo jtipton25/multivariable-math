@@ -6,7 +6,7 @@ library(dasc2594)
 ```
 
 The determinant $\operatorname{det}(\mathbf{A})$ of a square $n \times n$ matrix $\mathbf{A}$ is a real number. 
-```{definition}
+```{definition, determinant}
 The determinant is a fuction of a square $n \times n$ matrix that satisfies the following properties
 
 a) If a scalar multiple of one row of $\mathbf{A}$ is added to another row of $\mathbf{A}$, then the determinant $\operatorname{det}(\mathbf{A})$ is unchanged.

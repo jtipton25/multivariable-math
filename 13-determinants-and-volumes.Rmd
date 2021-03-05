@@ -6,11 +6,11 @@ library(dasc2594)
 ```
 
 
-::: {.definition}
-The **parallelpiped** defined by $n$ vectors $\mathbf{a}_1, \mathbf{a}_n, \ldots, \mathbf{a}_n \in \mathcal{R}^n$ with coefficients $x_1, x_2, \ldots, x_n$ is the subset
+:::{.definition}
+The **parallelpiped** defined by $n$ vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n$ with coefficients $x_1, x_2, \ldots, x_n$ is the subset
 
 \begin{align*}
-\mathcal{P} + \{x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n | 0 \leq x_1, x_2, \ldots, x_n \leq 1 \}
+\mathcal{P} = \{x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n | 0 \leq x_1, x_2, \ldots, x_n \leq 1 \}
 \end{align*}
 :::
 
@@ -18,11 +18,11 @@ The **parallelpiped** defined by $n$ vectors $\mathbf{a}_1, \mathbf{a}_n, \ldots
 The determinant is a function that takes the vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ that make up the columns of $\mathbf{A}$ and returns the volume of the parallelpiped $\mathcal{P}$ defined above **add link**
 
 
-::: {.example}
+:::{.example}
 The unit cube: in class--use standard vectors $\mathbf{e}_1, \mathbf{e}_2$, and $\mathbf{e}_3$
 :::
 
-::: {.example}
+:::{.example}
 parallelograms in $\mathcal{R}^2$: the unit square
 
 ```{r}
@@ -78,7 +78,7 @@ det(matrix(c(2, 0, 0, 2), 2, 2))
 
 The Shiny app below allows you to plot the vector for any $(x, y)$ pair of your choosing.
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, echo = TRUE, eval = FALSE}
 library(shiny)
 runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-14/determinants-volume/") 
 ```
@@ -89,13 +89,13 @@ runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-ap
 Let $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ be vectors in $\mathcal{R}^n$, let $\mathcal{P}$ be the parallelpiped determined by these vectors, and let $\mathbf{A}$ be the matrix with columns $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$. Then, the absolute value of the determinant of $\mathbf{A}$ is the volume of the parallelpiped $\mathcal{P}$:
 
 \begin{align*}
-|\det(\mathbf{A})| = \operatorname{volume}(\mathcal)
+|\det(\mathbf{A})| = \operatorname{volume}(\mathcal{P})
 \end{align*}
 ```
 <!-- ::: -->
 
 ::: {.proof}
-Recall the 4 defining properties (**link to definition**) that characterize the determinant. These properties also characterize the absolute value of the determinant.
+Recall the 4 defining properties (Definition \@ref(def:determinant)) that characterize the determinant. These properties also characterize the absolute value of the determinant.
 
 From the 4 defining properties, the absolute value of the determinant $|\det|$ is a function on square $n \times n$ matrices that satisfies the properties
 
@@ -107,7 +107,7 @@ c) Swapping two rows of $\mathbf{A}$ does not change $|\det(\mathbf{A})|$
 
 d) The determinant of the identity matrix $\mathbf{I}$ is 1
 
-Like the determinant and its 4 defining characteristics (**link back here**), the absolute value of the determinant is the only function that satisfies this relationship. Define $vol(\mathcal{P}_A)$ as the volume of the parallelpiped defined by the rows of the square matrix $\mathbf{A}$. In what follows, we will show that $vol(\mathcal{P}_A)$ also satisfies the 4 defining characteristics of the absolute value of the determinant and, by the uniqueness of the function of the absolute value of the determinant, is equivalent to the absolute value of the determinant.
+Like the determinant and its 4 defining characteristics  (Definition \@ref(def:determinant)), the absolute value of the determinant is the only function that satisfies this relationship. Define $vol(\mathcal{P}_A)$ as the volume of the parallelpiped defined by the rows of the square matrix $\mathbf{A}$. In what follows, we will show that $vol(\mathcal{P}_A)$ also satisfies the 4 defining characteristics of the absolute value of the determinant and, by the uniqueness of the function of the absolute value of the determinant, is equivalent to the absolute value of the determinant.
 
 c\) We start with showing that row swaps have no impact of the volume of the parallelpiped. Swapping two rows of $\mathbf{A}$ just reorders the vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ and the order has no impact of the calculation of the volume (e.g., area in 2d = length * width = width * length)
 
@@ -152,17 +152,17 @@ Recall that in data science, a probability distribution is function that has vol
 
 The vector $\mathbf{y}$ is said to have a multivariate normal distribution with mean $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$  if the probability density function of $\mathbf{y}$ is 
 \begin{align*}
-f(\mathbf{y}) = \frac{1}{\sqrt{2 \pi}} |\det(\boldsymbol{\Sigma})|^{-1/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})}
+f(\mathbf{y}) = (2 \pi)^{-n/2} |\det(\boldsymbol{\Sigma})|^{-1/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})}
 \end{align*}
 
 Notice in this equation that the determinant $\det(\boldsymbol{\Sigma})$ plays a key role in the definition of the probability distribution. This is because 
 
 \begin{align*}
-\int_{\mathbf{y}} \frac{1}{\sqrt{2 \pi}} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{-1/2}
+\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{-1/2}
 \end{align*}
 which implies that 
 \begin{align*}
-\frac{\int_{\mathbf{y}} \frac{1}{\sqrt{2 \pi}} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{-1/2}} = 1
+\frac{\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{-1/2}} = 1
 \end{align*}
 
 In probability and statistics, the denominator is known as the ["normalizing constant."](https://en.wikipedia.org/wiki/Normalizing_constant)

@@ -1,2 +1,239 @@
 # Eigenvectors and Eigenvalues
 
+
+```{r, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+set.seed(2021)
+```
+
+We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is "data-driven" called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.
+
+:::{.definition}
+An \textbf{eigenvector} of an $n \times n$ matrix is a nonzero vector $\mathbf{x}$ such that the matrix equation
+\begin{align*}
+\mathbf{A} \mathbf{x} = \lambda \mathbf{x}
+\end{align*}
+for some scalar $\lambda$. If there exists some $\lambda \neq 0$ (a non-trivial solutions), then $\lambda$ is called an \textbf{eigenvalue} of $\mathbf{A}$ corresponding to the eigenvalue $\mathbf{x}$.
+:::
+
+
+::: {.example}
+It is easy to check if a vector is an eigenvalue:
+```{r, echo = FALSE}
+# n <- 3
+# n_iter <- 5
+# # simulate some eigenvectors, eigenvalues, and a matrix
+# u <- matrix(sample(-9:9, n^2, replace = TRUE), n, n)
+# u <- u %*% t(u)
+# delta <- det(u)
+# while(abs(delta) > 20) {
+#     u <- matrix(sample(-9:9, n^2, replace = TRUE), n, n)
+#     u <- u %*% t(u)
+#     delta <- det(u)
+# }
+# lambda <- sample(1:(delta-1), 1) * delta * sort(sample(1:9, n), decreasing = TRUE)
+# Lambda <- diag(lambda)
+# A <- u %*% Lambda %*% solve(u)
+# A
+# eigen(A)
+# lambda <- diag(sort(sample(1:9, n), decreasing = TRUE))
+# A <- lambda
+# for (k in 1:n_iter) {
+#     idx <- sample(1:n, 2)
+#     a <- sample(-9:9, 1)
+#     A[idx[1], ] <- A[idx[1], ] + a * A[idx[2], ]
+#     A[, idx[2]] <- A[, idx[2]] - a * A[, idx[1]]
+#     
+#     
+# }
+# 
+# u <- matrix(sample(-9:9, n^2, replace = TRUE), n, n)
+# lambda <- sort(sample(1:9, n), decreasing = TRUE) * prod(sapply(1:n, function(i) as.numeric(t(u[, i]) %*% u[, i]), simplify = "vector"))
+# tmp <- sapply(1:n, function(i) {lambda[i] * u[, i] %*% t(u[, i]) / as.numeric(t(u[, i]) %*% u[, i])}, simplify = "array")
+# A <- apply(tmp, c(1, 2), sum)
+# # A <- det(u) * u %*% lambda %*% solve(u)
+# A
+# eigen(A)
+# v <- sample(-9:9, n, replace = TRUE)
+A <- as.character(MASS::fractions(matrix(c(0, 1/2, 0, 6, 0, 1/2, 8, 0, 0), 3, 3)))
+u <- c(16, 4, 1)
+v <- c(2, 2, 2)
+```
+
+
+Let $\mathbf{A} = `r array_to_latex(A)`$, $\mathbf{u} = `r array_to_latex(as.matrix(u))`$, and $\mathbf{v} = `r array_to_latex(as.matrix(v))`$. Determine if $\mathbf{u}$ or $\mathbf{v}$ are eigenvectors of $\mathbf{A}$. If they are eigenvectors, what are the associated eigenvalues.
+
+Now, plot $\mathbf{u}$, $\mathbf{A} \mathbf{u}$, $\mathbf{v}$, and $\mathbf{A} \mathbf{v}$ to show this relationship geometrically.
+:::
+
+An eigenvector is a (nonzero) vector $\mathbf{x}$ that gets mapped to a scalar multiple of itself $\lambda \mathbf{x}$ by the matrix transformation $\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}$. As such, we say that $\mathbf{x}$ and $\mathbf{A} \mathbf{x}$ are collinear with the origin ($\mathbf{0}$) in the sense that these points lie on the same line that goes through the origin. 
+
+**Note:** The matrix $\mathbf{A}$ must be an $n \times n$ square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.
+
+:::{.example}
+Example: reflection
+Draw images: [https://textbooks.math.gatech.edu/ila/eigenvectors.html](https://textbooks.math.gatech.edu/ila/eigenvectors.html)
+:::
+
+
+:::{.theorem}
+Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}$ and suppose the corresponding eigenvalues are $\lambda_1, \lambda_2, \ldots, \lambda_n$ are all distinct (different values). Then, the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly independent.
+:::
+
+
+:::{.proof}
+Suppose the set $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly dependent. Then, there is some $j$ such that $\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k$. If we choose the first linearly dependent vector as $j$, we know that the subset of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ is linearly independent and 
+\begin{align*}
+\mathbf{v}_j & = x_1 \mathbf{v}_1 + \cdots x_{j-1} \mathbf{v}_{j-1}
+\end{align*}
+for some scalars $x_1, \ldots, x_{j-1}$. Multiplying the equation above on the left by $\mathbf{A}$ on both sides gives
+\begin{align*}
+\mathbf{A}\mathbf{v}_j & = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots x_{j-1} \mathbf{v}_{j-1}) \\
+\lambda_j \mathbf{v}_j & = x_1 \mathbf{A} \mathbf{v}_1 + \cdots x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
+& =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} \mathbf{v}_{j-1} \\
+\end{align*}
+Multiplying the first equation by $\lambda_j$ and subtracting this from the second equation gives
+\begin{align*}
+\mathbf{0} = \lambda_j \mathbf{v}_j - \lambda_j \mathbf{v}_j 
+& = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
+\end{align*}
+Because $\lambda_k \neq \lambda_j$ for all $k < j$, the equation above implies a linear dependence among the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector $\mathbf{v}_j$ is violated and all the $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ are linearly independent.
+:::
+
+
+## Eigenspaces
+
+Given a square $n \times n$ matrix $\mathbf{A}$, we know how to check if a given vector $\mathbf{x}$ is an eigenvector and then how to find the eigenvalue associated with that eigenvector. Next, we want to check if a given number is an eigenvalue of $\mathbf{A}$ and to find all the eigenvectors corresponding to that eigenvalue. 
+
+Given a square $n \times n$ matrix $\mathbf{A}$ and a scalar $\lambda$, the eigenvectors of $\mathbf{A}$ associated with the scalar $\lambda$ (if there are eigenvectors associated with $\lambda$) are the nonzero solutoins to the equation $\mathbf{A} \mathbf{x} = \lambda \mathbf{x}$. This can be written as
+\begin{align*}
+\mathbf{A} \mathbf{x} & = \lambda \mathbf{x} \\
+\mathbf{A} \mathbf{x} -\lambda \mathbf{x} & = \mathbf{0} \\
+\mathbf{A} \mathbf{x} -\lambda \mathbf{I} \mathbf{x} & = \mathbf{0} \\
+\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}. \\
+\end{align*}
+Therefore, the eigenvectors of $\mathbf{A}$ associated with $\lambda$, if there are any, are the nontrivial solutions of the homogeneous matrix equation $\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$. In other words, the eigenvectors are the nonzero vectors in the null space null$\left( \mathbf{A} -\lambda \mathbf{I} \right)$. If there is not a nontrivial solution (solution $\mathbf{x} \neq \mathbf{0}$), then $\lambda$ is not an eigenvalue of $\mathbf{A}$.
+
+Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of $\mathbf{A}$. All we have to do is solve the system of linear equations $\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ for a given $\lambda$ (actually, for all $\lambda$s, which we can't do). If only there was some way to find eigenvalues $\lambda$ (hint: there is and it is coming next chapter).
+
+:::{.example}
+```{r, echo = FALSE}
+n <- 3
+# simulate some eigenvectors, eigenvalues, and a matrix
+A <- matrix(c(3, 0, 0, 6, 0, 0, -8, 6, 2), 3, 3)
+lambda <- diag(eigen(A)$values)
+# A <- matrix(sample(-4:4, n^2, replace = TRUE), n, n)
+# A <- A %*% t(A)
+# eigen(A)
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$. Then an eigenvector with eigenvector $\lambda$ is a nontrival solution to 
+\begin{align*}
+\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{align*}
+which can be written as 
+\begin{align*}
+\begin{pmatrix} 
+`r A[1, 1]`  - \lambda & `r A[1, 2]` & `r A[1, 3]` \\
+`r A[2, 1]` & `r A[2, 2]` - \lambda & `r A[2, 3]` \\
+`r A[3, 1]` & `r A[3, 2]` & `r A[3, 3]` - \lambda
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{align*}
+which can be solved for a given $\lambda$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda = `r lambda[1, 1]`$, we have
+\begin{align*}
+\begin{pmatrix} 
+`r A[1, 1]`  - `r lambda[1, 1]` & `r A[1, 2]` & `r A[1, 3]` \\
+`r A[2, 1]` & `r A[2, 2]` - `r lambda[1, 1]` & `r A[2, 3]` \\
+`r A[3, 1]` & `r A[3, 2]` & `r A[3, 3]` - `r lambda[1, 1]`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{align*}
+which has solution
+
+```{r, echo = FALSE}
+lambda <- lambda[1, 1]
+```
+
+
+```{r}
+lambda <- 3
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+:::
+
+
+:::{.definition}
+Let $\mathbf{A}$ be an $n \times n$ matrix and let $\lambda$ be an eigenvalue of $\mathbf{A}$. Then, the **$\lambda$-eigenspace** of $\mathbf{A}$ is the solution set of the matrix equation $\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ which is the subspace null($\mathbf{A} - \lambda 
+\mathbf{I}$).
+:::
+
+Therefore, the $\lambda$-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector $\mathbf{0}$ and all the eigenvectors of $\mathbf{A}$ with corresponding eigenvalue $\lambda$.
+
+:::{.example}
+```{r, echo = FALSE}
+A <- matrix(c(2, -1, -4, 1), 2, 2)
+```
+For $\lambda$ = -2, 1, and 3, decide if $\lambda$ is a eigenvalue of the matrix $\mathbf{A} = `r array_to_latex(A)`$ and if so, compute a basis for the $\lambda$-eigenspace.
+
+* Calculate using rref on $\mathbf{A} - \lambda \mathbf{I}$ augmented with $\mathbf{0}$ and solve in parametric form
+
+* After doing all three $\lambdas$, draw a graphic showing the $\lambda$-eignenspace basis.
+:::
+
+
+### Computing Eigenspaces
+
+Let $\mathbf{A}$ be a $n \times n$ matrix and let $\lambda$ be a scalar.
+
+1) $\lambda$ is an eigenvalue of $\mathbf{A}$ if and only if $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$ has a non-trivial solution. The matrix equation $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$ has a non-trivial solution if and only if null$(\mathbf{A} - \lambda \mathbf{I}) \neq \{\mathbf{0} \}$
+
+2) Finding a basis for the $\lambda$-eigenspace of $\mathbf{A}$ is equivalent to finding a basis for  null$(\mathbf{A} - \lambda \mathbf{I})$ which can be done by finding parametric forms of the solutions of the homogeneous system of equations $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$.
+
+3) The dimension of the $\lambda$-eigenspace of $\mathbf{A}$ is equal to the number of free variables in the system of equations $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$ which is the number of non-pivot columns of $\mathbf{A} - \lambda \mathbf{I}$.
+
+4) The eigenvectors with eigenvalue $\lambda$ are the nonzero vectors in null$(\mathbf{A} - \lambda \mathbf{I})$ which are equivalent to the nontrivial solutions of $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$.
+
+Note that this leads of a fact about the $0$-eigenspace. 
+
+:::{.definition}
+Let $\mathbf{A}$ be an $n \times n$ matrix. Then
+
+1) The number 0 is an eigenvalue of $\mathbf{A}$ if and only if $\mathbf{A}$ is not invertible.
+
+2) If 0 is an eigenvalue of $\mathbf{A}$, then the 0-eigenspace of $\mathbf{A}$ is null$(\mathbf{A})$.
+:::
+
+:::{.proof}
+0 is an eigenvalue of $\mathbf{A}$ if and only if null$(\mathbf{A} - 0 \mathbf{I})$ = null$(\mathbf{A})$. By the invertible matrix theorem, $\mathbf{A}$ is invertible if and only if null$(\mathbf{A}) = \{\mathbf{0}\}$ but we know that the 0-eigenspace of $\mathbf{A}$ is not the trivial set $\{\mathbf{0}\}$ because 0 is an eigenvalue.
+:::
+
+
+```{theorem, name = "Invertible Matrix Theorm + eigenspaces"}
+This is an extension of the prior statement of the invertible matrix theorem \@ref(thm:invertible-matrix)
+Let $\mathbf{A}$ be an $n \times n$ matrix and $T: \mathcal{R}^n \rightarrow \mathcal{R}^n$ be the linear transformation given by $T(\mathbf{x}) = \mathbf{A}\mathbf{x}$. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
+
+1) $\mathbf{A}$ is invertible.
+
+2) $\mathbf{A}$ has n pivot columns.
+
+3) null$(\mathbf{A}) = \{\nathbf{0}\}$.
+
+4) The columns of $\mathbf{A}$ are linearly independent.
+
+5) The columns of $\mathbf{A}$ span $\mathcal{R}^n$.
+
+6) The matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has a uniqu solution for each $\mathbf{b} \in \mathcal{R}^n$.
+
+7) The transormation $T$ is invertible.
+
+8) The transormation $T$ is one-to-one.
+
+9) The transormation $T$ is onto.
+
+10) det$(\mathbf{A}) \neq 0$
+    
+11) 0 is not an eigenvalue of $\mathbf{A}$
+    
+```
+
