@@ -78,13 +78,13 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Standard cooridinates
 
 ## Coordinates in $\mathcal{R}^n$
 
-Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coefficients $\mathbf{c} = \begin{pmatrix} c_1, \ldots, c_n \end{pmatrix}$ of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ can be found by solving the matrix equation
+Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $[\mathbf{x}]_\mathcal{B} = \begin{pmatrix} [x_1]_\mathcal{B}, \ldots, [x_n]_\mathcal{B} \end{pmatrix}'$ of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ can be found by solving the matrix equation
 \begin{align*}
-\mathbf{P}_b \mathbf{c} = \mathbf{x}
+\mathbf{P}_b [\mathbf{x}]_\mathcal{B} = \mathbf{x}
 \end{align*}
-The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $\mathbf{c}$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
+The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $[\mathbf{x}]_\mathcal{B}$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
 \begin{align*}
-\mathbf{c} = \mathbf{P}_b^{-1} \mathbf{x}
+[\mathbf{x}]_\mathcal{B} = \mathbf{P}_b^{-1} \mathbf{x}
 \end{align*}
 
 :::{.theorem}
@@ -144,11 +144,13 @@ If $\V$ is spanned by a finite set of vectors, then $\V$ is said to be finite di
 
 :::{.example}
 in class - span of 2 or 3 linearly independent vectors
+
 * span, dim, and geometry
 :::
 
 :::{.example}
 in class - span of 2 or 3 linearly dependent vectors
+
 * span, dim, and geometry
 :::
 
