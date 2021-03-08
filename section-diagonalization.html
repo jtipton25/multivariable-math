@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 Vector Spaces and Subspaces | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 22 Diagonalization | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 Vector Spaces and Subspaces | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 22 Diagonalization | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 Vector Spaces and Subspaces | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 22 Diagonalization | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-determinants-and-volumes.html"/>
-<link rel="next" href="section-linearly-independent-sets-and-bases.html"/>
+<link rel="prev" href="section-the-characteristic-equation.html"/>
+<link rel="next" href="section-section.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -318,129 +318,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-vector-spaces-and-subspaces" class="section level1">
-<h1><span class="header-section-number">Chapter 15</span> Vector Spaces and Subspaces</h1>
-<p>Recall the definition of a subspace:</p>
+<div id="section-diagonalization" class="section level1">
+<h1><span class="header-section-number">Chapter 22</span> Diagonalization</h1>
+<div class="sourceCode" id="section-cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="section-diagonalization.html#cb186-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb186-2"><a href="section-diagonalization.html#cb186-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb186-3"><a href="section-diagonalization.html#cb186-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-96" class="definition"><strong>Definition 15.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of a vector space <span class="math inline">\(\mathcal{V}\)</span> is a subset of <span class="math inline">\(\mathcal{V}\)</span> such that</p>
-<ul>
-<li><p><span class="math inline">\(\mathcal{H}\)</span> contains the zero vector – <span class="math inline">\(\mathbf{0} \in \mathcal{H}\)</span></p></li>
-<li><p><span class="math inline">\(\mathcal{H}\)</span> is closed under vector addition. Therefore, for <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{H}\)</span>, the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span></p></li>
-<li><p><span class="math inline">\(\mathcal{H}\)</span> is closed under scalar multiplication. Therefore, for <span class="math inline">\(\mathbf{u}\)</span> in <span class="math inline">\(\mathcal{H}\)</span> and a scalar <span class="math inline">\(a\)</span>, the product <span class="math inline">\(a \mathbf{u}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span></p></li>
-</ul>
-</div>
-<p>A consequence of this definition is that a subspace <span class="math inline">\(\mathcal{H}\)</span> is closed under linear combinations.</p>
-<div id="section-null-space-and-column-space" class="section level2">
-<h2><span class="header-section-number">15.1</span> Null space and column space</h2>
-<p>Also, recall the special subspaces of the column space and the null space.</p>
-<div id="section-null-space" class="section level3">
-<h3><span class="header-section-number">15.1.1</span> Null space</h3>
-<div class="definition">
-<p><span id="section-def:unlabeled-div-97" class="definition"><strong>Definition 15.2  </strong></span>The null space null(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions of the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
-<p>Another way to write null(<span class="math inline">\(\mathbf{A}\)</span>) is
-<span class="math display">\[\begin{align*}
-\mbox{null}(\mathbf{A}) = \{\mathbf{x} : \mathbf{x} \in \mathcal{R}^n \mbox{ and } \mathbf{A} \mathbf{x} = \mathbf{0} \}
-\end{align*}\]</span></p>
-</div>
-<div class="theorem">
-<p><span id="section-thm:unlabeled-div-98" class="theorem"><strong>Theorem 15.1  </strong></span>The null space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
-</div>
-<div class="proof">
-<p><span id="section-unlabeled-div-99" class="proof"><em>Proof</em>. </span>Do in class</p>
-<ul>
-<li><p><span class="math inline">\(\mathbf{0}\)</span> vector</p></li>
-<li><p>sum of vectors</p></li>
-<li><p>scalar multiplication</p></li>
-</ul>
-</div>
-<p>As a consequence, there will exist a set of vectors that span the null space null(<span class="math inline">\(\mathbf{A}\)</span>). However, the null space of <span class="math inline">\(\mathbf{A}\)</span> is defined implicitly. This means that the null space of <span class="math inline">\(\mathbf{A}\)</span> is not obvious given the vectors of <span class="math inline">\(\mathbf{A}\)</span> and must be checked/calculated.</p>
-<div class="example">
-<ul>
-<li></li>
-<li>In class</li>
-</ul>
-<p>Find a spanning set for null(<span class="math inline">\(\mathbf{A}\)</span>) where</p>
+<p><span id="section-def:unlabeled-div-164" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
 <p><span class="math display">\[\begin{align*}
-\mathbf{A} = \begin{pmatrix} 7 &amp; -2 &amp; 7 &amp; -4 &amp; 5 \\ 2 &amp; 0 &amp; 3 &amp; 3 &amp; 9 \\ -5 &amp; 2 &amp; -5 &amp; 7 &amp; -2 \end{pmatrix}
+\mathbf{A} &amp; = \pmathbf{P} \mathbf{D} \mathbf{P}^{-1}
 \end{align*}\]</span></p>
-<ul>
-<li>Find solution to system of homogeneous system of equations</li>
-</ul>
-<div class="sourceCode" id="section-cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="section-vector-spaces-and-subspaces.html#cb163-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">-5</span>, <span class="dv">-2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">-5</span>, <span class="dv">-4</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="cb163-2"><a href="section-vector-spaces-and-subspaces.html#cb163-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, <span class="dv">0</span>))</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]  [,5] [,6]
-## [1,]    1    0    0 1.50 -4.50    0
-## [2,]    0    1    0 7.25  2.75    0
-## [3,]    0    0    1 0.00  6.00    0</code></pre>
-<ul>
-<li><p>Take the general solution and write as a linear combination of vectors where the coefficients are the free variables.</p></li>
-<li><p>general solution <span class="math inline">\(x_1 = -1.5 x_4 + 4.5 x_5\)</span>, <span class="math inline">\(x_2 = -7.25 x_4 - 2.75 x_5\)</span>, <span class="math inline">\(x_3 = -6 x_5\)</span> and both <span class="math inline">\(x_4\)</span> and <span class="math inline">\(x_5\)</span> are free. Write out the general solution in vector form.</p></li>
-</ul>
-<p><span class="math display">\[\begin{align*}
-\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} -1.5 x_4 + 4.5 x_5\\ -7.25 x_4 - 2.75 x_5 \\ -6 x_5 \\ x_4 \\ x_5 \end{pmatrix} = x_4 \begin{pmatrix} -1.5 \\ -7.25 \\ 0 \\ 1 \\ 0 \end{pmatrix} + x_5 \begin{pmatrix} 4.5 \\ 2.75 \\ -6 \\ 0 \\ 1 \end{pmatrix}
-\end{align*}\]</span></p>
-<ul>
-<li>From above, the free variables <span class="math inline">\(x_4\)</span> and <span class="math inline">\(x_5\)</span> are multiplied by the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -1.5 \\ -7.25 \\ 0 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 4.5 \\ 2.75 \\ -6 \\ 0 \\ 1 \end{pmatrix}\)</span> where <span class="math inline">\(\{ \mathbf{u}, \mathbf{v} \}\)</span> are a spanning set for the null(<span class="math inline">\(\mathbf{A}\)</span>)</li>
-</ul>
 </div>
 <div class="example">
-<ul>
-<li></li>
-<li>In class – do another
-Find a spanning set for null(<span class="math inline">\(\mathbf{A}\)</span>) where</li>
-</ul>
+<p><span id="section-exm:unlabeled-div-165" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
 </div>
-</div>
-<div id="section-column-space" class="section level3">
-<h3><span class="header-section-number">15.1.2</span> Column space</h3>
-<div class="definition">
-<p><span id="section-def:unlabeled-div-102" class="definition"><strong>Definition 15.3  </strong></span>The columns space col(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
-<p>If <span class="math inline">\(\{ \mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span> are the columns of <span class="math inline">\(\mathbf{A}\)</span>, then
-<span class="math display">\[\begin{align*}
-\mbox{col}(\mathbf{A}) = \mbox{span}(\mathbf{A})
-\end{align*}\]</span>
-this can be written in set notation as
-<span class="math display">\[\begin{align*}
-\mbox{col}(\mathbf{A}) = \{ \mathbf{b} : \mathbf{A} \mathbf{x} = \mathbf{b} \mbox{ for some } $\mathbf{x} \in \mathcal{R}^n \}
-\end{align*}\]</span></p>
-</div>
-<div class="theorem">
-<p><span id="section-thm:unlabeled-div-103" class="theorem"><strong>Theorem 15.2  </strong></span>The column space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
-</div>
-<div class="proof">
-<p><span id="section-unlabeled-div-104" class="proof"><em>Proof</em>. </span>Do in class</p>
-<ul>
-<li><p><span class="math inline">\(\mathbf{0}\)</span> vector</p></li>
-<li><p>sum of vectors</p></li>
-<li><p>scalar multiplication</p></li>
-</ul>
-</div>
-<p>Compared to the null space, the column space is defined explicitly–it is the span of the columns of <span class="math inline">\(\mathbf{A}\)</span>. The definition of the column space results in the fact that col(<span class="math inline">\(\mathbf{A}\)</span>) is the range of the linear transformation <span class="math inline">\(\mathbf{x} \rightarrow \mathbf{A} \mathbf{x}\)</span>.</p>
-<div class="example">
-<ul>
-<li></li>
-<li>In class</li>
-</ul>
-<p>Find a spanning set for col(<span class="math inline">\(\mathbf{A}\)</span>) where</p>
-<p><span class="math display">\[\begin{align*}
-\mathbf{A} = \begin{pmatrix} 6 &amp; 0 &amp; 4 \\ 5 &amp; -1 &amp; -9 \\ -4 &amp; 7 &amp; 4 \\ 6 &amp; 2 &amp; 9 \end{pmatrix}
-\end{align*}\]</span></p>
-</div>
-</div>
-<div id="section-understanding-the-differerneces-between-the-column-space-and-the-null-space" class="section level3">
-<h3><span class="header-section-number">15.1.3</span> Understanding the differerneces between the column space and the null space</h3>
-<p><img src="images/null-column.jpg" width="1579" /></p>
 
+<div class="theorem">
+<p><span id="section-thm:diagonalization" class="theorem"><strong>Theorem 22.1  (The Diagonalization Theorem)  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors.</p>
+In addition, the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span> with diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> if and only if the columns of <span class="math inline">\(\mathbf{P}\)</span> are the lienarly independent eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. Then, the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span> are the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span> that correspond to the eigenvectors in <span class="math inline">\(\mathbf{P}\)</span>.
 </div>
+
+<p>This theorem implies that the matrix <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable if and only if the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span>. When this is the case, the set of eigenvectors is called an <strong>eigenbasis</strong>.</p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-167" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<div class="sourceCode" id="section-cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="section-diagonalization.html#cb187-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb187-2"><a href="section-diagonalization.html#cb187-2"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    9   -3    1
+## [2,]    2    2    0
+## [3,]    0   -4    3</code></pre>
+<div class="sourceCode" id="section-cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="section-diagonalization.html#cb189-1"></a>eigen_A &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)</span>
+<span id="cb189-2"><a href="section-diagonalization.html#cb189-2"></a><span class="kw">str</span>(eigen_A)</span></code></pre></div>
+<pre><code>## List of 2
+##  $ values : num [1:3] 7.63 4.52 1.86
+##  $ vectors: num [1:3, 1:3] -0.905 -0.322 0.278 -0.407 -0.324 ...
+##  - attr(*, &quot;class&quot;)= chr &quot;eigen&quot;</code></pre>
+<div class="sourceCode" id="section-cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="section-diagonalization.html#cb191-1"></a>P &lt;-<span class="st"> </span>eigen_A<span class="op">$</span>vectors</span>
+<span id="cb191-2"><a href="section-diagonalization.html#cb191-2"></a>P</span></code></pre></div>
+<pre><code>##            [,1]       [,2]        [,3]
+## [1,] -0.9050468 -0.4069141 -0.01938647
+## [2,] -0.3217259 -0.3235720  0.27433148
+## [3,]  0.2781774  0.8542377  0.96143976</code></pre>
+<div class="sourceCode" id="section-cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="section-diagonalization.html#cb193-1"></a>D &lt;-<span class="st"> </span><span class="kw">diag</span>(eigen_A<span class="op">$</span>values)</span>
+<span id="cb193-2"><a href="section-diagonalization.html#cb193-2"></a>D</span></code></pre></div>
+<pre><code>##          [,1]     [,2]     [,3]
+## [1,] 7.626198 0.000000 0.000000
+## [2,] 0.000000 4.515138 0.000000
+## [3,] 0.000000 0.000000 1.858664</code></pre>
+<div class="sourceCode" id="section-cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="section-diagonalization.html#cb195-1"></a>P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<pre><code>##               [,1] [,2] [,3]
+## [1,]  9.000000e+00   -3    1
+## [2,]  2.000000e+00    2    0
+## [3,] -9.992007e-16   -4    3</code></pre>
+<div class="sourceCode" id="section-cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="section-diagonalization.html#cb197-1"></a><span class="kw">all.equal</span>(A, P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 </div>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-168" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
+<span class="math display">\[\begin{align*}
+\mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-169" class="proof"><em>Proof</em>. </span>In class</p>
+</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="section-determinants-and-volumes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-linearly-independent-sets-and-bases.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-the-characteristic-equation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-section.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

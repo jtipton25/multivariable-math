@@ -164,6 +164,11 @@ exm:unlabeled-div-159
 def:unlabeled-div-160
 exm:unlabeled-div-161
 thm:unlabeled-div-162
+def:unlabeled-div-164
+exm:unlabeled-div-165
+thm:diagonalization
+exm:unlabeled-div-167
+thm:unlabeled-div-168
 section-preface
 section-getting-started-in-r
 section-notation
@@ -292,6 +297,7 @@ section-computing-eigenspaces
 section-the-characteristic-equation
 section-similarity
 section-the-geometric-interpetation-of-similar-matrices
+section-diagonalization
 section-section
 section-section-1
 section-section-2
@@ -305,7 +311,6 @@ section-section-9
 section-section-10
 section-section-11
 section-section-12
-section-section-13
 section-double-and-triple-integrals-and-change-of-variables-jacobian
 section-vectors-and-matrices
 section-arrays
