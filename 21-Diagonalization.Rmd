@@ -11,7 +11,7 @@ set.seed(2021)
 A $n \times n$ matrix $\mathbf{A}$ is **diagonalizable** if the matrix $\mathbf{A}$ is similar to a diagonal matrix. This is equivalent to saying there exists some invertible $n \times n$ matrix $\mathbf{P}$ and diagonal matrix $\mathbf{D}$ such that
 
 \begin{align*}
-\mathbf{A} & = \pmathbf{P} \mathbf{D} \mathbf{P}^{-1}
+\mathbf{A} & = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
 \end{align*}
 :::
 
