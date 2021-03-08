@@ -1,0 +1,65 @@
+# Diagonalization
+
+
+```{r, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+set.seed(2021)
+```
+
+:::{.definition}
+A $n \times n$ matrix $\mathbf{A}$ is **diagonalizable** if the matrix $\mathbf{A}$ is similar to a diagonal matrix. This is equivalent to saying there exists some invertible $n \times n$ matrix $\mathbf{P}$ and diagonal matrix $\mathbf{D}$ such that
+
+\begin{align*}
+\mathbf{A} & = \pmathbf{P} \mathbf{D} \mathbf{P}^{-1}
+\end{align*}
+:::
+
+:::{.example}
+Any diagonal matrix $\mathbf{D}$ is diagonalizable becuase it is self-similar.
+:::
+
+
+```{theorem, diagonalization, name = "The Diagonalization Theorem"}
+A $n \times n$ matrix $\mathbf{A}$ is **diagonalizable** if and only if the matrix $\mathbf{A}$ has $n$ linearly independent eigenvectors. 
+
+In addition, the $n \times n$ matrix $\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}$ with diagonal matrix $\mathbf{D}$ if and only if the columns of $\mathbf{P}$ are the lienarly independent eigenvectors of $\mathbf{A}$. Then, the diagonal elements of $\mathbf{D}$ are the eigenvalues of $\mathbf{A}$ that correspond to the eigenvectors in $\mathbf{P}$.
+```
+
+This theorem implies that the matrix $\mathbf{A}$ is diagonalizable if and only if the eigenvectors of $\mathbf{A}$ form a basis for $\mathcal{R}^n$. When this is the case, the set of eigenvectors is called an **eigenbasis**.
+
+:::{.example}
+
+Consider the following example of a diagonalizable matrix $\mathbf{A}$
+
+```{r}
+A <- matrix(c(9, 2, 0, -3, 2, -4, 1, 0, 3), 3, 3)
+A
+eigen_A <- eigen(A)
+str(eigen_A)
+P <- eigen_A$vectors
+P
+D <- diag(eigen_A$values)
+D
+
+P %*% D %*% solve(P)
+all.equal(A, P %*% D %*% solve(P))
+```
+
+:::
+
+
+:::{.theorem}
+Let $\mathbf{A}$ be a $n \times n$ diagonalizable matrix with $\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}$. Then, the matrix power $\mathbf{A}^p$ is
+\begin{align*}
+\mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
+\end{align*}
+
+:::
+
+:::{.proof}
+In class
+:::
+
+
+
