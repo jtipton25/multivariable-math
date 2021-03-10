@@ -16,11 +16,11 @@ row(\mathbf{A}) = col(\mathbf{A}')
 \end{align*}
 
 :::{.example}
-* in class 
+in class 
 :::
 
 :::{.example}
-* Find basis for row space, column space, and null space of $\mathbf{A}$
+Find basis for row space, column space, and null space of $\mathbf{A}$
 :::
 
 
@@ -44,9 +44,9 @@ rank($\mathbf{A}$) is the number of pivot columns. dim(null($\mathbf{A}$)) is th
 
 
 :::{.example}
-* in class
+in class
 
-* $\mathbf{A}$ is an $m \times n$ matrix with dim(null($\mathbf{A}$)) = p. What is rank($\mathbf{A}$)
+$\mathbf{A}$ is an $m \times n$ matrix with dim(null($\mathbf{A}$)) = p. What is rank($\mathbf{A}$)
 :::
 
 :::{.example}

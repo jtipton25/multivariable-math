@@ -107,8 +107,9 @@ b) Find the cofactor $c_{23}$
 
 Note that in the cofactor definition of a $n \times n$ matrix it is assumed that you can calculate the determinant of the $n-1 \times n-1$ minor $\mathbf{A}_{-i-j}$. From this we see that each of the $n \times n$ cofactors of $\mathbf{A}$ are themselves the (signed) determinants of $n-1 \times n-1$ submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated. 
 
-::: {.theorem, name = "Cofactor exapansion"}
-Let $\mathbf{A}$ be an $n \times n$ matrix with $ij$th elements $a_ij$. Then
+```{theorem, name = "Cofactor exapansion"}
+
+Let $\mathbf{A}$ be an $n \times n$ matrix with $ij$th elements $a_{ij}$. Then
 
 a) The **cofactor expansion along the $i$th row** (for any fixed row $i$) is 
 \begin{align*}
@@ -119,7 +120,8 @@ b) The **cofactor expansion along the $j$th column** (for any fixed column $j$) 
 \begin{align*}
 \det(\mathbf{A}) = \sum_{i=1}^n a_{ij} c_{ij} = a_{1j} c_{1j} + a_{2j} c_{2j} + \cdots + a_{nj} c_{nj}
 \end{align*}
-:::
+
+```
 
 
 ::: {.proof}
