@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 24 Vectors and matrices | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 23 Inner product, length, and orthogonality | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 24 Vectors and matrices | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 23 Inner product, length, and orthogonality | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 24 Vectors and matrices | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 23 Inner product, length, and orthogonality | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-inner-product-length-and-orthogonality.html"/>
-
+<link rel="prev" href="section-diagonalization.html"/>
+<link rel="next" href="section-vectors-and-matrices.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -307,66 +307,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-vectors-and-matrices" class="section level1">
-<h1><span class="header-section-number">Chapter 24</span> Vectors and matrices</h1>
-<p>This can produce an error, so we wrap the function <code>array_to_latex</code> in a call to <code>cat()</code></p>
-<div class="sourceCode" id="section-cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="section-vectors-and-matrices.html#cb209-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb209-2"><a href="section-vectors-and-matrices.html#cb209-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
-<p>[1] “\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}”</p>
-<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-vectors-and-matrices.html#cb210-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb210-2"><a href="section-vectors-and-matrices.html#cb210-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
-<span class="math display">\[\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}\]</span>
-<p>The fundamental objects in this text are scalars, vectors, and matrices.</p>
-<!--   -->
-<!--   -->
-<!--   -->
-<div id="section-arrays" class="section level3">
-<h3><span class="header-section-number">24.0.1</span> Arrays</h3>
-<p>Higher order arrays (for example, tensors in the tensorflow library) can be represented using subscript notation where <span class="math inline">\([\mathbf{A}_1 | \mathbf{A}_2 | \cdots \mathbf{A}_n]\)</span> is a 3-dimensional array. Higher order arrays can be represented using additional subscripts.</p>
+<div id="section-inner-product-length-and-orthogonality" class="section level1">
+<h1><span class="header-section-number">Chapter 23</span> Inner product, length, and orthogonality</h1>
+<div class="sourceCode" id="section-cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="section-inner-product-length-and-orthogonality.html#cb198-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb198-2"><a href="section-inner-product-length-and-orthogonality.html#cb198-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb198-3"><a href="section-inner-product-length-and-orthogonality.html#cb198-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-173" class="definition"><strong>Definition 23.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the <strong>inner product</strong> of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is <span class="math inline">\(\mathbf{u}&#39; \mathbf{v}\)</span>. The vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are <span class="math inline">\(n \times 1\)</span> matrices where <span class="math inline">\(\mathbf{u}&#39;\)</span> is a <span class="math inline">\(1 \times n\)</span> matrix and the inner product <span class="math inline">\(\mathbf{u}&#39; \mathbf{v}\)</span> is a scalar (<span class="math inline">\(1 \times 1\)</span> matrix). The inner product is also sometimes called the dot product and written as <span class="math inline">\(\mathbf{u} \cdot \mathbf{v}\)</span>.</p>
+<p>If the vectors
+<span class="math display">\[\begin{align*}
+\mathbf{u} &amp; = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} &amp; &amp; \mathbf{v} &amp; = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} 
+\end{align*}\]</span>
+then <span class="math inline">\(\mathbf{u}&#39; \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n\)</span></p>
 </div>
-<div id="section-lists" class="section level3">
-<h3><span class="header-section-number">24.0.2</span> Lists</h3>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-174" class="example"><strong>Example 23.1  </strong></span>Find the inner product <span class="math inline">\(\mathbf{u}&#39;\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{v}&#39;\mathbf{u}\)</span> of
+<span class="math display">\[\begin{align*}
+\mathbf{u} &amp; = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} &amp; &amp; \mathbf{v} &amp; = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix} 
+\end{align*}\]</span></p>
 <ul>
-<li>To add: vector addition, multiplication</li>
-<li>To add: matrix addition, multiplication</li>
-<li>To add: determinants</li>
+<li>do by hand</li>
 </ul>
+<div class="sourceCode" id="section-cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="section-inner-product-length-and-orthogonality.html#cb199-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">1</span>)</span>
+<span id="cb199-2"><a href="section-inner-product-length-and-orthogonality.html#cb199-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">3</span>)</span>
+<span id="cb199-3"><a href="section-inner-product-length-and-orthogonality.html#cb199-3"></a><span class="co"># u&#39;v</span></span>
+<span id="cb199-4"><a href="section-inner-product-length-and-orthogonality.html#cb199-4"></a><span class="kw">sum</span>(u<span class="op">*</span>v)</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode" id="section-cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="section-inner-product-length-and-orthogonality.html#cb201-1"></a><span class="kw">t</span>(u) <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]   17</code></pre>
+<div class="sourceCode" id="section-cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="section-inner-product-length-and-orthogonality.html#cb203-1"></a><span class="co"># v&#39;u</span></span>
+<span id="cb203-2"><a href="section-inner-product-length-and-orthogonality.html#cb203-2"></a><span class="kw">sum</span>(v<span class="op">*</span>u)</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode" id="section-cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="section-inner-product-length-and-orthogonality.html#cb205-1"></a><span class="kw">t</span>(v) <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]   17</code></pre>
 </div>
-<div id="section-exercises" class="section level2">
-<h2><span class="header-section-number">24.1</span> Exercises</h2>
-<ol style="list-style-type: decimal">
-<li><p>What is 3 + <span class="math inline">\(\begin{pmatrix} 4 \\ 7 \\ 3 \end{pmatrix}\)</span>?</p></li>
-<li><p>Why can’t you add the following two vectors:</p></li>
-</ol>
-<p><span class="math display">\[
-\begin{align*}
-\mathbf{x} = \begin{pmatrix} 14 \\ 3 \\ 3 \\ -5 \end{pmatrix} &amp; &amp; \mathbf{y} =  \begin{pmatrix} 4 \\ 7 \\ 3 \end{pmatrix}
-\end{align*}
-\]</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Based on the notation, what type of object is</p>
+<p>The properties of inner products are defined with the following theorem.</p>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-175" class="theorem"><strong>Theorem 23.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{w}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(c\)</span> be a scalar. Then</p>
 <ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(\mathbf{x}&#39;\)</span>?</p></li>
-<li><p><span class="math inline">\(\mathbf{x}&#39; \mathbf{y}\)</span>?</p></li>
-<li><p><span class="math inline">\(\mathbf{x}&#39; \mathbf{A}\)</span>?</p></li>
-<li><p><span class="math inline">\(\mathbf{A}&#39; \mathbf{y}\)</span>?</p></li>
-<li><p><span class="math inline">\(\mathbf{X}&#39; \mathbf{Z}\)</span>?</p></li>
-</ol></li>
+<li><p><span class="math inline">\(\mathbf{u}&#39;\mathbf{v} = \mathbf{v}&#39;\mathbf{u}\)</span></p></li>
+<li><p><span class="math inline">\((\mathbf{u} + \mathbf{v})&#39; \mathbf{w} = \mathbf{u}&#39; \mathbf{w} + \mathbf{v}&#39; \mathbf{w}\)</span></p></li>
+<li><p><span class="math inline">\(( c \mathbf{u} )&#39; \mathbf{v} = c ( \mathbf{v}&#39;\mathbf{u} )\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{u}&#39;\mathbf{u} \geq 0\)</span> with <span class="math inline">\(\mathbf{u}&#39;\mathbf{u} = 0\)</span> only when <span class="math inline">\(\mathbf{u} = \mathbf{0}\)</span></p></li>
 </ol>
-<!-- You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods). -->
-<!-- Figures and tables with captions will be placed in `figure` and `table` environments, respectively. -->
-<!-- ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'} -->
-<!-- par(mar = c(4, 4, .1, .1)) -->
-<!-- plot(pressure, type = 'b', pch = 19) -->
-<!-- ``` -->
-<!-- Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab). -->
-<!-- ```{r nice-tab, tidy=FALSE} -->
-<!-- knitr::kable( -->
-<!--   head(iris, 20), caption = 'Here is a nice table!', -->
-<!--   booktabs = TRUE -->
-<!-- ) -->
-<!-- ``` -->
-<!-- You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015]. -->
+</div>
+<p>Based on the theorem above, the inner product of a vector with itself (<span class="math inline">\(\mathbf{u}&#39;\mathbf{u}\)</span>) is strictly non-negative. Thus, we can define the length of the vector <span class="math inline">\(\mathbf{u}\)</span> (also called the <strong>norm</strong> of the vector <span class="math inline">\(\mathbf{u}\)</span>).</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-176" class="definition"><strong>Definition 23.2  </strong></span>The length of a vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span>, also called the vector <strong>norm</strong> <span class="math inline">\(\| \mathbf{v} \|\)</span> is defined as
+<span class="math display">\[\begin{align*}
+\| \mathbf{v} \| &amp; = \sqrt{\mathbf{v}&#39;\mathbf{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-177" class="example"><strong>Example 23.2  </strong></span>Let <span class="math inline">\(\mathbf{v} = \begin{pmatrix} a \\ b \end{pmatrix} \in \mathcal{R}^2\)</span>. Show that the definition of the norm satisfies the Pythagorean theorem.</p>
+</div>
+<p>Another property of the norm is how the norm changes based on scalar multiplication. Let <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span> be a vector and let <span class="math inline">\(c\)</span> be a scalar. Then $|c | = |c||| $</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-178" class="definition"><strong>Definition 23.3  </strong></span>A vector <span class="math inline">\(mathbf{v} \in \mathcal{R}^n\)</span> whose length/norm is 1 is called a <strong>unit</strong> vector. Any vector can be made into a unit vector through <strong>normalization</strong> by multiplying the vector <span class="math inline">\(\mathbf{v}\)</span> by <span class="math inline">\(\frac{1}{\|\mathbf{v}\|}\)</span> to get a unit vector <span class="math inline">\(\mathbf{u} = \frac{\mathbf{v}}{\|\mathbf{v}\|}\)</span> in the same direction as <span class="math inline">\(\mathbf{v}\)</span>.</p>
+</div>
+<div id="section-distance" class="section level2">
+<h2><span class="header-section-number">23.1</span> Distance</h2>
+<p>In two dimensions, the Euclidean distance between the points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> is defined as <span class="math inline">\(\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)</span>. In higher dimensions, a similar definition holds.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-179" class="definition"><strong>Definition 23.4  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the distance <span class="math inline">\(dist(\mathbf{u}, \mathbf{v})\)</span> between <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is</p>
+<p><span class="math display">\[\begin{align*}
+dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-180" class="example"><strong>Example 23.3  </strong></span>Distance between two 3-dimensional vectors</p>
+<div class="sourceCode" id="section-cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="section-inner-product-length-and-orthogonality.html#cb207-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-5</span>, <span class="dv">1</span>)</span>
+<span id="cb207-2"><a href="section-inner-product-length-and-orthogonality.html#cb207-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">-2</span>)</span>
+<span id="cb207-3"><a href="section-inner-product-length-and-orthogonality.html#cb207-3"></a><span class="kw">sqrt</span>(<span class="kw">sum</span>((u<span class="op">-</span>v)<span class="op">^</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 8.602325</code></pre>
+</div>
+</div>
+<div id="section-orthogonal-vectors" class="section level2">
+<h2><span class="header-section-number">23.2</span> Orthogonal vectors</h2>
+<p>The equivalent of perpendicular lines in <span class="math inline">\(\mathcal{R}^n\)</span> are known as orthogonal vectors.
+<!-- Geometrically, two vectors are defined as orthogonal if the distance between $\mathbf{u}$ and $\mathbf{v}$ is the same as the distance between $\mathbf{u}$ and $-\mathbf{v}$. **Draw picture -- perpendicular triangle** -->
+<!-- \begin{align*} -->
+<!-- dist(\mathbf{u}, - \mathbf{v}) & =  -->
+<!-- \end{align*} -->
+:::{.definition}
+The two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> are orthogonal if
+<span class="math display">\[\begin{align*}
+\mathbf{u}&#39; \mathbf{v} = 0
+\end{align*}\]</span>
+:::</p>
+</div>
+<div id="section-angles-between-vectors" class="section level2">
+<h2><span class="header-section-number">23.3</span> Angles between vectors</h2>
+<p>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the angle between the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is defined as the angle <span class="math inline">\(\theta\)</span> in the relationship
+<span class="math display">\[\begin{align*}
+\mathbf{u}&#39; \mathbf{v} = \| \mathbf{u} \| \ |\mathbf{v} \| cos(\theta)
+\end{align*}\]</span></p>
 
 </div>
 </div>
@@ -375,8 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="section-inner-product-length-and-orthogonality.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="section-diagonalization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
