@@ -1,0 +1,133 @@
+# Inner product, length, and orthogonality
+
+
+```{r, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+set.seed(2021)
+```
+
+
+:::{.definition}
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then, the **inner product** of $\mathbf{u}$ and $\mathbf{v}$ is $\mathbf{u}' \mathbf{v}$. The vectors $\mathbf{u}$ and $\mathbf{v}$ are $n \times 1$ matrices where $\mathbf{u}'$ is a $1 \times n$ matrix and the inner product $\mathbf{u}' \mathbf{v}$ is a scalar ($1 \times 1$ matrix). The inner product is also sometimes called the dot product and written as $\mathbf{u} \cdot \mathbf{v}$. 
+
+If the vectors
+\begin{align*}
+\mathbf{u} & = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} & & \mathbf{v} & = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} 
+\end{align*}
+then $\mathbf{u}' \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n$
+:::
+
+:::{.example}
+Find the inner product $\mathbf{u}'\mathbf{v}$ and $\mathbf{v}'\mathbf{u}$ of
+\begin{align*}
+\mathbf{u} & = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} & & \mathbf{v} & = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix} 
+\end{align*}
+
+* do by hand
+```{r}
+u <- c(2, -3, 1)
+v <- c(4, -2, 3)
+# u'v
+sum(u*v)
+t(u) %*% v
+# v'u
+sum(v*u)
+t(v) %*% u
+```
+:::
+
+The properties of inner products are defined with the following theorem.
+
+:::{.theorem}
+Let $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ be vectors in $\mathcal{R}^n$ and let $c$ be a scalar. Then
+
+a) $\mathbf{u}'\mathbf{v} = \mathbf{v}'\mathbf{u}$
+
+b) $(\mathbf{u} + \mathbf{v})' \mathbf{w} = \mathbf{u}' \mathbf{w} + \mathbf{v}' \mathbf{w}$
+
+c) $( c \mathbf{u} )' \mathbf{v} = c ( \mathbf{v}'\mathbf{u} )$
+
+d) $\mathbf{u}'\mathbf{u} \geq 0$ with $\mathbf{u}'\mathbf{u} = 0$ only when $\mathbf{u} = \mathbf{0}$
+
+:::
+
+
+Based on the theorem above, the inner product of a vector with itself ($\mathbf{u}'\mathbf{u}$) is strictly non-negative. Thus, we can define the length of the vector $\mathbf{u}$ (also called the **norm** of the vector $\mathbf{u}$).
+
+
+:::{.definition}
+The length of a vector $\mathbf{v} \in \mathcal{R}^n$, also called the vector **norm** $\| \mathbf{v} \|$ is defined as
+\begin{align*}
+\| \mathbf{v} \| & = \sqrt{\mathbf{v}'\mathbf{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+\end{align*}
+:::
+
+:::{.example}
+Let $\mathbf{v} = \begin{pmatrix} a \\ b \end{pmatrix} \in \mathcal{R}^2$. Show that the definition of the norm satisfies the Pythagorean theorem.
+:::
+
+
+Another property of the norm is how the norm changes based on scalar multiplication. Let $\mathbf{v} \in \mathcal{R}^n$ be a vector and let $c$ be a scalar. Then $\|c \mathbf{v}\| = |c|\|\mathbf{v}\| $ 
+
+:::{.definition}
+A vector $mathbf{v} \in \mathcal{R}^n$ whose length/norm is 1 is called a **unit** vector. Any vector can be made into a unit vector through **normalization** by multiplying the vector $\mathbf{v}$ by $\frac{1}{\|\mathbf{v}\|}$ to get a unit vector $\mathbf{u} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$ in the same direction as $\mathbf{v}$.
+:::
+
+
+## Distance
+
+In two dimensions, the Euclidean distance between the points $(x_1, y_1)$ and $(x_2, y_2)$ is defined as $\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$. In higher dimensions, a similar definition holds.
+
+:::{.definition}
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the distance $dist(\mathbf{u}, \mathbf{v})$ between $\mathbf{u}$ and $\mathbf{v}$ is 
+
+\begin{align*}
+dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
+\end{align*}
+:::
+
+:::{.example}
+Distance between two 3-dimensional vectors
+```{r}
+u <- c(3, -5, 1)
+v <- c(4, 3, -2)
+sqrt(sum((u-v)^2))
+```
+:::
+
+## Orthogonal vectors
+
+The equivalent of perpendicular lines in $\mathcal{R}^n$ are known as orthogonal vectors.
+<!-- Geometrically, two vectors are defined as orthogonal if the distance between $\mathbf{u}$ and $\mathbf{v}$ is the same as the distance between $\mathbf{u}$ and $-\mathbf{v}$. **Draw picture -- perpendicular triangle** -->
+<!-- \begin{align*} -->
+<!-- dist(\mathbf{u}, - \mathbf{v}) & =  -->
+<!-- \end{align*} -->
+:::{.definition}
+The two vectors $\mathbf{u}$ and $\mathbf{v}$ in $\mathcal{R}^n$ are orthogonal if 
+\begin{align*}
+\mathbf{u}' \mathbf{v} = 0
+\end{align*}
+:::
+
+
+## Angles between vectors
+
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors $\mathcal{R}^n$. Then, the angle between the vectors $\mathbf{u}$ and $\mathbf{v}$ is defined as the angle $\theta$ in the relationship
+\begin{align*}
+\mathbf{u}' \mathbf{v} = \| \mathbf{u} \| \ |\mathbf{v} \| cos(\theta)
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
