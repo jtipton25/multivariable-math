@@ -119,6 +119,66 @@ Let $\mathbf{u}$ and $\mathbf{v}$ be vectors $\mathcal{R}^n$. Then, the angle be
 \end{align*}
 
 
+## Orthogonal sets 
+
+The set of vectors $\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ in $\mathcal{R}^n$ is said to be an **orthogonal set** if every pair of vectors is orthogonal. In other words, for all $i \neq j$, $\mathbf{v}_i' \mathbf{v}_j = 0$. The set is called an **orthonomal set** if the set of vectors are orthogonal and for $i = 1, \ldots, p$, each vector $\mathbf{v}_i$ in the set has length $\| \mathbf{v}_i \| = 1$.
+
+
+
+:::{.example}
+Show the set of vectors $\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \}$
+
+* Show these are orthogonal using `R`
+:::
+
+
+If the set of vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ are an orthogonal set, then the set of vectors $ \{ \frac{\mathbf{v}_1}{\|\mathbf{v}_1\|}, \ldots, \frac{\mathbf{v}_p}{\|\mathbf{v}_p\|} \}$ is an orthonormal set. Note that for each $i$, the length of the vector $\|\mathbf{v}_i\| = 1$
+
+:::{.theorem}
+Let the set $\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an orthogonal set of nonzero vectors in $\mathcal{R}^n$. Then, the set of vectors in $\mathcal{S}$ are linearly independent and therefore are a basis for the space spanned by $\mathcal{S}$.
+:::
+
+:::{.proof}
+Assume the set of vectors $\mathbf{v}_1, \ldots, \mathbf{v}_p$ are linearly dependent. Then, there exist coefficients $c_1, \ldots, c_p$ such that
+\begin{align*}
+\mathbf{0} & = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p 
+\end{align*}
+Then, multiplying both equations on the left by $\mathbf{v}_1'$ gives
+\begin{align*}
+0 = \mathbf{v}_1' \mathbf{0} & = \mathbf{v}_1' (c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p) \\
+& = c_1 \mathbf{v}_1' \mathbf{v}_1 + c_2  \mathbf{v}_1' \mathbf{v}_2 + \cdots + c_p  \mathbf{v}_1' \mathbf{v}_p \\
+& = c_1 \mathbf{v}_1' \mathbf{v}_1 + c_2  0 + \cdots + c_p 0 \\
+& = c_1 \mathbf{v}_1' \mathbf{v}_1
+\end{align*}
+which is only equal to 0 when $c_1$ is equal to 0 because $\mathbf{v}_1$ is a nonzero vector. The above left multiplication could be repeated for each vector $\mathbf{v}_i$ which gives all $c_i$ must equal 0. As the only solution to the starting equation has all 0 coefficients, the set of vectors $\mathcal{S}$ must be linearly independent.
+:::
+
+
+A set of orthogonal vectors is called an **orthogonal basis**.
+
+
+## Orthogonal projections
+
+:::{.definition}
+Let $\mathbf{x}$ be a vector in $\mathcal{R}^n$ and let $\mathcal{W}$ be a subspace of $\mathcal{R}^n$. Then the vector $\mathbf{x}$ can be written as the **orthogonal decomposition** 
+\begin{align*}
+\mathbf{x} = \mathbf{x}_{W} + \mathbf{x}_{W^\perp}
+\end{align*}
+where $\mathbf{x}_{W}$ is the vector in $\mathcal{W}$ that is closest to $\mathbf{x}$ and is called the **orthogonal projection**  and $\mathbf{x}_{W^\perp}$ is the orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}$.
+:::
+
+**Draw picture in class - W is a plane, orthogonal project of a vector onto the plane**
+
+This leads to the projection theorem
+
+:::{.theorem}
+Let $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an orthogonal basis of the subspace $\mathcal{W}$ of $\mathcal{R}^n$. Then for each $\mathbf{x} \in \mathcal{R}^n$, the orthogonal project of $\mathbf{x}$ onto $\mathcal{W}$ is given by
+\begin{align*}
+\mathbf{x}_{W} = \frac{\mathbf{x}'\mathbf{v}_1}{\mathbf{v}_1'\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}'\mathbf{v}_2}{\mathbf{v}_2'\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}'\mathbf{v}_p}{\mathbf{v}_p'\mathbf{v}_p} \mathbf{v}_p
+\end{align*}
+:::
+
+
 
 
 
