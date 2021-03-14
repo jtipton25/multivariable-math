@@ -182,6 +182,10 @@ exm:unlabeled-div-177
 def:unlabeled-div-178
 def:unlabeled-div-179
 exm:unlabeled-div-180
+exm:unlabeled-div-181
+thm:unlabeled-div-182
+def:unlabeled-div-184
+thm:unlabeled-div-185
 section-preface
 section-getting-started-in-r
 section-notation
@@ -315,6 +319,8 @@ section-inner-product-length-and-orthogonality
 section-distance
 section-orthogonal-vectors
 section-angles-between-vectors
+section-orthogonal-sets
+section-orthogonal-projections
 section-vectors-and-matrices
 section-arrays
 section-lists

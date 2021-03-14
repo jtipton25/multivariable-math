@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-03-13" />
+<meta name="date" content="2021-03-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,6 +281,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.1" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-distance"><i class="fa fa-check"></i><b>23.1</b> Distance</a></li>
 <li class="chapter" data-level="23.2" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-orthogonal-vectors"><i class="fa fa-check"></i><b>23.2</b> Orthogonal vectors</a></li>
 <li class="chapter" data-level="23.3" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-angles-between-vectors"><i class="fa fa-check"></i><b>23.3</b> Angles between vectors</a></li>
+<li class="chapter" data-level="23.4" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-orthogonal-sets"><i class="fa fa-check"></i><b>23.4</b> Orthogonal sets</a></li>
+<li class="chapter" data-level="23.5" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-orthogonal-projections"><i class="fa fa-check"></i><b>23.5</b> Orthogonal projections</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>24</b> Vectors and matrices</a><ul>
 <li class="chapter" data-level="24.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>24.0.1</b> Arrays</a></li>
@@ -404,6 +406,53 @@ The two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class=
 <span class="math display">\[\begin{align*}
 \mathbf{u}&#39; \mathbf{v} = \| \mathbf{u} \| \ |\mathbf{v} \| cos(\theta)
 \end{align*}\]</span></p>
+</div>
+<div id="section-orthogonal-sets" class="section level2">
+<h2><span class="header-section-number">23.4</span> Orthogonal sets</h2>
+<p>The set of vectors <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> is said to be an <strong>orthogonal set</strong> if every pair of vectors is orthogonal. In other words, for all <span class="math inline">\(i \neq j\)</span>, <span class="math inline">\(\mathbf{v}_i&#39; \mathbf{v}_j = 0\)</span>. The set is called an <strong>orthonomal set</strong> if the set of vectors are orthogonal and for <span class="math inline">\(i = 1, \ldots, p\)</span>, each vector <span class="math inline">\(\mathbf{v}_i\)</span> in the set has length <span class="math inline">\(\| \mathbf{v}_i \| = 1\)</span>.</p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-181" class="example"><strong>Example 23.4  </strong></span>Show the set of vectors <span class="math inline">\(\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \}\)</span></p>
+<ul>
+<li>Show these are orthogonal using <code>R</code></li>
+</ul>
+</div>
+<p>If the set of vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> are an orthogonal set, then the set of vectors $ { , ,  }$ is an orthonormal set. Note that for each <span class="math inline">\(i\)</span>, the length of the vector <span class="math inline">\(\|\mathbf{v}_i\| = 1\)</span></p>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-182" class="theorem"><strong>Theorem 23.2  </strong></span>Let the set <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal set of nonzero vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the set of vectors in <span class="math inline">\(\mathcal{S}\)</span> are linearly independent and therefore are a basis for the space spanned by <span class="math inline">\(\mathcal{S}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-183" class="proof"><em>Proof</em>. </span>Assume the set of vectors <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_p\)</span> are linearly dependent. Then, there exist coefficients <span class="math inline">\(c_1, \ldots, c_p\)</span> such that
+<span class="math display">\[\begin{align*}
+\mathbf{0} &amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p 
+\end{align*}\]</span>
+Then, multiplying both equations on the left by <span class="math inline">\(\mathbf{v}_1&#39;\)</span> gives
+<span class="math display">\[\begin{align*}
+0 = \mathbf{v}_1&#39; \mathbf{0} &amp; = \mathbf{v}_1&#39; (c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p) \\
+&amp; = c_1 \mathbf{v}_1&#39; \mathbf{v}_1 + c_2  \mathbf{v}_1&#39; \mathbf{v}_2 + \cdots + c_p  \mathbf{v}_1&#39; \mathbf{v}_p \\
+&amp; = c_1 \mathbf{v}_1&#39; \mathbf{v}_1 + c_2  0 + \cdots + c_p 0 \\
+&amp; = c_1 \mathbf{v}_1&#39; \mathbf{v}_1
+\end{align*}\]</span>
+which is only equal to 0 when <span class="math inline">\(c_1\)</span> is equal to 0 because <span class="math inline">\(\mathbf{v}_1\)</span> is a nonzero vector. The above left multiplication could be repeated for each vector <span class="math inline">\(\mathbf{v}_i\)</span> which gives all <span class="math inline">\(c_i\)</span> must equal 0. As the only solution to the starting equation has all 0 coefficients, the set of vectors <span class="math inline">\(\mathcal{S}\)</span> must be linearly independent.</p>
+</div>
+<p>A set of orthogonal vectors is called an <strong>orthogonal basis</strong>.</p>
+</div>
+<div id="section-orthogonal-projections" class="section level2">
+<h2><span class="header-section-number">23.5</span> Orthogonal projections</h2>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-184" class="definition"><strong>Definition 23.5  </strong></span>Let <span class="math inline">\(\mathbf{x}\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(\mathcal{W}\)</span> be a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as the <strong>orthogonal decomposition</strong>
+<span class="math display">\[\begin{align*}
+\mathbf{x} = \mathbf{x}_{W} + \mathbf{x}_{W^\perp}
+\end{align*}\]</span>
+where <span class="math inline">\(\mathbf{x}_{W}\)</span> is the vector in <span class="math inline">\(\mathcal{W}\)</span> that is closest to <span class="math inline">\(\mathbf{x}\)</span> and is called the <strong>orthogonal projection</strong> and <span class="math inline">\(\mathbf{x}_{W^\perp}\)</span> is the orthogonal projection of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}\)</span>.</p>
+</div>
+<p><strong>Draw picture in class - W is a plane, orthogonal project of a vector onto the plane</strong></p>
+<p>This leads to the projection theorem</p>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-185" class="theorem"><strong>Theorem 23.3  </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the orthogonal project of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}\)</span> is given by
+<span class="math display">\[\begin{align*}
+\mathbf{x}_{W} = \frac{\mathbf{x}&#39;\mathbf{v}_1}{\mathbf{v}_1&#39;\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}&#39;\mathbf{v}_2}{\mathbf{v}_2&#39;\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}&#39;\mathbf{v}_p}{\mathbf{v}_p&#39;\mathbf{v}_p} \mathbf{v}_p
+\end{align*}\]</span></p>
+</div>
 
 </div>
 </div>
