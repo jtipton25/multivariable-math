@@ -10,11 +10,11 @@ set.seed(2021)
 We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is "data-driven" called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.
 
 :::{.definition}
-An \textbf{eigenvector} of an $n \times n$ matrix is a nonzero vector $\mathbf{x}$ such that the matrix equation
+An **eigenvector** of an $n \times n$ matrix $\mathbf{A}$ is a nonzero vector $\mathbf{x}$ such that the matrix equation
 \begin{align*}
 \mathbf{A} \mathbf{x} = \lambda \mathbf{x}
 \end{align*}
-for some scalar $\lambda$. If there exists some $\lambda \neq 0$ (a non-trivial solutions), then $\lambda$ is called an \textbf{eigenvalue} of $\mathbf{A}$ corresponding to the eigenvalue $\mathbf{x}$.
+for some scalar $\lambda$. If there exists some $\lambda \neq 0$ (a non-trivial solutions), then $\lambda$ is called an **eigenvalue** of $\mathbf{A}$ corresponding to the eigenvector $\mathbf{x}$.
 :::
 
 
@@ -85,18 +85,18 @@ Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}
 :::{.proof}
 Suppose the set $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly dependent. Then, there is some $j$ such that $\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k$. If we choose the first linearly dependent vector as $j$, we know that the subset of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ is linearly independent and 
 \begin{align*}
-\mathbf{v}_j & = x_1 \mathbf{v}_1 + \cdots x_{j-1} \mathbf{v}_{j-1}
+\mathbf{v}_j & = x_1 \mathbf{v}_1 + \cdots x_{j-1} + \mathbf{v}_{j-1}
 \end{align*}
 for some scalars $x_1, \ldots, x_{j-1}$. Multiplying the equation above on the left by $\mathbf{A}$ on both sides gives
 \begin{align*}
-\mathbf{A}\mathbf{v}_j & = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots x_{j-1} \mathbf{v}_{j-1}) \\
-\lambda_j \mathbf{v}_j & = x_1 \mathbf{A} \mathbf{v}_1 + \cdots x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
-& =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} \mathbf{v}_{j-1} \\
+\mathbf{A}\mathbf{v}_j & = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{v}_{j-1}) \\
+\lambda_j \mathbf{v}_j & = x_1 \mathbf{A} \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
+& =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} + \mathbf{v}_{j-1} \\
 \end{align*}
 Multiplying the first equation by $\lambda_j$ and subtracting this from the second equation gives
 \begin{align*}
 \mathbf{0} = \lambda_j \mathbf{v}_j - \lambda_j \mathbf{v}_j 
-& = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
+& = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} + (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
 \end{align*}
 Because $\lambda_k \neq \lambda_j$ for all $k < j$, the equation above implies a linear dependence among the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector $\mathbf{v}_j$ is violated and all the $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ are linearly independent.
 :::
