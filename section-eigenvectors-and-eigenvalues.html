@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-03-14" />
+<meta name="date" content="2021-03-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -316,11 +316,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb171-3"><a href="section-eigenvectors-and-eigenvalues.html#cb171-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is “data-driven” called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-144" class="definition"><strong>Definition 20.1  </strong></span>An  of an <span class="math inline">\(n \times n\)</span> matrix is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
+<p><span id="section-def:unlabeled-div-144" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
 <span class="math display">\[\begin{align*}
 \mathbf{A} \mathbf{x} = \lambda \mathbf{x}
 \end{align*}\]</span>
-for some scalar <span class="math inline">\(\lambda\)</span>. If there exists some <span class="math inline">\(\lambda \neq 0\)</span> (a non-trivial solutions), then <span class="math inline">\(\lambda\)</span> is called an  of <span class="math inline">\(\mathbf{A}\)</span> corresponding to the eigenvalue <span class="math inline">\(\mathbf{x}\)</span>.</p>
+for some scalar <span class="math inline">\(\lambda\)</span>. If there exists some <span class="math inline">\(\lambda \neq 0\)</span> (a non-trivial solutions), then <span class="math inline">\(\lambda\)</span> is called an <strong>eigenvalue</strong> of <span class="math inline">\(\mathbf{A}\)</span> corresponding to the eigenvector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 </div>
 <div class="example">
 <p><span id="section-exm:unlabeled-div-145" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
@@ -341,18 +341,18 @@ Draw images: <a href="https://textbooks.math.gatech.edu/ila/eigenvectors.html">h
 <div class="proof">
 <p><span id="section-unlabeled-div-148" class="proof"><em>Proof</em>. </span>Suppose the set <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly dependent. Then, there is some <span class="math inline">\(j\)</span> such that <span class="math inline">\(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\)</span>. If we choose the first linearly dependent vector as <span class="math inline">\(j\)</span>, we know that the subset of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> is linearly independent and
 <span class="math display">\[\begin{align*}
-\mathbf{v}_j &amp; = x_1 \mathbf{v}_1 + \cdots x_{j-1} \mathbf{v}_{j-1}
+\mathbf{v}_j &amp; = x_1 \mathbf{v}_1 + \cdots x_{j-1} + \mathbf{v}_{j-1}
 \end{align*}\]</span>
 for some scalars <span class="math inline">\(x_1, \ldots, x_{j-1}\)</span>. Multiplying the equation above on the left by <span class="math inline">\(\mathbf{A}\)</span> on both sides gives
 <span class="math display">\[\begin{align*}
-\mathbf{A}\mathbf{v}_j &amp; = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots x_{j-1} \mathbf{v}_{j-1}) \\
-\lambda_j \mathbf{v}_j &amp; = x_1 \mathbf{A} \mathbf{v}_1 + \cdots x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
-&amp; =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} \mathbf{v}_{j-1} \\
+\mathbf{A}\mathbf{v}_j &amp; = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{v}_{j-1}) \\
+\lambda_j \mathbf{v}_j &amp; = x_1 \mathbf{A} \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
+&amp; =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} + \mathbf{v}_{j-1} \\
 \end{align*}\]</span>
 Multiplying the first equation by <span class="math inline">\(\lambda_j\)</span> and subtracting this from the second equation gives
 <span class="math display">\[\begin{align*}
 \mathbf{0} = \lambda_j \mathbf{v}_j - \lambda_j \mathbf{v}_j 
-&amp; = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
+&amp; = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} + (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
 \end{align*}\]</span>
 Because <span class="math inline">\(\lambda_k \neq \lambda_j\)</span> for all <span class="math inline">\(k &lt; j\)</span>, the equation above implies a linear dependence among the set of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector <span class="math inline">\(\mathbf{v}_j\)</span> is violated and all the <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> are linearly independent.</p>
 </div>
