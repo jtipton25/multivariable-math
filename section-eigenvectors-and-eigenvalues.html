@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-03-15" />
+<meta name="date" content="2021-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -404,9 +404,10 @@ which has solution</p>
 <p>Therefore, the <span class="math inline">\(\lambda\)</span>-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector <span class="math inline">\(\mathbf{0}\)</span> and all the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> with corresponding eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
 <div class="example">
 <p><span id="section-exm:unlabeled-div-151" class="example"><strong>Example 20.4  </strong></span>For <span class="math inline">\(\lambda\)</span> = -2, 1, and 3, decide if <span class="math inline">\(\lambda\)</span> is a eigenvalue of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; -4 \\ -1 &amp; 1 \end{pmatrix}\)</span> and if so, compute a basis for the <span class="math inline">\(\lambda\)</span>-eigenspace.</p>
+<div class="sourceCode" id="section-cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="section-eigenvectors-and-eigenvalues.html#cb174-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">-4</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
 <ul>
 <li><p>Calculate using rref on <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> augmented with <span class="math inline">\(\mathbf{0}\)</span> and solve in parametric form</p></li>
-<li><p>After doing all three <span class="math inline">\(\lambdas\)</span>, draw a graphic showing the <span class="math inline">\(\lambda\)</span>-eignenspace basis.</p></li>
+<li><p>After doing all three <span class="math inline">\(\lambda\)</span>s, draw a graphic showing the <span class="math inline">\(\lambda\)</span>-eignenspace basis.</p></li>
 </ul>
 </div>
 <div id="section-computing-eigenspaces" class="section level3">
@@ -431,7 +432,7 @@ which has solution</p>
 </div>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-206" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>
+<p><span id="section-thm:unnamed-chunk-207" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(T: \mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be the linear transformation given by <span class="math inline">\(T(\mathbf{x}) = \mathbf{A}\mathbf{x}\)</span>. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is invertible.</p></li>
