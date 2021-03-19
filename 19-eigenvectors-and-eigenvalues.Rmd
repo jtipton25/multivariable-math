@@ -176,9 +176,14 @@ A <- matrix(c(2, -1, -4, 1), 2, 2)
 ```
 For $\lambda$ = -2, 1, and 3, decide if $\lambda$ is a eigenvalue of the matrix $\mathbf{A} = `r array_to_latex(A)`$ and if so, compute a basis for the $\lambda$-eigenspace.
 
+```{r, eval = FALSE}
+A <- matrix(c(2, -1, -4, 1), 2, 2)
+```
+
+
 * Calculate using rref on $\mathbf{A} - \lambda \mathbf{I}$ augmented with $\mathbf{0}$ and solve in parametric form
 
-* After doing all three $\lambdas$, draw a graphic showing the $\lambda$-eignenspace basis.
+* After doing all three $\lambda$s, draw a graphic showing the $\lambda$-eignenspace basis.
 :::
 
 
