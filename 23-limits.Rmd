@@ -10,7 +10,19 @@ set.seed(2021)
 
 Here we start a transition to topics in vector calculus. We will start with a discussion of functions of two variables (although the functions are not assumed to be linear). We define a function of two variables explicitly as $z = f(x, y)$. 
 
-Domain and range
+:::{.definition}
+Like with linear functions, we can define the domain and range for general functions of two variables. A function $f(x, y)$ assigns each point $(x, y)$ in some **domain** $\mathcal{D}$ in $\mathcal{R}^2$ to a unique number $z$ in a subset of $\mathcal{R}$. The set of inputs $\mathcal{D}$ is called the **domain** of the function and the **range** is the set of real numbers $z$ that are the output of the function over all the inputs in $\mathcal{D}$
+:::
+
+
+:::{.example}
+Let $f(x, y) = \sqrt{1 - x^2 - y^2}$. 
+
+* The domain of $f$ is the set of points $(x, y)$ such that $x^2 + y^2 \leq 1$ which is the unit circle (**draw picture**).
+
+* The range is the unit interval $[0, 1]$
+:::
+
 
 
 
@@ -132,8 +144,74 @@ whenever $(x, y)$ is in the domain of $f$ and
 
 In the definition, as the value of $\delta$ is getting smaller, the distance between the set of points $P(x, y)$ within radius $\delta$ of the point $P_0(a, b)$ is getting smaller. As a consequence, the limit in the definition above exists only if $f(x, y)$ approaches the value $L$ along **all possible paths** in the domain of $f$. 
 
+:::{.example}
+In class notes
+* **Future work: write out hand-written examples**
+:::
+
+
+:::{.theorem}
+Let $L$ and $M$ be real numbers and let $\lim_{(x, y) \rightarrow (a, b)}f(x, y) = L$ and $\lim_{(x, y) \rightarrow (a, b)}g(x, y) = M$ for functions $f(x, y)$ and $g(x, y)$. Let $c$ be a constant and $n>0$, then:
+
+1) **Sum of limits:**
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} \left( f(x, y) + g(x, y) \right) = L + M
+\end{align*}
+
+2) **Difference of limits:**
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} \left( f(x, y) - g(x, y) \right) = L - M
+\end{align*}
+
+3) **Scalar multiple of the limit:**
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} c f(x, y) = c L
+\end{align*}
+
+4) **Product of limits:**
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y) g(x, y) = LM
+\end{align*}
+
+5) **Quotient of limits:** As long as $M>0$ we have
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} \frac{f(x, y)}{g(x, y)} = \frac{L}{M}
+\end{align*}
+
+6) **Power of the limit:**
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y)^n = L^n
+\end{align*}
+
+7) **Root of the limit:** If $n$ is even, we assume $L > 0$
+\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y)^{1/n} = L^{1/n}
+\end{align*}
+
+:::
 
 
 
+:::{.example}
+Use the rules above to evaluate the limit $\lim_{(x, y) \rightarrow (2, 3)} 4x^3y + \sqrt{xy}$
+:::
+
+### Boundary points
+
+:::{.definition}
+Define a region $\mathcal{D}$ in $\mathcal{R}^2$. 
+
+* An **interior** point $P$ of $\mathcal{D}$ is a point that lies entirely in the region $\mathcal{D}$. Mathematically, a point $P$ is an interior point of $\mathcal{D}$ if it is possible to define a ball of radius $\epsilon>0$ centered at $P$ such that this ball only contains points within $\mathcal{D}$.
+
+* A **boundary** point $P$ of $\mathcal{D}$ is a point that lies on the edge of the region $\mathcal{D}$. Mathematically, a point $P$ is an boundary point of $\mathcal{D}$ if every ball of radius $\epsilon>0$ centered at $P$ contains at least one point in $\mathcal{D}$ and one point outside $\mathcal{D}$.
+:::
+
+:::{.example}
+Let $f(x, y) = \sqrt{1 - x^2 - y^2}$. The boundary points are all the points on the unit circle an the interior points are all the points on the interior of the unit disk. **draw picture**
+:::
+
+:::{.definition}
+A region $\mathcal{D}$ is said to be **open** if it only contains interior points (i.e., $\mathcal{D}$ has no boundary points). A region $\mathcal{D}$ is said to be **closed** if the region contains all its boundary points. 
+:::
 
 
