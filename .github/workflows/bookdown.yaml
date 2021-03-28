@@ -18,7 +18,7 @@ jobs:
       
       - name: Install X11 dependencies on MacOS
         if: runner.os == 'macOS'
-        run: brew install xquartz --cask
+        run: brew install --cask xquartz
       
       - name: Install magick and libgit2 homebrew
         run: |
