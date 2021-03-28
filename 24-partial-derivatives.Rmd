@@ -69,6 +69,32 @@ Notice that you can find partial derivatives by holding all the other variables 
 
 ## Higher-order partial derivatives
 
+We can calculate the partial derivatives of partial derivatives. The derivatives could be with respect to the same variable repeatedly or the derivatives could be with respect to different variables in which case we call these **mixed partial derivatives**. Notation for higher order partial derivatives is $\frac{\partial^2}{\partial x \partial y} f(x, y) = f_{yx}(x, y)$ which says first take the partial derivative of with respect to $y$ then take the partial derivative with respect to $x$. The possible sets of second-order partial derivatives for functions of two variables are shown in the table below
+
+
+
+| Notation 1 | Notation 2 |
+|------------|------------|
+|$\frac{\partial}{\partial x}\frac{\partial}{\partial x} f(x, y) = \frac{\partial^2}{\partial x^2} f(x, y)$ | $f_{xx}(x, y)$ |
+|$\frac{\partial}{\partial y}\frac{\partial}{\partial y} f(x, y) = \frac{\partial^2}{\partial y^2} f(x, y)$ | $f_{yy}(x, y)$ |
+|$\frac{\partial}{\partial x}\frac{\partial}{\partial y} f(x, y) = \frac{\partial^2}{\partial x \partial y} f(x, y)$ | $f_{xy}(x, y)$ |
+|$\frac{\partial}{\partial y}\frac{\partial}{\partial x} f(x, y) = \frac{\partial^2}{\partial y \partial x} f(x, y)$ | $f_{yx}(x, y)$ |
+
+:::{.example}
+Find the four second-order partial derivatives of $f(x, y) = 3x^2y^3 + 4xy - 3x^2$
+:::
+
+
+Note that the order in which mixed partial derivatives are taken can sometimes change the result. However, it is often the case that the order of the partial derivatives can be switched.
+
+```{theorem}
+Let the function $f(x, y)$ be defined on an open domain $\mathcal{D}$ of $\mathcal{R}^2$ and assume that $f_{xy}$ and $f_{yx}$ are continuous over the domain $\mathcal{D}$. Then, $f_{xy} = f_{yx}$ for all points in the domain $\mathcal{D}$.
+```
+
+Many of the commonly used functional forms in data science meet the criteria above. Thus, for many of the commonly used functions in data science, the order of evaluation of partial derivatives often does not matter. In practice, it is always good practice to verify this though.
+
+
+
 
 
 
