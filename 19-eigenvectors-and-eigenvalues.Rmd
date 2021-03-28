@@ -77,7 +77,7 @@ Draw images: [https://textbooks.math.gatech.edu/ila/eigenvectors.html](https://t
 :::
 
 
-```{theorem, distinct-eigenvalues-eigenvalues}
+```{theorem, distinct-eigenvalues, name = "The distinct eigenvalues theorem"}
 Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}$ and suppose the corresponding eigenvalues are $\lambda_1, \lambda_2, \ldots, \lambda_n$ are all distinct (different values). Then, the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly independent.
 ```
 

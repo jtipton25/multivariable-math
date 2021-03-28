@@ -170,13 +170,6 @@
       "Repository": "CRAN",
       "Hash": "ebaa97ac99cc2daf04e77eecc7b781d7"
     },
-    "codetools": {
-      "Package": "codetools",
-      "Version": "0.2-18",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "019388fc48e48b3da0d3a76ff94608a8"
-    },
     "colorspace": {
       "Package": "colorspace",
       "Version": "2.0-0",
@@ -586,13 +579,6 @@
       "Repository": "CRAN",
       "Hash": "41287f1ac7d28a92f0a286ed507928d3"
     },
-    "manipulateWidget": {
-      "Package": "manipulateWidget",
-      "Version": "0.10.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0550157e5d6450ea442eaba5a340a9fc"
-    },
     "markdown": {
       "Package": "markdown",
       "Version": "1.1",
@@ -627,13 +613,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "26fa77e707223e1ce042b2b5d09993dc"
-    },
-    "miniUI": {
-      "Package": "miniUI",
-      "Version": "0.1.1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "fec5f52652d60615fdb3957b3d74324a"
     },
     "misc3d": {
       "Package": "misc3d",
@@ -873,13 +852,6 @@
       "Repository": "CRAN",
       "Hash": "093584b944440c5cd07a696b3c8e0e4c"
     },
-    "rgl": {
-      "Package": "rgl",
-      "Version": "0.104.16",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "82c3f3b6ff1ee1c53acd6c39e9698444"
-    },
     "rlang": {
       "Package": "rlang",
       "Version": "0.4.10",
@@ -1082,13 +1054,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "29df52c781e572c967f90de9713423c4"
-    },
-    "webshot": {
-      "Package": "webshot",
-      "Version": "0.5.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "e99d80ad34457a4853674e89d5e806de"
     },
     "whisker": {
       "Package": "whisker",

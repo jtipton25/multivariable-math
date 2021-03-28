@@ -27,7 +27,7 @@ In addition, the $n \times n$ matrix $\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf
 ```
 
 ```{proof}
-This comes directly from \@ref(thm:distinct-eigenvalues) where if a $n \times n$ matrix has $n$ distinct eigenvalues $\lambda_1 \neq \lambda_2 \neq \cdots \neq \lambda_n$, the the corresponding eigenvalues $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ are linearly independent.
+This comes directly from Theorem \@ref(thm:distinct-eigenvalues) where if a $n \times n$ matrix has $n$ distinct eigenvalues $\lambda_1 \neq \lambda_2 \neq \cdots \neq \lambda_n$, the the corresponding eigenvalues $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ are linearly independent.
 ```
 
 This theorem implies that the matrix $\mathbf{A}$ is diagonalizable if and only if the eigenvectors of $\mathbf{A}$ form a basis for $\mathcal{R}^n$. When this is the case, the set of eigenvectors is called an **eigenbasis**.

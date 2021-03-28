@@ -126,13 +126,13 @@ The set of vectors $\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ in $
 
 
 :::{.example}
-Show the set of vectors $\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \}$
+Show the set of vectors $\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \}$ is orthogonal
 
 * Show these are orthogonal using `R`
 :::
 
 
-If the set of vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ are an orthogonal set, then the set of vectors $ \{ \frac{\mathbf{v}_1}{\|\mathbf{v}_1\|}, \ldots, \frac{\mathbf{v}_p}{\|\mathbf{v}_p\|} \}$ is an orthonormal set. Note that for each $i$, the length of the vector $\|\mathbf{v}_i\| = 1$
+If the set of vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ are an orthogonal set, then the set of vectors $\left\{ \frac{\mathbf{v}_1}{\|\mathbf{v}_1\|}, \ldots, \frac{\mathbf{v}_p}{\|\mathbf{v}_p\|} \right\}$ is an orthonormal set. Note that for each $i$, the length of the vector $\frac{\mathbf{v}_i} {\|\mathbf{v}_i \|} = 1$
 
 :::{.theorem}
 Let the set $\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an orthogonal set of nonzero vectors in $\mathcal{R}^n$. Then, the set of vectors in $\mathcal{S}$ are linearly independent and therefore are a basis for the space spanned by $\mathcal{S}$.
@@ -179,6 +179,8 @@ Because we know that $\mathbf{v}_j'\mathbf{v}_j$ is not zero (a vector can't be 
 
 Thus, for a vector $\mathbf{x}$ in the standard basis, the coordinates of $\mathbf{x}$ with respect to an orthogonal basis can be easily calculated using dot products (rather than matrix inverses) which is an easier computation.
 
+In fact, this is exactly the idea of using **least squares** estimation (linear regression, spline regression, etc.).
+
 
 ## Orthogonal projections
 
@@ -187,7 +189,7 @@ Let $\mathbf{x}$ be a vector in $\mathcal{R}^n$ and let $\mathcal{W}$ be a subsp
 \begin{align*}
 \mathbf{x} = \mathbf{x}_{\mathcal{W}} + \mathbf{x}_{\mathcal{W}^\perp}
 \end{align*}
-where $\mathbf{x}_{\mathcal{W}}$ is the vector in $\mathcal{W}$ that is closest to $\mathbf{x}$ and is called the **orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}$** and $\mathbf{x}_{\mathcal{W}^\perp}$ is the orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}^{\perp}$, the subspace of $\mathcal{R}^n$ that is complementary to $\mathcal{W}$.
+where $\mathbf{x}_{\mathcal{W}}$ is the vector in $\mathcal{W}$ that is closest to $\mathbf{x}$ and is called the **orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}$** and $\mathbf{x}_{\mathcal{W}^\perp}$ is the orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}^{\perp}$, the subspace $\mathcal{W}^\perp$ of $\mathcal{R}^n$ that is complementary to $\mathcal{W}$ and is called the **orthogonal complement**.
 :::
 
 **Draw picture in class - W is a plane, orthogonal projection of a vector onto the plane**
@@ -204,10 +206,67 @@ where the coefficient $c_j$ corresponding to the vector $\mathbf{v}_j$ of the li
 :::
 
 
+You might be wondering what use orthogonal projections are. In fact, linear regression (and most common regression models) use orthogonal projections to fit a line (or surface) of best fit. This leads to the important theorem that allows us to project a vector $\mathbf{y} \in \mathcal{R}^n$ onto the column space of a $n \times p$ matrix $\mathbf{X}$ (which is exactly the linear regression of $\mathbf{y}$ onto $\mathbf{X}$).
+
+```{theorem, orthogonal-matrix-projection, name = "Orthogonal Projection Theorem"}
+Let $\mathbf{X}$ be a $n \times p$ matrix, let $\mathcal{W} =$ col($\mathbf{X}$), and let $\mathbf{y}$ be a vector in $\mathcal{R}^n. Then the matrix equation
+\begin{align*}
+\mathbf{X}'\mathbf{X} \boldsymbol{\beta} = \mathbf{X}' \mathbf{y}
+\end{align*}
+with respect to the unknown coefficients $\boldsymbol{\beta}$ is consistent and $\mathbf{y}_{\mathcal{W}} = \mathbf{X}\boldsymbol{\beta}$ for any solution $\boldsymbol{\beta}$.
+```
 
 
 
+```{proof}
 
+```
+
+In addition, if the columns of $\mathbf{X}$ are linearly independent, then the coefficients $\boldsymbol{\beta}$ are given by \begin{align*}
+\boldsymbol{\beta} = \left( \mathbf{X}'\mathbf{X} \right)^{-1} \mathbf{X}' \mathbf{y}
+\end{align*}
+which is the least squares solution to the linear regression problem. For example, let `X` and `y` be defined as below
+```{r}
+X <- cbind(1, c(2, -1, 3, -4, 5, 7, -2, 3))
+y <- c(5, 3, 4, -9, 11, 12, -5, 6)
+```
+Plotting this data shows the strong positive linear relationship
+```{r}
+# The first column is a basis for a constant term (the intercept)
+data.frame(x = X[, 2], y = y) %>% 
+    ggplot(aes(x = x, y = y)) +
+    geom_point()
+```
+We can solve for the coefficients `beta` using the linear project theorem
+```{r}
+beta <- solve(t(X) %*% X) %*% t(X) %*% y
+```
+and using this solution, solve for the projection $\mathbf{y}_{\mathcal{W}}$ of $\mathbf{y}$ onto $\mathbf{X}$
+```{r}
+y_W <- X %*% beta
+```
+Plotting the projection $\mathbf{y}_{\mathcal{W}}$ gives
+```{r}
+# The first column is a basis for a constant term (the intercept)
+data.frame(x = X[, 2], y = y, y_W = y_W) %>% 
+    ggplot(aes(x = x, y = y)) +
+    geom_point() +
+    geom_line(aes(x = x, y = y_W))
+```
+The complement of the project (called the **residuals** in statistics) is given by $\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}$
+```{r}
+y_W_perp <- y - y_W
+```
+and can be visualized as the orthogonal projection using segments
+```{r}
+# The first column is a basis for a constant term (the intercept)
+data.frame(x = X[, 2], y = y, y_W = y_W) %>% 
+    ggplot(aes(x = x, y = y)) +
+    geom_point() +
+    geom_line(aes(x = x, y = y_W)) +
+    geom_segment(aes(x = x, y = y_W, xend = x, yend = y_W + y_W_perp), color = "blue")
+```
+Recall that the orthogonal projection gives the "closest" vector $\mathbf{y}_\mathcal{W}$ to $\mathbf{y}$ that is in the subspace $\mathcal{W}$ that is the span of the column space of $\mathbf{X}$. See [https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html](https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html) for an example.
 
 
 
