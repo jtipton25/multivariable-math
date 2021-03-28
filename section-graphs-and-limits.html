@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 24 Graphs and Limits | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 24 Graphs and Limits | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 24 Graphs and Limits | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-eigenvectors-and-eigenvalues.html"/>
-<link rel="next" href="section-diagonalization.html"/>
+<link rel="prev" href="section-inner-product-length-and-orthogonality.html"/>
+<link rel="next" href="section-vectors-and-matrices.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -314,124 +314,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-the-characteristic-equation" class="section level1">
-<h1><span class="header-section-number">Chapter 21</span> The Characteristic Equation</h1>
-<div class="sourceCode" id="section-cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="section-the-characteristic-equation.html#cb175-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb175-2"><a href="section-the-characteristic-equation.html#cb175-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
-<p>The characteristic equation/polynomial encodes information about the eigenvalues of the characteristic equation. In the previous chapter, we showed how we can decide if a scalar <span class="math inline">\(\lambda\)</span> is an eigenvalue of a matrix and how to find the vectors associated with the eigenvalue. However, we did not learn how to find eigenvalues (other than to just randomly try <span class="math inline">\(\lambda\)</span>). The characteristic equation/polynomial allows for determining the eigenvalues <span class="math inline">\(\lambda\)</span>.</p>
+<div id="section-graphs-and-limits" class="section level1">
+<h1><span class="header-section-number">Chapter 24</span> Graphs and Limits</h1>
+<div class="sourceCode" id="section-cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="section-graphs-and-limits.html#cb217-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb217-2"><a href="section-graphs-and-limits.html#cb217-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb217-3"><a href="section-graphs-and-limits.html#cb217-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<p>Here we start a transition to topics in vector calculus. We will start with a discussion of functions of two variables (although the functions are not assumed to be linear). We define a function of two variables explicitly as <span class="math inline">\(z = f(x, y)\)</span>.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-154" class="definition"><strong>Definition 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The characteristic equation/polynomial of <span class="math inline">\(\mathbf{A}\)</span> is the function <span class="math inline">\(f(\lambda)\)</span> given by
+<p><span id="section-def:unlabeled-div-190" class="definition"><strong>Definition 24.1  </strong></span>Like with linear functions, we can define the domain and range for general functions of two variables. A function <span class="math inline">\(f(x, y)\)</span> assigns each point <span class="math inline">\((x, y)\)</span> in some <strong>domain</strong> <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span> to a unique number <span class="math inline">\(z\)</span> in a subset of <span class="math inline">\(\mathcal{R}\)</span>. The set of inputs <span class="math inline">\(\mathcal{D}\)</span> is called the <strong>domain</strong> of the function and the <strong>range</strong> is the set of real numbers <span class="math inline">\(z\)</span> that are the output of the function over all the inputs in <span class="math inline">\(\mathcal{D}\)</span></p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-191" class="example"><strong>Example 24.1  </strong></span>Let <span class="math inline">\(f(x, y) = \sqrt{1 - x^2 - y^2}\)</span>.</p>
+<ul>
+<li><p>The domain of <span class="math inline">\(f\)</span> is the set of points <span class="math inline">\((x, y)\)</span> such that <span class="math inline">\(x^2 + y^2 \leq 1\)</span> which is the unit circle (<strong>draw picture</strong>).</p></li>
+<li><p>The range is the unit interval <span class="math inline">\([0, 1]\)</span></p></li>
+</ul>
+</div>
+<div id="section-graphs-and-level-curves" class="section level3">
+<h3><span class="header-section-number">24.0.1</span> Graphs and level curves</h3>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-192" class="example"><strong>Example 24.2  </strong></span>The parabola</p>
+<p>Consider the function of two variables
 <span class="math display">\[\begin{align*}
-f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
+f(x, y) = x^2 + y^2
+\end{align*}\]</span>
+which defines the surface
+<img src="multivariable-math_files/figure-html/unnamed-chunk-226-1.png" width="672" />
+The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)</p>
+<div class="sourceCode" id="section-cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="section-graphs-and-limits.html#cb218-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb218-2"><a href="section-graphs-and-limits.html#cb218-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb218-3"><a href="section-graphs-and-limits.html#cb218-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">parabola</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb218-4"><a href="section-graphs-and-limits.html#cb218-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb218-5"><a href="section-graphs-and-limits.html#cb218-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
+<span id="cb218-6"><a href="section-graphs-and-limits.html#cb218-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-227-1.png" width="672" />
+where each curve in the (x, y) plane has exactly the same value of <span class="math inline">\(f(x, y)\)</span>. Alternatively, this can be represented using filled level curves</p>
+<div class="sourceCode" id="section-cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="section-graphs-and-limits.html#cb219-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb219-2"><a href="section-graphs-and-limits.html#cb219-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb219-3"><a href="section-graphs-and-limits.html#cb219-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">parabola</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb219-4"><a href="section-graphs-and-limits.html#cb219-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb219-5"><a href="section-graphs-and-limits.html#cb219-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
+<span id="cb219-6"><a href="section-graphs-and-limits.html#cb219-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-228-1.png" width="672" />
+Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-193" class="example"><strong>Example 24.3  </strong></span>A saddle function</p>
+<p>Consider the function of two variables
+<span class="math display">\[\begin{align*}
+f(x, y) = x^2 - y^2
+\end{align*}\]</span>
+which defines the surface
+<img src="multivariable-math_files/figure-html/unnamed-chunk-229-1.png" width="672" />
+The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)</p>
+<div class="sourceCode" id="section-cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="section-graphs-and-limits.html#cb220-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb220-2"><a href="section-graphs-and-limits.html#cb220-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb220-3"><a href="section-graphs-and-limits.html#cb220-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">saddle</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb220-4"><a href="section-graphs-and-limits.html#cb220-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb220-5"><a href="section-graphs-and-limits.html#cb220-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
+<span id="cb220-6"><a href="section-graphs-and-limits.html#cb220-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-230-1.png" width="672" />
+where each curve in the (x, y) plane has exactly the same value of <span class="math inline">\(f(x, y)\)</span>. Alternatively, this can be represented using filled level curves</p>
+<div class="sourceCode" id="section-cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="section-graphs-and-limits.html#cb221-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb221-2"><a href="section-graphs-and-limits.html#cb221-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb221-3"><a href="section-graphs-and-limits.html#cb221-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">saddle</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb221-4"><a href="section-graphs-and-limits.html#cb221-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb221-5"><a href="section-graphs-and-limits.html#cb221-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
+<span id="cb221-6"><a href="section-graphs-and-limits.html#cb221-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-231-1.png" width="672" />
+Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
+</div>
+</div>
+<div id="section-limits-and-continuity" class="section level3">
+<h3><span class="header-section-number">24.0.2</span> Limits and continuity</h3>
+<p>For functions of several variables, we have to define limits and continuity for these multivariable settings. For now, we focus on two variable functions as the multivariable case follows similar from the two variable case.</p>
+<p>Let <span class="math inline">\(P(x, y) \rightarrow P_0(a, b)\)</span> be a path in the <span class="math inline">\(x-y\)</span> plane that starts at the point <span class="math inline">\(P(x, y)\)</span> and ends at the point <span class="math inline">\(P_0(a, b)\)</span> with coordinates <span class="math inline">\((a, b)\)</span>. Thus, we can understand the limit as the fixed value of <span class="math inline">\(f(x, y)\)</span> for which all paths that connect the points <span class="math inline">\(P(x, y)\)</span> that are “close” to <span class="math inline">\(P_0(a, b)\)</span> converge to.</p>
+<p>For one-dimensional limits, “close” was defined as distance. Thus, for multivariable functions, “close” is defined as the Euclidean distance defined by a “ball” of radius <span class="math inline">\(\delta\)</span> and the limits examines the function output as the radius <span class="math inline">\(\delta\)</span> goes to 0.</p>
+<p>Recall that the distance <span class="math inline">\(dist((x, y), (a, b))\)</span> between two points <span class="math inline">\((x, y)\)</span> and <span class="math inline">\((a, b)\)</span> is
+<span class="math display">\[\begin{align*}
+dist((x, y), (a, b)) = \sqrt{(x-a)^2 + (y-b)^2}
 \end{align*}\]</span></p>
-</div>
-<p>While not obvious, the function <span class="math inline">\(f(\lambda)\)</span> is a polynomial of <span class="math inline">\(\lambda\)</span> but requires computing the determinant of the matrix <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> which contains an unknown value <span class="math inline">\(\lambda\)</span>.</p>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-155" class="example"><strong>Example 21.1  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span></p>
-<ul>
-<li>do in class</li>
-</ul>
-</div>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-156" class="example"><strong>Example 21.2  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span></p>
-<ul>
-<li>do in class (expand cofactors along the third column)</li>
-</ul>
-</div>
-<p>Once the characteristic equation is defined, we can use the equation to solve for the eigenvalues.</p>
-<div class="theorem">
-<p><span id="section-thm:unlabeled-div-157" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})\)</span> be a characteristic polynomial. Then, the number <span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(f(\lambda_0) = 0\)</span>.</p>
-</div>
-<div class="proof">
-<p><span id="section-unlabeled-div-158" class="proof"><em>Proof</em>. </span>By the invertible matrix theorem, the matrix <span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution if and only if <span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span>. Therefore, the following statements are equivalent:</p>
-<ul>
-<li><p><span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p></li>
-<li><p><span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda_0 \mathbf{x}\)</span> has a nontrivial solution</p></li>
-<li><p><span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution</p></li>
-<li><p><span class="math inline">\(\mathbf{A} - \lambda_0 \mathbf{I}\)</span> is not invertible</p></li>
-<li><p><span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) = \mathbf{0}\)</span></p></li>
-<li><p><span class="math inline">\(f(\lambda_0) = 0\)</span></p></li>
-</ul>
-</div>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-159" class="example"><strong>Example 21.3  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
-<ul>
-<li>do in class</li>
-</ul>
-</div>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-160" class="example"><strong>Example 21.4  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
-<ul>
-<li>do in class (expand cofactors along the third column)</li>
-</ul>
-</div>
-<div id="section-similarity" class="section level2">
-<h2><span class="header-section-number">21.1</span> Similarity</h2>
-<p>The idea behind similar matrices is to understand how the linear transformations implied by the transformation behave. Two matrices are similar if their transformation behavior (rotation, expansion/contraction, etc.) is the same but the coordinates on which the matrix operates are different.</p>
+<p>** Draw images**</p>
+
 <div class="definition">
-<p><span id="section-def:unlabeled-div-161" class="definition"><strong>Definition 21.2  </strong></span>The matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are said to be similar if there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> where
+<span id="section-def:unnamed-chunk-232" class="definition"><strong>Definition 24.2  (Limit of a function of two variables)  </strong></span>The function f(x, y) has limit <span class="math inline">\(L\)</span> as <span class="math inline">\(P(x, y) \rightarrow P_0(a, b)\)</span>, written
 <span class="math display">\[\begin{align*}
-\mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y) = \lim_{P \rightarrow P_0} f(x, y) = L,
 \end{align*}\]</span>
-or equivalently
+if, for any <span class="math inline">\(\epsilon &gt; 0\)</span> (the radius of the ball that defines the “closeness” of the point), there exists a <span class="math inline">\(\delta &gt; 0\)</span> such that
 <span class="math display">\[\begin{align*}
-\mathbf{P}^{-1} \mathbf{A} \mathbf{P}=  \mathbf{B} 
-\end{align*}\]</span></p>
+|f(x, y) - L| &lt; \epsilon
+\end{align*}\]</span>
+whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span class="math inline">\(f\)</span> and
+<span class="math display">\[\begin{align*}
+0 &lt; \sqrt{(x-a)^2 + (y-b)^2} &lt; \delta.
+\end{align*}\]</span>
 </div>
-<p>Therefore, it is possible to change <span class="math inline">\(\mathbf{A}\)</span> into <span class="math inline">\(\mathbf{B}\)</span> with an invertible (one-to-one and onto) transformation.</p>
+
+<p>In the definition, as the value of <span class="math inline">\(\delta\)</span> is getting smaller, the distance between the set of points <span class="math inline">\(P(x, y)\)</span> within radius <span class="math inline">\(\delta\)</span> of the point <span class="math inline">\(P_0(a, b)\)</span> is getting smaller. As a consequence, the limit in the definition above exists only if <span class="math inline">\(f(x, y)\)</span> approaches the value <span class="math inline">\(L\)</span> along <strong>all possible paths</strong> in the domain of <span class="math inline">\(f\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-162" class="example"><strong>Example 21.5  </strong></span>Consider the following example with matrices <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> defined as below:</p>
-<div class="sourceCode" id="section-cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="section-the-characteristic-equation.html#cb176-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb176-2"><a href="section-the-characteristic-equation.html#cb176-2"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    3    0
-## [2,]    0   -2</code></pre>
-<div class="sourceCode" id="section-cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="section-the-characteristic-equation.html#cb178-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">12</span>, <span class="dv">-10</span>, <span class="dv">15</span>, <span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb178-2"><a href="section-the-characteristic-equation.html#cb178-2"></a>B</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]  -12   15
-## [2,]  -10   13</code></pre>
-<div class="sourceCode" id="section-cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="section-the-characteristic-equation.html#cb180-1"></a>P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb180-2"><a href="section-the-characteristic-equation.html#cb180-2"></a>P</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]   -2    3
-## [2,]    1   -1</code></pre>
-<div class="sourceCode" id="section-cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="section-the-characteristic-equation.html#cb182-1"></a>P <span class="op">%*%</span><span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    3    0
-## [2,]    0   -2</code></pre>
-<div class="sourceCode" id="section-cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="section-the-characteristic-equation.html#cb184-1"></a><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]  -12   15
-## [2,]  -10   13</code></pre>
+<p><span id="section-exm:unlabeled-div-195" class="example"><strong>Example 24.4  </strong></span>In class notes
+* <strong>Future work: write out hand-written examples</strong></p>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-163" class="theorem"><strong>Theorem 21.2  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> similar matrices, then <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> will have the same characteristic polynomial and therefore the same eigenvalues.</p>
-</div>
-<div class="proof">
-<p><span id="section-unlabeled-div-164" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are similar, then there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> such that
+<p><span id="section-thm:unlabeled-div-196" class="theorem"><strong>Theorem 24.1  </strong></span>Let <span class="math inline">\(L\)</span> and <span class="math inline">\(M\)</span> be real numbers and let <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)}f(x, y) = L\)</span> and <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)}g(x, y) = M\)</span> for functions <span class="math inline">\(f(x, y)\)</span> and <span class="math inline">\(g(x, y)\)</span>. Let <span class="math inline">\(c\)</span> be a constant and <span class="math inline">\(n&gt;0\)</span>, then:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Sum of limits:</strong>
 <span class="math display">\[\begin{align*}
-\mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
-\end{align*}\]</span>
-Therefore
+\lim_{(x, y) \rightarrow (a, b)} \left( f(x, y) + g(x, y) \right) = L + M
+\end{align*}\]</span></p></li>
+<li><p><strong>Difference of limits:</strong>
 <span class="math display">\[\begin{align*}
-\mathbf{A}  - \lambda \mathbf{I} &amp; = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{I} \\
-&amp; = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P} \mathbf{P}^{-1} \\
-&amp; =  \mathbf{P} \left( \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P}^{-1} \right) \\
-&amp; =  \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1}\\
-\end{align*}\]</span>
-To get the characteristic equation, we need to solve for the determinant
+\lim_{(x, y) \rightarrow (a, b)} \left( f(x, y) - g(x, y) \right) = L - M
+\end{align*}\]</span></p></li>
+<li><p><strong>Scalar multiple of the limit:</strong>
 <span class="math display">\[\begin{align*}
-det\left( \mathbf{A}  - \lambda \mathbf{I} \right) &amp; = det\left( \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1} \right) \\
-&amp; = det\left( \mathbf{P} \right)  det\left( \mathbf{B} - \lambda \mathbf{I} \right) det\left(\mathbf{P}^{-1} \right) \\
-\end{align*}\]</span>
-We know that <span class="math inline">\(det\left(\mathbf{P}^{-1} \right)\)</span> = <span class="math inline">\(\frac{1}{det\left(\mathbf{P} \right)}\)</span> (or, equivalently <span class="math inline">\(det\left(\mathbf{P} \right) det\left(\mathbf{P}^{-1} \right) = det\left(\mathbf{P} \mathbf{P}^{-1} \right) = det(\mathbf{I}) = 1\)</span>), we have <span class="math inline">\(det\left( \mathbf{A} - \lambda \mathbf{I} \right) = det\left( \mathbf{B} - \lambda \mathbf{I} \right)\)</span> so that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same characteristic polynomial (and the same eigenvalues).</p>
+\lim_{(x, y) \rightarrow (a, b)} c f(x, y) = c L
+\end{align*}\]</span></p></li>
+<li><p><strong>Product of limits:</strong>
+<span class="math display">\[\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y) g(x, y) = LM
+\end{align*}\]</span></p></li>
+<li><p><strong>Quotient of limits:</strong> As long as <span class="math inline">\(M&gt;0\)</span> we have
+<span class="math display">\[\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} \frac{f(x, y)}{g(x, y)} = \frac{L}{M}
+\end{align*}\]</span></p></li>
+<li><p><strong>Power of the limit:</strong>
+<span class="math display">\[\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y)^n = L^n
+\end{align*}\]</span></p></li>
+<li><p><strong>Root of the limit:</strong> If <span class="math inline">\(n\)</span> is even, we assume <span class="math inline">\(L &gt; 0\)</span>
+<span class="math display">\[\begin{align*}
+\lim_{(x, y) \rightarrow (a, b)} f(x, y)^{1/n} = L^{1/n}
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-197" class="example"><strong>Example 24.5  </strong></span>Use the rules above to evaluate the limit <span class="math inline">\(\lim_{(x, y) \rightarrow (2, 3)} 4x^3y + \sqrt{xy}\)</span></p>
 </div>
 </div>
-<div id="section-the-geometric-interpetation-of-similar-matrices" class="section level2">
-<h2><span class="header-section-number">21.2</span> The geometric interpetation of similar matrices</h2>
-<p>In general, similar matrices do similar things in different spaces (different spaces in terms of different bases).</p>
-<p><a href="https://textbooks.math.gatech.edu/ila/similarity.html">Example here</a></p>
+<div id="section-boundary-points" class="section level3">
+<h3><span class="header-section-number">24.0.3</span> Boundary points</h3>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-198" class="definition"><strong>Definition 24.3  </strong></span>Define a region <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span>.</p>
+<ul>
+<li><p>An <strong>interior</strong> point <span class="math inline">\(P\)</span> of <span class="math inline">\(\mathcal{D}\)</span> is a point that lies entirely in the region <span class="math inline">\(\mathcal{D}\)</span>. Mathematically, a point <span class="math inline">\(P\)</span> is an interior point of <span class="math inline">\(\mathcal{D}\)</span> if it is possible to define a ball of radius <span class="math inline">\(\epsilon&gt;0\)</span> centered at <span class="math inline">\(P\)</span> such that this ball only contains points within <span class="math inline">\(\mathcal{D}\)</span>.</p></li>
+<li><p>A <strong>boundary</strong> point <span class="math inline">\(P\)</span> of <span class="math inline">\(\mathcal{D}\)</span> is a point that lies on the edge of the region <span class="math inline">\(\mathcal{D}\)</span>. Mathematically, a point <span class="math inline">\(P\)</span> is an boundary point of <span class="math inline">\(\mathcal{D}\)</span> if every ball of radius <span class="math inline">\(\epsilon&gt;0\)</span> centered at <span class="math inline">\(P\)</span> contains at least one point in <span class="math inline">\(\mathcal{D}\)</span> and one point outside <span class="math inline">\(\mathcal{D}\)</span>.</p></li>
+</ul>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-199" class="example"><strong>Example 24.6  </strong></span>Let <span class="math inline">\(f(x, y) = \sqrt{1 - x^2 - y^2}\)</span>. The boundary points are all the points on the unit circle an the interior points are all the points on the interior of the unit disk. <strong>draw picture</strong></p>
+</div>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-200" class="definition"><strong>Definition 24.4  </strong></span>A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>open</strong> if it only contains interior points (i.e., <span class="math inline">\(\mathcal{D}\)</span> has no boundary points). A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>closed</strong> if the region contains all its boundary points.</p>
+</div>
 
 </div>
 </div>
@@ -440,8 +476,8 @@ We know that <span class="math inline">\(det\left(\mathbf{P}^{-1} \right)\)</spa
           </div>
         </div>
       </div>
-<a href="section-eigenvectors-and-eigenvalues.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-diagonalization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-inner-product-length-and-orthogonality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

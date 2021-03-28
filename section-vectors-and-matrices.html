@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 24 Vectors and matrices | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 25 Vectors and matrices | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 24 Vectors and matrices | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 25 Vectors and matrices | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 24 Vectors and matrices | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 25 Vectors and matrices | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-03-19" />
+<meta name="date" content="2021-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-inner-product-length-and-orthogonality.html"/>
+<link rel="prev" href="section-graphs-and-limits.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -284,10 +284,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.4" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-orthogonal-sets"><i class="fa fa-check"></i><b>23.4</b> Orthogonal sets</a></li>
 <li class="chapter" data-level="23.5" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-orthogonal-projections"><i class="fa fa-check"></i><b>23.5</b> Orthogonal projections</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>24</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="24.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>24.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="24.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>24.0.2</b> Lists</a></li>
-<li class="chapter" data-level="24.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>24.1</b> Exercises</a></li>
+<li class="chapter" data-level="24" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html"><i class="fa fa-check"></i><b>24</b> Graphs and Limits</a><ul>
+<li class="chapter" data-level="24.0.1" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-graphs-and-level-curves"><i class="fa fa-check"></i><b>24.0.1</b> Graphs and level curves</a></li>
+<li class="chapter" data-level="24.0.2" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-limits-and-continuity"><i class="fa fa-check"></i><b>24.0.2</b> Limits and continuity</a></li>
+<li class="chapter" data-level="24.0.3" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-boundary-points"><i class="fa fa-check"></i><b>24.0.3</b> Boundary points</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>25</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="25.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>25.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="25.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>25.0.2</b> Lists</a></li>
+<li class="chapter" data-level="25.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>25.1</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -310,24 +315,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="section-vectors-and-matrices" class="section level1">
-<h1><span class="header-section-number">Chapter 24</span> Vectors and matrices</h1>
+<h1><span class="header-section-number">Chapter 25</span> Vectors and matrices</h1>
 <p>This can produce an error, so we wrap the function <code>array_to_latex</code> in a call to <code>cat()</code></p>
-<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-vectors-and-matrices.html#cb210-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb210-2"><a href="section-vectors-and-matrices.html#cb210-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="section-vectors-and-matrices.html#cb222-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb222-2"><a href="section-vectors-and-matrices.html#cb222-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
 <p>[1] “\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}”</p>
-<div class="sourceCode" id="section-cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="section-vectors-and-matrices.html#cb211-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb211-2"><a href="section-vectors-and-matrices.html#cb211-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="section-cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="section-vectors-and-matrices.html#cb223-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb223-2"><a href="section-vectors-and-matrices.html#cb223-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
 <span class="math display">\[\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}\]</span>
 <p>The fundamental objects in this text are scalars, vectors, and matrices.</p>
 <!--   -->
 <!--   -->
 <!--   -->
 <div id="section-arrays" class="section level3">
-<h3><span class="header-section-number">24.0.1</span> Arrays</h3>
+<h3><span class="header-section-number">25.0.1</span> Arrays</h3>
 <p>Higher order arrays (for example, tensors in the tensorflow library) can be represented using subscript notation where <span class="math inline">\([\mathbf{A}_1 | \mathbf{A}_2 | \cdots \mathbf{A}_n]\)</span> is a 3-dimensional array. Higher order arrays can be represented using additional subscripts.</p>
 </div>
 <div id="section-lists" class="section level3">
-<h3><span class="header-section-number">24.0.2</span> Lists</h3>
+<h3><span class="header-section-number">25.0.2</span> Lists</h3>
 <ul>
 <li>To add: vector addition, multiplication</li>
 <li>To add: matrix addition, multiplication</li>
@@ -335,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="section-exercises" class="section level2">
-<h2><span class="header-section-number">24.1</span> Exercises</h2>
+<h2><span class="header-section-number">25.1</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>What is 3 + <span class="math inline">\(\begin{pmatrix} 4 \\ 7 \\ 3 \end{pmatrix}\)</span>?</p></li>
 <li><p>Why can’t you add the following two vectors:</p></li>
@@ -377,7 +382,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="section-inner-product-length-and-orthogonality.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-graphs-and-limits.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
