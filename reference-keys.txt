@@ -206,6 +206,8 @@ exm:unlabeled-div-204
 def:unlabeled-div-205
 exm:unlabeled-div-206
 exm:unlabeled-div-207
+exm:unlabeled-div-208
+thm:unnamed-chunk-236
 section-preface
 section-getting-started-in-r
 section-notation
