@@ -28,10 +28,11 @@ jobs:
       - name: Cache Renv packages
         uses: actions/cache@v2
         with:
-          path: ~/local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-    
-             
+          path: ~/Library/Application Support/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+          ${{ runner.os }}-renv- 
+
       - name: Install R packages with renv
         run: |
           Rscript -e "install.packages('renv', repos = 'https://muug.ca/mirror/cran/')"

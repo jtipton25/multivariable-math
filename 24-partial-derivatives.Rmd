@@ -1,0 +1,75 @@
+# Partial Derivatives
+
+```{r, message = FALSE}
+library(tidyverse)
+library(plotly)
+library(dasc2594)
+set.seed(2021)
+```
+
+
+Recall that for a function of one variable, the derivative gives the rate of change of the function with respect to that variable. The function $f(x)$ has an instantaneous rate of change $\frac{d}{dx}f(x)$, assuming the derivative $\frac{d}{dx}f(x)$ exists. 
+
+This concept can be extended to functions of multivariables where we now have to specify a direction in which the function changes. For example, consider a mountain which is very steep in the north/south direction but is much less steep in the east/west direction. Thus, the directional derivative in the north/south direction will have a larger absolute value (higher rate of change) than the directional derivative in the east/west direction. 
+
+For example, consider the function
+```{r}
+mountain <- function(x, y) {
+    4 - 9 * x^2 - y^2
+}
+dat <- expand_grid(x = seq(-4, 4, length.out = 20), y = seq(-4, 4, length.out = 20)) %>%
+    mutate(z = mountain(x, y))
+
+dat %>%
+    ggplot(aes(x = x, y = y, z = z)) +
+    geom_contour() +
+    coord_fixed(ratio = 1)
+```
+
+
+```{r}
+plot_ly(z = matrix(dat$z, 20, 20)) %>%
+    add_surface(
+        contours = list(
+            z = list(
+                show=TRUE,
+                usecolormap=TRUE,
+                highlightcolor="#ff0000",
+                project=list(z=TRUE)
+            )
+        )
+    )
+```
+Note that the partial derivative asks the question "What is the rate of change of one variable holding all the other variables constant?" Thus, the question can be phrased as what is the derivative of the function $f(x, y)$ at the point $(a, b)$ where we only let one variable change? To make the notation of a partial derivative clear, a special symbol is used where $\frac{\partial}{\partial x}$ is the partial derivative with respect to the $x$ variable (holding the y variable constant).
+
+**draw surfaces with marginal slices**
+
+:::{.definition}
+The partial derivative of the function $f(x, y)$ with respect to $x$ at the point $(a, b)$ is 
+\begin{align*}
+\frac{\partial}{\partial x} f(x, y) = f_x(x, y) & = \lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)} {h}.
+\end{align*}
+
+The partial derivative of the function $f(x, y)$ with respect to $y$ at the point $(a, b)$ is 
+\begin{align*}
+\frac{\partial}{\partial y} f(x, y) = f_y(x, y) & = \lim_{h \rightarrow 0} \frac{f(a, b + h) - f(a, b)} {h},
+\end{align*}
+as long as these limits exist.
+:::
+
+:::{.example}
+**partial derivatives using limit definition**
+:::
+
+:::{.example}
+Let $f(x, y) = 3x^2 - 4 y^3 + 3$, Compute $\frac{\partial}{\partial x}f(x, y)$ and $\frac{\partial}{\partial y}f(x, y)$. Then evaluate each derivative at $(-2, 3)$.
+:::
+
+Notice that you can find partial derivatives by holding all the other variables constant and then finding the equivalent univariate derivative.
+
+## Higher-order partial derivatives
+
+
+
+
+

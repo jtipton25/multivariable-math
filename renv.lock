@@ -238,6 +238,13 @@
       "RemoteSha": "41555c1d8b0cf4a4425bfe71fc8d366f56f79f8d",
       "Hash": "c01137c9847ab10c59662f90a8b37edd"
     },
+    "data.table": {
+      "Package": "data.table",
+      "Version": "1.13.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "813fa8857aaa949b243e2e0b4abb8592"
+    },
     "dbplyr": {
       "Package": "dbplyr",
       "Version": "2.1.0",
@@ -704,6 +711,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "09ceb99c0d3115e4d46b1ff88d531e69"
+    },
+    "plotly": {
+      "Package": "plotly",
+      "Version": "4.9.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f6b85d9e4ed88074ea0ede1aa74bb00e"
     },
     "plyr": {
       "Package": "plyr",

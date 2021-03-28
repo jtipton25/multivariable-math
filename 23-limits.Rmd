@@ -24,7 +24,7 @@ Let $f(x, y) = \sqrt{1 - x^2 - y^2}$.
 
 
 
-### Graphs and level curves
+## Graphs and level curves
 
 :::{.example}
 The parabola
@@ -110,7 +110,7 @@ Notice that although the original saddle was continuous, these 2-d representatio
 
 
 
-### Limits and continuity
+## Limits
 For functions of several variables, we have to define limits and continuity for these multivariable settings. For now, we focus on two variable functions as the multivariable case follows similar from the two variable case.
 
 Let $P(x, y) \rightarrow P_0(a, b)$ be a path in the $x-y$ plane that starts at the point $P(x, y)$ and ends at the point $P_0(a, b)$ with coordinates $(a, b)$. Thus, we can understand the limit as the fixed value of $f(x, y)$ for which all paths that connect the points $P(x, y)$ that are "close" to $P_0(a, b)$ converge to. 
@@ -211,5 +211,40 @@ Let $f(x, y) = \sqrt{1 - x^2 - y^2}$. The boundary points are all the points on 
 :::{.definition}
 A region $\mathcal{D}$ is said to be **open** if it only contains interior points (i.e., $\mathcal{D}$ has no boundary points). A region $\mathcal{D}$ is said to be **closed** if the region contains all its boundary points. 
 :::
+
+**Figure: limit paths along the boundary**
+
+:::{.example}
+Consider the $\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}$. Because the point $(4, 4)$ is not a valid point in the domain (can't divide by $4-4=0$), the point $(4, 4)$ is a boundary point of the domain. The boundary of the domain that is not contained in the domain is the set of points $x = y$. Assuming we are not taking a path along the boundary, we know that $x \neq y$ in the interior of the domain. Hence, 
+\begin{align*}
+\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y} & = \lim_{(x, y) \rightarrow (4, 4)} \frac{(x - y)(x + y)}{x - y} \\
+& = \lim_{(x, y) \rightarrow (4, 4)} x + y  = 4 + 4 = 8\\
+\end{align*}
+for all paths that do not cross the line $y = x$.
+:::
+
+:::{.example}
+**nonexistence of limit in class**
+:::
+
+## Continuity
+A very important property of functions is continuity. In a general sense, a function is continuous if two nearby input values result in nearby output values. As a graph, this means that there are no hops, skips, or jumps.
+
+:::{.definition}
+The function $f(x, y)$ is said to be continuous at the point $(a, b)$ if the following are true
+1) $f(a, b)$ is defined at $(a, b)$
+2) $\lim_{(x, y) \rightarrow (a, b)} f(x, y)$ exists
+2) $\lim_{(x, y) \rightarrow (a, b)} f(x, y) = f(a, b)$ 
+:::
+
+:::{.example}
+**checking continuity in class**
+$f(x, y) = \begin{cases}
+\frac{x^2 - y^2}{x - y} & \mbox{ if } x \neq y \\
+x + y & \mbox{ if } x = y \\
+\end{cases}$
+:::
+
+
 
 
