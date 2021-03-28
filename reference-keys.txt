@@ -199,6 +199,13 @@ exm:unlabeled-div-197
 def:unlabeled-div-198
 exm:unlabeled-div-199
 def:unlabeled-div-200
+exm:unlabeled-div-201
+exm:unlabeled-div-202
+def:unlabeled-div-203
+exm:unlabeled-div-204
+def:unlabeled-div-205
+exm:unlabeled-div-206
+exm:unlabeled-div-207
 section-preface
 section-getting-started-in-r
 section-notation
@@ -336,8 +343,11 @@ section-orthogonal-sets
 section-orthogonal-projections
 section-graphs-and-limits
 section-graphs-and-level-curves
-section-limits-and-continuity
+section-limits
 section-boundary-points
+section-continuity
+section-partial-derivatives
+section-higher-order-partial-derivatives
 section-vectors-and-matrices
 section-arrays
 section-lists

@@ -32,8 +32,8 @@
   
   
 <link rel="prev" href="section-inner-product-length-and-orthogonality.html"/>
-<link rel="next" href="section-vectors-and-matrices.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="section-partial-derivatives.html"/>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,6 +51,13 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -285,14 +292,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.5" data-path="section-inner-product-length-and-orthogonality.html"><a href="section-inner-product-length-and-orthogonality.html#section-orthogonal-projections"><i class="fa fa-check"></i><b>23.5</b> Orthogonal projections</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html"><i class="fa fa-check"></i><b>24</b> Graphs and Limits</a><ul>
-<li class="chapter" data-level="24.0.1" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-graphs-and-level-curves"><i class="fa fa-check"></i><b>24.0.1</b> Graphs and level curves</a></li>
-<li class="chapter" data-level="24.0.2" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-limits-and-continuity"><i class="fa fa-check"></i><b>24.0.2</b> Limits and continuity</a></li>
-<li class="chapter" data-level="24.0.3" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-boundary-points"><i class="fa fa-check"></i><b>24.0.3</b> Boundary points</a></li>
+<li class="chapter" data-level="24.1" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-graphs-and-level-curves"><i class="fa fa-check"></i><b>24.1</b> Graphs and level curves</a></li>
+<li class="chapter" data-level="24.2" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-limits"><i class="fa fa-check"></i><b>24.2</b> Limits</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-boundary-points"><i class="fa fa-check"></i><b>24.2.1</b> Boundary points</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>25</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="25.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>25.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="25.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>25.0.2</b> Lists</a></li>
-<li class="chapter" data-level="25.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>25.1</b> Exercises</a></li>
+<li class="chapter" data-level="24.3" data-path="section-graphs-and-limits.html"><a href="section-graphs-and-limits.html#section-continuity"><i class="fa fa-check"></i><b>24.3</b> Continuity</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="section-partial-derivatives.html"><a href="section-partial-derivatives.html"><i class="fa fa-check"></i><b>25</b> Partial Derivatives</a><ul>
+<li class="chapter" data-level="25.1" data-path="section-partial-derivatives.html"><a href="section-partial-derivatives.html#section-higher-order-partial-derivatives"><i class="fa fa-check"></i><b>25.1</b> Higher-order partial derivatives</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>26</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="26.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>26.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="26.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>26.0.2</b> Lists</a></li>
+<li class="chapter" data-level="26.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>26.1</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -330,8 +342,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>The range is the unit interval <span class="math inline">\([0, 1]\)</span></p></li>
 </ul>
 </div>
-<div id="section-graphs-and-level-curves" class="section level3">
-<h3><span class="header-section-number">24.0.1</span> Graphs and level curves</h3>
+<div id="section-graphs-and-level-curves" class="section level2">
+<h2><span class="header-section-number">24.1</span> Graphs and level curves</h2>
 <div class="example">
 <p><span id="section-exm:unlabeled-div-192" class="example"><strong>Example 24.2  </strong></span>The parabola</p>
 <p>Consider the function of two variables
@@ -385,8 +397,8 @@ where each curve in the (x, y) plane has exactly the same value of <span class="
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
 </div>
 </div>
-<div id="section-limits-and-continuity" class="section level3">
-<h3><span class="header-section-number">24.0.2</span> Limits and continuity</h3>
+<div id="section-limits" class="section level2">
+<h2><span class="header-section-number">24.2</span> Limits</h2>
 <p>For functions of several variables, we have to define limits and continuity for these multivariable settings. For now, we focus on two variable functions as the multivariable case follows similar from the two variable case.</p>
 <p>Let <span class="math inline">\(P(x, y) \rightarrow P_0(a, b)\)</span> be a path in the <span class="math inline">\(x-y\)</span> plane that starts at the point <span class="math inline">\(P(x, y)\)</span> and ends at the point <span class="math inline">\(P_0(a, b)\)</span> with coordinates <span class="math inline">\((a, b)\)</span>. Thus, we can understand the limit as the fixed value of <span class="math inline">\(f(x, y)\)</span> for which all paths that connect the points <span class="math inline">\(P(x, y)\)</span> that are “close” to <span class="math inline">\(P_0(a, b)\)</span> converge to.</p>
 <p>For one-dimensional limits, “close” was defined as distance. Thus, for multivariable functions, “close” is defined as the Euclidean distance defined by a “ball” of radius <span class="math inline">\(\delta\)</span> and the limits examines the function output as the radius <span class="math inline">\(\delta\)</span> goes to 0.</p>
@@ -452,9 +464,8 @@ whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span c
 <div class="example">
 <p><span id="section-exm:unlabeled-div-197" class="example"><strong>Example 24.5  </strong></span>Use the rules above to evaluate the limit <span class="math inline">\(\lim_{(x, y) \rightarrow (2, 3)} 4x^3y + \sqrt{xy}\)</span></p>
 </div>
-</div>
 <div id="section-boundary-points" class="section level3">
-<h3><span class="header-section-number">24.0.3</span> Boundary points</h3>
+<h3><span class="header-section-number">24.2.1</span> Boundary points</h3>
 <div class="definition">
 <p><span id="section-def:unlabeled-div-198" class="definition"><strong>Definition 24.3  </strong></span>Define a region <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span>.</p>
 <ul>
@@ -468,6 +479,33 @@ whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span c
 <div class="definition">
 <p><span id="section-def:unlabeled-div-200" class="definition"><strong>Definition 24.4  </strong></span>A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>open</strong> if it only contains interior points (i.e., <span class="math inline">\(\mathcal{D}\)</span> has no boundary points). A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>closed</strong> if the region contains all its boundary points.</p>
 </div>
+<p><strong>Figure: limit paths along the boundary</strong></p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-201" class="example"><strong>Example 24.7  </strong></span>Consider the <span class="math inline">\(\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}\)</span>. Because the point <span class="math inline">\((4, 4)\)</span> is not a valid point in the domain (can’t divide by <span class="math inline">\(4-4=0\)</span>), the point <span class="math inline">\((4, 4)\)</span> is a boundary point of the domain. The boundary of the domain that is not contained in the domain is the set of points <span class="math inline">\(x = y\)</span>. Assuming we are not taking a path along the boundary, we know that <span class="math inline">\(x \neq y\)</span> in the interior of the domain. Hence,
+<span class="math display">\[\begin{align*}
+\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y} &amp; = \lim_{(x, y) \rightarrow (4, 4)} \frac{(x - y)(x + y)}{x - y} \\
+&amp; = \lim_{(x, y) \rightarrow (4, 4)} x + y  = 4 + 4 = 8\\
+\end{align*}\]</span>
+for all paths that do not cross the line <span class="math inline">\(y = x\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-202" class="example"><strong>Example 24.8  </strong></span><strong>nonexistence of limit in class</strong></p>
+</div>
+</div>
+</div>
+<div id="section-continuity" class="section level2">
+<h2><span class="header-section-number">24.3</span> Continuity</h2>
+<p>A very important property of functions is continuity. In a general sense, a function is continuous if two nearby input values result in nearby output values. As a graph, this means that there are no hops, skips, or jumps.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-203" class="definition"><strong>Definition 24.5  </strong></span>The function <span class="math inline">\(f(x, y)\)</span> is said to be continuous at the point <span class="math inline">\((a, b)\)</span> if the following are true
+1) <span class="math inline">\(f(a, b)\)</span> is defined at <span class="math inline">\((a, b)\)</span>
+2) <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y)\)</span> exists
+2) <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y) = f(a, b)\)</span></p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-204" class="example"><strong>Example 24.9  </strong></span><strong>checking continuity in class</strong>
+<span class="math inline">\(f(x, y) = \begin{cases} \frac{x^2 - y^2}{x - y} &amp; \mbox{ if } x \neq y \\ x + y &amp; \mbox{ if } x = y \\ \end{cases}\)</span></p>
+</div>
 
 </div>
 </div>
@@ -477,7 +515,7 @@ whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span c
         </div>
       </div>
 <a href="section-inner-product-length-and-orthogonality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-partial-derivatives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
