@@ -31,7 +31,7 @@ jobs:
           path: ~/Library/Application Support/renv
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
-          ${{ runner.os }}-renv- 
+            ${{ runner.os }}-renv- 
 
       - name: Install R packages with renv
         run: |
