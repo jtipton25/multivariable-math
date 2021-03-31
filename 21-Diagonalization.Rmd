@@ -87,7 +87,7 @@ which gives us that $\mathbf{A}$ is similar to itself.
 
 However, there is nothing in the diagonalization theorem that says that we must put the eigenvalues in the order 1, 2, 3. If we put the eigenvalues in the order 3, 2, 1, then the corresponding eigenvectors are $\mathbf{e}_3$, $\mathbf{e}_2$, and $\mathbf{e}_1$. Using the diagonlaization theorem, we have $\mathbf{A} = \tilde{\mathbf{P}} \tilde{\mathbf{D}} \tilde{\mathbf{P}}^{-1}$ where $\tilde{\mathbf{P}}$ is the matrix with columns $\mathbf{e}_3$, $\mathbf{e}_2$, and $\mathbf{e}_1$ and $\tilde{\mathbf{D}}$ is the diagonal matrix with entries 3, 2, 1 which results in 
 \begin{align*}
-`r array_to_latex(A)` & = `r array_to_latex(matrix(c(0, 0, 1, 0, 1, 0, 1, 0, 0), 3, 3))` `r array_to_latex(diag(c(3, 2, 1)))` `r `r array_to_latex(matrix(c(0, 0, 1, 0, 1, 0, 1, 0, 0), 3, 3))``^{-1}
+`r array_to_latex(A)` & = `r array_to_latex(matrix(c(0, 0, 1, 0, 1, 0, 1, 0, 0), 3, 3))` `r array_to_latex(diag(c(3, 2, 1)))` `r array_to_latex(matrix(c(0, 0, 1, 0, 1, 0, 1, 0, 0), 3, 3))`^{-1}
 \end{align*}
 which implies that the matrices $`r array_to_latex(A)`$ and $`r array_to_latex(diag(c(3, 2, 1)))`$ are similar to each other
 
