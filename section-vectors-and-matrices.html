@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 26 Vectors and matrices | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 28 Vectors and matrices | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 26 Vectors and matrices | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 28 Vectors and matrices | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 26 Vectors and matrices | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 28 Vectors and matrices | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-03-31" />
+<meta name="date" content="2021-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-partial-derivatives.html"/>
+<link rel="prev" href="section-the-gradient-and-directional-derivatives.html"/>
 
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -301,10 +301,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25" data-path="section-partial-derivatives.html"><a href="section-partial-derivatives.html"><i class="fa fa-check"></i><b>25</b> Partial Derivatives</a><ul>
 <li class="chapter" data-level="25.1" data-path="section-partial-derivatives.html"><a href="section-partial-derivatives.html#section-higher-order-partial-derivatives"><i class="fa fa-check"></i><b>25.1</b> Higher-order partial derivatives</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>26</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="26.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>26.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="26.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>26.0.2</b> Lists</a></li>
-<li class="chapter" data-level="26.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>26.1</b> Exercises</a></li>
+<li class="chapter" data-level="26" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html"><i class="fa fa-check"></i><b>26</b> The chain rule</a><ul>
+<li class="chapter" data-level="26.1" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-with-one-independent-variable"><i class="fa fa-check"></i><b>26.1</b> The chain rule with one independent variable</a></li>
+<li class="chapter" data-level="26.2" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-with-several-independent-variables"><i class="fa fa-check"></i><b>26.2</b> The chain rule with several independent variables</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html"><i class="fa fa-check"></i><b>27</b> The gradient and directional derivatives</a></li>
+<li class="chapter" data-level="28" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>28</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="28.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>28.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="28.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>28.0.2</b> Lists</a></li>
+<li class="chapter" data-level="28.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>28.1</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -327,24 +332,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="section-vectors-and-matrices" class="section level1">
-<h1><span class="header-section-number">Chapter 26</span> Vectors and matrices</h1>
+<h1><span class="header-section-number">Chapter 28</span> Vectors and matrices</h1>
 <p>This can produce an error, so we wrap the function <code>array_to_latex</code> in a call to <code>cat()</code></p>
-<div class="sourceCode" id="section-cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="section-vectors-and-matrices.html#cb225-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb225-2"><a href="section-vectors-and-matrices.html#cb225-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
-<p>[1] “\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}”</p>
 <div class="sourceCode" id="section-cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="section-vectors-and-matrices.html#cb226-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb226-2"><a href="section-vectors-and-matrices.html#cb226-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
+<span id="cb226-2"><a href="section-vectors-and-matrices.html#cb226-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
+<p>[1] “\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}”</p>
+<div class="sourceCode" id="section-cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="section-vectors-and-matrices.html#cb227-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb227-2"><a href="section-vectors-and-matrices.html#cb227-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
 <span class="math display">\[\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}\]</span>
 <p>The fundamental objects in this text are scalars, vectors, and matrices.</p>
 <!--   -->
 <!--   -->
 <!--   -->
 <div id="section-arrays" class="section level3">
-<h3><span class="header-section-number">26.0.1</span> Arrays</h3>
+<h3><span class="header-section-number">28.0.1</span> Arrays</h3>
 <p>Higher order arrays (for example, tensors in the tensorflow library) can be represented using subscript notation where <span class="math inline">\([\mathbf{A}_1 | \mathbf{A}_2 | \cdots \mathbf{A}_n]\)</span> is a 3-dimensional array. Higher order arrays can be represented using additional subscripts.</p>
 </div>
 <div id="section-lists" class="section level3">
-<h3><span class="header-section-number">26.0.2</span> Lists</h3>
+<h3><span class="header-section-number">28.0.2</span> Lists</h3>
 <ul>
 <li>To add: vector addition, multiplication</li>
 <li>To add: matrix addition, multiplication</li>
@@ -352,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="section-exercises" class="section level2">
-<h2><span class="header-section-number">26.1</span> Exercises</h2>
+<h2><span class="header-section-number">28.1</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>What is 3 + <span class="math inline">\(\begin{pmatrix} 4 \\ 7 \\ 3 \end{pmatrix}\)</span>?</p></li>
 <li><p>Why can’t you add the following two vectors:</p></li>
@@ -394,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="section-partial-derivatives.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-the-gradient-and-directional-derivatives.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

@@ -209,6 +209,11 @@ exm:unlabeled-div-207
 exm:unlabeled-div-208
 exm:unlabeled-div-209
 thm:unnamed-chunk-236
+exm:unlabeled-div-211
+def:unnamed-chunk-238
+exm:unnamed-chunk-239
+def:unnamed-chunk-240
+exm:unnamed-chunk-241
 section-preface
 section-getting-started-in-r
 section-notation
@@ -351,6 +356,10 @@ section-boundary-points
 section-continuity
 section-partial-derivatives
 section-higher-order-partial-derivatives
+section-the-chain-rule
+section-the-chain-rule-with-one-independent-variable
+section-the-chain-rule-with-several-independent-variables
+section-the-gradient-and-directional-derivatives
 section-vectors-and-matrices
 section-arrays
 section-lists
