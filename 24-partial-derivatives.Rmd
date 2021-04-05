@@ -94,8 +94,9 @@ Let the function $f(x, y)$ be defined on an open domain $\mathcal{D}$ of $\mathc
 Many of the commonly used functional forms in data science meet the criteria above. Thus, for many of the commonly used functions in data science, the order of evaluation of partial derivatives often does not matter. In practice, it is always good practice to verify this though.
 
 
-
-
+<!-- ## Differentiability -->
+<!-- We have learned how to calculate a derivative, but an important characteristic is whether a derivative exists.  -->
+    
 
 
 

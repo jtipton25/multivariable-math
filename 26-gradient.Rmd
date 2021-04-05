@@ -1,0 +1,7 @@
+# The gradient and directional derivatives
+
+Partial derivatives tell about how a rate of function changes in a particular direction (in the direction of a coordinate). 
+
+Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.
+
+Suppose you are standing on a mountain surface at the point $(x, y, z)$ in 3-dimensions where $z = f(x, y)$ is the function that gives the height of the mountain at location $(x, y)$. If you are standing at the point $(a, b)$ in the $(x, y)$ coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the **directional derivative** and the **gradient**.
