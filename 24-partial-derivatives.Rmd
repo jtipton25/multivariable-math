@@ -44,7 +44,7 @@ Note that the partial derivative asks the question "What is the rate of change o
 
 **draw surfaces with marginal slices**
 
-```{.definition, label = "partial"}
+```{definition, label = "partial"}
 The partial derivative of the function $f(x, y)$ with respect to $x$ at the point $(a, b)$ is 
 \begin{align*}
 \frac{\partial}{\partial x} f(x, y) = f_x(x, y) & = \lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)} {h}.
