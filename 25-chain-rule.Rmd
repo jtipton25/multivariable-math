@@ -70,4 +70,45 @@ Let $z = f(x, y) = x^2 e^y$ and let $x = 2s - t$ and $y = 4s^3-3t^2$
 ```
 
 
+
 <!-- ## Implicit differentiation -->
+
+## The chain rule in matrix notation
+
+
+To get a better understanding of the chain rule, it helps to show the chain rule using matrix notation. Using the matrix notation will enable you to apply the chain rule to any number of intermediate variables. For example, consider the extension of the definition for the chain rule of a function with one independent variable. 
+
+```{definition, name = "Matrix chain rule for one independent variable"}
+Let $z$ be a differentiable function of two variables $x$ and $y$ so that $z = f(x, y)$ and let $x=g(t)$ be a function of $t$ and $y=h(t)$ a function of $t$. Written in functional form, $z$ can be written as $z = f(x, y) = f(g(t), h(t))$, with $x=g(t)$ and $y=h(t)$. Then we can define the derivative of $z$ with respect to $t$ as 
+\begin{align*}
+\frac{dz}{dt} = \frac{\partial z}{ \partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}
+\end{align*}
+
+Written in matrix notation, this is 
+\begin{align*}
+\frac{dz}{dt} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{dx}{dt} \\  \frac{dy}{dt} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}
+\end{align*}
+```
+
+The definition above for the chain rule with two variables is given by 
+```{definition, name = "Chain rule for two independent variables"}
+Let $z$ be a differentiable function of two variables $x$ and $y$ so that $z = f(x, y)$ and let $x=g(t, s)$ be a function of $s$ and $t$ and $y=h(s, t)$ a function of $s$ and $t$. Written in functional form, $z$ can be written as $z = f(x, y) = f(g(s, t), h(s, t))$, with $x=g(s, t)$ and $y=h(s, t)$. Then we can define the partial derivative of $z$ with respect to $s$ as 
+\begin{align*}
+\frac{\partial z}{\partial s} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
+\end{align*}
+which, in matrix notation is
+\begin{align*}
+\frac{dz}{dt} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{\partial x}{\partial s} \\  \frac{\partial y}{\partial s} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
+\end{align*}
+
+The partial derivative of $z$ with respect to $t$ as 
+\begin{align*}
+\frac{\partial z}{\partial t} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial t} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial t}
+\end{align*}
+which, in matrix notation is
+\begin{align*}
+\frac{dz}{dt} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{\partial x}{\partial t} \\  \frac{\partial y}{\partial t} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial t} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial t}
+\end{align*}
+```
+
+This use of matrix notation for derivatives will be useful in understanding the **gradient**.

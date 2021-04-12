@@ -5,3 +5,31 @@ Partial derivatives tell about how a rate of function changes in a particular di
 Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.
 
 Suppose you are standing on a mountain surface at the point $(x, y, z)$ in 3-dimensions where $z = f(x, y)$ is the function that gives the height of the mountain at location $(x, y)$. If you are standing at the point $(a, b)$ in the $(x, y)$ coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the **directional derivative** and the **gradient**.
+
+```{definition, name = "Directional Derivative"}
+Given a function $f(x,y)$ that is differentiable at $(a, b)$ and a unit vector $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$ in the $x-y$ plane, the **directional derivative** of $f$ at $(a, b)$ in the direction of $\mathbf{v}$ is
+\begin{align*}
+D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - f(a, b)}{h}
+\end{align*}
+assuming the limit exists. 
+```
+
+
+To understand how the directional derivative relates to partial derivatives, in the definition above, let $v_2 = 0$ and to make $\mathbf{v}$ a unit vector, set $v_1 = 1$ ($\mathbf{v}$ is the standard basis vector $\mathbf{e}_1$). Then, the limit in the directional derivative definition above becomes
+\begin{align*}
+\lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)}{h}
+\end{align*}
+which is the definition for the partial derivative of $f$ in the $x$ direction $f_x = \frac{\partial f}{\partial x}$ (Definition \@ref(def:partial)). Likewise, letting $\mathbf{v} = \mathbf{e}_2$, the standard basis vector in the y direction, gives the partial derivative in the y direction $f_y = \frac{\partial f}{\partial y}$. Thus, one could pick any direction vector $\mathbf{v}$ and then calculate the partial derivative in that direction.
+
+
+Now, observe that the vectors $\{\mathbf{e}_1, \mathbf{e}_2\}$ form a spanning set for $\mathcal{R}^2$, which contains the domain for all possible inputs into the function $f(\cdot, \cdot)$. Therefore, any unit vector $\mathbf{v} \in \mathcal{R}^2$ can be written as a linear combination of the basis vectors with a single coefficient $c$ where $\mathbf{v} = c \mathbf{e}_1 + (1-c) \mathbf{e}_2$
+
+```{example}
+Show that $\mathbf{v} = c \mathbf{e}_1 + (1-c) \mathbf{e}_2$ has length 1
+```
+
+The previous observation leads to the fact that the directional derivative is 
+
+Remember that a derivative is just a rate of change of a function. Using directional derivatives, one can check the rate of change of a multivariate function in many different directions. However,  
+
+
