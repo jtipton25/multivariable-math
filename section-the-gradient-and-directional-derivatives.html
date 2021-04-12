@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-04-05" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -304,6 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html"><i class="fa fa-check"></i><b>26</b> The chain rule</a><ul>
 <li class="chapter" data-level="26.1" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-with-one-independent-variable"><i class="fa fa-check"></i><b>26.1</b> The chain rule with one independent variable</a></li>
 <li class="chapter" data-level="26.2" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-with-several-independent-variables"><i class="fa fa-check"></i><b>26.2</b> The chain rule with several independent variables</a></li>
+<li class="chapter" data-level="26.3" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-in-matrix-notation"><i class="fa fa-check"></i><b>26.3</b> The chain rule in matrix notation</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html"><i class="fa fa-check"></i><b>27</b> The gradient and directional derivatives</a></li>
 <li class="chapter" data-level="28" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>28</b> Vectors and matrices</a><ul>
@@ -336,6 +337,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Partial derivatives tell about how a rate of function changes in a particular direction (in the direction of a coordinate).</p>
 <p>Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.</p>
 <p>Suppose you are standing on a mountain surface at the point <span class="math inline">\((x, y, z)\)</span> in 3-dimensions where <span class="math inline">\(z = f(x, y)\)</span> is the function that gives the height of the mountain at location <span class="math inline">\((x, y)\)</span>. If you are standing at the point <span class="math inline">\((a, b)\)</span> in the <span class="math inline">\((x, y)\)</span> coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the <strong>directional derivative</strong> and the <strong>gradient</strong>.</p>
+
+<div class="definition">
+<span id="section-def:unnamed-chunk-244" class="definition"><strong>Definition 27.1  (Directional Derivative)  </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<span class="math display">\[\begin{align*}
+D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - f(a, b)}{h}
+\end{align*}\]</span>
+assuming the limit exists.
+</div>
+
+<p>To understand how the directional derivative relates to partial derivatives, in the definition above, let <span class="math inline">\(v_2 = 0\)</span> and to make <span class="math inline">\(\mathbf{v}\)</span> a unit vector, set <span class="math inline">\(v_1 = 1\)</span> (<span class="math inline">\(\mathbf{v}\)</span> is the standard basis vector <span class="math inline">\(\mathbf{e}_1\)</span>). Then, the limit in the directional derivative definition above becomes
+<span class="math display">\[\begin{align*}
+\lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)}{h}
+\end{align*}\]</span>
+which is the definition for the partial derivative of <span class="math inline">\(f\)</span> in the <span class="math inline">\(x\)</span> direction <span class="math inline">\(f_x = \frac{\partial f}{\partial x}\)</span> (Definition <a href="#def:partial">25.1</a>). Likewise, letting <span class="math inline">\(\mathbf{v} = \mathbf{e}_2\)</span>, the standard basis vector in the y direction, gives the partial derivative in the y direction <span class="math inline">\(f_y = \frac{\partial f}{\partial y}\)</span>. Thus, one could pick any direction vector <span class="math inline">\(\mathbf{v}\)</span> and then calculate the partial derivative in that direction.</p>
+<p>Now, observe that the vectors <span class="math inline">\(\{\mathbf{e}_1, \mathbf{e}_2\}\)</span> form a spanning set for <span class="math inline">\(\mathcal{R}^2\)</span>, which contains the domain for all possible inputs into the function <span class="math inline">\(f(\cdot, \cdot)\)</span>. Therefore, any unit vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^2\)</span> can be written as a linear combination of the basis vectors with a single coefficient <span class="math inline">\(c\)</span> where <span class="math inline">\(\mathbf{v} = c \mathbf{e}_1 + (1-c) \mathbf{e}_2\)</span></p>
+
+<div class="example">
+<span id="section-exm:unnamed-chunk-245" class="example"><strong>Example 27.1  </strong></span>Show that <span class="math inline">\(\mathbf{v} = c \mathbf{e}_1 + (1-c) \mathbf{e}_2\)</span> has length 1
+</div>
+
+<p>The previous observation leads to the fact that the directional derivative is</p>
+<p>Remember that a derivative is just a rate of change of a function. Using directional derivatives, one can check the rate of change of a multivariate function in many different directions. However,</p>
 
 </div>
             </section>
