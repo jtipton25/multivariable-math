@@ -69,7 +69,7 @@ Notice that you can find partial derivatives by holding all the other variables 
 
 ## Higher-order partial derivatives
 
-We can calculate the partial derivatives of partial derivatives. The derivatives could be with respect to the same variable repeatedly or the derivatives could be with respect to different variables in which case we call these **mixed partial derivatives**. Notation for higher order partial derivatives is $\frac{\partial^2}{\partial x \partial y} f(x, y) = f_{yx}(x, y)$ which says first take the partial derivative of with respect to $y$ then take the partial derivative with respect to $x$. The possible sets of second-order partial derivatives for functions of two variables are shown in the table below
+We can calculate the partial derivatives of partial derivatives. The derivatives could be with respect to the same variable repeatedly or the derivatives could be with respect to different variables in which case we call these **mixed partial derivatives**. Notation for higher order partial derivatives is $\frac{\partial^2}{\partial x \partial y} f(x, y) = f_{xy}(x, y)$ which says first take the partial derivative of with respect to $y$ then take the partial derivative with respect to $x$. The possible sets of second-order partial derivatives for functions of two variables are shown in the table below
 
 
 
