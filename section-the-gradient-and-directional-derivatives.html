@@ -339,12 +339,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-the-gradient-and-directional-derivatives" class="section level1">
 <h1><span class="header-section-number">Chapter 27</span> The gradient and directional derivatives</h1>
+<div class="sourceCode" id="section-cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="section-the-gradient-and-directional-derivatives.html#cb226-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb226-2"><a href="section-the-gradient-and-directional-derivatives.html#cb226-2"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb226-3"><a href="section-the-gradient-and-directional-derivatives.html#cb226-3"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb226-4"><a href="section-the-gradient-and-directional-derivatives.html#cb226-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>Partial derivatives tell about how a rate of function changes in a particular direction (in the direction of a coordinate).</p>
 <p>Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.</p>
 <p>Suppose you are standing on a mountain surface at the point <span class="math inline">\((x, y, z)\)</span> in 3-dimensions where <span class="math inline">\(z = f(x, y)\)</span> is the function that gives the height of the mountain at location <span class="math inline">\((x, y)\)</span>. If you are standing at the point <span class="math inline">\((a, b)\)</span> in the <span class="math inline">\((x, y)\)</span> coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the <strong>directional derivative</strong> and the <strong>gradient</strong>.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-244" class="definition"><strong>Definition 27.1  (Directional Derivative)  </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<span id="section-def:unnamed-chunk-245" class="definition"><strong>Definition 27.1  (Directional Derivative)  </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
 <span class="math display">\[\begin{align*}
 D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - f(a, b)}{h}
 \end{align*}\]</span>
@@ -368,7 +372,7 @@ which is the dot product of the vectors <span class="math inline">\(\begin{pmatr
 <p>Notice that the vector <span class="math inline">\(\mathbf{v}\)</span> is a unit vector and therefore the directional derivative is a weighted sum of the partial derivatives in the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> directions weighted by the vector <span class="math inline">\(\mathbf{v}\)</span> (weighted sums are sums where the coefficients sum to 1–in this case the sum is in the “distance” metric). As a consequence, we can find the directional derivative in any direction by changing the vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-245" class="definition"><strong>Definition 27.2  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> a unit vector in the <span class="math inline">\(xy\)</span> plane. Then, the directional derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<span id="section-def:unnamed-chunk-246" class="definition"><strong>Definition 27.2  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> a unit vector in the <span class="math inline">\(xy\)</span> plane. Then, the directional derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
 <span class="math display">\[\begin{align*}
 D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
 \end{align*}\]</span>
@@ -376,7 +380,7 @@ D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial 
 
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-246" class="example"><strong>Example 27.1  </strong></span>Compute the partial derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, - \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
+<p><span id="section-exm:unnamed-chunk-247" class="example"><strong>Example 27.1  </strong></span>Compute the partial derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, - \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
 <ul>
 <li>calculate the directional derivatives</li>
 <li>graph the directional derivatives using contour plots and segments
@@ -387,7 +391,7 @@ D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial 
 <p>The directional derivative is a dot product of the partial derivatives and a unit vector. The gradient is similar, but rather than return a single value (a number), the gradient returns a vector at a point <span class="math inline">\((a, b)\)</span>.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-247" class="definition"><strong>Definition 27.3  (The Gradient)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
+<span id="section-def:unnamed-chunk-248" class="definition"><strong>Definition 27.3  (The Gradient)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
 <span class="math display">\[\begin{align*}
 \nabla f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \\
  &amp; = \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} \mathbf{e}_1 + \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \mathbf{e}_2,
@@ -403,7 +407,7 @@ D_{\mathbf{v}} f(a, b) &amp; = \nabla f(a, b) \cdot \mathbf{v} \\
 the directional derivative is the dot product of the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b)\)</span> with the unit vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-248" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
+<p><span id="section-exm:unnamed-chunk-249" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
 <ul>
 <li>calculate the gradient</li>
 <li>graph the gradient using contour plots and segments
@@ -412,7 +416,7 @@ the directional derivative is the dot product of the gradient <span class="math 
 <p>The gradient is critical in data science because is the tool that allows for finding the set of parameters for a given model that are “most likely” given the data. The gradient has the property in that at each point <span class="math inline">\((a, b)\)</span> where <span class="math inline">\(f(x, y)\)</span> is differentiable, the gradient points in the direction of the maximum rate of change.</p>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-249" class="theorem"><strong>Theorem 27.1  (The gradient and rates of change)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(\nabla f(a, b) \neq 0\)</span>. Then,</p>
+<p><span id="section-thm:unnamed-chunk-250" class="theorem"><strong>Theorem 27.1  (The gradient and rates of change)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(\nabla f(a, b) \neq 0\)</span>. Then,</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f\)</span> has its maximum rate of increase at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(\nabla f(a, b)\)</span>. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is <span class="math inline">\(\|\nabla f(a, b)\|\)</span> which is the length of the gradient vector.</p></li>
 <li><p><span class="math inline">\(f\)</span> has its maximum rate of decrease at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(-\nabla f(a, b)\)</span>. The rate of change in the direction of maximum rate of decrease is <span class="math inline">\(-\|\nabla f(a, b)\|\)</span>.</p></li>
@@ -421,7 +425,7 @@ the directional derivative is the dot product of the gradient <span class="math 
 </ol>
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-250" class="example"><strong>Example 27.3  </strong></span>
+<p><span id="section-exm:unnamed-chunk-251" class="example"><strong>Example 27.3  </strong></span>
 Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
 <ul>
 <li>graph the function as contours and plot the gradient as a segment
