@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-04-16" />
+<meta name="date" content="2021-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="section-the-chain-rule.html"/>
-<link rel="next" href="section-vectors-and-matrices.html"/>
+<link rel="next" href="section-tangent-planes-and-linear-approximations.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -307,12 +307,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26.3" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-in-matrix-notation"><i class="fa fa-check"></i><b>26.3</b> The chain rule in matrix notation</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html"><i class="fa fa-check"></i><b>27</b> The gradient and directional derivatives</a><ul>
-<li class="chapter" data-level="27.1" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html#section-the-gradient"><i class="fa fa-check"></i><b>27.1</b> The Gradient</a></li>
+<li class="chapter" data-level="27.1" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html#section-the-gradient"><i class="fa fa-check"></i><b>27.1</b> The Gradient</a><ul>
+<li class="chapter" data-level="27.1.1" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html#section-the-gradient-in-higher-dimensions"><i class="fa fa-check"></i><b>27.1.1</b> The gradient in higher dimensions</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>28</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="28.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>28.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="28.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>28.0.2</b> Lists</a></li>
-<li class="chapter" data-level="28.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>28.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="section-tangent-planes-and-linear-approximations.html"><a href="section-tangent-planes-and-linear-approximations.html"><i class="fa fa-check"></i><b>28</b> Tangent planes and linear approximations</a></li>
+<li class="chapter" data-level="29" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>29</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="29.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>29.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="29.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>29.0.2</b> Lists</a></li>
+<li class="chapter" data-level="29.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>29.1</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -411,12 +414,27 @@ the directional derivative is the dot product of the gradient <span class="math 
 <div class="theorem">
 <p><span id="section-thm:unnamed-chunk-249" class="theorem"><strong>Theorem 27.1  (The gradient and rates of change)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(\nabla f(a, b) \neq 0\)</span>. Then,</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(f\)</span> has its maximum rate of increase at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(\nabla f(a, b)\)</span>. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is <span class="math inline">\(\|\nabla f(a, b)\|\)</span> which is the length of the gradient vector.</li>
-<li><span class="math inline">\(f\)</span> has its maximum rate of decrease at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(-\nabla f(a, b)\)</span>. The rate of change in the direction of maximum rate of decrease is <span class="math inline">\(-\|\nabla f(a, b)\|\)</span>.</li>
-<li>The directional derivative is 0 in any direction orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>.
+<li><p><span class="math inline">\(f\)</span> has its maximum rate of increase at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(\nabla f(a, b)\)</span>. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is <span class="math inline">\(\|\nabla f(a, b)\|\)</span> which is the length of the gradient vector.</p></li>
+<li><p><span class="math inline">\(f\)</span> has its maximum rate of decrease at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(-\nabla f(a, b)\)</span>. The rate of change in the direction of maximum rate of decrease is <span class="math inline">\(-\|\nabla f(a, b)\|\)</span>.</p></li>
+<li><p>The directional derivative is 0 in any direction orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>.</p>
 </div></li>
 </ol>
 
+<div class="example">
+<p><span id="section-exm:unnamed-chunk-250" class="example"><strong>Example 27.3  </strong></span>
+Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
+<ul>
+<li>graph the function as contours and plot the gradient as a segment
+</div></li>
+</ul>
+<div id="section-the-gradient-in-higher-dimensions" class="section level3">
+<h3><span class="header-section-number">27.1.1</span> The gradient in higher dimensions</h3>
+<p>We can extend the gradient to higher dimensional functions. Let <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 &amp; x_2 &amp; \cdots &amp; x_n \end{pmatrix}&#39;\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the gradient of <span class="math inline">\(f\)</span> at a point <span class="math inline">\(\mathbf{a} = (a_1, a_2, \ldots, a_n)\)</span> is</p>
+<p><span class="math display">\[\begin{align*}
+ \nabla f(\mathbf{a}) = \begin{pmatrix} \frac{\partial f(\mathbf{x})}{\partial x_1}|_{\mathbf{x} = \mathbf{a}} \\ \frac{\partial f(\mathbf{x})}{\partial x_2}|_{\mathbf{x} = \mathbf{a}} \\  \vdots \\ \frac{\partial f(\mathbf{x})}{\partial x_n}|_{\mathbf{x} = \mathbf{a}} \end{pmatrix} = \begin{pmatrix} f_{x_1}(\mathbf{a}) \\ f_{x_2}(\mathbf{a}) \\  \vdots \\ f_{x_n}(\mathbf{a}) \end{pmatrix} 
+\end{align*}\]</span></p>
+
+</div>
 </div>
 </div>
             </section>
@@ -425,7 +443,7 @@ the directional derivative is the dot product of the gradient <span class="math 
         </div>
       </div>
 <a href="section-the-chain-rule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-tangent-planes-and-linear-approximations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

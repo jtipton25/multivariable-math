@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Linearly independent sets and bases | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 28 Tangent planes and linear approximations | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Linearly independent sets and bases | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 28 Tangent planes and linear approximations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Linearly independent sets and bases | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 28 Tangent planes and linear approximations | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-vector-spaces-and-subspaces.html"/>
-<link rel="next" href="section-coordinate-systems-and-dimension.html"/>
+<link rel="prev" href="section-the-gradient-and-directional-derivatives.html"/>
+<link rel="next" href="section-vectors-and-matrices.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -337,135 +337,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-linearly-independent-sets-and-bases" class="section level1">
-<h1><span class="header-section-number">Chapter 16</span> Linearly independent sets and bases</h1>
-<div class="sourceCode" id="section-cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="section-linearly-independent-sets-and-bases.html#cb164-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb164-2"><a href="section-linearly-independent-sets-and-bases.html#cb164-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
-<p>Recall that a set of vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly independent if the only solution to the system of equations</p>
-<p><span class="math display">\[\begin{align*}
-x_1 \mathbf{v}_1 + \cdots + x_n \mathbf{v}_n = \mathbf{0}
-\end{align*}\]</span>
-is the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>. In other words, it is not possible to write any of the vectors in the set <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> as a linear combination of the other vectors.</p>
-<div class="definition">
-<p><span id="section-def:unlabeled-div-107" class="definition"><strong>Definition 16.1  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a subspace of a vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, the set of vectors <span class="math inline">\(\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}\)</span> is a <strong>basis</strong> for <span class="math inline">\(\mathcal{H}\)</span> if</p>
-<ul>
-<li><p>The set of vectors <span class="math inline">\(\mathcal{B}\)</span> are linearly independent</p></li>
-<li><p>The subspace spanned by <span class="math inline">\(\mathcal{B}\)</span> is <span class="math inline">\(\mathcal{H}\)</span>. In other words
-<span class="math display">\[\begin{align*}
-\mbox{span}(\mathbf{v}_1, \ldots, \mathbf{v}_n) = \mathcal{H}
-\end{align*}\]</span></p></li>
-</ul>
-</div>
-<div class="example">
-<ul>
-<li></li>
-<li>in class–standard basis <span class="math inline">\(\mathbf{e}_1, \ldots \mathbf{e}_n\)</span> which are the columns of the <span class="math inline">\(n \times n\)</span> identity matrix<span class="math inline">\(\mathbf{I}\)</span>.</li>
-</ul>
-</div>
-<div class="example">
-<ul>
-<li></li>
-<li>in class–pick 3 vectors of length 3. Are they a basis for <span class="math inline">\(\mathcal{R}^3\)</span>? What about <span class="math inline">\(\mathcal{R}^4\)</span>?</li>
-</ul>
-</div>
+<div id="section-tangent-planes-and-linear-approximations" class="section level1">
+<h1><span class="header-section-number">Chapter 28</span> Tangent planes and linear approximations</h1>
+<p>Let <span class="math inline">\(f(\mathbf{x})\)</span> be a differentiable function at a point <span class="math inline">\(\mathbf{a}\)</span>. Because the function is differentiable at <span class="math inline">\(\mathbf{a}\)</span>, this means that all paths <span class="math inline">\(P_\mathbf{a}\)</span> that approach the point <span class="math inline">\(\mathbf{a}\)</span> from all directions all take on values <span class="math inline">\(f(P_\mathbf{a})\)</span> that are “close” to <span class="math inline">\(f(\mathbf{a})\)</span>. Mathematically, we describe this as <strong>smoothness</strong>. A more explicit description says that as the paths <span class="math inline">\(P_{\mathbf{a}\)</span> get very close to <span class="math inline">\(\mathbf{a}\)</span>, the space over which these paths are defined starts to look more and more like a flat surface–the <strong>tangent plane</strong>.</p>
+<p><strong>Draw picture</strong></p>
 
-<div class="theorem">
-<p><span id="section-thm:unnamed-chunk-185" class="theorem"><strong>Theorem 16.1  (The Spanning Set Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> be vectors in the vector space <span class="math inline">\(\mathcal{V}\)</span> and let <span class="math inline">\(\mathcal{H}\)</span> = span(<span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_n\)</span>)</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>If one of the vectors, say <span class="math inline">\(\mathbf{v}_k\)</span>, of <span class="math inline">\(\mathcal{S}\)</span> is a linear combination of the remaining vectors of <span class="math inline">\(\mathcal{S}\)</span>, then the set formed by removing the vector <span class="math inline">\(\mathbf{v}_k\)</span> still spans <span class="math inline">\(\mathcal{H}\)</span></p></li>
-<li><p>If <span class="math inline">\(\mathcal{H} \neq \{\mathbf{0}\}\)</span>, then some subset of <span class="math inline">\(\mathcal{S}\)</span> spans <span class="math inline">\(\mathcal{H}\)</span>.</p>
-</div></li>
-</ol>
-
-<div class="proof">
-<p> <span class="proof"><em>Proof. </em></span> a) WLOG assume <span class="math inline">\(\mathbf{v}_n\)</span> is a linear combination of <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}\)</span> (if not, permute the labels to make the linearly dependent vector the <span class="math inline">\(n\)</span>th vector). Then
-<span class="math display" id="eq:span-set-theorem1">\[\begin{align}
-\tag{16.1}
-\mathbf{v}_n = x_1 \mathbf{v}_1 + \cdots + x_{n-1} \mathbf{v}_{n-1}
-\end{align}\]</span>
-Because the vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> span <span class="math inline">\(\mathcal{H}\)</span>, any vector <span class="math inline">\(\mathbf{b}\in \mathcal{H}\)</span> can be written as
-<span class="math display" id="eq:span-set-theorem2">\[\begin{align}
-\tag{16.2}
-\mathbf{b} = c_1 \mathbf{v}_1 + \cdots + c_{n} \mathbf{v}_{n}
-\end{align}\]</span>
-for scalars <span class="math inline">\(c_1, \ldots, c_n\)</span>. Plugging the result from <a href="section-linearly-independent-sets-and-bases.html#eq:span-set-theorem1">(16.1)</a> into <a href="section-linearly-independent-sets-and-bases.html#eq:span-set-theorem2">(16.2)</a> shows that any vector <span class="math inline">\(\mathbf{b}\)</span> in <span class="math inline">\(\mathcal{H}\)</span> can be written only using the vectors <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}\)</span></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>As the vectors in <span class="math inline">\(\mathcal{S}\)</span> span <span class="math inline">\(\mathcal{H}\)</span>, if there is a linearly dependent vector in <span class="math inline">\(\mathcal{S}\)</span>, this vector can be removed from <span class="math inline">\(\mathcal{S}\)</span> and the span of this subset of <span class="math inline">\(\mathcal{S}\)</span> will still span <span class="math inline">\(\mathcal{H}\)</span>. As long as <span class="math inline">\(\mathbf{H} \neq \{\mathbf{0}\}\)</span>, there must be a least one nonzero vector in <span class="math inline">\(\mathbf{S}\)</span> so the removing of linearly dependent vectors will stop with at least one vector. As all of the linearly dependent vectors have been removed, the subset of <span class="math inline">\(\mathcal{S}\)</span> created in this manner will be a set of linearly independent vectors that span <span class="math inline">\(\mathcal{H}\)</span>.
-</div></li>
-</ol>
-<div id="section-bases-for-nullmathbfa-and-colmathbfa" class="section level2">
-<h2><span class="header-section-number">16.1</span> Bases for null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</h2>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-110" class="example"><strong>Example 16.1  </strong></span>Find a basis for the col(<span class="math inline">\(\mathbf{A}\)</span>) where</p>
-<div class="sourceCode" id="section-cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="section-linearly-independent-sets-and-bases.html#cb165-1"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span>
-<span id="cb165-2"><a href="section-linearly-independent-sets-and-bases.html#cb165-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="op">-</span><span class="dv">9</span><span class="op">:</span><span class="dv">9</span>, <span class="dv">15</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dv">5</span>, <span class="dv">3</span>)</span></code></pre></div>
-<p><span class="math display">\[\begin{align*}
-\mathbf{A} = \begin{pmatrix} -3 &amp; -4 &amp; 5 \\ -4 &amp; -4 &amp; -3 \\ 4 &amp; -4 &amp; -1 \\ -3 &amp; 4 &amp; 2 \\ 2 &amp; -5 &amp; 9 \end{pmatrix}
-\end{align*}\]</span></p>
-<ul>
-<li><p>Calculate row echelon form and identify the pivot columns. The vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n\)</span> that make up the columns of <span class="math inline">\(\mathbf{A}\)</span> that are in the pivot columns form a basis for <span class="math inline">\(\mathbf{A}\)</span></p></li>
-<li><p>Why is this? Think about the relationship between the columns of <span class="math inline">\(\mathbf{A}\)</span> and the vector <span class="math inline">\(\mathbf{b}\)</span> in <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> that result in a consistent solution.</p></li>
-</ul>
-</div>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-111" class="example"><strong>Example 16.2  </strong></span>Find a basis for the null(<span class="math inline">\(\mathbf{A}\)</span>) where</p>
-<div class="sourceCode" id="section-cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="section-linearly-independent-sets-and-bases.html#cb166-1"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span>
-<span id="cb166-2"><a href="section-linearly-independent-sets-and-bases.html#cb166-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="op">-</span><span class="dv">9</span><span class="op">:</span><span class="dv">9</span>, <span class="dv">15</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dv">5</span>, <span class="dv">3</span>)</span></code></pre></div>
-<p><span class="math display">\[\begin{align*}
-\mathbf{A} = \begin{pmatrix} -3 &amp; -4 &amp; 5 \\ -4 &amp; -4 &amp; -3 \\ 4 &amp; -4 &amp; -1 \\ -3 &amp; 4 &amp; 2 \\ 2 &amp; -5 &amp; 9 \end{pmatrix}
-\end{align*}\]</span></p>
-<ul>
-<li>Calculate solutions to homogeneous system of equations, write solution in vector equation form. Vectors form a basis for null(<span class="math inline">\(\mathbf{A}\)</span>)</li>
-</ul>
-</div>
-<ul>
-<li><strong>note:</strong> Facts about the basis for the null space null(<span class="math inline">\(\mathbf{A}\)</span>)</li>
-</ul>
-<ol style="list-style-type: decimal">
-<li><p>The spanning set produced using the method above produces a linearly independent set because the free variables are weights on the spanning vectors.</p></li>
-<li><p>When null(<span class="math inline">\(\mathbf{A}\)</span>) contains nonzero vectors, the number of vectors in the spanning set for null(<span class="math inline">\(\mathbf{A}\)</span>) is the number of free variables in the solution of <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.</p></li>
-</ol>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-112" class="example"><strong>Example 16.3  </strong></span>The matrix <span class="math inline">\(4 \times 5\)</span> <span class="math inline">\(\mathbf{A}\)</span> has columns given by the vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_5\)</span> and is row equivalent to the matrix
-<span class="math display">\[\begin{align*}
-\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 3 &amp; -2 &amp; 1 \\ 0 &amp; 0 &amp; 3 &amp; -2 &amp; 5 \\ 0 &amp; 0 &amp; 0 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
-\end{align*}\]</span>
-What is a basis for col(<span class="math inline">\(\mathbf{A}\)</span>) in terms of the vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_5\)</span></p>
-</div>
-<ul>
-<li>Note that two matrices that are row equivalent have the same linear dependence relationsihps between their vectors (but the basis for their column space is different)</li>
-</ul>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-113" class="example"><strong>Example 16.4  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is row equivalent to the matrix <span class="math inline">\(\mathbf{B}\)</span></p>
-<div class="sourceCode" id="section-cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="section-linearly-independent-sets-and-bases.html#cb167-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">12</span> , <span class="dv">8</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">-1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>), <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb167-2"><a href="section-linearly-independent-sets-and-bases.html#cb167-2"></a>B &lt;-<span class="st"> </span><span class="kw">rref</span>(A)</span></code></pre></div>
-<p><span class="math display">\[\begin{align*}
-\mathbf{A} = \begin{pmatrix} 1 &amp; 4 &amp; 0 &amp; 2 &amp; -1 \\ 3 &amp; 12 &amp; 1 &amp; 5 &amp; 5 \\ 2 &amp; 8 &amp; 1 &amp; 3 &amp; 2 \\ 5 &amp; 20 &amp; 2 &amp; 8 &amp; 8 \end{pmatrix} &amp; \mathbf{B} = \begin{pmatrix} 1 &amp; 4 &amp; 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix} \\
-\end{align*}\]</span></p>
-<ul>
-<li><p>What is a basis for col(<span class="math inline">\(\mathbf{A}\)</span>)?</p></li>
-<li><p>What is a basis for col(<span class="math inline">\(\mathbf{B}\)</span>)?</p></li>
-<li><p>What is span(<span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_5\)</span>)?</p></li>
-<li><p>What is span(<span class="math inline">\(\mathbf{b}_1, \ldots, \mathbf{b}_5\)</span>)?</p></li>
-<li><p>Are the spaces spanned by the columns of <span class="math inline">\(\mathbf{A}\)</span> and the columns of <span class="math inline">\(\mathbf{B}\)</span> the same space?</p></li>
-</ul>
-</div>
-<div class="theorem">
-<p><span id="section-thm:unlabeled-div-114" class="theorem"><strong>Theorem 16.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for col(<span class="math inline">\(\mathbf{A}\)</span>)</p>
-</div>
-<div class="proof">
-<p><span id="section-unlabeled-div-115" class="proof"><em>Proof</em>. </span>sketch: <span class="math inline">\(\mathbf{B}\)</span> rref of <span class="math inline">\(\mathbf{A}\)</span>, linearly independent columns of <span class="math inline">\(\mathbf{B}\)</span> are same as linearly independent columns in <span class="math inline">\(\mathbf{A}\)</span>. Other (non-pviot) columns are linearly dependent. By spanning set theorem, non-pivot columns can be removed from the spanning set without changing the span, leaving only the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> as a basis for col($)</p>
-</div>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="section-vector-spaces-and-subspaces.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="section-coordinate-systems-and-dimension.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-the-gradient-and-directional-derivatives.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-vectors-and-matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

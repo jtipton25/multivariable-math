@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-04-16" />
+<meta name="date" content="2021-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,12 +307,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26.3" data-path="section-the-chain-rule.html"><a href="section-the-chain-rule.html#section-the-chain-rule-in-matrix-notation"><i class="fa fa-check"></i><b>26.3</b> The chain rule in matrix notation</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html"><i class="fa fa-check"></i><b>27</b> The gradient and directional derivatives</a><ul>
-<li class="chapter" data-level="27.1" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html#section-the-gradient"><i class="fa fa-check"></i><b>27.1</b> The Gradient</a></li>
+<li class="chapter" data-level="27.1" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html#section-the-gradient"><i class="fa fa-check"></i><b>27.1</b> The Gradient</a><ul>
+<li class="chapter" data-level="27.1.1" data-path="section-the-gradient-and-directional-derivatives.html"><a href="section-the-gradient-and-directional-derivatives.html#section-the-gradient-in-higher-dimensions"><i class="fa fa-check"></i><b>27.1.1</b> The gradient in higher dimensions</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>28</b> Vectors and matrices</a><ul>
-<li class="chapter" data-level="28.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>28.0.1</b> Arrays</a></li>
-<li class="chapter" data-level="28.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>28.0.2</b> Lists</a></li>
-<li class="chapter" data-level="28.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>28.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="section-tangent-planes-and-linear-approximations.html"><a href="section-tangent-planes-and-linear-approximations.html"><i class="fa fa-check"></i><b>28</b> Tangent planes and linear approximations</a></li>
+<li class="chapter" data-level="29" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>29</b> Vectors and matrices</a><ul>
+<li class="chapter" data-level="29.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>29.0.1</b> Arrays</a></li>
+<li class="chapter" data-level="29.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>29.0.2</b> Lists</a></li>
+<li class="chapter" data-level="29.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-exercises"><i class="fa fa-check"></i><b>29.1</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -505,10 +508,12 @@ for all paths that do not cross the line <span class="math inline">\(y = x\)</sp
 <h2><span class="header-section-number">24.3</span> Continuity</h2>
 <p>A very important property of functions is continuity. In a general sense, a function is continuous if two nearby input values result in nearby output values. As a graph, this means that there are no hops, skips, or jumps.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-204" class="definition"><strong>Definition 24.5  </strong></span>The function <span class="math inline">\(f(x, y)\)</span> is said to be continuous at the point <span class="math inline">\((a, b)\)</span> if the following are true
-1) <span class="math inline">\(f(a, b)\)</span> is defined at <span class="math inline">\((a, b)\)</span>
-2) <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y)\)</span> exists
-2) <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y) = f(a, b)\)</span></p>
+<p><span id="section-def:unlabeled-div-204" class="definition"><strong>Definition 24.5  </strong></span>The function <span class="math inline">\(f(x, y)\)</span> is said to be continuous at the point <span class="math inline">\((a, b)\)</span> if the following are true</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(f(a, b)\)</span> is defined at <span class="math inline">\((a, b)\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y)\)</span> exists</p></li>
+<li><p><span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y) = f(a, b)\)</span></p></li>
+</ol>
 </div>
 <div class="example">
 <p><span id="section-exm:unlabeled-div-205" class="example"><strong>Example 24.9  </strong></span><strong>checking continuity in class</strong>

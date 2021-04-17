@@ -222,6 +222,7 @@ exm:unnamed-chunk-246
 def:unnamed-chunk-247
 exm:unnamed-chunk-248
 thm:unnamed-chunk-249
+exm:unnamed-chunk-250
 section-preface
 section-getting-started-in-r
 section-notation
@@ -370,6 +371,8 @@ section-the-chain-rule-with-several-independent-variables
 section-the-chain-rule-in-matrix-notation
 section-the-gradient-and-directional-derivatives
 section-the-gradient
+section-the-gradient-in-higher-dimensions
+section-tangent-planes-and-linear-approximations
 section-vectors-and-matrices
 section-arrays
 section-lists
