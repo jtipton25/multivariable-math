@@ -232,9 +232,12 @@ A very important property of functions is continuity. In a general sense, a func
 
 :::{.definition}
 The function $f(x, y)$ is said to be continuous at the point $(a, b)$ if the following are true
+
 1) $f(a, b)$ is defined at $(a, b)$
+
 2) $\lim_{(x, y) \rightarrow (a, b)} f(x, y)$ exists
-2) $\lim_{(x, y) \rightarrow (a, b)} f(x, y) = f(a, b)$ 
+
+3) $\lim_{(x, y) \rightarrow (a, b)} f(x, y) = f(a, b)$ 
 :::
 
 :::{.example}

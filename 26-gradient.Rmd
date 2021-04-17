@@ -82,11 +82,24 @@ The gradient is critical in data science because is the tool that allows for fin
 Let $f(x, y)$ be a differentiable function at $(a, b)$ with $\nabla f(a, b) \neq 0$. Then,
 
 1) $f$ has its maximum rate of increase at the point $(a, b)$ in the direction of the gradient $\nabla f(a, b)$. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is $\|\nabla f(a, b)\|$ which is the length of the gradient vector.
+
 2) $f$ has its maximum rate of decrease at the point $(a, b)$ in the direction of the gradient $-\nabla f(a, b)$. The rate of change in the direction of maximum rate of decrease is $-\|\nabla f(a, b)\|$.
+
 3) The directional derivative is 0 in any direction orthogonal to $\nabla f(a, b)$.
 ```
 
+```{example}
 
+Consider the function $f(x, y) = 3x^2 - 2xy + y^2$. At the point $(3, 1)$, what is the direction of steepest descent? Steepest ascent?
 
+* graph the function as contours and plot the gradient as a segment
+```
 
+### The gradient in higher dimensions
+
+We can extend the gradient to higher dimensional functions. Let $\mathbf{x} = \begin{pmatrix} x_1 & x_2 & \cdots & x_n \end{pmatrix}'$ be a vector in $\mathcal{R}^n$. Then the gradient of $f$ at a point $\mathbf{a} = (a_1, a_2, \ldots, a_n)$ is 
+
+\begin{align*}
+ \nabla f(\mathbf{a}) = \begin{pmatrix} \frac{\partial f(\mathbf{x})}{\partial x_1}|_{\mathbf{x} = \mathbf{a}} \\ \frac{\partial f(\mathbf{x})}{\partial x_2}|_{\mathbf{x} = \mathbf{a}} \\  \vdots \\ \frac{\partial f(\mathbf{x})}{\partial x_n}|_{\mathbf{x} = \mathbf{a}} \end{pmatrix} = \begin{pmatrix} f_{x_1}(\mathbf{a}) \\ f_{x_2}(\mathbf{a}) \\  \vdots \\ f_{x_n}(\mathbf{a}) \end{pmatrix} 
+\end{align*}
 
