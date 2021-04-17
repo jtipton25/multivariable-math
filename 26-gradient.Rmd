@@ -1,5 +1,12 @@
 # The gradient and directional derivatives
 
+```{r, message = FALSE}
+library(tidyverse)
+library(plotly)
+library(dasc2594)
+set.seed(2021)
+```
+
 Partial derivatives tell about how a rate of function changes in a particular direction (in the direction of a coordinate). 
 
 Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.

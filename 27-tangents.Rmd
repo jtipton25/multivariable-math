@@ -1,7 +1,28 @@
 # Tangent planes and linear approximations
 
+```{r, message = FALSE}
+library(tidyverse)
+library(plotly)
+library(dasc2594)
+set.seed(2021)
+```
+
 Let $f(\mathbf{x})$ be a differentiable function at a point $\mathbf{a}$. Because the function is differentiable at $\mathbf{a}$, this means that all paths $P_\mathbf{a}$ that approach the point $\mathbf{a}$ from all directions all take on values $f(P_\mathbf{a})$ that are "close" to $f(\mathbf{a})$. Mathematically, we describe this as **smoothness**. A more explicit description says that as the paths $P_{\mathbf{a}$ get very close to $\mathbf{a}$, the space over which these paths are defined starts to look more and more like a flat surface--the **tangent plane**.
 
 **Draw picture**
 
 
+:::{.example}
+For this example, we plot the function $f(x, y) = x^2 + y^2$ which has gradient $\nabla f(x, y) = \begin{pmatrix} 2x \\ 2y\end{pmatrix}$
+```{r}
+# f(x, y)
+target_fun <- function(x, y) {
+    return(x^2 + y^2)
+}
+# gradient f(x, y)
+grad_fun <- function(x, y) {
+    c(2 * x, 2 * y) # notice that the return value is a vector
+}
+plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1)
+```
+:::
