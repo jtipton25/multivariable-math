@@ -224,6 +224,10 @@ exm:unnamed-chunk-249
 thm:unnamed-chunk-250
 exm:unnamed-chunk-251
 exm:unlabeled-div-221
+def:unnamed-chunk-254
+exm:unnamed-chunk-255
+def:unnamed-chunk-256
+exm:unnamed-chunk-257
 section-preface
 section-getting-started-in-r
 section-notation
@@ -374,6 +378,7 @@ section-the-gradient-and-directional-derivatives
 section-the-gradient
 section-the-gradient-in-higher-dimensions
 section-tangent-planes-and-linear-approximations
+section-section
 section-vectors-and-matrices
 section-arrays
 section-lists
