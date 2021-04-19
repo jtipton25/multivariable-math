@@ -42,7 +42,7 @@ which is the dot product of the vectors $\begin{pmatrix} f_x(a, b) \\ f_y(a, b) 
 
 Notice that the vector $\mathbf{v}$ is a unit vector and therefore the directional derivative is a weighted sum of the partial derivatives in the $x$ and $y$ directions weighted by the vector $\mathbf{v}$ (weighted sums are sums where the coefficients sum to 1--in this case the sum is in the "distance" metric). As a consequence, we can find the directional derivative in any direction by changing the vector $\mathbf{v}$.
 
-```{definition}
+```{definition directional-gradient}
 Let $f(x, y)$ be a differentiable function at $(a, b)$ and $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$ a unit vector in the $xy$ plane. Then, the directional derivative of $f$ at $(a, b)$ in the direction of $\mathbf{v}$ is
 \begin{align*}
 D_{\mathbf{v}} f(a, b) & = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} & \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
@@ -85,7 +85,7 @@ Compute the gradient of $f(x, y) = 3x^2 + y^2$ at the point $(3, 1)$.
 
 The gradient is critical in data science because is the tool that allows for finding the set of parameters for a given model that are "most likely" given the data. The gradient has the property in that at each point $(a, b)$ where $f(x, y)$ is differentiable, the gradient points in the direction of the maximum rate of change.
 
-```{theorem, name = "The gradient and rates of change"}
+```{theorem gradient, name = "The gradient and rates of change"}
 Let $f(x, y)$ be a differentiable function at $(a, b)$ with $\nabla f(a, b) \neq 0$. Then,
 
 1) $f$ has its maximum rate of increase at the point $(a, b)$ in the direction of the gradient $\nabla f(a, b)$. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is $\|\nabla f(a, b)\|$ which is the length of the gradient vector.
@@ -101,6 +101,28 @@ Consider the function $f(x, y) = 3x^2 - 2xy + y^2$. At the point $(3, 1)$, what 
 
 * graph the function as contours and plot the gradient as a segment
 ```
+
+
+
+### The gradient and the tangent line
+
+Theorem \@ref(thm:gradient) states that the directional derivative at the point $(a, b)$ is 0 in any direction that is orthogonal to $\nabla f(a, b)$. Because the directional derivative is the rate of change of the function in the direction of $\mathbf{v}$, the directional derivative being 0 means that the function $f(x, y)$ is not is not changing in the direction of the vector $\mathbf{v}$. Therefore, we know that the vector $\mathbf{v}$ and the vector $\nabla f(x, y)|_{(a,b)}$ are orthogonal because the definition of the directional derivative in definition \@ref(def:directional-gradient) states that 
+\begin{align*}
+D_{\mathbf{v}} f(a, b)  = \nabla f(a, b) \cdot \mathbf{v} = \left(\nabla f(a, b) \right)'  \mathbf{v} = 0
+\end{align*}
+which is only true if the gradient $\nabla f(a, b)$ is orthogonal to $\mathbf{v}$. Because the vector $\mathbf{v}$ points in the direction of 0 change in $f(x,y)$, the vector $\mathbf{v}$ is a tangent line to the level curve. **See drawing**
+
+Using this, one can calculate the tangent to the level curve at the point $(a, b)$ as the dot-product equation
+\begin{align*}
+\begin{pmatrix} f_x(x, y) & f_y(x, y) \end{pmatrix} \begin{pmatrix} x - a \\ y - b \end{pmatrix} =  f_x (x-a) + f_y (y-b) = 0.
+\end{align*}
+
+
+```{example}
+For the function $f(x, y) = 3x^2 - 2xy + y^3$, find a vector orthogonal to the gradient $\nabla f(a, b)$ at the point $(a, b)$ = (2, 1)$.
+```
+
+
 
 ### The gradient in higher dimensions
 

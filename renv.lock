@@ -235,8 +235,8 @@
       "RemoteRepo": "dasc2594",
       "RemoteUsername": "jtipton25",
       "RemoteRef": "HEAD",
-      "RemoteSha": "37a8b9019b14896c5245ca8a42c34531c332795f",
-      "Hash": "ad5fa4cc37343b2916dbf63e9f5f2228"
+      "RemoteSha": "ed7ef1c952b1836d217315f8ba33e8640eeff36c",
+      "Hash": "d5fa9c8552050a1873d3a0e2cc2d1b65"
     },
     "data.table": {
       "Package": "data.table",
@@ -1015,10 +1015,10 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.0",
+      "Version": "3.1.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "4d894a114dbd4ecafeda5074e7c538e6"
+      "Hash": "fbbca141541ee9242233ba50b0fcb843"
     },
     "tidyr": {
       "Package": "tidyr",
@@ -1120,10 +1120,10 @@
     },
     "withr": {
       "Package": "withr",
-      "Version": "2.4.1",
+      "Version": "2.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "caf4781c674ffa549a4676d2d77b13cc"
+      "Hash": "ad03909b44677f930fa156d47d7a3aeb"
     },
     "xfun": {
       "Package": "xfun",
