@@ -236,6 +236,10 @@ exm:unlabeled-div-228
 def:unnamed-chunk-264
 thm:unnamed-chunk-265
 exm:unlabeled-div-230
+exm:unlabeled-div-231
+def:unlabeled-div-232
+exm:unlabeled-div-233
+exm:unlabeled-div-234
 section-preface
 section-getting-started-in-r
 section-notation
@@ -389,6 +393,8 @@ section-the-gradient-in-higher-dimensions
 section-tangent-planes-and-linear-approximations
 section-minimums-and-maximums
 section-local-minimums
+section-global-maximums-and-minimums
+section-grid-search-optimization
 section-vectors-and-matrices
 section-arrays
 section-lists
