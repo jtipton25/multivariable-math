@@ -24,7 +24,7 @@
 <meta name="author" content="John Tipton" />
 
 
-<meta name="date" content="2021-04-19" />
+<meta name="date" content="2021-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,7 +313,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="section-tangent-planes-and-linear-approximations.html"><a href="section-tangent-planes-and-linear-approximations.html"><i class="fa fa-check"></i><b>28</b> Tangent planes and linear approximations</a></li>
-<li class="chapter" data-level="29" data-path="section-minimums-and-maximums.html"><a href="section-minimums-and-maximums.html"><i class="fa fa-check"></i><b>29</b> Minimums and Maximums</a></li>
+<li class="chapter" data-level="29" data-path="section-minimums-and-maximums.html"><a href="section-minimums-and-maximums.html"><i class="fa fa-check"></i><b>29</b> Minimums and Maximums</a><ul>
+<li class="chapter" data-level="29.1" data-path="section-minimums-and-maximums.html"><a href="section-minimums-and-maximums.html#section-local-minimums"><i class="fa fa-check"></i><b>29.1</b> Local minimums</a></li>
+</ul></li>
 <li class="chapter" data-level="30" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html"><i class="fa fa-check"></i><b>30</b> Vectors and matrices</a><ul>
 <li class="chapter" data-level="30.0.1" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-arrays"><i class="fa fa-check"></i><b>30.0.1</b> Arrays</a></li>
 <li class="chapter" data-level="30.0.2" data-path="section-vectors-and-matrices.html"><a href="section-vectors-and-matrices.html#section-lists"><i class="fa fa-check"></i><b>30.0.2</b> Lists</a></li>
@@ -342,11 +344,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-vectors-and-matrices" class="section level1">
 <h1><span class="header-section-number">Chapter 30</span> Vectors and matrices</h1>
 <p>This can produce an error, so we wrap the function <code>array_to_latex</code> in a call to <code>cat()</code></p>
-<div class="sourceCode" id="section-cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="section-vectors-and-matrices.html#cb231-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb231-2"><a href="section-vectors-and-matrices.html#cb231-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="section-vectors-and-matrices.html#cb233-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb233-2"><a href="section-vectors-and-matrices.html#cb233-2"></a><span class="kw">array_to_latex</span>(A)</span></code></pre></div>
 <p>[1] “\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}”</p>
-<div class="sourceCode" id="section-cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="section-vectors-and-matrices.html#cb232-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
-<span id="cb232-2"><a href="section-vectors-and-matrices.html#cb232-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="section-cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="section-vectors-and-matrices.html#cb234-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">122</span>), <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb234-2"><a href="section-vectors-and-matrices.html#cb234-2"></a><span class="kw">cat</span>(<span class="kw">array_to_latex</span>(A))</span></code></pre></div>
 <span class="math display">\[\begin{pmatrix} 3 &amp; 4 &amp; 5 \\ 6 &amp; 7 &amp; 9 \\ 4 &amp; 5 &amp; 122 \end{pmatrix}\]</span>
 <p>The fundamental objects in this text are scalars, vectors, and matrices.</p>
 <!--   -->

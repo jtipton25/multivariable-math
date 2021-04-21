@@ -229,6 +229,13 @@ def:unnamed-chunk-253
 exm:unnamed-chunk-254
 def:unnamed-chunk-255
 exm:unnamed-chunk-256
+def:unnamed-chunk-258
+thm:unnamed-chunk-259
+def:unnamed-chunk-260
+exm:unlabeled-div-228
+def:unnamed-chunk-264
+thm:unnamed-chunk-265
+exm:unlabeled-div-230
 section-preface
 section-getting-started-in-r
 section-notation
@@ -381,6 +388,7 @@ section-the-gradient-and-the-tangent-line
 section-the-gradient-in-higher-dimensions
 section-tangent-planes-and-linear-approximations
 section-minimums-and-maximums
+section-local-minimums
 section-vectors-and-matrices
 section-arrays
 section-lists
