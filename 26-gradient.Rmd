@@ -119,7 +119,7 @@ Using this, one can calculate the tangent to the level curve at the point $(a, b
 
 
 ```{example}
-For the function $f(x, y) = 3x^2 - 2xy + y^3$, find a vector orthogonal to the gradient $\nabla f(a, b)$ at the point $(a, b)$ = (2, 1)$.
+For the function $f(x, y) = 3x^2 - 2xy + y^3$, find a vector orthogonal to the gradient $\nabla f(a, b)$ at the point $(a, b) = (2, 1)$.
 ```
 
 
