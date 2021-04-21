@@ -138,7 +138,104 @@ Let $f_x(a, b) = f_y(a, b) = 0$ so that the point $(a, b)$ is a critical point. 
 
 
 :::{.example}
-find the critical points of $f(x, y) = xy(x - 3)(y - 4)$.
+find the critical points of $f(x, y) = xy(x - 3)(y - 4)$ and determine if they are local maxima, minima, saddle points, or undetermined.
 :::
+
+
+:::{.example}
+find the critical points of $f(x, y)  = x^4 + y^4$ and determine if they are local maxima, minima, saddle points, or undetermined.
+:::
+
+```{r}
+f <- function(x, y) {
+    x^4 + y^4
+}
+x <- seq(-1, 1, length.out = 40)
+y <- seq(-1, 1, length.out = 40)
+critical_points <- data.frame(x = 0, y = 0) %>%
+    mutate(z = f(x, y))
+dat <- expand_grid(x, y) %>%
+    mutate(z = f(x, y))
+
+plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+    add_surface(
+        contours = list(
+            z = list(
+                show=TRUE,
+                usecolormap=TRUE,
+                highlightcolor="#ff0000",
+                project=list(z=TRUE)))) %>%
+    add_trace(x = critical_points$x, y = critical_points$y, 
+              z = critical_points$z,
+              mode = "markers", type = "scatter3d", 
+              marker = list(size = 5, 
+                            color = "red",
+                            symbol = 104),
+              name = "saddle point")
+```
+
+
+## Global maximums and minimums
+
+We have shown how you can find critical points $(a, b)$ by finding points that have 0 partial derivatives in each direction ($f_x(a, b) = f_y(a, b) = 0$) and we have shown how to characterize  these critical points using the second derivative test. In data science, we are often interested in finding the "best" model, not just the "best local" model. So a question arises is whether the local minima/maxima that we find are the global minima/maxima.  To determine this, we have to define the global minima/maxima.
+
+:::{.definition}
+If $f(x, y)$ is a function defined over a domain (or a subset of the domain) $\mathcal{D} \in \mathcal{R}^2$ that contains the point $(a, b)$, we say 
+
+* $(a, b)$ is a **global maximum** if $f(a, b) \geq f(x, y)$ for all $(x, y) \in \mathcal{D}$ and
+
+* $(a, b)$ is a **global minimum** if $f(a, b) \leq f(x, y)$ for all $(x, y) \in \mathcal{D}$.
+:::
+
+Thus, once you have found all the critical points, you also need to check all the boundary points for the domain (or subdomain) $\mathcal{D}$ as the global minimum/maximum might lie on the boundary. 
+
+In general finding the global maximum/minimum points can be done by applying the following procedure:
+
+:::{}
+Let $f(x, y)$ be a function on a closed (the set contains its boundary points) and bounded (the set is not infinite) set. Then, the global minima/maxima can be found by 
+
+1) Determining the values $f(x, y)$ at all the critical points.
+
+2) Determining the values of $f(x, y)$ at all the boundary points of $\mathcal{D}$.
+
+3) Finding the minimum/maximum of the set of function values from 1) and 2). 
+
+:::
+
+:::{.example}
+Let $f(x, y) = x^2 - 4xy + y^2$ over the region $[-2,2]\times[-2, 2]$
+:::
+
+
+In data science problems, it is often difficult to analyze the functions analytically (using the tools of calculus directly). Instead, one can use numeric techniques to find minima and maxima. Two techniques that we will discuss are grid search and gradient descent. 
+
+## Grid search optimization
+
+If the number of input variables in the function is small, one can find global minima and maxima using grid search. To find a global minima/maxima in $\mathcal{R}^2$, one creates a grid over the domain $\mathcal{D}$ and evaluates the function $f(x, y)$ at these grid points and finds the numerical solution.
+
+:::{.example}
+Let $f(x, y) = x^2 - 2xy + y^2$ over the region $[-2,2]\times[-2, 2]$
+
+```{r}
+target_fun <- function(x, y) {
+    x^2 - 4 * x * y + y^2
+}
+# N is the grid size
+N <- 1000
+x <- seq(-2, 2, length.out = N)
+y <- seq(-2, 2, length.out = N)
+dat <- expand_grid(x = x, y = y) %>%
+    mutate(z = target_fun(x, y))
+# find the minimum
+dat %>%
+    filter(z == min(z))
+
+# find the minimum
+dat %>%
+    filter(z == max(z))
+```
+
+:::
+
 
 
