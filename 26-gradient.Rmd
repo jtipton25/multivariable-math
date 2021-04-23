@@ -49,12 +49,63 @@ D_{\mathbf{v}} f(a, b) & = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_
 \end{align*}
 ```
 
-```{example}
-Compute the partial derivative of $f(x, y) = 3x^2 + y^2$ in the direction of $\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, - \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}$ at the point $(3, 1)$.
+:::{.example}
+Compute the directional derivative of $f(x, y) = 3x^2 + y^2$ in the direction of $\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}$ at the point $(2, 1)$.
 
 * calculate the directional derivatives
 * graph the directional derivatives using contour plots and segments
+
+```{r}
+# the function
+target_fun <- function(x, y) {
+        3 * x^2 + y^2
+}
+
+# the gradient function
+gradient_fun <- function(x, y) {
+        c(6*x, 2 * y)
+}
+
+# define the unit vectors u and v
+u <- c(1 / sqrt(3), sqrt(2/3))
+v <- c(1 / sqrt(2), -1 / sqrt(2))
+
+# create a set of gridpoints for plotting the function
+N <- 50
+x <- seq(-10, 10, length.out = N)
+y <- seq(-10, 10, length.out = N)
+
+dat <- expand_grid(x = x, y = y) %>%
+        mutate(z = target_fun(x, y))
+
+# define the point (a, b)
+a <- 2
+b <- 1
+
+# directional derivative of f in the direction of u
+Du_ab <- sum(gradient_fun(a, b) * u)
+Du_ab
+
+Dv_ab <- sum(gradient_fun(a, b) * v)
+Dv_ab
+
+q <- c(1, 0)
+Dq_ab <- sum(gradient_fun(a, b) * q)
+Dq_ab
+
+# generate the plot
+ggplot(dat, aes(x = x, y = y, z = z)) +
+        geom_contour() + 
+        geom_point(aes(x = a, y = b)) +
+        geom_segment(aes(x = a, y = b, xend = a + u[1] * Du_ab, yend = b + u[2] * Du_ab), 
+                     arrow = arrow(length = unit(0.1, "in"))) +
+        geom_segment(aes(x = a, y = b, xend = a + v[1] * Dv_ab, yend = b + v[2] * Dv_ab), 
+                     arrow = arrow(length = unit(0.1, "in")), color = "orange") +
+        geom_segment(aes(x = a, y = b, xend = a + gradient_fun(a, b)[1], yend = b + gradient_fun(a, b)[2]), 
+                     arrow = arrow(length = unit(0.1, "in")), color = "red") 
 ```
+:::
+
 
 ## The Gradient
 

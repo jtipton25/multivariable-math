@@ -237,5 +237,7 @@ dat %>%
 
 :::
 
+## Gradient Descent
 
+Another method to find minima/maxima is gradient descent. 
 
