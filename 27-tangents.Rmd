@@ -11,7 +11,7 @@ Let $f(\mathbf{x})$ be a differentiable function at a point $\mathbf{a}$. Becaus
 
 :::{.example}
 For this example, we plot the function $f(x, y) = x^2 + y^2$ which has gradient $\nabla f(x, y) = \begin{pmatrix} 2x \\ 2y\end{pmatrix}$
-```{r, eval = FALSE}
+```{r}
 # f(x, y)
 target_fun <- function(x, y) {
     return(x^2 + y^2)
