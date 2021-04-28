@@ -228,7 +228,7 @@ exm:unlabeled-div-223
 def:unnamed-chunk-253
 exm:unnamed-chunk-254
 def:unnamed-chunk-255
-exm:unnamed-chunk-256
+exm:unlabeled-div-226
 def:unnamed-chunk-258
 thm:unnamed-chunk-259
 def:unnamed-chunk-260
