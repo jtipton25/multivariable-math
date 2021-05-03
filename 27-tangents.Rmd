@@ -78,6 +78,25 @@ where the last term is a sum of the linear approximation in each of the $i = 1, 
 Approximate the linear change of the function $f(x, y, z) = x^2 - 3xy^2z^2 - 4z^2$ at the point $(a, b, c) = (1, -2, -1)$ evaluated at the point $(x, y, z) = (0.95, -2.05, -1.05)$. Compare this to the exact value of the function $f(x, y, z)$
 
 
+```{r, echo = FALSE}
+target_fun <- function(x, y, z) {
+        x^2 - 3 * x * y^2 * z^2 - 4 * z^2
+} 
+        
+grad_fun <- function(x, y, z) {
+        c(2*x - 3 * y^2 * z^2,
+          -6 * x * y * z^2,
+          -6 * x * y^2 * z - 8 * z)
+}
+
+
+
+linearization <- function(target_fun, grad_fun, x, y, z, a, b, c) {
+        target_fun(a, b, c) + sum(grad_fun(a, b, c) * c(x - a, y - b, z - c))
+}
+
+```
+
 First, we find the gradient 
 
 \begin{align*}
@@ -87,7 +106,7 @@ First, we find the gradient
 and evaluate the gradient at $(a, b, c) = (1, -2, -1)$ to get 
 
 \begin{align*}
-\nabla f(1, -2, -1) = \begin{pmatrix} 2(1) - 3(-2)^2(-1)^2 \\ -6(1)(-2)(-1)^2 \\ -6(1)(-2)^2(-1) - 8(-1) \end{pmatrix} = \begin{pmatrix} -10 \\ 12 \\ 32 \end{pmatrix} 
+\nabla f(1, -2, -1) = \begin{pmatrix} 2(1) - 3(-2)^2(-1)^2 \\ -6(1)(-2)(-1)^2 \\ -6(1)(-2)^2(-1) - 8(-1) \end{pmatrix} = `r array_to_latex(matrix(grad_fun(1, -2, -1), 3, 1))` 
 \end{align*}
 
 
@@ -96,13 +115,13 @@ The function evaluated at the point $(a, b, c)$ is $f(1, -2, -1) = (1)^2 - 3(1)(
 Therefore, the linear approximation $L(x, y, z)$ of $f(x, y, z)$ at the point $(a, b, c)$ is 
 
 \begin{align*}
-L(x, y, z) & = f(a, b, c) - \nabla f(a, b, c) \cdot \begin{pmatrix} x - 1 \\ y - (-2) \\ z - (-1) \end{pmatrix} \\
+L(x, y, z) & = f(a, b, c) + \nabla f(a, b, c) \cdot \begin{pmatrix} x - 1 \\ y - (-2) \\ z - (-1) \end{pmatrix} \\
 & = -15 + 10(x - 1) - 12 (y + 2) - 32 (z + 1)
 \end{align*}
 
 The linear approximation evaluated at the point $(0.95, -2.05, -1.05)$ is 
 \begin{align*}
-L(0.95, -2.05, -1.05) & = -15 + 10(0.95 - 1) - 12 (-2.05 + 2) - 32 (-1.05 + 1) = -13.3.
+L(0.95, -2.05, -1.05) & = -15 - 10(0.95 - 1) + 12 (-2.05 + 2) + 32 (-1.05 + 1) = -16.7.
 \end{align*}
 
 Compared to the true value of the function $f(x, y, z)$ is 
@@ -110,7 +129,7 @@ Compared to the true value of the function $f(x, y, z)$ is
 \begin{align*}
 f(0.95, -2.05, -1.05) & = (1.05)^2 - 3(1.05)(-2.05)^2(-1.05)^2 - 4(-1.05)^2 = -16.71228,
 \end{align*}
-which gives an approximation error of (-16.71228 - (-13.3)) = -3.41228
+which gives an approximation error of $f(x, y, z) - L(x, y, z) = `r target_fun(0.95, -2.05, -1.05)` - `r linearization(target_fun, grad_fun, 0.95, -2.05, -1.05, 1, -2, -1)` = `r target_fun(0.95, -2.05, -1.05) - linearization(target_fun, grad_fun, 0.95, -2.05, -1.05, 1, -2, -1)`$
 
 ```{r}
 target_fun <- function(x, y, z) {
@@ -128,7 +147,7 @@ grad_fun(1, -2, -1)
 target_fun(0.95, -2.05, -1.05)
 
 linearization <- function(target_fun, grad_fun, x, y, z, a, b, c) {
-        target_fun(a, b, c) - sum(grad_fun(a, b, c) * c(x - a, y - b, z - c))
+        target_fun(a, b, c) + sum(grad_fun(a, b, c) * c(x - a, y - b, z - c))
 }
 
 
