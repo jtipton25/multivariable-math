@@ -1,7 +1,9 @@
 --- 
 title: "Multivariable Mathematics for Data Science"
 author: "John Tipton"
-date: "`r Sys.Date()`"
+date: |
+    | Created 1 January 2020
+    | Last updated `r format(Sys.time(), '%d %B, %Y')`
 output: pdf_document
 description: This is a minimal example of using the bookdown package to write a book.
   The output format for this example is bookdown::gitbook.
