@@ -88,19 +88,19 @@ are not linear equations because they do not meet the form of \@ref(eq:linear) (
 A set of two or more linear equations that each contain the same set of variables is called a **system of linear equations**. The equations
 
 $$
-\begin{align*}
-x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
-4 x_1 && + && 5 x_2 &&  && && = & 9
-\end{align*}
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9.
+\end{alignat*}
 $$
 
 are a system of equations. Note that in the second equation, the coefficient for $x_3$ is 0, meaning we could re-write the above example as
 
 $$
-\begin{align*}
-x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
-4 x_1 && + && 5 x_2 && + && 0 x_3 && = & 9.
-\end{align*}
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
+\end{alignat*}
 $$
 
 **Exercises:** For the following, are these linear equations?
@@ -116,58 +116,58 @@ $$
 A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true. For example, consider the system of equations
 
 $$
-\begin{align*}
-x && + && 4 y && = & 8 \\
-4 x && + && 5 y && = & 7
-\end{align*}
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x & {}+{} & 5 y & {}={} & 7.
+\end{alignat*}
 $$
 
 To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
 
 
 $$
-\begin{align*}
-x && + && 4 y && = & 8 \\
-4 x - 4 * (x) && + && 5 y - 4 * (4y) && = & 7 - 4 * (8)
-\end{align*}
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x - 4 * (x) & {}+{} & 5 y - 4 * (4y) & {}={} & 7 - 4 * (8),
+\end{alignat*}
 $$
 where the part of the equations in `()` is the top equation. This system of equations now simplifies to 
 
 $$
-\begin{align*}
-x && + && 4 y && = & 8 \\
-0 && + && -11 y && = & -25
-\end{align*}
+\begin{alignat*}{3}
+x & {}+{} & 4 y & {}={} & 8 \\
+0 & {}+{} & - 11y & {}={} & -25,
+\end{alignat*}
 $$
 
 which gives $y = \frac{25}{11}$. Plugging this value into the top equation gives
 
 $$
-\begin{align*}
-x && + && 4 * \frac{25}{11} && = & 8 \\
-0 && + && y && = & \frac{25}{11}
-\end{align*}
+\begin{alignat*}{3}
+x & {}+{} & 4 \frac{25}{11} & {}={} & 8 \\
+0 & {}+{} & y & {}={} & \frac{25}{11},
+\end{alignat*}
 $$
 
 where we can solve $x = 8 - \frac{100}{11} = -\frac{12}{11}$ giving the solution of the form
 
 $$
-\begin{align*}
-x && + && 0 && = & - \frac{12}{11} \\
-0 && + && y && = & \frac{25}{11}.
-\end{align*}
+\begin{alignat*}{3}
+x & {}+{} & 0 & {}={} & -\frac{12}{11} \\
+0 & {}+{} & y & {}={} & \frac{25}{11},
+\end{alignat*}
 $$
 
 In this case, the system of equation has the solution $x = -\frac{12}{11}$ and $y = \frac{25}{11}$. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were 
 
 $$
-\begin{align*}
-x && + && 4 y && = & 8 \\
-4 x && + && 5 y && = & 7
-\end{align*}
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x & {}+{} & 5 y & {}={} & 7,
+\end{alignat*}
 $$
 
-which define two lines:
+which, writing $y$ as a function of $x$ define two lines:
 
 1) $y = -\frac{x}{4} + 2$
 2) $y = -\frac{4x}{5} + \frac{7}{5}$
@@ -213,10 +213,10 @@ A linear system of equations is called **consistent** if the system has either o
 Consider the system of linear equations
 
 $$
-\begin{align*}
-x && + && 4 y && = & 8 \\
-4 x && + && 16 y && = & 18
-\end{align*}
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x & {}+{} & 16 y & {}={} & 18.
+\end{alignat*}
 $$
 
 ```{r no-solution, fig.cap = "Linear system of equations with no solution"}
@@ -248,10 +248,10 @@ We have seen this example in Figure \@ref(fig:one-solution)
 Consider the system of linear equations
 
 $$
-\begin{align*}
-x && + && 4 y && = & 8 \\
-4 x && + && 16 y && = & 32
-\end{align*}
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x & {}+{} & 16 y & {}={} & 32.
+\end{alignat*}
 $$
 
 ```{r infinite-solutions, fig.cap = "Linear system of equations with no solution"}
@@ -280,18 +280,20 @@ Two linear systems of equations are called **equivalent** if both systems share 
 
 For example, the system of equations
 $$
-\begin{align*}
-x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
-4 x_1 && + && 5 x_2 && + && 2 x_3 && = & 9.
-\end{align*}
-$$ 
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9
+\end{alignat*}
+$$
+
 and the system of equations
 $$
-\begin{align*}
-2x_1 && + && 8 x_2 && - && 2 x_3 && = & 22 \\
-8 x_1 && + && 10 x_2 && + && 4 x_3 && = & 18.
-\end{align*}
+\begin{alignat*}{4}
+2x_1   & {}+{} & 8 x_2 & {}-{} & 2 x_3 & {}={} & 22 \\
+8 x_1 & {}+{} & 10 x_2 & {}+{} & 4 x_3 & {}={} & 18.
+\end{alignat*}
 $$
+
 have the same solution set (the second set of equations is just 2 times the first set of equations).
 
 
@@ -300,21 +302,92 @@ have the same solution set (the second set of equations is just 2 times the firs
 
 * **Exercises:** for the following systems of equations, determine if a solution(s) exist and if so, solve for the solution
 
-1) $$\begin{align*}
-4 x_1 && + && 5 x_2 && = 8\\
-9 x_1 && - && 3 x_2 && = 4
-\end{align*}$$
+```{exercise}
+For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+$$
+\begin{alignat*}{3}
+4 x_1 & {}+{} & 5 x_2 & {}={} & 8 \\
+9 x_1 & {}-{} & 3 x_2 & {}={} & 4.
+\end{alignat*}
+$$
+```
 
-2) $$\begin{align*}
-7 x_1 && + && 3 x_2 && + && 4 x_3 && = 5\\
-4 x_1 && - && 5 x_2 && && && = -2
-\end{align*}$$
 
-3) $$\begin{align*}
-4 x_1 && - && 2 x_2 && = 8\\
-2 x_1 && + && x_2 && = 7 \\
--3 x_1 && + && 6 x_2 && = 11
-\end{align*}$$
+:::{.solution}
+Multiply the first equation by $\frac{1}{4}$ and the second equation by $\frac{1}{9}$ to get 
+
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
+x_1 & {}-{} &  \frac{1}{3}x_2 & {}={} & \frac{4}{9}.
+\end{alignat*}
+$$
+
+
+Subtract the first equation from the second equation
+
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
+0 & {}-{} &  (-\frac{1}{3} - \frac{5}{4}) x_2 & {}={} & \frac{4}{9} - 2,
+\end{alignat*}
+$$
+which reduces to 
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
+0 & {}-{} &  -\frac{19}{12} x_2 & {}={} & -\frac{14}{9},
+\end{alignat*}
+$$
+so that, dividing both sides of the second equation by $-\frac{19}{12}$ gives $x_2 = \frac{56}{57}$. Plugging this value of $x_2$ into the first equation gives
+
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{5}{4} \left(\frac{56}{57}\right) & {}={} & 2 \\
+0 & {}-{} &   x_2 & {}={} & \frac{56}{57}
+\end{alignat*}
+$$
+
+and subtracting $\frac{5}{4} \frac{56}{57}$ from both sides of the first equation gives $x_1 = \frac{44}{57}$. You can check these solutions by verifying that the following two equations hold
+
+$$
+\begin{alignat*}{3}
+4 \left(\frac{44}{57}\right) & {}+{} & 5  \left(\frac{56}{57}\right) & {}={} & 8 \\
+9 \left(\frac{44}{57}\right) & {}-{} & 3 \left(\frac{56}{57}\right)& {}={} & 4
+\end{alignat*}
+$$
+which can be done in `R` using
+
+```{r}
+x1 <- 44/57
+x2 <- 56/57
+all.equal(4 * x1 + 5 * x2, 8)
+all.equal(9 * x1 - 3 * x2, 4)
+```
+:::
+
+
+```{exercise}
+For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+$$
+\begin{alignat*}{4}
+7 x_1 & {}+{} & 3 x_2 & {}+{} & 4 x_3 & {}={} & 5\\
+4 x_1 & {}-{} & 5 x_2 &&        & {}={} & -2
+\end{alignat*}
+$$
+```
+
+
+```{exercise}
+For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+$$
+\begin{alignat*}{3}
+4 x_1 & {}-{} & 2 x_2 & {}={} & 8\\
+2 x_1 & {}+{} & x_2 & {}={} & 7 \\
+-3 x_1 & {}+{} & 6 x_2 &{}={} & 11
+\end{alignat*}
+$$
+```
 
 
 ### Elementary row and column operations on matrices
@@ -336,11 +409,12 @@ Note that these operations are exactly what we used to solve the equation using 
 ### The Augmented matrix form of a system of equations
 
 Consider the linear system of equations 
+
 $$
-\begin{align*}
-x_1 && + && 4 x_2 && - && x_3 && = & 11 \\
-4 x_1 && + && 5 x_2 && + && 2 x_3 && = & 9.
-\end{align*}
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9.
+\end{alignat*}
 $$
 The augmented matrix representation of this system of linear equations is given by the matrix
 $$
@@ -445,23 +519,24 @@ A system of linear equations is said to be consistent if at least one solution e
 
 * Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
 
-$$
-\begin{align*}
-16 x_1 && + && 2 x_2 && + && 3 x_3 && = & 13 \\
-5 x_1 && + && 11 x_2 && + && 10 x_3 && = & 8 \\
-9 x_1 && + && 7 x_2 && + && 6 x_3 && = & 12 \\
-4 x_1 && + && 14 x_2 && + && 15 x_3 && = & 1 \\
-\end{align*}
-$$
-
-* Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
+```{r, echo = FALSE}
+A <- matrix(c(16, 5, 9, 4, 2, 11, 7, 14, 3, 10, 6, 15), 4, 3)
+b <- c(13, 8, 12, 1)
+```
 
 $$
-\begin{align*}
-x_1 && + && 2 x_2 && + && 3 x_3 = & 5 \\
-x_1 && + && 3 x_2 &&  + && 2 x_3= & 2 \\
-3 x_1 && + && 2 x_2 && + && x_3 = & 7
-\end{align*}
+`r dasc2594::array_to_system(A, b)`
+$$
+
+* Example: (do in class) Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
+
+```{r, echo = FALSE}
+A <- matrix(c(1, 1, 3, 2, 3, 2, 3, 2, 1), 3, 3)
+b <- c(5, 2, 7)
+```
+
+$$
+`r dasc2594::array_to_system(A, b)`
 $$
 
 ## Reduce row echelon form
@@ -540,21 +615,20 @@ Calculating the reduced row echelon form is known as Gaussian elimination, which
 ### Using reduced row echelon forms to solve systems of linear equations
 
 When a system of linear equations is expressed as an augmented matrix, the reduced row echelon form can be used to find solutions to those systems of equations. Consider the systems of equations
+```{r, echo = FALSE}
+A <- matrix(c(3, 2, 4, 8, -4, 5, -4, -1, 0), 3, 3)
+b <- c(6, 8, 9)
+```
+
 $$
-\begin{align*}
-3x_1 && + && 8 x_2 && - && 4 x_3 && = & 6 \\
-2 x_1 && - && 4 x_2 && - && x_3 && = & 8 \\
-4 x_1 && + && 5 x_2 &&  && && = & 9
-\end{align*}
+`r dasc2594::array_to_system(A, b)`
 $$
-which can be written in the augmented matrix form
+
+which can be written in the augmented matrix form as
 $$
-\begin{pmatrix}
-3 & 8  & -4 & 6 \\
-2 & -4 & -1 & 8 \\
-4 & 5  & 0  & 9
-\end{pmatrix}
+`r dasc2594::array_to_latex(cbind(A, b))`
 $$
+
 In `R`, this is the matrix
 
 ```{r}
