@@ -345,8 +345,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-matrix-inverse" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Matrix Inverses</h1>
-<div class="sourceCode" id="section-cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="section-matrix-inverse.html#cb124-1"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb124-2"><a href="section-matrix-inverse.html#cb124-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="section-cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="section-matrix-inverse.html#cb128-1"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb128-2"><a href="section-matrix-inverse.html#cb128-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>For scalars, the multiplicative identity is
 <span class="math display">\[
 a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
@@ -361,9 +361,9 @@ where <span class="math inline">\(a^{-1}\)</span> is the inverse of <span class=
 \]</span>
 where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math inline">\(n \times n\)</span> identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).</p>
 <p>In <code>R</code>, an identity matrix is easy to construct. An <span class="math inline">\(n \times n\)</span> identity matrix can be constructed using the <code>diag()</code> function</p>
-<div class="sourceCode" id="section-cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="section-matrix-inverse.html#cb125-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
-<span id="cb125-2"><a href="section-matrix-inverse.html#cb125-2"></a>I &lt;-<span class="st"> </span><span class="kw">diag</span>(n)</span>
-<span id="cb125-3"><a href="section-matrix-inverse.html#cb125-3"></a>I</span></code></pre></div>
+<div class="sourceCode" id="section-cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="section-matrix-inverse.html#cb129-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
+<span id="cb129-2"><a href="section-matrix-inverse.html#cb129-2"></a>I &lt;-<span class="st"> </span><span class="kw">diag</span>(n)</span>
+<span id="cb129-3"><a href="section-matrix-inverse.html#cb129-3"></a>I</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -379,7 +379,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 \]</span></p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-101" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
+<span id="section-thm:unnamed-chunk-108" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}
@@ -397,7 +397,7 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 </ul>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-102" class="definition"><strong>Definition 8.1  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
+<span id="section-def:unnamed-chunk-109" class="definition"><strong>Definition 8.1  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
 </div>
 
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
@@ -406,7 +406,7 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 </ul>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-103" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
+<span id="section-thm:unnamed-chunk-110" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
 <span class="math display">\[
 \mathbf{A} \mathbf{x} = \mathbf{b}
 \]</span>
@@ -419,7 +419,7 @@ has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1}
 </ul>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-104" class="theorem"><strong>Theorem 8.3  (Invertible Matrix Theorem)  </strong></span>
+<p><span id="section-thm:unnamed-chunk-111" class="theorem"><strong>Theorem 8.3  (Invertible Matrix Theorem)  </strong></span>
 1) If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is invertible and <span class="math inline">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> invertible matrices, then <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is also an invertible matrix whose inverse is
@@ -450,20 +450,20 @@ which is the inverse of the matrices in reverse order.</p></li>
 </ol>
 <ul>
 <li><p><strong>Example:</strong> Consider a <span class="math inline">\(3 \times 3\)</span> matrix</p>
-<div class="sourceCode" id="section-cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="section-matrix-inverse.html#cb127-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="section-matrix-inverse.html#cb131-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -2 &amp; 4 \\ 5 &amp; -4 &amp; 6 \\ 9 &amp; 1 &amp; -2 \end{pmatrix}\)</span></p>
 <ol style="list-style-type: decimal">
 <li>What is the elementary matrix (let’s call it <span class="math inline">\(\mathbf{E}_1\)</span> that swaps the first and second rows of <span class="math inline">\(\mathbf{A}\)</span>?</li>
 </ol>
-<div class="sourceCode" id="section-cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="section-matrix-inverse.html#cb128-1"></a>E_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="section-matrix-inverse.html#cb132-1"></a>E_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{E}_1 = \begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p>
-<div class="sourceCode" id="section-cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="section-matrix-inverse.html#cb129-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-matrix-inverse.html#cb133-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
 ## [3,]    9    1   -2</code></pre>
-<div class="sourceCode" id="section-cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="section-matrix-inverse.html#cb131-1"></a><span class="co">## left multiple A by E_1</span></span>
-<span id="cb131-2"><a href="section-matrix-inverse.html#cb131-2"></a>E_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="section-matrix-inverse.html#cb135-1"></a><span class="co">## left multiple A by E_1</span></span>
+<span id="cb135-2"><a href="section-matrix-inverse.html#cb135-2"></a>E_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5   -4    6
 ## [2,]    4   -2    4
@@ -472,15 +472,15 @@ which is the inverse of the matrices in reverse order.</p></li>
 <ol start="2" style="list-style-type: decimal">
 <li>What is the elementary matrix (let’s call it <span class="math inline">\(\mathbf{E}_2\)</span> that adds two times the first of <span class="math inline">\(\mathbf{A}\)</span> to the third row of <span class="math inline">\(\mathbf{A}\)</span>?</li>
 </ol>
-<div class="sourceCode" id="section-cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="section-matrix-inverse.html#cb133-1"></a>E_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="section-matrix-inverse.html#cb137-1"></a>E_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{E}_2 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 2 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p>
-<div class="sourceCode" id="section-cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="section-matrix-inverse.html#cb134-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="section-matrix-inverse.html#cb138-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
 ## [3,]    9    1   -2</code></pre>
-<div class="sourceCode" id="section-cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="section-matrix-inverse.html#cb136-1"></a><span class="co">## left multiple A by E_2</span></span>
-<span id="cb136-2"><a href="section-matrix-inverse.html#cb136-2"></a>E_<span class="dv">2</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="section-matrix-inverse.html#cb140-1"></a><span class="co">## left multiple A by E_2</span></span>
+<span id="cb140-2"><a href="section-matrix-inverse.html#cb140-2"></a>E_<span class="dv">2</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
@@ -489,15 +489,15 @@ which is the inverse of the matrices in reverse order.</p></li>
 <ol start="3" style="list-style-type: decimal">
 <li>What is the elementary matrix (let’s call it <span class="math inline">\(\mathbf{E}_3\)</span> that mutliples the second row of <span class="math inline">\(\mathbf{A}\)</span> by 3?</li>
 </ol>
-<div class="sourceCode" id="section-cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="section-matrix-inverse.html#cb138-1"></a>E_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="section-matrix-inverse.html#cb142-1"></a>E_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p><span class="math inline">\(\mathbf{E}_3 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p>
-<div class="sourceCode" id="section-cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="section-matrix-inverse.html#cb139-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="section-matrix-inverse.html#cb143-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]    5   -4    6
 ## [3,]    9    1   -2</code></pre>
-<div class="sourceCode" id="section-cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="section-matrix-inverse.html#cb141-1"></a><span class="co">## left multiple A by E_3</span></span>
-<span id="cb141-2"><a href="section-matrix-inverse.html#cb141-2"></a>E_<span class="dv">3</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
+<div class="sourceCode" id="section-cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="section-matrix-inverse.html#cb145-1"></a><span class="co">## left multiple A by E_3</span></span>
+<span id="cb145-2"><a href="section-matrix-inverse.html#cb145-2"></a>E_<span class="dv">3</span> <span class="op">%*%</span><span class="st"> </span>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4   -2    4
 ## [2,]   15  -12   18
@@ -519,7 +519,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p>The next theorem is quite important as the result gives an algorithm for calculating the inverse of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which also makes it possible to solve matrix equations <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span></p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-112" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="section-thm:unnamed-chunk-119" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
 <ul>
@@ -567,7 +567,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 <h2><span class="header-section-number">8.4</span> Invertible Linear Transformations</h2>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-114" class="definition"><strong>Definition 8.2  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
+<p><span id="section-def:unnamed-chunk-121" class="definition"><strong>Definition 8.2  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
 <span class="math display">\[
 \begin{align*}
 S(T(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n
@@ -581,7 +581,7 @@ T(S(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal
 </ul>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-115" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="section-thm:unnamed-chunk-122" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
 

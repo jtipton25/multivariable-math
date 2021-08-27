@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Subspaces are a generalization of the idea of subsets that are useful for understanding vector spaces.</p>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-132" class="definition"><strong>Definition 11.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a set that has the properties</p>
+<p><span id="section-def:unnamed-chunk-139" class="definition"><strong>Definition 11.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a set that has the properties</p>
 <ol style="list-style-type: decimal">
 <li><p>The zero vector <span class="math inline">\(\mathbf{0} \in \mathcal{H}\)</span> </p></li>
 <li><p>For each <span class="math inline">\(\mathbf{u}, \mathbf{v} \in \mathcal{H}\)</span>, the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span> </p></li>
@@ -359,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-133" class="example"><strong>Example 11.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector space defined by span<span class="math inline">\(\{\mathbf{u}, \mathbf{v} \}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>
+<span id="section-exm:unnamed-chunk-140" class="example"><strong>Example 11.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector space defined by span<span class="math inline">\(\{\mathbf{u}, \mathbf{v} \}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>
 </div>
 
 <ul>
@@ -367,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 
 <div class="exercise">
-<span id="section-exr:unnamed-chunk-134" class="exercise"><strong>Exercise 11.1  </strong></span>* Is a line through the origin a subspace?
+<span id="section-exr:unnamed-chunk-141" class="exercise"><strong>Exercise 11.1  </strong></span>* Is a line through the origin a subspace?
 * Is a line <strong>not</strong> through the origin a subspace?
 </div>
 
@@ -378,23 +378,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.1</span> Special subspaces: column space and null space</h2>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-135" class="definition"><strong>Definition 11.2  </strong></span>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.
+<span id="section-def:unnamed-chunk-142" class="definition"><strong>Definition 11.2  </strong></span>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.
 </div>
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-136" class="example"><strong>Example 11.2  </strong></span>in class
+<span id="section-exm:unnamed-chunk-143" class="example"><strong>Example 11.2  </strong></span>in class
 </div>
 
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-137" class="definition"><strong>Definition 11.3  </strong></span>The <strong>null space</strong>, denoted <span class="math inline">\(\operatorname{null}(\mathbf{A})\)</span>, of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions to the homogeneous matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.
+<span id="section-def:unnamed-chunk-144" class="definition"><strong>Definition 11.3  </strong></span>The <strong>null space</strong>, denoted <span class="math inline">\(\operatorname{null}(\mathbf{A})\)</span>, of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions to the homogeneous matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.
 </div>
 
 <p>While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>.</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-138" class="theorem"><strong>Theorem 11.1  </strong></span>The null space of a n <span class="math inline">\(m \times m\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.
+<span id="section-thm:unnamed-chunk-145" class="theorem"><strong>Theorem 11.1  </strong></span>The null space of a n <span class="math inline">\(m \times m\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.
 </div>
 
 
@@ -410,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.2</span> The basis of a subspace</h2>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-140" class="definition"><strong>Definition 11.4  </strong></span>A <strong>basis</strong> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> that spans <span class="math inline">\(\mathbf{H}\)</span>. Equivlently, a baisis is a set of linearly independent vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> such that span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\)</span>.
+<span id="section-def:unnamed-chunk-147" class="definition"><strong>Definition 11.4  </strong></span>A <strong>basis</strong> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> that spans <span class="math inline">\(\mathbf{H}\)</span>. Equivlently, a baisis is a set of linearly independent vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> such that span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\)</span>.
 </div>
 
 <p>The requirement that the vectors of a basis are linearly independent while spanning a subspace <span class="math inline">\(\mathcal{H}\)</span> means that a basis is a <strong>minimal spanning set</strong> for the subspace <span class="math inline">\(\mathcal{H}\)</span></p>
@@ -419,24 +419,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-141" class="definition"><strong>Definition 11.5  </strong></span>The standard basis for <span class="math inline">\(\mathcal{R}^n\)</span>
+<span id="section-def:unnamed-chunk-148" class="definition"><strong>Definition 11.5  </strong></span>The standard basis for <span class="math inline">\(\mathcal{R}^n\)</span>
 </div>
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-142" class="example"><strong>Example 11.3  </strong></span>Basis for <span class="math inline">\(\mathcal{R}^3\)</span>
+<span id="section-exm:unnamed-chunk-149" class="example"><strong>Example 11.3  </strong></span>Basis for <span class="math inline">\(\mathcal{R}^3\)</span>
 </div>
 
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-143" class="example"><strong>Example 11.4  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unnamed-chunk-150" class="example"><strong>Example 11.4  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 <ul>
 <li>in class
 </div></li>
 </ul>
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-144" class="example"><strong>Example 11.5  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
+<span id="section-exm:unnamed-chunk-151" class="example"><strong>Example 11.5  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; 1 &amp; 3 \\ -1 &amp; -2 &amp; 6 &amp; 5 \\ 1 &amp; 2 &amp; -3 &amp; 2 \end{pmatrix}
 \]</span>
@@ -444,19 +444,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-145" class="theorem"><strong>Theorem 11.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.
+<span id="section-thm:unnamed-chunk-152" class="theorem"><strong>Theorem 11.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.
 </div>
 
 <p><strong>Note:</strong> Use the columns of <span class="math inline">\(\mathbf{A}\)</span>, not the columns of the matrix in echelon form.</p>
 <p>corollary</p>
 
 <div class="corollary">
-<span id="section-cor:unnamed-chunk-146" class="corollary"><strong>Corollary 11.1  </strong></span>
+<span id="section-cor:unnamed-chunk-153" class="corollary"><strong>Corollary 11.1  </strong></span>
 </div>
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-147" class="example"><strong>Example 11.6  </strong></span>Using <code>R</code>, find a basis for the column space of the matrix
+<span id="section-exm:unnamed-chunk-154" class="example"><strong>Example 11.6  </strong></span>Using <code>R</code>, find a basis for the column space of the matrix
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} 3 &amp; 1 &amp; 2 &amp; -3 \\ 4 &amp; 1 &amp; -3 &amp; -2 \\ 4 &amp; -1 &amp; -3 &amp; 1 \end{pmatrix}
 \]</span>
