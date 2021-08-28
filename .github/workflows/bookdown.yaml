@@ -20,10 +20,11 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install --cask xquartz
       
-      - name: Install magick and libgit2 homebrew
+      - name: Install magick, libgit2, and poppler using homebrew
         run: |
           brew install imagemagick@6
           brew install libgit2
+          brew install poppler
           
       - name: Cache Renv packages
         uses: actions/cache@v2
