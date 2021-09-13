@@ -45,13 +45,13 @@ A solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ exists if
 ```{theorem}
 For the $n \times K$ matrix $\mathbf{A}$, the following statements are equivalent:
 
-a) For each $\mathbf{b} \in \mathcal{R}^K$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
+a) For each $\mathbf{b} \in \mathcal{R}^n$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
 
-b) Each $\mathbf{b} \in \mathcal{R}^K$ is a linear combination of the columns of $\mathbf{A}$
+b) Each $\mathbf{b} \in \mathcal{R}^n$ is a linear combination of the columns of $\mathbf{A}$
     
-c)  The columns of $\mathbf{A}$ span $\mathcal{R}^K$
+c) The columns of $\mathbf{A}$ span $\mathcal{R}^n$
     
-d) $\mathbf{A}$ has a pivot in every column
+d) $\mathbf{A}$ has $n$ pivot columns. ($\mathbf{A}$ has a pivot in every row)
 ```
 
 ## Matrix-vector multiplication
