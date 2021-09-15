@@ -469,7 +469,7 @@ Notice that the first row of the last matrix above has the sum first row of the 
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{align}
 \]</span>
-is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(K\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.
+is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.
 </div>
 
 <p>The homogeneous linear system of equations can be written in augmented matrix form
@@ -478,7 +478,7 @@ is called a homogeneous system of equations. The vector <span class="math inline
 \begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{0} \end{pmatrix}
 \end{align*}
 \]</span>
-which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column must not be a pivot column. If every column were a pivot column, the reduced row echelon form of the augmented matrix would be
+which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column <span class="math inline">\(\mathbf{A}\)</span> must not be a pivot column (Note: the last column of the augmented matrix will not be a pivot column because it will be a column of zeros). If every column of <span class="math inline">\(\mathbf{A}\)</span> were a pivot column, the reduced row echelon form of the augmented matrix would be
 <span class="math display">\[
 \begin{align*}
 \begin{pmatrix}
