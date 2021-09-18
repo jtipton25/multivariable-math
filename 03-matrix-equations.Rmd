@@ -45,13 +45,13 @@ A solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ exists if
 ```{theorem}
 For the $n \times K$ matrix $\mathbf{A}$, the following statements are equivalent:
 
-a) For each $\mathbf{b} \in \mathcal{R}^K$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
+a) For each $\mathbf{b} \in \mathcal{R}^n$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
 
-b) Each $\mathbf{b} \in \mathcal{R}^K$ is a linear combination of the columns of $\mathbf{A}$
+b) Each $\mathbf{b} \in \mathcal{R}^n$ is a linear combination of the columns of $\mathbf{A}$
     
-c)  The columns of $\mathbf{A}$ span $\mathcal{R}^K$
+c) The columns of $\mathbf{A}$ span $\mathcal{R}^n$
     
-d) $\mathbf{A}$ has a pivot in every column
+d) $\mathbf{A}$ has $n$ pivot columns. ($\mathbf{A}$ has a pivot in every row)
 ```
 
 ## Matrix-vector multiplication
@@ -128,7 +128,7 @@ $$
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{align}
 $$ 
-is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $K$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
+is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $N$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
 ```
 
 The homogeneous linear system of equations can be written in augmented matrix form 
@@ -137,7 +137,7 @@ $$
 \begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{0} \end{pmatrix}
 \end{align*}
 $$
-which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column must not be a pivot column. If every column were a pivot column, the reduced row echelon form of the augmented matrix would be 
+which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column $\mathbf{A}$ must not be a pivot column (Note: the last column of the augmented matrix will not be a pivot column because it will be a column of zeros). If every column of $\mathbf{A}$ were a pivot column, the reduced row echelon form of the augmented matrix would be 
 $$
 \begin{align*}
 \begin{pmatrix}

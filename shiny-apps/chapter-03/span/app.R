@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(dasc2594)
+library(tidyverse)
 
 shinyApp(
     
