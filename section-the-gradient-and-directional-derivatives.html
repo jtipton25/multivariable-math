@@ -354,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Suppose you are standing on a mountain surface at the point <span class="math inline">\((x, y, z)\)</span> in 3-dimensions where <span class="math inline">\(z = f(x, y)\)</span> is the function that gives the height of the mountain at location <span class="math inline">\((x, y)\)</span>. If you are standing at the point <span class="math inline">\((a, b)\)</span> in the <span class="math inline">\((x, y)\)</span> coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the <strong>directional derivative</strong> and the <strong>gradient</strong>.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-252" class="definition"><strong>Definition 27.1  (Directional Derivative)  </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<span id="section-def:unnamed-chunk-268" class="definition"><strong>Definition 27.1  (Directional Derivative)  </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
 <span class="math display">\[\begin{align*}
 D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - f(a, b)}{h}
 \end{align*}\]</span>
@@ -385,7 +385,7 @@ D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial 
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-224" class="example"><strong>Example 27.1  </strong></span>Compute the directional derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((2, 1)\)</span>.</p>
+<p><span id="section-exm:unlabeled-div-241" class="example"><strong>Example 27.1  </strong></span>Compute the directional derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((2, 1)\)</span>.</p>
 <ul>
 <li>calculate the directional derivatives</li>
 <li>graph the directional derivatives using contour plots and segments</li>
@@ -437,14 +437,14 @@ D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial 
 <span id="cb237-8"><a href="section-the-gradient-and-directional-derivatives.html#cb237-8"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
 <span id="cb237-9"><a href="section-the-gradient-and-directional-derivatives.html#cb237-9"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">1</span>], <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">2</span>]), </span>
 <span id="cb237-10"><a href="section-the-gradient-and-directional-derivatives.html#cb237-10"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
 </div>
 <div id="section-the-gradient" class="section level2">
 <h2><span class="header-section-number">27.1</span> The Gradient</h2>
 <p>The directional derivative is a dot product of the partial derivatives and a unit vector. The gradient is similar, but rather than return a single value (a number), the gradient returns a vector at a point <span class="math inline">\((a, b)\)</span>.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-254" class="definition"><strong>Definition 27.3  (The Gradient)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
+<span id="section-def:unnamed-chunk-270" class="definition"><strong>Definition 27.3  (The Gradient)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
 <span class="math display">\[\begin{align*}
 \nabla f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \\
  &amp; = \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} \mathbf{e}_1 + \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \mathbf{e}_2,
@@ -460,7 +460,7 @@ D_{\mathbf{v}} f(a, b) &amp; = \nabla f(a, b) \cdot \mathbf{v} \\
 the directional derivative is the dot product of the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b)\)</span> with the unit vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-255" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
+<p><span id="section-exm:unnamed-chunk-271" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
 <ul>
 <li>calculate the gradient</li>
 <li>graph the gradient using contour plots and segments
@@ -478,7 +478,7 @@ the directional derivative is the dot product of the gradient <span class="math 
 </ol>
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-256" class="example"><strong>Example 27.3  </strong></span>
+<p><span id="section-exm:unnamed-chunk-272" class="example"><strong>Example 27.3  </strong></span>
 Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
 <ul>
 <li>graph the function as contours and plot the gradient as a segment
@@ -497,7 +497,7 @@ which is only true if the gradient <span class="math inline">\(\nabla f(a, b)\)<
 \end{align*}\]</span></p>
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-257" class="example"><strong>Example 27.4  </strong></span>For the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^3\)</span>, find a vector orthogonal to the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b) = (2, 1)\)</span>.
+<span id="section-exm:unnamed-chunk-273" class="example"><strong>Example 27.4  </strong></span>For the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^3\)</span>, find a vector orthogonal to the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b) = (2, 1)\)</span>.
 </div>
 
 </div>

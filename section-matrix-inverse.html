@@ -379,7 +379,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 \]</span></p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-108" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
+<span id="section-thm:unnamed-chunk-124" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}
@@ -397,7 +397,7 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 </ul>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-109" class="definition"><strong>Definition 8.1  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
+<span id="section-def:unnamed-chunk-125" class="definition"><strong>Definition 8.1  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
 </div>
 
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
@@ -406,7 +406,7 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 </ul>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-110" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
+<span id="section-thm:unnamed-chunk-126" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
 <span class="math display">\[
 \mathbf{A} \mathbf{x} = \mathbf{b}
 \]</span>
@@ -419,7 +419,7 @@ has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1}
 </ul>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-111" class="theorem"><strong>Theorem 8.3  (Invertible Matrix Theorem)  </strong></span>
+<p><span id="section-thm:unnamed-chunk-127" class="theorem"><strong>Theorem 8.3  (Invertible Matrix Theorem)  </strong></span>
 1) If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is invertible and <span class="math inline">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> invertible matrices, then <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is also an invertible matrix whose inverse is
@@ -519,7 +519,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p>The next theorem is quite important as the result gives an algorithm for calculating the inverse of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which also makes it possible to solve matrix equations <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span></p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-119" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="section-thm:unnamed-chunk-135" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
 <ul>
@@ -567,7 +567,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 <h2><span class="header-section-number">8.4</span> Invertible Linear Transformations</h2>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-121" class="definition"><strong>Definition 8.2  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
+<p><span id="section-def:unnamed-chunk-137" class="definition"><strong>Definition 8.2  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
 <span class="math display">\[
 \begin{align*}
 S(T(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n
@@ -581,7 +581,7 @@ T(S(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal
 </ul>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-122" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="section-thm:unnamed-chunk-138" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
 
