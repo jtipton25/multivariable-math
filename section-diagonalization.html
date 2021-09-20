@@ -345,17 +345,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-diagonalization" class="section level1">
 <h1><span class="header-section-number">Chapter 22</span> Diagonalization</h1>
-<div class="sourceCode" id="section-cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="section-diagonalization.html#cb190-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb190-2"><a href="section-diagonalization.html#cb190-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb190-3"><a href="section-diagonalization.html#cb190-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="section-diagonalization.html#cb192-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb192-2"><a href="section-diagonalization.html#cb192-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb192-3"><a href="section-diagonalization.html#cb192-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-186" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
+<p><span id="section-def:unlabeled-div-193" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
 <p><span class="math display">\[\begin{align*}
 \mathbf{A} &amp; = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-187" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
+<p><span id="section-exm:unlabeled-div-194" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
 </div>
 
 <div class="theorem">
@@ -370,50 +370,50 @@ In addition, the <span class="math inline">\(n \times n\)</span> matrix <span cl
 
 <p>This theorem implies that the matrix <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable if and only if the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span>. When this is the case, the set of eigenvectors is called an <strong>eigenbasis</strong>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-190" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
-<div class="sourceCode" id="section-cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="section-diagonalization.html#cb191-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb191-2"><a href="section-diagonalization.html#cb191-2"></a>A</span></code></pre></div>
+<p><span id="section-exm:unlabeled-div-197" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<div class="sourceCode" id="section-cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="section-diagonalization.html#cb193-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb193-2"><a href="section-diagonalization.html#cb193-2"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    9   -3    1
 ## [2,]    2    2    0
 ## [3,]    0   -4    3</code></pre>
-<div class="sourceCode" id="section-cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="section-diagonalization.html#cb193-1"></a>eigen_A &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)</span>
-<span id="cb193-2"><a href="section-diagonalization.html#cb193-2"></a><span class="kw">str</span>(eigen_A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="section-diagonalization.html#cb195-1"></a>eigen_A &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)</span>
+<span id="cb195-2"><a href="section-diagonalization.html#cb195-2"></a><span class="kw">str</span>(eigen_A)</span></code></pre></div>
 <pre><code>## List of 2
 ##  $ values : num [1:3] 7.63 4.52 1.86
 ##  $ vectors: num [1:3, 1:3] -0.905 -0.322 0.278 -0.407 -0.324 ...
 ##  - attr(*, &quot;class&quot;)= chr &quot;eigen&quot;</code></pre>
-<div class="sourceCode" id="section-cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="section-diagonalization.html#cb195-1"></a>P &lt;-<span class="st"> </span>eigen_A<span class="op">$</span>vectors</span>
-<span id="cb195-2"><a href="section-diagonalization.html#cb195-2"></a>P</span></code></pre></div>
+<div class="sourceCode" id="section-cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="section-diagonalization.html#cb197-1"></a>P &lt;-<span class="st"> </span>eigen_A<span class="op">$</span>vectors</span>
+<span id="cb197-2"><a href="section-diagonalization.html#cb197-2"></a>P</span></code></pre></div>
 <pre><code>##            [,1]       [,2]        [,3]
 ## [1,] -0.9050468 -0.4069141 -0.01938647
 ## [2,] -0.3217259 -0.3235720  0.27433148
 ## [3,]  0.2781774  0.8542377  0.96143976</code></pre>
-<div class="sourceCode" id="section-cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="section-diagonalization.html#cb197-1"></a>D &lt;-<span class="st"> </span><span class="kw">diag</span>(eigen_A<span class="op">$</span>values)</span>
-<span id="cb197-2"><a href="section-diagonalization.html#cb197-2"></a>D</span></code></pre></div>
+<div class="sourceCode" id="section-cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="section-diagonalization.html#cb199-1"></a>D &lt;-<span class="st"> </span><span class="kw">diag</span>(eigen_A<span class="op">$</span>values)</span>
+<span id="cb199-2"><a href="section-diagonalization.html#cb199-2"></a>D</span></code></pre></div>
 <pre><code>##          [,1]     [,2]     [,3]
 ## [1,] 7.626198 0.000000 0.000000
 ## [2,] 0.000000 4.515138 0.000000
 ## [3,] 0.000000 0.000000 1.858664</code></pre>
-<div class="sourceCode" id="section-cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="section-diagonalization.html#cb199-1"></a>P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<div class="sourceCode" id="section-cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="section-diagonalization.html#cb201-1"></a>P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
 <pre><code>##               [,1] [,2] [,3]
 ## [1,]  9.000000e+00   -3    1
 ## [2,]  2.000000e+00    2    0
 ## [3,] -9.992007e-16   -4    3</code></pre>
-<div class="sourceCode" id="section-cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="section-diagonalization.html#cb201-1"></a><span class="kw">all.equal</span>(A, P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P))</span></code></pre></div>
+<div class="sourceCode" id="section-cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="section-diagonalization.html#cb203-1"></a><span class="kw">all.equal</span>(A, P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-191" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
+<p><span id="section-thm:unlabeled-div-198" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
 <span class="math display">\[\begin{align*}
 \mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-192" class="proof"><em>Proof</em>. </span>In class</p>
+<p><span id="section-unlabeled-div-199" class="proof"><em>Proof</em>. </span>In class</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-193" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<p><span id="section-exm:unlabeled-div-200" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
 <p>Consider the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix}\)</span> which has eigenvalues 1, 2, 3. Then the standard basis <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\)</span> are corresponding eigenvectors (check the definition <span class="math inline">\(\mathbf{A} \lambda = \mathbf{v} \lambda\)</span>) because</p>
 <p><span class="math display">\[\begin{align*}
 \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} &amp; = 1 * \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \\
