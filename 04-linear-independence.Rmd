@@ -10,45 +10,60 @@ $$
 The set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ are called **linearly independent** if the only solution to the vector equation $\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}$ is the trivial solution. The set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ are called **linearly dependent** if there are coefficients $x_1, \ldots, x_K$ that are not all zero.
 ```
 
-* **Example: in class**
-
-* What does it mean for a set of vectors to be **linearly dependent**? This means that there is at least one vector $\mathbf{a}_k$ that can be written as a sum of the other vectors with coefficients $z_k$:
-$$
-\begin{align*}
-\mathbf{a}_k = \sum_{k' \neq k} z_{k'} \mathbf{a}_{k'}
-\end{align*}
-$$
-Note: this does not imply that all vectors $\mathbf{a}_{k}$ can be written as a linear combination of other vectors.
-
-* **Example: in class -- determine if the vectors are linearly independent and solve the dependence relation**
-
-```{theorem} 
-The matrix equation $\mathbf{A}$ has linearly independent columns if and only if the equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ has only the trivial solution.
+```{example}
+**In class**
 ```
 
-* **Example: in class** A set of a single vector
+What does it mean for a set of vectors to be **linearly dependent**? This means that there is at least one vector $\mathbf{a}_k$ that can be written as a sum of the other vectors with coefficients $x_k$:
+$$
+\begin{align*}
+\mathbf{a}_k = \sum_{j \neq k} x_{j} \mathbf{a}_{j}
+\end{align*}
+$$
+Note: **linear dependence** does not imply that all vectors $\mathbf{a}_{k}$ can be written as a linear combination of other vectors, just that there is at least one such vector in the set.
 
-* **Example:  in class** A set of two vectors
+```{example}
+**Example: in class -- determine if the vectors are linearly independent and solve the dependence relation**
+```    
+    
 
-    * linearly independent if:
-    
-    * linearly dependent if one vector is a scalar multiple of the other:
-    
+```{theorem} 
+The matrix $\mathbf{A}$ has linearly independent columns if and only if the matrix equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ has only the trivial solution.
+```
+
+```{example}
+**Example: in class** A set of a single vector
+```
+
+```{example}
+**Example:  in class** A set of two vectors
+
+* linearly independent if:
+
+* linearly dependent if one vector is a scalar multiple of the other:
+```
+
     
 ```{theorem}
 If an $n \times K$ matrix $\mathbf{A}$ has $K > n$, then the columns of $\mathbf{A}$ are linearly dependent. In other words, if a set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ contains more vectors than entries within vectors, the set of vectors is linearly dependent.
 ```
 
-* **Proof:** If $K>n$, there are more variables ($K$) than equations ($n$). Therefore, there is at least one free variable and this implies that the homogeneous equation $\mathbf{A}\mathbf{x}=\mathbf{0}$ has a non-trivial solution \@ref(eq:homogeneous)
+```{proof}
+If $K>n$, there are more variables ($K$) than equations ($n$). Therefore, there is at least one free variable and this implies that the homogeneous equation $\mathbf{A}\mathbf{x}=\mathbf{0}$ has a non-trivial solution \@ref(eq:homogeneous)
+```
 
 
 ```{theorem}
 If a set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ contains the $\mathbf{0}$ vector, then the the set of vectors is linearly dependent.
 ```
 
-* **Proof: in class**
+```{proof}
+**in class**
+```
 
-* **Example: in class** Determine whether the following sets of vectors are linearly dependent
+```{example}
+In class: Determine whether the following sets of vectors are linearly dependent
+```
 
 
 

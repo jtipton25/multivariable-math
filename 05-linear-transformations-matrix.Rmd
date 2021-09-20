@@ -6,7 +6,7 @@ library(dasc2594)
 library(gifski)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message = FALSE}
 library(magick)
 library(pdftools)
 ```
@@ -39,7 +39,7 @@ In the case of matrix transformations (linear transformations), the function $T(
 Using the matrix transformation notation, the domain of the transformation $T$ is $\mathcal{R}^n$, the codomain of $\mathcal{T}$ $\mathcal{R}^m$. The range of the transformation $T$ is the set of all linear combinations of the columns of $\mathbf{A}$ (the $\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$) because the transformation $T(\mathbf{x}) = \mathbf{A} \mathbf{x}$ is a linear combination $\sum_{i=1}^n x_i \mathbf{a}_i$ of the columns $\{\mathbf{a}_i\}_{i=1}^n$ of $\mathbf{A}$ with coefficients $x_1, \ldots, x_n$
 
 
-* **Example:**
+:::{.example}
 $$
 \begin{align*}
 \mathbf{A} = \begin{pmatrix}
@@ -64,23 +64,46 @@ $$
 \end{align*}
 $$
 
-```{r, echo = FALSE, inclue = FALSE}
+```{r}
 A <- matrix(c(2, -3, -1, 4, 1, 6), 3, 2)
 u <- c(1, 3)
 b <- 3 * A[, 1] - 2 * A[, 2]
 c <- c(2, -2, -1)
+```
+
+
+a) Find the image of $\mathbf{u}$ using the matrix transformation $T$ (e.g., calculate $T(\mathbf{u})$).
+
+```{r}
 # a
 A %*% u
+```
+
+The image of $\mathbf{u}$ under $T$ is $T(\mathbf{u}) = \mathbf{A} \mathbf{u} = `r array_to_latex(A %*% u)`$.
+
+b) Find a coefficient vector $\mathbf{x} \in \mathcal{R}^2$ such that $T(\mathbf{x}) = \mathbf{b}$.
+
+```{r}
 #b
 rref(cbind(A, b))
-# c Use above, unique solution as every (non augmented) column is a pivot
+```
+
+A coefficient vector $\mathbf{x}$ such that $T(\mathbf{x}) = \mathbf{b}$ is the solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ which can be found from the reduced row echelon form of the augmented matrix above giving $\mathbf{x} = `r array_to_latex(as.matrix(rref(cbind(A, b))[1:2, 3]))`$
+
+c) Is there more than one $\mathbf{x}$ whose image under $T$ is $\mathbf{b}?$ In other words, is the solution $\mathbf{A} \mathbf{x}= \mathbf{b}$ unique?
+
+Use the reduced row echelon form of the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ above which gives a unique solution as every (non augmented) column is a pivot. Thus, there is only one solution.
+
+
+d) Determine if $\mathbf{c}$ is in the range of $T$. In other words, does the solution $\mathbf{A} \mathbf{x}= \mathbf{c}$ exist?
+
+```{r}
 # d
 rref(cbind(A, c)) # no because this is an inconsistent system of equations
 ```
-a) Find the image of $\mathbf{u}$ using the matrix transformation $T$ (e.g., calculate $T(\mathbf{u})$).
-b) Find a coefficient vector $\mathbf{x} \in \mathcal{R}^2$ such that $T(\mathbf{x})$.
-c) Is there more than one $\mathbf{x}$ whose image under $T$ is $\mathbf{b}?$ In other words, is the solution $\mathbf{A} \mathbf{x}= \mathbf{b}$ unique?
-d) Determine if $\mathbf{c}$ is in the range of $T$. In other words, does the solution $\mathbf{A} \mathbf{x}= \mathbf{c}$ exist?
+The solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{c}$ which can be found from the reduced row echelon form of the augmented matrix above results in no solution because the last column (the augmented column) is a pivot column. Thus, the system of equations is inconsistent and $\mathbf{c}$ cannot be written as a linear combination of the columns of $\mathbf{A}$ which means that $\mathbf{c}$ is not in the range of $T$. 
+
+:::
 
 ## Linear Transformations
 
