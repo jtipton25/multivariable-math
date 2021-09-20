@@ -24,6 +24,7 @@ if (!require(dasc2594)) {
 ## Linear Systems of equations
 ### Linear equations
 
+```{definition, name = "Linear Equations"}
 Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
 
 $$
@@ -33,7 +34,12 @@ a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
 \end{align}
 $$
 
-is a **linear equation**. For example, the equation for a line with slope $m$ and $y$-intercept $b$ is
+is a **linear equation**. 
+```
+
+
+```{example}
+The equation for a line with slope $m$ and $y$-intercept $b$ is
 
 $$
 \begin{align*}
@@ -50,7 +56,9 @@ y - m x & = b,
 $$
 
 where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
+```
 
+```{example}
 The equations
 
 $$
@@ -71,7 +79,11 @@ $$
 \end{align*}
 $$
 
-respectively. The equations
+respectively. 
+```
+
+```{example}
+The equations
 
 $$
 \begin{align*}
@@ -82,10 +94,19 @@ x_1 + x_2 - x_1 x_2 & = 16
 $$
 
 are not linear equations because they do not meet the form of \@ref(eq:linear) (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
+```
+
+
 
 ### Systems of linear equations
 
-A set of two or more linear equations that each contain the same set of variables is called a **system of linear equations**. The equations
+```{definition, name = "System of equations"}
+A set of two or more linear equations that each contain the same set of variables is called a **system of linear equations**. 
+```
+
+
+```{example}
+The equations
 
 $$
 \begin{alignat*}{4}
@@ -102,18 +123,69 @@ x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}
 $$
+```
 
-**Exercises:** For the following, are these linear equations?
 
-1) $x_1 + 3 x_1 x_2 = 5$
-2) $5x + 7y + 8z = 11.2$
-3) $y / 4 + \sqrt{2} z = 2^6$
-4) $x + 4 y^2 = 9$
 
+For the following, are these linear equations?
+
+```{example}
+$x_1 + 3 x_1 x_2 = 5$
+```
+
+```{solution}
+This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = 1$, $a_2 = 3$ and $b = 5$
+```
+
+```{example}
+$5x + 7y + 8z = 11.2$
+```
+
+```{solution}
+This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 + a_3 x_3= b$ where $a_1 = 5$, $a_2 = 7$, $a_3 = 8$ and $b = 11.2$. The variables $x_1 = x$, $x_2 = y$, and $x_3 = z$.
+```
+
+```{example}
+$\frac{1}{4} y + \sqrt{2} z = 2^6$
+```    
+    
+    
+```{solution}
+This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = \frac{1}{4}$, $a_2 = \sqrt{2}$, and $b = 2^6$. The variables $x_1 = y$, $x_2 = z$ enter the equation linearly.
+```
+
+
+```{example}
+$x + 4 y^2 = 9$
+```
+
+```{solution}
+This is not a linear equation because the equation cannot be written as $a_1 x_1 + a_2 x_2 = b$ because $x_1 = x$ and $x_2 = y$ so that the equation is written as $a_1 x_1 + a_2 x_2^2 = b$ where $a_1 = 1$, $a_2 = 4$, and $b = 9$. The variable $x_2 = y$ enters the equation in a non-linear (quadratic) manner.
+```
 
 ### Solutions of linear systems
 
-A fundamental question when presented with a linear system of equations is whether the system has a solution. A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true. For example, consider the system of equations
+A fundamental question when presented with a linear system of equations is whether the system has a solution. 
+
+```{definition, name = "Solution of systems of equations"}
+A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true.
+```
+
+```{r, echo = FALSE}
+set.seed(1)
+A <- matrix(sample(-10:10, 6, replace = TRUE), 2, 3)
+```
+
+:::{.example}
+Is $\begin{pmatrix}s_1 = 5 \\ s_2 = 3 \end{pmatrix}$ a solution to the system of equations
+\begin{alignat*}{3}
+x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
+\end{alignat*}}
+:::
+
+:::{.example}
+Consider the system of equations
 
 $$
 \begin{alignat*}{3}
@@ -194,7 +266,7 @@ dat %>%
 ```
 
 From this plot, it is clear that the solution to the system of equations is the location where the two lines intersect!
-
+:::
 
 ### Types of solutions
 
