@@ -539,23 +539,23 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 </div>
 <div id="section-matrix-transpose" class="section level3">
 <h3><span class="header-section-number">7.1.6</span> Matrix Transpose</h3>
-<p>The matrix transpose is an operator that swaps the rows and columns of a matrix. If <span class="math inline">\(\mathbf{A}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, then <span class="math inline">\(\mathbf{A}&#39;\)</span> is a <span class="math inline">\(\m \times n\)</span> matrix (Note: some use <span class="math inline">\(\mathbf{A}^T\)</span> to denote a transpose; I prefer the <span class="math inline">\(&#39;\)</span> notation as it is much simpler and cleaner notation). The matrix</p>
+<p>The matrix transpose is an operator that swaps the rows and columns of a matrix. If <span class="math inline">\(\mathbf{A}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix (<span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns), then <span class="math inline">\(\mathbf{A}&#39;\)</span> is a <span class="math inline">\(n \times m\)</span> matrix (<span class="math inline">\(n\)</span> rows and <span class="math inline">\(m\)</span> columns. Note: some use <span class="math inline">\(\mathbf{A}^T\)</span> to denote a transpose; I prefer the <span class="math inline">\(&#39;\)</span> notation as it is much simpler and cleaner notation). The matrix</p>
 <p><span class="math display">\[
 \begin{align*}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1p} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2p} \\
+\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{np}
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \end{pmatrix}
 \end{align*}
 \]</span>
 has transpose</p>
 <p><span class="math display">\[
 \begin{align*}
-\mathbf{A}&#39; &amp; = \begin{pmatrix} a_{11} &amp; a_{21} &amp; \cdots &amp; a_{p1} \\
-a_{12} &amp; a_{22} &amp; \cdots &amp; a_{p2} \\
+\mathbf{A}&#39; &amp; = \begin{pmatrix} a_{11} &amp; a_{21} &amp; \cdots &amp; a_{m1} \\
+a_{12} &amp; a_{22} &amp; \cdots &amp; a_{m2} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{pn}
+a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{mn}
 \end{pmatrix},
 \end{align*}
 \]</span></p>

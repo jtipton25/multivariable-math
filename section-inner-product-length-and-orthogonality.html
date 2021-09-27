@@ -345,11 +345,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-inner-product-length-and-orthogonality" class="section level1">
 <h1><span class="header-section-number">Chapter 23</span> Inner product, length, and orthogonality</h1>
-<div class="sourceCode" id="section-cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="section-inner-product-length-and-orthogonality.html#cb205-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb205-2"><a href="section-inner-product-length-and-orthogonality.html#cb205-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb205-3"><a href="section-inner-product-length-and-orthogonality.html#cb205-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="section-inner-product-length-and-orthogonality.html#cb209-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb209-2"><a href="section-inner-product-length-and-orthogonality.html#cb209-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb209-3"><a href="section-inner-product-length-and-orthogonality.html#cb209-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-201" class="definition"><strong>Definition 23.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the <strong>inner product</strong> of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is <span class="math inline">\(\mathbf{u}&#39; \mathbf{v}\)</span>. The vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are <span class="math inline">\(n \times 1\)</span> matrices where <span class="math inline">\(\mathbf{u}&#39;\)</span> is a <span class="math inline">\(1 \times n\)</span> matrix and the inner product <span class="math inline">\(\mathbf{u}&#39; \mathbf{v}\)</span> is a scalar (<span class="math inline">\(1 \times 1\)</span> matrix). The inner product is also sometimes called the dot product and written as <span class="math inline">\(\mathbf{u} \cdot \mathbf{v}\)</span>.</p>
+<p><span id="section-def:unlabeled-div-203" class="definition"><strong>Definition 23.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the <strong>inner product</strong> of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is <span class="math inline">\(\mathbf{u}&#39; \mathbf{v}\)</span>. The vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are <span class="math inline">\(n \times 1\)</span> matrices where <span class="math inline">\(\mathbf{u}&#39;\)</span> is a <span class="math inline">\(1 \times n\)</span> matrix and the inner product <span class="math inline">\(\mathbf{u}&#39; \mathbf{v}\)</span> is a scalar (<span class="math inline">\(1 \times 1\)</span> matrix). The inner product is also sometimes called the dot product and written as <span class="math inline">\(\mathbf{u} \cdot \mathbf{v}\)</span>.</p>
 <p>If the vectors
 <span class="math display">\[\begin{align*}
 \mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} &amp; &amp; \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} 
@@ -357,31 +357,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 then <span class="math inline">\(\mathbf{u}&#39; \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n\)</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-202" class="example"><strong>Example 23.1  </strong></span>Find the inner product <span class="math inline">\(\mathbf{u}&#39;\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{v}&#39;\mathbf{u}\)</span> of
+<p><span id="section-exm:unlabeled-div-204" class="example"><strong>Example 23.1  </strong></span>Find the inner product <span class="math inline">\(\mathbf{u}&#39;\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{v}&#39;\mathbf{u}\)</span> of
 <span class="math display">\[\begin{align*}
 \mathbf{u} = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} &amp; &amp; \mathbf{v} = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix} 
 \end{align*}\]</span></p>
 <ul>
 <li>do by hand</li>
 </ul>
-<div class="sourceCode" id="section-cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="section-inner-product-length-and-orthogonality.html#cb206-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">1</span>)</span>
-<span id="cb206-2"><a href="section-inner-product-length-and-orthogonality.html#cb206-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">3</span>)</span>
-<span id="cb206-3"><a href="section-inner-product-length-and-orthogonality.html#cb206-3"></a><span class="co"># u&#39;v</span></span>
-<span id="cb206-4"><a href="section-inner-product-length-and-orthogonality.html#cb206-4"></a><span class="kw">sum</span>(u<span class="op">*</span>v)</span></code></pre></div>
+<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-inner-product-length-and-orthogonality.html#cb210-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">1</span>)</span>
+<span id="cb210-2"><a href="section-inner-product-length-and-orthogonality.html#cb210-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">3</span>)</span>
+<span id="cb210-3"><a href="section-inner-product-length-and-orthogonality.html#cb210-3"></a><span class="co"># u&#39;v</span></span>
+<span id="cb210-4"><a href="section-inner-product-length-and-orthogonality.html#cb210-4"></a><span class="kw">sum</span>(u<span class="op">*</span>v)</span></code></pre></div>
 <pre><code>## [1] 17</code></pre>
-<div class="sourceCode" id="section-cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="section-inner-product-length-and-orthogonality.html#cb208-1"></a><span class="kw">t</span>(u) <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
+<div class="sourceCode" id="section-cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="section-inner-product-length-and-orthogonality.html#cb212-1"></a><span class="kw">t</span>(u) <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]   17</code></pre>
-<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-inner-product-length-and-orthogonality.html#cb210-1"></a><span class="co"># v&#39;u</span></span>
-<span id="cb210-2"><a href="section-inner-product-length-and-orthogonality.html#cb210-2"></a><span class="kw">sum</span>(v<span class="op">*</span>u)</span></code></pre></div>
+<div class="sourceCode" id="section-cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="section-inner-product-length-and-orthogonality.html#cb214-1"></a><span class="co"># v&#39;u</span></span>
+<span id="cb214-2"><a href="section-inner-product-length-and-orthogonality.html#cb214-2"></a><span class="kw">sum</span>(v<span class="op">*</span>u)</span></code></pre></div>
 <pre><code>## [1] 17</code></pre>
-<div class="sourceCode" id="section-cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="section-inner-product-length-and-orthogonality.html#cb212-1"></a><span class="kw">t</span>(v) <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
+<div class="sourceCode" id="section-cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="section-inner-product-length-and-orthogonality.html#cb216-1"></a><span class="kw">t</span>(v) <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]   17</code></pre>
 </div>
 <p>The properties of inner products are defined with the following theorem.</p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-203" class="theorem"><strong>Theorem 23.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{w}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(c\)</span> be a scalar. Then</p>
+<p><span id="section-thm:unlabeled-div-205" class="theorem"><strong>Theorem 23.1  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{w}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(c\)</span> be a scalar. Then</p>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\mathbf{u}&#39;\mathbf{v} = \mathbf{v}&#39;\mathbf{u}\)</span></p></li>
 <li><p><span class="math inline">\((\mathbf{u} + \mathbf{v})&#39; \mathbf{w} = \mathbf{u}&#39; \mathbf{w} + \mathbf{v}&#39; \mathbf{w}\)</span></p></li>
@@ -391,32 +391,32 @@ then <span class="math inline">\(\mathbf{u}&#39; \mathbf{v} = u_1 v_1 + u_2 v_2 
 </div>
 <p>Based on the theorem above, the inner product of a vector with itself (<span class="math inline">\(\mathbf{u}&#39;\mathbf{u}\)</span>) is strictly non-negative. Thus, we can define the length of the vector <span class="math inline">\(\mathbf{u}\)</span> (also called the <strong>norm</strong> of the vector <span class="math inline">\(\mathbf{u}\)</span>).</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-204" class="definition"><strong>Definition 23.2  </strong></span>The length of a vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span>, also called the vector <strong>norm</strong> <span class="math inline">\(\| \mathbf{v} \|\)</span> is defined as
+<p><span id="section-def:unlabeled-div-206" class="definition"><strong>Definition 23.2  </strong></span>The length of a vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span>, also called the vector <strong>norm</strong> <span class="math inline">\(\| \mathbf{v} \|\)</span> is defined as
 <span class="math display">\[\begin{align*}
 \| \mathbf{v} \| &amp; = \sqrt{\mathbf{v}&#39;\mathbf{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-205" class="example"><strong>Example 23.2  </strong></span>Let <span class="math inline">\(\mathbf{v} = \begin{pmatrix} a \\ b \end{pmatrix} \in \mathcal{R}^2\)</span>. Show that the definition of the norm satisfies the Pythagorean theorem.</p>
+<p><span id="section-exm:unlabeled-div-207" class="example"><strong>Example 23.2  </strong></span>Let <span class="math inline">\(\mathbf{v} = \begin{pmatrix} a \\ b \end{pmatrix} \in \mathcal{R}^2\)</span>. Show that the definition of the norm satisfies the Pythagorean theorem.</p>
 </div>
 <p>Another property of the norm is how the norm changes based on scalar multiplication. Let <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span> be a vector and let <span class="math inline">\(c\)</span> be a scalar. Then <span class="math inline">\(\|c \mathbf{v}\| = |c|\|\mathbf{v}\|\)</span></p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-206" class="definition"><strong>Definition 23.3  </strong></span>A vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span> whose length/norm is 1 is called a <strong>unit</strong> vector. Any vector can be made into a unit vector through <strong>normalization</strong> by multiplying the vector <span class="math inline">\(\mathbf{v}\)</span> by <span class="math inline">\(\frac{1}{\|\mathbf{v}\|}\)</span> to get a unit vector <span class="math inline">\(\mathbf{u} = \frac{\mathbf{v}}{\|\mathbf{v}\|}\)</span> in the same direction as <span class="math inline">\(\mathbf{v}\)</span>.</p>
+<p><span id="section-def:unlabeled-div-208" class="definition"><strong>Definition 23.3  </strong></span>A vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span> whose length/norm is 1 is called a <strong>unit</strong> vector. Any vector can be made into a unit vector through <strong>normalization</strong> by multiplying the vector <span class="math inline">\(\mathbf{v}\)</span> by <span class="math inline">\(\frac{1}{\|\mathbf{v}\|}\)</span> to get a unit vector <span class="math inline">\(\mathbf{u} = \frac{\mathbf{v}}{\|\mathbf{v}\|}\)</span> in the same direction as <span class="math inline">\(\mathbf{v}\)</span>.</p>
 </div>
 <div id="section-distance" class="section level2">
 <h2><span class="header-section-number">23.1</span> Distance</h2>
 <p>In two dimensions, the Euclidean distance between the points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> is defined as <span class="math inline">\(\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)</span>. In higher dimensions, a similar definition holds.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-207" class="definition"><strong>Definition 23.4  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the distance <span class="math inline">\(dist(\mathbf{u}, \mathbf{v})\)</span> between <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is</p>
+<p><span id="section-def:unlabeled-div-209" class="definition"><strong>Definition 23.4  </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the distance <span class="math inline">\(dist(\mathbf{u}, \mathbf{v})\)</span> between <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is</p>
 <p><span class="math display">\[\begin{align*}
 dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-208" class="example"><strong>Example 23.3  </strong></span>Distance between two 3-dimensional vectors</p>
-<div class="sourceCode" id="section-cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="section-inner-product-length-and-orthogonality.html#cb214-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-5</span>, <span class="dv">1</span>)</span>
-<span id="cb214-2"><a href="section-inner-product-length-and-orthogonality.html#cb214-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">-2</span>)</span>
-<span id="cb214-3"><a href="section-inner-product-length-and-orthogonality.html#cb214-3"></a><span class="kw">sqrt</span>(<span class="kw">sum</span>((u<span class="op">-</span>v)<span class="op">^</span><span class="dv">2</span>))</span></code></pre></div>
+<p><span id="section-exm:unlabeled-div-210" class="example"><strong>Example 23.3  </strong></span>Distance between two 3-dimensional vectors</p>
+<div class="sourceCode" id="section-cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="section-inner-product-length-and-orthogonality.html#cb218-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-5</span>, <span class="dv">1</span>)</span>
+<span id="cb218-2"><a href="section-inner-product-length-and-orthogonality.html#cb218-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">-2</span>)</span>
+<span id="cb218-3"><a href="section-inner-product-length-and-orthogonality.html#cb218-3"></a><span class="kw">sqrt</span>(<span class="kw">sum</span>((u<span class="op">-</span>v)<span class="op">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 8.602325</code></pre>
 </div>
 </div>
@@ -428,7 +428,7 @@ dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
 <!-- dist(\mathbf{u}, - \mathbf{v}) & =  -->
 <!-- \end{align*} --></p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-209" class="definition"><strong>Definition 23.5  </strong></span>The two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> are orthogonal if
+<p><span id="section-def:unlabeled-div-211" class="definition"><strong>Definition 23.5  </strong></span>The two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> are orthogonal if
 <span class="math display">\[\begin{align*}
 \mathbf{u}&#39; \mathbf{v} = 0
 \end{align*}\]</span></p>
@@ -446,17 +446,17 @@ dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
 <h2><span class="header-section-number">23.4</span> Orthogonal sets</h2>
 <p>The set of vectors <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> is said to be an <strong>orthogonal set</strong> if every pair of vectors is orthogonal. In other words, for all <span class="math inline">\(i \neq j\)</span>, <span class="math inline">\(\mathbf{v}_i&#39; \mathbf{v}_j = 0\)</span>. The set is called an <strong>orthonormal set</strong> if the set of vectors are orthogonal and for <span class="math inline">\(i = 1, \ldots, p\)</span>, each vector <span class="math inline">\(\mathbf{v}_i\)</span> in the set has length <span class="math inline">\(\| \mathbf{v}_i \| = 1\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-210" class="example"><strong>Example 23.4  </strong></span>Show the set of vectors <span class="math inline">\(\left\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \right\}\)</span> is orthogonal</p>
+<p><span id="section-exm:unlabeled-div-212" class="example"><strong>Example 23.4  </strong></span>Show the set of vectors <span class="math inline">\(\left\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \right\}\)</span> is orthogonal</p>
 <ul>
 <li>Show these are orthogonal using <code>R</code></li>
 </ul>
 </div>
 <p>If the set of vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> are an orthogonal set, then the set of vectors <span class="math inline">\(\left\{ \frac{\mathbf{v}_1}{\|\mathbf{v}_1\|}, \ldots, \frac{\mathbf{v}_p}{\|\mathbf{v}_p\|} \right\}\)</span> is an orthonormal set. Note that for each <span class="math inline">\(i\)</span>, the length of the vector <span class="math inline">\(\frac{\mathbf{v}_i} {\|\mathbf{v}_i \|} = 1\)</span></p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-211" class="theorem"><strong>Theorem 23.2  </strong></span>Let the set <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal set of nonzero vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the set of vectors in <span class="math inline">\(\mathcal{S}\)</span> are linearly independent and therefore are a basis for the space spanned by <span class="math inline">\(\mathcal{S}\)</span>.</p>
+<p><span id="section-thm:unlabeled-div-213" class="theorem"><strong>Theorem 23.2  </strong></span>Let the set <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal set of nonzero vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the set of vectors in <span class="math inline">\(\mathcal{S}\)</span> are linearly independent and therefore are a basis for the space spanned by <span class="math inline">\(\mathcal{S}\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-212" class="proof"><em>Proof</em>. </span>Assume the set of vectors <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_p\)</span> are linearly dependent. Then, there exist coefficients <span class="math inline">\(c_1, \ldots, c_p\)</span> such that
+<p><span id="section-unlabeled-div-214" class="proof"><em>Proof</em>. </span>Assume the set of vectors <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_p\)</span> are linearly dependent. Then, there exist coefficients <span class="math inline">\(c_1, \ldots, c_p\)</span> such that
 <span class="math display">\[\begin{align*}
 \mathbf{0} &amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p 
 \end{align*}\]</span>
@@ -471,7 +471,7 @@ which is only equal to 0 when <span class="math inline">\(c_1\)</span> is equal 
 </div>
 <p>A set of orthogonal vectors is called an <strong>orthogonal basis</strong>.</p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-213" class="theorem"><strong>Theorem 23.3  </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{W}\)</span>, the coefficients for the linear combination of basis vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> for the vector <span class="math inline">\(\mathbf{x}\)</span> are</p>
+<p><span id="section-thm:unlabeled-div-215" class="theorem"><strong>Theorem 23.3  </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{W}\)</span>, the coefficients for the linear combination of basis vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> for the vector <span class="math inline">\(\mathbf{x}\)</span> are</p>
 <p><span class="math display">\[\begin{align*}
 \mathbf{x} &amp; = \frac{\mathbf{x}&#39;\mathbf{v}_1}{\mathbf{v}_1&#39;\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}&#39;\mathbf{v}_2}{\mathbf{v}_2&#39;\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}&#39;\mathbf{v}_p}{\mathbf{v}_p&#39;\mathbf{v}_p} \mathbf{v}_p \\
 &amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \\
@@ -479,7 +479,7 @@ which is only equal to 0 when <span class="math inline">\(c_1\)</span> is equal 
 where <span class="math inline">\(c_j = \frac{\mathbf{x}&#39;\mathbf{v}_j}{\mathbf{v}_j&#39;\mathbf{v}_j}\)</span>. In other words, the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the orthogonal basis <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> are the linear projection of the vector <span class="math inline">\(\mathbf{x}\)</span> on the respective vectors <span class="math inline">\(\mathbf{v}_j\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-214" class="proof"><em>Proof</em>. </span>The orthogonality of the basis <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> gives
+<p><span id="section-unlabeled-div-216" class="proof"><em>Proof</em>. </span>The orthogonality of the basis <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> gives
 <span class="math display">\[\begin{align*}
 \mathbf{x}&#39;\mathbf{v}_j &amp; = \left(c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \right)&#39; \mathbf{v}_j \\
 &amp; = c_j \mathbf{v}_j&#39; \mathbf{v}_j
@@ -492,7 +492,7 @@ Because we know that <span class="math inline">\(\mathbf{v}_j&#39;\mathbf{v}_j\)
 <div id="section-orthogonal-projections" class="section level2">
 <h2><span class="header-section-number">23.5</span> Orthogonal projections</h2>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-215" class="definition"><strong>Definition 23.6  </strong></span>Let <span class="math inline">\(\mathbf{x}\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(\mathcal{W}\)</span> be a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as the <strong>orthogonal decomposition</strong>
+<p><span id="section-def:unlabeled-div-217" class="definition"><strong>Definition 23.6  </strong></span>Let <span class="math inline">\(\mathbf{x}\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(\mathcal{W}\)</span> be a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as the <strong>orthogonal decomposition</strong>
 <span class="math display">\[\begin{align*}
 \mathbf{x} = \mathbf{x}_{\mathcal{W}} + \mathbf{x}_{\mathcal{W}^\perp}
 \end{align*}\]</span>
@@ -501,7 +501,7 @@ where <span class="math inline">\(\mathbf{x}_{\mathcal{W}}\)</span> is the vecto
 <p><strong>Draw picture in class - W is a plane, orthogonal projection of a vector onto the plane</strong></p>
 <p>This leads to the projection theorem that decomposes a vector <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> into components that are</p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-216" class="theorem"><strong>Theorem 23.4  </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the orthogonal projection of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}\)</span> is given by
+<p><span id="section-thm:unlabeled-div-218" class="theorem"><strong>Theorem 23.4  </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the orthogonal projection of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}\)</span> is given by
 <span class="math display">\[\begin{align*}
 \mathbf{x}_{\mathcal{W}} &amp; = \frac{\mathbf{x}&#39;\mathbf{v}_1}{\mathbf{v}_1&#39;\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}&#39;\mathbf{v}_2}{\mathbf{v}_2&#39;\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}&#39;\mathbf{v}_p}{\mathbf{v}_p&#39;\mathbf{v}_p} \mathbf{v}_p \\
 &amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \\
@@ -527,35 +527,35 @@ with respect to the unknown coefficients <span class="math inline">\(\boldsymbol
 \boldsymbol{\beta} = \left( \mathbf{X}&#39;\mathbf{X} \right)^{-1} \mathbf{X}&#39; \mathbf{y}
 \end{align*}\]</span>
 which is the least squares solution to the linear regression problem. For example, let <code>X</code> and <code>y</code> be defined as below</p>
-<div class="sourceCode" id="section-cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="section-inner-product-length-and-orthogonality.html#cb216-1"></a>X &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dv">1</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">-4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-2</span>, <span class="dv">3</span>))</span>
-<span id="cb216-2"><a href="section-inner-product-length-and-orthogonality.html#cb216-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">-9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="section-inner-product-length-and-orthogonality.html#cb220-1"></a>X &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dv">1</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">-4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-2</span>, <span class="dv">3</span>))</span>
+<span id="cb220-2"><a href="section-inner-product-length-and-orthogonality.html#cb220-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">-9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
 <p>Plotting this data shows the strong positive linear relationship</p>
-<div class="sourceCode" id="section-cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="section-inner-product-length-and-orthogonality.html#cb217-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
-<span id="cb217-2"><a href="section-inner-product-length-and-orthogonality.html#cb217-2"></a><span class="kw">data.frame</span>(<span class="dt">x =</span> X[, <span class="dv">2</span>], <span class="dt">y =</span> y) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb217-3"><a href="section-inner-product-length-and-orthogonality.html#cb217-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb217-4"><a href="section-inner-product-length-and-orthogonality.html#cb217-4"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-252-1.png" width="672" />
+<div class="sourceCode" id="section-cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="section-inner-product-length-and-orthogonality.html#cb221-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
+<span id="cb221-2"><a href="section-inner-product-length-and-orthogonality.html#cb221-2"></a><span class="kw">data.frame</span>(<span class="dt">x =</span> X[, <span class="dv">2</span>], <span class="dt">y =</span> y) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb221-3"><a href="section-inner-product-length-and-orthogonality.html#cb221-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb221-4"><a href="section-inner-product-length-and-orthogonality.html#cb221-4"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-254-1.png" width="672" />
 We can solve for the coefficients <code>beta</code> using the linear project theorem</p>
-<div class="sourceCode" id="section-cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="section-inner-product-length-and-orthogonality.html#cb218-1"></a>beta &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>y</span></code></pre></div>
+<div class="sourceCode" id="section-cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="section-inner-product-length-and-orthogonality.html#cb222-1"></a>beta &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>y</span></code></pre></div>
 <p>and using this solution, solve for the projection <span class="math inline">\(\mathbf{y}_{\mathcal{W}}\)</span> of <span class="math inline">\(\mathbf{y}\)</span> onto <span class="math inline">\(\mathbf{X}\)</span></p>
-<div class="sourceCode" id="section-cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="section-inner-product-length-and-orthogonality.html#cb219-1"></a>y_W &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>beta</span></code></pre></div>
+<div class="sourceCode" id="section-cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="section-inner-product-length-and-orthogonality.html#cb223-1"></a>y_W &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>beta</span></code></pre></div>
 <p>Plotting the projection <span class="math inline">\(\mathbf{y}_{\mathcal{W}}\)</span> gives</p>
-<div class="sourceCode" id="section-cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="section-inner-product-length-and-orthogonality.html#cb220-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
-<span id="cb220-2"><a href="section-inner-product-length-and-orthogonality.html#cb220-2"></a><span class="kw">data.frame</span>(<span class="dt">x =</span> X[, <span class="dv">2</span>], <span class="dt">y =</span> y, <span class="dt">y_W =</span> y_W) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb220-3"><a href="section-inner-product-length-and-orthogonality.html#cb220-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb220-4"><a href="section-inner-product-length-and-orthogonality.html#cb220-4"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb220-5"><a href="section-inner-product-length-and-orthogonality.html#cb220-5"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_W))</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-255-1.png" width="672" />
-The complement of the project (called the <strong>residuals</strong> in statistics) is given by <span class="math inline">\(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)</span></p>
-<div class="sourceCode" id="section-cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="section-inner-product-length-and-orthogonality.html#cb221-1"></a>y_W_perp &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>y_W</span></code></pre></div>
-<p>and can be visualized as the orthogonal projection using segments</p>
-<div class="sourceCode" id="section-cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="section-inner-product-length-and-orthogonality.html#cb222-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
-<span id="cb222-2"><a href="section-inner-product-length-and-orthogonality.html#cb222-2"></a><span class="kw">data.frame</span>(<span class="dt">x =</span> X[, <span class="dv">2</span>], <span class="dt">y =</span> y, <span class="dt">y_W =</span> y_W) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb222-3"><a href="section-inner-product-length-and-orthogonality.html#cb222-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
-<span id="cb222-4"><a href="section-inner-product-length-and-orthogonality.html#cb222-4"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb222-5"><a href="section-inner-product-length-and-orthogonality.html#cb222-5"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_W)) <span class="op">+</span></span>
-<span id="cb222-6"><a href="section-inner-product-length-and-orthogonality.html#cb222-6"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_W, <span class="dt">xend =</span> x, <span class="dt">yend =</span> y_W <span class="op">+</span><span class="st"> </span>y_W_perp), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="section-inner-product-length-and-orthogonality.html#cb224-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
+<span id="cb224-2"><a href="section-inner-product-length-and-orthogonality.html#cb224-2"></a><span class="kw">data.frame</span>(<span class="dt">x =</span> X[, <span class="dv">2</span>], <span class="dt">y =</span> y, <span class="dt">y_W =</span> y_W) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb224-3"><a href="section-inner-product-length-and-orthogonality.html#cb224-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb224-4"><a href="section-inner-product-length-and-orthogonality.html#cb224-4"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb224-5"><a href="section-inner-product-length-and-orthogonality.html#cb224-5"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_W))</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/unnamed-chunk-257-1.png" width="672" />
+The complement of the project (called the <strong>residuals</strong> in statistics) is given by <span class="math inline">\(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)</span></p>
+<div class="sourceCode" id="section-cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="section-inner-product-length-and-orthogonality.html#cb225-1"></a>y_W_perp &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>y_W</span></code></pre></div>
+<p>and can be visualized as the orthogonal projection using segments</p>
+<div class="sourceCode" id="section-cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="section-inner-product-length-and-orthogonality.html#cb226-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
+<span id="cb226-2"><a href="section-inner-product-length-and-orthogonality.html#cb226-2"></a><span class="kw">data.frame</span>(<span class="dt">x =</span> X[, <span class="dv">2</span>], <span class="dt">y =</span> y, <span class="dt">y_W =</span> y_W) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb226-3"><a href="section-inner-product-length-and-orthogonality.html#cb226-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb226-4"><a href="section-inner-product-length-and-orthogonality.html#cb226-4"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb226-5"><a href="section-inner-product-length-and-orthogonality.html#cb226-5"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_W)) <span class="op">+</span></span>
+<span id="cb226-6"><a href="section-inner-product-length-and-orthogonality.html#cb226-6"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y_W, <span class="dt">xend =</span> x, <span class="dt">yend =</span> y_W <span class="op">+</span><span class="st"> </span>y_W_perp), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-259-1.png" width="672" />
 Recall that the orthogonal projection gives the “closest” vector <span class="math inline">\(\mathbf{y}_\mathcal{W}\)</span> to <span class="math inline">\(\mathbf{y}\)</span> that is in the subspace <span class="math inline">\(\mathcal{W}\)</span> that is the span of the column space of <span class="math inline">\(\mathbf{X}\)</span>. See <a href="https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html">https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html</a> for an example.</p>
 
 </div>
