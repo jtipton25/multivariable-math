@@ -218,14 +218,14 @@ $$
 ### Matrix Transpose
 
 
-The matrix transpose is an operator that swaps the rows and columns of a matrix. If $\mathbf{A}$ is an $m \times n$ matrix, then $\mathbf{A}'$ is a $\m \times n$ matrix (Note: some use $\mathbf{A}^T$ to denote a transpose; I prefer the $'$ notation as it is much simpler and cleaner notation). The matrix 
+The matrix transpose is an operator that swaps the rows and columns of a matrix. If $\mathbf{A}$ is an $m \times n$ matrix ($m$ rows and $n$ columns), then $\mathbf{A}'$ is a $n \times m$ matrix ($n$ rows and $m$ columns. Note: some use $\mathbf{A}^T$ to denote a transpose; I prefer the $'$ notation as it is much simpler and cleaner notation). The matrix 
 
 $$
 \begin{align*}
-\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1p} \\
-a_{21} & a_{22} & \cdots & a_{2p} \\
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{np}
+a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}
 \end{align*}
 $$
@@ -233,10 +233,10 @@ has transpose
 
 $$
 \begin{align*}
-\mathbf{A}' & = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{p1} \\
-a_{12} & a_{22} & \cdots & a_{p2} \\
+\mathbf{A}' & = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{m1} \\
+a_{12} & a_{22} & \cdots & a_{m2} \\
 \vdots & \vdots & \ddots & \vdots \\
-a_{1n} & a_{2n} & \cdots & a_{pn}
+a_{1n} & a_{2n} & \cdots & a_{mn}
 \end{pmatrix},
 \end{align*}
 $$

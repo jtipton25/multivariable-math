@@ -27,24 +27,35 @@ I <- diag(n)
 I
 ```
 
-* **Example:**
-
+:::{.example}
 ```{r, echo = FALSE}
 A <- matrix(c(1, 2, -1, -3), 2, 2)
 B <- matrix(c(3, 2, -1, -1), 2, 2) 
 ```
 
+
 $$
 \begin{align*}
-\mathbf{A} = `r array_to_latex(A)` && \mathbf{B} = `r array_to_latex(A)`
+\mathbf{A} = `r array_to_latex(A)` && \mathbf{B} = `r array_to_latex(B)`
 \end{align*}
 $$
+
+```{r}
+# check if B is the inverse of A
+A %*% B
+# check if B is the inverse of A
+B %*% A
+```
+
+Because $\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}$, we have $\mathbf{A}$ is an invertible matrix with inverse $\mathbf{B} = \mathbf{A}^{-1}$.
+:::
+
 
 ```{theorem}
 Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. If $ad - bc \neq 0$ then $\mathbf{A}$ is invertible and 
 $$
 \begin{align*}
-\mathbf{A} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+\mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
 \end{align*}
 $$
 If $ad - bc = 0$, then the matrix is not invertible.
@@ -60,7 +71,16 @@ For the $2 \times 2$ matrix $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pm
 
 A consequence of the above theorem is that a $2 \times 2$ matrix is invertible only if its determinant is nonzero.
     
-* **Example: in class** Determine if the following $2 \times 2$ matrix is invertible
+:::{.example}
+
+Determine if the following $2 \times 2$ matrix is invertible
+
+```{r, echo = FALSE}
+A <- matrix(c(4, -1, -4, 2), 2, 2)
+```
+$\mathbf{A} = `r array_to_latex(A)`$
+
+:::
 
 ```{theorem}
 If the $n \times n$ matrix $\mathbf{A}$ is invertible, then for each $\mathbf{b} \in \mathcal{R}^n$, the matrix equation
@@ -76,6 +96,7 @@ has the unique solution $\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}$.
 
 ```{theorem, name = "Invertible Matrix Theorem"}
 
+
 1) If $\mathbf{A}$ is an invertible matrix, then $\mathbf{A}^{-1}$ is invertible and $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
 
 2) If $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ invertible matrices, then $\mathbf{A} \mathbf{B}$ is also an invertible matrix whose inverse is 
@@ -88,6 +109,7 @@ which is the inverse of the matrices in reverse order.
 $$
 (\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'
 $$
+    
 ```
     
 * **Proof: in class**
