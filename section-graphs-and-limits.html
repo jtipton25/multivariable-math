@@ -350,10 +350,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb227-3"><a href="section-graphs-and-limits.html#cb227-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>Here we start a transition to topics in vector calculus. We will start with a discussion of functions of two variables (although the functions are not assumed to be linear). We define a function of two variables explicitly as <span class="math inline">\(z = f(x, y)\)</span>.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-232" class="definition"><strong>Definition 24.1  </strong></span>Like with linear functions, we can define the domain and range for general functions of two variables. A function <span class="math inline">\(f(x, y)\)</span> assigns each point <span class="math inline">\((x, y)\)</span> in some <strong>domain</strong> <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span> to a unique number <span class="math inline">\(z\)</span> in a subset of <span class="math inline">\(\mathcal{R}\)</span>. The set of inputs <span class="math inline">\(\mathcal{D}\)</span> is called the <strong>domain</strong> of the function and the <strong>range</strong> is the set of real numbers <span class="math inline">\(z\)</span> that are the output of the function over all the inputs in <span class="math inline">\(\mathcal{D}\)</span></p>
+<p><span id="section-def:unlabeled-div-235" class="definition"><strong>Definition 24.1  </strong></span>Like with linear functions, we can define the domain and range for general functions of two variables. A function <span class="math inline">\(f(x, y)\)</span> assigns each point <span class="math inline">\((x, y)\)</span> in some <strong>domain</strong> <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span> to a unique number <span class="math inline">\(z\)</span> in a subset of <span class="math inline">\(\mathcal{R}\)</span>. The set of inputs <span class="math inline">\(\mathcal{D}\)</span> is called the <strong>domain</strong> of the function and the <strong>range</strong> is the set of real numbers <span class="math inline">\(z\)</span> that are the output of the function over all the inputs in <span class="math inline">\(\mathcal{D}\)</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-233" class="example"><strong>Example 24.1  </strong></span>Let <span class="math inline">\(f(x, y) = \sqrt{1 - x^2 - y^2}\)</span>.</p>
+<p><span id="section-exm:unlabeled-div-236" class="example"><strong>Example 24.1  </strong></span>Let <span class="math inline">\(f(x, y) = \sqrt{1 - x^2 - y^2}\)</span>.</p>
 <ul>
 <li><p>The domain of <span class="math inline">\(f\)</span> is the set of points <span class="math inline">\((x, y)\)</span> such that <span class="math inline">\(x^2 + y^2 \leq 1\)</span> which is the unit circle (<strong>draw picture</strong>).</p></li>
 <li><p>The range is the unit interval <span class="math inline">\([0, 1]\)</span></p></li>
@@ -362,13 +362,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-graphs-and-level-curves" class="section level2">
 <h2><span class="header-section-number">24.1</span> Graphs and level curves</h2>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-234" class="example"><strong>Example 24.2  </strong></span>The parabola</p>
+<p><span id="section-exm:unlabeled-div-237" class="example"><strong>Example 24.2  </strong></span>The parabola</p>
 <p>Consider the function of two variables
 <span class="math display">\[\begin{align*}
 f(x, y) = x^2 + y^2
 \end{align*}\]</span>
 which defines the surface
-<img src="multivariable-math_files/figure-html/unnamed-chunk-262-1.png" width="672" />
+<img src="multivariable-math_files/figure-html/unnamed-chunk-264-1.png" width="672" />
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)</p>
 <div class="sourceCode" id="section-cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="section-graphs-and-limits.html#cb228-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
 <span id="cb228-2"><a href="section-graphs-and-limits.html#cb228-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
@@ -376,7 +376,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 <span id="cb228-4"><a href="section-graphs-and-limits.html#cb228-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
 <span id="cb228-5"><a href="section-graphs-and-limits.html#cb228-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
 <span id="cb228-6"><a href="section-graphs-and-limits.html#cb228-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-263-1.png" width="672" />
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-265-1.png" width="672" />
 where each curve in the (x, y) plane has exactly the same value of <span class="math inline">\(f(x, y)\)</span>. Alternatively, this can be represented using filled level curves</p>
 <div class="sourceCode" id="section-cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="section-graphs-and-limits.html#cb229-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
 <span id="cb229-2"><a href="section-graphs-and-limits.html#cb229-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
@@ -384,17 +384,17 @@ where each curve in the (x, y) plane has exactly the same value of <span class="
 <span id="cb229-4"><a href="section-graphs-and-limits.html#cb229-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
 <span id="cb229-5"><a href="section-graphs-and-limits.html#cb229-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
 <span id="cb229-6"><a href="section-graphs-and-limits.html#cb229-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-264-1.png" width="672" />
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-266-1.png" width="672" />
 Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-235" class="example"><strong>Example 24.3  </strong></span>A saddle function</p>
+<p><span id="section-exm:unlabeled-div-238" class="example"><strong>Example 24.3  </strong></span>A saddle function</p>
 <p>Consider the function of two variables
 <span class="math display">\[\begin{align*}
 f(x, y) = x^2 - y^2
 \end{align*}\]</span>
 which defines the surface
-<img src="multivariable-math_files/figure-html/unnamed-chunk-265-1.png" width="672" />
+<img src="multivariable-math_files/figure-html/unnamed-chunk-267-1.png" width="672" />
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)</p>
 <div class="sourceCode" id="section-cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="section-graphs-and-limits.html#cb230-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
 <span id="cb230-2"><a href="section-graphs-and-limits.html#cb230-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
@@ -402,7 +402,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 <span id="cb230-4"><a href="section-graphs-and-limits.html#cb230-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
 <span id="cb230-5"><a href="section-graphs-and-limits.html#cb230-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
 <span id="cb230-6"><a href="section-graphs-and-limits.html#cb230-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-266-1.png" width="672" />
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-268-1.png" width="672" />
 where each curve in the (x, y) plane has exactly the same value of <span class="math inline">\(f(x, y)\)</span>. Alternatively, this can be represented using filled level curves</p>
 <div class="sourceCode" id="section-cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="section-graphs-and-limits.html#cb231-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
 <span id="cb231-2"><a href="section-graphs-and-limits.html#cb231-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
@@ -410,7 +410,7 @@ where each curve in the (x, y) plane has exactly the same value of <span class="
 <span id="cb231-4"><a href="section-graphs-and-limits.html#cb231-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
 <span id="cb231-5"><a href="section-graphs-and-limits.html#cb231-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
 <span id="cb231-6"><a href="section-graphs-and-limits.html#cb231-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-267-1.png" width="672" />
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-269-1.png" width="672" />
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
 </div>
 </div>
@@ -426,7 +426,7 @@ dist((x, y), (a, b)) = \sqrt{(x-a)^2 + (y-b)^2}
 <p>** Draw images**</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-268" class="definition"><strong>Definition 24.2  (Limit of a function of two variables)  </strong></span>The function f(x, y) has limit <span class="math inline">\(L\)</span> as <span class="math inline">\(P(x, y) \rightarrow P_0(a, b)\)</span>, written
+<span id="section-def:unnamed-chunk-270" class="definition"><strong>Definition 24.2  (Limit of a function of two variables)  </strong></span>The function f(x, y) has limit <span class="math inline">\(L\)</span> as <span class="math inline">\(P(x, y) \rightarrow P_0(a, b)\)</span>, written
 <span class="math display">\[\begin{align*}
 \lim_{(x, y) \rightarrow (a, b)} f(x, y) = \lim_{P \rightarrow P_0} f(x, y) = L,
 \end{align*}\]</span>
@@ -442,11 +442,11 @@ whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span c
 
 <p>In the definition, as the value of <span class="math inline">\(\delta\)</span> is getting smaller, the distance between the set of points <span class="math inline">\(P(x, y)\)</span> within radius <span class="math inline">\(\delta\)</span> of the point <span class="math inline">\(P_0(a, b)\)</span> is getting smaller. As a consequence, the limit in the definition above exists only if <span class="math inline">\(f(x, y)\)</span> approaches the value <span class="math inline">\(L\)</span> along <strong>all possible paths</strong> in the domain of <span class="math inline">\(f\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-237" class="example"><strong>Example 24.4  </strong></span>In class notes
+<p><span id="section-exm:unlabeled-div-240" class="example"><strong>Example 24.4  </strong></span>In class notes
 * <strong>Future work: write out hand-written examples</strong></p>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-238" class="theorem"><strong>Theorem 24.1  </strong></span>Let <span class="math inline">\(L\)</span> and <span class="math inline">\(M\)</span> be real numbers and let <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)}f(x, y) = L\)</span> and <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)}g(x, y) = M\)</span> for functions <span class="math inline">\(f(x, y)\)</span> and <span class="math inline">\(g(x, y)\)</span>. Let <span class="math inline">\(c\)</span> be a constant and <span class="math inline">\(n&gt;0\)</span>, then:</p>
+<p><span id="section-thm:unlabeled-div-241" class="theorem"><strong>Theorem 24.1  </strong></span>Let <span class="math inline">\(L\)</span> and <span class="math inline">\(M\)</span> be real numbers and let <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)}f(x, y) = L\)</span> and <span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)}g(x, y) = M\)</span> for functions <span class="math inline">\(f(x, y)\)</span> and <span class="math inline">\(g(x, y)\)</span>. Let <span class="math inline">\(c\)</span> be a constant and <span class="math inline">\(n&gt;0\)</span>, then:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Sum of limits:</strong>
 <span class="math display">\[\begin{align*}
@@ -479,26 +479,26 @@ whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span c
 </ol>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-239" class="example"><strong>Example 24.5  </strong></span>Use the rules above to evaluate the limit <span class="math inline">\(\lim_{(x, y) \rightarrow (2, 3)} 4x^3y + \sqrt{xy}\)</span></p>
+<p><span id="section-exm:unlabeled-div-242" class="example"><strong>Example 24.5  </strong></span>Use the rules above to evaluate the limit <span class="math inline">\(\lim_{(x, y) \rightarrow (2, 3)} 4x^3y + \sqrt{xy}\)</span></p>
 </div>
 <div id="section-boundary-points" class="section level3">
 <h3><span class="header-section-number">24.2.1</span> Boundary points</h3>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-240" class="definition"><strong>Definition 24.3  </strong></span>Define a region <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span>.</p>
+<p><span id="section-def:unlabeled-div-243" class="definition"><strong>Definition 24.3  </strong></span>Define a region <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span>.</p>
 <ul>
 <li><p>An <strong>interior</strong> point <span class="math inline">\(P\)</span> of <span class="math inline">\(\mathcal{D}\)</span> is a point that lies entirely in the region <span class="math inline">\(\mathcal{D}\)</span>. Mathematically, a point <span class="math inline">\(P\)</span> is an interior point of <span class="math inline">\(\mathcal{D}\)</span> if it is possible to define a ball of radius <span class="math inline">\(\epsilon&gt;0\)</span> centered at <span class="math inline">\(P\)</span> such that this ball only contains points within <span class="math inline">\(\mathcal{D}\)</span>.</p></li>
 <li><p>A <strong>boundary</strong> point <span class="math inline">\(P\)</span> of <span class="math inline">\(\mathcal{D}\)</span> is a point that lies on the edge of the region <span class="math inline">\(\mathcal{D}\)</span>. Mathematically, a point <span class="math inline">\(P\)</span> is an boundary point of <span class="math inline">\(\mathcal{D}\)</span> if every ball of radius <span class="math inline">\(\epsilon&gt;0\)</span> centered at <span class="math inline">\(P\)</span> contains at least one point in <span class="math inline">\(\mathcal{D}\)</span> and one point outside <span class="math inline">\(\mathcal{D}\)</span>.</p></li>
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-241" class="example"><strong>Example 24.6  </strong></span>Let <span class="math inline">\(f(x, y) = \sqrt{1 - x^2 - y^2}\)</span>. The boundary points are all the points on the unit circle an the interior points are all the points on the interior of the unit disk. <strong>draw picture</strong></p>
+<p><span id="section-exm:unlabeled-div-244" class="example"><strong>Example 24.6  </strong></span>Let <span class="math inline">\(f(x, y) = \sqrt{1 - x^2 - y^2}\)</span>. The boundary points are all the points on the unit circle an the interior points are all the points on the interior of the unit disk. <strong>draw picture</strong></p>
 </div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-242" class="definition"><strong>Definition 24.4  </strong></span>A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>open</strong> if it only contains interior points (i.e., <span class="math inline">\(\mathcal{D}\)</span> has no boundary points). A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>closed</strong> if the region contains all its boundary points.</p>
+<p><span id="section-def:unlabeled-div-245" class="definition"><strong>Definition 24.4  </strong></span>A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>open</strong> if it only contains interior points (i.e., <span class="math inline">\(\mathcal{D}\)</span> has no boundary points). A region <span class="math inline">\(\mathcal{D}\)</span> is said to be <strong>closed</strong> if the region contains all its boundary points.</p>
 </div>
 <p><strong>Figure: limit paths along the boundary</strong></p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-243" class="example"><strong>Example 24.7  </strong></span>Consider the <span class="math inline">\(\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}\)</span>. Because the point <span class="math inline">\((4, 4)\)</span> is not a valid point in the domain (can’t divide by <span class="math inline">\(4-4=0\)</span>), the point <span class="math inline">\((4, 4)\)</span> is a boundary point of the domain. The boundary of the domain that is not contained in the domain is the set of points <span class="math inline">\(x = y\)</span>. Assuming we are not taking a path along the boundary, we know that <span class="math inline">\(x \neq y\)</span> in the interior of the domain. Hence,
+<p><span id="section-exm:unlabeled-div-246" class="example"><strong>Example 24.7  </strong></span>Consider the <span class="math inline">\(\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}\)</span>. Because the point <span class="math inline">\((4, 4)\)</span> is not a valid point in the domain (can’t divide by <span class="math inline">\(4-4=0\)</span>), the point <span class="math inline">\((4, 4)\)</span> is a boundary point of the domain. The boundary of the domain that is not contained in the domain is the set of points <span class="math inline">\(x = y\)</span>. Assuming we are not taking a path along the boundary, we know that <span class="math inline">\(x \neq y\)</span> in the interior of the domain. Hence,
 <span class="math display">\[\begin{align*}
 \lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y} &amp; = \lim_{(x, y) \rightarrow (4, 4)} \frac{(x - y)(x + y)}{x - y} \\
 &amp; = \lim_{(x, y) \rightarrow (4, 4)} x + y  = 4 + 4 = 8\\
@@ -506,7 +506,7 @@ whenever <span class="math inline">\((x, y)\)</span> is in the domain of <span c
 for all paths that do not cross the line <span class="math inline">\(y = x\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-244" class="example"><strong>Example 24.8  </strong></span><strong>nonexistence of limit in class</strong></p>
+<p><span id="section-exm:unlabeled-div-247" class="example"><strong>Example 24.8  </strong></span><strong>nonexistence of limit in class</strong></p>
 </div>
 </div>
 </div>
@@ -514,7 +514,7 @@ for all paths that do not cross the line <span class="math inline">\(y = x\)</sp
 <h2><span class="header-section-number">24.3</span> Continuity</h2>
 <p>A very important property of functions is continuity. In a general sense, a function is continuous if two nearby input values result in nearby output values. As a graph, this means that there are no hops, skips, or jumps.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-245" class="definition"><strong>Definition 24.5  </strong></span>The function <span class="math inline">\(f(x, y)\)</span> is said to be continuous at the point <span class="math inline">\((a, b)\)</span> if the following are true</p>
+<p><span id="section-def:unlabeled-div-248" class="definition"><strong>Definition 24.5  </strong></span>The function <span class="math inline">\(f(x, y)\)</span> is said to be continuous at the point <span class="math inline">\((a, b)\)</span> if the following are true</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f(a, b)\)</span> is defined at <span class="math inline">\((a, b)\)</span></p></li>
 <li><p><span class="math inline">\(\lim_{(x, y) \rightarrow (a, b)} f(x, y)\)</span> exists</p></li>
@@ -522,7 +522,7 @@ for all paths that do not cross the line <span class="math inline">\(y = x\)</sp
 </ol>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-246" class="example"><strong>Example 24.9  </strong></span><strong>checking continuity in class</strong>
+<p><span id="section-exm:unlabeled-div-249" class="example"><strong>Example 24.9  </strong></span><strong>checking continuity in class</strong>
 <span class="math inline">\(f(x, y) = \begin{cases} \frac{x^2 - y^2}{x - y} &amp; \mbox{ if } x \neq y \\ x + y &amp; \mbox{ if } x = y \\ \end{cases}\)</span></p>
 </div>
 
