@@ -11,6 +11,9 @@ jobs:
     name: Render-Book
     runs-on: macOS-latest
 
+    env:
+      RENV_PATHS_ROOT: ~/Library/Application Support/renv
+
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v1
@@ -27,17 +30,18 @@ jobs:
           brew install poppler
           
       - name: Cache Renv packages
-        uses: actions/cache@v2
+        uses: actions/cache@v1
         with:
-          path: ~/Library/Application Support/renv
+          path: ${{ env.RENV_PATHS_ROOT }}
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
-            ${{ runner.os }}-renv- 
+            ${{ runner.os }}-renv-
 
-      - name: Install R packages with renv
+      - name: Restore R packages
+        shell: Rscript {0}
         run: |
-          Rscript -e "install.packages('renv', repos = 'https://muug.ca/mirror/cran/')"
-          Rscript -e "renv::restore()"
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
 
       - name: Cache bookdown results
         uses: actions/cache@v2
