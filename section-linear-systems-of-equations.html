@@ -793,9 +793,9 @@ which can be done in <code>R</code> using</p>
 <li>scalar multiplication: replacing a row (column) by a scalar multiple times itself</li>
 </ol>
 <p>Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).</p>
-<ul>
-<li><strong>Add in examples in class here</strong></li>
-</ul>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-24" class="example"><strong>Example 2.11  </strong></span><strong>in class examples</strong></p>
+</div>
 </div>
 <div id="section-the-augmented-matrix-form-of-a-system-of-equations" class="section level3">
 <h3><span class="header-section-number">2.1.6</span> The Augmented matrix form of a system of equations</h3>
@@ -907,18 +907,18 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <span id="section-def:unnamed-chunk-47" class="definition"><strong>Definition 2.6  </strong></span>A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a <strong>unique</strong> solution if only one solution exists.
 </div>
 
-<ul>
-<li>Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?</li>
-</ul>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-26" class="example"><strong>Example 2.12  </strong></span>Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignat*}{4}  16 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 13\\ 5 x_1 &amp; {}+{} &amp; 11 x_2 &amp; {}+{} &amp; 10 x_3 &amp; {}={} &amp; 8\\ 9 x_1 &amp; {}+{} &amp; 7 x_2 &amp; {}+{} &amp; 6 x_3 &amp; {}={} &amp; 12\\ 4 x_1 &amp; {}+{} &amp; 14 x_2 &amp; {}+{} &amp; 15 x_3 &amp; {}={} &amp; 1 \end{alignat*}
 \]</span></p>
-<ul>
-<li>Example: (do in class) Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</li>
-</ul>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-27" class="example"><strong>Example 2.13  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignat*}{4}   x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 5\\  x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 2\\ 3 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp;  x_3 &amp; {}={} &amp; 7 \end{alignat*}
 \]</span></p>
+</div>
 </div>
 </div>
 <div id="section-reduce-row-echelon-form" class="section level2">
@@ -933,9 +933,9 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 <li><p>the leading entry/coefficient of a nonzero row (called the <strong>pivot</strong>) is always <em>strictly</em> to the right of the leading entry/coefficient of the row above</p>
 </div></li>
 </ol>
-<ul>
-<li>Example: <strong>echelon matrix example in class</strong></li>
-</ul>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-28" class="example"><strong>Example 2.14  </strong></span><strong>echelon matrix example in class</strong></p>
+</div>
 
 <div class="definition">
 <p><span id="section-def:unnamed-chunk-51" class="definition"><strong>Definition 2.8  </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
@@ -944,9 +944,9 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 <li><p>The leading entry/coefficient of 1 is the only nonzero entry in its column.</p>
 </div></li>
 </ol>
-<ul>
-<li>Example: <strong>rref matrix example in class</strong></li>
-</ul>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-29" class="example"><strong>Example 2.15  </strong></span><strong>rref matrix example in class</strong></p>
+</div>
 
 <div class="definition">
 <span id="section-def:unnamed-chunk-52" class="definition"><strong>Definition 2.9  </strong></span>Echelon matrices have the property of being <strong>upper diagonal</strong>. A matrix is said to be <strong>upper diagonal</strong> if all entries of the matrix at or above the diagonal are nonzero.
@@ -965,25 +965,25 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 <span id="section-thm:unnamed-chunk-54" class="theorem"><strong>Theorem 2.1  </strong></span>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
 </div>
 
-<ul>
-<li><strong>Exercise:</strong> using elementary row operations, calculate the reduced row echelon form of the following matrices</li>
-</ul>
-<ol style="list-style-type: decimal">
-<li><strong>fill in later</strong></li>
-<li><strong>fill in later</strong></li>
-<li><strong>fill in later</strong></li>
-</ol>
+
+<div class="exercise">
+<span id="section-exr:unnamed-chunk-55" class="exercise"><strong>Exercise 2.4  </strong></span>Using elementary row operations, calculate the reduced row echelon form of the following matrices
+1) <strong>fill in later</strong>
+2) <strong>fill in later</strong>
+3) <strong>fill in later</strong>
+</div>
+
 <div id="section-pivot-positions" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Pivot positions</h3>
 <p>The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-55" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
+<span id="section-def:unnamed-chunk-56" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
 </div>
 
-<ul>
-<li><strong>Example: pivot position and pivot columns</strong></li>
-</ul>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-35" class="example"><strong>Example 2.16  </strong></span><strong>pivot position and pivot columns</strong></p>
+</div>
 </div>
 <div id="section-finding-the-reduced-row-echelon-form" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Finding the reduced row echelon form</h3>
@@ -995,9 +995,9 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 <li>Ignore this top row and repeat steps 1-3 until there are no more nonzero rows to apply steps 1-3 on. At the end of this step, the matrix is in row echelon form.</li>
 <li>Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.</li>
 </ol>
-<ul>
-<li><strong>Example: in class</strong></li>
-</ul>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-36" class="example"><strong>Example 2.17  </strong></span><strong>in class</strong></p>
+</div>
 <div class="sourceCode" id="section-cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="section-linear-systems-of-equations.html#cb56-1"></a><span class="co"># pracma library</span></span>
 <span id="cb56-2"><a href="section-linear-systems-of-equations.html#cb56-2"></a><span class="co"># rref example in class</span></span></code></pre></div>
 </div>
@@ -1016,10 +1016,14 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 <p>Calculating the reduced row echelon form, gives</p>
 <div class="sourceCode" id="section-cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="section-linear-systems-of-equations.html#cb58-1"></a><span class="co"># calculate rref of augmented matrix</span></span></code></pre></div>
 <p>which gives the solution …</p>
+<div class="example">
 <ul>
-<li><strong>Exercise: calculate the RREF for the augmented matrix in the example above by hand</strong></li>
+<li></li>
+<li><strong>calculate the RREF for the augmented matrix in the example above by hand</strong></li>
 </ul>
-<p>Another example where we find a solution is</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-38" class="example"><strong>Example 2.18  </strong></span>Another example where we find a solution is</p>
 <p><span class="math display">\[
 \begin{align*}
 5 x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; 2 x_3 &amp;&amp; = &amp; 0 \\
@@ -1027,14 +1031,15 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 \end{align*}
 \]</span></p>
 <p><strong>Do same steps</strong></p>
-
-<div class="definition">
-<span id="section-def:unnamed-chunk-60" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.
 </div>
 
-<ul>
-<li><strong>Example in class</strong></li>
-</ul>
+<div class="definition">
+<span id="section-def:unnamed-chunk-61" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.
+</div>
+
+<div class="example">
+<p><span id="section-exm:unlabeled-div-40" class="example"><strong>Example 2.19  </strong></span><strong>in class</strong></p>
+</div>
 </div>
 <div id="section-existence-and-uniquenss-from-reduced-row-echelon-form" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Existence and uniquenss from reduced row echelon form</h3>
@@ -1045,7 +1050,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-61" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
+<span id="section-thm:unnamed-chunk-62" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
 </div>
 
 <ul>

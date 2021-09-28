@@ -354,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First, we define lower and upper triangular matrices.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-159" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
+<span id="section-def:unnamed-chunk-160" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 
@@ -392,7 +392,7 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 <p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="section-matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="section-matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-161" class="example"><strong>Example 10.1  </strong></span>in class:
+<span id="section-exm:unnamed-chunk-162" class="example"><strong>Example 10.1  </strong></span>in class:
 </div>
 
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -2 &amp; 4 &amp; -6 &amp; 2 \\ -2 &amp; 4 &amp; -6 &amp; 2 \\ -3 &amp; 0 &amp; -1 &amp; -3 \\ -3 &amp; 6 &amp; -5 &amp; -1 \end{pmatrix}\)</span> which has the LU decomposition</p>
@@ -407,7 +407,7 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 </ul>
 
 <div class="exercise">
-<span id="section-exr:unnamed-chunk-162" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
+<span id="section-exr:unnamed-chunk-163" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
 Solve some large systems of equations by brute force which shows how the LU decomposition is faster.
 </div>
 
@@ -457,7 +457,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 <p>A Cholesky decomposition is special type of LU decomposition. A Cholesky decomposition is an LU decomposition on a <strong>symmetric, positive-definite</strong> square matrix.</p>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-163" class="definition"><strong>Definition 10.2  </strong></span>
+<p><span id="section-def:unnamed-chunk-164" class="definition"><strong>Definition 10.2  </strong></span>
 * A matrix <span class="math inline">\(\mathbf{A}\)</span> is said to by symmetric if <span class="math inline">\(\mathbf{A} = \mathbf{A}&#39;\)</span></p>
 <ul>
 <li>A <span class="math inline">\(n \times n\)</span> matrix is said to be positive definite if for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the quadratic form <span class="math inline">\(\mathbf{x}&#39; \mathbf{A }\mathbf{x} \geq 0\)</span>
@@ -466,7 +466,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 <p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>).</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-164" class="definition"><strong>Definition 10.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
+<span id="section-def:unnamed-chunk-165" class="definition"><strong>Definition 10.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \mathbf{L} \mathbf{L}&#39;
@@ -503,7 +503,7 @@ is the Cholesky decomposition of <span class="math inline">\(\mathbf{A}\)</span>
 <span id="cb160-19"><a href="section-matrix-factorizations.html#cb160-19"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
 <span id="cb160-20"><a href="section-matrix-factorizations.html#cb160-20"></a><span class="st">    </span><span class="kw">geom_density2d</span>() <span class="op">+</span></span>
 <span id="cb160-21"><a href="section-matrix-factorizations.html#cb160-21"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
 
 </div>
 </div>
