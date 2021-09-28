@@ -474,7 +474,9 @@ Note that these operations are exactly what we used to solve the equation using 
 
 
 
-* **Add in examples in class here**
+:::{.example}
+**in class examples**
+:::
 
 
 
@@ -589,7 +591,9 @@ ggplot(df, aes(x1, x2, z = x3)) +
 A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a **unique** solution if only one solution exists. 
 ```
 
-* Example: (do in class) Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
+:::{.example}
+Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
+
 
 ```{r, echo = FALSE}
 A <- matrix(c(16, 5, 9, 4, 2, 11, 7, 14, 3, 10, 6, 15), 4, 3)
@@ -599,8 +603,12 @@ b <- c(13, 8, 12, 1)
 $$
 `r dasc2594::array_to_system(A, b)`
 $$
+:::
 
-* Example: (do in class) Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
+
+:::{.example}
+
+Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
 
 ```{r, echo = FALSE}
 A <- matrix(c(1, 1, 3, 2, 3, 2, 3, 2, 1), 3, 3)
@@ -610,6 +618,9 @@ b <- c(5, 2, 7)
 $$
 `r dasc2594::array_to_system(A, b)`
 $$
+:::
+
+
 
 ## Reduce row echelon form
 
@@ -625,7 +636,10 @@ A matrix is said to be in **echelon** form if
 2) the leading entry/coefficient of a nonzero row (called the **pivot**) is always *strictly* to the right of the leading entry/coefficient of the row above
 ```
 
-* Example: **echelon matrix example in class**
+:::{.example}
+**echelon matrix example in class**
+:::
+
 
 ```{definition}
 A matrix is in **reduced row echelon form** if it is in echelon form and
@@ -635,7 +649,11 @@ A matrix is in **reduced row echelon form** if it is in echelon form and
 2) The leading entry/coefficient of 1 is the only nonzero entry in its column.
 ```
 
-* Example: **rref matrix example in class**
+
+:::{.example}
+**rref matrix example in class**
+:::
+
 
 ```{definition}
 Echelon matrices have the property of being **upper diagonal**. A matrix is said to be **upper diagonal** if all entries of the matrix at or above the diagonal are nonzero. 
@@ -651,11 +669,12 @@ Two matrices are **row-equivalent** if one matrix can be transformed to the othe
 A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
 ```
 
-* **Exercise:** using elementary row operations, calculate the reduced row echelon form of the following matrices
+```{exercise}
+Using elementary row operations, calculate the reduced row echelon form of the following matrices
 1) **fill in later**
 2) **fill in later**
 3) **fill in later**
-
+```
 
 ### Pivot positions
 
@@ -665,7 +684,10 @@ The leading entry/coefficients of a row echelon form matrix are called pivots. T
 In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
 ```
 
-* **Example: pivot position and pivot columns**
+:::{.example}
+**pivot position and pivot columns**
+:::
+
 
 ### Finding the reduced row echelon form
 
@@ -677,7 +699,11 @@ Calculating the reduced row echelon form is known as Gaussian elimination, which
 4) Ignore this top row and repeat steps 1-3 until there are no more nonzero rows to apply steps 1-3 on. At the end of this step, the matrix is in row echelon form.
 5) Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.
 
-* **Example: in class**
+
+:::{.example}
+**in class**
+:::
+
 
 ```{r}
 # pracma library
@@ -712,8 +738,12 @@ Calculating the reduced row echelon form, gives
 ```
 which gives the solution ...
 
-* **Exercise: calculate the RREF for the augmented matrix in the example above by hand**
+:::{.example}
+* **calculate the RREF for the augmented matrix in the example above by hand**
+:::
 
+
+:::{.example}
 Another example where we find a solution is
 
 $$
@@ -724,12 +754,18 @@ $$
 $$
 
 **Do same steps**
+:::
+
 
 ```{definition}
 In a system of linear equations that is underdetermined (fewer equations than unknowns), the **determined/basic variables** are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called **free variable**.
 ```
 
-* **Example in class**
+
+:::{.example}
+**in class**
+:::
+
 
 ### Existence and uniquenss from reduced row echelon form
 
