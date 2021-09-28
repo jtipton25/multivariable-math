@@ -61,7 +61,8 @@ $$
 If $ad - bc = 0$, then the matrix is not invertible.
 ```
 
-* **Question:** why is the matrix not invertible when $ad - bc = 0$? Have you heard of "singular" or "singularity" before?
+* **Question:** why is the matrix not invertible when $ad - bc = 0$? 
+    * Have you heard of "singular" or "singularity" before?
     * Black holes are called singularities. Why is this?
     * Square matrices that are not invertible are call "singular"
     
@@ -71,16 +72,16 @@ For the $2 \times 2$ matrix $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pm
 
 A consequence of the above theorem is that a $2 \times 2$ matrix is invertible only if its determinant is nonzero.
     
+<!-- Example -->
 :::{.example}
-
 Determine if the following $2 \times 2$ matrix is invertible
 
 ```{r, echo = FALSE}
 A <- matrix(c(4, -1, -4, 2), 2, 2)
 ```
 $\mathbf{A} = `r array_to_latex(A)`$
-
 :::
+
 
 ```{theorem}
 If the $n \times n$ matrix $\mathbf{A}$ is invertible, then for each $\mathbf{b} \in \mathcal{R}^n$, the matrix equation
@@ -90,9 +91,30 @@ $$
 has the unique solution $\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}$. 
 ```
 
-* **Proof: in class**
+```{proof}
 
-* **Example in R: in class**
+
+1) show there is a solution
+
+2) show the solution is unique
+
+```
+
+
+:::{.example}
+
+```{r, echo = FALSE}
+A <- matrix(c(4, 5, -4, -4, 2, 6, -2, -5, 1), 3, 3)
+b <- c(3, 1, 2)
+# solve(A, b)
+# solve(A) %*% b
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$ and $\mathbf{b} = `r array_to_latex(as.matrix(b))`$
+
+Find the solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$
+:::
+
+
 
 ```{theorem, name = "Invertible Matrix Theorem"}
 
@@ -210,7 +232,7 @@ The previous theorem states that for a $n \times n$ invertible matrix $\mathbf{A
 
 Create the augmented matrix $\begin{pmatrix} \mathbf{A} & \mathbf{I} \end{pmatrix}$ and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form $\begin{pmatrix} \mathbf{I} & \mathbf{A}^{-1} \end{pmatrix}$ then $\mathbf{A}^{-1}$ is the inverse of $\mathbf{A}$. If the leading matrix in the augmented matrix is not the identity matrix $\mathbf{I}$, then $\mathbf{A}$ is not row equivalent to $\mathbf{I}$ and is therefore not invertible.
 
-* **Example:**
+:::{.example}
 ```{r, echo = FALSE, include = FALSE}
 set.seed(2021)
 A <- matrix(sample(-9:9, 9, replace = TRUE), 3, 3)
@@ -218,8 +240,9 @@ solve(A)
 ```
 Let $\mathbf{A} = `r array_to_latex(A)`$. Does $\mathbf{A}$ have an inverse, and if so, what is it?
 
+Using `R`
+:::
 
-* **Example in `R`**
 
 
 ## The Invertible Matrix Theorem
