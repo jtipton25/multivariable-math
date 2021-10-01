@@ -348,17 +348,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="section-cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="section-determinants-and-volumes.html#cb164-1"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb164-2"><a href="section-determinants-and-volumes.html#cb164-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-127" class="definition"><strong>Definition 14.1  </strong></span>The <strong>parallelpiped</strong> defined by <span class="math inline">\(n\)</span> vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n\)</span> with coefficients <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> is the subset</p>
+<p><span id="section-def:unlabeled-div-130" class="definition"><strong>Definition 14.1  </strong></span>The <strong>parallelpiped</strong> defined by <span class="math inline">\(n\)</span> vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n\)</span> with coefficients <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> is the subset</p>
 <p><span class="math display">\[\begin{align*}
 \mathcal{P} = \{x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n | 0 \leq x_1, x_2, \ldots, x_n \leq 1 \}
 \end{align*}\]</span></p>
 </div>
 <p>The determinant is a function that takes the vectors <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span> that make up the columns of <span class="math inline">\(\mathbf{A}\)</span> and returns the volume of the parallelpiped <span class="math inline">\(\mathcal{P}\)</span> defined above <strong>add link</strong></p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-128" class="example"><strong>Example 14.1  </strong></span>The unit cube: in class–use standard vectors <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2\)</span>, and <span class="math inline">\(\mathbf{e}_3\)</span></p>
+<p><span id="section-exm:unlabeled-div-131" class="example"><strong>Example 14.1  </strong></span>The unit cube: in class–use standard vectors <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2\)</span>, and <span class="math inline">\(\mathbf{e}_3\)</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-129" class="example"><strong>Example 14.2  </strong></span>parallelograms in <span class="math inline">\(\mathcal{R}^2\)</span>: the unit square</p>
+<p><span id="section-exm:unlabeled-div-132" class="example"><strong>Example 14.2  </strong></span>parallelograms in <span class="math inline">\(\mathcal{R}^2\)</span>: the unit square</p>
 <div class="sourceCode" id="section-cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="section-determinants-and-volumes.html#cb165-1"></a>df_vector &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
 <span id="cb165-2"><a href="section-determinants-and-volumes.html#cb165-2"></a>df_polygon &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb165-3"><a href="section-determinants-and-volumes.html#cb165-3"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
@@ -377,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 1</code></pre>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-130" class="example"><strong>Example 14.3  </strong></span>parallelograms in <span class="math inline">\(\mathcal{R}^2\)</span>: A larger square</p>
+<p><span id="section-exm:unlabeled-div-133" class="example"><strong>Example 14.3  </strong></span>parallelograms in <span class="math inline">\(\mathcal{R}^2\)</span>: A larger square</p>
 <div class="sourceCode" id="section-cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="section-determinants-and-volumes.html#cb168-1"></a>df_vector &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>))</span>
 <span id="cb168-2"><a href="section-determinants-and-volumes.html#cb168-2"></a>df_polygon &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb168-3"><a href="section-determinants-and-volumes.html#cb168-3"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <!-- ::: -->
 <div class="proof">
-<p><span id="section-unlabeled-div-132" class="proof"><em>Proof</em>. </span>Recall the 4 defining properties (Definition <a href="#def:determinant">13.1</a>) that characterize the determinant. These properties also characterize the absolute value of the determinant.</p>
+<p><span id="section-unlabeled-div-135" class="proof"><em>Proof</em>. </span>Recall the 4 defining properties (Definition <a href="#def:determinant">13.1</a>) that characterize the determinant. These properties also characterize the absolute value of the determinant.</p>
 <p>From the 4 defining properties, the absolute value of the determinant <span class="math inline">\(|\det|\)</span> is a function on square <span class="math inline">\(n \times n\)</span> matrices that satisfies the properties</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Row replacement (e.g., row i = row i + c * row j) of <span class="math inline">\(\mathbf{A}\)</span> does not change <span class="math inline">\(|\det(\mathbf{A})|\)</span></p></li>
@@ -471,10 +471,10 @@ In probability and statistics, the denominator is known as the <a href="https://
 <div id="section-volumes-of-parallelpipeds" class="section level2">
 <h2><span class="header-section-number">14.1</span> Volumes of Parallelpipeds</h2>
 <div class="proposition">
-<p><span id="section-prp:unlabeled-div-138" class="proposition"><strong>Proposition 14.1  </strong></span>Let <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> be nonzero vectors. Then, for any scalar <span class="math inline">\(c\)</span>, the area of the parallelpiped defined by <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> is the same as the area of the parallelpiped defined by the vectors <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2 + c \mathbf{a}_1\)</span> (an elementary column operation).</p>
+<p><span id="section-prp:unlabeled-div-141" class="proposition"><strong>Proposition 14.1  </strong></span>Let <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> be nonzero vectors. Then, for any scalar <span class="math inline">\(c\)</span>, the area of the parallelpiped defined by <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> is the same as the area of the parallelpiped defined by the vectors <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2 + c \mathbf{a}_1\)</span> (an elementary column operation).</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-139" class="example"><strong>Example 14.9  </strong></span>Draw a parallelpiped in class. recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.</p>
+<p><span id="section-exm:unlabeled-div-142" class="example"><strong>Example 14.9  </strong></span>Draw a parallelpiped in class. recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.</p>
 </div>
 </div>
 <div id="section-volumes-of-linear-transformations" class="section level2">
