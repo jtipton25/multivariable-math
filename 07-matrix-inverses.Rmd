@@ -1,5 +1,16 @@
 # Matrix Inverses {#matrix-inverse}
 
+```{css, echo = FALSE}
+.toggle {
+  height: 1.55em;
+  overflow-y: hidden;
+}
+.toggle.open {
+  height: auto;
+}
+```
+
+
 ```{r, message = FALSE}
 library(dasc2594)
 library(tidyverse)
@@ -11,6 +22,8 @@ a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
 $$
 where $a^{-1}$ is the inverse of $a$.
 
+```{definition, matrix-inverse, name = "Matrix Inverse"}
+
 The $n \times n$ **square** matrix $\mathbf{A}$ is said to be **invertible** if there exists a $n \times n$ matrix $\mathbf{C}$( which we call $\mathbf{A}^{-1}$ once we verify the inverse exists) such that 
 $$
 \begin{align*}
@@ -19,6 +32,8 @@ $$
 \end{align*}
 $$
 where $\mathbf{I}$ is the $n \times n$ identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
+```
+
 
 In `R`, an identity matrix is easy to construct. An $n \times n$ identity matrix can be constructed using the `diag()` function
 ```{r}
@@ -116,7 +131,7 @@ Find the solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$
 
 
 
-```{theorem, name = "Invertible Matrix Theorem"}
+```{theorem, invertible-matrix-1, name = "Invertible Matrix Theorem"}
 
 
 1) If $\mathbf{A}$ is an invertible matrix, then $\mathbf{A}^{-1}$ is invertible and $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
@@ -134,9 +149,25 @@ $$
     
 ```
     
-* **Proof: in class**
 
-***Note:** The product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}$
+<div class="toggle"><button>Show Proof</button>
+:::{.proof}
+Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in Definition \@ref(def:matrix-inverse)
+
+
+1) If $\mathbf{A}^{-1}$ is invertible, then, there exists a matrix $\mathbf{C}$ such that $\mathbf{C} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{C} = \mathbf{I}$. Let $\mathbf{C} = \mathbf{A}$. Then, we have $\mathbf{A} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{A} = \mathbf{I}$ which shows that $\left(\mathbf{A}^{-1}\right)^{-1} = \mathbf{A}$
+
+2) First, consider multiplying $\mathbf{A}\mathbf{B}$ on the left by $\mathbf{B}^{-1} \mathbf{A}^{-1}$ where $(\mathbf{A}\mathbf{B}) (\mathbf{B}^{-1} \mathbf{A}^{-1}) = \mathbf{A} (\mathbf{B} \mathbf{B}^{-1}) \mathbf{A}^{-1} = \mathbf{A} \mathbf{I} \mathbf{A}^{-1} = \mathbf{A} \mathbf{A}^{-1} = \mathbf{I}$. Then multiply $\mathbf{A}\mathbf{B}$ on the right by $\mathbf{B}^{-1} \mathbf{A}^{-1}$ where $(\mathbf{B}^{-1} \mathbf{A}^{-1}) (\mathbf{A}\mathbf{B}) = \mathbf{B} (\mathbf{A} \mathbf{A}^{-1}) \mathbf{B}^{-1} = \mathbf{B} \mathbf{I} \mathbf{B}^{-1} = \mathbf{B} \mathbf{B}^{-1} = \mathbf{I}$.
+
+
+3) Use the fact that $(\mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'$. Then, $(\mathbf{A}^{-1})' \mathbf{A}' = (\mathbf{A}\mathbf{A}^{-1})' = \mathbf{I}' = \mathbf{I}$. Similarly $\mathbf{A}'(\mathbf{A}^{-1})' = (\mathbf{A}^{-1}\mathbf{A})' = \mathbf{I}' = \mathbf{I}$. Thus $\mathbf{A}'$ is invertible with inverse $(\mathbf{A}^{-1})'$
+
+:::
+</div>
+
+
+
+* **Note:** A consequence of theorem \@ref(thm:invertible-matrix-1) (2) is that the product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}$
 
 ## Elementary matrices
 
@@ -275,7 +306,13 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are eq
 12) $\mathbf{A}'$ is an invertible matrix.
 ```
 
-* **Proof: in class**
+<div class="toggle"><button>Proof</button>
+:::{.proof}
+**Proof: in class**
+:::
+</div>
+
+
 
 A result of the invertible matrix theorem is that if $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ matrices with $\mathbf{A} \mathbf{B} = \mathbf{I}$ then $\mathbf{A} = \mathbf{B}^{-1}$ and $\mathbf{B} = \mathbf{A}^{-1}$.
 
@@ -300,4 +337,10 @@ Let $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ be a linear transformation and l
 ```
 
 
+
+<script>
+  $(".toggle").click(function() {
+    $(this).toggleClass("open");
+  });
+</script>
 
