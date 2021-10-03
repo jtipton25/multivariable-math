@@ -1,5 +1,7 @@
 bookdown::gitbook:
   css: style.css
+  include:
+    after_body: fold.html
   config:
     toc:
       before: |

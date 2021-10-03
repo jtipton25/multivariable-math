@@ -1,14 +1,5 @@
 # Matrix Inverses {#matrix-inverse}
 
-```{css, echo = FALSE}
-.toggle {
-  height: 1.55em;
-  overflow-y: hidden;
-}
-.toggle.open {
-  height: auto;
-}
-```
 
 
 ```{r, message = FALSE}
@@ -150,7 +141,8 @@ $$
 ```
     
 
-<div class="toggle"><button>Show Proof</button>
+
+<div class="fold-proof">
 :::{.proof}
 Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in Definition \@ref(def:matrix-inverse)
 
@@ -306,11 +298,12 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are eq
 12) $\mathbf{A}'$ is an invertible matrix.
 ```
 
-<div class="toggle"><button>Proof</button>
+<div class="fold-proof">
 :::{.proof}
-**Proof: in class**
+**In class**
 :::
 </div>
+
 
 
 
@@ -335,12 +328,4 @@ $$
 ```{theorem}
 Let $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ be a linear transformation and let $\mathbf{A}$ be the matrix representing the transformation $T$. Then the transformation $T$ is invertible if and only if the matrix $\mathbf{A}$ is invertible. Therefore, the matrix that represents $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$, the inverse transformation of $T$, is unique and is represented by the matrix $\mathbf{A}^{-1}$.
 ```
-
-
-
-<script>
-  $(".toggle").click(function() {
-    $(this).toggleClass("open");
-  });
-</script>
 
