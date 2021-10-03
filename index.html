@@ -347,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Multivariable Mathematics for Data Science</h1>
 <p class="author"><em>John Tipton</em></p>
 <p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 01 October, 2021</div></em></p>
+Last updated 03 October, 2021</div></em></p>
 </div>
 <div id="section-preface" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Preface</h1>
@@ -549,6 +549,36 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
             </section>
 
           </div>

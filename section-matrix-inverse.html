@@ -345,15 +345,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-matrix-inverse" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Matrix Inverses</h1>
-<style type="text/css">
-.toggle {
-  height: 1.55em;
-  overflow-y: hidden;
-}
-.toggle.open {
-  height: auto;
-}
-</style>
 <div class="sourceCode" id="section-cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="section-matrix-inverse.html#cb130-1"></a><span class="kw">library</span>(dasc2594)</span>
 <span id="cb130-2"><a href="section-matrix-inverse.html#cb130-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>For scalars, the multiplicative identity is
@@ -384,7 +375,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 ## [3,]    0    0    1    0
 ## [4,]    0    0    0    1</code></pre>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-62" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
+<p><span id="section-exm:unlabeled-div-64" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 1 &amp; -1 \\ 2 &amp; -3 \end{pmatrix} &amp;&amp; \mathbf{B} = \begin{pmatrix} 3 &amp; -1 \\ 2 &amp; -1 \end{pmatrix}
 \end{align*}
@@ -403,7 +394,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 </div>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-137" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
+<span id="section-thm:unnamed-chunk-136" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
 <span class="math display">\[
 \begin{align*}
 \mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}
@@ -422,18 +413,18 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 </ul>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-138" class="definition"><strong>Definition 8.2  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
+<span id="section-def:unnamed-chunk-137" class="definition"><strong>Definition 8.2  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
 </div>
 
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
 <!-- Example -->
 <div class="example">
-<p><span id="section-exm:unlabeled-div-65" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
+<p><span id="section-exm:unlabeled-div-67" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
 <p><span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 \\ -1 &amp; 2 \end{pmatrix}\)</span></p>
 </div>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-140" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
+<span id="section-thm:unnamed-chunk-139" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
 <span class="math display">\[
 \mathbf{A} \mathbf{x} = \mathbf{b}
 \]</span>
@@ -450,7 +441,7 @@ has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1}
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-68" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-70" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
 <p>Find the solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></p>
 </div>
 
@@ -469,10 +460,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 \]</span></p>
 </div></li>
 </ol>
-<div class="toggle">
-<button>
-Show Proof
-</button>
+<div class="fold-proof">
 <div class="proof">
 <p><span id="section-unlabeled-div-1" class="proof"><em>Proof</em>. </span>Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in Definition <a href="#def:matrix-inverse">8.1</a></p>
 <ol style="list-style-type: decimal">
@@ -567,7 +555,7 @@ Show Proof
 <p>The next theorem is quite important as the result gives an algorithm for calculating the inverse of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which also makes it possible to solve matrix equations <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span></p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-150" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="section-thm:unnamed-chunk-149" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
 <ul>
@@ -579,7 +567,7 @@ Show Proof
 <p>The previous theorem states that for a <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(\mathbf{A}\)</span>, the elementary row operations that covert <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span> also convert <span class="math inline">\(\mathbf{I}\)</span> to <span class="math inline">\(\mathbf{A}^{-1}\)</span>. This suggests an algorithm for finding the inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span> of <span class="math inline">\(\mathbf{A}\)</span>:</p>
 <p>Create the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{A} &amp; \mathbf{I} \end{pmatrix}\)</span> and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form <span class="math inline">\(\begin{pmatrix} \mathbf{I} &amp; \mathbf{A}^{-1} \end{pmatrix}\)</span> then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is the inverse of <span class="math inline">\(\mathbf{A}\)</span>. If the leading matrix in the augmented matrix is not the identity matrix <span class="math inline">\(\mathbf{I}\)</span>, then <span class="math inline">\(\mathbf{A}\)</span> is not row equivalent to <span class="math inline">\(\mathbf{I}\)</span> and is therefore not invertible.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-70" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
+<p><span id="section-exm:unlabeled-div-72" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
 <p>Using <code>R</code></p>
 </div>
 </div>
@@ -603,12 +591,9 @@ Show Proof
 <li><p><span class="math inline">\(\mathbf{A}&#39;\)</span> is an invertible matrix.</p>
 </div></li>
 </ol>
-<div class="toggle">
-<button>
-Proof
-</button>
+<div class="fold-proof">
 <div class="proof">
-<p><span id="section-unlabeled-div-2" class="proof"><em>Proof</em>. </span><strong>Proof: in class</strong></p>
+<p><span id="section-unlabeled-div-2" class="proof"><em>Proof</em>. </span><strong>In class</strong></p>
 </div>
 </div>
 <p>A result of the invertible matrix theorem is that if <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices with <span class="math inline">\(\mathbf{A} \mathbf{B} = \mathbf{I}\)</span> then <span class="math inline">\(\mathbf{A} = \mathbf{B}^{-1}\)</span> and <span class="math inline">\(\mathbf{B} = \mathbf{A}^{-1}\)</span>.</p>
@@ -617,7 +602,7 @@ Proof
 <h2><span class="header-section-number">8.4</span> Invertible Linear Transformations</h2>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-152" class="definition"><strong>Definition 8.3  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
+<p><span id="section-def:unnamed-chunk-151" class="definition"><strong>Definition 8.3  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
 <span class="math display">\[
 \begin{align*}
 S(T(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n
@@ -631,17 +616,42 @@ T(S(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal
 </ul>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-153" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="section-thm:unnamed-chunk-152" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
-<script>
-  $(".toggle").click(function() {
-    $(this).toggleClass("open");
-  });
+
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
 </script>
 
-</div>
-</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
             </section>
 
           </div>

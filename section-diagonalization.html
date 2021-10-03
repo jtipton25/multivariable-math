@@ -349,13 +349,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb196-2"><a href="section-diagonalization.html#cb196-2"></a><span class="kw">library</span>(dasc2594)</span>
 <span id="cb196-3"><a href="section-diagonalization.html#cb196-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-212" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
+<p><span id="section-def:unlabeled-div-214" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
 <p><span class="math display">\[\begin{align*}
 \mathbf{A} &amp; = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-213" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
+<p><span id="section-exm:unlabeled-div-215" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
 </div>
 
 <div class="theorem">
@@ -370,7 +370,7 @@ In addition, the <span class="math inline">\(n \times n\)</span> matrix <span cl
 
 <p>This theorem implies that the matrix <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable if and only if the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span>. When this is the case, the set of eigenvectors is called an <strong>eigenbasis</strong>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-216" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<p><span id="section-exm:unlabeled-div-218" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
 <div class="sourceCode" id="section-cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="section-diagonalization.html#cb197-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
 <span id="cb197-2"><a href="section-diagonalization.html#cb197-2"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
@@ -404,16 +404,16 @@ In addition, the <span class="math inline">\(n \times n\)</span> matrix <span cl
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-217" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
+<p><span id="section-thm:unlabeled-div-219" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
 <span class="math display">\[\begin{align*}
 \mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-218" class="proof"><em>Proof</em>. </span>In class</p>
+<p><span id="section-unlabeled-div-220" class="proof"><em>Proof</em>. </span>In class</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-219" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<p><span id="section-exm:unlabeled-div-221" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
 <p>Consider the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix}\)</span> which has eigenvalues 1, 2, 3. Then the standard basis <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\)</span> are corresponding eigenvectors (check the definition <span class="math inline">\(\mathbf{A} \lambda = \mathbf{v} \lambda\)</span>) because</p>
 <p><span class="math display">\[\begin{align*}
 \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} &amp; = 1 * \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \\
@@ -433,6 +433,36 @@ which implies that the matrices <span class="math inline">\(\begin{pmatrix} 1 &a
 </div>
 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
             </section>
 
           </div>
