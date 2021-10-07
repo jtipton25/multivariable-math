@@ -1,5 +1,7 @@
 # Matrix Inverses {#matrix-inverse}
 
+
+
 ```{r, message = FALSE}
 library(dasc2594)
 library(tidyverse)
@@ -11,6 +13,8 @@ a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
 $$
 where $a^{-1}$ is the inverse of $a$.
 
+```{definition, matrix-inverse, name = "Matrix Inverse"}
+
 The $n \times n$ **square** matrix $\mathbf{A}$ is said to be **invertible** if there exists a $n \times n$ matrix $\mathbf{C}$( which we call $\mathbf{A}^{-1}$ once we verify the inverse exists) such that 
 $$
 \begin{align*}
@@ -19,6 +23,8 @@ $$
 \end{align*}
 $$
 where $\mathbf{I}$ is the $n \times n$ identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
+```
+
 
 In `R`, an identity matrix is easy to construct. An $n \times n$ identity matrix can be constructed using the `diag()` function
 ```{r}
@@ -27,30 +33,42 @@ I <- diag(n)
 I
 ```
 
-* **Example:**
-
+:::{.example}
 ```{r, echo = FALSE}
 A <- matrix(c(1, 2, -1, -3), 2, 2)
 B <- matrix(c(3, 2, -1, -1), 2, 2) 
 ```
 
+
 $$
 \begin{align*}
-\mathbf{A} = `r array_to_latex(A)` && \mathbf{B} = `r array_to_latex(A)`
+\mathbf{A} = `r array_to_latex(A)` && \mathbf{B} = `r array_to_latex(B)`
 \end{align*}
 $$
+
+```{r}
+# check if B is the inverse of A
+A %*% B
+# check if B is the inverse of A
+B %*% A
+```
+
+Because $\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}$, we have $\mathbf{A}$ is an invertible matrix with inverse $\mathbf{B} = \mathbf{A}^{-1}$.
+:::
+
 
 ```{theorem}
 Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. If $ad - bc \neq 0$ then $\mathbf{A}$ is invertible and 
 $$
 \begin{align*}
-\mathbf{A} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+\mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
 \end{align*}
 $$
 If $ad - bc = 0$, then the matrix is not invertible.
 ```
 
-* **Question:** why is the matrix not invertible when $ad - bc = 0$? Have you heard of "singular" or "singularity" before?
+* **Question:** why is the matrix not invertible when $ad - bc = 0$? 
+    * Have you heard of "singular" or "singularity" before?
     * Black holes are called singularities. Why is this?
     * Square matrices that are not invertible are call "singular"
     
@@ -60,7 +78,16 @@ For the $2 \times 2$ matrix $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pm
 
 A consequence of the above theorem is that a $2 \times 2$ matrix is invertible only if its determinant is nonzero.
     
-* **Example: in class** Determine if the following $2 \times 2$ matrix is invertible
+<!-- Example -->
+:::{.example}
+Determine if the following $2 \times 2$ matrix is invertible
+
+```{r, echo = FALSE}
+A <- matrix(c(4, -1, -4, 2), 2, 2)
+```
+$\mathbf{A} = `r array_to_latex(A)`$
+:::
+
 
 ```{theorem}
 If the $n \times n$ matrix $\mathbf{A}$ is invertible, then for each $\mathbf{b} \in \mathcal{R}^n$, the matrix equation
@@ -70,11 +97,33 @@ $$
 has the unique solution $\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}$. 
 ```
 
-* **Proof: in class**
+```{proof}
 
-* **Example in R: in class**
 
-```{theorem, name = "Invertible Matrix Theorem"}
+1) show there is a solution
+
+2) show the solution is unique
+
+```
+
+
+:::{.example}
+
+```{r, echo = FALSE}
+A <- matrix(c(4, 5, -4, -4, 2, 6, -2, -5, 1), 3, 3)
+b <- c(3, 1, 2)
+# solve(A, b)
+# solve(A) %*% b
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$ and $\mathbf{b} = `r array_to_latex(as.matrix(b))`$
+
+Find the solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$
+:::
+
+
+
+```{theorem, invertible-matrix-1, name = "Invertible Matrix Theorem"}
+
 
 1) If $\mathbf{A}$ is an invertible matrix, then $\mathbf{A}^{-1}$ is invertible and $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
 
@@ -88,11 +137,29 @@ which is the inverse of the matrices in reverse order.
 $$
 (\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'
 $$
+    
 ```
     
-* **Proof: in class**
 
-***Note:** The product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}$
+
+<div class="fold-proof">
+:::{.proof}
+Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in Definition \@ref(def:matrix-inverse)
+
+
+1) If $\mathbf{A}^{-1}$ is invertible, then, there exists a matrix $\mathbf{C}$ such that $\mathbf{C} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{C} = \mathbf{I}$. Let $\mathbf{C} = \mathbf{A}$. Then, we have $\mathbf{A} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{A} = \mathbf{I}$ which shows that $\left(\mathbf{A}^{-1}\right)^{-1} = \mathbf{A}$
+
+2) First, consider multiplying $\mathbf{A}\mathbf{B}$ on the left by $\mathbf{B}^{-1} \mathbf{A}^{-1}$ where $(\mathbf{A}\mathbf{B}) (\mathbf{B}^{-1} \mathbf{A}^{-1}) = \mathbf{A} (\mathbf{B} \mathbf{B}^{-1}) \mathbf{A}^{-1} = \mathbf{A} \mathbf{I} \mathbf{A}^{-1} = \mathbf{A} \mathbf{A}^{-1} = \mathbf{I}$. Then multiply $\mathbf{A}\mathbf{B}$ on the right by $\mathbf{B}^{-1} \mathbf{A}^{-1}$ where $(\mathbf{B}^{-1} \mathbf{A}^{-1}) (\mathbf{A}\mathbf{B}) = \mathbf{B} (\mathbf{A} \mathbf{A}^{-1}) \mathbf{B}^{-1} = \mathbf{B} \mathbf{I} \mathbf{B}^{-1} = \mathbf{B} \mathbf{B}^{-1} = \mathbf{I}$.
+
+
+3) Use the fact that $(\mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'$. Then, $(\mathbf{A}^{-1})' \mathbf{A}' = (\mathbf{A}\mathbf{A}^{-1})' = \mathbf{I}' = \mathbf{I}$. Similarly $\mathbf{A}'(\mathbf{A}^{-1})' = (\mathbf{A}^{-1}\mathbf{A})' = \mathbf{I}' = \mathbf{I}$. Thus $\mathbf{A}'$ is invertible with inverse $(\mathbf{A}^{-1})'$
+
+:::
+</div>
+
+
+
+* **Note:** A consequence of theorem \@ref(thm:invertible-matrix-1) (2) is that the product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}$
 
 ## Elementary matrices
 
@@ -188,7 +255,7 @@ The previous theorem states that for a $n \times n$ invertible matrix $\mathbf{A
 
 Create the augmented matrix $\begin{pmatrix} \mathbf{A} & \mathbf{I} \end{pmatrix}$ and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form $\begin{pmatrix} \mathbf{I} & \mathbf{A}^{-1} \end{pmatrix}$ then $\mathbf{A}^{-1}$ is the inverse of $\mathbf{A}$. If the leading matrix in the augmented matrix is not the identity matrix $\mathbf{I}$, then $\mathbf{A}$ is not row equivalent to $\mathbf{I}$ and is therefore not invertible.
 
-* **Example:**
+:::{.example}
 ```{r, echo = FALSE, include = FALSE}
 set.seed(2021)
 A <- matrix(sample(-9:9, 9, replace = TRUE), 3, 3)
@@ -196,8 +263,9 @@ solve(A)
 ```
 Let $\mathbf{A} = `r array_to_latex(A)`$. Does $\mathbf{A}$ have an inverse, and if so, what is it?
 
+Using `R`
+:::
 
-* **Example in `R`**
 
 
 ## The Invertible Matrix Theorem
@@ -230,7 +298,14 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are eq
 12) $\mathbf{A}'$ is an invertible matrix.
 ```
 
-* **Proof: in class**
+<div class="fold-proof">
+:::{.proof}
+**In class**
+:::
+</div>
+
+
+
 
 A result of the invertible matrix theorem is that if $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ matrices with $\mathbf{A} \mathbf{B} = \mathbf{I}$ then $\mathbf{A} = \mathbf{B}^{-1}$ and $\mathbf{B} = \mathbf{A}^{-1}$.
 
@@ -253,6 +328,4 @@ $$
 ```{theorem}
 Let $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ be a linear transformation and let $\mathbf{A}$ be the matrix representing the transformation $T$. Then the transformation $T$ is invertible if and only if the matrix $\mathbf{A}$ is invertible. Therefore, the matrix that represents $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$, the inverse transformation of $T$, is unique and is represented by the matrix $\mathbf{A}^{-1}$.
 ```
-
-
 

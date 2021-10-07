@@ -1,5 +1,34 @@
 # Block Matrices {#block-matrices}
 
+<!-- <script type="text/javascript"> -->
+<!-- $(document).ready(function() { -->
+<!--   $folds = $(".fold-solution"); -->
+<!--   $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content -->
+<!--   $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button -->
+<!--   $(".fold-solution-blck").toggle();  // fold all blocks -->
+<!--   $(".fold-solution-btn").on("click", function() {  // add onClick event -->
+<!--     $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold"  -->
+<!--     $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself. -->
+<!--   }) -->
+<!-- }); -->
+<!-- </script> -->
+
+
+
+<!-- <script type="text/javascript"> -->
+<!-- $(document).ready(function() { -->
+<!--   $folds = $(".fold-proof"); -->
+<!--   $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content -->
+<!--   $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button -->
+<!--   $(".fold-proof-blck").toggle();  // fold all blocks -->
+<!--   $(".fold-proof-btn").on("click", function() {  // add onClick event -->
+<!--     $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold"  -->
+<!--     $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself. -->
+<!--   }) -->
+<!-- }); -->
+<!-- </script> -->
+
+
 Another way to represent matrices is using a block (or partitioned) form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
 
 $$
@@ -94,7 +123,7 @@ $$
 \end{pmatrix} \\
 \end{align*}
 $$
-and each block $\mathbf{A}_{ij}$ and $\mathbf{B}_ij$ have the same dimension, then 
+and each block $\mathbf{A}_{ij}$ and $\mathbf{B}_{ij}$ have the same dimension, then 
 
 $$
 \begin{align}
@@ -107,7 +136,7 @@ $$
 \end{pmatrix}
 \end{align}
 $$
-which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation \@ref(eq:matrix-addition) above to  \@ref(eq:block-matrix-addition)). The one requirement is that each of the blocks $\mathbf{A}_{ij}$ and $\mathbf{B}_ij$ have the same dimension. When this is true, we say that $\mathbf{A}$ and $\mathbf{B}$ are **conformable for block matrix addition**. 
+which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation \@ref(eq:block-matrix-addition) above to  \@ref(eq:matrix-addition)). The one requirement is that each of the blocks $\mathbf{A}_{ij}$ and $\mathbf{B}_{ij}$ have the same dimension. When this is true, we say that $\mathbf{A}$ and $\mathbf{B}$ are **conformable for block matrix addition**. 
 
 ## Block Matrix Multiplication
 
@@ -128,7 +157,7 @@ $$
 \end{pmatrix} \\
 \end{align*}
 $$
-and each row of blocks $\mathbf{A}_{ij}$ has the same number of columns as the block $\mathbf{B}_ij$ has rows, then the block matrices $\mathbf{A}$ and $\mathbf{B}$ are said to be **conformable for block matrix multiplication**. A consequence of this is that $r = c$. When this is the case, the matrix products is
+and each row of blocks $\mathbf{A}_{ij}$ has the same number of columns as the block $\mathbf{B}_{ij}$ has rows, then the block matrices $\mathbf{A}$ and $\mathbf{B}$ are said to be **conformable for block matrix multiplication**. A consequence of this is that $r = c$. When this is the case, the matrix products is
 
 $$
 \begin{align*}
@@ -141,16 +170,27 @@ $$
 \end{pmatrix}  
 \end{align*}
 $$
-which can be said in words as "each block-element (the $ij$th element ($\mathbf{A} \mathbf{B}$)_{ij}) of the block-matrix product $\mathbf{A} \mathbf{B}$ is the sum of the $i$th block-row of $\mathbf{A}$ and the $j$th block column of $\mathbf{B}$ .Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \@ref(eq:matrix-multiplication) above to  \@ref(eq:block-matrix-multiplication)).
+which can be said in words as "each block-element (the $ij$th element $(\mathbf{A} \mathbf{B})_{ij}$) of the block-matrix product $\mathbf{A} \mathbf{B}$ is the sum of the $i$th block-row of $\mathbf{A}$ and the $j$th block column of $\mathbf{B}$. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \@ref(eq:block-matrix-multiplication) above to \@ref(eq:matrix-multiplication)).
 
 ```{example}
 in class
 ```
 
+
+
+<div class="fold-solution">
+
+:::{.solution}
+
+A solution to the example problem
+
+:::
+</div>
+
 ## The column-row matrix product
 
 
-```{theorem}
+```{theorem block-matrix-multiplication}
 The matrix product $\mathbf{A}\mathbf{B}$ of an $m \times n$ matrix $\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}$ with columns $\{\mathbf{a}_i\}_{i=1}^n$ and an $n \times p$ matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}$ with rows $\{\mathbf{b}_i'\}_{i=1}^n$ can be written as the column-row expansion below:
 $$
 \begin{align*}
@@ -162,11 +202,13 @@ $$
 $$
 ```
 
-**Note:** The notation $\mathbf{b}_i'$ has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
+**Recall:** The notation $\mathbf{b}_i'$ has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
 
 ```{example}
 in class
 ```
+
+
 
 ## Special Block Matrices
 
@@ -177,7 +219,7 @@ The matrix $\mathbf{A}$ is said to be block diagonal if
 $$
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 
-\mathbf{A}_1 & \mathbf{O} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{A}_1 & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
 \mathbf{0} & \mathbf{A}_2 & \mathbf{0} & \cdots & \mathbf{0} \\
 \mathbf{0} & \mathbf{0} & \mathbf{A}_3 & \cdots & \mathbf{0} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
@@ -221,6 +263,47 @@ Assume that $\mathbf{A}$, which has the form
 $$
 \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix},  
 $$    
-is an invertible matrix with $\mathbf{A}_{11}$ a $p \times p$ matrix, $\mathbf{A}_{12}$ a $p \times q$ matrix, and $\mathbf{A}_{22} a $q \times q$ matrix. Solve for $\mathbf{A}^{-1}
+is an invertible matrix where $\mathbf{A}_{11}$ a $p \times p$ invertible matrix, $\mathbf{A}_{12}$ a $p \times q$ matrix, and $\mathbf{A}_{22}$ is a $q \times q$ invertible matrix. Solve for $\mathbf{A}^{-1}$
 ```
+
+
+
+<div class="fold-solution">
+
+:::{.solution}
+
+The inverse to $\mathbf{A}$ is a matrix $\mathbf{B} = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}$ with blocks $\mathbf{B}_{11}$, $\mathbf{B}_{12}$, $\mathbf{B}_{21}$, and $\mathbf{B}_{22}$ of appropriate size to be conformable with the blocks $\mathbf{A}_{11}$, $\mathbf{A}_{12}$, and$\mathbf{A}_{22}$ that make up the matrix $\mathbf{A}$. 
+
+For $\mathbf{B}$ to be the inverse of $\mathbf{A}$, $\mathbf{A}\mathbf{B} = \mathbf{B}\mathbf{A} = \mathbf{I} = \begin{pmatrix} \mathbf{I} & \mathbf{0} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}$ where $\mathbf{0}$ is a matrix of zeros of the appropriate size. Writing this out in blocks gives
+
+\begin{align*}
+\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}  \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix} \\
+& = \begin{pmatrix} \mathbf{B}_{11} \mathbf{A}_{11} & \mathbf{B}_{11} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{B}_{21} \mathbf{A}_{11} & \mathbf{B}_{21} \mathbf{A}_{12} + \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
+\end{align*}
+
+which gives that $\mathbf{B}_{11} = \mathbf{A}_{11}^{-1}$ because $\mathbf{B}_{11}^{-1}\mathbf{A}_{11} = \mathbf{I}$ and $\mathbf{A}_{11}$ is invertible. The equation also give $\mathbf{B}_{21} \mathbf{A}_{11} = \mathbf{0}$ and because $\mathbf{A}_{11}$ is an invertible matrix, the homogeneous equation $\mathbf{A}_{11}\mathbf{b} = \mathbf{0}$ has only the trivial solution for each column $\mathbf{b}$ of the matrix $\mathbf{B}_{21}$  which implies that $\mathbf{B}_{21} = \mathbf{0}$. Using these facts, we can rewrite the above equation as
+
+\begin{align*}
+\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
+\end{align*}
+
+Because the lower right entry $\mathbf{B}_{22} \mathbf{A}_{22}$ must equal $\mathbf{I}$, we have that $\mathbf{B}_{22} = \mathbf{A}_{22}^{-1}$. Then, the equation becomes
+
+\begin{align*}
+\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}
+\end{align*}
+
+The final component is the upper right block. Because we are finding the inverse, we know that $\mathbf{0} = \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22}$. Subtracting $\mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ from both sides of the equation gives
+
+\begin{align*}
+\mathbf{B}_{12} \mathbf{A}_{22} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+\mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}
+\end{align*}
+
+Thus, $\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}$
+
+:::
+</div>
+
+
 

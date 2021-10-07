@@ -12,3 +12,37 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+
+
+/* css for toggle button for hiding/showing solution/proof */
+
+/*
+.toggle {
+  height: 1.55em;
+  overflow-y: hidden;
+}
+.toggle.open {
+  height: auto;
+}
+*/
+
+/* css for toggle button for hiding/showing solution/proof */
+
+.fold-solution-btn { 
+  float: right; 
+  margin: 5px 5px 0 0;
+}
+.fold-solution { 
+  border: 1px solid black;
+  min-height: 40px;
+}
+
+.fold-proof-btn { 
+  float: right; 
+  margin: 5px 5px 0 0;
+}
+.fold-proof { 
+  border: 1px solid black;
+  min-height: 40px;
+}

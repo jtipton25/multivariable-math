@@ -545,9 +545,13 @@ ggplot(aes(x = x, y = y, group = id), data = filter(grid_all, time == 2))+
 
 ## Span
 
+:::{.definition #span name="Span"}
 Let $\mathbf{a}_1, \ldots, \mathbf{a}_K$ be vectors in $\mathcal{R}^n$. We say the vector $\mathbf{w}$ is in the span of $\mathbf{a}_1, \ldots, \mathbf{a}_K$ ($\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}$) if there exists coefficients $x_1, \ldots, x_K$ such that $\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k$.
+:::
 
-Example: While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, $x$, and $x^2$. Then, the functions $-4 + 3x^2$ ($a_1 = -4, a_2 = 0, a_3 = 3$) and $-3 + 4x - 2x^2$ ($a_1 = -3, a_2 = 4, a_3 = -2$) are in the span of functions $\{1, x, x^2\}$, but the functions $x^3$, $x^4 - 2x^2$, etc., are not in the span of $\{1, x, x^2\}$ because you cannot write these as a linear combination of $a_1 1 + a_2 x + a_3 x^2$. 
+:::{.example}
+While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, $x$, and $x^2$. Then, the functions $-4 + 3x^2$ ($a_1 = -4, a_2 = 0, a_3 = 3$) and $-3 + 4x - 2x^2$ ($a_1 = -3, a_2 = 4, a_3 = -2$) are in the span of functions $\{1, x, x^2\}$, but the functions $x^3$, $x^4 - 2x^2$, etc., are not in the span of $\{1, x, x^2\}$ because you cannot write these as a linear combination of $a_1 1 + a_2 x + a_3 x^2$. 
+:::
 
 ### Geometric example of the span
 
