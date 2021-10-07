@@ -1,13 +1,15 @@
 # Subspaces of $\mathcal{R}^n$ {#subspaces-Rn}
 
+
 ```{r, message = FALSE}
+library(dasc2594)
 ```
 
 First, let's recall the definition of a subset. A set $A$ is a subset of a set $B$ if all elements of $A$ are also members of $B$. For example, the integers $\mathcal{Z}$ are a subset of the real numbers $\mathbf{R}$ ($\mathcal{Z} \subset \mathcal{R}$) and the real numbers are a subset of the complex numbers $\mathcal{C}$ ($\mathcal{R} \subset \mathcal{C}$). 
 
 Subspaces are a generalization of the idea of subsets that are useful for understanding vector spaces. 
 
-```{definition}
+:::{.definition #subspace}
 A subspace $\mathcal{H}$ of $\mathcal{R}^n$ is a set that has the properties
 
 1) The zero vector $\mathbf{0} \in \mathcal{H}$ \hfill \hfill [(additive identity)]{style="float:right"}
@@ -15,19 +17,33 @@ A subspace $\mathcal{H}$ of $\mathcal{R}^n$ is a set that has the properties
 2) For each $\mathbf{u}, \mathbf{v} \in \mathcal{H}$, the sum $\mathbf{u} + \mathbf{v}$ is in $\mathcal{H}$ \hfill [(closed under vector addition)]{style="float:right"}
 
 3) For each $\mathbf{u} \in \mathcal{H}$ and scalar $c$, the scalar multiple $c \mathbf{u}$ is in $\mathcal{H}$ \hfill [(closed under scalar multiplication)]{style="float:right"}
-
-```
+:::
 
 
 ```{example}
 Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector space defined by span$\{\mathbf{u}, \mathbf{v} \}$ is a subspace of $\mathcal{R}^n$
 ```
 
-* Show this in class.
+<div class="fold-solution">
+
+:::{.solution}
+To show that span$\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$, we must satisfy the three conditions of definition (\@ref(def:subspace)).
+
+1) $\mathbf{0} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ because $\mathbf{0} = 0 \mathbf{u} + 0 \mathbf{v}$ is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ with coefficients 0 and 0.
+    
+2) Let $\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ and $\mathbf{y} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$. Then, by the definition of the span (Definition (\@ref(def:span))) there exists constants $a, b, c, d$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$ and $\mathbf{y} = c \mathbf{u} + d \mathbf{v}$. Thus, $\mathbf{x} + \mathbf{y} =  a \mathbf{u} + b \mathbf{v} + c \mathbf{u} + d \mathbf{v} =  (a + c) \mathbf{u} + (b + d) \mathbf{v}$ which, by definition, is in the span$\{\mathbf{u}, \mathbf{v}\}$. Thus, span$\{\mathbf{u}, \mathbf{v}\}$ is closed under addition.
+
+
+3) Let $\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ $c$ be a constant. Because $\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$, the definition of the span (Definition (\@ref(def:span))) implies there exists constants $a$ and $b$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$. Thus, $c\mathbf{x} = ca \mathbf{u} + cb \mathbf{v}$ which is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ and is therefore $c\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$.
+
+Because all three requirements are met, we have shown that $\mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$.
+:::
+
+</div>
 
 ```{exercise}
-* Is a line through the origin a subspace?
-* Is a line **not** through the origin a subspace?
+1) Is a line through the origin a subspace?
+2) Is a line **not** through the origin a subspace?
 ```
 
 * **Note:** For any vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k \in \mathcal{R}^n$, the span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$ is a subspace of $\mathcal{R}^n$.
@@ -39,15 +55,69 @@ Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector
 The **column space**, denoted $\operatorname{col}(\mathbf{A})$, of a $m \times n$ matrix $\mathbf{A}$ which has columns $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m$ is the set of vectors that are linear combinations of the columns of $\mathbf{A}$ which is equivalent to the span$\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$.
 ```
 
-```{example}
-in class
+:::{.example}
+```{r, echo = FALSE}
+set.seed(404)
+A <- matrix(sample(-9:9, 12, TRUE), 4, 3)
 ```
 
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, and $\mathbf{a}_3$, what is the column space of $\mathbf{A}$?
+:::
+
+<div class="fold-solution">
+:::{.solution}
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, and $\mathbf{a}_3$, the column space of $\mathbf{A}$ is the set of vectors $\mathbf{b}$ such that 
+$$
+\begin{align*}
+\mathbf{b} = x_1 \mathbf{a_1} + x_2 \mathbf{a}_2 + x_3 \mathbf{a}_3.
+\end{align*}
+$$
+Thus, the column space of $\mathbf{A}$ is the span of the vectors that makes up the columns of $\mathbf{A}$.
+:::
+</div>
 
 ```{definition}
 The **null space**, denoted $\operatorname{null}(\mathbf{A})$, of a matrix $\mathbf{A}$ is the set of all solutions to the homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$.
 ```
 While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by $\mathbf{A}$ maps to $\mathbf{0}$. 
+
+:::{.example}
+```{r, echo = FALSE}
+set.seed(2021)
+A <- matrix(c(-3L, -4L, 4L, -3L, 2L, -4L, -4L, -4L, 4L, -5L, 5L, -3L, -2L, 3L, 5L), 3, 5)
+```
+
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$, and $\mathbf{a}_4$, what is the null space of $\mathbf{A}$?
+:::
+
+:::{.example}
+
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$, and $\mathbf{a}_4$, the null space of $\mathbf{A}$ is the solution set of the homogeneous system of equations $\mathbf{A} \mathbf{x} = \mathbf{0}$.  Using an augmented matrix and transforming into reduced row echelon form gives the RREF form
+$$
+\begin{align*}
+`r array_to_latex(cbind(A, 0))` \sim `r array_to_latex(dasc2594::rref(cbind(A, 0)), fraction = TRUE)`
+\end{align*}
+$$
+which tells us that the solution to the system of equations is 
+$$
+\begin{align*}
+x_1 - 15 x_4 -25 x_5 & = 0 \\
+x_2 - x_4 - 4 x_5 & = 0 \\
+x_3 + \frac{53}{4} x_4  + \frac{89}{4} x_5 & = 0\\
+x_4 & = x_4 \\
+x_5 & = x_5
+\end{align*}
+$$
+Writing this solution as a vector times $x_4$ and a vector times $x_5$ gives the vectors $\begin{pmatrix} 15 \\ 1 \\ -\frac{53}{4} \\ 1 \\ 0 \end{pmatrix}$ and $\begin{pmatrix} 25 \\ 4 \\ -\frac{89}{4} \\ 0 \\ 1 \end{pmatrix}$.
+
+{\huge \textbf{Resume revisions here}} 
+In `R`, this is
+```{r}
+```
+
+
+:::
+
 
 ```{theorem}
 The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$. 
@@ -55,6 +125,13 @@ The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathca
 
 ```{proof}
 Do in class
+Show that the three requirements of the defintion of a subspace in Definition (\@ref(def:subspace)) are met.
+
+1)
+
+2)
+
+3)
 ```
 
 * Example: give $\mathbf{A}$ and $\mathbf{x}$ and determine if $\mathbf{x}$ is in the null space of $\mathbf{A}$ using `R`
@@ -78,21 +155,82 @@ The standard basis for $\mathcal{R}^n$
 Basis for $\mathcal{R}^3$
 ```
 
-```{example}
+:::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
-    
-* in class
+```{r, echo = FALSE}
+set.seed(2021)
+x <- sample(-4:4, 3, TRUE)
+y <- sample(-4:4, 3, TRUE)
+z <- sample(-4:4, 3, TRUE)
 ```
+$\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$
+:::
+
+
+:::{.example}
+Do the following set of vectors form a basis for $\mathcal{R}^3$?
+```{r, echo = FALSE}
+set.seed(2021)
+w <- sample(-4:4, 3, TRUE)
+x <- sample(-4:4, 3, TRUE)
+y <- sample(-4:4, 3, TRUE)
+z <- sample(-4:4, 3, TRUE)
+```
+$\mathbf{w} = `r array_to_latex(as.matrix(w))`$, $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$
+:::
+
+:::{.example}
+Do the following set of vectors form a basis for $\mathcal{R}^3$?
+```{r, echo = FALSE}
+set.seed(404)
+x <- sample(-4:4, 3, TRUE)
+y <- sample(-4:4, 3, TRUE)
+z <- sample(-4:4, 3, TRUE) * x + sample(-4:4, 3, TRUE) * y
+```
+$\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$
+:::
 
 
 
-```{example}
+
+
+:::{.example}
 Using `R`, find a basis for the null space of the matrix
 $$
 \mathbf{A} = \begin{pmatrix} 2 & 4 & 1 & 3 \\ -1 & -2 & 6 & 5 \\ 1 & 2 & -3 & 2 \end{pmatrix}
 $$    
+:::
+
+
+<div class="fold-solution">
+
+:::{.solution}
+
+Given the matrix $\mathbf{A}$, we look for non-trivial solutions to $\mathbf{A} \mathbf{x} = \mathbf{0}$
+
+```{r}
+A <- matrix(c(2, -1, 1, 4, -2, 2, 1, 6, -3, 3, 5, 2), 3, 4)
+rref(cbind(A, 0))
 ```
 
+
+which has solution $x_1 = -2 x_2$, $x_2 = \mbox{free}$, $x_3 = 0$ and $x_4 = 0$. This can be represented as a vector $\mathbf{v} = \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}$. Thus,  $\left\{ \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} \right\}$ is a basis for the null space of $\mathbf{A}$.
+
+We can check this by showing that $\mathbf{A} \mathbf{v} = \mathbf{0}$
+
+```{r}
+v <- c(-2, 1, 0, 0)
+A %*% v
+```
+
+In addition, any linear combination of the basis is also in the null space
+
+```{r}
+A %*% (5*v)
+```
+
+:::
+</div>
 
 ```{theorem}
 The pivot columns of a matrix $\mathbf{A}$ for a basis for the column space of $\mathbf{A}$.

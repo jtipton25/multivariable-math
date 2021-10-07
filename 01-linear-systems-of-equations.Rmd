@@ -133,35 +133,45 @@ For the following, are these linear equations?
 $x_1 + 3 x_1 x_2 = 5$
 ```
 
-```{solution}
+<div class="fold-solution">
+:::{.solution}
 This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = 1$, $a_2 = 3$ and $b = 5$
-```
+:::
+</div>
+
 
 ```{example}
 $5x + 7y + 8z = 11.2$
 ```
 
-```{solution}
+<div class="fold-solution">
+:::{.solution}
 This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 + a_3 x_3= b$ where $a_1 = 5$, $a_2 = 7$, $a_3 = 8$ and $b = 11.2$. The variables $x_1 = x$, $x_2 = y$, and $x_3 = z$.
-```
+:::
+</div>
 
 ```{example}
 $\frac{1}{4} y + \sqrt{2} z = 2^6$
 ```    
     
     
-```{solution}
+<div class="fold-solution">
+:::{.solution}
 This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = \frac{1}{4}$, $a_2 = \sqrt{2}$, and $b = 2^6$. The variables $x_1 = y$, $x_2 = z$ enter the equation linearly.
-```
-
+:::
+</div>
 
 ```{example}
 $x + 4 y^2 = 9$
 ```
 
-```{solution}
+
+<div class="fold-solution">
+:::{.solution}
 This is not a linear equation because the equation cannot be written as $a_1 x_1 + a_2 x_2 = b$ because $x_1 = x$ and $x_2 = y$ so that the equation is written as $a_1 x_1 + a_2 x_2^2 = b$ where $a_1 = 1$, $a_2 = 4$, and $b = 9$. The variable $x_2 = y$ enters the equation in a non-linear (quadratic) manner.
-```
+:::
+</div>
+
 
 ### Solutions of linear systems
 
@@ -177,12 +187,29 @@ A <- matrix(sample(-10:10, 6, replace = TRUE), 2, 3)
 ```
 
 :::{.example}
-Is $\begin{pmatrix}s_1 = 5 \\ s_2 = 3 \end{pmatrix}$ a solution to the system of equations
+Is $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  = \end{pmatrix}$ a solution to the system of equations
 \begin{alignat*}{3}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}}
 :::
+
+
+<div class="fold-solution">
+:::{.solution}
+First, we plug in the values for $x_1 = 5$, $x_2 = 3$  and $x_3 = 6$. In the first equation, we get
+\begin{alignat*}{3}
+5   & {}+{} & 4 \times 3 & {}-{} & 6 & {}={} & 11 \\
+\end{alignat*}}
+which is true because $11 = 11$. Now we consider the second equation
+
+\begin{alignat*}{3}
+4 \times 5 & {}+{} & 5 \times 3 & {}+{} & 0 \times 6 & {}={} & 9.
+\end{alignat*}}
+which is false because $35 \neq = 9$. Thus, $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  = \end{pmatrix}$ is not a solution to the system of equations in the given example.
+:::
+</div>
+
 
 :::{.example}
 Consider the system of equations
@@ -193,7 +220,11 @@ x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7.
 \end{alignat*}
 $$
+:::
 
+<div class="fold-solution">
+
+:::{.solution}
 To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
 
 
@@ -203,7 +234,7 @@ x   & {}+{} & 4 y & {}={} & 8 \\
 4 x - 4 * (x) & {}+{} & 5 y - 4 * (4y) & {}={} & 7 - 4 * (8),
 \end{alignat*}
 $$
-where the part of the equations in `()` is the top equation. This system of equations now simplifies to 
+where the part of the equations in ($\cdot$) is the top equation. This system of equations now simplifies to 
 
 $$
 \begin{alignat*}{3}
@@ -267,6 +298,7 @@ dat %>%
 
 From this plot, it is clear that the solution to the system of equations is the location where the two lines intersect!
 :::
+</div>
 
 ### Types of solutions
 
@@ -311,9 +343,36 @@ dat %>%
 
 In this case, the linear equations are parallel lines and will never intersect so therefore there is no solution.
 
+<!-- Type out how to try and solve the system of equations -->
+
+<div class="fold-solution">
+
+:::{.solution}
+To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
+
+
+$$
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x  - 4(x) & {}+{} & 16 y - 4\times (4 y) & {}={} & 18 - 4 \times (8).
+\end{alignat*}
+$$
+where the part of the equations in `()` is the top equation. This system of equations now simplifies to 
+
+$$
+\begin{alignat*}{3}
+x & {}+{} & 4 y & {}={} & 8 \\
+0 x & {}+{} &  0 y & {}={} & -14,
+\end{alignat*}
+$$
+
+which gives $0 = -14$. From this, we see that we have reached a contradiction so there is not a solutoin to the system of equations.
+:::
+</div>
+
 #### There is one solution:
 
-We have seen this example in Figure \@ref(fig:one-solution)
+We have seen this example in Figure \@ref(fig:one-solution).
 
 #### There are infinitely many solutions:
 
@@ -369,12 +428,7 @@ $$
 have the same solution set (the second set of equations is just 2 times the first set of equations).
 
 
-* **Exercise/Lab: generate some equations, plot them, and determine if there is a solution. Then try to solve these using algebra.**
-
-
-* **Exercises:** for the following systems of equations, determine if a solution(s) exist and if so, solve for the solution
-
-```{exercise}
+:::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 $$
 \begin{alignat*}{3}
@@ -382,8 +436,12 @@ $$
 9 x_1 & {}-{} & 3 x_2 & {}={} & 4.
 \end{alignat*}
 $$
-```
+:::
 
+
+
+
+<div class="fold-solution">
 
 :::{.solution}
 Multiply the first equation by $\frac{1}{4}$ and the second equation by $\frac{1}{9}$ to get 
@@ -438,8 +496,9 @@ all.equal(9 * x1 - 3 * x2, 4)
 ```
 :::
 
+</div>
 
-```{exercise}
+:::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 $$
 \begin{alignat*}{4}
@@ -447,10 +506,75 @@ $$
 4 x_1 & {}-{} & 5 x_2 &&        & {}={} & -2
 \end{alignat*}
 $$
+:::
+
+<!-- Solution -->
+
+<div class="fold-solution">
+
+:::{.solution}
+Multiply the first equation by $\frac{1}{7}$ and the second equation by $\frac{1}{4}$ to get 
+
+$$
+\begin{alignat*}{4}
+x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
+x_1 & {}-{} & \frac{5}{4} x_2 & {}+{} & 0 x_3       & {}={} & \frac{-1}{2}
+\end{alignat*}
+$$
+
+
+Subtract the first equation from the second equation
+
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
+0 x_1 & {}+{} &  (-\frac{5}{4} - \frac{3}{7}) x_2 &{}+{}& -\frac{4}{7} x_3  & {}={} & - \frac{1}{2} - \frac{5}{7}
+\end{alignat*}
+$$
+which reduces to 
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
+0 & {}-{} &  -\frac{47}{28} x_2 &{}-{}& \frac{4}{7} x_3 & {}={} & -\frac{17}{14}.
+\end{alignat*}
+$$
+Next, divide the second equation by $\frac{-47}{28}$ gives 
+
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
+0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47}.
+\end{alignat*}
+$$
+
+Then, take the first equation and subtract $-\frac{3}{7}$ times the second row to get
+
+$$
+\begin{alignat*}{3}
+x_1 & {}+{} & 0 x_2 & {}+{} & \frac{20}{47} x_3 & {}={} & \frac{19}{47} \\
+0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47}.
+\end{alignat*}
+$$
+
+Which gives the solution
+$x_1 + \frac{20}{47} x_3 = \frac{19}{47}$, $x_2 + \frac{16}{47} x_3 = \frac{34}{47}$, and $x_3 = x_3$ is a free variable.
+
+The solution can be checked in `R` using
+
+```{r}
+# this is a free variable, you can assign it any value
+x3 <- 3
+x1 <- 19/47 - 20/47 * x3
+x2 <- 34/47 - 16/47 * x3
+# check the first equation
+all.equal(7 * x1 + 3 * x2 + 4 * x3, 5)
+# check the second equation
+all.equal(4 * x1 - 5 * x2 + 0 * x3, -2)
 ```
+:::
+</div>
 
-
-```{exercise}
+:::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 $$
 \begin{alignat*}{3}
@@ -459,7 +583,45 @@ $$
 -3 x_1 & {}+{} & 6 x_2 &{}={} & 11
 \end{alignat*}
 $$
-```
+:::
+
+<!-- Solution -->
+
+<div class="fold-solution">
+
+:::{.solution}
+Multiply the first equation by $\frac{1}{4}$, the second equation by $\frac{1}{2}$, and the third equation by $-\frac{1}{3}$ to get 
+
+$$
+\begin{alignat*}{3}
+x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
+x_1 & {}+{} & \frac{1}{2} x_2 & {}={} & \frac{7}{2} \\
+ x_1 & {}-{} & 2 x_2 &{}={} & -\frac{11}{3}
+\end{alignat*}
+$$
+
+Subtract the first equation from the second equation and also subtract the first equation from the third equation. Thus, we get
+
+$$
+\begin{alignat*}{3}
+x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
+0 x_1 & {}+{} & x_2 & {}={} & \frac{3}{2} \\
+0 x_1 & {}-{} & \frac{3}{2} x_2 &{}={} & -\frac{17}{3}.
+\end{alignat*}
+$$
+Then, multiply the third equation by $-\frac{2}{3}$ to get
+$$
+\begin{alignat*}{3}
+x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
+0 x_1 & {}+{} & x_2 & {}={} & 3 \\
+0 x_1 & {}+{} & x_2 &{}={} & - \frac{34}{9}.
+\end{alignat*}
+$$
+Notice that the second equation gives $x_2 = 3$ while the third equation gives $x_2 = -\frac{34}{9}$. This is a contradiction ($3 \neq -\frac{34}{9})$ which implies that the system of equations does not have a solution. Thus we say the system of equations is inconsistent.
+
+:::
+</div>
+
 
 
 ### Elementary row and column operations on matrices
@@ -475,10 +637,128 @@ Note that these operations are exactly what we used to solve the equation using 
 
 
 :::{.example}
-**in class examples**
+For the elementary row operations listed above, we demonstrate these using the matrix
+```{r, echo = FALSE}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+```
+$$
+\begin{align*}
+`r array_to_latex(A)`
+\end{align*}
+$$
+
+The matrix $\mathbf{A}$ can be represented in `R` using
+
+```{r, eval = FALSE}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+```
+
+
+1) Swap the first and second rows. 
+
+2) Add -3 times the first row to the third row.
+
+3) Multiply the second row by $\frac{1}{2}$.
 :::
 
+:::{.solution}
+Here we present examples of the elementary row operations 
 
+1) Swap the first and second rows.
+
+The matrix with the first and second rows swapped is 
+
+```{r, echo = FALSE}
+A1 <- A[c(2,1), ]
+```
+$$
+\begin{align*}
+`r array_to_latex(A1)`
+\end{align*}
+$$
+
+Notice that the first and second rows have now switched places. This can be done in `R` in a variety of ways. First, we extract the rows and place them "by hand" in `R`.
+
+```{r}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+# extract the rows
+row1 <- A[1, ] 
+row2 <- A[2, ]
+# swap the rows
+A[1, ] <- row2
+A[2, ] <- row1
+A
+```
+Another way to do this is to use the function `rbind()` that binds rows together into a matrix. 
+```{r}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+# bind row 2, row 1, and row 3 togethter
+rbind(A[2, ], A[1, ], A[3, ])
+```
+Yet another way to swap the first two rows is to use a vectorized operation. This allows for fast and efficient coding and computing. The vectorized row swap is 
+```{r}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+# Take the 2nd, 1st, and 3rd row of A, in that order
+A[c(2, 1, 3), ]
+```
+
+2) Add -3 times the first row to the third row.
+
+```{r, echo = FALSE}
+B <- A
+B[3, ] <- -3 * A[1, ] + A[3, ]
+```
+
+First, we notice that -3 times the first row gives the row vector $`r array_to_latex(-3 * A[1, , drop = FALSE])`$. Then, we add this to the row vector of the third row  $`r array_to_latex(A[3, , drop = FALSE])`$ to get the row vector  $`r array_to_latex(-3 * A[1, , drop = FALSE] + A[3, , drop = FALSE])`$. Finally, this row vector replaces the third row of the matrix to give the result
+$$
+\begin{align*}
+`r array_to_latex(B)`
+\end{align*}
+$$
+
+**Note:** Notice that by performing this row sum and replacement, we have made the first column of the third row of $\mathbf{A}$ a 0. This zeroing out of the columns will play a very important role moving forward.
+
+Using `R`, this can be done as
+
+```{r}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+# extract the rows 
+row1 <- A[1, ]
+row3 <- A[3, ]
+A[3, ] <- -3 * row1 + row3
+A
+```
+
+Another way to do this row sum and replacement is
+```{r}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+A[3, ] <- -3 * A[1, ] + A[3, ]
+A
+```
+
+
+3) Multiply the second row by $\frac{1}{2}$.
+
+```{r, echo = FALSE}
+A <- matrix(c(1:9), 3, 3, byrow = FALSE)
+B <- A
+B[2, ] <- 1/2 * B[2, ]
+```
+
+The second row of $\mathbf{A}$ is the row vector $`r array_to_latex(A[2, , drop = FALSE])`$. Multiplying the second row by $\frac{1}{2}$ gives the row vector $`r array_to_latex(1/2 * A[2, , drop = FALSE], fraction = TRUE)`$. Plugging this into the matrix gives the full matrix with second row multiplied by $\frac{1}{2}$ as 
+$$
+\begin{align*}
+`r array_to_latex(B, fraction = TRUE)`
+\end{align*}
+$$
+In `R`, the second row of $\mathbf{A}$ can be multiplied by $\frac{1}{2}$ as
+
+```{r}
+A[2, ] <- 1/2 * A[2, ]
+A
+```
+
+:::
 
 ### The Augmented matrix form of a system of equations
 
@@ -605,6 +885,15 @@ $$
 $$
 :::
 
+<!-- Solution -->
+
+<div class="fold-solution">
+:::{.solution}
+\textbf{fill in solution here}
+:::
+</div>
+
+
 
 :::{.example}
 
@@ -620,6 +909,13 @@ $$
 $$
 :::
 
+<!-- Solution -->
+
+<div class="fold-solution">
+:::{.solution}
+\textbf{fill in solution here}
+:::
+</div>
 
 
 ## Reduce row echelon form

@@ -202,7 +202,7 @@ $$
 $$
 ```
 
-**Note:** The notation $\mathbf{b}_i'$ has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
+**Recall:** The notation $\mathbf{b}_i'$ has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
 
 ```{example}
 in class
