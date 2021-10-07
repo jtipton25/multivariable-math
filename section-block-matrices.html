@@ -408,37 +408,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{align*}
 \]</span></p>
 <p>where <span class="math inline">\(\mathbf{A}_{11} = \begin{bmatrix} 5 &amp; 7 \\ 5 &amp; -22 \end{bmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, <span class="math inline">\(\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\)</span> is a <span class="math inline">\(2 \times 1\)</span> matrix, etc.</p>
-<div class="sourceCode" id="section-cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="section-block-matrices.html#cb153-1"></a>A_<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-22</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb153-2"><a href="section-block-matrices.html#cb153-2"></a>A_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb153-3"><a href="section-block-matrices.html#cb153-3"></a>A_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">5</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb153-4"><a href="section-block-matrices.html#cb153-4"></a>A_<span class="dv">22</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">0</span>)</span>
-<span id="cb153-5"><a href="section-block-matrices.html#cb153-5"></a></span>
-<span id="cb153-6"><a href="section-block-matrices.html#cb153-6"></a><span class="co">## bind columns then rows</span></span>
-<span id="cb153-7"><a href="section-block-matrices.html#cb153-7"></a><span class="kw">rbind</span>(</span>
-<span id="cb153-8"><a href="section-block-matrices.html#cb153-8"></a>    <span class="kw">cbind</span>(A_<span class="dv">11</span>, A_<span class="dv">12</span>),</span>
-<span id="cb153-9"><a href="section-block-matrices.html#cb153-9"></a>    <span class="kw">cbind</span>(A_<span class="dv">21</span>, A_<span class="dv">22</span>)</span>
-<span id="cb153-10"><a href="section-block-matrices.html#cb153-10"></a>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="section-block-matrices.html#cb170-1"></a>A_<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">-22</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb170-2"><a href="section-block-matrices.html#cb170-2"></a>A_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb170-3"><a href="section-block-matrices.html#cb170-3"></a>A_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">5</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb170-4"><a href="section-block-matrices.html#cb170-4"></a>A_<span class="dv">22</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">0</span>)</span>
+<span id="cb170-5"><a href="section-block-matrices.html#cb170-5"></a></span>
+<span id="cb170-6"><a href="section-block-matrices.html#cb170-6"></a><span class="co">## bind columns then rows</span></span>
+<span id="cb170-7"><a href="section-block-matrices.html#cb170-7"></a><span class="kw">rbind</span>(</span>
+<span id="cb170-8"><a href="section-block-matrices.html#cb170-8"></a>    <span class="kw">cbind</span>(A_<span class="dv">11</span>, A_<span class="dv">12</span>),</span>
+<span id="cb170-9"><a href="section-block-matrices.html#cb170-9"></a>    <span class="kw">cbind</span>(A_<span class="dv">21</span>, A_<span class="dv">22</span>)</span>
+<span id="cb170-10"><a href="section-block-matrices.html#cb170-10"></a>)</span></code></pre></div>
 <pre><code>##              A_12
 ## [1,]   5   7    1
 ## [2,]   5 -22    2
 ## [3,] -14   5   99
 ## [4,]  42  -3    0</code></pre>
-<div class="sourceCode" id="section-cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="section-block-matrices.html#cb155-1"></a><span class="co">## bind rows then columns</span></span>
-<span id="cb155-2"><a href="section-block-matrices.html#cb155-2"></a><span class="kw">cbind</span>(</span>
-<span id="cb155-3"><a href="section-block-matrices.html#cb155-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
-<span id="cb155-4"><a href="section-block-matrices.html#cb155-4"></a>    <span class="kw">c</span>(A_<span class="dv">12</span>, A_<span class="dv">22</span>) <span class="co">## rbind on vectors is different than c()</span></span>
-<span id="cb155-5"><a href="section-block-matrices.html#cb155-5"></a>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="section-block-matrices.html#cb172-1"></a><span class="co">## bind rows then columns</span></span>
+<span id="cb172-2"><a href="section-block-matrices.html#cb172-2"></a><span class="kw">cbind</span>(</span>
+<span id="cb172-3"><a href="section-block-matrices.html#cb172-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
+<span id="cb172-4"><a href="section-block-matrices.html#cb172-4"></a>    <span class="kw">c</span>(A_<span class="dv">12</span>, A_<span class="dv">22</span>) <span class="co">## rbind on vectors is different than c()</span></span>
+<span id="cb172-5"><a href="section-block-matrices.html#cb172-5"></a>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    7    1
 ## [2,]    5  -22    2
 ## [3,]  -14    5   99
 ## [4,]   42   -3    0</code></pre>
-<div class="sourceCode" id="section-cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="section-block-matrices.html#cb157-1"></a><span class="co">## bind rows then columns</span></span>
-<span id="cb157-2"><a href="section-block-matrices.html#cb157-2"></a><span class="kw">cbind</span>(</span>
-<span id="cb157-3"><a href="section-block-matrices.html#cb157-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
-<span id="cb157-4"><a href="section-block-matrices.html#cb157-4"></a>    <span class="co">## convert the vectors to matrices for rbind</span></span>
-<span id="cb157-5"><a href="section-block-matrices.html#cb157-5"></a>    <span class="kw">rbind</span>(<span class="kw">as.matrix</span>(A_<span class="dv">12</span>), <span class="kw">as.matrix</span>(A_<span class="dv">22</span>))</span>
-<span id="cb157-6"><a href="section-block-matrices.html#cb157-6"></a>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="section-block-matrices.html#cb174-1"></a><span class="co">## bind rows then columns</span></span>
+<span id="cb174-2"><a href="section-block-matrices.html#cb174-2"></a><span class="kw">cbind</span>(</span>
+<span id="cb174-3"><a href="section-block-matrices.html#cb174-3"></a>    <span class="kw">rbind</span>(A_<span class="dv">11</span>, A_<span class="dv">21</span>),</span>
+<span id="cb174-4"><a href="section-block-matrices.html#cb174-4"></a>    <span class="co">## convert the vectors to matrices for rbind</span></span>
+<span id="cb174-5"><a href="section-block-matrices.html#cb174-5"></a>    <span class="kw">rbind</span>(<span class="kw">as.matrix</span>(A_<span class="dv">12</span>), <span class="kw">as.matrix</span>(A_<span class="dv">22</span>))</span>
+<span id="cb174-6"><a href="section-block-matrices.html#cb174-6"></a>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    7    1
 ## [2,]    5  -22    2
@@ -511,12 +511,12 @@ and each row of blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> has 
 which can be said in words as "each block-element (the <span class="math inline">\(ij\)</span>th element <span class="math inline">\((\mathbf{A} \mathbf{B})_{ij}\)</span>) of the block-matrix product <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is the sum of the <span class="math inline">\(i\)</span>th block-row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th block column of <span class="math inline">\(\mathbf{B}\)</span>. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation <a href="section-block-matrices.html#eq:block-matrix-multiplication">(9.2)</a> above to <a href="section-matrix-operations.html#eq:matrix-multiplication">(7.2)</a>).</p>
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-154" class="example"><strong>Example 9.1  </strong></span>in class
+<span id="section-exm:unnamed-chunk-159" class="example"><strong>Example 9.1  </strong></span>in class
 </div>
 
 <div class="fold-solution">
 <div class="solution">
-<p><span id="section-unlabeled-div-3" class="solution"><em>Solution</em>. </span>A solution to the example problem</p>
+<p><span id="section-unlabeled-div-15" class="solution"><em>Solution</em>. </span>A solution to the example problem</p>
 </div>
 </div>
 </div>
@@ -535,10 +535,10 @@ which can be said in words as "each block-element (the <span class="math inline"
 \]</span>
 </div>
 
-<p><strong>Note:</strong> The notation <span class="math inline">\(\mathbf{b}_i&#39;\)</span> has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.</p>
+<p><strong>Recall:</strong> The notation <span class="math inline">\(\mathbf{b}_i&#39;\)</span> has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.</p>
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-155" class="example"><strong>Example 9.2  </strong></span>in class
+<span id="section-exm:unnamed-chunk-160" class="example"><strong>Example 9.2  </strong></span>in class
 </div>
 
 </div>
@@ -547,7 +547,7 @@ which can be said in words as "each block-element (the <span class="math inline"
 <p>There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-156" class="definition"><strong>Definition 9.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block diagonal if
+<span id="section-def:unnamed-chunk-161" class="definition"><strong>Definition 9.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block diagonal if
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 
@@ -563,7 +563,7 @@ which can be said in words as "each block-element (the <span class="math inline"
 
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-157" class="definition"><strong>Definition 9.2  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block (upper) triangular if
+<p><span id="section-def:unnamed-chunk-162" class="definition"><strong>Definition 9.2  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block (upper) triangular if
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 
@@ -591,7 +591,7 @@ which can be said in words as "each block-element (the <span class="math inline"
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-158" class="example"><strong>Example 9.3  </strong></span>Assume that <span class="math inline">\(\mathbf{A}\)</span>, which has the form
+<span id="section-exm:unnamed-chunk-163" class="example"><strong>Example 9.3  </strong></span>Assume that <span class="math inline">\(\mathbf{A}\)</span>, which has the form
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} \\ \mathbf{0} &amp; \mathbf{A}_{22} \end{pmatrix},  
 \]</span><br />
@@ -600,7 +600,7 @@ is an invertible matrix where <span class="math inline">\(\mathbf{A}_{11}\)</spa
 
 <div class="fold-solution">
 <div class="solution">
-<p><span id="section-unlabeled-div-4" class="solution"><em>Solution</em>. </span>The inverse to <span class="math inline">\(\mathbf{A}\)</span> is a matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{B}_{11} &amp; \mathbf{B}_{12} \\ \mathbf{B}_{21} &amp; \mathbf{B}_{22} \end{pmatrix}\)</span> with blocks <span class="math inline">\(\mathbf{B}_{11}\)</span>, <span class="math inline">\(\mathbf{B}_{12}\)</span>, <span class="math inline">\(\mathbf{B}_{21}\)</span>, and <span class="math inline">\(\mathbf{B}_{22}\)</span> of appropriate size to be conformable with the blocks <span class="math inline">\(\mathbf{A}_{11}\)</span>, <span class="math inline">\(\mathbf{A}_{12}\)</span>, and<span class="math inline">\(\mathbf{A}_{22}\)</span> that make up the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p><span id="section-unlabeled-div-16" class="solution"><em>Solution</em>. </span>The inverse to <span class="math inline">\(\mathbf{A}\)</span> is a matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{B}_{11} &amp; \mathbf{B}_{12} \\ \mathbf{B}_{21} &amp; \mathbf{B}_{22} \end{pmatrix}\)</span> with blocks <span class="math inline">\(\mathbf{B}_{11}\)</span>, <span class="math inline">\(\mathbf{B}_{12}\)</span>, <span class="math inline">\(\mathbf{B}_{21}\)</span>, and <span class="math inline">\(\mathbf{B}_{22}\)</span> of appropriate size to be conformable with the blocks <span class="math inline">\(\mathbf{A}_{11}\)</span>, <span class="math inline">\(\mathbf{A}_{12}\)</span>, and<span class="math inline">\(\mathbf{A}_{22}\)</span> that make up the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>For <span class="math inline">\(\mathbf{B}\)</span> to be the inverse of <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{A}\mathbf{B} = \mathbf{B}\mathbf{A} = \mathbf{I} = \begin{pmatrix} \mathbf{I} &amp; \mathbf{0} \\ \mathbf{0} &amp; \mathbf{I} \end{pmatrix}\)</span> where <span class="math inline">\(\mathbf{0}\)</span> is a matrix of zeros of the appropriate size. Writing this out in blocks gives</p>
 <p><span class="math display">\[\begin{align*}
 \mathbf{B}\mathbf{A} &amp; = \begin{pmatrix} \mathbf{B}_{11} &amp; \mathbf{B}_{12} \\ \mathbf{B}_{21} &amp; \mathbf{B}_{22} \end{pmatrix}  \begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} \\ \mathbf{0} &amp; \mathbf{A}_{22} \end{pmatrix} \\

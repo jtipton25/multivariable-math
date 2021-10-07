@@ -345,16 +345,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-matrix-factorizations" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Matrix Factorizations</h1>
-<div class="sourceCode" id="section-cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="section-matrix-factorizations.html#cb159-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb159-2"><a href="section-matrix-factorizations.html#cb159-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb159-3"><a href="section-matrix-factorizations.html#cb159-3"></a><span class="kw">library</span>(mvnfast)</span></code></pre></div>
+<div class="sourceCode" id="section-cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="section-matrix-factorizations.html#cb176-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb176-2"><a href="section-matrix-factorizations.html#cb176-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb176-3"><a href="section-matrix-factorizations.html#cb176-3"></a><span class="kw">library</span>(mvnfast)</span>
+<span id="cb176-4"><a href="section-matrix-factorizations.html#cb176-4"></a><span class="kw">library</span>(MASS)</span></code></pre></div>
 <p>In scalar mathematics, a factorization is an expression that writes a scalar <span class="math inline">\(a\)</span> as a product of two or more scalars. For example, the scalar 2 has a square-root factorization of <span class="math inline">\(2 =\sqrt{2} * \sqrt{2}\)</span> and 15 has a prime factorization of <span class="math inline">\(15 = 3 * 5\)</span>. A matrix factorization is a similar concept where a matrix <span class="math inline">\(\mathbf{A}\)</span> can be represented by a product or two or more matrices (e.g., <span class="math inline">\(\mathbf{A} = \mathbf{B} \mathbf{C}\)</span>). In data science, matrix factorizations are fundamental to working with data.</p>
 <div id="section-the-lu-factorization" class="section level2">
 <h2><span class="header-section-number">10.1</span> The LU factorization</h2>
 <p>First, we define lower and upper triangular matrices.</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-160" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
+<span id="section-def:unnamed-chunk-165" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 
@@ -390,31 +391,69 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 \end{align*}
 \]</span></p>
 <p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="section-matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="section-matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
-
 <div class="example">
-<span id="section-exm:unnamed-chunk-162" class="example"><strong>Example 10.1  </strong></span>in class:
-</div>
-
-<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -2 &amp; 4 &amp; -6 &amp; 2 \\ -2 &amp; 4 &amp; -6 &amp; 2 \\ -3 &amp; 0 &amp; -1 &amp; -3 \\ -3 &amp; 6 &amp; -5 &amp; -1 \end{pmatrix}\)</span> which has the LU decomposition</p>
+<p><span id="section-exm:unlabeled-div-95" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
 <p><span class="math display">\[
 \begin{align*}
-\mathbf{A} = \begin{pmatrix} -2 &amp; 4 &amp; -6 &amp; 2 \\ -2 &amp; 4 &amp; -6 &amp; 2 \\ -3 &amp; 0 &amp; -1 &amp; -3 \\ -3 &amp; 6 &amp; -5 &amp; -1 \end{pmatrix} = \begin{pmatrix} -2 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; 0 &amp; 0 &amp; 0 \\ -3 &amp; 2 &amp; 2 &amp; 0 \\ -3 &amp; 0 &amp; 2 &amp; -1 \end{pmatrix} \begin{pmatrix} 1 &amp; -2 &amp; 3 &amp; -1 \\ 0 &amp; -3 &amp; 2 &amp; -1 \\ 0 &amp; 0 &amp; 2 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; -1 &amp; 0 &amp; 0 \\ -1 &amp; -2 &amp; -3 &amp; 0 \\ -2 &amp; -3 &amp; 0 &amp; -3 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ 0 &amp; 2 &amp; 0 &amp; 3 \\ 0 &amp; 0 &amp; 2 &amp; -3 \\ 0 &amp; 0 &amp; 0 &amp; -3 \end{pmatrix}
 \end{align*}
-\]</span></p>
-<ul>
-<li><p>solve <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> using augmented matrix</p></li>
-<li><p>solve <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> using augmented matrix * compare to the solution <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span></p></li>
-</ul>
+\]</span>
+and consider the system of equations defined by the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> where <span class="math inline">\(\mathbf{b} = \begin{pmatrix} -5 \\ -7 \\ -2 \\ -14 \end{pmatrix}\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>solve <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> using an augmented matrix and RREF.</p></li>
+<li><p>solve <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> using an augmented matrix and RREF.</p></li>
+<li><p>compare to the solution <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> using an augmented matrix and RREF.</p></li>
+</ol>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-17" class="solution"><em>Solution</em>. </span>For the example, we will show how to solve a system of equations using the LU decomposition for the equation defined above.</p>
+<ol style="list-style-type: decimal">
+<li>Solve <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> using augmented matrix</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ -2 &amp; -1 &amp; 0 &amp; 0 &amp; -7 \\ -1 &amp; -2 &amp; -3 &amp; 0 &amp; -2 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow -\frac{1}{2} r_2 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 8.5 \\ -1 &amp; -2 &amp; -3 &amp; 0 &amp; -2 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} \\
+&amp; \stackrel{r_3 \leftarrow - r_3 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 8.5 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow - \frac{1}{2} r_4 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 8.5 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ 0 &amp; 1.5 &amp; 0 &amp; 1.5 &amp; 12 \end{pmatrix} \\
+&amp; \stackrel{r_2 \leftarrow 2 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ 0 &amp; 1.5 &amp; 0 &amp; 1.5 &amp; 12 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow \frac{1}{2} r_3 - r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1.5 &amp; 0 &amp; -13.5 \\ 0 &amp; 1.5 &amp; 0 &amp; 1.5 &amp; 12 \end{pmatrix} \\
+&amp; \stackrel{r_4 \leftarrow \frac{2}{3} r_4 - r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1.5 &amp; 0 &amp; -13.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow \frac{2}{3} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \end{pmatrix} 
+\end{align*}\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>solve <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> using an augmented matrix and RREF.</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 2 &amp; 0 &amp; 3 &amp; 17 \\ 0 &amp; 0 &amp; 2 &amp; -3 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow \frac{1}{2} r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 2 &amp; -3 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} \\
+&amp; \stackrel{r_3 \leftarrow \frac{1}{2} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow - \frac{1}{3} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_1 \leftarrow r_1 -2  r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 &amp; 4 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; \stackrel{r_1 \leftarrow r_1 - 2 r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; 
+\stackrel{r_3 \leftarrow r_3 + \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} 
+\end{align*}\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>compare to the solution <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> using an augmented matrix and RREF.</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ -2 &amp; -2 &amp; -4 &amp; 1 &amp; -7 \\ -1 &amp; -4 &amp; -8 &amp; 5 &amp; -2 \\ -2 &amp; -6 &amp; -4 &amp; 4 &amp; -14 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow r_2 + 2 r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; -2 &amp; 0 &amp; -3 &amp; -17 \\ -1 &amp; -4 &amp; -8 &amp; 5 &amp; -2 \\ -2 &amp; -6 &amp; -4 &amp; 4 &amp; -14 \end{pmatrix} \\
+&amp; \stackrel{r_3 \leftarrow r_3 + r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; -2 &amp; 0 &amp; -3 &amp; -17 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ -2 &amp; -6 &amp; -4 &amp; 4 &amp; -14 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow r_4 + 2 r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; -2 &amp; 0 &amp; -3 &amp; -17 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} \\
+&amp; \stackrel{r_2 \leftarrow - \frac{1}{2} r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow r_3 + 4 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; -6 &amp; 9 &amp; 27 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} \\
+&amp; \stackrel{r_4 \leftarrow r_4 + 6 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; -6 &amp; 9 &amp; 27 \\ 0 &amp; 0 &amp; 0 &amp; 9 &amp; 27 \end{pmatrix} &amp; 
+\stackrel{r_3 \leftarrow - \frac{1}{6} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 9 &amp; 27 \end{pmatrix}\\
+&amp; \stackrel{r_4 \leftarrow \frac{1}{9} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; \stackrel{r_1 \leftarrow r_1 - 2 r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 &amp; 4 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_1 \leftarrow r_1 - r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; 
+\stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_3 \leftarrow r_3 + \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix}  
+\end{align*}\]</span></p>
+<p>While it might not be completely obvious, once one has calculated the LU decomposition, it can often be much faster to solve systems of equations with the LU decomposition.</p>
+</div>
+</div>
 
 <div class="exercise">
-<span id="section-exr:unnamed-chunk-163" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
+<span id="section-exr:unnamed-chunk-170" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
 Solve some large systems of equations by brute force which shows how the LU decomposition is faster.
 </div>
 
 <div id="section-geometric-interpretation-of-the-lu-factorization" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Geometric interpretation of the LU factorization</h3>
 <ul>
-<li><strong>Draw image in class</strong></li>
+<li><strong>Draw image in class – composition of transformations <span class="math inline">\(T_A(\cdot) = T_L(T_U(\cdot))\)</span></strong></li>
 </ul>
 </div>
 </div>
@@ -457,7 +496,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 <p>A Cholesky decomposition is special type of LU decomposition. A Cholesky decomposition is an LU decomposition on a <strong>symmetric, positive-definite</strong> square matrix.</p>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-164" class="definition"><strong>Definition 10.2  </strong></span>
+<p><span id="section-def:unnamed-chunk-171" class="definition"><strong>Definition 10.2  </strong></span>
 * A matrix <span class="math inline">\(\mathbf{A}\)</span> is said to by symmetric if <span class="math inline">\(\mathbf{A} = \mathbf{A}&#39;\)</span></p>
 <ul>
 <li>A <span class="math inline">\(n \times n\)</span> matrix is said to be positive definite if for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the quadratic form <span class="math inline">\(\mathbf{x}&#39; \mathbf{A }\mathbf{x} \geq 0\)</span>
@@ -466,7 +505,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 <p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>).</p>
 
 <div class="definition">
-<span id="section-def:unnamed-chunk-165" class="definition"><strong>Definition 10.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
+<span id="section-def:unnamed-chunk-172" class="definition"><strong>Definition 10.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
 <span class="math display">\[
 \begin{align*}
 \mathbf{A} = \mathbf{L} \mathbf{L}&#39;
@@ -482,28 +521,28 @@ is the Cholesky decomposition of <span class="math inline">\(\mathbf{A}\)</span>
 <li><p>The Cholesky has properties related to multivariate normal distributions.</p></li>
 </ul>
 <p>Let <span class="math inline">\(\mathbf{y} \sim \operatorname{N}(\mathbf{0}, \boldsymbol{\Sigma})\)</span>, and <span class="math inline">\(\boldsymbol{\Sigma} = \mathbf{L} \mathbf{L}&#39;\)</span>. Then, if <span class="math inline">\(\mathbf{z} \sim \operatorname{N}(\mathbf{0}, \mathbf{I})\)</span>, then <span class="math inline">\(\mathbf{L} \mathbf{z} \sim \operatorname{N}(\mathbf{0}, \boldsymbol{\Sigma})\)</span>. We say the <span class="math inline">\(\mathbf{y}\)</span> and <span class="math inline">\(\mathbf{L}\mathbf{z}\)</span> are equal in distribution.</p>
-<div class="sourceCode" id="section-cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="section-matrix-factorizations.html#cb160-1"></a><span class="co"># simulate N 2-dimensional random normal vectors </span></span>
-<span id="cb160-2"><a href="section-matrix-factorizations.html#cb160-2"></a>N &lt;-<span class="st"> </span><span class="dv">5000</span></span>
-<span id="cb160-3"><a href="section-matrix-factorizations.html#cb160-3"></a>mu    &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb160-4"><a href="section-matrix-factorizations.html#cb160-4"></a>Sigma &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb160-5"><a href="section-matrix-factorizations.html#cb160-5"></a>y &lt;-<span class="st"> </span><span class="kw">rmvn</span>(N, mu, Sigma)</span>
-<span id="cb160-6"><a href="section-matrix-factorizations.html#cb160-6"></a></span>
-<span id="cb160-7"><a href="section-matrix-factorizations.html#cb160-7"></a><span class="co"># calculate the Cholesky factor</span></span>
-<span id="cb160-8"><a href="section-matrix-factorizations.html#cb160-8"></a>L &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">chol</span>(Sigma))    <span class="co"># R calculates the upper (right) Cholesky factor by default</span></span>
-<span id="cb160-9"><a href="section-matrix-factorizations.html#cb160-9"></a>z &lt;-<span class="st"> </span><span class="kw">rmvn</span>(N, mu, <span class="kw">diag</span>(<span class="dv">2</span>))</span>
-<span id="cb160-10"><a href="section-matrix-factorizations.html#cb160-10"></a>Lz &lt;-<span class="st"> </span><span class="kw">t</span>(L <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(z))    <span class="co"># pay attention to the dimensions of L and z here...</span></span>
-<span id="cb160-11"><a href="section-matrix-factorizations.html#cb160-11"></a></span>
-<span id="cb160-12"><a href="section-matrix-factorizations.html#cb160-12"></a><span class="kw">data.frame</span>(</span>
-<span id="cb160-13"><a href="section-matrix-factorizations.html#cb160-13"></a>    <span class="dt">observation =</span> <span class="dv">1</span><span class="op">:</span>N,</span>
-<span id="cb160-14"><a href="section-matrix-factorizations.html#cb160-14"></a>    <span class="dt">x1          =</span> <span class="kw">c</span>(y[, <span class="dv">1</span>], z[, <span class="dv">1</span>], Lz[, <span class="dv">1</span>]),</span>
-<span id="cb160-15"><a href="section-matrix-factorizations.html#cb160-15"></a>    <span class="dt">x2          =</span> <span class="kw">c</span>(y[, <span class="dv">2</span>], z[, <span class="dv">2</span>], Lz[, <span class="dv">2</span>]),</span>
-<span id="cb160-16"><a href="section-matrix-factorizations.html#cb160-16"></a>    <span class="dt">variable    =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;Lz&quot;</span>), <span class="dt">each =</span> N), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;Lz&quot;</span>))</span>
-<span id="cb160-17"><a href="section-matrix-factorizations.html#cb160-17"></a>) <span class="op">%&gt;%</span></span>
-<span id="cb160-18"><a href="section-matrix-factorizations.html#cb160-18"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">color =</span> variable)) <span class="op">+</span></span>
-<span id="cb160-19"><a href="section-matrix-factorizations.html#cb160-19"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
-<span id="cb160-20"><a href="section-matrix-factorizations.html#cb160-20"></a><span class="st">    </span><span class="kw">geom_density2d</span>() <span class="op">+</span></span>
-<span id="cb160-21"><a href="section-matrix-factorizations.html#cb160-21"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<div class="sourceCode" id="section-cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="section-matrix-factorizations.html#cb177-1"></a><span class="co"># simulate N 2-dimensional random normal vectors </span></span>
+<span id="cb177-2"><a href="section-matrix-factorizations.html#cb177-2"></a>N &lt;-<span class="st"> </span><span class="dv">5000</span></span>
+<span id="cb177-3"><a href="section-matrix-factorizations.html#cb177-3"></a>mu    &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb177-4"><a href="section-matrix-factorizations.html#cb177-4"></a>Sigma &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb177-5"><a href="section-matrix-factorizations.html#cb177-5"></a>y &lt;-<span class="st"> </span><span class="kw">rmvn</span>(N, mu, Sigma)</span>
+<span id="cb177-6"><a href="section-matrix-factorizations.html#cb177-6"></a></span>
+<span id="cb177-7"><a href="section-matrix-factorizations.html#cb177-7"></a><span class="co"># calculate the Cholesky factor</span></span>
+<span id="cb177-8"><a href="section-matrix-factorizations.html#cb177-8"></a>L &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">chol</span>(Sigma))    <span class="co"># R calculates the upper (right) Cholesky factor by default</span></span>
+<span id="cb177-9"><a href="section-matrix-factorizations.html#cb177-9"></a>z &lt;-<span class="st"> </span><span class="kw">rmvn</span>(N, mu, <span class="kw">diag</span>(<span class="dv">2</span>))</span>
+<span id="cb177-10"><a href="section-matrix-factorizations.html#cb177-10"></a>Lz &lt;-<span class="st"> </span><span class="kw">t</span>(L <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(z))    <span class="co"># pay attention to the dimensions of L and z here...</span></span>
+<span id="cb177-11"><a href="section-matrix-factorizations.html#cb177-11"></a></span>
+<span id="cb177-12"><a href="section-matrix-factorizations.html#cb177-12"></a><span class="kw">data.frame</span>(</span>
+<span id="cb177-13"><a href="section-matrix-factorizations.html#cb177-13"></a>    <span class="dt">observation =</span> <span class="dv">1</span><span class="op">:</span>N,</span>
+<span id="cb177-14"><a href="section-matrix-factorizations.html#cb177-14"></a>    <span class="dt">x1          =</span> <span class="kw">c</span>(y[, <span class="dv">1</span>], z[, <span class="dv">1</span>], Lz[, <span class="dv">1</span>]),</span>
+<span id="cb177-15"><a href="section-matrix-factorizations.html#cb177-15"></a>    <span class="dt">x2          =</span> <span class="kw">c</span>(y[, <span class="dv">2</span>], z[, <span class="dv">2</span>], Lz[, <span class="dv">2</span>]),</span>
+<span id="cb177-16"><a href="section-matrix-factorizations.html#cb177-16"></a>    <span class="dt">variable    =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;Lz&quot;</span>), <span class="dt">each =</span> N), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;Lz&quot;</span>))</span>
+<span id="cb177-17"><a href="section-matrix-factorizations.html#cb177-17"></a>) <span class="op">%&gt;%</span></span>
+<span id="cb177-18"><a href="section-matrix-factorizations.html#cb177-18"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">color =</span> variable)) <span class="op">+</span></span>
+<span id="cb177-19"><a href="section-matrix-factorizations.html#cb177-19"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
+<span id="cb177-20"><a href="section-matrix-factorizations.html#cb177-20"></a><span class="st">    </span><span class="kw">geom_density2d</span>() <span class="op">+</span></span>
+<span id="cb177-21"><a href="section-matrix-factorizations.html#cb177-21"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
 
 </div>
 </div>
