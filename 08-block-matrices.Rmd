@@ -297,6 +297,8 @@ The final component is the upper right block. Because we are finding the inverse
 
 \begin{align*}
 \mathbf{B}_{12} \mathbf{A}_{22} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+\mathbf{B}_{12} \mathbf{A}_{22} \mathbf{A}_{22}^{-1} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
+\mathbf{B}_{12} \mathbf{I} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
 \mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}
 \end{align*}
 
