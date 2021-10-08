@@ -295,14 +295,16 @@ Because the lower right entry $\mathbf{B}_{22} \mathbf{A}_{22}$ must equal $\mat
 
 The final component is the upper right block. Because we are finding the inverse, we know that $\mathbf{0} = \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22}$. Subtracting $\mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ from both sides of the equation gives
 
+$$
 \begin{align*}
 \mathbf{B}_{12} \mathbf{A}_{22} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
 \mathbf{B}_{12} \mathbf{A}_{22} \mathbf{A}_{22}^{-1} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
 \mathbf{B}_{12} \mathbf{I} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
-\mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}
+\mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}
 \end{align*}
+$$
 
-Thus, $\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}$
+Thus, $\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}$
 
 :::
 </div>
