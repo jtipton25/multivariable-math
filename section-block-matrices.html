@@ -617,6 +617,8 @@ is an invertible matrix where <span class="math inline">\(\mathbf{A}_{11}\)</spa
 <p>The final component is the upper right block. Because we are finding the inverse, we know that <span class="math inline">\(\mathbf{0} = \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22}\)</span>. Subtracting <span class="math inline">\(\mathbf{A}_{11}^{-1} \mathbf{A}_{12}\)</span> from both sides of the equation gives</p>
 <p><span class="math display">\[\begin{align*}
 \mathbf{B}_{12} \mathbf{A}_{22} &amp; = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+\mathbf{B}_{12} \mathbf{A}_{22} \mathbf{A}_{22}^{-1} &amp; = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
+\mathbf{B}_{12} \mathbf{I} &amp; = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
 \mathbf{B}_{12} &amp; = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}
 \end{align*}\]</span></p>
 <p>Thus, <span class="math inline">\(\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} &amp; - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22} \\ \mathbf{0} &amp; \mathbf{A}_{22}^{-1} \end{pmatrix}\)</span></p>
