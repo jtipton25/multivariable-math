@@ -41,19 +41,68 @@ Because all three requirements are met, we have shown that $\mathbox{span}\{\mat
 
 </div>
 
-```{exercise}
-1) Is a line through the origin a subspace?
-2) Is a line **not** through the origin a subspace?
-```
+:::{.example}
+Recall that a solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ that has one free variable is a line through the origin and the solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ that has one free variable is a line parallel to the prior line that does not go through the origin. 
+
+A) Is a line through the origin a subspace?
+
+B) Is a line **not** through the origin a subspace?
+:::
+
+<div class="fold-solution">
+
+:::{.solution}
+**Part A:** First, we will consider whether the line through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (\@ref(def:subspace))
+
+1) $\mathbf{0}$ is on the line through the origin because $\mathbf{A} \mathbf{x} = \mathbf{0}$ has the trivial solution $\mathbf{x} = \mathbf{0}$.
+
+2) If $\mathbf{u}$ and $\mathbf{v}$ are on the line through the origin, then because the line through the origin is defined as the solution set of the equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ we know that 
+$$
+\begin{align*}
+\mathbf{A} \mathbf{u} = \mathbf{0} && \mbox{ and } && \mathbf{A} \mathbf{v} = \mathbf{0}.
+\end{align*}
+$$
+Then, the vector $\mathbf{u} + \mathbf{v}$ is in the subspace defined by the line through the origin because 
+$$
+\begin{align*}
+\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v} = \mathbf{0} + \mathbf{0} = \mathbf{0},
+\end{align*}
+$$
+which is a solution to the matrix equation and therefore $\mathbf{u} + \mathbf{v}$ is a point on the line through the origin. 
+
+3) If $\mathbf{u}$ is a point on the line through the origin and $c$ is a scalar, then because the line through the origin is defined as the solution set of the equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ we know that 
+$$
+\begin{align*}
+\mathbf{A} \mathbf{u} = \mathbf{0}.
+\end{align*}
+$$
+Then, the vector $c \mathbf{u}$ is in the subspace defined by the line through the origin because 
+$$
+\begin{align*}
+\mathbf{A} (c \mathbf{u}) = c \mathbf{A} \mathbf{u}  = c \mathbf{0} = \mathbf{0},
+\end{align*}
+$$
+which is a solution to the matrix equation and therefore $c \mathbf{u}$ is a point on the line through the origin.
+
+
+**Part B:** Next, we consider whether the line **not** through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (\@ref(def:subspace)). Recall that a line not through the origin is a solution set of the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ where the solution set has a single free variable and $\mathbf \neq \mathbf{0}$. To check if this line defines a subspace, we check the first condition of Definition (\@ref(def:subspace))
+
+1)  $\mathbf{0}$ is not on the line through the origin because $\mathbf{A} \mathbf{x} = \mathbf{b}$ does not have the trivial solution $\mathbf{x} = \mathbf{0}$ because $\mathbf{A} \mathbf{0} = \mathbf{0} \neq \mathbf{b}$. Because $\mathbf{0}$ is not a point on the line not through the origin, the line not through the origin does not define a subspace.
+
+
+:::
+
+</div>
+
 
 * **Note:** For any vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k \in \mathcal{R}^n$, the span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$ is a subspace of $\mathcal{R}^n$.
 
 
 ## Special subspaces: column space and null space
 
-```{definition}
+:::{.definition #column-space}
 The **column space**, denoted $\operatorname{col}(\mathbf{A})$, of a $m \times n$ matrix $\mathbf{A}$ which has columns $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m$ is the set of vectors that are linear combinations of the columns of $\mathbf{A}$ which is equivalent to the span$\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$.
-```
+:::
 
 :::{.example}
 ```{r, echo = FALSE}
@@ -76,10 +125,12 @@ Thus, the column space of $\mathbf{A}$ is the span of the vectors that makes up 
 :::
 </div>
 
-```{definition}
+:::{.definition #null-space}
 The **null space**, denoted $\operatorname{null}(\mathbf{A})$, of a matrix $\mathbf{A}$ is the set of all solutions to the homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$.
-```
-While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by $\mathbf{A}$ maps to $\mathbf{0}$. 
+:::
+
+
+While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by $\mathbf{A}$ maps to $\mathbf{0}$. In other words, the null space of $\mathbf{A}$ is the set of vectors $\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}$.
 
 :::{.example}
 ```{r, echo = FALSE}
@@ -87,10 +138,12 @@ set.seed(2021)
 A <- matrix(c(-3L, -4L, 4L, -3L, 2L, -4L, -4L, -4L, 4L, -5L, 5L, -3L, -2L, 3L, 5L), 3, 5)
 ```
 
-Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$, and $\mathbf{a}_4$, what is the null space of $\mathbf{A}$?
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$, and $\mathbf{a}_4$, find vectors that span the null space of $\mathbf{A}$.
 :::
 
-:::{.example}
+<div class="fold-solution">
+
+:::{.solution}
 
 Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$, and $\mathbf{a}_4$, the null space of $\mathbf{A}$ is the solution set of the homogeneous system of equations $\mathbf{A} \mathbf{x} = \mathbf{0}$.  Using an augmented matrix and transforming into reduced row echelon form gives the RREF form
 $$
@@ -110,14 +163,34 @@ x_5 & = x_5
 $$
 Writing this solution as a vector times $x_4$ and a vector times $x_5$ gives the vectors $\begin{pmatrix} 15 \\ 1 \\ -\frac{53}{4} \\ 1 \\ 0 \end{pmatrix}$ and $\begin{pmatrix} 25 \\ 4 \\ -\frac{89}{4} \\ 0 \\ 1 \end{pmatrix}$.
 
-{\huge \textbf{Resume revisions here}} 
-In `R`, this is
+
+In `R`, this is shown by starting with the matrix `A`
 ```{r}
+A <- matrix(c(-3, -4, 4, -3, 2, -4, -4, -4, 4, -5, 5, -3, -2, 3, 5), 3, 5)
+A
+```
+Looking at the reduced row echelon form of $\mathbf{A}$ gives
+```{r}
+rref(A)
+```
+where the columns of interest are the non-pivot columns. For this matrix $\mathbf{A}$, the fourth and fifth columns of $\mathbf{A}$ are the non-pivot columns. The fourth column or the RREF form corresponds to the variable $x_4$ and the fifth column corresponds to the variable $x_5$. Thus, you can extract the vectors that form the null space from these fourth and fifth columns of the RREF form of $\mathbf{A}$ like so
+
+```{r}
+# the nullspace vector corresponding to x4 = 1 and x5 = 0
+c(-rref(A)[, 4], 1, 0)
+# the nullspace vector corresponding to x4 = 0 and x5 = 1
+c(-rref(A)[, 5], 0, 1)
+```
+We check that these vectors are in null($\mathbf{A}$) by using matrix multiplication and verifying that these are zero (at least up to numeric overflow/underflow)
+```{r}
+A %*% c(-rref(A)[, 4], 1, 0)
+A %*% c(-rref(A)[, 5], 0, 1)
+
 ```
 
 
 :::
-
+</div>
 
 ```{theorem}
 The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$. 
@@ -139,59 +212,192 @@ Show that the three requirements of the defintion of a subspace in Definition (\
 
 ## The basis of a subspace
 
-```{definition}
-A **basis** for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ is a linearly independent set in $\mathcal{H}$ that spans $\mathbf{H}$. Equivlently, a baisis is a set of linearly independent vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k$ such that span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}$.
-```
+:::{.definition #basis}
+A **basis** for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ is 
+
+1) a linearly independent set in $\mathcal{H}$ that
+2) spans $\mathbf{H}$.
+
+Equivlently, a baisis is a set of linearly independent vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k$ such that span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}$.
+:::
 
 The requirement that the vectors of a basis are linearly independent while spanning a subspace $\mathcal{H}$ means that a basis is a **minimal spanning set** for the subspace $\mathcal{H}$
 
-* **Question:** Is a basis unique?
+:::{.example}
+Is a basis for a vector space unique?
+:::
 
-```{definition}
-The standard basis for $\mathcal{R}^n$
-```
+<div class="fold-solution">
+:::{.solution}
+A basis for a vector is not unique. Just like you can represent the number 16 as $1.6 * 10^1$ (base 10) or $2^4$ (base 2), the basis for a vector space is also not unique.
+:::
+</div>
 
-```{example}
-Basis for $\mathcal{R}^3$
-```
+:::{.definition #standard-basis}
+The **standard basis** for $\mathcal{R}^n$ is the set of vectors $\left\{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \right\}$ of length $n$ where the vector $\mathbf{e}_j$ is a vector that is 0 in every value except for a 1 in the $j$th position. For example, 
+$$
+\begin{align*}
+\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, && \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, && \mathbf{e}_3 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0\end{pmatrix}, && \ldots, && \mathbf{e}_n = \begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}.
+\end{align*}
+$$
+Notice that the matrix defined as having columns $\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n$ is the identity matrix $\mathbf{I}$.
+:::
+
+:::{.example}
+What is the standard basis for $\mathcal{R}^3$?
+:::
+
+<div class="fold-solution">
+
+:::{.solution}
+The standard basis for $\mathcal{R}^3$ are the x-, y-, and z-axes. These are written as vectors where the x-axis is $\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$, the y-axis is $\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$, and the z-axis is $\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\  1\end{pmatrix}$,
+:::
+
+</div>
 
 :::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
 ```{r, echo = FALSE}
 set.seed(2021)
-x <- sample(-4:4, 3, TRUE)
-y <- sample(-4:4, 3, TRUE)
-z <- sample(-4:4, 3, TRUE)
+x <- c(2, 1, 2)
+y <- c(-1, 1, 1)
+z <- c(1, 0, 2)
 ```
 $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$
 :::
 
+<div class="fold-solution">
+
+:::{.solution}
+For the set of vectors $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in Definition (\@ref(def:basis)). Both conditions of Definition (\@ref(def:basis)) can be checked by combining the set of vectors $\mathbf{x}$, $\mathbf{y}$, and $mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
+$$
+`r array_to_latex(cbind(x, y, z))`
+$$
+which is row-equivalent to 
+$$
+`r array_to_latex(rref(cbind(x, y, z)))`
+$$
+Because the reduced row echelon form of the matrix has 3 pivot columns, the  span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3$ which satisfies the first condition for being a basis. Because there is a pivot in every column, we know the set of vectors is linearly independent which satisfies the second condition for being a basis. Therefore, the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ forms a basis for $\mathcal{R}^3$
+
+
+Using `R`, we can show this result first by creating the vectors `x`, `y`, and `z` and then joining these into a matrix `A` using `cbind()`
+
+```{r}
+x <- c(2, 1, 2)
+y <- c(-1, 1, 1)
+z <- c(1, 0, 2)
+
+A <- cbind(x, y, z)
+```
+Next, we convert `A` to reduced row echelon form to get the row equivalent matrix 
+
+```{r}
+rref(A)
+```
+Because this reduced row echelon form has a pivot in each column we know the columns of the matrix `A` are linearly independent. Because there are 3 pivot columns in total, we know the span of the columns of `A` is $\mathcal{R}^3$. Therefore, the vectors $\mathbf{x}, \mathbf{y}, \mathbf{z}$ forms a basis for $\mathcal{R}^3$.
+
+
+:::
+
+</div>
 
 :::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
 ```{r, echo = FALSE}
 set.seed(2021)
-w <- sample(-4:4, 3, TRUE)
-x <- sample(-4:4, 3, TRUE)
-y <- sample(-4:4, 3, TRUE)
-z <- sample(-4:4, 3, TRUE)
+w <- c(2, 1, 2)
+x <- c(-1, 1, 1)
+y <- c(1, 0, 2)
+z <- c(4, 2, -2)
 ```
 $\mathbf{w} = `r array_to_latex(as.matrix(w))`$, $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$
 :::
+
+
+<div class="fold-solution">
+
+:::{.solution}
+For the set of vectors $\mathbf{w} = `r array_to_latex(as.matrix(w))`$, $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in Definition (\@ref(def:basis)). Both conditions of Definition (\@ref(def:basis)) can be checked by combining the set of vectors $\mathbf{w}$, $\mathbf{x}$, $\mathbf{y}$, and $mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
+$$
+`r array_to_latex(cbind(w, x, y, z))`
+$$
+which is row-equivalent to 
+$$
+`r array_to_latex(rref(cbind(w, x, y, z)))`
+$$
+Because the reduced row echelon form of the matrix has 3 pivot columns, the  span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3$ which satisfies the first condition for being a basis. However, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors $\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ do not form a basis for $\mathcal{R}^3$
+
+
+Using `R`, we can show this result first by creating the vectors `w`, x`, `y`, and `z` and then joining these into a matrix `A` using `cbind()`
+
+```{r}
+w <- c(2, 1, 2)
+x <- c(-1, 1, 1)
+y <- c(1, 0, 2)
+z <- c(4, 2, -2)
+
+A <- cbind(w, x, y, z)
+```
+Next, we convert `A` to reduced row echelon form to get the row equivalent matrix 
+
+```{r}
+rref(A)
+```
+Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix `A` are linearly dependent. Because there are 3 pivot columns in total, we know the span of the columns of `A` is $\mathcal{R}^3$. Because the set of vectors $\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ are linearly dependent, they do not form a basis for $\mathcal{R}^3$.
+
+
+:::
+
+</div>
+
+
 
 :::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
 ```{r, echo = FALSE}
 set.seed(404)
-x <- sample(-4:4, 3, TRUE)
-y <- sample(-4:4, 3, TRUE)
-z <- sample(-4:4, 3, TRUE) * x + sample(-4:4, 3, TRUE) * y
+x <- c(4, 3, 2)
+y <- c(3, -3, 4)
+z <- c(5, 9, 0)
 ```
 $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$
 :::
 
 
+<div class="fold-solution">
 
+:::{.solution}
+For the set of vectors $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in Definition (\@ref(def:basis)). Both conditions of Definition (\@ref(def:basis)) can be checked by combining the set of vectors $\mathbf{x}$, $\mathbf{y}$, and $mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
+$$
+`r array_to_latex(cbind(x, y, z))`
+$$
+which is row-equivalent to 
+$$
+`r array_to_latex(rref(cbind(x, y, z)))`
+$$
+Because the reduced row echelon form of the matrix has 2 pivot columns, the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^2$ which does not satisfy the first condition for being a basis for $\mathcal{R}^3$. In addition, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ do not form a basis for $\mathcal{R}^3$
+
+
+Using `R`, we can show this result first by creating the vectors x`, `y`, and `z` and then joining these into a matrix `A` using `cbind()`
+
+```{r}
+x <- c(4, 3, 2)
+y <- c(3, -3, 4)
+z <- c(5, 9, 0)
+
+A <- cbind(x, y, z)
+```
+Next, we convert `A` to reduced row echelon form to get the row equivalent matrix 
+
+```{r}
+rref(A)
+```
+Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix `A` are linearly dependent. Because there are 2 pivot columns in total, we know the span of the columns of `A` is $\mathcal{R}^2$ which is not $\mathcal{R}^3$. Because the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ are linearly dependent and do not span $\mathcal{R}^3$, they do not form a basis for $\mathcal{R}^3$.
+
+
+:::
+
+</div>
 
 
 :::{.example}
@@ -233,20 +439,75 @@ A %*% (5*v)
 </div>
 
 ```{theorem}
-The pivot columns of a matrix $\mathbf{A}$ for a basis for the column space of $\mathbf{A}$.
+The pivot columns of a matrix $\mathbf{A}$ form a basis for the column space of $\mathbf{A}$.
 ```
 
 **Note:** Use the columns of $\mathbf{A}$, not the columns of the matrix in echelon form.
 
-corollary
 
-```{corollary}
-```
+<div class="fold-proof">
 
-```{example}
-Using `R`, find a basis for the column space of the matrix
+:::{.proof}
+We will provide just a sketch of the proof here. First, the column space (Definition \@ref(def:column-space)) is the space defined by the linear combination of the columns of $\mathbf{A}$. Thus, the span of any subset of the vectors that make up the columns of $\mathbf{A}$ must, by definition, be in the column space of $\mathbf{A}$, because any linear combination of the subset of vectors is just a linear combination of the full set of vectors with the coefficients of the vectors in the subset with the same coefficients and the coefficients of the vectors not in the subset equal to 0. Thus, the span of the subset of the vectors is contained within the span of the columns of $\mathbf{A}$, which is defined as the column space.
+
+Now, choose the subset of columns of $\mathbf{A}$ that correspond to the pivot columns of the reduced row echelon form of $\mathbf{A}$. If the span of the columns of $\mathbf{A} = \mathcal{R}^p$, then 1) there must be $p$ pivot columns in the reduced row echelon form of $\mathbf{A}$ and 2) there are $p$ vectors in the subset of vectors where the columns of $\mathbf{A}$ are pivot columns. Thus, the subset of vectors spans $\mathcal{R}^p$ (the columnspace) and, by definition, there are $p$ pivot columns (therefore there is a pivot in each column) so the subset of vectors defined by the pivot columns of $\mathbf{A}$ are linearly independent.
+:::
+
+</div>
+<!-- corollary -->
+
+<!-- ```{corollary} -->
+<!-- ``` -->
+
+:::{.example}
+Find a basis for the column space of the matrix
 $$
 \mathbf{A} = \begin{pmatrix} 3 & 1 & 2 & -3 \\ 4 & 1 & -3 & -2 \\ 4 & -1 & -3 & 1 \end{pmatrix}
 $$    
+:::
+
+<div class="fold-solution">
+
+:::{.solution}
+
+
+```{r, echo = FALSE}
+A <- matrix(c(3, 4, 4, 1, 1, -1, 2, -3, -3, -3, -2, 1), 3, 4)
 ```
+Given the matrix $\mathbf{A}$, we first find its reduced row echelon form
+$$
+`r array_to_latex(rref(A))`
+$$
+which has pivots in the first three columns. Thus, the column space of $\mathbf{A}$, which is defined as the linear combination of the vectors of $\mathbf{A}$, spans $\mathcal{R}^3$ because there are three pivot columns. The first three columns of $\mathbf{A}$ are $`r array_to_latex(as.matrix(A[, 1]))`$, $`r array_to_latex(as.matrix(A[, 2]))`$, and $`r array_to_latex(as.matrix(A[, 3]))`$. Because these 3 vectors are linearly independent (they are each pivot columns in the reduced row echelon form of $\mathbf{A}$) and they span $\mathcal{R}^3$, they form a basis for the column space of $\mathbf{A}$. 
+
+Thus, any vector in the columns space of $\mathbf{A}$ (for example, the fourth column of $\mathbf{A}$) can be written as a linear combination of the basis vectors of the columns space of $\mathbf{A}$.
+
+:::
+</div>
+
+:::{.example}
+Find a basis for the column space of the matrix
+$$
+\mathbf{A} = \begin{pmatrix} 3 & 1 & 2 & -3 \\ 4 & 1 & -3 & -2 \\ 4 & -1 & -3 & 1 \end{pmatrix}
+$$    
+:::
+
+<div class="fold-solution">
+
+:::{.solution}
+
+
+```{r, echo = FALSE}
+A <- matrix(c(-4, 8, 6, 9, 1, -2, 3, 7), 4, 2)
+```
+Given the matrix $\mathbf{A}$, we first find its reduced row echelon form
+$$
+`r array_to_latex(rref(A))`
+$$
+which has pivots in the first two columns. Thus, the column space of $\mathbf{A}$, which is defined as the linear combination of the vectors of $\mathbf{A}$, spans $\mathcal{R}^2$ because there are two pivot columns. The first two columns of $\mathbf{A}$ are $`r array_to_latex(as.matrix(A[, 1]))`$ and $`r array_to_latex(as.matrix(A[, 2]))`$. Because these 2 vectors are linearly independent (they are each pivot columns) and they span $\mathcal{R}^2$, they form a basis for the column space of $\mathbf{A}$. 
+
+Note however, that the first two columns of the reduced row echelon form of $\mathbf{A}$ (the vectors $`r array_to_latex(as.matrix(rref(A)[, 1]))`$ and $`r array_to_latex(as.matrix(rref(A)[, 2]))`$) do not form a basis for the column space of $\mathbf{A}$. This can be seen because The first two columns of $\mathbf{A}$ have non-zero entries in the 3rd and 4th elements. 
+:::
+</div>
+
 

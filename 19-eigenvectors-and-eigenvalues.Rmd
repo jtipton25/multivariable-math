@@ -222,7 +222,7 @@ Let $\mathbf{A}$ be an $n \times n$ matrix and $T: \mathcal{R}^n \rightarrow \ma
 
 2) $\mathbf{A}$ has n pivot columns.
 
-3) null$(\mathbf{A}) = \{\nathbf{0}\}$.
+3) null$(\mathbf{A}) = \{\mathbf{0}\}$.
 
 4) The columns of $\mathbf{A}$ are linearly independent.
 
