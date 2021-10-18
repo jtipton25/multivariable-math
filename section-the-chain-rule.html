@@ -346,24 +346,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-the-chain-rule" class="section level1">
 <h1><span class="header-section-number">Chapter 26</span> The chain rule</h1>
-<div class="sourceCode" id="section-cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="section-the-chain-rule.html#cb283-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb283-2"><a href="section-the-chain-rule.html#cb283-2"></a><span class="kw">library</span>(plotly)</span>
-<span id="cb283-3"><a href="section-the-chain-rule.html#cb283-3"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb283-4"><a href="section-the-chain-rule.html#cb283-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="section-the-chain-rule.html#cb289-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb289-2"><a href="section-the-chain-rule.html#cb289-2"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb289-3"><a href="section-the-chain-rule.html#cb289-3"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb289-4"><a href="section-the-chain-rule.html#cb289-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>Recall the univariate chain rule: If <span class="math inline">\(y = f(x)\)</span> is a function of <span class="math inline">\(x\)</span> and <span class="math inline">\(z = g(y)\)</span> is a function of <span class="math inline">\(y\)</span>, a question of interest is "What is the change in <span class="math inline">\(z\)</span> relative to change in <span class="math inline">\(x\)</span>?</p>
 <p>We can write <span class="math inline">\(z = g(y) = g(f(x))\)</span> and using this notation, the change in <span class="math inline">\(z\)</span> with respect to the variable <span class="math inline">\(x\)</span> is <span class="math inline">\(\frac{dz}{dx} = \frac{dz}{dy}\frac{dy}{dx} = \frac{df(y)}{dy}\frac{dg(x)}{dx}\)</span>. Written in functional form
 <span class="math display">\[\begin{align*}
 (g(f(x)))&#39; = (g \circ f)&#39;(x) = g&#39;(f(x)) f&#39;(x)
 \end{align*}\]</span></p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-282" class="example"><strong>Example 26.1  </strong></span>Let <span class="math inline">\(z = f(y) = y^3\)</span> and let <span class="math inline">\(y = g(x) = e^{x}\)</span> what is <span class="math inline">\(\frac{dz}{dx}\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-285" class="example"><strong>Example 26.1  </strong></span>Let <span class="math inline">\(z = f(y) = y^3\)</span> and let <span class="math inline">\(y = g(x) = e^{x}\)</span> what is <span class="math inline">\(\frac{dz}{dx}\)</span>?</p>
 </div>
 <div id="section-the-chain-rule-with-one-independent-variable" class="section level2">
 <h2><span class="header-section-number">26.1</span> The chain rule with one independent variable</h2>
 <p><strong>Drawing in class</strong></p>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-283" class="definition"><strong>Definition 26.1  (Chain rule for one independent variable)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t)\)</span> be a function of <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(t)\)</span> a function of <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(t), h(t))\)</span>, with <span class="math inline">\(x=g(t)\)</span> and <span class="math inline">\(y=h(t)\)</span>. Then we can define the derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(t\)</span> as
+<p><span id="section-def:unnamed-chunk-292" class="definition"><strong>Definition 26.1  (Chain rule for one independent variable)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t)\)</span> be a function of <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(t)\)</span> a function of <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(t), h(t))\)</span>, with <span class="math inline">\(x=g(t)\)</span> and <span class="math inline">\(y=h(t)\)</span>. Then we can define the derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(t\)</span> as
 <span class="math display">\[\begin{align*}
 \frac{dz}{dt} = \frac{\partial z}{ \partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}
 \end{align*}\]</span></p>
@@ -380,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- \end{align*} -->
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-284" class="example"><strong>Example 26.2  </strong></span>Let <span class="math inline">\(z = x^2 + e^y\)</span> and let <span class="math inline">\(x = \cos(t)\)</span> and <span class="math inline">\(y = \sin(t)\)</span>
+<span id="section-exm:unnamed-chunk-293" class="example"><strong>Example 26.2  </strong></span>Let <span class="math inline">\(z = x^2 + e^y\)</span> and let <span class="math inline">\(x = \cos(t)\)</span> and <span class="math inline">\(y = \sin(t)\)</span>
 </div>
 
 <p>The results from above can also be extended to have more than two intermediate variables.</p>
@@ -391,7 +391,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Often, functions will have more than one independent variables.</p>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-285" class="definition"><strong>Definition 26.2  (Chain rule for two independent variables)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t, s)\)</span> be a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(s, t)\)</span> a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(s, t), h(s, t))\)</span>, with <span class="math inline">\(x=g(s, t)\)</span> and <span class="math inline">\(y=h(s, t)\)</span>. Then we can define the partial derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(s\)</span> as
+<p><span id="section-def:unnamed-chunk-294" class="definition"><strong>Definition 26.2  (Chain rule for two independent variables)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t, s)\)</span> be a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(s, t)\)</span> a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(s, t), h(s, t))\)</span>, with <span class="math inline">\(x=g(s, t)\)</span> and <span class="math inline">\(y=h(s, t)\)</span>. Then we can define the partial derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(s\)</span> as
 <span class="math display">\[\begin{align*}
 \frac{\partial z}{\partial s} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
 \end{align*}\]</span>
@@ -403,7 +403,7 @@ the partial derivative of <span class="math inline">\(z\)</span> with respect to
 
 
 <div class="example">
-<span id="section-exm:unnamed-chunk-286" class="example"><strong>Example 26.3  </strong></span>Let <span class="math inline">\(z = f(x, y) = x^2 e^y\)</span> and let <span class="math inline">\(x = 2s - t\)</span> and <span class="math inline">\(y = 4s^3-3t^2\)</span>
+<span id="section-exm:unnamed-chunk-295" class="example"><strong>Example 26.3  </strong></span>Let <span class="math inline">\(z = f(x, y) = x^2 e^y\)</span> and let <span class="math inline">\(x = 2s - t\)</span> and <span class="math inline">\(y = 4s^3-3t^2\)</span>
 </div>
 
 <!-- ## Implicit differentiation -->
@@ -413,7 +413,7 @@ the partial derivative of <span class="math inline">\(z\)</span> with respect to
 <p>To get a better understanding of the chain rule, it helps to show the chain rule using matrix notation. Using the matrix notation will enable you to apply the chain rule to any number of intermediate variables. For example, consider the extension of the definition for the chain rule of a function with one independent variable.</p>
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-287" class="definition"><strong>Definition 26.3  (Matrix chain rule for one independent variable)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t)\)</span> be a function of <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(t)\)</span> a function of <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(t), h(t))\)</span>, with <span class="math inline">\(x=g(t)\)</span> and <span class="math inline">\(y=h(t)\)</span>. Then we can define the derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(t\)</span> as
+<p><span id="section-def:unnamed-chunk-296" class="definition"><strong>Definition 26.3  (Matrix chain rule for one independent variable)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t)\)</span> be a function of <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(t)\)</span> a function of <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(t), h(t))\)</span>, with <span class="math inline">\(x=g(t)\)</span> and <span class="math inline">\(y=h(t)\)</span>. Then we can define the derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(t\)</span> as
 <span class="math display">\[\begin{align*}
 \frac{dz}{dt} = \frac{\partial z}{ \partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}
 \end{align*}\]</span></p>
@@ -426,7 +426,7 @@ Written in matrix notation, this is
 The definition above for the chain rule with two variables is given by
 
 <div class="definition">
-<p><span id="section-def:unnamed-chunk-288" class="definition"><strong>Definition 26.4  (Chain rule for two independent variables)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t, s)\)</span> be a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(s, t)\)</span> a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(s, t), h(s, t))\)</span>, with <span class="math inline">\(x=g(s, t)\)</span> and <span class="math inline">\(y=h(s, t)\)</span>. Then we can define the partial derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(s\)</span> as
+<p><span id="section-def:unnamed-chunk-297" class="definition"><strong>Definition 26.4  (Chain rule for two independent variables)  </strong></span>Let <span class="math inline">\(z\)</span> be a differentiable function of two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> so that <span class="math inline">\(z = f(x, y)\)</span> and let <span class="math inline">\(x=g(t, s)\)</span> be a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> and <span class="math inline">\(y=h(s, t)\)</span> a function of <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. Written in functional form, <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z = f(x, y) = f(g(s, t), h(s, t))\)</span>, with <span class="math inline">\(x=g(s, t)\)</span> and <span class="math inline">\(y=h(s, t)\)</span>. Then we can define the partial derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(s\)</span> as
 <span class="math display">\[\begin{align*}
 \frac{\partial z}{\partial s} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
 \end{align*}\]</span>

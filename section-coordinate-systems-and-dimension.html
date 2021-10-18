@@ -347,8 +347,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-coordinate-systems-and-dimension" class="section level1">
 <h1><span class="header-section-number">Chapter 17</span> Coordinate Systems and Dimension</h1>
 
-<div class="sourceCode" id="section-cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="section-coordinate-systems-and-dimension.html#cb226-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb226-2"><a href="section-coordinate-systems-and-dimension.html#cb226-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<div class="sourceCode" id="section-cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="section-coordinate-systems-and-dimension.html#cb232-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb232-2"><a href="section-coordinate-systems-and-dimension.html#cb232-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <p><img src="images/descartes.jpg" width="408" /></p>
 <p>We already know about the cartesian coordinate system (x, y, z) which has the set of basis vectors
 <span class="math display">\[\begin{align*}
@@ -360,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You might be wondering why we want to create different bases. The usual cartesian basis has been good enough for me so far (unless you have used polar coordinates). In data science, the data often live in a high dimensional space (i.e., there are a number of data variables). However, while the data might have many variables, some of these variables are partially dependent and thus the space in which the data are embedded might be well approximated using a subspace of the original variables which can increase computation speed (less computation with fewer variables – recall from lab how the inverse of <span class="math inline">\(\mathbf{X}&#39;\mathbf{X}\)</span> took much much longer with larger numbers of variables). Thus, understanding different coordinate systems and how to change coordinate systems can lead to more efficient data representation and model fitting.</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-237" class="theorem"><strong>Theorem 17.1  (The unique representation Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, for each <span class="math inline">\(\mathbf{x}\)</span> in <span class="math inline">\(\mathcal{B}\)</span>, there exists a unique set of coefficients <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
+<span id="section-thm:unnamed-chunk-246" class="theorem"><strong>Theorem 17.1  (The unique representation Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, for each <span class="math inline">\(\mathbf{x}\)</span> in <span class="math inline">\(\mathcal{B}\)</span>, there exists a unique set of coefficients <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
 <span class="math display">\[\begin{align*}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
 \end{align*}\]</span>
@@ -384,27 +384,27 @@ Because <span class="math inline">\(\mathcal{B}\)</span> is linearly independent
 </div>
 
 <div class="definition">
-<p><span id="section-def:unlabeled-div-189" class="definition"><strong>Definition 17.1  </strong></span>Suppose <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span> and <span class="math inline">\(\mathbf{x} \in \mathcal{V}\)</span>. The coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span> are the coefficients <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
+<p><span id="section-def:unlabeled-div-192" class="definition"><strong>Definition 17.1  </strong></span>Suppose <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span> and <span class="math inline">\(\mathbf{x} \in \mathcal{V}\)</span>. The coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span> are the coefficients <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
 <span class="math display">\[\begin{align*}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-190" class="example"><strong>Example 17.1  </strong></span>In class using standard basis in 2-dimensions and vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-193" class="example"><strong>Example 17.1  </strong></span>In class using standard basis in 2-dimensions and vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-191" class="example"><strong>Example 17.2  </strong></span>In class using basis in 2-dimensions <span class="math inline">\(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(b_2 = \begin{pmatrix} 0.5 \\ 1 \end{pmatrix}\)</span> and vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-194" class="example"><strong>Example 17.2  </strong></span>In class using basis in 2-dimensions <span class="math inline">\(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(b_2 = \begin{pmatrix} 0.5 \\ 1 \end{pmatrix}\)</span> and vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)</span></p>
 </div>
-<div class="sourceCode" id="section-cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="section-coordinate-systems-and-dimension.html#cb227-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
-<span id="cb227-2"><a href="section-coordinate-systems-and-dimension.html#cb227-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
-<span id="cb227-3"><a href="section-coordinate-systems-and-dimension.html#cb227-3"></a>  <span class="dv">1</span>, <span class="fl">0.5</span>,</span>
-<span id="cb227-4"><a href="section-coordinate-systems-and-dimension.html#cb227-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb227-5"><a href="section-coordinate-systems-and-dimension.html#cb227-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
-<span id="cb227-6"><a href="section-coordinate-systems-and-dimension.html#cb227-6"></a></span>
-<span id="cb227-7"><a href="section-coordinate-systems-and-dimension.html#cb227-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix) <span class="op">+</span></span>
-<span id="cb227-8"><a href="section-coordinate-systems-and-dimension.html#cb227-8"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">2</span>))</span>
-<span id="cb227-9"><a href="section-coordinate-systems-and-dimension.html#cb227-9"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>time, <span class="dt">labeller =</span> <span class="kw">labeller</span>(<span class="dt">time =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span> =<span class="st"> &quot;Standard cooridinates&quot;</span>, <span class="st">&quot;2&quot;</span> =<span class="st"> &quot;Shear cooridnates&quot;</span>))) </span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<div class="sourceCode" id="section-cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="section-coordinate-systems-and-dimension.html#cb233-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb233-2"><a href="section-coordinate-systems-and-dimension.html#cb233-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb233-3"><a href="section-coordinate-systems-and-dimension.html#cb233-3"></a>  <span class="dv">1</span>, <span class="fl">0.5</span>,</span>
+<span id="cb233-4"><a href="section-coordinate-systems-and-dimension.html#cb233-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb233-5"><a href="section-coordinate-systems-and-dimension.html#cb233-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb233-6"><a href="section-coordinate-systems-and-dimension.html#cb233-6"></a></span>
+<span id="cb233-7"><a href="section-coordinate-systems-and-dimension.html#cb233-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix) <span class="op">+</span></span>
+<span id="cb233-8"><a href="section-coordinate-systems-and-dimension.html#cb233-8"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">2</span>))</span>
+<span id="cb233-9"><a href="section-coordinate-systems-and-dimension.html#cb233-9"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>time, <span class="dt">labeller =</span> <span class="kw">labeller</span>(<span class="dt">time =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span> =<span class="st"> &quot;Standard cooridinates&quot;</span>, <span class="st">&quot;2&quot;</span> =<span class="st"> &quot;Shear cooridnates&quot;</span>))) </span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
 <div id="section-coordinates-in-mathcalrn" class="section level2">
 <h2><span class="header-section-number">17.1</span> Coordinates in <span class="math inline">\(\mathcal{R}^n\)</span></h2>
 <p>Let <span class="math inline">\(\mathbf{x}\)</span> be defined with the standard coordinates. Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span> be a basis in <span class="math inline">\(\mathcal{R}^n\)</span>. Define <span class="math inline">\(\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 &amp; \cdots &amp; \mathbf{b}_n \end{pmatrix}\)</span> as the matrix with columns the vectors of the basis. Then, the coordinates <span class="math inline">\([\mathbf{x}]_\mathcal{B} = \begin{pmatrix} [x_1]_\mathcal{B}, \ldots, [x_n]_\mathcal{B} \end{pmatrix}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> can be found by solving the matrix equation
@@ -416,10 +416,10 @@ The matrix <span class="math inline">\(\mathbf{P}_B\)</span> is called the <stro
 [\mathbf{x}]_\mathcal{B} = \mathbf{P}_B^{-1} \mathbf{x}
 \end{align*}\]</span></p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-192" class="theorem"><strong>Theorem 17.2  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, the coordinate mapping <span class="math inline">\(\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}\)</span> is a one-to-one and onto transformation from <span class="math inline">\(\mathcal{V}\)</span> to <span class="math inline">\(\mathcal{R}^n\)</span></p>
+<p><span id="section-thm:unlabeled-div-195" class="theorem"><strong>Theorem 17.2  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, the coordinate mapping <span class="math inline">\(\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}\)</span> is a one-to-one and onto transformation from <span class="math inline">\(\mathcal{V}\)</span> to <span class="math inline">\(\mathcal{R}^n\)</span></p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-193" class="proof"><em>Proof</em>. </span>First we want to show that multiplication by <span class="math inline">\(\mathbf{P}_B^{-1}\)</span> defines a linear transformation. First, take two vectors
+<p><span id="section-unlabeled-div-196" class="proof"><em>Proof</em>. </span>First we want to show that multiplication by <span class="math inline">\(\mathbf{P}_B^{-1}\)</span> defines a linear transformation. First, take two vectors
 <span class="math display">\[\begin{align*}
 \mathbf{u} &amp;  = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
 \end{align*}\]</span>
@@ -446,17 +446,17 @@ which preserves scalar multiplication.</p>
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-194" class="example"><strong>Example 17.3  </strong></span>in class–Give basis in <span class="math inline">\(\mathcal{R}^4\)</span>, find coefficients with respect to this basis for the vector <span class="math inline">\(\mathbf{x}\)</span></p>
+<p><span id="section-exm:unlabeled-div-197" class="example"><strong>Example 17.3  </strong></span>in class–Give basis in <span class="math inline">\(\mathcal{R}^4\)</span>, find coefficients with respect to this basis for the vector <span class="math inline">\(\mathbf{x}\)</span></p>
 </div>
 </div>
 <div id="section-dimension-of-a-vector-space" class="section level2">
 <h2><span class="header-section-number">17.2</span> Dimension of a vector space</h2>
 <p>In some sense, we already know about the dimension of a vector space through the concept of a span. The span of a set of vectors defines the dimension of the vector space.</p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-195" class="theorem"><strong>Theorem 17.3  </strong></span>In a vector space <span class="math inline">\(\mathcal{V}\)</span> with basis <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span>, any set in <span class="math inline">\(\mathcal{V}\)</span> containing more than <span class="math inline">\(n\)</span> vectors must be linearly dependent.</p>
+<p><span id="section-thm:unlabeled-div-198" class="theorem"><strong>Theorem 17.3  </strong></span>In a vector space <span class="math inline">\(\mathcal{V}\)</span> with basis <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span>, any set in <span class="math inline">\(\mathcal{V}\)</span> containing more than <span class="math inline">\(n\)</span> vectors must be linearly dependent.</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-196" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\)</span> be a set of vectors in <span class="math inline">\(\mathcal{V}\)</span> with <span class="math inline">\(p &gt; n\)</span>. The coordinate vectors <span class="math inline">\(\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}\)</span> form a linearly dependent set in <span class="math inline">\(\mathcal{R}^n\)</span> because there are more vectors (<span class="math inline">\(p\)</span>) than entries (<span class="math inline">\(n\)</span>) in each vector. Thus, there exist scalars <span class="math inline">\(c_1, \ldots, c_p\)</span>, some nonzero, such that
+<p><span id="section-unlabeled-div-199" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\)</span> be a set of vectors in <span class="math inline">\(\mathcal{V}\)</span> with <span class="math inline">\(p &gt; n\)</span>. The coordinate vectors <span class="math inline">\(\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}\)</span> form a linearly dependent set in <span class="math inline">\(\mathcal{R}^n\)</span> because there are more vectors (<span class="math inline">\(p\)</span>) than entries (<span class="math inline">\(n\)</span>) in each vector. Thus, there exist scalars <span class="math inline">\(c_1, \ldots, c_p\)</span>, some nonzero, such that
 <span class="math display">\[\begin{align*}
 c_1 \mathbf{P}_B \mathbf{u}_1 + \ldots + c_p \mathbf{P}_B \mathbf{u}_p = \mathbf{0}.
 \end{align*}\]</span>
@@ -467,23 +467,23 @@ which by linearity implies
 </div>
 <p>Because the matrix <span class="math inline">\(\mathbf{P}_{B}\)</span> is a <span class="math inline">\(n \times n\)</span> matrix with n linearly independent columns, the only way the equation above can equal <span class="math inline">\(\mathbf{0}\)</span> is if the vector <span class="math inline">\(c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}\)</span> (by the invertible matrix theorem). Therefore, the set of vectors <span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\)</span> is linearly dependent because there are coefficients that allow the vectors to sum to <span class="math inline">\(\mathbf{0}\)</span>. Thus, we know that for a vector space <span class="math inline">\(\mathcal{V}\)</span> that has a basis <span class="math inline">\({\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}}\)</span> that consists on <span class="math inline">\(n\)</span> vectors, then every linearly independent set of vectors in <span class="math inline">\(\mathcal{V}\)</span> contains at most <span class="math inline">\(n\)</span> vectors.</p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-197" class="theorem"><strong>Theorem 17.4  </strong></span>If a vector space <span class="math inline">\({\mathcal{V}}\)</span> has a basis with <span class="math inline">\(n\)</span> vectors, then every other basis of <span class="math inline">\({\mathcal{V}}\)</span> must also contain exactly <span class="math inline">\(n\)</span> vectors.</p>
+<p><span id="section-thm:unlabeled-div-200" class="theorem"><strong>Theorem 17.4  </strong></span>If a vector space <span class="math inline">\({\mathcal{V}}\)</span> has a basis with <span class="math inline">\(n\)</span> vectors, then every other basis of <span class="math inline">\({\mathcal{V}}\)</span> must also contain exactly <span class="math inline">\(n\)</span> vectors.</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-198" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\mathcal{B}_1\)</span> be a basis of <span class="math inline">\({\mathcal{V}}\)</span> containing <span class="math inline">\(n\)</span> vectors and let <span class="math inline">\(\mathcal{B}_2\)</span> be any other basis of <span class="math inline">\({\mathcal{V}}\)</span>. Because <span class="math inline">\(\mathcal{B}_1\)</span> and <span class="math inline">\(\mathcal{B}_2\)</span> are both bases, they both contain sets of linearly independent vectors. As such, the previous theorem states that each of these bases contain at most <span class="math inline">\(n\)</span> vectors (otherwise the sets wouldn’t be linearly independent). Because <span class="math inline">\(\mathcal{B}_2\)</span> is a basis and the basis <span class="math inline">\(\mathcal{B}_1\)</span> contains <span class="math inline">\(n\)</span> vectors, <span class="math inline">\(\mathcal{B}_2\)</span> must contain at least <span class="math inline">\(n\)</span> vectors. These results combined are only satisfied when <span class="math inline">\(\mathcal{B}_2\)</span> contains <span class="math inline">\(n\)</span> vectors.</p>
+<p><span id="section-unlabeled-div-201" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\mathcal{B}_1\)</span> be a basis of <span class="math inline">\({\mathcal{V}}\)</span> containing <span class="math inline">\(n\)</span> vectors and let <span class="math inline">\(\mathcal{B}_2\)</span> be any other basis of <span class="math inline">\({\mathcal{V}}\)</span>. Because <span class="math inline">\(\mathcal{B}_1\)</span> and <span class="math inline">\(\mathcal{B}_2\)</span> are both bases, they both contain sets of linearly independent vectors. As such, the previous theorem states that each of these bases contain at most <span class="math inline">\(n\)</span> vectors (otherwise the sets wouldn’t be linearly independent). Because <span class="math inline">\(\mathcal{B}_2\)</span> is a basis and the basis <span class="math inline">\(\mathcal{B}_1\)</span> contains <span class="math inline">\(n\)</span> vectors, <span class="math inline">\(\mathcal{B}_2\)</span> must contain at least <span class="math inline">\(n\)</span> vectors. These results combined are only satisfied when <span class="math inline">\(\mathcal{B}_2\)</span> contains <span class="math inline">\(n\)</span> vectors.</p>
 </div>
 <p>Like the span defined by the columns of a matrix <span class="math inline">\(\mathbf{A}\)</span>, there is an abstract concept called dimension which measures the “size” of a vector space.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-199" class="definition"><strong>Definition 17.2  </strong></span>If <span class="math inline">\({\mathcal{V}}\)</span> is spanned by a finite set of vectors, then <span class="math inline">\({\mathcal{V}}\)</span> is said to be finite dimensional. If <span class="math inline">\({\mathcal{V}}\)</span> is not spanned by a finite set of vectors, <span class="math inline">\({\mathcal{V}}\)</span> is said to be infinite dimensional. The smallest set of vectors that spans <span class="math inline">\({\mathcal{V}}\)</span> is a basis for <span class="math inline">\({\mathcal{V}}\)</span> and the number of vectors in this basis is called the <strong>dimension</strong> of <span class="math inline">\({\mathcal{V}}\)</span> and written as dim(<span class="math inline">\({\mathcal{V}}\)</span>). If <span class="math inline">\({\mathcal{V}}= \{\mathbf{0}\}\)</span>, then dim(<span class="math inline">\({\mathcal{V}}\)</span>) is said to be 0.</p>
+<p><span id="section-def:unlabeled-div-202" class="definition"><strong>Definition 17.2  </strong></span>If <span class="math inline">\({\mathcal{V}}\)</span> is spanned by a finite set of vectors, then <span class="math inline">\({\mathcal{V}}\)</span> is said to be finite dimensional. If <span class="math inline">\({\mathcal{V}}\)</span> is not spanned by a finite set of vectors, <span class="math inline">\({\mathcal{V}}\)</span> is said to be infinite dimensional. The smallest set of vectors that spans <span class="math inline">\({\mathcal{V}}\)</span> is a basis for <span class="math inline">\({\mathcal{V}}\)</span> and the number of vectors in this basis is called the <strong>dimension</strong> of <span class="math inline">\({\mathcal{V}}\)</span> and written as dim(<span class="math inline">\({\mathcal{V}}\)</span>). If <span class="math inline">\({\mathcal{V}}= \{\mathbf{0}\}\)</span>, then dim(<span class="math inline">\({\mathcal{V}}\)</span>) is said to be 0.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-200" class="example"><strong>Example 17.4  </strong></span>in class - span of 2 or 3 linearly independent vectors</p>
+<p><span id="section-exm:unlabeled-div-203" class="example"><strong>Example 17.4  </strong></span>in class - span of 2 or 3 linearly independent vectors</p>
 <ul>
 <li>span, dim, and geometry</li>
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-201" class="example"><strong>Example 17.5  </strong></span>in class - span of 2 or 3 linearly dependent vectors</p>
+<p><span id="section-exm:unlabeled-div-204" class="example"><strong>Example 17.5  </strong></span>in class - span of 2 or 3 linearly dependent vectors</p>
 <ul>
 <li>span, dim, and geometry</li>
 </ul>
@@ -492,7 +492,7 @@ which by linearity implies
 <div id="section-subspaces-of-finite-dimension" class="section level2">
 <h2><span class="header-section-number">17.3</span> Subspaces of finite dimension</h2>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-202" class="theorem"><strong>Theorem 17.5  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a subspace of a finite-dimensional vector space <span class="math inline">\({\mathcal{V}}\)</span>. Then, any linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> can be expanded, if necessary to form a basis for <span class="math inline">\(\mathcal{H}\)</span>. As <span class="math inline">\(\mathcal{H}\)</span> is a subspace of the finite-dimensional vector space <span class="math inline">\({\mathcal{V}}\)</span>, <span class="math inline">\(\mathcal{H}\)</span> is a finite-dimensional vector space with
+<p><span id="section-thm:unlabeled-div-205" class="theorem"><strong>Theorem 17.5  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a subspace of a finite-dimensional vector space <span class="math inline">\({\mathcal{V}}\)</span>. Then, any linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> can be expanded, if necessary to form a basis for <span class="math inline">\(\mathcal{H}\)</span>. As <span class="math inline">\(\mathcal{H}\)</span> is a subspace of the finite-dimensional vector space <span class="math inline">\({\mathcal{V}}\)</span>, <span class="math inline">\(\mathcal{H}\)</span> is a finite-dimensional vector space with
 <span class="math display">\[\begin{align*}
 \mbox{dim}(\mathcal{H}) \leq \mbox{dim}(\mathcal{V})
 \end{align*}\]</span></p>
@@ -500,7 +500,7 @@ which by linearity implies
 <p>For a vector space of known dimension <span class="math inline">\(p\)</span>, finding a basis can be simplified by finding a linearly independent set of size <span class="math inline">\(p\)</span>.</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-240" class="theorem"><strong>Theorem 17.6  (The Basis Theorem)  </strong></span>Let <span class="math inline">\({\mathcal{V}}\)</span> be a <span class="math inline">\(p\)</span> dimensional vector space with <span class="math inline">\(p \geq 1\)</span>. Any linearly independent subset of <span class="math inline">\(p\)</span> vectors is a basis for <span class="math inline">\({\mathcal{V}}\)</span>. Equivalently, any set of <span class="math inline">\(p\)</span> vectors that span <span class="math inline">\({\mathcal{V}}\)</span> is automatically a basis for <span class="math inline">\({\mathcal{V}}\)</span>.
+<span id="section-thm:unnamed-chunk-249" class="theorem"><strong>Theorem 17.6  (The Basis Theorem)  </strong></span>Let <span class="math inline">\({\mathcal{V}}\)</span> be a <span class="math inline">\(p\)</span> dimensional vector space with <span class="math inline">\(p \geq 1\)</span>. Any linearly independent subset of <span class="math inline">\(p\)</span> vectors is a basis for <span class="math inline">\({\mathcal{V}}\)</span>. Equivalently, any set of <span class="math inline">\(p\)</span> vectors that span <span class="math inline">\({\mathcal{V}}\)</span> is automatically a basis for <span class="math inline">\({\mathcal{V}}\)</span>.
 </div>
 
 </div>
