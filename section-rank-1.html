@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -343,31 +344,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="section-rank" class="section level1">
+<div id="section-rank-1" class="section level1">
 <h1><span class="header-section-number">Chapter 18</span> Rank</h1>
-<div class="sourceCode" id="section-cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="section-rank.html#cb204-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb204-2"><a href="section-rank.html#cb204-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<div class="sourceCode" id="section-cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="section-rank-1.html#cb228-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb228-2"><a href="section-rank-1.html#cb228-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-199" class="definition"><strong>Definition 18.1  </strong></span>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the row space, row(<span class="math inline">\(\mathbf{A}\)</span>) is the set of linearly independent rows of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the row space is the span of the rows of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p><span id="section-def:unlabeled-div-204" class="definition"><strong>Definition 18.1  </strong></span>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the row space, row(<span class="math inline">\(\mathbf{A}\)</span>) is the set of linearly independent rows of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the row space is the span of the rows of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
 <p>Note: the row space of <span class="math inline">\(\mathbf{A}\)</span> is the column space of the transposed matrix <span class="math inline">\(\mathcal{A}&#39;\)</span>.
 <span class="math display">\[\begin{align*}
 row(\mathbf{A}) = col(\mathbf{A}&#39;)
 \end{align*}\]</span></p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-200" class="example"><strong>Example 18.1  </strong></span>in class</p>
+<p><span id="section-exm:unlabeled-div-205" class="example"><strong>Example 18.1  </strong></span>in class</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-201" class="example"><strong>Example 18.2  </strong></span>Find basis for row space, column space, and null space of <span class="math inline">\(\mathbf{A}\)</span></p>
+<p><span id="section-exm:unlabeled-div-206" class="example"><strong>Example 18.2  </strong></span>Find basis for row space, column space, and null space of <span class="math inline">\(\mathbf{A}\)</span></p>
 </div>
-<div id="section-rank-1" class="section level2">
+<div id="section-rank-2" class="section level2">
 <h2><span class="header-section-number">18.1</span> Rank</h2>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-202" class="definition"><strong>Definition 18.2  </strong></span>The rank of a matrix <span class="math inline">\(\mathbf{A}\)</span>, rank(<span class="math inline">\(\mathbf{A}\)</span>) is the dimension of the column space col(<span class="math inline">\(\mathbf{A}\)</span>)</p>
+<p><span id="section-def:unlabeled-div-207" class="definition"><strong>Definition 18.2  </strong></span>The rank of a matrix <span class="math inline">\(\mathbf{A}\)</span>, rank(<span class="math inline">\(\mathbf{A}\)</span>) is the dimension of the column space col(<span class="math inline">\(\mathbf{A}\)</span>)</p>
 </div>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-245" class="theorem"><strong>Theorem 18.1  (The Rank Theorem)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(m \times n\)</span> matrix. Then the dimension of are equal. The rank of <span class="math inline">\(\mathbf{A}\)</span> equals the number of pivot columns of <span class="math inline">\(\mathbf{A}\)</span> and
+<span id="section-thm:unnamed-chunk-242" class="theorem"><strong>Theorem 18.1  (The Rank Theorem)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(m \times n\)</span> matrix. Then the dimension of are equal. The rank of <span class="math inline">\(\mathbf{A}\)</span> equals the number of pivot columns of <span class="math inline">\(\mathbf{A}\)</span> and
 <span class="math display">\[\begin{align*}
 rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
 \end{align*}\]</span>
@@ -379,15 +380,15 @@ rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-205" class="example"><strong>Example 18.3  </strong></span>in class</p>
+<p><span id="section-exm:unlabeled-div-210" class="example"><strong>Example 18.3  </strong></span>in class</p>
 <p><span class="math inline">\(\mathbf{A}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix with dim(null(<span class="math inline">\(\mathbf{A}\)</span>)) = p. What is rank(<span class="math inline">\(\mathbf{A}\)</span>)</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-206" class="example"><strong>Example 18.4  </strong></span><span class="math inline">\(\mathbf{A}\)</span> is a 6x9 matrix. Is it possible for null(<span class="math inline">\(\mathbf{A}\)</span>) = 2?</p>
+<p><span id="section-exm:unlabeled-div-211" class="example"><strong>Example 18.4  </strong></span><span class="math inline">\(\mathbf{A}\)</span> is a 6x9 matrix. Is it possible for null(<span class="math inline">\(\mathbf{A}\)</span>) = 2?</p>
 </div>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-247" class="theorem"><strong>Theorem 18.2  (Invertible Matrix Theorm + Rank)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>
+<p><span id="section-thm:unnamed-chunk-244" class="theorem"><strong>Theorem 18.2  (Invertible Matrix Theorm + Rank)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <p>13) The columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis of <span class="math inline">\(\mathcal{R}^n\)</span></p>
 <p>14) col(<span class="math inline">\(\mathbf{A}\)</span>) = <span class="math inline">\(\mathcal{R}^n\)</span></p>

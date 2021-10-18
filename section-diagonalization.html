@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -345,17 +346,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-diagonalization" class="section level1">
 <h1><span class="header-section-number">Chapter 22</span> Diagonalization</h1>
-<div class="sourceCode" id="section-cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="section-diagonalization.html#cb220-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb220-2"><a href="section-diagonalization.html#cb220-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb220-3"><a href="section-diagonalization.html#cb220-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="section-cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="section-diagonalization.html#cb244-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb244-2"><a href="section-diagonalization.html#cb244-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb244-3"><a href="section-diagonalization.html#cb244-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-231" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
+<p><span id="section-def:unlabeled-div-236" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
 <p><span class="math display">\[\begin{align*}
 \mathbf{A} &amp; = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-232" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
+<p><span id="section-exm:unlabeled-div-237" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
 </div>
 
 <div class="theorem">
@@ -370,50 +371,50 @@ In addition, the <span class="math inline">\(n \times n\)</span> matrix <span cl
 
 <p>This theorem implies that the matrix <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable if and only if the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span>. When this is the case, the set of eigenvectors is called an <strong>eigenbasis</strong>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-235" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
-<div class="sourceCode" id="section-cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="section-diagonalization.html#cb221-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb221-2"><a href="section-diagonalization.html#cb221-2"></a>A</span></code></pre></div>
+<p><span id="section-exm:unlabeled-div-240" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<div class="sourceCode" id="section-cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="section-diagonalization.html#cb245-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb245-2"><a href="section-diagonalization.html#cb245-2"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    9   -3    1
 ## [2,]    2    2    0
 ## [3,]    0   -4    3</code></pre>
-<div class="sourceCode" id="section-cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="section-diagonalization.html#cb223-1"></a>eigen_A &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)</span>
-<span id="cb223-2"><a href="section-diagonalization.html#cb223-2"></a><span class="kw">str</span>(eigen_A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="section-diagonalization.html#cb247-1"></a>eigen_A &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)</span>
+<span id="cb247-2"><a href="section-diagonalization.html#cb247-2"></a><span class="kw">str</span>(eigen_A)</span></code></pre></div>
 <pre><code>## List of 2
 ##  $ values : num [1:3] 7.63 4.52 1.86
 ##  $ vectors: num [1:3, 1:3] -0.905 -0.322 0.278 -0.407 -0.324 ...
 ##  - attr(*, &quot;class&quot;)= chr &quot;eigen&quot;</code></pre>
-<div class="sourceCode" id="section-cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="section-diagonalization.html#cb225-1"></a>P &lt;-<span class="st"> </span>eigen_A<span class="op">$</span>vectors</span>
-<span id="cb225-2"><a href="section-diagonalization.html#cb225-2"></a>P</span></code></pre></div>
+<div class="sourceCode" id="section-cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="section-diagonalization.html#cb249-1"></a>P &lt;-<span class="st"> </span>eigen_A<span class="op">$</span>vectors</span>
+<span id="cb249-2"><a href="section-diagonalization.html#cb249-2"></a>P</span></code></pre></div>
 <pre><code>##            [,1]       [,2]        [,3]
 ## [1,] -0.9050468 -0.4069141 -0.01938647
 ## [2,] -0.3217259 -0.3235720  0.27433148
 ## [3,]  0.2781774  0.8542377  0.96143976</code></pre>
-<div class="sourceCode" id="section-cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="section-diagonalization.html#cb227-1"></a>D &lt;-<span class="st"> </span><span class="kw">diag</span>(eigen_A<span class="op">$</span>values)</span>
-<span id="cb227-2"><a href="section-diagonalization.html#cb227-2"></a>D</span></code></pre></div>
+<div class="sourceCode" id="section-cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="section-diagonalization.html#cb251-1"></a>D &lt;-<span class="st"> </span><span class="kw">diag</span>(eigen_A<span class="op">$</span>values)</span>
+<span id="cb251-2"><a href="section-diagonalization.html#cb251-2"></a>D</span></code></pre></div>
 <pre><code>##          [,1]     [,2]     [,3]
 ## [1,] 7.626198 0.000000 0.000000
 ## [2,] 0.000000 4.515138 0.000000
 ## [3,] 0.000000 0.000000 1.858664</code></pre>
-<div class="sourceCode" id="section-cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="section-diagonalization.html#cb229-1"></a>P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<div class="sourceCode" id="section-cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="section-diagonalization.html#cb253-1"></a>P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
 <pre><code>##               [,1] [,2] [,3]
 ## [1,]  9.000000e+00   -3    1
 ## [2,]  2.000000e+00    2    0
 ## [3,] -9.992007e-16   -4    3</code></pre>
-<div class="sourceCode" id="section-cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="section-diagonalization.html#cb231-1"></a><span class="kw">all.equal</span>(A, P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P))</span></code></pre></div>
+<div class="sourceCode" id="section-cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="section-diagonalization.html#cb255-1"></a><span class="kw">all.equal</span>(A, P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-236" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
+<p><span id="section-thm:unlabeled-div-241" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
 <span class="math display">\[\begin{align*}
 \mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-237" class="proof"><em>Proof</em>. </span>In class</p>
+<p><span id="section-unlabeled-div-242" class="proof"><em>Proof</em>. </span>In class</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-238" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<p><span id="section-exm:unlabeled-div-243" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
 <p>Consider the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix}\)</span> which has eigenvalues 1, 2, 3. Then the standard basis <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\)</span> are corresponding eigenvectors (check the definition <span class="math inline">\(\mathbf{A} \lambda = \mathbf{v} \lambda\)</span>) because</p>
 <p><span class="math display">\[\begin{align*}
 \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} &amp; = 1 * \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \\

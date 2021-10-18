@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -345,34 +346,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-the-characteristic-equation" class="section level1">
 <h1><span class="header-section-number">Chapter 21</span> The Characteristic Equation</h1>
-<div class="sourceCode" id="section-cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="section-the-characteristic-equation.html#cb209-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb209-2"><a href="section-the-characteristic-equation.html#cb209-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<div class="sourceCode" id="section-cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="section-the-characteristic-equation.html#cb233-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb233-2"><a href="section-the-characteristic-equation.html#cb233-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <p>The characteristic equation/polynomial encodes information about the eigenvalues of the characteristic equation. In the previous chapter, we showed how we can decide if a scalar <span class="math inline">\(\lambda\)</span> is an eigenvalue of a matrix and how to find the vectors associated with the eigenvalue. However, we did not learn how to find eigenvalues (other than to just randomly try <span class="math inline">\(\lambda\)</span>). The characteristic equation/polynomial allows for determining the eigenvalues <span class="math inline">\(\lambda\)</span>.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-220" class="definition"><strong>Definition 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The characteristic equation/polynomial of <span class="math inline">\(\mathbf{A}\)</span> is the function <span class="math inline">\(f(\lambda)\)</span> given by
+<p><span id="section-def:unlabeled-div-225" class="definition"><strong>Definition 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The characteristic equation/polynomial of <span class="math inline">\(\mathbf{A}\)</span> is the function <span class="math inline">\(f(\lambda)\)</span> given by
 <span class="math display">\[\begin{align*}
 f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
 \end{align*}\]</span></p>
 </div>
 <p>While not obvious, the function <span class="math inline">\(f(\lambda)\)</span> is a polynomial of <span class="math inline">\(\lambda\)</span> but requires computing the determinant of the matrix <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> which contains an unknown value <span class="math inline">\(\lambda\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-221" class="example"><strong>Example 21.1  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-226" class="example"><strong>Example 21.1  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span></p>
 <ul>
 <li>do in class</li>
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-222" class="example"><strong>Example 21.2  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-227" class="example"><strong>Example 21.2  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span></p>
 <ul>
 <li>do in class (expand cofactors along the third column)</li>
 </ul>
 </div>
 <p>Once the characteristic equation is defined, we can use the equation to solve for the eigenvalues.</p>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-223" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})\)</span> be a characteristic polynomial. Then, the number <span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(f(\lambda_0) = 0\)</span>.</p>
+<p><span id="section-thm:unlabeled-div-228" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})\)</span> be a characteristic polynomial. Then, the number <span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(f(\lambda_0) = 0\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-224" class="proof"><em>Proof</em>. </span>By the invertible matrix theorem, the matrix <span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution if and only if <span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span>. Therefore, the following statements are equivalent:</p>
+<p><span id="section-unlabeled-div-229" class="proof"><em>Proof</em>. </span>By the invertible matrix theorem, the matrix <span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution if and only if <span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span>. Therefore, the following statements are equivalent:</p>
 <ul>
 <li><p><span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p></li>
 <li><p><span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda_0 \mathbf{x}\)</span> has a nontrivial solution</p></li>
@@ -383,13 +384,13 @@ f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-225" class="example"><strong>Example 21.3  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
+<p><span id="section-exm:unlabeled-div-230" class="example"><strong>Example 21.3  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
 <ul>
 <li>do in class</li>
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-226" class="example"><strong>Example 21.4  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
+<p><span id="section-exm:unlabeled-div-231" class="example"><strong>Example 21.4  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
 <ul>
 <li>do in class (expand cofactors along the third column)</li>
 </ul>
@@ -398,7 +399,7 @@ f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
 <h2><span class="header-section-number">21.1</span> Similarity</h2>
 <p>The idea behind similar matrices is to understand how the linear transformations implied by the transformation behave. Two matrices are similar if their transformation behavior (rotation, expansion/contraction, etc.) is the same but the coordinates on which the matrix operates are different.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-227" class="definition"><strong>Definition 21.2  </strong></span>The matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are said to be similar if there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> where
+<p><span id="section-def:unlabeled-div-232" class="definition"><strong>Definition 21.2  </strong></span>The matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are said to be similar if there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> where
 <span class="math display">\[\begin{align*}
 \mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
 \end{align*}\]</span>
@@ -409,36 +410,36 @@ or equivalently
 </div>
 <p>Therefore, it is possible to change <span class="math inline">\(\mathbf{A}\)</span> into <span class="math inline">\(\mathbf{B}\)</span> with an invertible (one-to-one and onto) transformation.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-228" class="example"><strong>Example 21.5  </strong></span>Consider the following example with matrices <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> defined as below:</p>
-<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-the-characteristic-equation.html#cb210-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb210-2"><a href="section-the-characteristic-equation.html#cb210-2"></a>A</span></code></pre></div>
+<p><span id="section-exm:unlabeled-div-233" class="example"><strong>Example 21.5  </strong></span>Consider the following example with matrices <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> defined as below:</p>
+<div class="sourceCode" id="section-cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="section-the-characteristic-equation.html#cb234-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb234-2"><a href="section-the-characteristic-equation.html#cb234-2"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    3    0
 ## [2,]    0   -2</code></pre>
-<div class="sourceCode" id="section-cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="section-the-characteristic-equation.html#cb212-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">12</span>, <span class="dv">-10</span>, <span class="dv">15</span>, <span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb212-2"><a href="section-the-characteristic-equation.html#cb212-2"></a>B</span></code></pre></div>
+<div class="sourceCode" id="section-cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="section-the-characteristic-equation.html#cb236-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">12</span>, <span class="dv">-10</span>, <span class="dv">15</span>, <span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb236-2"><a href="section-the-characteristic-equation.html#cb236-2"></a>B</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]  -12   15
 ## [2,]  -10   13</code></pre>
-<div class="sourceCode" id="section-cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="section-the-characteristic-equation.html#cb214-1"></a>P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb214-2"><a href="section-the-characteristic-equation.html#cb214-2"></a>P</span></code></pre></div>
+<div class="sourceCode" id="section-cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="section-the-characteristic-equation.html#cb238-1"></a>P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb238-2"><a href="section-the-characteristic-equation.html#cb238-2"></a>P</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   -2    3
 ## [2,]    1   -1</code></pre>
-<div class="sourceCode" id="section-cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="section-the-characteristic-equation.html#cb216-1"></a>P <span class="op">%*%</span><span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<div class="sourceCode" id="section-cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="section-the-characteristic-equation.html#cb240-1"></a>P <span class="op">%*%</span><span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    3    0
 ## [2,]    0   -2</code></pre>
-<div class="sourceCode" id="section-cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="section-the-characteristic-equation.html#cb218-1"></a><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P</span></code></pre></div>
+<div class="sourceCode" id="section-cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="section-the-characteristic-equation.html#cb242-1"></a><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]  -12   15
 ## [2,]  -10   13</code></pre>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-229" class="theorem"><strong>Theorem 21.2  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> similar matrices, then <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> will have the same characteristic polynomial and therefore the same eigenvalues.</p>
+<p><span id="section-thm:unlabeled-div-234" class="theorem"><strong>Theorem 21.2  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> similar matrices, then <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> will have the same characteristic polynomial and therefore the same eigenvalues.</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-230" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are similar, then there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> such that
+<p><span id="section-unlabeled-div-235" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are similar, then there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> such that
 <span class="math display">\[\begin{align*}
 \mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
 \end{align*}\]</span>

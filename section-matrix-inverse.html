@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -375,7 +376,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 ## [3,]    0    0    1    0
 ## [4,]    0    0    0    1</code></pre>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-77" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
+<p><span id="section-exm:unlabeled-div-92" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 1 &amp; -1 \\ 2 &amp; -3 \end{pmatrix} &amp;&amp; \mathbf{B} = \begin{pmatrix} 3 &amp; -1 \\ 2 &amp; -1 \end{pmatrix}
 \end{align*}
@@ -419,7 +420,7 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
 <!-- Example -->
 <div class="example">
-<p><span id="section-exm:unlabeled-div-80" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
+<p><span id="section-exm:unlabeled-div-95" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
 <p><span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 \\ -1 &amp; 2 \end{pmatrix}\)</span></p>
 </div>
 
@@ -441,7 +442,7 @@ has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1}
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-83" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-98" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
 <p>Find the solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></p>
 </div>
 
@@ -567,7 +568,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p>The previous theorem states that for a <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(\mathbf{A}\)</span>, the elementary row operations that covert <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span> also convert <span class="math inline">\(\mathbf{I}\)</span> to <span class="math inline">\(\mathbf{A}^{-1}\)</span>. This suggests an algorithm for finding the inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span> of <span class="math inline">\(\mathbf{A}\)</span>:</p>
 <p>Create the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{A} &amp; \mathbf{I} \end{pmatrix}\)</span> and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form <span class="math inline">\(\begin{pmatrix} \mathbf{I} &amp; \mathbf{A}^{-1} \end{pmatrix}\)</span> then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is the inverse of <span class="math inline">\(\mathbf{A}\)</span>. If the leading matrix in the augmented matrix is not the identity matrix <span class="math inline">\(\mathbf{I}\)</span>, then <span class="math inline">\(\mathbf{A}\)</span> is not row equivalent to <span class="math inline">\(\mathbf{I}\)</span> and is therefore not invertible.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-85" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
+<p><span id="section-exm:unlabeled-div-100" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
 <p>Using <code>R</code></p>
 </div>
 </div>

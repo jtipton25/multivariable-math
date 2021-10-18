@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -345,8 +346,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="section-determinants" class="section level1">
 <h1><span class="header-section-number">Chapter 13</span> Determinants</h1>
-<div class="sourceCode" id="section-cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="section-determinants.html#cb185-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb185-2"><a href="section-determinants.html#cb185-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<div class="sourceCode" id="section-cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="section-determinants.html#cb209-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb209-2"><a href="section-determinants.html#cb209-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 The determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> of a square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a real number.
 
 <div class="definition">
@@ -360,7 +361,7 @@ The determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</sp
 </ol>
 <p>The determinant is the unique function mapping square matrices to the real number line that satisfies the above definition.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-130" class="example"><strong>Example 13.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>. Then, we can calculate the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> using row operations to get to reduced row echelon form.</p>
+<p><span id="section-exm:unlabeled-div-135" class="example"><strong>Example 13.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>. Then, we can calculate the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> using row operations to get to reduced row echelon form.</p>
 <p><span class="math display">\[\begin{align*}
 &amp;&amp; \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix} &amp;&amp; \operatorname{det} = x \\
 \mbox{swap row 1 and row 2} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 5 &amp; 3  \end{pmatrix} &amp;&amp; \operatorname{det} = -x \\
@@ -370,23 +371,23 @@ The determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</sp
 \end{align*}\]</span>
 where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(-\frac{x}{18} = 1\)</span> which implies that <span class="math inline">\(x = -18\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = -18\)</span>
 Let’s check our answer in R</p>
-<div class="sourceCode" id="section-cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="section-determinants.html#cb186-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb186-2"><a href="section-determinants.html#cb186-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="section-cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="section-determinants.html#cb210-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb210-2"><a href="section-determinants.html#cb210-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
 <pre><code>## [1] -18</code></pre>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-131" class="example"><strong>Example 13.2  </strong></span>In class</p>
+<p><span id="section-exm:unlabeled-div-136" class="example"><strong>Example 13.2  </strong></span>In class</p>
 </div>
 <div id="section-determinants-of-2-times-2-matrices" class="section level2">
 <h2><span class="header-section-number">13.1</span> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</h2>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-132" class="definition"><strong>Definition 13.2  </strong></span>If <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A}) = ad - bc\)</span></p>
+<p><span id="section-def:unlabeled-div-137" class="definition"><strong>Definition 13.2  </strong></span>If <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A}) = ad - bc\)</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-133" class="example"><strong>Example 13.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>, then <span class="math inline">\(\det(\mathbf{A}) = (5 * -3) - (3 * 1) = -18\)</span></p>
+<p><span id="section-exm:unlabeled-div-138" class="example"><strong>Example 13.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>, then <span class="math inline">\(\det(\mathbf{A}) = (5 * -3) - (3 * 1) = -18\)</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-134" class="example"><strong>Example 13.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. Then</p>
+<p><span id="section-exm:unlabeled-div-139" class="example"><strong>Example 13.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. Then</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>If <span class="math inline">\(a\)</span> = 0</p></li>
 <li><p><span class="math inline">\(a \neq 0\)</span></p></li>
@@ -398,7 +399,7 @@ Let’s check our answer in R</p>
 <h2><span class="header-section-number">13.2</span> Determinants of <span class="math inline">\(n \times n\)</span> matrices</h2>
 <p>To better understand determinants of <span class="math inline">\(n \times n\)</span> matrices, we need to define the two concepts of a matrix <strong>minor</strong> and <strong>cofactor</strong>.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-135" class="definition"><strong>Definition 13.3  </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
+<p><span id="section-def:unlabeled-div-140" class="definition"><strong>Definition 13.3  </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>The (i, j) <strong>minor</strong> <span class="math inline">\(\mathbf{A}_{-i-j}\)</span> is the <span class="math inline">\((n-1) \times (n-1)\)</span> matrix obtained by deleting the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span> column from <span class="math inline">\(\mathbf{A}\)</span></p></li>
 <li><p>The (i, j) <strong>cofactor</strong> <span class="math inline">\(c_{ij}\)</span> is defined using the determinant of the minor where
@@ -420,7 +421,7 @@ c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
 \end{pmatrix}
 \end{align*}\]</span></p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-136" class="example"><strong>Example 13.5  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be the <span class="math inline">\(3 \times 3\)</span> matrix… (in class)</p>
+<p><span id="section-exm:unlabeled-div-141" class="example"><strong>Example 13.5  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be the <span class="math inline">\(3 \times 3\)</span> matrix… (in class)</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Find the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span></p></li>
 <li><p>Find the cofactor <span class="math inline">\(c_{23}\)</span></p></li>
@@ -429,7 +430,7 @@ c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
 <p>Note that in the cofactor definition of a <span class="math inline">\(n \times n\)</span> matrix it is assumed that you can calculate the determinant of the <span class="math inline">\(n-1 \times n-1\)</span> minor <span class="math inline">\(\mathbf{A}_{-i-j}\)</span>. From this we see that each of the <span class="math inline">\(n \times n\)</span> cofactors of <span class="math inline">\(\mathbf{A}\)</span> are themselves the (signed) determinants of <span class="math inline">\(n-1 \times n-1\)</span> submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated.</p>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-213" class="theorem"><strong>Theorem 13.1  (Cofactor exapansion)  </strong></span>
+<p><span id="section-thm:unnamed-chunk-210" class="theorem"><strong>Theorem 13.1  (Cofactor exapansion)  </strong></span>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(ij\)</span>th elements <span class="math inline">\(a_{ij}\)</span>. Then</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>The <strong>cofactor expansion along the <span class="math inline">\(i\)</span>th row</strong> (for any fixed row <span class="math inline">\(i\)</span>) is
@@ -444,40 +445,40 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 </div>
 
 <div class="proof">
-<p><span id="section-unlabeled-div-138" class="proof"><em>Proof</em>. </span>This is quite complex. For those interested, an example is available <a href="https://textbooks.math.gatech.edu/ila/determinants-cofactors.html">here</a></p>
+<p><span id="section-unlabeled-div-143" class="proof"><em>Proof</em>. </span>This is quite complex. For those interested, an example is available <a href="https://textbooks.math.gatech.edu/ila/determinants-cofactors.html">here</a></p>
 </div>
 <div class="note">
 <p>The above theorem states that there are actually <span class="math inline">\(2n\)</span> ways to calcuate the determinant–one for each row and column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-139" class="example"><strong>Example 13.6  </strong></span>in class: Use the minor/cofactor defintion to calculate the determinant of tha <span class="math inline">\(2 \times 2\)</span> matrix</p>
+<p><span id="section-exm:unlabeled-div-144" class="example"><strong>Example 13.6  </strong></span>in class: Use the minor/cofactor defintion to calculate the determinant of tha <span class="math inline">\(2 \times 2\)</span> matrix</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-140" class="example"><strong>Example 13.7  </strong></span>in class: Use the minor/cofactor defintion to calculate the determinant of tha <span class="math inline">\(3 \times 3\)</span> matrix</p>
+<p><span id="section-exm:unlabeled-div-145" class="example"><strong>Example 13.7  </strong></span>in class: Use the minor/cofactor defintion to calculate the determinant of tha <span class="math inline">\(3 \times 3\)</span> matrix</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-141" class="example"><strong>Example 13.8  </strong></span>in class: determinant of a matrix with a row (or column) of zeros</p>
+<p><span id="section-exm:unlabeled-div-146" class="example"><strong>Example 13.8  </strong></span>in class: determinant of a matrix with a row (or column) of zeros</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-142" class="example"><strong>Example 13.9  </strong></span>in class: determinant of a matrix where at least one row is a linear combination of the other rows</p>
+<p><span id="section-exm:unlabeled-div-147" class="example"><strong>Example 13.9  </strong></span>in class: determinant of a matrix where at least one row is a linear combination of the other rows</p>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-143" class="theorem"><strong>Theorem 13.2  </strong></span>in class: determinant of a matrix is equal to the determinant of its transpose</p>
+<p><span id="section-thm:unlabeled-div-148" class="theorem"><strong>Theorem 13.2  </strong></span>in class: determinant of a matrix is equal to the determinant of its transpose</p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-144" class="proof"><em>Proof</em>. </span>Follows directly from cofactor expansion theorem</p>
+<p><span id="section-unlabeled-div-149" class="proof"><em>Proof</em>. </span>Follows directly from cofactor expansion theorem</p>
 </div>
 </div>
 <div id="section-properties-of-determinants" class="section level2">
 <h2><span class="header-section-number">13.3</span> Properties of determinants</h2>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-145" class="theorem"><strong>Theorem 13.3  </strong></span>A <span class="math inline">\(n \times n\)</span> square matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p>
+<p><span id="section-thm:unlabeled-div-150" class="theorem"><strong>Theorem 13.3  </strong></span>A <span class="math inline">\(n \times n\)</span> square matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-146" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem <strong>link to this in notes</strong>, we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
+<p><span id="section-unlabeled-div-151" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem <strong>link to this in notes</strong>, we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
 </div>
 <div class="theorem">
-<p><span id="section-thm:unlabeled-div-147" class="theorem"><strong>Theorem 13.4  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices, <span class="math inline">\(\mathbf{I}\)</span> is an <span class="math inline">\(n \times n\)</span> identity matrix, and <span class="math inline">\(c\)</span> is a scalar, we have</p>
+<p><span id="section-thm:unlabeled-div-152" class="theorem"><strong>Theorem 13.4  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices, <span class="math inline">\(\mathbf{I}\)</span> is an <span class="math inline">\(n \times n\)</span> identity matrix, and <span class="math inline">\(c\)</span> is a scalar, we have</p>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\det(\mathbf{I}) = 1\)</span></p></li>
 <li><p><span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span></p></li>
@@ -492,7 +493,7 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 <p>While commonly used for theoretical results, Cramer’s rule is not commonly used in applied linear algebra. As such, we will mention Cramer’s rule but not focus on it.</p>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-214" class="theorem"><strong>Theorem 13.5  (Cramer’s Rule)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
+<span id="section-thm:unnamed-chunk-211" class="theorem"><strong>Theorem 13.5  (Cramer’s Rule)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
 <span class="math display">\[\begin{align*}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for } i = 1, 2, \ldots, n
 \end{align*}\]</span>
@@ -500,7 +501,7 @@ x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for }
 
 
 <div class="example">
-<p><span id="section-exm:unnamed-chunk-215" class="example"><strong>Example 13.10  </strong></span>In Cramer’s rule, why do we know</p>
+<p><span id="section-exm:unnamed-chunk-212" class="example"><strong>Example 13.10  </strong></span>In Cramer’s rule, why do we know</p>
 <ul>
 <li><p>the solution is unique for any <span class="math inline">\(\mathbf{b}\)</span>?</p></li>
 <li><p>the determinant <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span>?</p>

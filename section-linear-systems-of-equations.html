@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -508,7 +509,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-32" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 = \end{pmatrix}\)</span> a solution to the system of equations
+<p><span id="section-exm:unlabeled-div-47" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 = \end{pmatrix}\)</span> a solution to the system of equations
 <span class="math display">\[\begin{alignat*}{3}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9.
@@ -528,7 +529,7 @@ which is false because <span class="math inline">\(35 \neq = 9\)</span>. Thus, <
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-33" class="example"><strong>Example 2.10  </strong></span>Consider the system of equations</p>
+<p><span id="section-exm:unlabeled-div-48" class="example"><strong>Example 2.10  </strong></span>Consider the system of equations</p>
 <p><span class="math display">\[
 \begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
@@ -738,7 +739,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 \]</span></p>
 <p>have the same solution set (the second set of equations is just 2 times the first set of equations).</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-36" class="example"><strong>Example 2.11  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+<p><span id="section-exm:unlabeled-div-51" class="example"><strong>Example 2.11  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 <span class="math display">\[
 \begin{alignat*}{3}
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}={} &amp; 8 \\
@@ -793,7 +794,7 @@ which can be done in <code>R</code> using</p>
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-37" class="example"><strong>Example 2.12  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+<p><span id="section-exm:unlabeled-div-52" class="example"><strong>Example 2.12  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 <span class="math display">\[
 \begin{alignat*}{4}
 7 x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 4 x_3 &amp; {}={} &amp; 5\\
@@ -855,7 +856,7 @@ x_1 &amp; {}+{} &amp; 0 x_2 &amp; {}+{} &amp; \frac{20}{47} x_3 &amp; {}={} &amp
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-38" class="example"><strong>Example 2.13  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+<p><span id="section-exm:unlabeled-div-53" class="example"><strong>Example 2.13  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 <span class="math display">\[
 \begin{alignat*}{3}
 4 x_1 &amp; {}-{} &amp; 2 x_2 &amp; {}={} &amp; 8\\
@@ -906,7 +907,7 @@ Notice that the second equation gives <span class="math inline">\(x_2 = 3\)</spa
 </ol>
 <p>Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-39" class="example"><strong>Example 2.14  </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
+<p><span id="section-exm:unlabeled-div-54" class="example"><strong>Example 2.14  </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
 <p><span class="math display">\[
 \begin{align*}
 \begin{pmatrix} 1 &amp; 4 &amp; 7 \\ 2 &amp; 5 &amp; 8 \\ 3 &amp; 6 &amp; 9 \end{pmatrix}
@@ -921,7 +922,7 @@ Notice that the second equation gives <span class="math inline">\(x_2 = 3\)</spa
 </ol>
 </div>
 <div class="solution">
-<p><span id="section-unlabeled-div-40" class="solution"><em>Solution</em>. </span>Here we present examples of the elementary row operations</p>
+<p><span id="section-unlabeled-div-55" class="solution"><em>Solution</em>. </span>Here we present examples of the elementary row operations</p>
 <ol style="list-style-type: decimal">
 <li>Swap the first and second rows.</li>
 </ol>
@@ -1118,7 +1119,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-42" class="example"><strong>Example 2.15  </strong></span>Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?</p>
+<p><span id="section-exm:unlabeled-div-57" class="example"><strong>Example 2.15  </strong></span>Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignat*}{4}  16 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 13\\ 5 x_1 &amp; {}+{} &amp; 11 x_2 &amp; {}+{} &amp; 10 x_3 &amp; {}={} &amp; 8\\ 9 x_1 &amp; {}+{} &amp; 7 x_2 &amp; {}+{} &amp; 6 x_3 &amp; {}={} &amp; 12\\ 4 x_1 &amp; {}+{} &amp; 14 x_2 &amp; {}+{} &amp; 15 x_3 &amp; {}={} &amp; 1 \end{alignat*}
 \]</span></p>
@@ -1130,7 +1131,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-43" class="example"><strong>Example 2.16  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span id="section-exm:unlabeled-div-58" class="example"><strong>Example 2.16  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignat*}{4}   x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 5\\  x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 2\\ 3 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp;  x_3 &amp; {}={} &amp; 7 \end{alignat*}
 \]</span></p>
@@ -1156,7 +1157,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 </div></li>
 </ol>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-44" class="example"><strong>Example 2.17  </strong></span><strong>echelon matrix example in class</strong></p>
+<p><span id="section-exm:unlabeled-div-59" class="example"><strong>Example 2.17  </strong></span><strong>echelon matrix example in class</strong></p>
 </div>
 
 <div class="definition">
@@ -1167,7 +1168,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 </div></li>
 </ol>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-45" class="example"><strong>Example 2.18  </strong></span><strong>rref matrix example in class</strong></p>
+<p><span id="section-exm:unlabeled-div-60" class="example"><strong>Example 2.18  </strong></span><strong>rref matrix example in class</strong></p>
 </div>
 
 <div class="definition">
@@ -1204,7 +1205,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-51" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
+<p><span id="section-exm:unlabeled-div-66" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
 </div>
 </div>
 <div id="section-finding-the-reduced-row-echelon-form" class="section level3">
@@ -1218,7 +1219,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 <li>Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.</li>
 </ol>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-52" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
+<p><span id="section-exm:unlabeled-div-67" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
 </div>
 <div class="sourceCode" id="section-cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="section-linear-systems-of-equations.html#cb73-1"></a><span class="co"># pracma library</span></span>
 <span id="cb73-2"><a href="section-linear-systems-of-equations.html#cb73-2"></a><span class="co"># rref example in class</span></span></code></pre></div>
@@ -1245,7 +1246,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 </ul>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-54" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
+<p><span id="section-exm:unlabeled-div-69" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
 <p><span class="math display">\[
 \begin{align*}
 5 x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; 2 x_3 &amp;&amp; = &amp; 0 \\
@@ -1260,7 +1261,7 @@ A matrix is said to be in <strong>echelon</strong> form if</p>
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-56" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
+<p><span id="section-exm:unlabeled-div-71" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
 </div>
 </div>
 <div id="section-existence-and-uniquenss-from-reduced-row-echelon-form" class="section level3">

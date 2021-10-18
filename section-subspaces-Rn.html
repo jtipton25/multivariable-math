@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
 <li class="chapter" data-level="12.1" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
 <li class="chapter" data-level="12.2" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
+<li class="chapter" data-level="12.3" data-path="section-dimension-and-rank.html"><a href="section-dimension-and-rank.html#section-rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="section-determinants.html"><a href="section-determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
 <li class="chapter" data-level="13.1" data-path="section-determinants.html"><a href="section-determinants.html#section-determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
@@ -269,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.3" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
 <li class="chapter" data-level="17.4" data-path="section-coordinate-systems-and-dimension.html"><a href="section-coordinate-systems-and-dimension.html#section-dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="section-rank.html"><a href="section-rank.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="section-rank.html"><a href="section-rank.html#section-rank-1"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
+<li class="chapter" data-level="18" data-path="section-rank-1.html"><a href="section-rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
+<li class="chapter" data-level="18.1" data-path="section-rank-1.html"><a href="section-rank-1.html#section-rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="section-change-of-basis.html"><a href="section-change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
 <li class="chapter" data-level="20" data-path="section-eigenvectors-and-eigenvalues.html"><a href="section-eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
@@ -372,28 +373,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Because all three requirements are met, we have shown that <span class="math inline">\(\mathbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 </div>
-
-<div class="exercise">
-<span id="section-exr:unnamed-chunk-176" class="exercise"><strong>Exercise 11.1  </strong></span>1) Is a line through the origin a subspace?
-2) Is a line <strong>not</strong> through the origin a subspace?
+<div class="example">
+<p><span id="section-exm:unlabeled-div-114" class="example"><strong>Example 11.2  </strong></span>Recall that a solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> that has one free variable is a line through the origin and the solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> that has one free variable is a line parallel to the prior line that does not go through the origin.</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>Is a line through the origin a subspace?</p></li>
+<li><p>Is a line <strong>not</strong> through the origin a subspace?</p></li>
+</ol>
 </div>
-
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-19" class="solution"><em>Solution</em>. </span><strong>Part A:</strong> First, we will consider whether the line through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (<a href="#def:subspace">11.1</a>)</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\mathbf{0}\)</span> is on the line through the origin because <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> has the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are on the line through the origin, then because the line through the origin is defined as the solution set of the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> we know that
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} \mathbf{u} = \mathbf{0} &amp;&amp; \mbox{ and } &amp;&amp; \mathbf{A} \mathbf{v} = \mathbf{0}.
+\end{align*}
+\]</span>
+Then, the vector <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in the subspace defined by the line through the origin because
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v} = \mathbf{0} + \mathbf{0} = \mathbf{0},
+\end{align*}
+\]</span>
+which is a solution to the matrix equation and therefore <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is a point on the line through the origin.</p></li>
+<li><p>If <span class="math inline">\(\mathbf{u}\)</span> is a point on the line through the origin and <span class="math inline">\(c\)</span> is a scalar, then because the line through the origin is defined as the solution set of the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> we know that
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} \mathbf{u} = \mathbf{0}.
+\end{align*}
+\]</span>
+Then, the vector <span class="math inline">\(c \mathbf{u}\)</span> is in the subspace defined by the line through the origin because
+<span class="math display">\[
+\begin{align*}
+\mathbf{A} (c \mathbf{u}) = c \mathbf{A} \mathbf{u}  = c \mathbf{0} = \mathbf{0},
+\end{align*}
+\]</span>
+which is a solution to the matrix equation and therefore <span class="math inline">\(c \mathbf{u}\)</span> is a point on the line through the origin.</p></li>
+</ol>
+<p><strong>Part B:</strong> Next, we consider whether the line <strong>not</strong> through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (<a href="#def:subspace">11.1</a>). Recall that a line not through the origin is a solution set of the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> where the solution set has a single free variable and <span class="math inline">\(\mathbf \neq \mathbf{0}\)</span>. To check if this line defines a subspace, we check the first condition of Definition (<a href="#def:subspace">11.1</a>)</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{0}\)</span> is not on the line through the origin because <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> does not have the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> because <span class="math inline">\(\mathbf{A} \mathbf{0} = \mathbf{0} \neq \mathbf{b}\)</span>. Because <span class="math inline">\(\mathbf{0}\)</span> is not a point on the line not through the origin, the line not through the origin does not define a subspace.</li>
+</ol>
+</div>
+</div>
 <ul>
 <li><strong>Note:</strong> For any vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k \in \mathcal{R}^n\)</span>, the span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</li>
 </ul>
 <div id="section-special-subspaces-column-space-and-null-space" class="section level2">
 <h2><span class="header-section-number">11.1</span> Special subspaces: column space and null space</h2>
-
 <div class="definition">
-<span id="section-def:unnamed-chunk-177" class="definition"><strong>Definition 11.2  </strong></span>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.
+<p><span id="section-def:column-space" class="definition"><strong>Definition 11.2  </strong></span>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.</p>
 </div>
-
 <div class="example">
-<p><span id="section-exm:unlabeled-div-101" class="example"><strong>Example 11.2  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, what is the column space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-115" class="example"><strong>Example 11.3  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, what is the column space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="section-unlabeled-div-19" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, the column space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\mathbf{b}\)</span> such that
+<p><span id="section-unlabeled-div-20" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, the column space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\mathbf{b}\)</span> such that
 <span class="math display">\[
 \begin{align*}
 \mathbf{b} = x_1 \mathbf{a_1} + x_2 \mathbf{a}_2 + x_3 \mathbf{a}_3.
@@ -402,17 +440,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span> is the span of the vectors that makes up the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
 </div>
-
 <div class="definition">
-<span id="section-def:unnamed-chunk-179" class="definition"><strong>Definition 11.3  </strong></span>The <strong>null space</strong>, denoted <span class="math inline">\(\operatorname{null}(\mathbf{A})\)</span>, of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions to the homogeneous matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.
+<p><span id="section-def:null-space" class="definition"><strong>Definition 11.3  </strong></span>The <strong>null space</strong>, denoted <span class="math inline">\(\operatorname{null}(\mathbf{A})\)</span>, of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions to the homogeneous matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.</p>
 </div>
-
-<p>While the idea of a null space seems unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>.</p>
+<p>While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>. In other words, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-103" class="example"><strong>Example 11.3  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, what is the null space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-116" class="example"><strong>Example 11.4  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, find vectors that span the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-104" class="example"><strong>Example 11.4  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the homogeneous system of equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>. Using an augmented matrix and transforming into reduced row echelon form gives the RREF form
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-21" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the homogeneous system of equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>. Using an augmented matrix and transforming into reduced row echelon form gives the RREF form
 <span class="math display">\[
 \begin{align*}
 \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 &amp; 0 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 &amp; 0 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 &amp; 0 \end{pmatrix} \sim \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -15 &amp; -25 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; -1 &amp; -4 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 53/4 &amp; 89/4 &amp; 0 \end{pmatrix}
@@ -429,8 +466,38 @@ x_5 &amp; = x_5
 \end{align*}
 \]</span>
 Writing this solution as a vector times <span class="math inline">\(x_4\)</span> and a vector times <span class="math inline">\(x_5\)</span> gives the vectors <span class="math inline">\(\begin{pmatrix} 15 \\ 1 \\ -\frac{53}{4} \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 25 \\ 4 \\ -\frac{89}{4} \\ 0 \\ 1 \end{pmatrix}\)</span>.</p>
-<p>{}
-In <code>R</code>, this is</p>
+<p>In <code>R</code>, this is shown by starting with the matrix <code>A</code></p>
+<div class="sourceCode" id="section-cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="section-subspaces-Rn.html#cb179-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">-4</span>, <span class="dv">4</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">-4</span>, <span class="dv">-4</span>, <span class="dv">4</span>, <span class="dv">-5</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">-2</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb179-2"><a href="section-subspaces-Rn.html#cb179-2"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   -3   -3   -4   -5   -2
+## [2,]   -4    2   -4    5    3
+## [3,]    4   -4    4   -3    5</code></pre>
+<p>Looking at the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span> gives</p>
+<div class="sourceCode" id="section-cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="section-subspaces-Rn.html#cb181-1"></a><span class="kw">rref</span>(A)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]   [,4]   [,5]
+## [1,]    1    0    0 -15.00 -25.00
+## [2,]    0    1    0  -1.00  -4.00
+## [3,]    0    0    1  13.25  22.25</code></pre>
+<p>where the columns of interest are the non-pivot columns. For this matrix <span class="math inline">\(\mathbf{A}\)</span>, the fourth and fifth columns of <span class="math inline">\(\mathbf{A}\)</span> are the non-pivot columns. The fourth column or the RREF form corresponds to the variable <span class="math inline">\(x_4\)</span> and the fifth column corresponds to the variable <span class="math inline">\(x_5\)</span>. Thus, you can extract the vectors that form the null space from these fourth and fifth columns of the RREF form of <span class="math inline">\(\mathbf{A}\)</span> like so</p>
+<div class="sourceCode" id="section-cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="section-subspaces-Rn.html#cb183-1"></a><span class="co"># the nullspace vector corresponding to x4 = 1 and x5 = 0</span></span>
+<span id="cb183-2"><a href="section-subspaces-Rn.html#cb183-2"></a><span class="kw">c</span>(<span class="op">-</span><span class="kw">rref</span>(A)[, <span class="dv">4</span>], <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1]  15.00   1.00 -13.25   1.00   0.00</code></pre>
+<div class="sourceCode" id="section-cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="section-subspaces-Rn.html#cb185-1"></a><span class="co"># the nullspace vector corresponding to x4 = 0 and x5 = 1</span></span>
+<span id="cb185-2"><a href="section-subspaces-Rn.html#cb185-2"></a><span class="kw">c</span>(<span class="op">-</span><span class="kw">rref</span>(A)[, <span class="dv">5</span>], <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1]  25.00   4.00 -22.25   0.00   1.00</code></pre>
+<p>We check that these vectors are in null(<span class="math inline">\(\mathbf{A}\)</span>) by using matrix multiplication and verifying that these are zero (at least up to numeric overflow/underflow)</p>
+<div class="sourceCode" id="section-cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="section-subspaces-Rn.html#cb187-1"></a>A <span class="op">%*%</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">rref</span>(A)[, <span class="dv">4</span>], <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>##               [,1]
+## [1,] -7.105427e-15
+## [2,] -7.105427e-15
+## [3,]  7.105427e-15</code></pre>
+<div class="sourceCode" id="section-cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="section-subspaces-Rn.html#cb189-1"></a>A <span class="op">%*%</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">rref</span>(A)[, <span class="dv">5</span>], <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##               [,1]
+## [1,] -1.421085e-14
+## [2,] -1.421085e-14
+## [3,]  1.421085e-14</code></pre>
+</div>
 </div>
 
 <div class="theorem">
@@ -454,62 +521,156 @@ Show that the three requirements of the defintion of a subspace in Definition (<
 </div>
 <div id="section-the-basis-of-a-subspace" class="section level2">
 <h2><span class="header-section-number">11.2</span> The basis of a subspace</h2>
-
 <div class="definition">
-<span id="section-def:unnamed-chunk-184" class="definition"><strong>Definition 11.4  </strong></span>A <strong>basis</strong> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> that spans <span class="math inline">\(\mathbf{H}\)</span>. Equivlently, a baisis is a set of linearly independent vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> such that span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\)</span>.
+<p><span id="section-def:basis" class="definition"><strong>Definition 11.4  </strong></span>A <strong>basis</strong> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is</p>
+<ol style="list-style-type: decimal">
+<li>a linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> that</li>
+<li>spans <span class="math inline">\(\mathbf{H}\)</span>.</li>
+</ol>
+<p>Equivlently, a baisis is a set of linearly independent vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> such that span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\)</span>.</p>
 </div>
-
 <p>The requirement that the vectors of a basis are linearly independent while spanning a subspace <span class="math inline">\(\mathcal{H}\)</span> means that a basis is a <strong>minimal spanning set</strong> for the subspace <span class="math inline">\(\mathcal{H}\)</span></p>
-<ul>
-<li><strong>Question:</strong> Is a basis unique?</li>
-</ul>
-
+<div class="example">
+<p><span id="section-exm:unlabeled-div-119" class="example"><strong>Example 11.5  </strong></span>Is a basis for a vector space unique?</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-22" class="solution"><em>Solution</em>. </span>A basis for a vector is not unique. Just like you can represent the number 16 as <span class="math inline">\(1.6 * 10^1\)</span> (base 10) or <span class="math inline">\(2^4\)</span> (base 2), the basis for a vector space is also not unique.</p>
+</div>
+</div>
 <div class="definition">
-<span id="section-def:unnamed-chunk-185" class="definition"><strong>Definition 11.5  </strong></span>The standard basis for <span class="math inline">\(\mathcal{R}^n\)</span>
+<p><span id="section-def:standard-basis" class="definition"><strong>Definition 11.5  </strong></span>The <strong>standard basis</strong> for <span class="math inline">\(\mathcal{R}^n\)</span> is the set of vectors <span class="math inline">\(\left\{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \right\}\)</span> of length <span class="math inline">\(n\)</span> where the vector <span class="math inline">\(\mathbf{e}_j\)</span> is a vector that is 0 in every value except for a 1 in the <span class="math inline">\(j\)</span>th position. For example,
+<span class="math display">\[
+\begin{align*}
+\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, &amp;&amp; \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, &amp;&amp; \mathbf{e}_3 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0\end{pmatrix}, &amp;&amp; \ldots, &amp;&amp; \mathbf{e}_n = \begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}.
+\end{align*}
+\]</span>
+Notice that the matrix defined as having columns <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\)</span> is the identity matrix <span class="math inline">\(\mathbf{I}\)</span>.</p>
 </div>
-
-
 <div class="example">
-<span id="section-exm:unnamed-chunk-186" class="example"><strong>Example 11.5  </strong></span>Basis for <span class="math inline">\(\mathcal{R}^3\)</span>
+<p><span id="section-exm:unlabeled-div-120" class="example"><strong>Example 11.6  </strong></span>What is the standard basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 </div>
-
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-23" class="solution"><em>Solution</em>. </span>The standard basis for <span class="math inline">\(\mathcal{R}^3\)</span> are the x-, y-, and z-axes. These are written as vectors where the x-axis is <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>, the y-axis is <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\)</span>, and the z-axis is <span class="math inline">\(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1\end{pmatrix}\)</span>,</p>
+</div>
+</div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-110" class="example"><strong>Example 11.6  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-121" class="example"><strong>Example 11.7  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 <p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span></p>
 </div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-24" class="solution"><em>Solution</em>. </span>For the set of vectors <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span> to form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>, we need to satisfy the two conditions in Definition (<a href="#def:basis">11.4</a>). Both conditions of Definition (<a href="#def:basis">11.4</a>) can be checked by combining the set of vectors <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(mathbf{z}\)</span> into a matrix and using RREF to determine the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> and determine whether the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> is linearly independent. The matrix of the vectors is
+<span class="math display">\[
+\begin{pmatrix} 2 &amp; -1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ 2 &amp; 1 &amp; 2 \end{pmatrix}
+\]</span>
+which is row-equivalent to
+<span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
+\]</span>
+Because the reduced row echelon form of the matrix has 3 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3\)</span> which satisfies the first condition for being a basis. Because there is a pivot in every column, we know the set of vectors is linearly independent which satisfies the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> forms a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
+<p>Using <code>R</code>, we can show this result first by creating the vectors <code>x</code>, <code>y</code>, and <code>z</code> and then joining these into a matrix <code>A</code> using <code>cbind()</code></p>
+<div class="sourceCode" id="section-cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="section-subspaces-Rn.html#cb191-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb191-2"><a href="section-subspaces-Rn.html#cb191-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb191-3"><a href="section-subspaces-Rn.html#cb191-3"></a>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb191-4"><a href="section-subspaces-Rn.html#cb191-4"></a></span>
+<span id="cb191-5"><a href="section-subspaces-Rn.html#cb191-5"></a>A &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, y, z)</span></code></pre></div>
+<p>Next, we convert <code>A</code> to reduced row echelon form to get the row equivalent matrix</p>
+<div class="sourceCode" id="section-cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="section-subspaces-Rn.html#cb192-1"></a><span class="kw">rref</span>(A)</span></code></pre></div>
+<pre><code>##      x y z
+## [1,] 1 0 0
+## [2,] 0 1 0
+## [3,] 0 0 1</code></pre>
+<p>Because this reduced row echelon form has a pivot in each column we know the columns of the matrix <code>A</code> are linearly independent. Because there are 3 pivot columns in total, we know the span of the columns of <code>A</code> is <span class="math inline">\(\mathcal{R}^3\)</span>. Therefore, the vectors <span class="math inline">\(\mathbf{x}, \mathbf{y}, \mathbf{z}\)</span> forms a basis for <span class="math inline">\(\mathcal{R}^3\)</span>.</p>
+</div>
+</div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-111" class="example"><strong>Example 11.7  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-122" class="example"><strong>Example 11.8  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 <p><span class="math inline">\(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\)</span></p>
 </div>
-<div class="example">
-<p><span id="section-exm:unlabeled-div-112" class="example"><strong>Example 11.8  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
-<p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 20 \\ 3 \\ -4 \end{pmatrix}\)</span></p>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-25" class="solution"><em>Solution</em>. </span>For the set of vectors <span class="math inline">\(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\)</span> to form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>, we need to satisfy the two conditions in Definition (<a href="#def:basis">11.4</a>). Both conditions of Definition (<a href="#def:basis">11.4</a>) can be checked by combining the set of vectors <span class="math inline">\(\mathbf{w}\)</span>, <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(mathbf{z}\)</span> into a matrix and using RREF to determine the span<span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> and determine whether the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> is linearly independent. The matrix of the vectors is
+<span class="math display">\[
+\begin{pmatrix} 2 &amp; -1 &amp; 1 &amp; 4 \\ 1 &amp; 1 &amp; 0 &amp; 2 \\ 2 &amp; 1 &amp; 2 &amp; -2 \end{pmatrix}
+\]</span>
+which is row-equivalent to
+<span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 3.2 \\ 0 &amp; 1 &amp; 0 &amp; -1.2 \\ 0 &amp; 0 &amp; 1 &amp; -3.6 \end{pmatrix}
+\]</span>
+Because the reduced row echelon form of the matrix has 3 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3\)</span> which satisfies the first condition for being a basis. However, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
+<p>Using <code>R</code>, we can show this result first by creating the vectors <code>w</code>, x<code>,</code>y<code>, and</code>z<code>and then joining these into a matrix</code>A<code>using</code>cbind()`</p>
+<div class="sourceCode" id="section-cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="section-subspaces-Rn.html#cb194-1"></a>w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb194-2"><a href="section-subspaces-Rn.html#cb194-2"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb194-3"><a href="section-subspaces-Rn.html#cb194-3"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb194-4"><a href="section-subspaces-Rn.html#cb194-4"></a>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">-2</span>)</span>
+<span id="cb194-5"><a href="section-subspaces-Rn.html#cb194-5"></a></span>
+<span id="cb194-6"><a href="section-subspaces-Rn.html#cb194-6"></a>A &lt;-<span class="st"> </span><span class="kw">cbind</span>(w, x, y, z)</span></code></pre></div>
+<p>Next, we convert <code>A</code> to reduced row echelon form to get the row equivalent matrix</p>
+<div class="sourceCode" id="section-cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="section-subspaces-Rn.html#cb195-1"></a><span class="kw">rref</span>(A)</span></code></pre></div>
+<pre><code>##      w x y    z
+## [1,] 1 0 0  3.2
+## [2,] 0 1 0 -1.2
+## [3,] 0 0 1 -3.6</code></pre>
+<p>Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix <code>A</code> are linearly dependent. Because there are 3 pivot columns in total, we know the span of the columns of <code>A</code> is <span class="math inline">\(\mathcal{R}^3\)</span>. Because the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> are linearly dependent, they do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>.</p>
+</div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-113" class="example"><strong>Example 11.9  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
+<p><span id="section-exm:unlabeled-div-123" class="example"><strong>Example 11.9  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-26" class="solution"><em>Solution</em>. </span>For the set of vectors <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\)</span> to form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>, we need to satisfy the two conditions in Definition (<a href="#def:basis">11.4</a>). Both conditions of Definition (<a href="#def:basis">11.4</a>) can be checked by combining the set of vectors <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(mathbf{z}\)</span> into a matrix and using RREF to determine the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> and determine whether the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> is linearly independent. The matrix of the vectors is
+<span class="math display">\[
+\begin{pmatrix} 4 &amp; 3 &amp; 5 \\ 3 &amp; -3 &amp; 9 \\ 2 &amp; 4 &amp; 0 \end{pmatrix}
+\]</span>
+which is row-equivalent to
+<span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 2 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}
+\]</span>
+Because the reduced row echelon form of the matrix has 2 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^2\)</span> which does not satisfy the first condition for being a basis for <span class="math inline">\(\mathcal{R}^3\)</span>. In addition, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
+<p>Using <code>R</code>, we can show this result first by creating the vectors x<code>,</code>y<code>, and</code>z<code>and then joining these into a matrix</code>A<code>using</code>cbind()`</p>
+<div class="sourceCode" id="section-cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="section-subspaces-Rn.html#cb197-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb197-2"><a href="section-subspaces-Rn.html#cb197-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-3</span>, <span class="dv">4</span>)</span>
+<span id="cb197-3"><a href="section-subspaces-Rn.html#cb197-3"></a>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">0</span>)</span>
+<span id="cb197-4"><a href="section-subspaces-Rn.html#cb197-4"></a></span>
+<span id="cb197-5"><a href="section-subspaces-Rn.html#cb197-5"></a>A &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, y, z)</span></code></pre></div>
+<p>Next, we convert <code>A</code> to reduced row echelon form to get the row equivalent matrix</p>
+<div class="sourceCode" id="section-cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="section-subspaces-Rn.html#cb198-1"></a><span class="kw">rref</span>(A)</span></code></pre></div>
+<pre><code>##      x y  z
+## [1,] 1 0  2
+## [2,] 0 1 -1
+## [3,] 0 0  0</code></pre>
+<p>Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix <code>A</code> are linearly dependent. Because there are 2 pivot columns in total, we know the span of the columns of <code>A</code> is <span class="math inline">\(\mathcal{R}^2\)</span> which is not <span class="math inline">\(\mathcal{R}^3\)</span>. Because the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> are linearly dependent and do not span <span class="math inline">\(\mathcal{R}^3\)</span>, they do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-124" class="example"><strong>Example 11.10  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; 1 &amp; 3 \\ -1 &amp; -2 &amp; 6 &amp; 5 \\ 1 &amp; 2 &amp; -3 &amp; 2 \end{pmatrix}
 \]</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="section-unlabeled-div-20" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we look for non-trivial solutions to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
-<div class="sourceCode" id="section-cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="section-subspaces-Rn.html#cb179-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">-3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb179-2"><a href="section-subspaces-Rn.html#cb179-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, <span class="dv">0</span>))</span></code></pre></div>
+<p><span id="section-unlabeled-div-27" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we look for non-trivial solutions to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
+<div class="sourceCode" id="section-cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="section-subspaces-Rn.html#cb200-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">-2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">-3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb200-2"><a href="section-subspaces-Rn.html#cb200-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    2    0    0    0
 ## [2,]    0    0    1    0    0
 ## [3,]    0    0    0    1    0</code></pre>
 <p>which has solution <span class="math inline">\(x_1 = -2 x_2\)</span>, <span class="math inline">\(x_2 = \mbox{free}\)</span>, <span class="math inline">\(x_3 = 0\)</span> and <span class="math inline">\(x_4 = 0\)</span>. This can be represented as a vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}\)</span>. Thus, <span class="math inline">\(\left\{ \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} \right\}\)</span> is a basis for the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>We can check this by showing that <span class="math inline">\(\mathbf{A} \mathbf{v} = \mathbf{0}\)</span></p>
-<div class="sourceCode" id="section-cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="section-subspaces-Rn.html#cb181-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb181-2"><a href="section-subspaces-Rn.html#cb181-2"></a>A <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
+<div class="sourceCode" id="section-cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="section-subspaces-Rn.html#cb202-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb202-2"><a href="section-subspaces-Rn.html#cb202-2"></a>A <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    0
 ## [2,]    0
 ## [3,]    0</code></pre>
 <p>In addition, any linear combination of the basis is also in the null space</p>
-<div class="sourceCode" id="section-cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="section-subspaces-Rn.html#cb183-1"></a>A <span class="op">%*%</span><span class="st"> </span>(<span class="dv">5</span><span class="op">*</span>v)</span></code></pre></div>
+<div class="sourceCode" id="section-cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="section-subspaces-Rn.html#cb204-1"></a>A <span class="op">%*%</span><span class="st"> </span>(<span class="dv">5</span><span class="op">*</span>v)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    0
 ## [2,]    0
@@ -518,24 +679,51 @@ Show that the three requirements of the defintion of a subspace in Definition (<
 </div>
 
 <div class="theorem">
-<span id="section-thm:unnamed-chunk-193" class="theorem"><strong>Theorem 11.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.
+<span id="section-thm:unnamed-chunk-196" class="theorem"><strong>Theorem 11.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.
 </div>
 
 <p><strong>Note:</strong> Use the columns of <span class="math inline">\(\mathbf{A}\)</span>, not the columns of the matrix in echelon form.</p>
-<p>corollary</p>
-
-<div class="corollary">
-<span id="section-cor:unnamed-chunk-194" class="corollary"><strong>Corollary 11.1  </strong></span>
+<div class="fold-proof">
+<div class="proof">
+<p><span id="section-unlabeled-div-28" class="proof"><em>Proof</em>. </span>We will provide just a sketch of the proof here. First, the column space (Definition <a href="#def:column-space">11.2</a>) is the space defined by the linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the span of any subset of the vectors that make up the columns of <span class="math inline">\(\mathbf{A}\)</span> must, by definition, be in the column space of <span class="math inline">\(\mathbf{A}\)</span>, because any linear combination of the subset of vectors is just a linear combination of the full set of vectors with the coefficients of the vectors in the subset with the same coefficients and the coefficients of the vectors not in the subset equal to 0. Thus, the span of the subset of the vectors is contained within the span of the columns of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the column space.</p>
+<p>Now, choose the subset of columns of <span class="math inline">\(\mathbf{A}\)</span> that correspond to the pivot columns of the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span>. If the span of the columns of <span class="math inline">\(\mathbf{A} = \mathcal{R}^p\)</span>, then 1) there must be <span class="math inline">\(p\)</span> pivot columns in the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span> and 2) there are <span class="math inline">\(p\)</span> vectors in the subset of vectors where the columns of <span class="math inline">\(\mathbf{A}\)</span> are pivot columns. Thus, the subset of vectors spans <span class="math inline">\(\mathcal{R}^p\)</span> (the columnspace) and, by definition, there are <span class="math inline">\(p\)</span> pivot columns (therefore there is a pivot in each column) so the subset of vectors defined by the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.</p>
 </div>
-
-
+</div>
+<!-- corollary -->
+<!-- ```{corollary} -->
+<!-- ``` -->
 <div class="example">
-<span id="section-exm:unnamed-chunk-195" class="example"><strong>Example 11.10  </strong></span>Using <code>R</code>, find a basis for the column space of the matrix
+<p><span id="section-exm:unlabeled-div-126" class="example"><strong>Example 11.11  </strong></span>Find a basis for the column space of the matrix
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} 3 &amp; 1 &amp; 2 &amp; -3 \\ 4 &amp; 1 &amp; -3 &amp; -2 \\ 4 &amp; -1 &amp; -3 &amp; 1 \end{pmatrix}
-\]</span>
+\]</span></p>
 </div>
-
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-29" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we first find its reduced row echelon form
+<span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -0.323529411764706 \\ 0 &amp; 1 &amp; 0 &amp; -1.5 \\ 0 &amp; 0 &amp; 1 &amp; -0.264705882352941 \end{pmatrix}
+\]</span>
+which has pivots in the first three columns. Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the linear combination of the vectors of <span class="math inline">\(\mathbf{A}\)</span>, spans <span class="math inline">\(\mathcal{R}^3\)</span> because there are three pivot columns. The first three columns of <span class="math inline">\(\mathbf{A}\)</span> are <span class="math inline">\(\begin{pmatrix} 3 \\ 4 \\ 4 \end{pmatrix}\)</span>, <span class="math inline">\(\begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}\)</span>, and <span class="math inline">\(\begin{pmatrix} 2 \\ -3 \\ -3 \end{pmatrix}\)</span>. Because these 3 vectors are linearly independent (they are each pivot columns in the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span>) and they span <span class="math inline">\(\mathcal{R}^3\)</span>, they form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>Thus, any vector in the columns space of <span class="math inline">\(\mathbf{A}\)</span> (for example, the fourth column of <span class="math inline">\(\mathbf{A}\)</span>) can be written as a linear combination of the basis vectors of the columns space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-127" class="example"><strong>Example 11.12  </strong></span>Find a basis for the column space of the matrix
+<span class="math display">\[
+\mathbf{A} = \begin{pmatrix} 3 &amp; 1 &amp; 2 &amp; -3 \\ 4 &amp; 1 &amp; -3 &amp; -2 \\ 4 &amp; -1 &amp; -3 &amp; 1 \end{pmatrix}
+\]</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="section-unlabeled-div-30" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we first find its reduced row echelon form
+<span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \\ 0 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}
+\]</span>
+which has pivots in the first two columns. Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the linear combination of the vectors of <span class="math inline">\(\mathbf{A}\)</span>, spans <span class="math inline">\(\mathcal{R}^2\)</span> because there are two pivot columns. The first two columns of <span class="math inline">\(\mathbf{A}\)</span> are <span class="math inline">\(\begin{pmatrix} -4 \\ 8 \\ 6 \\ 9 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 1 \\ -2 \\ 3 \\ 7 \end{pmatrix}\)</span>. Because these 2 vectors are linearly independent (they are each pivot columns) and they span <span class="math inline">\(\mathcal{R}^2\)</span>, they form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>Note however, that the first two columns of the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span> (the vectors <span class="math inline">\(\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}\)</span>) do not form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>. This can be seen because The first two columns of <span class="math inline">\(\mathbf{A}\)</span> have non-zero entries in the 3rd and 4th elements.</p>
+</div>
+</div>
 
 </div>
 </div>
