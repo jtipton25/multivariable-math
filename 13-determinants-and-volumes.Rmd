@@ -6,7 +6,7 @@ library(dasc2594)
 ```
 
 
-:::{.definition}
+:::{.definition #parallelpiped}
 The **parallelpiped** defined by $n$ vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n$ with coefficients $x_1, x_2, \ldots, x_n$ is the subset
 
 \begin{align*}
@@ -15,7 +15,7 @@ The **parallelpiped** defined by $n$ vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots
 :::
 
 
-The determinant is a function that takes the vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ that make up the columns of $\mathbf{A}$ and returns the volume of the parallelpiped $\mathcal{P}$ defined above **add link**
+The determinant is a function that takes the vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ that make up the columns of $\mathbf{A}$ and returns the volume of the parallelpiped $\mathcal{P}$ from Definition (\@ref(def:parallelpiped))
 
 
 :::{.example}
@@ -94,6 +94,7 @@ Let $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ be vectors in $\mathcal{R
 ```
 <!-- ::: -->
 
+<div class="fold-proof">
 ::: {.proof}
 Recall the 4 defining properties (Definition \@ref(def:determinant)) that characterize the determinant. These properties also characterize the absolute value of the determinant.
 
@@ -128,6 +129,7 @@ Because the absolute value of the determinant $|\det|$ is the only function that
 vol(\mathcal{P}_A) = |\det(\mathbf{A})|
 \end{align*}
 :::
+</div>
 
 **Note:** Because $\det(\mathbf{A}) = \det(\mathbf{A}')$, the absolute value of the determinant is equal to the volume of the parallelpiped defined by the columns of $\mathbf{A}$ (we could just have easily done all the calculations on the columns of $\mathbf{A}$ as the rows of $\mathbf{A}$).
 
