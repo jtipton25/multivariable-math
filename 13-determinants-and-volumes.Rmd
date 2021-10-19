@@ -138,7 +138,7 @@ vol(\mathcal{P}_A) = |\det(\mathbf{A})|
 ```
 
 ```{example}
-2 by 2 matrix $a  b c d$ **in class**
+2 by 2 matrix $`r array_to_latex(matrix(c("a", "b", "c", "d"), 2, 2))`
 ```
 
 ```{example}
@@ -178,7 +178,7 @@ Let $\mathbf{a}_1$ and $\mathbf{a}_2$ be nonzero vectors. Then, for any scalar $
 :::
 
 ::: {.example}
-Draw a parallelpiped in class. recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.
+Draw a parallelpiped in class. Recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.
 :::
 
 

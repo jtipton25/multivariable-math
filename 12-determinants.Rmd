@@ -181,10 +181,13 @@ b) The **cofactor expansion along the $j$th column** (for any fixed column $j$) 
 ```
 
 
+<div class="fold-proof">
+
 ::: {.proof}
 This is quite complex. For those interested, an example is available [here](https://textbooks.math.gatech.edu/ila/determinants-cofactors.html)
 :::
 
+</div>
 
 **Note:**
 The above theorem states that there are actually $2n$ ways to calculate the determinant--one for each row and column of $\mathbf{A}$.
@@ -306,9 +309,13 @@ $$
 :::
 </div>
 
-::: {.example}
-in class: determinant of a matrix where at least one row is a linear combination of the other rows
-:::
+<!-- ::: {.example} -->
+<!-- in class: determinant of a matrix where at least one row is a linear combination of the other rows -->
+<!-- ::: -->
+
+<!-- :::{.solution} -->
+<!-- Without loss of generality, assume that the row that is a linear combination of the other rows is the first row. Then, the determinant can be found using the cofactor expansion.  -->
+<!-- ::: -->
 
 ::: {.theorem}
 The determinant of a matrix $\mathbf{A}$ is equal to the determinant of its transpose $\mathbf{A}'$. In other words, $\det(\mathbf{A}) = \det(\mathbf{A}')$
