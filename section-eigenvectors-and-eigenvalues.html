@@ -351,21 +351,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb235-3"><a href="section-eigenvectors-and-eigenvalues.html#cb235-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is “data-driven” called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-218" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
+<p><span id="section-def:unlabeled-div-217" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
 <span class="math display">\[\begin{align*}
 \mathbf{A} \mathbf{x} = \lambda \mathbf{x}
 \end{align*}\]</span>
 for some scalar <span class="math inline">\(\lambda\)</span>. If there exists some <span class="math inline">\(\lambda \neq 0\)</span> (a non-trivial solutions), then <span class="math inline">\(\lambda\)</span> is called an <strong>eigenvalue</strong> of <span class="math inline">\(\mathbf{A}\)</span> corresponding to the eigenvector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-219" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
+<p><span id="section-exm:unlabeled-div-218" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 1/2 &amp; 0 &amp; 0 \\ 0 &amp; 1/2 &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\)</span>. Determine if <span class="math inline">\(\mathbf{u}\)</span> or <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. If they are eigenvectors, what are the associated eigenvalues.</p>
 <p>Now, plot <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> to show this relationship geometrically.</p>
 </div>
 <p>An eigenvector is a (nonzero) vector <span class="math inline">\(\mathbf{x}\)</span> that gets mapped to a scalar multiple of itself <span class="math inline">\(\lambda \mathbf{x}\)</span> by the matrix transformation <span class="math inline">\(\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}\)</span>. As such, we say that <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> are collinear with the origin (<span class="math inline">\(\mathbf{0}\)</span>) in the sense that these points lie on the same line that goes through the origin.</p>
 <p><strong>Note:</strong> The matrix <span class="math inline">\(\mathbf{A}\)</span> must be an <span class="math inline">\(n \times n\)</span> square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-220" class="example"><strong>Example 20.2  </strong></span>Example: reflection
+<p><span id="section-exm:unlabeled-div-219" class="example"><strong>Example 20.2  </strong></span>Example: reflection
 Draw images: <a href="https://textbooks.math.gatech.edu/ila/eigenvectors.html">https://textbooks.math.gatech.edu/ila/eigenvectors.html</a></p>
 </div>
 
@@ -374,7 +374,7 @@ Draw images: <a href="https://textbooks.math.gatech.edu/ila/eigenvectors.html">h
 </div>
 
 <div class="proof">
-<p><span id="section-unlabeled-div-222" class="proof"><em>Proof</em>. </span>Suppose the set <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly dependent. Then, there is some <span class="math inline">\(j\)</span> such that <span class="math inline">\(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\)</span>. If we choose the first linearly dependent vector as <span class="math inline">\(j\)</span>, we know that the subset of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> is linearly independent and
+<p><span id="section-unlabeled-div-221" class="proof"><em>Proof</em>. </span>Suppose the set <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly dependent. Then, there is some <span class="math inline">\(j\)</span> such that <span class="math inline">\(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\)</span>. If we choose the first linearly dependent vector as <span class="math inline">\(j\)</span>, we know that the subset of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> is linearly independent and
 <span class="math display">\[\begin{align*}
 \mathbf{v}_j &amp; = x_1 \mathbf{v}_1 + \cdots x_{j-1} + \mathbf{v}_{j-1}
 \end{align*}\]</span>
@@ -404,7 +404,7 @@ Because <span class="math inline">\(\lambda_k \neq \lambda_j\)</span> for all <s
 Therefore, the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> associated with <span class="math inline">\(\lambda\)</span>, if there are any, are the nontrivial solutions of the homogeneous matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span>. In other words, the eigenvectors are the nonzero vectors in the null space null<span class="math inline">\(\left( \mathbf{A} -\lambda \mathbf{I} \right)\)</span>. If there is not a nontrivial solution (solution <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>), then <span class="math inline">\(\lambda\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. All we have to do is solve the system of linear equations <span class="math inline">\(\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> for a given <span class="math inline">\(\lambda\)</span> (actually, for all <span class="math inline">\(\lambda\)</span>s, which we can’t do). If only there was some way to find eigenvalues <span class="math inline">\(\lambda\)</span> (hint: there is and it is coming next chapter).</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-223" class="example"><strong>Example 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 6 &amp; -8 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 2 \end{pmatrix}\)</span>. Then an eigenvector with eigenvector <span class="math inline">\(\lambda\)</span> is a nontrival solution to
+<p><span id="section-exm:unlabeled-div-222" class="example"><strong>Example 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 6 &amp; -8 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 2 \end{pmatrix}\)</span>. Then an eigenvector with eigenvector <span class="math inline">\(\lambda\)</span> is a nontrival solution to
 <span class="math display">\[\begin{align*}
 \left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
 \end{align*}\]</span>
@@ -434,11 +434,11 @@ which has solution</p>
 ## [3,]    0    0    0    0</code></pre>
 </div>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-224" class="definition"><strong>Definition 20.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. Then, the <strong><span class="math inline">\(\lambda\)</span>-eigenspace</strong> of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> which is the subspace null(<span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span>).</p>
+<p><span id="section-def:unlabeled-div-223" class="definition"><strong>Definition 20.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. Then, the <strong><span class="math inline">\(\lambda\)</span>-eigenspace</strong> of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> which is the subspace null(<span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span>).</p>
 </div>
 <p>Therefore, the <span class="math inline">\(\lambda\)</span>-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector <span class="math inline">\(\mathbf{0}\)</span> and all the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> with corresponding eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-225" class="example"><strong>Example 20.4  </strong></span>For <span class="math inline">\(\lambda\)</span> = -2, 1, and 3, decide if <span class="math inline">\(\lambda\)</span> is a eigenvalue of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; -4 \\ -1 &amp; 1 \end{pmatrix}\)</span> and if so, compute a basis for the <span class="math inline">\(\lambda\)</span>-eigenspace.</p>
+<p><span id="section-exm:unlabeled-div-224" class="example"><strong>Example 20.4  </strong></span>For <span class="math inline">\(\lambda\)</span> = -2, 1, and 3, decide if <span class="math inline">\(\lambda\)</span> is a eigenvalue of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; -4 \\ -1 &amp; 1 \end{pmatrix}\)</span> and if so, compute a basis for the <span class="math inline">\(\lambda\)</span>-eigenspace.</p>
 <div class="sourceCode" id="section-cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="section-eigenvectors-and-eigenvalues.html#cb238-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">-4</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
 <ul>
 <li><p>Calculate using rref on <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> augmented with <span class="math inline">\(\mathbf{0}\)</span> and solve in parametric form</p></li>
@@ -456,18 +456,18 @@ which has solution</p>
 </ol>
 <p>Note that this leads of a fact about the <span class="math inline">\(0\)</span>-eigenspace.</p>
 <div class="definition">
-<p><span id="section-def:unlabeled-div-226" class="definition"><strong>Definition 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then</p>
+<p><span id="section-def:unlabeled-div-225" class="definition"><strong>Definition 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then</p>
 <ol style="list-style-type: decimal">
 <li><p>The number 0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(\mathbf{A}\)</span> is not invertible.</p></li>
 <li><p>If 0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>, then the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is null<span class="math inline">\((\mathbf{A})\)</span>.</p></li>
 </ol>
 </div>
 <div class="proof">
-<p><span id="section-unlabeled-div-227" class="proof"><em>Proof</em>. </span>0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if null<span class="math inline">\((\mathbf{A} - 0 \mathbf{I})\)</span> = null<span class="math inline">\((\mathbf{A})\)</span>. By the invertible matrix theorem, <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if null<span class="math inline">\((\mathbf{A}) = \{\mathbf{0}\}\)</span> but we know that the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is not the trivial set <span class="math inline">\(\{\mathbf{0}\}\)</span> because 0 is an eigenvalue.</p>
+<p><span id="section-unlabeled-div-226" class="proof"><em>Proof</em>. </span>0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if null<span class="math inline">\((\mathbf{A} - 0 \mathbf{I})\)</span> = null<span class="math inline">\((\mathbf{A})\)</span>. By the invertible matrix theorem, <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if null<span class="math inline">\((\mathbf{A}) = \{\mathbf{0}\}\)</span> but we know that the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is not the trivial set <span class="math inline">\(\{\mathbf{0}\}\)</span> because 0 is an eigenvalue.</p>
 </div>
 
 <div class="theorem">
-<p><span id="section-thm:unnamed-chunk-261" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>
+<p><span id="section-thm:unnamed-chunk-262" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix">8.5</a>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(T: \mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be the linear transformation given by <span class="math inline">\(T(\mathbf{x}) = \mathbf{A}\mathbf{x}\)</span>. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is invertible.</p></li>
