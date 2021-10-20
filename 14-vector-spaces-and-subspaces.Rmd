@@ -42,14 +42,26 @@ Another way to write null($\mathbf{A}$) is
 The null space of an $m \times n$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$.
 :::
 
+
+
 :::{.proof}
-Do in class
+To show that the null space of $\mathbf{A}$, denoted null($\mathbf{A})$, is a subspace we need to show the following
 
-* $\mathbf{0}$ vector
+1) The zero vector $\mathbf{0}$ is in the null space of $\mathbf{A}$
 
-* sum of vectors
+2) The null space of $\mathbf{A}$ is closed under addition
 
-* scalar multiplication
+3) The null space of $\mathbf{A}$ is closed under scalar multiplication
+
+The null space of $\mathbf{A}$ is defined as the set of vectors $\mathbf{x}$ such that $\mathbf{A} \mathbf{x} = \mathbf{0}$. 
+
+1) First, we show that the zero vector is in the subspace by setting $\mathbf{x} = \mathbf{0}$. Thus, because $\mathbf{A} \mathbf{0} = \mathbf{0}$, the zero vector $\mathbf{0}$ is in the null space of $\mathbf{A}$ .
+
+2) Next, let $\mathbf{u}$ and $\mathbf{v}$ be vectors in the null space of $\mathbf{A}$. Thus, by the definition of the null space we have $\mathbf{A} \mathbf{u} = \mathbf{0}$ and $\mathbf{A} \mathbf{v} = \mathbf{0}$. Consider the vector $\mathbf{u} + \mathbf{v}$ and consider $\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v} = \mathbf{0} + \mathbf{0} = \mathbf{0}$. Thus $\mathbf{u} + \mathbf{v}$ is in the null space of $\mathbf{A}$.
+
+3) Finally, let $\mathbf{u}$ be a vector in the null space of $\mathbf{A}$ and let $c$ be a scalar. Thus, by the definition of the null space we have $\mathbf{A} \mathbf{u} = \mathbf{0}$. Then, consider $\mathbf{A} (c \mathbf{u}) = c \mathbf{A} \mathbf{u} = c \mathbf{0} = \mathbf{0}$
+
+Because the three requirements for a subspace are met, this gives us that the null space of $\mathbf{A}$ is a subspace.
 :::
 
 
@@ -64,7 +76,7 @@ Find a spanning set for null($\mathbf{A}$) where
 \mathbf{A} = \begin{pmatrix} 7 & -2 & 7 & -4 & 5 \\ 2 & 0 & 3 & 3 & 9 \\ -5 & 2 & -5 & 7 & -2 \end{pmatrix}
 \end{align*}
 
-* Find solution to system of homogeneous system of equations
+* Find solution to system of homogeneous system of equations $\mathbf{A} \mathbf{x} = \mathbf{0}$
 
 ```{r}
 A <- matrix(c(7, 2, -5, -2, 0, 2, 7, 3, -5, -4, 3, 7, 5, 9, -2), 3, 5)
