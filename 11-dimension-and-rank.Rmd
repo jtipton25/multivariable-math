@@ -37,19 +37,20 @@ Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}$ be a basis for a sub
 ```{r, echo = FALSE}
 b1 <- c(3, 0, 1)
 b2 <- c(2, -3, 1)
+b3 <- c(0, 0, 1)
 a <- c(5, 6, 1)
 ```
 
 :::{.example}
-Let $\mathcal{B} = \left\{ \mathbf{b}_1 = `r array_to_latex(as.matrix(b1))`, \mathbf{b}_2 = `r array_to_latex(as.matrix(b2))`  \right\}$ and $\mathbf{a} = `r array_to_latex(as.matrix(a))`$. What are the coordinates of $\mathbf{a}$ with respect to the basis $\mathcal{B}$?
+Let $\mathcal{B} = \left\{ \mathbf{b}_1 = `r array_to_latex(as.matrix(b1))`, \mathbf{b}_2 = `r array_to_latex(as.matrix(b2))`, \mathbf{b}_3 = `r array_to_latex(as.matrix(b3))`  \right\}$ and $\mathbf{a} = `r array_to_latex(as.matrix(a))`$. What are the coordinates of $\mathbf{a}$ with respect to the basis $\mathcal{B}$?
 :::
 
 <div class="fold-solution">
 
 :::{.solution}
-It can be seen that $\mathbf{a} = 3 \mathbf{b}_1 - 2 \mathbf{b}_2$ because $3 `r array_to_latex(as.matrix(b1))` - 2  `r array_to_latex(as.matrix(b1))` =  `r array_to_latex(as.matrix(a))`$. Thus the coordinates of $\mathbf{a}$ with respect to $\mathcal{B}$ are $\mathbf{x} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}$
+It can be seen that $\mathbf{a} = 3 \mathbf{b}_1 - 2 \mathbf{b}_2 + 0 \mathbf{b}_3$ because $3 `r array_to_latex(as.matrix(b1))` - 2  `r array_to_latex(as.matrix(b2))` + 0  `r array_to_latex(as.matrix(b3))` =  `r array_to_latex(as.matrix(a))`$. Thus the coordinates of $\mathbf{a}$ with respect to $\mathcal{B}$ are $\mathbf{x} = \begin{pmatrix} 3 \\ -2 \\ 0 \end{pmatrix}$
 
-Now, the question is how to find such a solution in general. What we know is that if we write the matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \mathbf{b_2} \end{pmatrix}$, then the coefficients for the vector $\mathbf{x}$ are the solutions to the matrix equation 
+Now, the question is how to find such a solution in general. What we know is that if we write the matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \mathbf{b_2} & \mathbf{b_3} \end{pmatrix}$, then the coefficients for the vector $\mathbf{x}$ are the solutions to the matrix equation 
 $$
 \begin{align*}
 \mathbf{B} \mathbf{x} = \mathbf{a}
@@ -58,11 +59,11 @@ $$
 Notice that this is the same matrix equation as $\mathbf{A} \mathbf{x} = \mathbf{b}$ but written in different notation that denotes that $\mathbf{B}$ is a basis. Because $\mathbf{B}$ is a basis, we know that there is a pivot in every column which tells us that as long as $\mathbf{a}$ is in the columnspace of $\mathbf{B}$, there will be a unique solution for the coordinates $\mathbf{x}$. Using an augmented matrix approach, you can solve for $\mathbf{x}$ using elementary row operations applied to the matrix
 $$
 \begin{align*}
-\begin{pmatrix} \mathbf{B} & \mathbf{a} \end{pmatrix} & = `r array_to_latex(cbind(b1, b2, a))` \\
-& \stackrel{RREF}{\huge \sim} `r array_to_latex(rref(cbind(b1, b2, a)))` 
+\begin{pmatrix} \mathbf{B} & \mathbf{a} \end{pmatrix} & = `r array_to_latex(cbind(b1, b2, b3, a))` \\
+& \stackrel{RREF}{\huge \sim} `r array_to_latex(rref(cbind(b1, b2, b3, a)))` 
 \end{align*}
 $$
-which gives the solution that $\mathbf{x} = \begin{pmatrix} x_1 \\ x_ 2 \end{pmatrix} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}$
+which gives the solution that $\mathbf{x} = \begin{pmatrix} x_1 \\ x_ 2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 3 \\ -2 \\ 0\end{pmatrix}$
 
 
 In `R`, this can be done as
@@ -70,9 +71,10 @@ In `R`, this can be done as
 ```{r}
 b1 <- c(3, 0, 1)
 b2 <- c(2, -3, 1)
+b3 <- c(0, 0, 1)
 a <- c(5, 6, 1)
 
-rref(cbind(b1, b2, a))
+rref(cbind(b1, b2, b3, a))
 ```
 
 :::
