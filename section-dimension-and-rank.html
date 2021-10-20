@@ -371,12 +371,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-138" class="example"><strong>Example 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{a} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{a}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-138" class="example"><strong>Example 12.1  </strong></span>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix}, \mathbf{b}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{a} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{a}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="section-unlabeled-div-32" class="solution"><em>Solution</em>. </span>It can be seen that <span class="math inline">\(\mathbf{a} = 3 \mathbf{b}_1 - 2 \mathbf{b}_2\)</span> because <span class="math inline">\(3 \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix} - 2 \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\)</span>. Thus the coordinates of <span class="math inline">\(\mathbf{a}\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span> are <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}\)</span></p>
-<p>Now, the question is how to find such a solution in general. What we know is that if we write the matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \mathbf{b_2} \end{pmatrix}\)</span>, then the coefficients for the vector <span class="math inline">\(\mathbf{x}\)</span> are the solutions to the matrix equation
+<p><span id="section-unlabeled-div-32" class="solution"><em>Solution</em>. </span>It can be seen that <span class="math inline">\(\mathbf{a} = 3 \mathbf{b}_1 - 2 \mathbf{b}_2 + 0 \mathbf{b}_3\)</span> because <span class="math inline">\(3 \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix} - 2 \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\)</span>. Thus the coordinates of <span class="math inline">\(\mathbf{a}\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span> are <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ -2 \\ 0 \end{pmatrix}\)</span></p>
+<p>Now, the question is how to find such a solution in general. What we know is that if we write the matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \mathbf{b_2} &amp; \mathbf{b_3} \end{pmatrix}\)</span>, then the coefficients for the vector <span class="math inline">\(\mathbf{x}\)</span> are the solutions to the matrix equation
 <span class="math display">\[
 \begin{align*}
 \mathbf{B} \mathbf{x} = \mathbf{a}
@@ -385,21 +385,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Notice that this is the same matrix equation as <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> but written in different notation that denotes that <span class="math inline">\(\mathbf{B}\)</span> is a basis. Because <span class="math inline">\(\mathbf{B}\)</span> is a basis, we know that there is a pivot in every column which tells us that as long as <span class="math inline">\(\mathbf{a}\)</span> is in the columnspace of <span class="math inline">\(\mathbf{B}\)</span>, there will be a unique solution for the coordinates <span class="math inline">\(\mathbf{x}\)</span>. Using an augmented matrix approach, you can solve for <span class="math inline">\(\mathbf{x}\)</span> using elementary row operations applied to the matrix
 <span class="math display">\[
 \begin{align*}
-\begin{pmatrix} \mathbf{B} &amp; \mathbf{a} \end{pmatrix} &amp; = \begin{pmatrix} 3 &amp; 2 &amp; 5 \\ 0 &amp; -3 &amp; 6 \\ 1 &amp; 1 &amp; 1 \end{pmatrix} \\
-&amp; \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 3 \\ 0 &amp; 1 &amp; -2 \\ 0 &amp; 0 &amp; 0 \end{pmatrix} 
+\begin{pmatrix} \mathbf{B} &amp; \mathbf{a} \end{pmatrix} &amp; = \begin{pmatrix} 3 &amp; 2 &amp; 0 &amp; 5 \\ 0 &amp; -3 &amp; 0 &amp; 6 \\ 1 &amp; 1 &amp; 1 &amp; 1 \end{pmatrix} \\
+&amp; \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 3 \\ 0 &amp; 1 &amp; 0 &amp; -2 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix} 
 \end{align*}
 \]</span>
-which gives the solution that <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_ 2 \end{pmatrix} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}\)</span></p>
+which gives the solution that <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_ 2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 3 \\ -2 \\ 0\end{pmatrix}\)</span></p>
 <p>In <code>R</code>, this can be done as</p>
 <div class="sourceCode" id="section-cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="section-dimension-and-rank.html#cb207-1"></a>b1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb207-2"><a href="section-dimension-and-rank.html#cb207-2"></a>b2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">1</span>)</span>
-<span id="cb207-3"><a href="section-dimension-and-rank.html#cb207-3"></a>a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
-<span id="cb207-4"><a href="section-dimension-and-rank.html#cb207-4"></a></span>
-<span id="cb207-5"><a href="section-dimension-and-rank.html#cb207-5"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(b1, b2, a))</span></code></pre></div>
-<pre><code>##      b1 b2  a
-## [1,]  1  0  3
-## [2,]  0  1 -2
-## [3,]  0  0  0</code></pre>
+<span id="cb207-3"><a href="section-dimension-and-rank.html#cb207-3"></a>b3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb207-4"><a href="section-dimension-and-rank.html#cb207-4"></a>a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb207-5"><a href="section-dimension-and-rank.html#cb207-5"></a></span>
+<span id="cb207-6"><a href="section-dimension-and-rank.html#cb207-6"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(b1, b2, b3, a))</span></code></pre></div>
+<pre><code>##      b1 b2 b3  a
+## [1,]  1  0  0  3
+## [2,]  0  1  0 -2
+## [3,]  0  0  1  0</code></pre>
 </div>
 </div>
 </div>
