@@ -63,7 +63,7 @@ We can calculate the determinant $\operatorname{det}(\mathbf{A})$ using row oper
 && \begin{pmatrix} 2 & 0 \\ -3 & 5 \end{pmatrix} && \operatorname{det} = x \\
 \mbox{multiply row 1 by }\frac{1}{2} && \begin{pmatrix} 1 & 0 \\ -3 & 5  \end{pmatrix} && \operatorname{det} = \frac{x}{2} \\
 \mbox{multiply row 2 by }\frac{-1}{3} && \begin{pmatrix} 1 & 0 \\ 1 & -\frac{5}{3} \end{pmatrix} && \operatorname{det} = -\frac{x}{6} \\
-\mbox{row 2 = row 2 - row 1} && \begin{pmatrix} 1 & 0 \\ 0 & -\frac{5}{3}  \end{pmatrix} && \operatorname{det} = -\frac{x}{18} \\
+\mbox{row 2 = row 2 - row 1} && \begin{pmatrix} 1 & 0 \\ 0 & -\frac{5}{3}  \end{pmatrix} && \operatorname{det} = -\frac{x}{6} \\
 \mbox{multiply row 2 by } - \frac{3}{5} && \begin{pmatrix} 1 & 0 \\ 0 & 1  \end{pmatrix} && \operatorname{det} = \frac{x}{10} 
 \end{align*}
 where the last matrix is in reduced row echelon form and is the identity matrix which has determinant $\operatorname{det}(\mathbf{I}) = 1$. Therefore $\frac{x}{10} = 1$ which implies that $x = 10$ so that $\operatorname{det}(\mathbf{A}) = 10$
@@ -78,7 +78,7 @@ det(A)
 
 ## Determinants of $2 \times 2$ matrices
 
-::: {.definition}
+::: {.definition #det22}
 If $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is a $2 \times 2$ matrix, the determinant $\operatorname{det}(\mathbf{A}) = ad - bc$ 
 :::
 ```{r, echo = FALSE}
@@ -86,9 +86,16 @@ A <- matrix(c(5, 1, 3, -3), 2, 2)
 ```
 
 ::: {.example}
-Let $\mathbf{A} = `r array_to_latex(A)`$, then $\det(\mathbf{A}) = (5 * -3) - (3 * 1) = -18$
+Let $\mathbf{A} = `r array_to_latex(A)`$. What is $\det(\mathbf{A})$?
 :::
 
+<div class="fold-solution">
+
+:::{.solution}
+Using Definition (\@ref(def:det22)), the determinant of $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is  $\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18$
+:::
+
+</div>
 
 
 ## Determinants of $n \times n$ matrices
@@ -321,9 +328,15 @@ $$
 The determinant of a matrix $\mathbf{A}$ is equal to the determinant of its transpose $\mathbf{A}'$. In other words, $\det(\mathbf{A}) = \det(\mathbf{A}')$
 :::
 
+<div class="fold-proof">
+
 ::: {.proof}
 Follows directly from cofactor expansion theorem. The expansion along a given row/column of $\mathbf{A}$ is equivalent to expansion along the corresponding column/row of $\mathbf{A}'$ (notice the row/column for $\mathbf{A}$ got swapped to column/row for $\mathbf{A}'$).
 :::
+
+</div>
+
+
 
 
 ## Properties of determinants

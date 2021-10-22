@@ -137,9 +137,9 @@ vol(\mathcal{P}_A) = |\det(\mathbf{A})|
 1 by 1 matrix $a$ (length) has $\det(a) = a$
 ```
 
-```{example}
-2 by 2 matrix $`r array_to_latex(matrix(c("a", "b", "c", "d"), 2, 2))`
-```
+:::{.example}
+2 by 2 matrix $`r array_to_latex(matrix(c("a", "b", "c", "d"), 2, 2))`$
+:::
 
 ```{example}
 Find the area of a parallelogram with sides defined by the vectors $\begin{pmatrix} 2 \\ 4 \end{pmatrix}$ and $\begin{pmatrix} -1 \\ 2 \end{pmatrix}$ 

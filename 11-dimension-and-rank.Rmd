@@ -90,22 +90,65 @@ The **dimension** $\operatorname{dim}(\mathcal{H})$ of a nonzero subspace $\math
 :::
 
 :::{.example}
-Note that under this definition, the basis $\mathcal{B}$ is not unique. For example, the following bases for the 2-dimensional subspace $\mathcal{H}$ of $\mathcal{R}^3$ both have two linearly independent vectors.
+Note that under this definition, the basis $\mathcal{B}$ is not unique. For example, the following bases for the 3-dimensional subspace $\mathcal{H}$ of $\mathcal{R}^3$ both have three linearly independent vectors.
 
 \begin{align*}
-\mathcal{B}_1 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} 
+\mathcal{B}_1 =  \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \right\} 
 \end{align*}
 
-For example, let $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$. Then under the basis $\mathcal{B}_1$, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$ are $a_1 = 3$ and $a_2 = 4$ because 
-\begin{align*}
-\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
-\end{align*}
-while the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are $a_1 = 3$ and $a_2 = 1$ because
-\begin{align*}
-\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}.
-\end{align*}
+Let $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$. What are the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ and $\mathcal{B}_2$?
 :::
 
+
+
+<div class="fold-solution">
+
+:::{.solution}
+Under the basis $\mathcal{B}_1$, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$ are $a_1 = 3$, $a_2 = 4$, and $a_3 = 0$ because 
+\begin{align*}
+\mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 =  \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
+\end{align*}
+which we write as $[\mathbf{x}]_{B_1} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$. 
+
+The coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are $a_1 = 3$, $a_2 = 1$, and $a_3 = 0$ because
+\begin{align*}
+\mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}.
+\end{align*}
+which we write as $[\mathbf{x}]_{B_2} = \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$.. 
+
+We can get these coordinates using `R` by creating augmented matrices and using row operations. For example, the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ are
+```{r}
+B1 <- matrix(c(1, 0, 0, 0, 1, 0, 0, 0, 1), 3, 3)
+B1
+x <- c(3, 4, 0)
+x
+# augmented matrix
+cbind(B1, x)
+# rref of augmented matrix
+rref(cbind(B1, x))
+```
+which gives the coordinates
+```{r}
+rref(cbind(B1, x))[, 4]
+```
+
+The coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are
+```{r}
+B2 <- matrix(c(1, 1, 0, 0, 1, 0, 1, 0, 1), 3, 3)
+B2
+x <- c(3, 4, 0)
+x
+# augmented matrix
+cbind(B2, x)
+# rref of augmented matrix
+rref(cbind(B2, x))
+```
+which gives the coordinates
+```{r}
+rref(cbind(B2, x))[, 4]
+```
+:::
+</div>
 
 :::{.example}
 
