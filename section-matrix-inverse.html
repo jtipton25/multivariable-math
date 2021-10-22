@@ -376,7 +376,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 ## [3,]    0    0    1    0
 ## [4,]    0    0    0    1</code></pre>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-101" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
+<p><span id="section-exm:unlabeled-div-104" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
 \begin{align*}
 \mathbf{A} = \begin{pmatrix} 1 &amp; -1 \\ 2 &amp; -3 \end{pmatrix} &amp;&amp; \mathbf{B} = \begin{pmatrix} 3 &amp; -1 \\ 2 &amp; -1 \end{pmatrix}
 \end{align*}
@@ -420,7 +420,7 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
 <!-- Example -->
 <div class="example">
-<p><span id="section-exm:unlabeled-div-104" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
+<p><span id="section-exm:unlabeled-div-107" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
 <p><span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 \\ -1 &amp; 2 \end{pmatrix}\)</span></p>
 </div>
 
@@ -442,7 +442,7 @@ has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1}
 </div>
 
 <div class="example">
-<p><span id="section-exm:unlabeled-div-107" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
+<p><span id="section-exm:unlabeled-div-110" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
 <p>Find the solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></p>
 </div>
 
@@ -568,7 +568,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p>The previous theorem states that for a <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(\mathbf{A}\)</span>, the elementary row operations that covert <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span> also convert <span class="math inline">\(\mathbf{I}\)</span> to <span class="math inline">\(\mathbf{A}^{-1}\)</span>. This suggests an algorithm for finding the inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span> of <span class="math inline">\(\mathbf{A}\)</span>:</p>
 <p>Create the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{A} &amp; \mathbf{I} \end{pmatrix}\)</span> and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form <span class="math inline">\(\begin{pmatrix} \mathbf{I} &amp; \mathbf{A}^{-1} \end{pmatrix}\)</span> then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is the inverse of <span class="math inline">\(\mathbf{A}\)</span>. If the leading matrix in the augmented matrix is not the identity matrix <span class="math inline">\(\mathbf{I}\)</span>, then <span class="math inline">\(\mathbf{A}\)</span> is not row equivalent to <span class="math inline">\(\mathbf{I}\)</span> and is therefore not invertible.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-109" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
+<p><span id="section-exm:unlabeled-div-112" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
 <p>Using <code>R</code></p>
 </div>
 </div>

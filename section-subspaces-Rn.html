@@ -374,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-123" class="example"><strong>Example 11.2  </strong></span>Recall that a solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> that has one free variable is a line through the origin and the solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> that has one free variable is a line parallel to the prior line that does not go through the origin.</p>
+<p><span id="section-exm:unlabeled-div-126" class="example"><strong>Example 11.2  </strong></span>Recall that a solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> that has one free variable is a line through the origin and the solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> that has one free variable is a line parallel to the prior line that does not go through the origin.</p>
 <ol style="list-style-type: upper-alpha">
 <li><p>Is a line through the origin a subspace?</p></li>
 <li><p>Is a line <strong>not</strong> through the origin a subspace?</p></li>
@@ -427,7 +427,7 @@ which is a solution to the matrix equation and therefore <span class="math inlin
 <p><span id="section-def:column-space" class="definition"><strong>Definition 11.2  </strong></span>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-124" class="example"><strong>Example 11.3  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, what is the column space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-127" class="example"><strong>Example 11.3  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, what is the column space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -445,7 +445,7 @@ Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span> is the
 </div>
 <p>While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>. In other words, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}\)</span>.</p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-125" class="example"><strong>Example 11.4  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, find vectors that span the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p><span id="section-exm:unlabeled-div-128" class="example"><strong>Example 11.4  </strong></span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, find vectors that span the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -531,7 +531,7 @@ Show that the three requirements of the defintion of a subspace in Definition (<
 </div>
 <p>The requirement that the vectors of a basis are linearly independent while spanning a subspace <span class="math inline">\(\mathcal{H}\)</span> means that a basis is a <strong>minimal spanning set</strong> for the subspace <span class="math inline">\(\mathcal{H}\)</span></p>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-128" class="example"><strong>Example 11.5  </strong></span>Is a basis for a vector space unique?</p>
+<p><span id="section-exm:unlabeled-div-131" class="example"><strong>Example 11.5  </strong></span>Is a basis for a vector space unique?</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -548,7 +548,7 @@ Show that the three requirements of the defintion of a subspace in Definition (<
 Notice that the matrix defined as having columns <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\)</span> is the identity matrix <span class="math inline">\(\mathbf{I}\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-129" class="example"><strong>Example 11.6  </strong></span>What is the standard basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-132" class="example"><strong>Example 11.6  </strong></span>What is the standard basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -556,7 +556,7 @@ Notice that the matrix defined as having columns <span class="math inline">\(\ma
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-130" class="example"><strong>Example 11.7  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-133" class="example"><strong>Example 11.7  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 <p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span></p>
 </div>
 <div class="fold-solution">
@@ -586,7 +586,7 @@ Because the reduced row echelon form of the matrix has 3 pivot columns, the span
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-131" class="example"><strong>Example 11.8  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-134" class="example"><strong>Example 11.8  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 <p><span class="math inline">\(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\)</span></p>
 </div>
 <div class="fold-solution">
@@ -617,7 +617,7 @@ Because the reduced row echelon form of the matrix has 3 pivot columns, the span
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-132" class="example"><strong>Example 11.9  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<p><span id="section-exm:unlabeled-div-135" class="example"><strong>Example 11.9  </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
 <p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\)</span></p>
 </div>
 <div class="fold-solution">
@@ -647,7 +647,7 @@ Because the reduced row echelon form of the matrix has 2 pivot columns, the span
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-133" class="example"><strong>Example 11.10  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
+<p><span id="section-exm:unlabeled-div-136" class="example"><strong>Example 11.10  </strong></span>Using <code>R</code>, find a basis for the null space of the matrix
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; 1 &amp; 3 \\ -1 &amp; -2 &amp; 6 &amp; 5 \\ 1 &amp; 2 &amp; -3 &amp; 2 \end{pmatrix}
 \]</span></p>
@@ -693,7 +693,7 @@ Because the reduced row echelon form of the matrix has 2 pivot columns, the span
 <!-- ```{corollary} -->
 <!-- ``` -->
 <div class="example">
-<p><span id="section-exm:unlabeled-div-135" class="example"><strong>Example 11.11  </strong></span>Find a basis for the column space of the matrix
+<p><span id="section-exm:unlabeled-div-138" class="example"><strong>Example 11.11  </strong></span>Find a basis for the column space of the matrix
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} 3 &amp; 1 &amp; 2 &amp; -3 \\ 4 &amp; 1 &amp; -3 &amp; -2 \\ 4 &amp; -1 &amp; -3 &amp; 1 \end{pmatrix}
 \]</span></p>
@@ -709,7 +709,7 @@ which has pivots in the first three columns. Thus, the column space of <span cla
 </div>
 </div>
 <div class="example">
-<p><span id="section-exm:unlabeled-div-136" class="example"><strong>Example 11.12  </strong></span>Find a basis for the column space of the matrix
+<p><span id="section-exm:unlabeled-div-139" class="example"><strong>Example 11.12  </strong></span>Find a basis for the column space of the matrix
 <span class="math display">\[
 \begin{pmatrix} -4 &amp; 1 \\ 8 &amp; -2 \\ 6 &amp; 3 \\ 9 &amp; 7 \end{pmatrix}
 \]</span></p>
