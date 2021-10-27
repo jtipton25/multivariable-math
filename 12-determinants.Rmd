@@ -1,5 +1,7 @@
 # Determinants {#determinants}
 
+- [3 Blue 1 Brown -- The determinant](https://www.3blue1brown.com/lessons/determinant)
+
 ```{r, message = FALSE}
 library(tidyverse)
 library(dasc2594)
@@ -368,6 +370,7 @@ e) $\det(c\mathbf{A}) = c^n \det(\mathbf{A})$
 
 ## Cramer's Rule and Determinants
 
+- [3 Blue 1 Brown -- Cramer's rule](https://www.3blue1brown.com/lessons/cramers-rule)
 While commonly used for theoretical results, Cramer's rule is not commonly used in applied linear algebra. As such, we will mention Cramer's rule but not focus on it.
 
 ```{theorem, name = "Cramer's Rule"}

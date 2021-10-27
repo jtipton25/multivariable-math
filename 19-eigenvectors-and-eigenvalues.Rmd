@@ -1,5 +1,6 @@
 # Eigenvectors and Eigenvalues
 
+- [3 Blue 1 Brown -- Eigenvalues](https://www.3blue1brown.com/lessons/eigenvalues)
 
 ```{r, message = FALSE}
 library(tidyverse)

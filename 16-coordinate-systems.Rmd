@@ -1,4 +1,8 @@
 # Coordinate Systems and Dimension
+
+- [3 Blue 1 Brown -- Change of basis](https://www.3blue1brown.com/lessons/change-of-basis)
+
+
 \newcommand{\basis}{{\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}}}
 \newcommand{\V}{{\mathcal{V}}}
 

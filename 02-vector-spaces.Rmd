@@ -1,5 +1,8 @@
 # Vectors spaces {#vector-spaces}
 
+
+- [3 Blue 1 Brown -- Linear combinations, span, and basis vectors](https://www.3blue1brown.com/lessons/span)
+
 ```{r}
 library(shiny)
 library(patchwork)

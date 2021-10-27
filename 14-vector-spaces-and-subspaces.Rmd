@@ -1,5 +1,10 @@
 #  Vector Spaces and Subspaces
 
+
+
+- [3 Blue 1 Brown -- Abstract vector spaces](https://www.3blue1brown.com/lessons/abstract-vector-spaces)
+
+
 ```{r, echo = FALSE}
 library(tidyverse)
 library(dasc2594)

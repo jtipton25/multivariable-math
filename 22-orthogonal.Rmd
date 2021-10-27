@@ -1,5 +1,7 @@
 # Inner product, length, and orthogonality
 
+- [3 Blue 1 Brown -- The dot prodcut](https://www.3blue1brown.com/lessons/dot-products)
+
 
 ```{r, message = FALSE}
 library(tidyverse)
