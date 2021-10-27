@@ -347,7 +347,7 @@ A $n \times n$ square matrix $\mathbf{A}$ is invertible if and only if $\det(\ma
 
 <div class="fold-proof">
 ::: {.proof}
-From the invertible matrix theorem **link to this in notes**, we know that the matrix $\mathbf{A}$ is invertible if and only if every column of $\mathbf{A}$ is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of $\mathbf{A}$ are linearly independent and the matrix is invertible.
+From the invertible matrix theorem (Theorem \@ref(thm:invertible-matrix)), we know that the matrix $\mathbf{A}$ is invertible if and only if every column of $\mathbf{A}$ is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of $\mathbf{A}$ are linearly independent and the matrix is invertible.
 :::
 </div>
 
