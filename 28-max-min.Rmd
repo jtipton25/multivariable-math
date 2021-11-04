@@ -30,12 +30,14 @@ If $f(x, y)$ has a local minimum at the point $(a, b)$ and $f(x, y)$ is a differ
 
 As stated above, the fact that the partial derivatives $f_x(a, b) = 0$ and $f_y(a, b) = 0$ does not imply that the point $(a, b)$ is a local minimum. Instead, the partial derivatives being 0 only implies that $(a, b)$ is a critical point of the function $f(x, y)$. 
 
-```{definition}
+:::{.definition}
 The point $(a, b)$ is a critical point of the function $f(x, y)$ if either
 
 a) $f_x(a, b) = 0$ and $f_y(a, b) = 0$ or
+
 b) at least one partial derivative does not exist at $(a, b)$.
-```
+
+:::
 
 
 :::{.example}
@@ -221,7 +223,7 @@ A saddle point of a differentiable function $f(x, y)$ is a critical point $(a, b
 
 Finding critical points is a first step in finding minimums, however, we need a method to determine whether a critical point is a local minimum/maximum or a saddle point. To determine this, the second derivative test is useful. 
 
-```{theorem, name = "Second Derivative Test"}
+:::{.theorem name = "Second Derivative Test"}
 Let $f_x(a, b) = f_y(a, b) = 0$ so that the point $(a, b)$ is a critical point. Also let the $f(x, y)$ be second-order differentiable (the second partial derivatives exists) throughout the open disk $\| (x, y) - (a, b)\|< \epsilon$ for some $\epsilon > 0$. Then
 
 1) If $f_{xx}(a, b)f_{yy}(a, b) - (f_{xy}(a, b))^2 > 0$ and $f_{xx}(a, b) < 0$, then $f(x, y)$ has a local maximum at $(a, b)$.
@@ -231,7 +233,8 @@ Let $f_x(a, b) = f_y(a, b) = 0$ so that the point $(a, b)$ is a critical point. 
 3) If $f_{xx}(a, b)f_{yy}(a, b) - (f_{xy}(a, b))^2 < 0$, then $f(x, y)$ has a saddle point at $(a, b)$.
 
 4) If $f_{xx}(a, b)f_{yy}(a, b) - (f_{xy}(a, b))^2 = 0$, the test is inconclusive.
-```
+
+:::
 
 
 
