@@ -53,7 +53,7 @@ plot_ly(z = matrix(dat$z, 20, 20)) %>%
     )
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
   htmlwidgets::saveWidget(plot_ly(z = matrix(dat$z, 20, 20)) %>%
                             add_surface(
@@ -63,11 +63,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
                                   usecolormap=TRUE,
                                   highlightcolor="#ff0000",
                                   project=list(z=TRUE)))),
-                          file = "./images/contour.html")
-    webshot2::webshot(url = "./images/contour.html", 
-                      file = "./images/contour.png", 
+                          file = "./webshot-images/contour.html")
+    webshot2::webshot(url = "./webshot-images/contour.html", 
+                      file = "./webshot-images/contour.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/contour.png")
+    knitr::include_graphics("./webshot-images/contour.png")
 
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
   plot_ly(z = matrix(dat$z, 20, 20)) %>%

@@ -82,7 +82,9 @@ The Shiny app below allows you to plot the vector for any $(x, y)$ pair of your 
 
 ```{r, echo = TRUE, eval = FALSE}
 library(shiny)
-runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-14/determinants-volume/") 
+runGitHub(rep = "multivariable-math",
+          username = "jtipton25",
+          subdir = "shiny-apps/chapter-14/determinants-volume/") 
 ```
 
 

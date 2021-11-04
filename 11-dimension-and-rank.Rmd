@@ -114,7 +114,7 @@ $$
 \mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 =  \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
 \end{aligned}
 $$
-which we write as $[\mathbf{x}]_{B_1} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$. 
+which we write as $\left[\mathbf{x}\right]_{B_1} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$. 
 
 The coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are $a_1 = 3$, $a_2 = 1$, and $a_3 = 0$ because
 $$
@@ -122,7 +122,7 @@ $$
 \mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}.
 \end{aligned}
 $$
-which we write as $[\mathbf{x}]_{B_2} = \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$.. 
+which we write as $\left[\mathbf{x}\right]_{B_2} = \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$.. 
 
 We can get these coordinates using `R` by creating augmented matrices and using row operations. For example, the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ are
 ```{r}

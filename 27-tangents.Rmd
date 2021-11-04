@@ -30,7 +30,7 @@ plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xl
 
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width = "100%"}
 target_fun <- function(x, y) {
     return(x^2 + y^2)
 }
@@ -42,11 +42,11 @@ grad_fun <- function(x, y) {
 # plot
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1),
-                            file = "./images/tangent1.html")
-    webshot2::webshot(url = "./images/tangent1.html", 
-                      file = "./images/tangent1.png", 
+                            file = "./webshot-images/tangent1.html")
+    webshot2::webshot(url = "./webshot-images/tangent1.html", 
+                      file = "./webshot-images/tangent1.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/tangent1.png")
+    knitr::include_graphics("./webshot-images/tangent1.png")
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     # plot 
@@ -57,11 +57,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 # zoomed-in plot
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.5, 0.5), ylim = c(0.5, 1.5)),
-                            file = "./images/tangent2.html")
-    webshot2::webshot(url = "./images/tangent2.html", 
-                      file = "./images/tangent2.png", 
+                            file = "./webshot-images/tangent2.html")
+    webshot2::webshot(url = "./webshot-images/tangent2.html", 
+                      file = "./webshot-images/tangent2.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/tangent2.png")
+    knitr::include_graphics("./webshot-images/tangent2.png")
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     # plot 
@@ -73,11 +73,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 # super zoomed in plot
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.1, -0.9), ylim = c(0.9, 1.1)),
-                            file = "./images/tangent3.html")
-    webshot2::webshot(url = "./images/tangent3.html", 
-                      file = "./images/tangent3.png", 
+                            file = "./webshot-images/tangent3.html")
+    webshot2::webshot(url = "./webshot-images/tangent3.html", 
+                      file = "./webshot-images/tangent3.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/tangent3.png")
+    knitr::include_graphics("./webshot-images/tangent3.png")
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     # plot 

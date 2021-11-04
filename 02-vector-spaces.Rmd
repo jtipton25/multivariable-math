@@ -223,14 +223,18 @@ The below Shiny app allows you to plot the vector for any $(x, y)$ pair of your 
 
 ```{r, echo = FALSE, eval = FALSE}
 library(shiny)
-runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
+runGitHub(rep = "multivariable-math",
+          username = "jtipton25", 
+          subdir = "shiny-apps/chapter-03/vector-space") 
 ```
 
 The shiny app can be downloaded and run on your own computer using 
 
 ```{r, eval = FALSE}
 library(shiny)
-runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/vector-space") 
+runGitHub(rep = "multivariable-math", 
+          username = "jtipton25",
+          subdir = "shiny-apps/chapter-03/vector-space") 
 ```
 
 #### Addition of vectors
@@ -585,7 +589,9 @@ The shiny app below demonstrates how the concept of span can be understood in 2 
 
 ```{r, eval = FALSE}
 library(shiny)
-runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-apps/chapter-03/span") 
+runGitHub(rep = "multivariable-math",
+          username = "jtipton25", 
+          subdir = "shiny-apps/chapter-03/span") 
 ```
 
 

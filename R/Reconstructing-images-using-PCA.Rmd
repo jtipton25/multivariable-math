@@ -24,7 +24,7 @@ knitr::include_graphics(here::here("images", "elvis-nixon.jpeg"))
 # knitr::include_graphics(here::here("images", "jupiter.png"))
 ```
 
-<!-- ![](../images/jupiter.png) -->
+<!-- ![](../webshot-images/jupiter.png) -->
 
 
 <!-- ## Setup -->
@@ -194,7 +194,7 @@ recovered_imgs <- map_dfr(
 This gives us a very long tibble with an index (`pcs`) for the number of components used to reconstruct the image. In essence it's eight images stacked on top of one another. Each image has been reconstituted using a some number of components, from a very small number (2) to a larger number (100). Now we can plot each resulting image in a small multiple. In the code for the plot, we use `scale_y_reverse` because by convention the indexing for pixel images starts in the top left corner of the image. If we plot it the usual way (with x = 1, y = 1 in the bottom left, instead of the top left) the image will be upside down.
 
 
-```{r}
+```{r, out.width="100%"}
 if (!file.exists(here::here("images", "elvis-nixon-pca.png"))) {
   p <- ggplot(data = recovered_imgs,
               mapping = aes(x = x, y = y, fill = value))
@@ -293,7 +293,7 @@ if (!file.exists(here::here("images", "elvis-nixon-pca.gif"))) {
 }
 ```
 
-```{r}
+```{r, out.width="100%"}
 knitr::include_graphics(here::here("images", "elvis-nixon-pca.gif"))
 ```
 

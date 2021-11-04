@@ -165,7 +165,7 @@ $$
 
 ### Understanding the differerneces between the column space and the null space
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics(here::here("images", "null-column.jpg"))
 ```
 

@@ -23,11 +23,11 @@ A linear transformation is mathematically defined as a function/mapping $T(\cdot
 
 **Draw figure**
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics(here::here("images", "transformation-1.jpg"))
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics(here::here("images", "transformation-2.jpg"))
 ```
 
@@ -754,11 +754,11 @@ A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **one-to-
 :::
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics("images/one-to-one.png")
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics("images/not-one-to-one.png")
 ```
 
@@ -888,11 +888,11 @@ A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **onto** 
 :::
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics("images/onto.png")
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 knitr::include_graphics("images/not-onto.png")
 ```
 

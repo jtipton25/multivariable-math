@@ -3,18 +3,18 @@
 - [3 Blue 1 Brown -- Change of basis](https://www.3blue1brown.com/lessons/change-of-basis)
 
 
-Consider two bases $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ and $\mathcal{C} = \{ \mathbf{c}_1, \ldots, \mathbf{c}_n \}$ for a vector space $\mathcal{V}$. If we have a vector $[\mathbf{x}]_B$ with coordinates in $\mathcal{B}$, what are the coordinates of $[\mathbf{x}]_C$ with respect to $\mathcal{C}$?
+Consider two bases $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ and $\mathcal{C} = \{ \mathbf{c}_1, \ldots, \mathbf{c}_n \}$ for a vector space $\mathcal{V}$. If we have a vector $\left[\mathbf{x}\right]_B$ with coordinates in $\mathcal{B}$, what are the coordinates of $\left[\mathbf{x}\right]_C$ with respect to $\mathcal{C}$?
 
-* Recall: we know how to change from the standard coordinates to the basis $\mathcal{B}$. If $\mathbf{x}$ is a vector in the standard coordinates and $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}$ is a matrix with columns given by the basis $\mathbf{B}$, the coordinates of $[\mathbf{x}]_B$ of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}$ are 
+* Recall: we know how to change from the standard coordinates to the basis $\mathcal{B}$. If $\mathbf{x}$ is a vector in the standard coordinates and $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}$ is a matrix with columns given by the basis $\mathbf{B}$, the coordinates of $\left[\mathbf{x}\right]_B$ of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}$ are 
 $$
 \begin{aligned}
-[\mathbf{x}]_B = \mathbf{P}_B^{-1} \mathbf{x}
+\left[\mathbf{x}\right]_B = \mathbf{P}_B^{-1} \mathbf{x}
 \end{aligned}
 $$
-and, as a consequence, given a vector $[\mathbf{x}]_B$ with coordinates with respect to the basis $\mathcal{B}$, the vector of coefficients $\mathbf{x}$ with standard coordinates is given by 
+and, as a consequence, given a vector $\left[\mathbf{x}\right]_B$ with coordinates with respect to the basis $\mathcal{B}$, the vector of coefficients $\mathbf{x}$ with standard coordinates is given by 
 $$
 \begin{aligned}
-\mathbf{x} = \mathbf{P}_B [\mathbf{x}]_B.
+\mathbf{x} = \mathbf{P}_B \left[\mathbf{x}\right]_B.
 \end{aligned}
 $$
 
@@ -23,10 +23,10 @@ Notice that change of coordinates is a linear transformation from $\mathcal{B}$ 
 
 **Draw diagram**
 
-Now, we can combine these ideas. Given a vector $[\mathbf{x}]_B$ written with coordinates with respect to the basis $\mathcal{B}$, we can find the coordinates of $[\mathbf{x}]_C$ with respect to the basis $\mathcal{C}$. First, we find the coordinates of the vector  $\mathbf{x}$ with respect to the standard basis then find the coordinates of $[\mathbf{x}]_C$ with respect to the basis $\mathcal{C}$. Let $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}$ and $\mathbf{P}_C = \begin{pmatrix} \mathbf{c}_1 & \ldots & \mathbf{c}_n \end{pmatrix}$, then given a vector $[\mathbf{x}]_B$ with coordinates with respect to the basis $\mathcal{B}$, the coordinates $[\mathbf{x}]_C$ of this vector with respect to the basis $\mathcal{C}$ is 
+Now, we can combine these ideas. Given a vector $\left[\mathbf{x}\right]_B$ written with coordinates with respect to the basis $\mathcal{B}$, we can find the coordinates of $\left[\mathbf{x}\right]_C$ with respect to the basis $\mathcal{C}$. First, we find the coordinates of the vector  $\mathbf{x}$ with respect to the standard basis then find the coordinates of $\left[\mathbf{x}\right]_C$ with respect to the basis $\mathcal{C}$. Let $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}$ and $\mathbf{P}_C = \begin{pmatrix} \mathbf{c}_1 & \ldots & \mathbf{c}_n \end{pmatrix}$, then given a vector $\left[\mathbf{x}\right]_B$ with coordinates with respect to the basis $\mathcal{B}$, the coordinates $\left[\mathbf{x}\right]_C$ of this vector with respect to the basis $\mathcal{C}$ is 
 $$
 \begin{aligned}
-[\mathbf{x}]_C = \mathbf{P}_C^{-1} \mathbf{P}_B [\mathbf{x}]_B.
+\left[\mathbf{x}\right]_C = \mathbf{P}_C^{-1} \mathbf{P}_B \left[\mathbf{x}\right]_B.
 \end{aligned}
 $$
 

@@ -84,7 +84,7 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
 ```
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(
         plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
@@ -102,11 +102,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
                                     color = c("red", rep("orange", 4)), 
                                     symbol = 104),
                       name = c("local maximum", rep("saddle point", 4))),
-        file = "./images/critical.html")
-    webshot2::webshot(url = "./images/critical.html", 
-                      file = "./images/critical.png", 
+        file = "./webshot-images/critical.html")
+    webshot2::webshot(url = "./webshot-images/critical.html", 
+                      file = "./webshot-images/critical.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/critical.png")
+    knitr::include_graphics("./webshot-images/critical.png")
 
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
@@ -159,7 +159,7 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
               name = "saddle point")
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 f <- function(x, y) {
     x^2 - y^2
 }
@@ -188,11 +188,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
                                     color = "red",
                                     symbol = 104),
                       name = "saddle point"),
-        file = "./images/saddle.html")
-    webshot2::webshot(url = "./images/saddle.html", 
-                      file = "./images/saddle.png", 
+        file = "./webshot-images/saddle.html")
+    webshot2::webshot(url = "./webshot-images/saddle.html", 
+                      file = "./webshot-images/saddle.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/saddle.png")
+    knitr::include_graphics("./webshot-images/saddle.png")
     
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
@@ -276,7 +276,7 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
               name = "saddle point")
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="100%"}
 f <- function(x, y) {
     x^4 + y^4
 }
@@ -304,11 +304,11 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
                             color = "red",
                             symbol = 104),
               name = "saddle point"),
-        file = "./images/saddle2.html")
-    webshot2::webshot(url = "./images/saddle2.html", 
-                      file = "./images/saddle2.png", 
+        file = "./webshot-images/saddle2.html")
+    webshot2::webshot(url = "./webshot-images/saddle2.html", 
+                      file = "./webshot-images/saddle2.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("./images/saddle2.png")
+    knitr::include_graphics("./webshot-images/saddle2.png")
     
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {

@@ -11,7 +11,7 @@ library(tidyverse)
 library(dasc2594)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width = "100%"}
 knitr::include_graphics(here::here("images", "descartes.jpg"))
 ```
 
@@ -94,20 +94,20 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Standard cooridinates
 
 ## Coordinates in $\mathcal{R}^n$
 
-Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $[\mathbf{x}]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}$ of $\mathbf{x}$
+Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $\left[\mathbf{x}\right]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}$ of $\mathbf{x}$
 
 with respect to the basis $\mathcal{B}$ can be found by solving the matrix equation
 
 
 $$
 \begin{aligned}
-\mathbf{P}_B [\mathbf{x}]_B = \mathbf{x}
+\mathbf{P}_B \left[\mathbf{x}\right]_B = \mathbf{x}
 \end{aligned}
 $$
-The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $[\mathbf{x}]_B$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
+The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $\left[\mathbf{x}\right]_B$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
 $$
 \begin{aligned}
-[\mathbf{x}]_B = \mathbf{P}_B^{-1} \mathbf{x}
+\left[\mathbf{x}\right]_B = \mathbf{P}_B^{-1} \mathbf{x}
 \end{aligned}
 $$
 
