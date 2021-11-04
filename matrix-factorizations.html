@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -382,10 +383,10 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 <p>Using the LU factorization, the matrix factorization <span class="math inline">\(\mathbf{A} = \mathbf{L} \mathbf{U}\)</span> can be used in the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{L} \mathbf{U}\mathbf{x} = \mathbf{b}\)</span> by first solving the sub-equation <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> and then solving the second sub-equation <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>. Thus, the matrix factorization applied to the matrix equation gives the pair of equations</p>
 <p><span class="math display" id="eq:LU">\[
 \begin{aligned}
-\tag{10.1}
 \mathbf{L} \mathbf{y} &amp; = \mathbf{b} \\
 \mathbf{U} \mathbf{x} &amp; = \mathbf{y}
 \end{aligned}
+\tag{10.1}
 \]</span></p>
 <p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
 <div class="example">
@@ -410,10 +411,10 @@ and consider the system of equations defined by the matrix equation <span class=
 </ol>
 <p><span class="math display">\[
 \begin{aligned}
-&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ -2 &amp; -1 &amp; 0 &amp; 0 &amp; -7 \\ -1 &amp; -2 &amp; -3 &amp; 0 &amp; -2 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow -\frac{1}{2} r_2 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 8.5 \\ -1 &amp; -2 &amp; -3 &amp; 0 &amp; -2 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} \\
-&amp; \stackrel{r_3 \leftarrow - r_3 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 8.5 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow - \frac{1}{2} r_4 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 8.5 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ 0 &amp; 1.5 &amp; 0 &amp; 1.5 &amp; 12 \end{pmatrix} \\
-&amp; \stackrel{r_2 \leftarrow 2 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ 0 &amp; 1.5 &amp; 0 &amp; 1.5 &amp; 12 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow \frac{1}{2} r_3 - r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1.5 &amp; 0 &amp; -13.5 \\ 0 &amp; 1.5 &amp; 0 &amp; 1.5 &amp; 12 \end{pmatrix} \\
-&amp; \stackrel{r_4 \leftarrow \frac{2}{3} r_4 - r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1.5 &amp; 0 &amp; -13.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow \frac{2}{3} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \end{pmatrix} 
+&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ -2 &amp; -1 &amp; 0 &amp; 0 &amp; -7 \\ -1 &amp; -2 &amp; -3 &amp; 0 &amp; -2 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow -\frac{1}{2} r_2 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1/2 &amp; 0 &amp; 0 &amp; 17/2 \\ -1 &amp; -2 &amp; -3 &amp; 0 &amp; -2 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} \\
+&amp; \stackrel{r_3 \leftarrow - r_3 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1/2 &amp; 0 &amp; 0 &amp; 17/2 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ -2 &amp; -3 &amp; 0 &amp; -3 &amp; -14 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow - \frac{1}{2} r_4 - r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1/2 &amp; 0 &amp; 0 &amp; 17/2 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ 0 &amp; 3/2 &amp; 0 &amp; 3/2 &amp; 12 \end{pmatrix} \\
+&amp; \stackrel{r_2 \leftarrow 2 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 2 &amp; 3 &amp; 0 &amp; 7 \\ 0 &amp; 3/2 &amp; 0 &amp; 3/2 &amp; 12 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow \frac{1}{2} r_3 - r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 3/2 &amp; 0 &amp; -27/2 \\ 0 &amp; 3/2 &amp; 0 &amp; 3/2 &amp; 12 \end{pmatrix} \\
+&amp; \stackrel{r_4 \leftarrow \frac{2}{3} r_4 - r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 3/2 &amp; 0 &amp; -27/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow \frac{2}{3} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 17 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \end{pmatrix}
 \end{aligned}
 \]</span></p>
 <ol start="2" style="list-style-type: decimal">
@@ -421,10 +422,10 @@ and consider the system of equations defined by the matrix equation <span class=
 </ol>
 <p><span class="math display">\[
 \begin{aligned}
-&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 2 &amp; 0 &amp; 3 &amp; 17 \\ 0 &amp; 0 &amp; 2 &amp; -3 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow \frac{1}{2} r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 2 &amp; -3 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} \\
-&amp; \stackrel{r_3 \leftarrow \frac{1}{2} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow - \frac{1}{3} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
-&amp; \stackrel{r_1 \leftarrow r_1 -2  r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 &amp; 4 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; \stackrel{r_1 \leftarrow r_1 - 2 r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
-&amp; \stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; 
+&amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 2 &amp; 0 &amp; 3 &amp; 17 \\ 0 &amp; 0 &amp; 2 &amp; -3 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow \frac{1}{2} r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 2 &amp; -3 &amp; -9 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} \\
+&amp; \stackrel{r_3 \leftarrow \frac{1}{2} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; -3 &amp; -9 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow - \frac{1}{3} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_1 \leftarrow r_1 -2  r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 &amp; 4 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; \stackrel{r_1 \leftarrow r_1 - 2 r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; 
 \stackrel{r_3 \leftarrow r_3 + \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} 
 \end{aligned}
 \]</span></p>
@@ -435,12 +436,12 @@ and consider the system of equations defined by the matrix equation <span class=
 \begin{aligned}
 &amp; &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ -2 &amp; -2 &amp; -4 &amp; 1 &amp; -7 \\ -1 &amp; -4 &amp; -8 &amp; 5 &amp; -2 \\ -2 &amp; -6 &amp; -4 &amp; 4 &amp; -14 \end{pmatrix} &amp; \stackrel{r_2 \leftarrow r_2 + 2 r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; -2 &amp; 0 &amp; -3 &amp; -17 \\ -1 &amp; -4 &amp; -8 &amp; 5 &amp; -2 \\ -2 &amp; -6 &amp; -4 &amp; 4 &amp; -14 \end{pmatrix} \\
 &amp; \stackrel{r_3 \leftarrow r_3 + r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; -2 &amp; 0 &amp; -3 &amp; -17 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ -2 &amp; -6 &amp; -4 &amp; 4 &amp; -14 \end{pmatrix} &amp; \stackrel{r_4 \leftarrow r_4 + 2 r_1}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; -2 &amp; 0 &amp; -3 &amp; -17 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} \\
-&amp; \stackrel{r_2 \leftarrow - \frac{1}{2} r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow r_3 + 4 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; -6 &amp; 9 &amp; 27 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} \\
-&amp; \stackrel{r_4 \leftarrow r_4 + 6 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; -6 &amp; 9 &amp; 27 \\ 0 &amp; 0 &amp; 0 &amp; 9 &amp; 27 \end{pmatrix} &amp; 
-\stackrel{r_3 \leftarrow - \frac{1}{6} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 9 &amp; 27 \end{pmatrix}\\
-&amp; \stackrel{r_4 \leftarrow \frac{1}{9} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; \stackrel{r_1 \leftarrow r_1 - 2 r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 &amp; 4 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
-&amp; \stackrel{r_1 \leftarrow r_1 - r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 1.5 &amp; 8.5 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; 
-\stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; -1.5 &amp; -4.5 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_2 \leftarrow - \frac{1}{2} r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; -4 &amp; -6 &amp; 3 &amp; -7 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} &amp; \stackrel{r_3 \leftarrow r_3 + 4 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; -6 &amp; 9 &amp; 27 \\ 0 &amp; -6 &amp; 0 &amp; 0 &amp; -24 \end{pmatrix} \\
+&amp; \stackrel{r_4 \leftarrow r_4 + 6 r_2}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; -6 &amp; 9 &amp; 27 \\ 0 &amp; 0 &amp; 0 &amp; 9 &amp; 27 \end{pmatrix} &amp; 
+\stackrel{r_3 \leftarrow - \frac{1}{6} r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 9 &amp; 27 \end{pmatrix}\\
+&amp; \stackrel{r_4 \leftarrow \frac{1}{9} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 &amp; -5 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; \stackrel{r_1 \leftarrow r_1 - 2 r_3}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 1 &amp; 4 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
+&amp; \stackrel{r_1 \leftarrow r_1 - r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 3/2 &amp; 17/2 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} &amp; 
+\stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; -3/2 &amp; -9/2 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix} \\
 &amp; \stackrel{r_3 \leftarrow r_3 + \frac{3}{2} r_4}{\huge \sim} &amp; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 3 \end{pmatrix}  
 \end{aligned}
 \]</span></p>
@@ -466,10 +467,10 @@ Solve some large systems of equations by brute force which shows how the LU deco
 <p>Combining the LU factorization and the fact that we can find an upper triangular matrix <span class="math inline">\(\mathbf{U}\)</span> using elementary row matrices, we have</p>
 <p><span class="math display" id="eq:LU-alg">\[
 \begin{aligned}
-\tag{10.2}
 \mathbf{A} &amp; = \mathbf{L} \mathbf{U} \\
 \mathbf{E}_k \cdots \mathbf{E}_1 \mathbf{A} &amp; = \mathbf{U}.
 \end{aligned}
+\tag{10.2}
 \]</span>
 We also know that each of the elementary row matrices <span class="math inline">\(\mathbf{E}_j\)</span> are invertible (you can always re-swap rows, subtract instead of add rows, etc.) which says that each inverse <span class="math inline">\(\mathbf{E}_j^{-1}\)</span> exists. Thus, the product <span class="math inline">\(\mathbf{E}_k \cdots \mathbf{E}_1\)</span> must have an inverse which is
 <span class="math display">\[
@@ -504,7 +505,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 <li><p>A <span class="math inline">\(n \times n\)</span> matrix is said to be positive definite if for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the quadratic form <span class="math inline">\(\mathbf{x}&#39; \mathbf{A }\mathbf{x} \geq 0\)</span></p></li>
 </ul>
 </div>
-<p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="#thm:invertible-matrix"><strong>??</strong></a>).</p>
+<p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>).</p>
 <div class="definition">
 <p><span id="def:unlabeled-div-134" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
 <span class="math display">\[

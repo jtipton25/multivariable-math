@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -388,16 +389,16 @@ Let <span class="math inline">\(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}
 <li><p>WLOG assume <span class="math inline">\(\mathbf{v}_n\)</span> is a linear combination of <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}\)</span> (if not, permute the labels to make the linearly dependent vector the <span class="math inline">\(n\)</span>th vector). Then
 <span class="math display" id="eq:span-set-theorem1">\[
 \begin{aligned}
-\tag{16.1}
 \mathbf{v}_n = x_1 \mathbf{v}_1 + \cdots + x_{n-1} \mathbf{v}_{n-1}
 \end{aligned}
+\tag{16.1}
 \]</span>
 Because the vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> span <span class="math inline">\(\mathcal{H}\)</span>, any vector <span class="math inline">\(\mathbf{b}\in \mathcal{H}\)</span> can be written as
 <span class="math display" id="eq:span-set-theorem2">\[
 \begin{aligned}
-\tag{16.2}
 \mathbf{b} = c_1 \mathbf{v}_1 + \cdots + c_{n} \mathbf{v}_{n}
 \end{aligned}
+\tag{16.2}
 \]</span><br />
 for scalars <span class="math inline">\(c_1, \ldots, c_n\)</span>. Plugging the result from <a href="linearly-independent-sets-and-bases.html#eq:span-set-theorem1">(16.1)</a> into <a href="linearly-independent-sets-and-bases.html#eq:span-set-theorem2">(16.2)</a> shows that any vector <span class="math inline">\(\mathbf{b}\)</span> in <span class="math inline">\(\mathcal{H}\)</span> can be written only using the vectors <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}\)</span></p></li>
 <li><p>As the vectors in <span class="math inline">\(\mathcal{S}\)</span> span <span class="math inline">\(\mathcal{H}\)</span>, if there is a linearly dependent vector in <span class="math inline">\(\mathcal{S}\)</span>, this vector can be removed from <span class="math inline">\(\mathcal{S}\)</span> and the span of this subset of <span class="math inline">\(\mathcal{S}\)</span> will still span <span class="math inline">\(\mathcal{H}\)</span>. As long as <span class="math inline">\(\mathbf{H} \neq \{\mathbf{0}\}\)</span>, there must be a least one nonzero vector in <span class="math inline">\(\mathbf{S}\)</span> so the removing of linearly dependent vectors will stop with at least one vector. As all of the linearly dependent vectors have been removed, the subset of <span class="math inline">\(\mathcal{S}\)</span> created in this manner will be a set of linearly independent vectors that span <span class="math inline">\(\mathcal{H}\)</span>.</p></li>

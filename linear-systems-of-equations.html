@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -370,9 +371,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span id="def:unnamed-chunk-19" class="definition"><strong>Definition 2.1  (Linear Equations)  </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
 <p><span class="math display" id="eq:linear">\[
 \begin{aligned}
-\tag{2.1}
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
 \end{aligned}
+\tag{2.1}
 \]</span></p>
 is a <strong>linear equation</strong>.
 </div>
@@ -501,7 +502,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 = \end{pmatrix}\)</span> a solution to the system of equations
+<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> a solution to the system of equations
 <span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9.
@@ -1055,7 +1056,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <div class="example">
 <p><span id="exm:unlabeled-div-69" class="example"><strong>Example 2.15  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
-\begin{alignat*}{4}  16 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 13\\ 5 x_1 &amp; {}+{} &amp; 11 x_2 &amp; {}+{} &amp; 10 x_3 &amp; {}={} &amp; 8\\ 9 x_1 &amp; {}+{} &amp; 7 x_2 &amp; {}+{} &amp; 6 x_3 &amp; {}={} &amp; 12\\ 4 x_1 &amp; {}+{} &amp; 14 x_2 &amp; {}+{} &amp; 15 x_3 &amp; {}={} &amp; 1 \end{alignat*}
+\begin{alignedat}{4}  16 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 13\\ 5 x_1 &amp; {}+{} &amp; 11 x_2 &amp; {}+{} &amp; 10 x_3 &amp; {}={} &amp; 8\\ 9 x_1 &amp; {}+{} &amp; 7 x_2 &amp; {}+{} &amp; 6 x_3 &amp; {}={} &amp; 12\\ 4 x_1 &amp; {}+{} &amp; 14 x_2 &amp; {}+{} &amp; 15 x_3 &amp; {}={} &amp; 1 \end{alignedat}
 \]</span></p>
 </div>
 <!-- Solution -->
@@ -1067,7 +1068,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <div class="example">
 <p><span id="exm:unlabeled-div-70" class="example"><strong>Example 2.16  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
-\begin{alignat*}{4}   x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 5\\  x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 2\\ 3 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp;  x_3 &amp; {}={} &amp; 7 \end{alignat*}
+\begin{alignedat}{4}   x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 5\\  x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 2\\ 3 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp;  x_3 &amp; {}={} &amp; 7 \end{alignedat}
 \]</span></p>
 </div>
 <!-- Solution -->
@@ -1159,7 +1160,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <h3><span class="header-section-number">2.2.3</span> Using reduced row echelon forms to solve systems of linear equations</h3>
 <p>When a system of linear equations is expressed as an augmented matrix, the reduced row echelon form can be used to find solutions to those systems of equations. Consider the systems of equations</p>
 <p><span class="math display">\[
-\begin{alignat*}{4}  3 x_1 &amp; {}+{} &amp; 8 x_2 &amp; {}-{} &amp; 4 x_3 &amp; {}={} &amp; 6\\ 2 x_1 &amp; {}-{} &amp; 4 x_2 &amp; {}-{} &amp;  x_3 &amp; {}={} &amp; 8\\ 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}{} &amp;   &amp; {}={} &amp; 9 \end{alignat*}
+\begin{alignedat}{4}  3 x_1 &amp; {}+{} &amp; 8 x_2 &amp; {}-{} &amp; 4 x_3 &amp; {}={} &amp; 6\\ 2 x_1 &amp; {}-{} &amp; 4 x_2 &amp; {}-{} &amp; 1 x_3 &amp; {}={} &amp; 8\\ 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}{} &amp;   &amp; {}={} &amp; 9 \end{alignedat}
 \]</span></p>
 <p>which can be written in the augmented matrix form as
 <span class="math display">\[

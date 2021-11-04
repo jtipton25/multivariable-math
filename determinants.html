@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -466,8 +467,8 @@ c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
 </div>
 </div>
 <p>Note that in the cofactor definition of a <span class="math inline">\(n \times n\)</span> matrix it is assumed that you can calculate the determinant of the <span class="math inline">\(n-1 \times n-1\)</span> minor <span class="math inline">\(\mathbf{A}_{-i-j}\)</span>. From this we see that each of the <span class="math inline">\(n \times n\)</span> cofactors of <span class="math inline">\(\mathbf{A}\)</span> are themselves the (signed) determinants of <span class="math inline">\(n-1 \times n-1\)</span> submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated.</p>
-<p>:::{.theorem cofactor-expansion name = “Cofactor exapansion”}</p>
-<p>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(ij\)</span>th elements <span class="math inline">\(a_{ij}\)</span>. Then</p>
+<div class="theorem">
+<p><span id="thm:cofactor-expansion" class="theorem"><strong>Theorem 13.1  (Cofactor exapansion) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(ij\)</span>th elements <span class="math inline">\(a_{ij}\)</span>. Then</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>The <strong>cofactor expansion along the <span class="math inline">\(i\)</span>th row</strong> (for any fixed row <span class="math inline">\(i\)</span>) is
 <span class="math display">\[
@@ -482,7 +483,7 @@ c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
 \end{aligned}
 \]</span></p></li>
 </ol>
-<p>:::</p>
+</div>
 <div class="fold-proof">
 <div class="proof">
 <p><span id="unlabeled-div-41" class="proof"><em>Proof</em>. </span>This is quite complex. For those interested, an example is available <a href="https://textbooks.math.gatech.edu/ila/determinants-cofactors.html">here</a></p>
@@ -495,7 +496,7 @@ The above theorem states that there are actually <span class="math inline">\(2n\
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-42" class="solution"><em>Solution</em>. </span>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (<a href="#thm:cofactor-expansion"><strong>??</strong></a>) by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is
+<p><span id="unlabeled-div-42" class="solution"><em>Solution</em>. </span>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (<a href="determinants.html#thm:cofactor-expansion">13.1</a>) by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is
 <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13}
@@ -535,7 +536,7 @@ c_{13} = (-1)^{1+3}((1)(-4) - (3) (2)) = -10
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-43" class="solution"><em>Solution</em>. </span>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (<a href="#thm:cofactor-expansion"><strong>??</strong></a>) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is
+<p><span id="unlabeled-div-43" class="solution"><em>Solution</em>. </span>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (<a href="determinants.html#thm:cofactor-expansion">13.1</a>) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is
 <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
@@ -564,7 +565,7 @@ c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-44" class="solution"><em>Solution</em>. </span>Using the cofactor expansion theorem (Theorem (<a href="#thm:cofactor-expansion"><strong>??</strong></a>)), expand the determinant along the <span class="math inline">\(j\)</span>th row. Then, because all entries of the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> are zero, this gives
+<p><span id="unlabeled-div-44" class="solution"><em>Solution</em>. </span>Using the cofactor expansion theorem (Theorem (<a href="determinants.html#thm:cofactor-expansion">13.1</a>)), expand the determinant along the <span class="math inline">\(j\)</span>th row. Then, because all entries of the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> are zero, this gives
 <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) &amp; = a_{j1} c_{j1} + a_{j2} c_{j2} + \cdots + a_{jn} c_{jn} \\
@@ -581,7 +582,7 @@ c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
 <!-- Without loss of generality, assume that the row that is a linear combination of the other rows is the first row. Then, the determinant can be found using the cofactor expansion.  -->
 <!-- ::: -->
 <div class="theorem">
-<p><span id="thm:unlabeled-div-164" class="theorem"><strong>Theorem 13.1  </strong></span>The determinant of a matrix <span class="math inline">\(\mathbf{A}\)</span> is equal to the determinant of its transpose <span class="math inline">\(\mathbf{A}&#39;\)</span>. In other words, <span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span></p>
+<p><span id="thm:unlabeled-div-164" class="theorem"><strong>Theorem 13.2  </strong></span>The determinant of a matrix <span class="math inline">\(\mathbf{A}\)</span> is equal to the determinant of its transpose <span class="math inline">\(\mathbf{A}&#39;\)</span>. In other words, <span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span></p>
 </div>
 <div class="fold-proof">
 <div class="proof">
@@ -592,15 +593,15 @@ c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
 <div id="properties-of-determinants" class="section level2">
 <h2><span class="header-section-number">13.3</span> Properties of determinants</h2>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-165" class="theorem"><strong>Theorem 13.2  </strong></span>A <span class="math inline">\(n \times n\)</span> square matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p>
+<p><span id="thm:unlabeled-div-165" class="theorem"><strong>Theorem 13.3  </strong></span>A <span class="math inline">\(n \times n\)</span> square matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p>
 </div>
 <div class="fold-proof">
 <div class="proof">
-<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem (Theorem <a href="#thm:invertible-matrix"><strong>??</strong></a>), we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
+<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem (Theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>), we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
 </div>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-166" class="theorem"><strong>Theorem 13.3  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices, <span class="math inline">\(\mathbf{I}\)</span> is an <span class="math inline">\(n \times n\)</span> identity matrix, and <span class="math inline">\(c\)</span> is a scalar, we have</p>
+<p><span id="thm:unlabeled-div-166" class="theorem"><strong>Theorem 13.4  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices, <span class="math inline">\(\mathbf{I}\)</span> is an <span class="math inline">\(n \times n\)</span> identity matrix, and <span class="math inline">\(c\)</span> is a scalar, we have</p>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\det(\mathbf{I}) = 1\)</span></p></li>
 <li><p><span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span></p></li>
@@ -618,7 +619,7 @@ While commonly used for theoretical results, Cramer’s rule is not commonly use
 </ul>
 
 <div class="theorem">
-<span id="thm:unnamed-chunk-211" class="theorem"><strong>Theorem 13.4  (Cramer’s Rule)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
+<span id="thm:unnamed-chunk-211" class="theorem"><strong>Theorem 13.5  (Cramer’s Rule)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
 <span class="math display">\[
 \begin{aligned}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for } i = 1, 2, \ldots, n

@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -595,7 +596,7 @@ Because the reduced row echelon form of the matrix has 3 pivot columns, the span
 \]</span>
 which is row-equivalent to
 <span class="math display">\[
-\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 3.2 \\ 0 &amp; 1 &amp; 0 &amp; -1.2 \\ 0 &amp; 0 &amp; 1 &amp; -3.6 \end{pmatrix}
+\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 16/5 \\ 0 &amp; 1 &amp; 0 &amp; -6/5 \\ 0 &amp; 0 &amp; 1 &amp; -18/5 \end{pmatrix}
 \]</span>
 Because the reduced row echelon form of the matrix has 3 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3\)</span> which satisfies the first condition for being a basis. However, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
 <p>Using <code>R</code>, we can show this result first by creating the vectors <code>w</code>, x<code>,</code>y<code>, and</code>z<code>and then joining these into a matrix</code>A<code>using</code>cbind()`</p>
@@ -700,7 +701,7 @@ Because the reduced row echelon form of the matrix has 2 pivot columns, the span
 <div class="solution">
 <p><span id="unlabeled-div-29" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we first find its reduced row echelon form
 <span class="math display">\[
-\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -0.323529411764706 \\ 0 &amp; 1 &amp; 0 &amp; -1.5 \\ 0 &amp; 0 &amp; 1 &amp; -0.264705882352941 \end{pmatrix}
+\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -11/34 \\ 0 &amp; 1 &amp; 0 &amp; -3/2 \\ 0 &amp; 0 &amp; 1 &amp; -9/34 \end{pmatrix}
 \]</span>
 which has pivots in the first three columns. Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the linear combination of the vectors of <span class="math inline">\(\mathbf{A}\)</span>, spans <span class="math inline">\(\mathcal{R}^3\)</span> because there are three pivot columns. The first three columns of <span class="math inline">\(\mathbf{A}\)</span> are <span class="math inline">\(\begin{pmatrix} 3 \\ 4 \\ 4 \end{pmatrix}\)</span>, <span class="math inline">\(\begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}\)</span>, and <span class="math inline">\(\begin{pmatrix} 2 \\ -3 \\ -3 \end{pmatrix}\)</span>. Because these 3 vectors are linearly independent (they are each pivot columns in the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span>) and they span <span class="math inline">\(\mathcal{R}^3\)</span>, they form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>Thus, any vector in the columns space of <span class="math inline">\(\mathbf{A}\)</span> (for example, the fourth column of <span class="math inline">\(\mathbf{A}\)</span>) can be written as a linear combination of the basis vectors of the columns space of <span class="math inline">\(\mathbf{A}\)</span>.</p>

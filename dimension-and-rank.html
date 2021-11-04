@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -517,9 +518,9 @@ which we write as <span class="math inline">\([\mathbf{x}]_{B_2} = \begin{pmatri
 <div class="solution">
 <p><span id="unlabeled-div-34" class="solution"><em>Solution</em>. </span>Using Definition (<a href="dimension-and-rank.html#def:rank">12.3</a>), the rank of <span class="math inline">\(\mathbf{A}\)</span> is equal to the dimension of the column space of <span class="math inline">\(\mathbf{A}\)</span> where the dimension can be found by counting the number of pivot columns.</p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\begin{pmatrix} -7 &amp; 1 &amp; -5 &amp; 9 \\ 5 &amp; -6 &amp; 4 &amp; 8 \\ -4 &amp; -1 &amp; -2 &amp; 0 \end{pmatrix} \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 7.40740740740741 \\ 0 &amp; 1 &amp; 0 &amp; -3.77777777777778 \\ 0 &amp; 0 &amp; 1 &amp; -12.9259259259259 \end{pmatrix}\)</span> which has 3 pivot columns. Thus, <span class="math inline">\(\operatorname{rank}(\mathbf{A}) = 3\)</span></p></li>
-<li><p><span class="math inline">\(\begin{pmatrix} 5 &amp; -1 &amp; 3 \\ -6 &amp; 4 &amp; -5 \\ 6 &amp; 6 &amp; 0 \\ -7 &amp; -25 &amp; 9 \\ 8 &amp; 26 &amp; -9 \end{pmatrix} \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0.5 \\ 0 &amp; 1 &amp; -0.5 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span> which has 2 pivot columns. Thus, <span class="math inline">\(\operatorname{rank}(\mathbf{B}) = 2\)</span></p></li>
-<li><p><span class="math inline">\(\begin{pmatrix} 3 &amp; -5 &amp; 1 &amp; -8 &amp; -1 \\ -2 &amp; -6 &amp; -9 &amp; 9 &amp; -3 \\ -4 &amp; 5 &amp; 4 &amp; 8 &amp; 2 \end{pmatrix} \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -2.43455497382199 &amp; -0.031413612565445 \\ 0 &amp; 1 &amp; 0 &amp; 0.0418848167539269 &amp; 0.219895287958115 \\ 0 &amp; 0 &amp; 1 &amp; -0.486910994764398 &amp; 0.193717277486911 \end{pmatrix}\)</span> which has 3 pivot columns. Thus, <span class="math inline">\(\operatorname{rank}(\mathbf{C}) = 3\)</span></p></li>
+<li><p><span class="math inline">\(\begin{pmatrix} -7 &amp; 1 &amp; -5 &amp; 9 \\ 5 &amp; -6 &amp; 4 &amp; 8 \\ -4 &amp; -1 &amp; -2 &amp; 0 \end{pmatrix} \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 200/27 \\ 0 &amp; 1 &amp; 0 &amp; -34/9 \\ 0 &amp; 0 &amp; 1 &amp; -349/27 \end{pmatrix}\)</span> which has 3 pivot columns. Thus, <span class="math inline">\(\operatorname{rank}(\mathbf{A}) = 3\)</span></p></li>
+<li><p><span class="math inline">\(\begin{pmatrix} 5 &amp; -1 &amp; 3 \\ -6 &amp; 4 &amp; -5 \\ 6 &amp; 6 &amp; 0 \\ -7 &amp; -25 &amp; 9 \\ 8 &amp; 26 &amp; -9 \end{pmatrix} \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 1/2 \\ 0 &amp; 1 &amp; -1/2 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span> which has 2 pivot columns. Thus, <span class="math inline">\(\operatorname{rank}(\mathbf{B}) = 2\)</span></p></li>
+<li><p><span class="math inline">\(\begin{pmatrix} 3 &amp; -5 &amp; 1 &amp; -8 &amp; -1 \\ -2 &amp; -6 &amp; -9 &amp; 9 &amp; -3 \\ -4 &amp; 5 &amp; 4 &amp; 8 &amp; 2 \end{pmatrix} \stackrel{RREF}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -465/191 &amp; -6/191 \\ 0 &amp; 1 &amp; 0 &amp; 8/191 &amp; 42/191 \\ 0 &amp; 0 &amp; 1 &amp; -93/191 &amp; 37/191 \end{pmatrix}\)</span> which has 3 pivot columns. Thus, <span class="math inline">\(\operatorname{rank}(\mathbf{C}) = 3\)</span></p></li>
 </ol>
 </div>
 </div>
@@ -551,7 +552,7 @@ Let <span class="math inline">\(\mathcal{H}\)</span> be a p-dimensional subspace
 </div>
 </div>
 <p>:::{.theorem name = “Invertible Matrix Theorem (again)”}
-Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. Then, in addition to the current conditions from Theorem (<a href="#thm:invertible-matrix"><strong>??</strong></a>), the following statements are equivalent to <span class="math inline">\(\mathbf{A}\)</span> being an invertible matrix:</p>
+Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. Then, in addition to the current conditions from Theorem (<a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>), the following statements are equivalent to <span class="math inline">\(\mathbf{A}\)</span> being an invertible matrix:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>The columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span></p></li>
 <li><p><span class="math inline">\(\operatorname{col}(\mathbf{A}) = \mathcal{R}^n\)</span></p></li>

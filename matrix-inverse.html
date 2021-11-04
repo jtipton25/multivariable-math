@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -573,8 +574,8 @@ which is the inverse of the matrices in reverse order.</p></li>
 </div>
 <div id="the-invertible-matrix-theorem" class="section level2">
 <h2><span class="header-section-number">8.3</span> The Invertible Matrix Theorem</h2>
-<p>:::{.theorem, #invertible-matrix name = “The Invertible Matrix Theorem”}
-Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
+<div class="theorem">
+<p><span id="thm:invertible-matrix" class="theorem"><strong>Theorem 8.5  (The Invertible Matrix Theorem) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix.</p></li>
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is row equivalent to the <span class="math inline">\(n \times n\)</span> identity matrix <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>).</p></li>
@@ -589,7 +590,7 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 <li><p>There is an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{D}\)</span> such that <span class="math inline">\(\mathbf{A}\mathbf{D} = \mathbf{I}\)</span>.</p></li>
 <li><p><span class="math inline">\(\mathbf{A}&#39;\)</span> is an invertible matrix.</p></li>
 </ol>
-<p>:::</p>
+</div>
 <div class="fold-proof">
 <div class="proof">
 <p><span id="unlabeled-div-14" class="proof"><em>Proof</em>. </span><strong>In class</strong></p>
@@ -615,7 +616,7 @@ T(S(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal
 </ul>
 
 <div class="theorem">
-<span id="thm:unnamed-chunk-148" class="theorem"><strong>Theorem 8.5  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<span id="thm:unnamed-chunk-148" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
 </div>
 
 

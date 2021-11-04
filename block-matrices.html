@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -463,7 +464,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 and each block <span class="math inline">\(\mathbf{A}_{ij}\)</span> and <span class="math inline">\(\mathbf{B}_{ij}\)</span> have the same dimension, then</p>
 <p><span class="math display" id="eq:block-matrix-addition">\[
 \begin{aligned}
-\tag{9.1}
 \mathbf{A} + \mathbf{B} &amp; =
 \begin{pmatrix} \mathbf{A}_{11} + \mathbf{B}_{11} &amp; \mathbf{A}_{12} + \mathbf{B}_{12} &amp; \cdots &amp; \mathbf{A}_{1c} + \mathbf{B}_{1c}\\
 \mathbf{A}_{21} + \mathbf{B}_{21} &amp; \mathbf{A}_{22} + \mathbf{B}_{22} &amp; \cdots &amp; \mathbf{A}_{2c} + \mathbf{B}_{2c} \\
@@ -471,6 +471,7 @@ and each block <span class="math inline">\(\mathbf{A}_{ij}\)</span> and <span cl
 \mathbf{A}_{r1} + \mathbf{B}_{r1} &amp; \mathbf{A}_{r2} + \mathbf{B}_{r2} &amp; \cdots &amp; \mathbf{A}_{rc} + \mathbf{B}_{rc} \\
 \end{pmatrix}
 \end{aligned}
+\tag{9.1}
 \]</span>
 which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation <a href="block-matrices.html#eq:block-matrix-addition">(9.1)</a> above to <a href="matrix-operations.html#eq:matrix-addition">(7.1)</a>). The one requirement is that each of the blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> and <span class="math inline">\(\mathbf{B}_{ij}\)</span> have the same dimension. When this is true, we say that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <strong>conformable for block matrix addition</strong>.</p>
 </div>
@@ -494,9 +495,8 @@ which is a matrix where each block is the sum of the other blocks. Notice that i
 \end{aligned}
 \]</span>
 and each row of blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> has the same number of columns as the block <span class="math inline">\(\mathbf{B}_{ij}\)</span> has rows, then the block matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are said to be <strong>conformable for block matrix multiplication</strong>. A consequence of this is that <span class="math inline">\(r = c\)</span>. When this is the case, the matrix products is</p>
-<p><span class="math display" id="eq:block-matrix-multiplication">\[
+<p><span class="math display" id="eq:column-row-matrix-multiplication">\[
 \begin{aligned}
-\tag{9.2}
 \mathbf{A} \mathbf{B} &amp; =
 \begin{pmatrix} \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j1} &amp;  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j2} &amp; \cdots &amp;  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{jc} \\
 \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j1} &amp;  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j2} &amp; \cdots &amp;  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{jc} \\
@@ -504,8 +504,9 @@ and each row of blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> has 
 \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j1} &amp;  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j2} &amp; \cdots &amp;  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{jc} 
 \end{pmatrix}  
 \end{aligned}
+\tag{9.2}
 \]</span>
-which can be said in words as "each block-element (the <span class="math inline">\(ij\)</span>th element <span class="math inline">\((\mathbf{A} \mathbf{B})_{ij}\)</span>) of the block-matrix product <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is the sum of the <span class="math inline">\(i\)</span>th block-row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th block column of <span class="math inline">\(\mathbf{B}\)</span>. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation <a href="block-matrices.html#eq:block-matrix-multiplication">(9.2)</a> above to <a href="matrix-operations.html#eq:matrix-multiplication">(7.2)</a>).</p>
+which can be said in words as "each block-element (the <span class="math inline">\(ij\)</span>th element <span class="math inline">\((\mathbf{A} \mathbf{B})_{ij}\)</span>) of the block-matrix product <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is the sum of the <span class="math inline">\(i\)</span>th block-row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th block column of <span class="math inline">\(\mathbf{B}\)</span>. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation <a href="block-matrices.html#eq:block-matrix-multiplication">(9.3)</a> above to <a href="matrix-operations.html#eq:matrix-multiplication">(7.2)</a>).</p>
 
 <div class="example">
 <span id="exm:unnamed-chunk-150" class="example"><strong>Example 9.1  </strong></span>in class
@@ -524,11 +525,11 @@ which can be said in words as "each block-element (the <span class="math inline"
 <span id="thm:block-matrix-multiplication" class="theorem"><strong>Theorem 9.1  </strong></span>The matrix product <span class="math inline">\(\mathbf{A}\mathbf{B}\)</span> of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span> with columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> and an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1&#39; \\ \mathbf{b}_2&#39; \\ \vdots \\ \mathbf{b}_n&#39; \end{pmatrix}\)</span> with rows <span class="math inline">\(\{\mathbf{b}_i&#39;\}_{i=1}^n\)</span> can be written as the column-row expansion below:
 <span class="math display" id="eq:block-matrix-multiplication">\[
 \begin{aligned}
-\tag{9.2}
 \mathbf{A} \mathbf{B} &amp; =
 \begin{pmatrix} \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix} \begin{pmatrix} \mathbf{b}_1&#39; \\ \mathbf{b}_2&#39; \\ \vdots \\ \mathbf{b}_n&#39; \end{pmatrix} \\
 &amp; = \mathbf{a}_1 \mathbf{b}_1&#39; + \mathbf{a}_2 \mathbf{b}_2&#39; + \cdots + \mathbf{a}_n \mathbf{b}_n&#39;
 \end{aligned} 
+\tag{9.3}
 \]</span>
 </div>
 

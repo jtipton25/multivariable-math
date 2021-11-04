@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -475,14 +476,14 @@ the directional derivative is the dot product of the gradient <span class="math 
 </ul>
 </div>
 <p>The gradient is critical in data science because is the tool that allows for finding the set of parameters for a given model that are “most likely” given the data. The gradient has the property in that at each point <span class="math inline">\((a, b)\)</span> where <span class="math inline">\(f(x, y)\)</span> is differentiable, the gradient points in the direction of the maximum rate of change.</p>
-<p>:::{theorem #gradient name = “The gradient and rates of change”}
-Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(\nabla f(a, b) \neq 0\)</span>. Then,</p>
+<div class="theorem">
+<p><span id="thm:gradient" class="theorem"><strong>Theorem 27.1  (The gradient and rates of change) </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(\nabla f(a, b) \neq 0\)</span>. Then,</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f\)</span> has its maximum rate of increase at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(\nabla f(a, b)\)</span>. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is <span class="math inline">\(\|\nabla f(a, b)\|\)</span> which is the length of the gradient vector.</p></li>
 <li><p><span class="math inline">\(f\)</span> has its maximum rate of decrease at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(-\nabla f(a, b)\)</span>. The rate of change in the direction of maximum rate of decrease is <span class="math inline">\(-\|\nabla f(a, b)\|\)</span>.</p></li>
 <li><p>The directional derivative is 0 in any direction orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>.</p></li>
 </ol>
-<p>:::</p>
+</div>
 <div class="example">
 <p><span id="exm:unlabeled-div-307" class="example"><strong>Example 27.3  </strong></span>Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
 <ul>
@@ -491,7 +492,7 @@ Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at
 </div>
 <div id="the-gradient-and-the-tangent-line" class="section level3">
 <h3><span class="header-section-number">27.1.1</span> The gradient and the tangent line</h3>
-<p>Theorem <a href="#thm:gradient"><strong>??</strong></a> states that the directional derivative at the point <span class="math inline">\((a, b)\)</span> is 0 in any direction that is orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>. Because the directional derivative is the rate of change of the function in the direction of <span class="math inline">\(\mathbf{v}\)</span>, the directional derivative being 0 means that the function <span class="math inline">\(f(x, y)\)</span> is not is not changing in the direction of the vector <span class="math inline">\(\mathbf{v}\)</span>. Therefore, we know that the vector <span class="math inline">\(\mathbf{v}\)</span> and the vector <span class="math inline">\(\nabla f(x, y)|_{(a,b)}\)</span> are orthogonal because the definition of the directional derivative in definition <a href="the-gradient-and-directional-derivatives.html#def:directional-gradient">27.2</a> states that
+<p>Theorem <a href="the-gradient-and-directional-derivatives.html#thm:gradient">27.1</a> states that the directional derivative at the point <span class="math inline">\((a, b)\)</span> is 0 in any direction that is orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>. Because the directional derivative is the rate of change of the function in the direction of <span class="math inline">\(\mathbf{v}\)</span>, the directional derivative being 0 means that the function <span class="math inline">\(f(x, y)\)</span> is not is not changing in the direction of the vector <span class="math inline">\(\mathbf{v}\)</span>. Therefore, we know that the vector <span class="math inline">\(\mathbf{v}\)</span> and the vector <span class="math inline">\(\nabla f(x, y)|_{(a,b)}\)</span> are orthogonal because the definition of the directional derivative in definition <a href="the-gradient-and-directional-derivatives.html#def:directional-gradient">27.2</a> states that
 <span class="math display">\[
 \begin{aligned}
 D_{\mathbf{v}} f(a, b)  = \nabla f(a, b) \cdot \mathbf{v} = \left(\nabla f(a, b) \right)&#39;  \mathbf{v} = 0

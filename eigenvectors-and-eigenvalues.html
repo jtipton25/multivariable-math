@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -360,7 +361,7 @@ for some scalar <span class="math inline">\(\lambda\)</span>. If there exists so
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-229" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
-<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 0.5 &amp; 0 &amp; 0 \\ 0 &amp; 0.5 &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\)</span>. Determine if <span class="math inline">\(\mathbf{u}\)</span> or <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. If they are eigenvectors, what are the associated eigenvalues.</p>
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 1/2 &amp; 0 &amp; 0 \\ 0 &amp; 1/2 &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\)</span>. Determine if <span class="math inline">\(\mathbf{u}\)</span> or <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. If they are eigenvectors, what are the associated eigenvalues.</p>
 <p>Now, plot <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> to show this relationship geometrically.</p>
 </div>
 <p>An eigenvector is a (nonzero) vector <span class="math inline">\(\mathbf{x}\)</span> that gets mapped to a scalar multiple of itself <span class="math inline">\(\lambda \mathbf{x}\)</span> by the matrix transformation <span class="math inline">\(\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}\)</span>. As such, we say that <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> are collinear with the origin (<span class="math inline">\(\mathbf{0}\)</span>) in the sense that these points lie on the same line that goes through the origin.</p>
@@ -482,7 +483,7 @@ which has solution</p>
 </div>
 
 <div class="theorem">
-<p><span id="thm:unnamed-chunk-247" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="#thm:invertible-matrix"><strong>??</strong></a>
+<p><span id="thm:unnamed-chunk-247" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(T: \mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be the linear transformation given by <span class="math inline">\(T(\mathbf{x}) = \mathbf{A}\mathbf{x}\)</span>. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is invertible.</p></li>

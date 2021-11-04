@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -348,11 +349,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here we introduce the concept of the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>. This equation is the most fundamental equation in all of statistics and data science. Given a matrix <span class="math inline">\(\mathbf{A}\)</span> and a vector of constants <span class="math inline">\(\mathbf{b}\)</span>, the goal is to solve for the value (or values) of <span class="math inline">\(\mathbf{x}\)</span> that are a solution to this equation. The equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is a matrix representation of the system of linear equations</p>
 <p><span class="math display" id="eq:matrix-equation">\[
 \begin{aligned}
-\tag{4.1}
 \mathbf{A} \mathbf{x} &amp; = \mathbf{b} \\
 \begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} &amp; = \mathbf{b} \\
 x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 \end{aligned}
+\tag{4.1}
 \]</span></p>
 <p>as long as the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> rows and <span class="math inline">\(K\)</span> columns and the vectors <span class="math inline">\(\mathbf{a}_k\)</span> are <span class="math inline">\(n\)</span>-dimensional.</p>
 <ul>
@@ -461,9 +462,9 @@ Notice that the first row of the last matrix above has the sum first row of the 
 <span id="def:unnamed-chunk-96" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
 <span class="math display" id="eq:homogeneous">\[
 \begin{aligned}
-\tag{4.2}
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{aligned}
+\tag{4.2}
 \]</span>
 is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.
 </div>

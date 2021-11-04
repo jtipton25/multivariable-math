@@ -50,7 +50,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -208,13 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.1</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.1.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.1.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.1.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.1.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.1.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.1.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.1.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.1.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.1.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.1.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
@@ -342,18 +343,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="matrix-operations" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Matrix operations</h1>
+<div id="todo" class="section level2">
+<h2><span class="header-section-number">7.1</span> ToDo</h2>
 <ul>
+<li><p>define dot product here</p></li>
+<li><p>Show matrix multiplication using dot products</p></li>
+<li><p>move to chapter 1 or 2</p></li>
 <li><p><a href="https://www.3blue1brown.com/lessons/matrix-multiplication">3 Blue 1 Brown – Matrix Multiplication</a></p></li>
 <li><p><strong>Note: add examples:</strong></p></li>
 </ul>
+</div>
 <div id="properties-of-matrices" class="section level2">
-<h2><span class="header-section-number">7.1</span> Properties of matrices</h2>
+<h2><span class="header-section-number">7.2</span> Properties of matrices</h2>
 <div id="matrix-addition" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Matrix Addition</h3>
+<h3><span class="header-section-number">7.2.1</span> Matrix Addition</h3>
 <p><strong>Matrix Addition:</strong> If the matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (e.g., both <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same number of rows <span class="math inline">\(m\)</span> and the same number of columns <span class="math inline">\(n\)</span>), then</p>
 <p><span class="math display" id="eq:matrix-addition">\[
 \begin{aligned}
-\tag{7.1}
 \mathbf{A} + \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
 a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -371,6 +377,7 @@ a_{m1} + b_{m1} &amp; a_{m2} + b_{m2} &amp; \cdots &amp; a_{mn} + b_{mn}
 \end{pmatrix} \\
 &amp; = \left\{ a_{ij} + b_{ij} \right\}
 \end{aligned}
+\tag{7.1}
 \]</span></p>
 <p><strong>… Another way to </strong></p>
 <p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are of the same dimension (same number of rows and columns) you can add the matrices together</p>
@@ -432,11 +439,10 @@ a_{m1} + b_{m1} &amp; a_{m2} + b_{m2} &amp; \cdots &amp; a_{mn} + b_{mn}
 </div>
 </div>
 <div id="matrix-multipliation" class="section level3">
-<h3><span class="header-section-number">7.1.2</span> Matrix Multipliation</h3>
+<h3><span class="header-section-number">7.2.2</span> Matrix Multipliation</h3>
 <p><strong>Matrix Multiplication:</strong> If <span class="math inline">\(\mathbf{A} = \left\{ a_{ij} \right\}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{B} = \left\{ a_{jk} \right\}\)</span> is a <span class="math inline">\(n \times p\)</span> matrix, then the matrix product <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> is an <span class="math inline">\(m \times p\)</span> matrix where <span class="math inline">\(\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}\)</span></p>
 <p><span class="math display" id="eq:matrix-multiplication">\[
 \begin{aligned}
-\tag{7.2}
 \mathbf{A} \mathbf{B} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
 a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -453,6 +459,7 @@ b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np}
 \sum_{j=1}^n a_{mj} b_{j1} &amp;\sum_{j=1}^n a_{nj} b_{j2} &amp; \cdots &amp; \sum_{j=1}^n a_{mj} b_{jp}
 \end{pmatrix} 
 \end{aligned}
+\tag{7.2}
 \]</span></p>
 <p>Another way to define matrix multiplication is through inner product notation. Define the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{B}\)</span> as the partition</p>
 <p><span class="math display">\[
@@ -487,7 +494,7 @@ b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np}
 <p>Written in this notation, we arrive at the multiplication rule for <span class="math inline">\(\mathbf{C} = \mathbf{A} \mathbf{B}\)</span> – the <span class="math inline">\(ik\)</span>th element <span class="math inline">\(c_{ik}\)</span> of <span class="math inline">\(\mathbf{C}\)</span> is the inner product of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(\mathbf{B}\)</span>.</p>
 </div>
 <div id="properties-of-matrix-multiplication" class="section level3">
-<h3><span class="header-section-number">7.1.3</span> Properties of Matrix Multiplication</h3>
+<h3><span class="header-section-number">7.2.3</span> Properties of Matrix Multiplication</h3>
 <p>Define the <span class="math inline">\(m \times m\)</span> <strong>identity matrix</strong> <span class="math inline">\(\mathbf{I}_m\)</span> with ones on the diagonal and zeros off diagonal as
 <span class="math display">\[
 \mathbf{I}_m = \begin{pmatrix} 1 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; 1 &amp; \cdots &amp; 0 \\ 0 &amp; 0 &amp; \ddots &amp; 0 \\ 0 &amp; 0 &amp; \cdots &amp; 1\end{pmatrix}
@@ -509,7 +516,7 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 </ol>
 </div>
 <div id="matrix-multiplication-complexity-big-o-notation" class="section level3">
-<h3><span class="header-section-number">7.1.4</span> Matrix Multiplication complexity (Big O notation)</h3>
+<h3><span class="header-section-number">7.2.4</span> Matrix Multiplication complexity (Big O notation)</h3>
 <p>In the study of algorithms, the notation <span class="math inline">\(O(n)\)</span> is used to describe the number of calculations that need to be done to evaluate the equation. As an example, consider <span class="math inline">\(\mathbf{A} = \begin{pmatrix}3 &amp; 1 \\ 2 &amp; -3 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{B} = \begin{pmatrix} -2 &amp; 4 \\ -1 &amp; 2 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -3 \\ 1 \end{pmatrix}\)</span>.</p>
 <p><strong>By hand:</strong> Calculate</p>
 <ol style="list-style-type: decimal">
@@ -528,14 +535,14 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 </ol>
 </div>
 <div id="matrix-powers" class="section level3">
-<h3><span class="header-section-number">7.1.5</span> Matrix powers</h3>
+<h3><span class="header-section-number">7.2.5</span> Matrix powers</h3>
 <p>Powers of a <span class="math inline">\(n \times n\)</span> (square) matrix are defined as the product of <span class="math inline">\(\mathbf{A}\)</span> multiplied <span class="math inline">\(k\)</span> times
 <span class="math display">\[
 \mathbf{A}^k = \underbrace{\mathbf{A} \cdots \mathbf{A}}_k
 \]</span></p>
 </div>
 <div id="matrix-transpose" class="section level3">
-<h3><span class="header-section-number">7.1.6</span> Matrix Transpose</h3>
+<h3><span class="header-section-number">7.2.6</span> Matrix Transpose</h3>
 <p>The matrix transpose is an operator that swaps the rows and columns of a matrix. If <span class="math inline">\(\mathbf{A}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix (<span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns), then <span class="math inline">\(\mathbf{A}&#39;\)</span> is a <span class="math inline">\(n \times m\)</span> matrix (<span class="math inline">\(n\)</span> rows and <span class="math inline">\(m\)</span> columns. Note: some use <span class="math inline">\(\mathbf{A}^T\)</span> to denote a transpose; I prefer the <span class="math inline">\(&#39;\)</span> notation as it is much simpler and cleaner notation). The matrix</p>
 <p><span class="math display">\[
 \begin{aligned}
