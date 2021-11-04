@@ -353,8 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 <p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a “<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>.” For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
 <p><strong>Draw figure</strong></p>
-<p><img src="images/transformation-1.jpg" width="906" /></p>
-<p><img src="images/transformation-2.jpg" width="756" /></p>
+<p><img src="images/transformation-1.jpg" width="100%" /></p>
+<p><img src="images/transformation-2.jpg" width="100%" /></p>
 <p>In the case of matrix transformations (linear transformations), the function <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is a <span class="math inline">\(n\)</span>-vector.</p>
 <ul>
 <li><strong>Question:</strong> What kind of object is <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>?
@@ -723,13 +723,11 @@ For the example below, we plot a projection onto the y-axis</p>
 <h2><span class="header-section-number">6.3</span> Properties of matrix transformations</h2>
 <div id="one-to-one-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> One-to-one transformations</h3>
-
 <div class="definition">
-<span id="def:unnamed-chunk-119" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.
+<p><span id="def:unlabeled-div-106" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
-
-<p><img src="images/one-to-one.png" width="667" /></p>
-<p><img src="images/not-one-to-one.png" width="671" /></p>
+<p><img src="images/one-to-one.png" width="100%" /></p>
+<p><img src="images/not-one-to-one.png" width="100%" /></p>
 <!-- ```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext='png', fig.cap='One-to-one.'} -->
 <!-- \begin{tikzpicture}[thin border nodes, scale=.75] -->
 <!--   \draw[grid lines] (-3,-3) grid (3,3); -->
@@ -821,13 +819,11 @@ For the example below, we plot a projection onto the y-axis</p>
 </div>
 <div id="onto-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Onto transformations</h3>
-
 <div class="definition">
-<span id="def:unnamed-chunk-122" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>
+<p><span id="def:unlabeled-div-108" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
 </div>
-
-<p><img src="images/onto.png" width="664" /></p>
-<p><img src="images/not-onto.png" width="665" /></p>
+<p><img src="images/onto.png" width="100%" /></p>
+<p><img src="images/not-onto.png" width="100%" /></p>
 <p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is onto:</p>
 <ol style="list-style-type: decimal">
 <li><p>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is equal to the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span></p></li>

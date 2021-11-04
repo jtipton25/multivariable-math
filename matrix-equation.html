@@ -369,11 +369,9 @@ x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 \end{aligned}
 \]</span>
 and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-94" class="theorem"><strong>Theorem 4.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.
+<p><span id="thm:unlabeled-div-88" class="theorem"><strong>Theorem 4.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.</p>
 </div>
-
 </div>
 <div id="existence-of-solutions" class="section level2">
 <h2><span class="header-section-number">4.2</span> Existence of solutions</h2>
@@ -430,11 +428,9 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 \end{aligned}
 \]</span>
 Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
-
 <div class="definition">
-<span id="def:unnamed-chunk-95" class="definition"><strong>Definition 4.1  </strong></span>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span>
+<p><span id="def:unlabeled-div-90" class="definition"><strong>Definition 4.1  </strong></span>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span></p>
 </div>
-
 <ul>
 <li><p><strong>Example: in class</strong></p></li>
 <li><p><strong>Example: in class</strong></p></li>
@@ -457,18 +453,16 @@ Notice that the first row of the last matrix above has the sum first row of the 
 <h2><span class="header-section-number">4.5</span> Solutions of linear systems</h2>
 <div id="homogeneous-linear-systems-of-equations" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Homogeneous linear systems of equations</h3>
-
 <div class="definition">
-<span id="def:unnamed-chunk-96" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
+<p><span id="def:unlabeled-div-91" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
 <span class="math display" id="eq:homogeneous">\[
 \begin{aligned}
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{aligned}
 \tag{4.2}
 \]</span>
-is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.
+is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
 </div>
-
 <p>The homogeneous linear system of equations can be written in augmented matrix form
 <span class="math display">\[
 \begin{aligned}
@@ -518,11 +512,9 @@ x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 \end{aligned}
 \]</span>
 which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
-
 <div class="definition">
-<span id="def:unnamed-chunk-97" class="definition"><strong>Definition 4.3  </strong></span> A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.
+<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 4.3  </strong></span>A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.</p>
 </div>
-
 </div>
 </div>
 <div id="solutions-to-nonhomogeneous-systems" class="section level2">
@@ -551,7 +543,7 @@ where <span class="math inline">\(m\)</span> is the slope and <span class="math 
 <span id="cb119-17"><a href="matrix-equation.html#cb119-17"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">y =</span> y, <span class="dt">label =</span> text), </span>
 <span id="cb119-18"><a href="matrix-equation.html#cb119-18"></a>        <span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
 <span id="cb119-19"><a href="matrix-equation.html#cb119-19"></a>        <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) </span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p>This shift in location (but not in slope) is called a <strong>translation</strong></p>
 <ul>
 <li><strong>Example:</strong> Show this shift for a system of linear equations where the solution set defines a plane. From example above,
@@ -608,7 +600,7 @@ we get the homogeneous solution set <span class="math inline">\(x_1 = -2 x_2 + \
 <span id="cb120-23"><a href="matrix-equation.html#cb120-23"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), </span>
 <span id="cb120-24"><a href="matrix-equation.html#cb120-24"></a>            <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
 <pre><code>## Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <ul>
 <li><strong>Example: in class</strong>
 Let’s revisit the example from before</li>

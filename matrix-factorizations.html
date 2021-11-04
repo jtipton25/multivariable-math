@@ -351,9 +351,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-lu-factorization" class="section level2">
 <h2><span class="header-section-number">10.1</span> The LU factorization</h2>
 <p>First, we define lower and upper triangular matrices.</p>
-
 <div class="definition">
-<span id="def:unnamed-chunk-156" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
+<p><span id="def:unlabeled-div-128" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
@@ -376,9 +375,8 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 0 &amp; 0 &amp; 0 &amp; \cdots &amp; a_{nn} \\
 \end{pmatrix}
 \end{aligned}
-\]</span>
+\]</span></p>
 </div>
-
 <p>The LU factorization of a matrix <span class="math inline">\(\mathbf{A}\)</span> reduces the matrix <span class="math inline">\(\mathbf{A}\)</span> into two components. The first component <span class="math inline">\(\mathbf{L}\)</span> is a lower-triangular matrix and the second component <span class="math inline">\(\mathbf{U}\)</span> is an upper triangular matrix.</p>
 <p>Using the LU factorization, the matrix factorization <span class="math inline">\(\mathbf{A} = \mathbf{L} \mathbf{U}\)</span> can be used in the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{L} \mathbf{U}\mathbf{x} = \mathbf{b}\)</span> by first solving the sub-equation <span class="math inline">\(\mathbf{L} \mathbf{y} = \mathbf{b}\)</span> and then solving the second sub-equation <span class="math inline">\(\mathbf{U} \mathbf{x} = \mathbf{y}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>. Thus, the matrix factorization applied to the matrix equation gives the pair of equations</p>
 <p><span class="math display" id="eq:LU">\[
@@ -390,7 +388,7 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 \]</span></p>
 <p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-131" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
+<p><span id="exm:unlabeled-div-129" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; -1 &amp; 0 &amp; 0 \\ -1 &amp; -2 &amp; -3 &amp; 0 \\ -2 &amp; -3 &amp; 0 &amp; -3 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ 0 &amp; 2 &amp; 0 &amp; 3 \\ 0 &amp; 0 &amp; 2 &amp; -3 \\ 0 &amp; 0 &amp; 0 &amp; -3 \end{pmatrix}
@@ -450,7 +448,7 @@ and consider the system of equations defined by the matrix equation <span class=
 </div>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-161" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
+<span id="exr:unnamed-chunk-112" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
 Solve some large systems of equations by brute force which shows how the LU decomposition is faster.
 </div>
 
@@ -505,9 +503,9 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 <li><p>A <span class="math inline">\(n \times n\)</span> matrix is said to be positive definite if for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the quadratic form <span class="math inline">\(\mathbf{x}&#39; \mathbf{A }\mathbf{x} \geq 0\)</span></p></li>
 </ul>
 </div>
-<p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>).</p>
+<p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>).</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-134" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
+<p><span id="def:unlabeled-div-132" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \mathbf{L} \mathbf{L}&#39;
@@ -543,7 +541,7 @@ is the Cholesky decomposition of <span class="math inline">\(\mathbf{A}\)</span>
 <span id="cb177-19"><a href="matrix-factorizations.html#cb177-19"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
 <span id="cb177-20"><a href="matrix-factorizations.html#cb177-20"></a><span class="st">    </span><span class="kw">geom_density2d</span>() <span class="op">+</span></span>
 <span id="cb177-21"><a href="matrix-factorizations.html#cb177-21"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 
 </div>
 </div>

@@ -353,19 +353,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
 \]</span>
 where <span class="math inline">\(a^{-1}\)</span> is the inverse of <span class="math inline">\(a\)</span>.</p>
-
 <div class="definition">
-<span id="def:matrix-inverse" class="definition"><strong>Definition 8.1  (Matrix Inverse)  </strong></span>
-The <span class="math inline">\(n \times n\)</span> <strong>square</strong> matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be <strong>invertible</strong> if there exists a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{C}\)</span>( which we call <span class="math inline">\(\mathbf{A}^{-1}\)</span> once we verify the inverse exists) such that
+<p><span id="def:matrix-inverse" class="definition"><strong>Definition 8.1  (Matrix Inverse) </strong></span>The <span class="math inline">\(n \times n\)</span> <strong>square</strong> matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be <strong>invertible</strong> if there exists a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{C}\)</span>( which we call <span class="math inline">\(\mathbf{A}^{-1}\)</span> once we verify the inverse exists) such that
 <span class="math display">\[
 \begin{aligned}
 \mathbf{C}\mathbf{A} = \mathbf{A} \mathbf{C} &amp; = \mathbf{I} \\
 \mathbf{A}^{-1} \mathbf{A} = \mathbf{A} \mathbf{A}^{-1} &amp; = \mathbf{I}
 \end{aligned}
 \]</span>
-where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math inline">\(n \times n\)</span> identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
+where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math inline">\(n \times n\)</span> identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).</p>
 </div>
-
 <p>In <code>R</code>, an identity matrix is easy to construct. An <span class="math inline">\(n \times n\)</span> identity matrix can be constructed using the <code>diag()</code> function</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="matrix-inverse.html#cb148-1"></a>n &lt;-<span class="st"> </span><span class="dv">4</span></span>
 <span id="cb148-2"><a href="matrix-inverse.html#cb148-2"></a>I &lt;-<span class="st"> </span><span class="kw">diag</span>(n)</span>
@@ -376,7 +373,7 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 ## [3,]    0    0    1    0
 ## [4,]    0    0    0    1</code></pre>
 <div class="example">
-<p><span id="exm:unlabeled-div-113" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
+<p><span id="exm:unlabeled-div-112" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 1 &amp; -1 \\ 2 &amp; -3 \end{pmatrix} &amp;&amp; \mathbf{B} = \begin{pmatrix} 3 &amp; -1 \\ 2 &amp; -1 \end{pmatrix}
 \end{aligned}
@@ -393,17 +390,15 @@ where <span class="math inline">\(\mathbf{I}\)</span> is the <span class="math i
 ## [2,]    0    1</code></pre>
 <p>Because <span class="math inline">\(\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}\)</span>, we have <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix with inverse <span class="math inline">\(\mathbf{B} = \mathbf{A}^{-1}\)</span>.</p>
 </div>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-132" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
+<p><span id="thm:unlabeled-div-113" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>. If <span class="math inline">\(ad - bc \neq 0\)</span> then <span class="math inline">\(\mathbf{A}\)</span> is invertible and
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}
 \end{aligned}
 \]</span>
-If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not invertible.
+If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not invertible.</p>
 </div>
-
 <ul>
 <li><strong>Question:</strong> why is the matrix not invertible when <span class="math inline">\(ad - bc = 0\)</span>?
 <ul>
@@ -412,43 +407,36 @@ If <span class="math inline">\(ad - bc = 0\)</span>, then the matrix is not inve
 <li>Square matrices that are not invertible are call “singular”</li>
 </ul></li>
 </ul>
-
 <div class="definition">
-<span id="def:unnamed-chunk-133" class="definition"><strong>Definition 8.2  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span>
+<p><span id="def:unlabeled-div-114" class="definition"><strong>Definition 8.2  </strong></span>For the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>, the term <span class="math inline">\(ad - bc\)</span> is called the <strong>determinant</strong> of the matrix <span class="math inline">\(\mathbf{A}\)</span> and is written as <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>. Sometimes the determinant is written as <span class="math inline">\(| \mathbf{A}|\)</span></p>
 </div>
-
 <p>A consequence of the above theorem is that a <span class="math inline">\(2 \times 2\)</span> matrix is invertible only if its determinant is nonzero.</p>
 <!-- Example -->
 <div class="example">
-<p><span id="exm:unlabeled-div-116" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
+<p><span id="exm:unlabeled-div-115" class="example"><strong>Example 8.2  </strong></span>Determine if the following <span class="math inline">\(2 \times 2\)</span> matrix is invertible</p>
 <p><span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 \\ -1 &amp; 2 \end{pmatrix}\)</span></p>
 </div>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-135" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
+<p><span id="thm:unlabeled-div-116" class="theorem"><strong>Theorem 8.2  </strong></span>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then for each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the matrix equation
 <span class="math display">\[
 \mathbf{A} \mathbf{x} = \mathbf{b}
 \]</span>
-has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}\)</span>.
+has the unique solution <span class="math inline">\(\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}\)</span>.</p>
 </div>
-
-
 <div class="proof">
-<p> <span class="proof"><em>Proof. </em></span> </p>
+<p><span id="unlabeled-div-117" class="proof"><em>Proof</em>. </span>There are two things to show …</p>
 <ol style="list-style-type: decimal">
 <li><p>show there is a solution</p></li>
 <li><p>show the solution is unique</p></li>
 </ol>
 </div>
-
 <div class="example">
-<p><span id="exm:unlabeled-div-119" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
+<p><span id="exm:unlabeled-div-118" class="example"><strong>Example 8.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 4 &amp; -4 &amp; -2 \\ 5 &amp; 2 &amp; -5 \\ -4 &amp; 6 &amp; 1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)</span></p>
 <p>Find the solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span></p>
 </div>
-
 <div class="theorem">
-<p><span id="thm:invertible-matrix-1" class="theorem"><strong>Theorem 8.3  (Invertible Matrix Theorem)  </strong></span></p>
 <ol style="list-style-type: decimal">
+<li></li>
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is invertible and <span class="math inline">\((\mathbf{A}^{-1})^{-1} = \mathbf{A}\)</span></p></li>
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> invertible matrices, then <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is also an invertible matrix whose inverse is
 <span class="math display">\[
@@ -458,9 +446,9 @@ which is the inverse of the matrices in reverse order.</p></li>
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix, then the transpose <span class="math inline">\(\mathbf{A}&#39;\)</span> is also invertible and the inverse of <span class="math inline">\(\mathbf{A}&#39;\)</span> is the transpose of <span class="math inline">\(\mathbf{A}^{-1}\)</span>. Equivalently,
 <span class="math display">\[
 (\mathbf{A}&#39;)^{-1} = (\mathbf{A}^{-1})&#39;
-\]</span></p>
-</div></li>
+\]</span></p></li>
 </ol>
+</div>
 <div class="fold-proof">
 <div class="proof">
 <p><span id="unlabeled-div-13" class="proof"><em>Proof</em>. </span>Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in Definition <a href="matrix-inverse.html#def:matrix-inverse">8.1</a></p>
@@ -472,7 +460,7 @@ which is the inverse of the matrices in reverse order.</p></li>
 </div>
 </div>
 <ul>
-<li><strong>Note:</strong> A consequence of theorem <a href="matrix-inverse.html#thm:invertible-matrix-1">8.3</a> (2) is that the product of <span class="math inline">\(k\)</span> invertible <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k\)</span> has inverse <span class="math inline">\(\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}\)</span></li>
+<li><strong>Note:</strong> A consequence of theorem <a href="#thm:invertible-matrix1"><strong>??</strong></a> (2) is that the product of <span class="math inline">\(k\)</span> invertible <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k\)</span> has inverse <span class="math inline">\(\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}\)</span></li>
 </ul>
 <div id="elementary-matrices" class="section level2">
 <h2><span class="header-section-number">8.1</span> Elementary matrices</h2>
@@ -554,11 +542,9 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p><strong>Fact:</strong> Each elementary matrix <span class="math inline">\(\mathbf{E}\)</span> is invertible</p>
 <p><strong>Example: in class</strong></p>
 <p>The next theorem is quite important as the result gives an algorithm for calculating the inverse of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which also makes it possible to solve matrix equations <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span></p>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-145" class="theorem"><strong>Theorem 8.4  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<p><span id="thm:unlabeled-div-119" class="theorem"><strong>Theorem 8.3  </strong></span>If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible, then <span class="math inline">\(\mathbf{A}\)</span> is row-equivalent to <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>; row-equivalent means <span class="math inline">\(\mathbf{A}\)</span> can be reduced to <span class="math inline">\(\mathbf{I}\)</span> using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices <span class="math inline">\(\mathbf{E}_1, \ldots, \mathbf{E}_k\)</span>) that converts <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span>. In addition, the application of these row matrices to <span class="math inline">\(\mathbf{I}\)</span> transforms <span class="math inline">\(\mathbf{I}\)</span> to the matrix inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p>
 </div>
-
 <ul>
 <li><strong>Proof: in class</strong></li>
 </ul>
@@ -568,14 +554,14 @@ which is the inverse of the matrices in reverse order.</p></li>
 <p>The previous theorem states that for a <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(\mathbf{A}\)</span>, the elementary row operations that covert <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{I}\)</span> also convert <span class="math inline">\(\mathbf{I}\)</span> to <span class="math inline">\(\mathbf{A}^{-1}\)</span>. This suggests an algorithm for finding the inverse <span class="math inline">\(\mathbf{A}^{-1}\)</span> of <span class="math inline">\(\mathbf{A}\)</span>:</p>
 <p>Create the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{A} &amp; \mathbf{I} \end{pmatrix}\)</span> and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form <span class="math inline">\(\begin{pmatrix} \mathbf{I} &amp; \mathbf{A}^{-1} \end{pmatrix}\)</span> then <span class="math inline">\(\mathbf{A}^{-1}\)</span> is the inverse of <span class="math inline">\(\mathbf{A}\)</span>. If the leading matrix in the augmented matrix is not the identity matrix <span class="math inline">\(\mathbf{I}\)</span>, then <span class="math inline">\(\mathbf{A}\)</span> is not row equivalent to <span class="math inline">\(\mathbf{I}\)</span> and is therefore not invertible.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-121" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
+<p><span id="exm:unlabeled-div-120" class="example"><strong>Example 8.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 \\ -4 &amp; 2 &amp; -4 \\ 4 &amp; -4 &amp; 4 \end{pmatrix}\)</span>. Does <span class="math inline">\(\mathbf{A}\)</span> have an inverse, and if so, what is it?</p>
 <p>Using <code>R</code></p>
 </div>
 </div>
 <div id="the-invertible-matrix-theorem" class="section level2">
 <h2><span class="header-section-number">8.3</span> The Invertible Matrix Theorem</h2>
 <div class="theorem">
-<p><span id="thm:invertible-matrix" class="theorem"><strong>Theorem 8.5  (The Invertible Matrix Theorem) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
+<p><span id="thm:invertible-matrix" class="theorem"><strong>Theorem 8.4  (The Invertible Matrix Theorem) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is an invertible matrix.</p></li>
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is row equivalent to the <span class="math inline">\(n \times n\)</span> identity matrix <span class="math inline">\(\mathbf{I}\)</span> (<span class="math inline">\(\mathbf{A} \sim \mathbf{I}\)</span>).</p></li>
@@ -600,25 +586,21 @@ which is the inverse of the matrices in reverse order.</p></li>
 </div>
 <div id="invertible-linear-transformations" class="section level2">
 <h2><span class="header-section-number">8.4</span> Invertible Linear Transformations</h2>
-
 <div class="definition">
-<p><span id="def:unnamed-chunk-147" class="definition"><strong>Definition 8.3  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
-<span class="math display">\[
+<p><span id="def:unlabeled-div-121" class="definition"><strong>Definition 8.3  </strong></span>A linear transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> is said to be invertible if there exists a transformation <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> such that</p>
+<p><span class="math display">\[
 \begin{aligned}
 S(T(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n
 T(S(\mathbf{x})) = \mathbf{x} &amp;&amp; \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
 \end{aligned}
-\]</span>
+\]</span></p>
 </div>
-
 <ul>
 <li><strong>Draw figure in class</strong></li>
 </ul>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-148" class="theorem"><strong>Theorem 8.6  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.
+<p><span id="thm:unlabeled-div-122" class="theorem"><strong>Theorem 8.5  </strong></span>Let <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be a linear transformation and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix representing the transformation <span class="math inline">\(T\)</span>. Then the transformation <span class="math inline">\(T\)</span> is invertible if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible. Therefore, the matrix that represents <span class="math inline">\(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span>, the inverse transformation of <span class="math inline">\(T\)</span>, is unique and is represented by the matrix <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p>
 </div>
-
 
 </div>
 </div>

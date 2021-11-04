@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb239-10"><a href="determinants-and-volumes.html#cb239-10"></a>                 <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
 <span id="cb239-11"><a href="determinants-and-volumes.html#cb239-11"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Area of unit cube&quot;</span>)</span>
 <span id="cb239-12"><a href="determinants-and-volumes.html#cb239-12"></a>p1</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <p>Which implies that if <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}\)</span> has <span class="math inline">\(\det(\mathbf{A}) = 1\)</span> because <span class="math inline">\(\mathbf{A} = \mathbf{I}\)</span> the identity matrix.</p>
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="determinants-and-volumes.html#cb240-1"></a><span class="kw">det</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
@@ -390,26 +390,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb242-10"><a href="determinants-and-volumes.html#cb242-10"></a>                 <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
 <span id="cb242-11"><a href="determinants-and-volumes.html#cb242-11"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Area of unit cube&quot;</span>)</span>
 <span id="cb242-12"><a href="determinants-and-volumes.html#cb242-12"></a>p1</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 <p>Which implies that if <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}\)</span> has <span class="math inline">\(\det(\mathbf{A}) = 4\)</span> because <span class="math inline">\(\mathbf{A} = 2 \mathbf{I}\)</span> and the rule is for a constant <span class="math inline">\(c, \det(c\mathbf{A}) = c^n \det(\mathbf{A})\)</span></p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="determinants-and-volumes.html#cb243-1"></a><span class="kw">det</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
 <p>The Shiny app below allows you to plot the vector for any <span class="math inline">\((x, y)\)</span> pair of your choosing.</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="determinants-and-volumes.html#cb245-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb245-2"><a href="determinants-and-volumes.html#cb245-2"></a><span class="kw">runGitHub</span>(<span class="dt">rep =</span> <span class="st">&quot;multivariable-math&quot;</span>, <span class="dt">username =</span> <span class="st">&quot;jtipton25&quot;</span>, <span class="dt">subdir =</span> <span class="st">&quot;shiny-apps/chapter-14/determinants-volume/&quot;</span>) </span></code></pre></div>
-<!-- ::: {.theorem} -->
-
+<span id="cb245-2"><a href="determinants-and-volumes.html#cb245-2"></a><span class="kw">runGitHub</span>(<span class="dt">rep =</span> <span class="st">&quot;multivariable-math&quot;</span>,</span>
+<span id="cb245-3"><a href="determinants-and-volumes.html#cb245-3"></a>          <span class="dt">username =</span> <span class="st">&quot;jtipton25&quot;</span>,</span>
+<span id="cb245-4"><a href="determinants-and-volumes.html#cb245-4"></a>          <span class="dt">subdir =</span> <span class="st">&quot;shiny-apps/chapter-14/determinants-volume/&quot;</span>) </span></code></pre></div>
 <div class="theorem">
-<p><span id="thm:unnamed-chunk-218" class="theorem"><strong>Theorem 14.1  (Determinants and Volume)  </strong></span>Let <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>, let <span class="math inline">\(\mathcal{P}\)</span> be the parallelpiped determined by these vectors, and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix with columns <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span>. Then, the absolute value of the determinant of <span class="math inline">\(\mathbf{A}\)</span> is the volume of the parallelpiped <span class="math inline">\(\mathcal{P}\)</span>:</p>
-<span class="math display">\[
+<p><span id="thm:unlabeled-div-172" class="theorem"><strong>Theorem 14.1  (Determinants and Volume) </strong></span>Let <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>, let <span class="math inline">\(\mathcal{P}\)</span> be the parallelpiped determined by these vectors, and let <span class="math inline">\(\mathbf{A}\)</span> be the matrix with columns <span class="math inline">\(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\)</span>. Then, the absolute value of the determinant of <span class="math inline">\(\mathbf{A}\)</span> is the volume of the parallelpiped <span class="math inline">\(\mathcal{P}\)</span>:</p>
+<p><span class="math display">\[
 \begin{aligned}
 |\det(\mathbf{A})| = \operatorname{volume}(\mathcal{P})
 \end{aligned}
-\]</span>
+\]</span></p>
 </div>
-
-<!-- ::: -->
 <div class="fold-proof">
 <div class="proof">
 <p><span id="unlabeled-div-47" class="proof"><em>Proof</em>. </span>Recall the 4 defining properties (Definition <a href="determinants.html#def:determinant">13.1</a>) that characterize the determinant. These properties also characterize the absolute value of the determinant.</p>
@@ -436,27 +434,20 @@ vol(\mathcal{P}_A) = |\det(\mathbf{A})|
 </div>
 </div>
 <p><strong>Note:</strong> Because <span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span>, the absolute value of the determinant is equal to the volume of the parallelpiped defined by the columns of <span class="math inline">\(\mathbf{A}\)</span> (we could just have easily done all the calculations on the columns of <span class="math inline">\(\mathbf{A}\)</span> as the rows of <span class="math inline">\(\mathbf{A}\)</span>).</p>
-
 <div class="example">
-<span id="exm:unnamed-chunk-219" class="example"><strong>Example 14.4  </strong></span>1 by 1 matrix <span class="math inline">\(a\)</span> (length) has <span class="math inline">\(\det(a) = a\)</span>
+<p><span id="exm:unlabeled-div-173" class="example"><strong>Example 14.4  </strong></span>1 by 1 matrix <span class="math inline">\(a\)</span> (length) has <span class="math inline">\(\det(a) = a\)</span></p>
 </div>
-
 <div class="example">
 <p><span id="exm:unlabeled-div-174" class="example"><strong>Example 14.5  </strong></span>2 by 2 matrix <span class="math inline">\(\begin{pmatrix} a &amp; c \\ b &amp; d \end{pmatrix}\)</span></p>
 </div>
-
 <div class="example">
-<span id="exm:unnamed-chunk-220" class="example"><strong>Example 14.6  </strong></span>Find the area of a parallelogram with sides defined by the vectors <span class="math inline">\(\begin{pmatrix} 2 \\ 4 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} -1 \\ 2 \end{pmatrix}\)</span>
+<p><span id="exm:unlabeled-div-175" class="example"><strong>Example 14.6  </strong></span>Find the area of a parallelogram with sides defined by the vectors <span class="math inline">\(\begin{pmatrix} 2 \\ 4 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} -1 \\ 2 \end{pmatrix}\)</span></p>
 </div>
-
-
-<div class="example">
-<span id="exm:unnamed-chunk-221" class="example"><strong>Example 14.7  </strong></span>area of a triangle – choose two sides and find area of parallelogram and divide by 2
+<div class="{/.example}">
+<p>area of a triangle – choose two sides and find area of parallelogram and divide by 2</p>
 </div>
-
-
 <div class="example">
-<p><span id="exm:unnamed-chunk-222" class="example"><strong>Example 14.8  </strong></span>Recall that in data science, a probability distribution is function that has volume under the surface of one. For common distributions, particularly the normal/Gaussian distribution, the determinant is the factor that scales the function so that the volume under the surface is one.</p>
+<p><span id="exm:unlabeled-div-176" class="example"><strong>Example 14.7  </strong></span>Recall that in data science, a probability distribution is function that has volume under the surface of one. For common distributions, particularly the normal/Gaussian distribution, the determinant is the factor that scales the function so that the volume under the surface is one.</p>
 <p>The vector <span class="math inline">\(\mathbf{y}\)</span> is said to have a multivariate normal distribution with mean <span class="math inline">\(\boldsymbol{\mu}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> if the probability density function of <span class="math inline">\(\mathbf{y}\)</span> is
 <span class="math display">\[
 \begin{aligned}
@@ -465,35 +456,32 @@ f(\mathbf{y}) = (2 \pi)^{-n/2} |\det(\boldsymbol{\Sigma})|^{-1/2} e^{- \frac{1}{
 \]</span></p>
 <p>Notice in this equation that the determinant <span class="math inline">\(\det(\boldsymbol{\Sigma})\)</span> plays a key role in the definition of the probability distribution. This is because</p>
 <p><span class="math display">\[\begin{aligned}
-\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{-1/2}
+\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{1/2}
 \end{aligned}
 \]</span>
 which implies that
 <span class="math display">\[
 \begin{aligned}
-\frac{\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{-1/2}} = 1
+\frac{\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{1/2}} = 1
 \end{aligned}
 \]</span></p>
-In probability and statistics, the denominator is known as the <a href="https://en.wikipedia.org/wiki/Normalizing_constant">“normalizing constant.”</a>
+<p>In probability and statistics, the denominator is known as the <a href="https://en.wikipedia.org/wiki/Normalizing_constant">“normalizing constant.”</a></p>
 </div>
-
 <div id="volumes-of-parallelpipeds" class="section level2">
 <h2><span class="header-section-number">14.1</span> Volumes of Parallelpipeds</h2>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-178" class="proposition"><strong>Proposition 14.1  </strong></span>Let <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> be nonzero vectors. Then, for any scalar <span class="math inline">\(c\)</span>, the area of the parallelpiped defined by <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> is the same as the area of the parallelpiped defined by the vectors <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2 + c \mathbf{a}_1\)</span> (an elementary column operation).</p>
+<p><span id="prp:unlabeled-div-177" class="proposition"><strong>Proposition 14.1  </strong></span>Let <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> be nonzero vectors. Then, for any scalar <span class="math inline">\(c\)</span>, the area of the parallelpiped defined by <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2\)</span> is the same as the area of the parallelpiped defined by the vectors <span class="math inline">\(\mathbf{a}_1\)</span> and <span class="math inline">\(\mathbf{a}_2 + c \mathbf{a}_1\)</span> (an elementary column operation).</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-179" class="example"><strong>Example 14.9  </strong></span>Draw a parallelpiped in class. Recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.</p>
+<p><span id="exm:unlabeled-div-178" class="example"><strong>Example 14.8  </strong></span>Draw a parallelpiped in class. Recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.</p>
 </div>
 </div>
 <div id="volumes-of-linear-transformations" class="section level2">
 <h2><span class="header-section-number">14.2</span> Volumes of Linear Transformations</h2>
 <p>Recall linear transformations <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> (Section <a href="linear-transformations.html#linear-transformations">6</a>) where for any <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (the domain), <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x} \in \mathcal{R}^n\)</span> (the codomain).</p>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-223" class="theorem"><strong>Theorem 14.2  </strong></span>Let <span class="math inline">\(\mathcal{S}\)</span> be a set in the domain that has a volume <span class="math inline">\(vol(\mathcal{S})\)</span>. Then, the volume of the image of the set under the transformation <span class="math inline">\(T(\mathcal{S})\)</span> is <span class="math inline">\(vol(T(\mathcal{S})) = |\det(\mathbf{A})|vol(\mathcal{S})\)</span>
+<p><span id="thm:unlabeled-div-179" class="theorem"><strong>Theorem 14.2  </strong></span>Let <span class="math inline">\(\mathcal{S}\)</span> be a set in the domain that has a volume <span class="math inline">\(vol(\mathcal{S})\)</span>. Then, the volume of the image of the set under the transformation <span class="math inline">\(T(\mathcal{S})\)</span> is <span class="math inline">\(vol(T(\mathcal{S})) = |\det(\mathbf{A})|vol(\mathcal{S})\)</span></p>
 </div>
-
 
 </div>
 </div>

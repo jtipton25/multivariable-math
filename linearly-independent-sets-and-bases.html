@@ -353,7 +353,7 @@ x_1 \mathbf{v}_1 + \cdots + x_n \mathbf{v}_n = \mathbf{0}
 \]</span>
 is the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>. In other words, it is not possible to write any of the vectors in the set <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> as a linear combination of the other vectors.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-191" class="definition"><strong>Definition 16.1  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a subspace of a vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, the set of vectors <span class="math inline">\(\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}\)</span> is a <strong>basis</strong> for <span class="math inline">\(\mathcal{H}\)</span> if</p>
+<p><span id="def:unlabeled-div-190" class="definition"><strong>Definition 16.1  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a subspace of a vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, the set of vectors <span class="math inline">\(\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}\)</span> is a <strong>basis</strong> for <span class="math inline">\(\mathcal{H}\)</span> if</p>
 <ul>
 <li><p>The set of vectors <span class="math inline">\(\mathcal{B}\)</span> are linearly independent</p></li>
 <li><p>The subspace spanned by <span class="math inline">\(\mathcal{B}\)</span> is <span class="math inline">\(\mathcal{H}\)</span>. In other words
@@ -376,13 +376,13 @@ is the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</s
 <li>in class–pick 3 vectors of length 3. Are they a basis for <span class="math inline">\(\mathcal{R}^3\)</span>? What about <span class="math inline">\(\mathcal{R}^4\)</span>?</li>
 </ul>
 </div>
-<p>:::{.theorem name = “The Spanning Set Theorem”}
-Let <span class="math inline">\(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> be vectors in the vector space <span class="math inline">\(\mathcal{V}\)</span> and let <span class="math inline">\(\mathcal{H}\)</span> = span(<span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_n\)</span>)</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-193" class="theorem"><strong>Theorem 16.1  (The Spanning Set Theorem) </strong></span>Let <span class="math inline">\(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> be vectors in the vector space <span class="math inline">\(\mathcal{V}\)</span> and let <span class="math inline">\(\mathcal{H}\)</span> = span(<span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_n\)</span>)</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>If one of the vectors, say <span class="math inline">\(\mathbf{v}_k\)</span>, of <span class="math inline">\(\mathcal{S}\)</span> is a linear combination of the remaining vectors of <span class="math inline">\(\mathcal{S}\)</span>, then the set formed by removing the vector <span class="math inline">\(\mathbf{v}_k\)</span> still spans <span class="math inline">\(\mathcal{H}\)</span></p></li>
 <li><p>If <span class="math inline">\(\mathcal{H} \neq \{\mathbf{0}\}\)</span>, then some subset of <span class="math inline">\(\mathcal{S}\)</span> spans <span class="math inline">\(\mathcal{H}\)</span>.</p></li>
 </ol>
-<p>:::</p>
+</div>
 <div class="proof">
 <ol style="list-style-type: lower-alpha">
 <li></li>
@@ -470,7 +470,7 @@ What is a basis for col(<span class="math inline">\(\mathbf{A}\)</span>) in term
 </ul>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-199" class="theorem"><strong>Theorem 16.1  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for col(<span class="math inline">\(\mathbf{A}\)</span>)</p>
+<p><span id="thm:unlabeled-div-199" class="theorem"><strong>Theorem 16.2  </strong></span>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> for a basis for col(<span class="math inline">\(\mathbf{A}\)</span>)</p>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-200" class="proof"><em>Proof</em>. </span>sketch: <span class="math inline">\(\mathbf{B}\)</span> rref of <span class="math inline">\(\mathbf{A}\)</span>, linearly independent columns of <span class="math inline">\(\mathbf{B}\)</span> are same as linearly independent columns in <span class="math inline">\(\mathbf{A}\)</span>. Other (non-pviot) columns are linearly dependent. By spanning set theorem, non-pivot columns can be removed from the spanning set without changing the span, leaving only the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> as a basis for col($)</p>

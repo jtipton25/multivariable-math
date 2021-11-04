@@ -597,7 +597,7 @@ c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
 </div>
 <div class="fold-proof">
 <div class="proof">
-<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem (Theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>), we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
+<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem (Theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>), we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
 </div>
 </div>
 <div class="theorem">
@@ -617,16 +617,14 @@ c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
 <li><a href="https://www.3blue1brown.com/lessons/cramers-rule">3 Blue 1 Brown – Cramer’s rule</a>
 While commonly used for theoretical results, Cramer’s rule is not commonly used in applied linear algebra. As such, we will mention Cramer’s rule but not focus on it.</li>
 </ul>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-211" class="theorem"><strong>Theorem 13.5  (Cramer’s Rule)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
+<p><span id="thm:unlabeled-div-167" class="theorem"><strong>Theorem 13.5  (Cramer's Rule) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
 <span class="math display">\[
 \begin{aligned}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for } i = 1, 2, \ldots, n
 \end{aligned}
-\]</span>
+\]</span></p>
 </div>
-
 <div class="example">
 <p><span id="exm:unlabeled-div-168" class="example"><strong>Example 13.8  </strong></span>In Cramer’s rule, why do we know</p>
 <ul>

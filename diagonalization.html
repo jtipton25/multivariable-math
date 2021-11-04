@@ -347,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb270-2"><a href="diagonalization.html#cb270-2"></a><span class="kw">library</span>(dasc2594)</span>
 <span id="cb270-3"><a href="diagonalization.html#cb270-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <div class="definition">
-<p><span id="def:unlabeled-div-249" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
+<p><span id="def:unlabeled-div-250" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A} &amp; = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
@@ -355,19 +355,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-250" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
+<p><span id="exm:unlabeled-div-251" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
 </div>
-
 <div class="theorem">
-<p><span id="thm:diagonalization" class="theorem"><strong>Theorem 22.1  (The Diagonalization Theorem)  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors.</p>
-In addition, the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span> with diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> if and only if the columns of <span class="math inline">\(\mathbf{P}\)</span> are the lienarly independent eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. Then, the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span> are the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span> that correspond to the eigenvectors in <span class="math inline">\(\mathbf{P}\)</span>.
+<p><span id="thm:diagonalization" class="theorem"><strong>Theorem 22.1  (The Diagonalization Theorem) </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors.</p>
+<p>In addition, the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span> with diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> if and only if the columns of <span class="math inline">\(\mathbf{P}\)</span> are the lienarly independent eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. Then, the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span> are the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span> that correspond to the eigenvectors in <span class="math inline">\(\mathbf{P}\)</span>.</p>
 </div>
-
-
 <div class="proof">
- <span class="proof"><em>Proof. </em></span> This comes directly from Theorem <a href="eigenvectors-and-eigenvalues.html#thm:distinct-eigenvalues">20.1</a> where if a <span class="math inline">\(n \times n\)</span> matrix has <span class="math inline">\(n\)</span> distinct eigenvalues <span class="math inline">\(\lambda_1 \neq \lambda_2 \neq \cdots \neq \lambda_n\)</span>, the the corresponding eigenvalues <span class="math inline">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\)</span> are linearly independent.
+<p><span id="unlabeled-div-252" class="proof"><em>Proof</em>. </span>This comes directly from Theorem <a href="eigenvectors-and-eigenvalues.html#thm:distinct-eigenvalues">20.1</a> where if a <span class="math inline">\(n \times n\)</span> matrix has <span class="math inline">\(n\)</span> distinct eigenvalues <span class="math inline">\(\lambda_1 \neq \lambda_2 \neq \cdots \neq \lambda_n\)</span>, the the corresponding eigenvalues <span class="math inline">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\)</span> are linearly independent.</p>
 </div>
-
 <p>This theorem implies that the matrix <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable if and only if the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span>. When this is the case, the set of eigenvectors is called an <strong>eigenbasis</strong>.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-253" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>

@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb255-3"><a href="eigenvectors-and-eigenvalues.html#cb255-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is “data-driven” called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-228" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
+<p><span id="def:unlabeled-div-229" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} \mathbf{x} = \lambda \mathbf{x}
@@ -360,21 +360,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 for some scalar <span class="math inline">\(\lambda\)</span>. If there exists some <span class="math inline">\(\lambda \neq 0\)</span> (a non-trivial solutions), then <span class="math inline">\(\lambda\)</span> is called an <strong>eigenvalue</strong> of <span class="math inline">\(\mathbf{A}\)</span> corresponding to the eigenvector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-229" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
+<p><span id="exm:unlabeled-div-230" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 1/2 &amp; 0 &amp; 0 \\ 0 &amp; 1/2 &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\)</span>. Determine if <span class="math inline">\(\mathbf{u}\)</span> or <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. If they are eigenvectors, what are the associated eigenvalues.</p>
 <p>Now, plot <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> to show this relationship geometrically.</p>
 </div>
 <p>An eigenvector is a (nonzero) vector <span class="math inline">\(\mathbf{x}\)</span> that gets mapped to a scalar multiple of itself <span class="math inline">\(\lambda \mathbf{x}\)</span> by the matrix transformation <span class="math inline">\(\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}\)</span>. As such, we say that <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> are collinear with the origin (<span class="math inline">\(\mathbf{0}\)</span>) in the sense that these points lie on the same line that goes through the origin.</p>
 <p><strong>Note:</strong> The matrix <span class="math inline">\(\mathbf{A}\)</span> must be an <span class="math inline">\(n \times n\)</span> square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-230" class="example"><strong>Example 20.2  </strong></span>Example: reflection
+<p><span id="exm:unlabeled-div-231" class="example"><strong>Example 20.2  </strong></span>Example: reflection
 Draw images: <a href="https://textbooks.math.gatech.edu/ila/eigenvectors.html">https://textbooks.math.gatech.edu/ila/eigenvectors.html</a></p>
 </div>
-
 <div class="theorem">
-<span id="thm:distinct-eigenvalues" class="theorem"><strong>Theorem 20.1  (The distinct eigenvalues theorem)  </strong></span>Let <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_n\)</span> be eigenvectors of a matrix <span class="math inline">\(\mathbf{A}\)</span> and suppose the corresponding eigenvalues are <span class="math inline">\(\lambda_1, \lambda_2, \ldots, \lambda_n\)</span> are all distinct (different values). Then, the set of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly independent.
+<p><span id="thm:distinct-eigenvalues" class="theorem"><strong>Theorem 20.1  (The distinct eigenvalues theorem) </strong></span>Let <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_n\)</span> be eigenvectors of a matrix <span class="math inline">\(\mathbf{A}\)</span> and suppose the corresponding eigenvalues are <span class="math inline">\(\lambda_1, \lambda_2, \ldots, \lambda_n\)</span> are all distinct (different values). Then, the set of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly independent.</p>
 </div>
-
 <div class="proof">
 <p><span id="unlabeled-div-232" class="proof"><em>Proof</em>. </span>Suppose the set <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly dependent. Then, there is some <span class="math inline">\(j\)</span> such that <span class="math inline">\(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\)</span>. If we choose the first linearly dependent vector as <span class="math inline">\(j\)</span>, we know that the subset of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> is linearly independent and
 <span class="math display">\[
@@ -481,9 +479,8 @@ which has solution</p>
 <div class="proof">
 <p><span id="unlabeled-div-237" class="proof"><em>Proof</em>. </span>0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if null<span class="math inline">\((\mathbf{A} - 0 \mathbf{I})\)</span> = null<span class="math inline">\((\mathbf{A})\)</span>. By the invertible matrix theorem, <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if null<span class="math inline">\((\mathbf{A}) = \{\mathbf{0}\}\)</span> but we know that the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is not the trivial set <span class="math inline">\(\{\mathbf{0}\}\)</span> because 0 is an eigenvalue.</p>
 </div>
-
 <div class="theorem">
-<p><span id="thm:unnamed-chunk-247" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces)  </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.5</a>
+<p><span id="thm:unlabeled-div-238" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces) </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(T: \mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be the linear transformation given by <span class="math inline">\(T(\mathbf{x}) = \mathbf{A}\mathbf{x}\)</span>. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is invertible.</p></li>
@@ -496,9 +493,9 @@ Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inli
 <li><p>The transormation <span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>The transormation <span class="math inline">\(T\)</span> is onto.</p></li>
 <li><p>det<span class="math inline">\((\mathbf{A}) \neq 0\)</span></p></li>
-<li><p>0 is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p>
-</div></li>
+<li><p>0 is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p></li>
 </ol>
+</div>
 
 </div>
 </div>

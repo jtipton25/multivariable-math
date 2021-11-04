@@ -343,22 +343,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="linear-independence" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Linear independence</h1>
-Recall the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> can be written as a linear combination of coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> and vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> where
+<p>Recall the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> can be written as a linear combination of coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> and vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> where
 <span class="math display">\[
 \begin{aligned}
 \sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}
 \end{aligned}
-\]</span>
-
+\]</span></p>
 <div class="definition">
-<span id="def:unnamed-chunk-101" class="definition"><strong>Definition 5.1  </strong></span>The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly independent</strong> if the only solution to the vector equation <span class="math inline">\(\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}\)</span> is the trivial solution. The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly dependent</strong> if there are coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> that are not all zero.
+<p><span id="def:unlabeled-div-93" class="definition"><strong>Definition 5.1  </strong></span>The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly independent</strong> if the only solution to the vector equation <span class="math inline">\(\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}\)</span> is the trivial solution. The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly dependent</strong> if there are coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> that are not all zero.</p>
 </div>
-
-
 <div class="example">
-<span id="exm:unnamed-chunk-102" class="example"><strong>Example 5.1  </strong></span><strong>In class</strong>
+<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 5.1  </strong></span><strong>In class</strong></p>
 </div>
-
 <p>What does it mean for a set of vectors to be <strong>linearly dependent</strong>? This means that there is at least one vector <span class="math inline">\(\mathbf{a}_k\)</span> that can be written as a sum of the other vectors with coefficients <span class="math inline">\(x_k\)</span>:
 <span class="math display">\[
 \begin{aligned}
@@ -366,21 +362,15 @@ Recall the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x
 \end{aligned}
 \]</span>
 Note: <strong>linear dependence</strong> does not imply that all vectors <span class="math inline">\(\mathbf{a}_{k}\)</span> can be written as a linear combination of other vectors, just that there is at least one such vector in the set.</p>
-
 <div class="example">
-<span id="exm:unnamed-chunk-103" class="example"><strong>Example 5.2  </strong></span><strong>Example: in class – determine if the vectors are linearly independent and solve the dependence relation</strong>
+<p><span id="exm:unlabeled-div-95" class="example"><strong>Example 5.2  </strong></span><strong>Example: in class – determine if the vectors are linearly independent and solve the dependence relation</strong></p>
 </div>
-
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-104" class="theorem"><strong>Theorem 5.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> has linearly independent columns if and only if the matrix equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only the trivial solution.
+<p><span id="thm:unlabeled-div-96" class="theorem"><strong>Theorem 5.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> has linearly independent columns if and only if the matrix equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only the trivial solution.</p>
 </div>
-
-
 <div class="example">
-<span id="exm:unnamed-chunk-105" class="example"><strong>Example 5.3  </strong></span><strong>Example: in class</strong> A set of a single vector
+<p><span id="exm:unlabeled-div-97" class="example"><strong>Example 5.3  </strong></span><strong>Example: in class</strong> A set of a single vector</p>
 </div>
-
 <div class="example">
 <p><span id="exm:unlabeled-div-98" class="example"><strong>Example 5.4  </strong></span><strong>Example: in class</strong> A set of two vectors</p>
 <ul>
@@ -388,31 +378,21 @@ Note: <strong>linear dependence</strong> does not imply that all vectors <span c
 <li><p>linearly dependent if one vector is a scalar multiple of the other:</p></li>
 </ul>
 </div>
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-106" class="theorem"><strong>Theorem 5.2  </strong></span>If an <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(K &gt; n\)</span>, then the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly dependent. In other words, if a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains more vectors than entries within vectors, the set of vectors is linearly dependent.
+<p><span id="thm:unlabeled-div-99" class="theorem"><strong>Theorem 5.2  </strong></span>If an <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(K &gt; n\)</span>, then the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly dependent. In other words, if a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains more vectors than entries within vectors, the set of vectors is linearly dependent.</p>
 </div>
-
-
 <div class="proof">
- <span class="proof"><em>Proof. </em></span> If <span class="math inline">\(K&gt;n\)</span>, there are more variables (<span class="math inline">\(K\)</span>) than equations (<span class="math inline">\(n\)</span>). Therefore, there is at least one free variable and this implies that the homogeneous equation <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> has a non-trivial solution <a href="matrix-equation.html#eq:homogeneous">(4.2)</a>
+<p><span id="unlabeled-div-100" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(K&gt;n\)</span>, there are more variables (<span class="math inline">\(K\)</span>) than equations (<span class="math inline">\(n\)</span>). Therefore, there is at least one free variable and this implies that the homogeneous equation <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> has a non-trivial solution <a href="matrix-equation.html#eq:homogeneous">(4.2)</a></p>
 </div>
-
-
 <div class="theorem">
-<span id="thm:unnamed-chunk-108" class="theorem"><strong>Theorem 5.3  </strong></span>If a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains the <span class="math inline">\(\mathbf{0}\)</span> vector, then the the set of vectors is linearly dependent.
+<p><span id="thm:unlabeled-div-101" class="theorem"><strong>Theorem 5.3  </strong></span>If a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains the <span class="math inline">\(\mathbf{0}\)</span> vector, then the the set of vectors is linearly dependent.</p>
 </div>
-
-
 <div class="proof">
- <span class="proof"><em>Proof. </em></span> <strong>in class</strong>
+<p><span id="unlabeled-div-102" class="proof"><em>Proof</em>. </span><strong>in class</strong></p>
 </div>
-
-
 <div class="example">
-<span id="exm:unnamed-chunk-110" class="example"><strong>Example 5.5  </strong></span>In class: Determine whether the following sets of vectors are linearly dependent
+<p><span id="exm:unlabeled-div-103" class="example"><strong>Example 5.5  </strong></span>In class: Determine whether the following sets of vectors are linearly dependent</p>
 </div>
-
 
 </div>
 
