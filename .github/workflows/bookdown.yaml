@@ -29,6 +29,14 @@ jobs:
           brew install imagemagick@6
           brew install libgit2
           brew install poppler
+      
+      - name: install latex and xelatex
+        if: runner.os = 'macOS'
+        run: |
+          brew install --cask basictex 
+          sudo tlmgr update --self
+          sudo tlmgr install xelatex
+        
           
       - name: Cache Renv packages
         uses: actions/cache@v1
