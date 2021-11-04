@@ -51,16 +51,16 @@ b) If $\mathcal{H} \neq \{\mathbf{0}\}$, then some subset of $\mathcal{S}$ spans
 a) WLOG assume $\mathbf{v}_n$ is a linear combination of $\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}$ (if not, permute the labels to make the linearly dependent vector the $n$th vector). Then
 $$
 \begin{aligned}
-(\#eq:span-set-theorem1)
 \mathbf{v}_n = x_1 \mathbf{v}_1 + \cdots + x_{n-1} \mathbf{v}_{n-1}
 \end{aligned}
+(\#eq:span-set-theorem1)
 $$
 Because the vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ span $\mathcal{H}$, any vector $\mathbf{b}\in \mathcal{H}$ can be written as 
 $$
 \begin{aligned}
-(\#eq:span-set-theorem2)
 \mathbf{b} = c_1 \mathbf{v}_1 + \cdots + c_{n} \mathbf{v}_{n}
 \end{aligned}
+(\#eq:span-set-theorem2)
 $$    
 for scalars $c_1, \ldots, c_n$. Plugging the result from \@ref(eq:span-set-theorem1) into \@ref(eq:span-set-theorem2) shows that any vector $\mathbf{b}$ in $\mathcal{H}$ can be written only using the vectors $\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}$
 

@@ -19,6 +19,7 @@ The determinant $\operatorname{det}(\mathbf{A})$ is a function of a square $n \t
 3) Scaling a row of $\mathbf{A}$ by a constant $c$ multiples the determinant by $c$
 
 4) Swapping two rows of a matrix $\mathbf{A}$ multiplies the determinant by -1
+
 :::
 
 The determinant is the unique function mapping square matrices to the real number line that satisfies the above definition.
@@ -181,7 +182,7 @@ In `R`, given the minor `A_minor_23`, the cofactor is
 
 Note that in the cofactor definition of a $n \times n$ matrix it is assumed that you can calculate the determinant of the $n-1 \times n-1$ minor $\mathbf{A}_{-i-j}$. From this we see that each of the $n \times n$ cofactors of $\mathbf{A}$ are themselves the (signed) determinants of $n-1 \times n-1$ submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated. 
 
-:::{.theorem cofactor-expansion name = "Cofactor exapansion"}
+:::{.theorem #cofactor-expansion name="Cofactor exapansion"}
 
 Let $\mathbf{A}$ be an $n \times n$ matrix with $ij$th elements $a_{ij}$. Then
 

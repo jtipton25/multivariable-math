@@ -29,9 +29,9 @@ Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \l
 
 $$
 \begin{aligned}
-(\#eq:linear)
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
 \end{aligned}
+(\#eq:linear)
 $$
 
 is a **linear equation**. 
@@ -184,7 +184,7 @@ A <- matrix(sample(-10:10, 6, replace = TRUE), 2, 3)
 ```
 
 :::{.example}
-Is $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  = \end{pmatrix}$ a solution to the system of equations
+Is $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}$ a solution to the system of equations
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.

@@ -49,10 +49,10 @@ Using the LU factorization, the matrix factorization $\mathbf{A} = \mathbf{L} \m
 
 $$
 \begin{aligned}
-(\#eq:LU)
 \mathbf{L} \mathbf{y} & = \mathbf{b} \\
 \mathbf{U} \mathbf{x} & = \mathbf{y}
 \end{aligned}
+(\#eq:LU)
 $$
 
 At first glance, this seems like we are trading the challenge of solving one system of equations $\mathbf{A}\mathbf{x}$ \@ref(eq:matrix-equation) for the two equations in \@ref(eq:LU). However, the computational benefits arise due to the fact that $\mathbf{L}$ and $\mathbf{U}$ are triangular matrices and solving matrix equations with triangular matrices is much faster. 
@@ -122,12 +122,13 @@ For the example, we will show how to solve a system of equations using the LU de
  
 1) Solve $\mathbf{L} \mathbf{y} = \mathbf{b}$ using augmented matrix
 
+
 $$
 \begin{aligned}
 & & `r array_to_latex(L1)` & \stackrel{r_2 \leftarrow -\frac{1}{2} r_2 - r_1}{\huge \sim} & `r array_to_latex(L2)` \\
 & \stackrel{r_3 \leftarrow - r_3 - r_1}{\huge \sim} & `r array_to_latex(L3)` & \stackrel{r_4 \leftarrow - \frac{1}{2} r_4 - r_1}{\huge \sim} & `r array_to_latex(L4)` \\
 & \stackrel{r_2 \leftarrow 2 r_2}{\huge \sim} & `r array_to_latex(L5)` & \stackrel{r_3 \leftarrow \frac{1}{2} r_3 - r_2}{\huge \sim} & `r array_to_latex(L6)` \\
-& \stackrel{r_4 \leftarrow \frac{2}{3} r_4 - r_2}{\huge \sim} & `r array_to_latex(L7)` & \stackrel{r_3 \leftarrow \frac{2}{3} r_3}{\huge \sim} & `r array_to_latex(L8)` 
+& \stackrel{r_4 \leftarrow \frac{2}{3} r_4 - r_2}{\huge \sim} & `r array_to_latex(L7)` & \stackrel{r_3 \leftarrow \frac{2}{3} r_3}{\huge \sim} & `r array_to_latex(L8)`
 \end{aligned}
 $$
 
@@ -233,10 +234,10 @@ Combining the LU factorization and the fact that we can find an upper triangular
 
 $$
 \begin{aligned}
-(\#eq:LU-alg)
 \mathbf{A} & = \mathbf{L} \mathbf{U} \\
 \mathbf{E}_k \cdots \mathbf{E}_1 \mathbf{A} & = \mathbf{U}.
 \end{aligned}
+(\#eq:LU-alg)
 $$
 We also know that each of the elementary row matrices $\mathbf{E}_j$ are invertible (you can always re-swap rows, subtract instead of add rows, etc.) which says that each inverse $\mathbf{E}_j^{-1}$ exists. Thus, the product $\mathbf{E}_k \cdots \mathbf{E}_1$ must have an inverse which is 
 $$

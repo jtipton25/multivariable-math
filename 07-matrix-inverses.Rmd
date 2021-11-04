@@ -270,7 +270,7 @@ Using `R`
 
 ## The Invertible Matrix Theorem
 
-:::{.theorem, #invertible-matrix name = "The Invertible Matrix Theorem"}
+:::{.theorem #invertible-matrix name="The Invertible Matrix Theorem"}
 Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
 
 1) $\mathbf{A}$ is an invertible matrix.

@@ -101,7 +101,7 @@ which prints the elements of x. Notice that `R` prints the elements of $\mathbf{
 data.frame(x)
 ```
 
-One can use the index operator $[\hspace{2mm}]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
+One can use the index operator $[\ ]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
 
 ```{r}
 x[1]

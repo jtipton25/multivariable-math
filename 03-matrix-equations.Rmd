@@ -10,11 +10,11 @@ Here we introduce the concept of the linear equation $\mathbf{A} \mathbf{x} = \m
 
 $$
 \begin{aligned}
-(\#eq:matrix-equation)
 \mathbf{A} \mathbf{x} & = \mathbf{b} \\
 \begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} & = \mathbf{b} \\
 x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K & = \mathbf{b} \\
 \end{aligned}
+(\#eq:matrix-equation)
 $$
 
 as long as the matrix $\mathbf{A}$ has $n$ rows and $K$ columns and the vectors $\mathbf{a}_k$ are $n$-dimensional.
@@ -125,9 +125,9 @@ b) $\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}$
 The matrix equation 
 $$
 \begin{aligned}
-(\#eq:homogeneous)
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{aligned}
+(\#eq:homogeneous)
 $$ 
 is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $N$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
 ```

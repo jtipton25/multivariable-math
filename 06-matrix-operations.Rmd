@@ -1,5 +1,10 @@
 # Matrix operations {#matrix-operations}
 
+## ToDo 
+- define dot product here
+- Show matrix multiplication using dot products
+- move to chapter 1 or 2
+
 - [3 Blue 1 Brown -- Matrix Multiplication](https://www.3blue1brown.com/lessons/matrix-multiplication)
 
 * **Note: add examples:**
@@ -15,7 +20,6 @@
 
 $$
 \begin{aligned}
-(\#eq:matrix-addition)
 \mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -33,6 +37,7 @@ a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
 \end{pmatrix} \\
 & = \left\{ a_{ij} + b_{ij} \right\}
 \end{aligned}
+(\#eq:matrix-addition)
 $$
 
 **... Another way to **
@@ -97,7 +102,6 @@ Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and le
 
 $$
 \begin{aligned}
-(\#eq:matrix-multiplication)
 \mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -114,6 +118,7 @@ b_{n1} & b_{n2} & \cdots & b_{np}
 \sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
 \end{pmatrix} 
 \end{aligned}
+(\#eq:matrix-multiplication)
 $$
 
 
