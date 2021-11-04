@@ -42,20 +42,11 @@ grad_fun <- function(x, y) {
 # plot
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1),
-                            file = "tangent1.html")
-    webshot2::webshot(url = "tangent1.html", 
-                      file = "tangent1.png", 
+                            file = "./images/tangent1.html")
+    webshot2::webshot(url = "./images/tangent1.html", 
+                      file = "./images/tangent1.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("tangent1.png")
-    # plotly::orca(plot_ly(z = matrix(dat$z, 20, 20)) %>%
-    #                         add_surface(
-    #                           contours = list(
-    #                             z = list(
-    #                               show=TRUE,
-    #                               usecolormap=TRUE,
-    #                               highlightcolor="#ff0000",
-    #                               project=list(z=TRUE)))), 
-    #                       file = "contour.html")
+    knitr::include_graphics("./images/tangent1.png")
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     # plot 
@@ -66,20 +57,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 # zoomed-in plot
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.5, 0.5), ylim = c(0.5, 1.5)),
-                            file = "tangent2.html")
-    webshot2::webshot(url = "tangent2.html", 
-                      file = "tangent2.png", 
+                            file = "./images/tangent2.html")
+    webshot2::webshot(url = "./images/tangent2.html", 
+                      file = "./images/tangent2.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("tangent2.png")
-    # plotly::orca(plot_ly(z = matrix(dat$z, 20, 20)) %>%
-    #                         add_surface(
-    #                           contours = list(
-    #                             z = list(
-    #                               show=TRUE,
-    #                               usecolormap=TRUE,
-    #                               highlightcolor="#ff0000",
-    #                               project=list(z=TRUE)))), 
-    #                       file = "contour.html")
+    knitr::include_graphics("./images/tangent2.png")
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     # plot 
@@ -91,20 +73,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 # super zoomed in plot
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.1, -0.9), ylim = c(0.9, 1.1)),
-                            file = "tangent3.html")
-    webshot2::webshot(url = "tangent3.html", 
-                      file = "tangent3.png", 
+                            file = "./images/tangent3.html")
+    webshot2::webshot(url = "./images/tangent3.html", 
+                      file = "./images/tangent3.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("tangent3.png")
-    # plotly::orca(plot_ly(z = matrix(dat$z, 20, 20)) %>%
-    #                         add_surface(
-    #                           contours = list(
-    #                             z = list(
-    #                               show=TRUE,
-    #                               usecolormap=TRUE,
-    #                               highlightcolor="#ff0000",
-    #                               project=list(z=TRUE)))), 
-    #                       file = "contour.html")
+    knitr::include_graphics("./images/tangent3.png")
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     # plot 

@@ -102,11 +102,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
                                     color = c("red", rep("orange", 4)), 
                                     symbol = 104),
                       name = c("local maximum", rep("saddle point", 4))),
-        file = "critical.html")
-    webshot2::webshot(url = "critical.html", 
-                      file = "critical.png", 
+        file = "./images/critical.html")
+    webshot2::webshot(url = "./images/critical.html", 
+                      file = "./images/critical.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("critical.png")
+    knitr::include_graphics("./images/critical.png")
 
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
     plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
@@ -188,11 +188,11 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
                                     color = "red",
                                     symbol = 104),
                       name = "saddle point"),
-        file = "saddle.html")
-    webshot2::webshot(url = "saddle.html", 
-                      file = "saddle.png", 
+        file = "./images/saddle.html")
+    webshot2::webshot(url = "./images/saddle.html", 
+                      file = "./images/saddle.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("saddle.png")
+    knitr::include_graphics("./images/saddle.png")
     
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
@@ -303,11 +303,11 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
                             color = "red",
                             symbol = 104),
               name = "saddle point"),
-        file = "saddle2.html")
-    webshot2::webshot(url = "saddle2.html", 
-                      file = "saddle2.png", 
+        file = "./images/saddle2.html")
+    webshot2::webshot(url = "./images/saddle2.html", 
+                      file = "./images/saddle2.png", 
                       delay = 1, zoom = 4, vheight = 500)
-    knitr::include_graphics("saddle2.png")
+    knitr::include_graphics("./images/saddle2.png")
     
     
 } else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
