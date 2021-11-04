@@ -38,7 +38,7 @@ $$
 :::
 
 
-:::{.theorem name = "The Spanning Set Theorem"}
+:::{.theorem name="The Spanning Set Theorem"}
 Let $\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ be vectors in the vector space $\mathcal{V}$ and let $\mathcal{H}$ = span($\mathbf{v}_1, \ldots, \mathbf{v}_n$)
 
 a) If one of the vectors, say $\mathbf{v}_k$, of $\mathcal{S}$ is a linear combination of the remaining vectors of $\mathcal{S}$, then the set formed by removing the vector $\mathbf{v}_k$ still spans $\mathcal{H}$

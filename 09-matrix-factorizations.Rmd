@@ -14,7 +14,7 @@ In scalar mathematics, a factorization is an expression that writes a scalar $a$
 
 First, we define lower and upper triangular matrices. 
 
-```{definition}
+:::{.definition}
 The matrix $\mathbf{A}$ is said to be lower triangular if
 $$
 \begin{aligned}
@@ -39,7 +39,7 @@ a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
 \end{pmatrix}
 \end{aligned}
 $$    
-```
+:::
 
 
 

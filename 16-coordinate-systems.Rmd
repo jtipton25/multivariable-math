@@ -28,16 +28,16 @@ However, using the concept of a basis for a subspace $\mathcal{H}$ of some vecto
 
 You might be wondering why we want to create different bases. The usual cartesian basis has been good enough for me so far (unless you have used polar coordinates). In data science, the data often live in a high dimensional space (i.e., there are a number of data variables). However, while the data might have many variables, some of these variables are partially dependent and thus the space in which the data are embedded might be well approximated using a subspace of the original variables which can increase computation speed (less computation with fewer variables -- recall from lab how the inverse of $\mathbf{X}'\mathbf{X}$ took much much longer with larger numbers of variables). Thus, understanding different coordinate systems and how to change coordinate systems can lead to more efficient data representation and model fitting.
 
-```{theorem, name = "The unique representation Theorem"}
+:::{.theorem name="The unique representation Theorem"}
 Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis for the vector space $\mathcal{V}$. Then, for each $\mathbf{x}$ in $\mathcal{B}$, there exists a unique set of coefficients $c_1, \ldots, c_n$ such that
 $$
 \begin{aligned}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
 \end{aligned}
 $$
-```
+:::
 
-```{proof}
+:::{.proof}
 sketch: vectors of $\mathcal{B}$ span $\mathcal{V}$ so there exists a set of coefficienct $c_1, \ldots, c_n$ such that 
 $$
 \begin{aligned}
@@ -57,7 +57,7 @@ $$
 \end{aligned}
 $$
 Because $\mathcal{B}$ is linearly independent by definition, all the weights in the equation above must be 0 (linear independence means the only solution to $\mathbf{A}\mathbf{x} = \mathbf{0}$ is the trivial solution). Therefore $c_i = d_i$ for $i = 1, \ldots, n$.
-```
+:::
 
 
 :::{.definition}
@@ -225,7 +225,7 @@ $$
 
 For a vector space of known dimension $p$, finding a basis can be simplified by finding a linearly independent set of size $p$. 
 
-:::{.theorem name = "The Basis Theorem"}
+:::{.theorem name="The Basis Theorem"}
 
 Let $\mathcal{V}$ be a $p$ dimensional vector space with $p \geq 1$. Any linearly independent subset of $p$ vectors is a basis for $\mathcal{V}$. Equivalently, any set of $p$ vectors that span $\V$ is automatically a basis for $\mathcal{V}$.
 

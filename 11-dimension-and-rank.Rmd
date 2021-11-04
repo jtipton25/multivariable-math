@@ -215,9 +215,9 @@ Using Definition (\@ref(def:rank)), the rank of $\mathbf{A}$ is equal to the dim
 :::
 </div>
 
-```{theorem, name = "The Rank Theorem"}
+:::{.theorem name="The Rank Theorem"}
 If a matrix $\mathbf{A}$ has $n$ columns, then $\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n$
-```
+:::
 
 <div class="fold-proof">
 :::{.proof}
@@ -228,7 +228,7 @@ The rank($\mathbf{A}$) is number of linearly independent columns. The dimension 
 
 The following theorem states that any $p$ vectors in $\mathcal{R}^p$ that are linearly independent must span $\mathcal{R}^p$.
 
-:::{.theorem name = "The Basis Theorem"}
+:::{.theorem name="The Basis Theorem"}
 Let $\mathcal{H}$ be a p-dimensional subspace of $\mathcal{R}^n$. 
 
 1) Then any linearly independent set of $p$ elements in $\mathcal{H}$ is a basis for $\mathcal{H}$. 
@@ -250,7 +250,7 @@ We consider the two statements in the theorem above.
 
 
 
-:::{.theorem name = "Invertible Matrix Theorem (again)"}
+:::{.theorem name="Invertible Matrix Theorem (again)"}
 Let $\mathbf{A}$ be a $n \times n$ matrix. Then, in addition to the current conditions from Theorem (\@ref(thm:invertible-matrix)), the following statements are equivalent to $\mathbf{A}$ being an invertible matrix:
     
 a) The columns of $\mathbf{A}$ form a basis for $\mathcal{R}^n$

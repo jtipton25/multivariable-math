@@ -86,8 +86,8 @@ runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-ap
 ```
 
 
-<!-- ::: {.theorem} -->
-```{theorem, name = "Determinants and Volume"}
+
+:::{.theorem, name="Determinants and Volume"}
 Let $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ be vectors in $\mathcal{R}^n$, let $\mathcal{P}$ be the parallelpiped determined by these vectors, and let $\mathbf{A}$ be the matrix with columns $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$. Then, the absolute value of the determinant of $\mathbf{A}$ is the volume of the parallelpiped $\mathcal{P}$:
 
 $$
@@ -95,8 +95,7 @@ $$
 |\det(\mathbf{A})| = \operatorname{volume}(\mathcal{P})
 \end{aligned}
 $$
-```
-<!-- ::: -->
+:::
 
 <div class="fold-proof">
 ::: {.proof}
@@ -139,23 +138,23 @@ $$
 
 **Note:** Because $\det(\mathbf{A}) = \det(\mathbf{A}')$, the absolute value of the determinant is equal to the volume of the parallelpiped defined by the columns of $\mathbf{A}$ (we could just have easily done all the calculations on the columns of $\mathbf{A}$ as the rows of $\mathbf{A}$).
 
-```{example}
+:::{.example}
 1 by 1 matrix $a$ (length) has $\det(a) = a$
-```
+:::
 
 :::{.example}
 2 by 2 matrix $`r array_to_latex(matrix(c("a", "b", "c", "d"), 2, 2), fraction = FALSE)`$
 :::
 
-```{example}
+:::{.example}
 Find the area of a parallelogram with sides defined by the vectors $\begin{pmatrix} 2 \\ 4 \end{pmatrix}$ and $\begin{pmatrix} -1 \\ 2 \end{pmatrix}$ 
-```
+:::
 
-```{example}
+:::{/.example}
 area of a triangle -- choose two sides and find area of parallelogram and divide by 2
-```
+:::
 
-```{example}
+:::{.example}
 Recall that in data science, a probability distribution is function that has volume under the surface of one. For common distributions, particularly the normal/Gaussian distribution, the determinant is the factor that scales the function so that the volume under the surface is one.
 
 The vector $\mathbf{y}$ is said to have a multivariate normal distribution with mean $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$  if the probability density function of $\mathbf{y}$ is 
@@ -168,18 +167,18 @@ $$
 Notice in this equation that the determinant $\det(\boldsymbol{\Sigma})$ plays a key role in the definition of the probability distribution. This is because 
 
 $$\begin{aligned}
-\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{-1/2}
+\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{1/2}
 \end{aligned}
 $$
 which implies that 
 $$
 \begin{aligned}
-\frac{\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{-1/2}} = 1
+\frac{\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{1/2}} = 1
 \end{aligned}
 $$
 
 In probability and statistics, the denominator is known as the ["normalizing constant."](https://en.wikipedia.org/wiki/Normalizing_constant)
-```
+:::
 
 
 ## Volumes of Parallelpipeds
@@ -198,9 +197,9 @@ Draw a parallelpiped in class. Recall that areas of a parallelpiped are defined 
 
 Recall linear transformations $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ (Section \@ref(linear-transformations)) where for any $\mathbf{x} \in \mathcal{R}^n$ (the domain), $T(\mathbf{x}) = \mathbf{A} \mathbf{x} \in \mathcal{R}^n$ (the codomain). 
 
-```{theorem}
+:::{.theorem}
 Let $\mathcal{S}$ be a set in the domain that has a volume $vol(\mathcal{S})$. Then, the volume of the image of the set under the transformation $T(\mathcal{S})$ is $vol(T(\mathcal{S})) = |\det(\mathbf{A})|vol(\mathcal{S})$
-```
+:::
 
 
 

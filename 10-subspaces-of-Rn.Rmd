@@ -24,9 +24,9 @@ A subspace $\mathcal{H}$ of $\mathcal{R}^n$ is a set that has the properties
 :::
 
 
-```{example}
+:::{.example}
 Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector space defined by span$\{\mathbf{u}, \mathbf{v} \}$ is a subspace of $\mathcal{R}^n$
-```
+:::
 
 <div class="fold-solution">
 
@@ -196,9 +196,9 @@ A %*% c(-rref(A)[, 5], 0, 1)
 :::
 </div>
 
-```{theorem}
+:::{.theorem}
 The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$. 
-```
+:::
 
 :::{.proof}
 Do in class
@@ -443,9 +443,9 @@ A %*% (5*v)
 :::
 </div>
 
-```{theorem}
+:::{.theorem}
 The pivot columns of a matrix $\mathbf{A}$ form a basis for the column space of $\mathbf{A}$.
-```
+:::
 
 **Note:** Use the columns of $\mathbf{A}$, not the columns of the matrix in echelon form.
 

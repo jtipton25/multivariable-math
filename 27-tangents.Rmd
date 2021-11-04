@@ -94,7 +94,8 @@ A consequence of this result that when you zoom in on a differentiable function 
 
 Notice in the code above that there are two functions needed to calculate the tangent plane: the function $f(x, y)$ and the gradient $\nabla f(x, y)$. This can be seen in the definition  of the tangent plane.
 
-```{definition, name = "Tangent plane"}
+:::{.definition name="Tangent plane"}
+
 Let $f(x, y)$ be a differentiable function at the point $(a, b)$. Then the tangent plane to the surface defined by the function $f(x, y)$ at the point $(a, b)$ is given by the equation
 $$
 \begin{aligned}
@@ -104,19 +105,22 @@ z & = f(a, b) + f_x(a, b) (x - a) + f_y(a, b) (y - b) \\
 \end{aligned}
 $$
 where the tangent plane is defined as the dot product of the graidient vector $\nabla f(x, y) |_{(a, b)}$ evaluated at the point $(a, b)$ and the vector $\begin{pmatrix} x - a \\ y - b \end{pmatrix}$ that is the coordinate-wise distance of the point $(x, y)$ from the point $(a, b)$.
-```
 
-```{example}
+:::
+
+:::{.example}
 Find the equation for the tangent plane for the function $f(x, y) = x^2 \cos(y) - y^2 \cos(x)$ at the point $(\frac{\pi}{2}, \frac{pi}{4})$
 
 * calculate by hand
 * plot using `plot_tangent_plane()`
     
-```
+:::
 
 
 This leads to the linearization equation for functions of $n$ variables. 
-```{definition, name = "Linearization of a function"}
+
+:::{.definition name="Linearization of a function"}
+
 Let $f(\mathbf{x})$ be a differentiable function at the point $\mathbf{a} = (a_1, a_2, \ldots, a_n)'$ for a function of inputs $\mathbf{x} = (x_1, x_2, \ldots, x_n)' \in \mathcal{R}^n$. Then the linearization of the function $f(\mathbf{x})$ at the point $\mathbf{a}$ is given by the equation
 $$
 \begin{aligned}
@@ -124,7 +128,9 @@ L(\mathbf{x}) & = f(\mathbf{a}) + \nabla f(\mathbf{x}) |_{\mathbf{a}} \cdot (\ma
 & = f(\mathbf{a}) + \left( \nabla f(\mathbf{x}) |_{\mathbf{a}} \right)' (\mathbf{x} - \mathbf{a})
 \end{aligned}
 $$
-```
+
+:::
+
 The quality of the linearization is high for points "close" to $\mathbf{a}$ and has higher error (defined as $\|L(\mathbf{x}) - f(\mathbf{x})\|$) as $\mathbf{x}$ gets further from $\mathbf{a}$.
 
 For points $\mathbf{x}$ "close" to the point $\mathbf{a}$, the exact difference in the function $z = f(\mathbf{x})$ is given by $\Delta z =  f(\mathbf{x}) - f(\mathbf{a})$. Plugging in the linear approximation, the differential $d z = L(\mathbf{x}) - f(\mathbf{a})$ is the linear approximation to the exact different $\Delta z$. Define $d \mathbf{x} = \begin{pmatrix} d x_1 \\ d x_2 \\ \vdots \\ d x_n \end{pmatrix} = \begin{pmatrix} x_1 - a_1 \\ x_2 - a_2 \\ \vdots \\ x_n - a_n \end{pmatrix}$ as the set of changes in each of the $n$ coordinates with respect to the standard basis $\{\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\}$ so that the linear change $d z$ of $f(\mathbf{x})$ at $\mathbf{a}$ is given by 

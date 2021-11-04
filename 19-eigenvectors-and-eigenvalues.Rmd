@@ -80,9 +80,9 @@ Draw images: [https://textbooks.math.gatech.edu/ila/eigenvectors.html](https://t
 :::
 
 
-```{theorem, distinct-eigenvalues, name = "The distinct eigenvalues theorem"}
+:::{.theorem #distinct-eigenvalues name="The distinct eigenvalues theorem"}
 Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}$ and suppose the corresponding eigenvalues are $\lambda_1, \lambda_2, \ldots, \lambda_n$ are all distinct (different values). Then, the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly independent.
-```
+:::
 
 
 :::{.proof}
@@ -231,7 +231,7 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then
 :::
 
 
-```{theorem, name = "Invertible Matrix Theorm + eigenspaces"}
+:::{.theorem name="Invertible Matrix Theorm + eigenspaces"}
 This is an extension of the prior statement of the invertible matrix theorem \@ref(thm:invertible-matrix)
 Let $\mathbf{A}$ be an $n \times n$ matrix and $T: \mathcal{R}^n \rightarrow \mathcal{R}^n$ be the linear transformation given by $T(\mathbf{x}) = \mathbf{A}\mathbf{x}$. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
 
@@ -257,5 +257,5 @@ Let $\mathbf{A}$ be an $n \times n$ matrix and $T: \mathcal{R}^n \rightarrow \ma
     
 11) 0 is not an eigenvalue of $\mathbf{A}$
     
-```
+:::
 

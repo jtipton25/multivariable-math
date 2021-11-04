@@ -747,9 +747,11 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "
 
 ### One-to-one transformations
 
-```{definition} 
+:::{.definition} 
+
 A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **one-to-one** if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at most** one solution in $\mathcal{R}^n$.
-```
+
+:::
 
 
 ```{r, echo = FALSE}
@@ -879,9 +881,11 @@ $$
 
 ### Onto transformations
 
-```{definition}
+:::{.definition}
+
 A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **onto** if, for every vector $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at least** one solution $\mathbf{x} \in \mathcal{R}^n$
-```
+
+:::
 
 
 ```{r, echo = FALSE}

@@ -87,7 +87,7 @@ Note that the partial derivative asks the question "What is the rate of change o
 
 **draw surfaces with marginal slices**
 
-```{definition, label = "partial"}
+:::{.definition #partial}
 The partial derivative of the function $f(x, y)$ with respect to $x$ at the point $(a, b)$ is 
 $$
 \begin{aligned}
@@ -102,7 +102,7 @@ $$
 \end{aligned}
 $$
 as long as these limits exist.
-```
+:::
 
 :::{.example}
 **partial derivatives using limit definition**
@@ -134,9 +134,9 @@ Find the four second-order partial derivatives of $f(x, y) = 3x^2y^3 + 4xy - 3x^
 
 Note that the order in which mixed partial derivatives are taken can sometimes change the result. However, it is often the case that the order of the partial derivatives can be switched.
 
-```{theorem}
+:::{.theorem}
 Let the function $f(x, y)$ be defined on an open domain $\mathcal{D}$ of $\mathcal{R}^2$ and assume that $f_{xy}$ and $f_{yx}$ are continuous over the domain $\mathcal{D}$. Then, $f_{xy} = f_{yx}$ for all points in the domain $\mathcal{D}$.
-```
+:::
 
 Many of the commonly used functional forms in data science meet the criteria above. Thus, for many of the commonly used functions in data science, the order of evaluation of partial derivatives often does not matter. In practice, it is always good practice to verify this though.
 

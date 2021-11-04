@@ -173,9 +173,9 @@ $$
 $$
 which can be said in words as "each block-element (the $ij$th element $(\mathbf{A} \mathbf{B})_{ij}$) of the block-matrix product $\mathbf{A} \mathbf{B}$ is the sum of the $i$th block-row of $\mathbf{A}$ and the $j$th block column of $\mathbf{B}$. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \@ref(eq:block-matrix-multiplication) above to \@ref(eq:matrix-multiplication)).
 
-```{example}
+:::{.example}
 in class
-```
+:::
 
 
 
@@ -191,7 +191,7 @@ A solution to the example problem
 ## The column-row matrix product
 
 
-```{theorem block-matrix-multiplication}
+:::{.theorem #block-matrix-multiplication}
 The matrix product $\mathbf{A}\mathbf{B}$ of an $m \times n$ matrix $\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}$ with columns $\{\mathbf{a}_i\}_{i=1}^n$ and an $n \times p$ matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}$ with rows $\{\mathbf{b}_i'\}_{i=1}^n$ can be written as the column-row expansion below:
 $$
 \begin{aligned}
@@ -201,13 +201,13 @@ $$
 \end{aligned} 
 (\#eq:block-matrix-multiplication)
 $$
-```
+:::
 
 **Recall:** The notation $\mathbf{b}_i'$ has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
 
-```{example}
+:::{.example}
 in class
-```
+:::
 
 
 
@@ -215,7 +215,8 @@ in class
 
 There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices. 
 
-```{definition}
+:::{.definition}
+
 The matrix $\mathbf{A}$ is said to be block diagonal if
 $$
 \begin{aligned}
@@ -228,9 +229,11 @@ $$
 \end{pmatrix}
 \end{aligned}
 $$    
-```
 
-```{definition}
+:::
+
+:::{.definition}
+
 The matrix $\mathbf{A}$ is said to be block (upper) triangular if
 $$
 \begin{aligned}
@@ -256,16 +259,17 @@ $$
 \end{pmatrix}
 \end{aligned}
 $$    
-```
+
+:::
 
 
-```{example}
+:::{.example}
 Assume that $\mathbf{A}$, which has the form
 $$
 \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix},  
 $$    
 is an invertible matrix where $\mathbf{A}_{11}$ a $p \times p$ invertible matrix, $\mathbf{A}_{12}$ a $p \times q$ matrix, and $\mathbf{A}_{22}$ is a $q \times q$ invertible matrix. Solve for $\mathbf{A}^{-1}$
-```
+:::
 
 
 

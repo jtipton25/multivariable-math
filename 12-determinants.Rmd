@@ -387,14 +387,14 @@ e) $\det(c\mathbf{A}) = c^n \det(\mathbf{A})$
 - [3 Blue 1 Brown -- Cramer's rule](https://www.3blue1brown.com/lessons/cramers-rule)
 While commonly used for theoretical results, Cramer's rule is not commonly used in applied linear algebra. As such, we will mention Cramer's rule but not focus on it.
 
-```{theorem, name = "Cramer's Rule"}
+:::{.theorem, name="Cramer's Rule"}
 Let $\mathbf{A}$ be a $n \times n$ invertible matrix. Define $\mathbf{A}_i(\mathbf{b})$ as the matrix $\mathbf{A}$ with the $i$th column replace by the vector $\mathbf{b}$. For example, $\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 & \cdots & \mathbf{a}_{i-1} & \mathbf{b} & \mathbf{a}_{i+1} & \cdots & \mathbf{a}_n \end{pmatrix}$. Then, for any $\mathbf{b} \in \mathcal{R}^n$, the unique solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$ has entries given by 
 $$
 \begin{aligned}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} & \mbox{ for } i = 1, 2, \ldots, n
 \end{aligned}
 $$
-```
+:::
 
 :::{.example}
 

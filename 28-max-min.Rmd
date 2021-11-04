@@ -16,15 +16,15 @@ To characterize these minimum values, we consider two different types of minimum
 
 A local minimum of the function $f(x, y)$ is a point $(a, b)$ where the values of the function $f(a, b)$ evaluated at $(a, b)$ is less than or equal to the function $f(a + \Delta x, b + \Delta y)$ at any nearby point $(a + \Delta x, b + \Delta y)$, where $\Delta x$ and $\Delta y$ are very small values. 
 
-```{definition}
+:::{.definition}
 Let $(a, b)$ be a point in the domian $\mathcal{D}$ of the function $f(x, y)$. If there exists an $\epsilon > 0$ such that $\|(x, y) - (a, b)\| < \epsilon$ (the point $(x, y)$ is close to the point $(a, b)$ for a given disk of radius $\epsilon$ at the point $(a, b)$), then if $f(a, b) \leq f(x, y)$, the point $(a, b)$ is called a **local minimum** value of the function $f(x, y)$.
-```
+:::
 
 In terms of finding a minimum of a surface, the local minimum is any point on the surface from which one cannot walk downhill if one can only take small steps. Like in univariate functions, local minimums also have a relationship to the partial derivatives. 
 
-```{theorem}
+:::{.theorem}
 If $f(x, y)$ has a local minimum at the point $(a, b)$ and $f(x, y)$ is a differentiable function at $(a, b)$, then the partial derivatives $\frac{\partial f(x, y)}{\partial x}|_{(a, b)} = f_x(a, b) = 0$ and $\frac{\partial f(x, y)}{\partial y}|_{(a, b)} = f_y(a, b) = 0$
-```
+:::
 
 **Note:** the converse is not necessarily true: just because $f_x(a, b) = 0$ and $f_y(a, b) = 0$, this doesn't mean that we have a minimum point at $(a, b)$.
 
@@ -216,14 +216,15 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 
 
 
-```{definition, name = "Saddle point"}
+:::{.definition, name="Saddle point"}
 A saddle point of a differentiable function $f(x, y)$ is a critical point $(a, b)$ of $f(x, y)$ where for all $\epsilon > 0$ there exists points $(x, y)$ within the disk of radius $\epsilon$ of the point $(a, b) ($\|(x, y) - (a, b)\| < \epsilon$) where $f(x, y) > f(a, b)$ and where $f(x, y) < f(a, b)$. In other words, there are points nearby the critical point that have both higher and lower values than the value $f(a, b)$. 
-```
+:::
 
 
 Finding critical points is a first step in finding minimums, however, we need a method to determine whether a critical point is a local minimum/maximum or a saddle point. To determine this, the second derivative test is useful. 
 
-:::{.theorem name = "Second Derivative Test"}
+:::{.theorem name="Second Derivative Test"}
+
 Let $f_x(a, b) = f_y(a, b) = 0$ so that the point $(a, b)$ is a critical point. Also let the $f(x, y)$ be second-order differentiable (the second partial derivatives exists) throughout the open disk $\| (x, y) - (a, b)\|< \epsilon$ for some $\epsilon > 0$. Then
 
 1) If $f_{xx}(a, b)f_{yy}(a, b) - (f_{xy}(a, b))^2 > 0$ and $f_{xx}(a, b) < 0$, then $f(x, y)$ has a local maximum at $(a, b)$.

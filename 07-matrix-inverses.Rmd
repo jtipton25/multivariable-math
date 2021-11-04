@@ -13,7 +13,7 @@ a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
 $$
 where $a^{-1}$ is the inverse of $a$.
 
-```{definition, matrix-inverse, name = "Matrix Inverse"}
+:::{.definition #matrix-inverse name="Matrix Inverse"}
 
 The $n \times n$ **square** matrix $\mathbf{A}$ is said to be **invertible** if there exists a $n \times n$ matrix $\mathbf{C}$( which we call $\mathbf{A}^{-1}$ once we verify the inverse exists) such that 
 $$
@@ -23,7 +23,7 @@ $$
 \end{aligned}
 $$
 where $\mathbf{I}$ is the $n \times n$ identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
-```
+:::
 
 
 In `R`, an identity matrix is easy to construct. An $n \times n$ identity matrix can be constructed using the `diag()` function
@@ -57,7 +57,7 @@ Because $\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}$, we have $\
 :::
 
 
-```{theorem}
+:::{.theorem}
 Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. If $ad - bc \neq 0$ then $\mathbf{A}$ is invertible and 
 $$
 \begin{aligned}
@@ -65,16 +65,16 @@ $$
 \end{aligned}
 $$
 If $ad - bc = 0$, then the matrix is not invertible.
-```
+:::
 
 * **Question:** why is the matrix not invertible when $ad - bc = 0$? 
     * Have you heard of "singular" or "singularity" before?
     * Black holes are called singularities. Why is this?
     * Square matrices that are not invertible are call "singular"
     
-```{definition}
+:::{.definition}
 For the $2 \times 2$ matrix $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, the term $ad - bc$ is called the **determinant** of the matrix $\mathbf{A}$ and is written as $\operatorname{det}(\mathbf{A})$. Sometimes the determinant is written as $| \mathbf{A}|$
-```
+:::
 
 A consequence of the above theorem is that a $2 \times 2$ matrix is invertible only if its determinant is nonzero.
     
@@ -89,22 +89,22 @@ $\mathbf{A} = `r array_to_latex(A)`$
 :::
 
 
-```{theorem}
+:::{.theorem}
 If the $n \times n$ matrix $\mathbf{A}$ is invertible, then for each $\mathbf{b} \in \mathcal{R}^n$, the matrix equation
 $$
 \mathbf{A} \mathbf{x} = \mathbf{b}
 $$
 has the unique solution $\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}$. 
-```
+:::
 
-```{proof}
-
+:::{.proof}
+There are two things to show ...
 
 1) show there is a solution
 
 2) show the solution is unique
 
-```
+:::
 
 
 :::{.example}
@@ -122,7 +122,7 @@ Find the solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$
 
 
 
-```{theorem, invertible-matrix-1, name = "Invertible Matrix Theorem"}
+:::{.theorem #invertible-matrix-1 name="Invertible Matrix Theorem"}
 
 
 1) If $\mathbf{A}$ is an invertible matrix, then $\mathbf{A}^{-1}$ is invertible and $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$
@@ -138,7 +138,7 @@ $$
 (\mathbf{A}')^{-1} = (\mathbf{A}^{-1})'
 $$
     
-```
+:::
     
 
 
@@ -243,9 +243,9 @@ $$
 
 The next theorem is quite important as the result gives an algorithm for calculating the inverse of a $n \times n$ matrix $\mathbf{A}$ which also makes it possible to solve matrix equations $\mathbf{A}\mathbf{x} = \mathbf{b}$
 
-```{theorem}
+:::{.theorem}
 If an $n \times n$ matrix $\mathbf{A}$ is invertible, then $\mathbf{A}$ is row-equivalent to $\mathbf{I}$ ($\mathbf{A} \sim \mathbf{I}$; row-equivalent means $\mathbf{A}$ can be reduced to $\mathbf{I}$ using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices $\mathbf{E}_1, \ldots, \mathbf{E}_k$) that converts $\mathbf{A}$ to $\mathbf{I}$. In addition, the application of these row matrices to $\mathbf{I}$ transforms $\mathbf{I}$ to the matrix inverse $\mathbf{A}^{-1}$.
-```
+:::
 
 * **Proof: in class**
 
@@ -313,7 +313,7 @@ A result of the invertible matrix theorem is that if $\mathbf{A}$ and $\mathbf{B
 
 ## Invertible Linear Transformations
 
-```{definition}
+:::{.definition}
 A linear transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ is said to be invertible if there exists a transformation $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$ such that
 
 $$
@@ -322,11 +322,11 @@ S(T(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n
 T(S(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
 \end{aligned}
 $$
-```
+:::
 
 * **Draw figure in class**
 
-```{theorem}
+:::{.theorem}
 Let $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ be a linear transformation and let $\mathbf{A}$ be the matrix representing the transformation $T$. Then the transformation $T$ is invertible if and only if the matrix $\mathbf{A}$ is invertible. Therefore, the matrix that represents $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$, the inverse transformation of $T$, is unique and is represented by the matrix $\mathbf{A}^{-1}$.
-```
+:::
 

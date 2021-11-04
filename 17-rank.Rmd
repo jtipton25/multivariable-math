@@ -32,19 +32,20 @@ The rank of a matrix $\mathbf{A}$, rank($\mathbf{A}$) is the dimension of the co
 :::
 
 
+:::{.theorem name="The Rank Theorem"}
 
-```{theorem, name = "The Rank Theorem"}
 Let $\mathbf{A}$ be an $m \times n$ matrix. Then the dimension of are equal. The rank of $\mathbf{A}$ equals the number of pivot columns of $\mathbf{A}$ and 
 $$
 \begin{aligned}
 rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
 \end{aligned}
 $$
-```
+:::
 
-```{proof}
+
+:::{.proof}
 rank($\mathbf{A}$) is the number of pivot columns. dim(null($\mathbf{A}$)) is the number of non-pivot columns. The pivot columns + non-pivot columns are the number of columns. 
-```
+:::
 
 
 :::{.example}
@@ -58,7 +59,7 @@ $\mathbf{A}$ is a 6x9 matrix. Is it possible for null($\mathbf{A}$) = 2?
 :::
 
 
-```{theorem, name = "Invertible Matrix Theorm + Rank"}
+:::{.theorem name="Invertible Matrix Theorm + Rank"}
 This is an extension of the prior statement of the invertible matrix theorem \@ref(thm:invertible-matrix)
 Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
 
@@ -73,6 +74,7 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are eq
 17\) null($\mathbf{A}$) = $\{\mathbf{0}\}$
 
 18\) dim(null($\mathbf{A}$)) = 0
-```
+
+:::
 
 

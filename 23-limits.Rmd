@@ -131,7 +131,7 @@ $$
 ** Draw images**
 
 
-```{definition, name = "Limit of a function of two variables"}
+:::{.definition name="Limit of a function of two variables"}
 The function f(x, y) has limit $L$ as $P(x, y) \rightarrow P_0(a, b)$, written
 $$
 \begin{aligned}
@@ -150,7 +150,7 @@ $$
 0 < \sqrt{(x-a)^2 + (y-b)^2} < \delta.
 \end{aligned}
 $$
-```
+:::
 
 In the definition, as the value of $\delta$ is getting smaller, the distance between the set of points $P(x, y)$ within radius $\delta$ of the point $P_0(a, b)$ is getting smaller. As a consequence, the limit in the definition above exists only if $f(x, y)$ approaches the value $L$ along **all possible paths** in the domain of $f$. 
 

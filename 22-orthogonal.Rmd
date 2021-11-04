@@ -236,7 +236,7 @@ where the coefficient $c_j$ corresponding to the vector $\mathbf{v}_j$ of the li
 
 You might be wondering what use orthogonal projections are. In fact, linear regression (and most common regression models) use orthogonal projections to fit a line (or surface) of best fit. This leads to the important theorem that allows us to project a vector $\mathbf{y} \in \mathcal{R}^n$ onto the column space of a $n \times p$ matrix $\mathbf{X}$ (which is exactly the linear regression of $\mathbf{y}$ onto $\mathbf{X}$).
 
-```{theorem, orthogonal-matrix-projection, name = "Orthogonal Projection Theorem"}
+:::{.theorem #orthogonal-matrix-projection name="Orthogonal Projection Theorem"}
 Let $\mathbf{X}$ be a $n \times p$ matrix, let $\mathcal{W} =$ col($\mathbf{X}$), and let $\mathbf{y}$ be a vector in $\mathcal{R}^n$. Then the matrix equation
 $$
 \begin{aligned}
@@ -244,13 +244,13 @@ $$
 \end{aligned}
 $$
 with respect to the unknown coefficients $\boldsymbol{\beta}$ is consistent and $\mathbf{y}_{\mathcal{W}} = \mathbf{X}\boldsymbol{\beta}$ for any solution $\boldsymbol{\beta}$.
-```
+:::
 
 
 
-```{proof}
+:::{.proof}
 
-```
+:::
 
 In addition, if the columns of $\mathbf{X}$ are linearly independent, then the coefficients $\boldsymbol{\beta}$ are given by 
 $$

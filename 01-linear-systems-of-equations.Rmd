@@ -24,7 +24,7 @@ if (!require(dasc2594)) {
 ## Linear Systems of equations
 ### Linear equations
 
-```{definition, name = "Linear Equations"}
+:::{.definition name="Linear Equations"}
 Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
 
 $$
@@ -35,10 +35,10 @@ a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
 $$
 
 is a **linear equation**. 
-```
+:::
 
 
-```{example}
+:::{.example}
 The equation for a line with slope $m$ and $y$-intercept $b$ is
 
 $$
@@ -56,9 +56,9 @@ y - m x & = b,
 $$
 
 where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
-```
+:::
 
-```{example}
+:::{.example}
 The equations
 
 $$
@@ -80,9 +80,9 @@ $$
 $$
 
 respectively. 
-```
+:::
 
-```{example}
+:::{.example}
 The equations
 
 $$
@@ -94,18 +94,20 @@ x_1 + x_2 - x_1 x_2 & = 16
 $$
 
 are not linear equations because they do not meet the form of \@ref(eq:linear) (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
-```
+:::
 
 
 
 ### Systems of linear equations
 
-```{definition, name = "System of equations"}
+:::{.definition name="System of equations"}
+
 A set of two or more linear equations that each contain the same set of variables is called a **system of linear equations**. 
-```
+
+:::
 
 
-```{example}
+:::{.example}
 The equations
 
 
@@ -120,15 +122,15 @@ are a system of equations. Note that in the second equation, the coefficient for
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}
-```
+:::
 
 
 
 For the following, are these linear equations?
 
-```{example}
+:::{.example}
 $x_1 + 3 x_1 x_2 = 5$
-```
+:::
 
 <div class="fold-solution">
 :::{.solution}
@@ -137,9 +139,9 @@ This is a linear equation because the equation can be written as $a_1 x_1 + a_2 
 </div>
 
 
-```{example}
+:::{.example}
 $5x + 7y + 8z = 11.2$
-```
+:::
 
 <div class="fold-solution">
 :::{.solution}
@@ -147,9 +149,9 @@ This is a linear equation because the equation can be written as $a_1 x_1 + a_2 
 :::
 </div>
 
-```{example}
+:::{.example}
 $\frac{1}{4} y + \sqrt{2} z = 2^6$
-```    
+:::    
     
     
 <div class="fold-solution">
@@ -158,9 +160,9 @@ This is a linear equation because the equation can be written as $a_1 x_1 + a_2 
 :::
 </div>
 
-```{example}
+:::{.example}
 $x + 4 y^2 = 9$
-```
+:::
 
 
 <div class="fold-solution">
@@ -174,9 +176,9 @@ This is not a linear equation because the equation cannot be written as $a_1 x_1
 
 A fundamental question when presented with a linear system of equations is whether the system has a solution. 
 
-```{definition, name = "Solution of systems of equations"}
+:::{.definition name="Solution of systems of equations"}
 A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true.
-```
+:::
 
 ```{r, echo = FALSE}
 set.seed(1)
@@ -292,9 +294,9 @@ Typically, there are 3 cases for the solutions to a system of linear equations
 2) There is one solution (Figure \@ref(fig:one-solution))
 3) There are infinitely many solutions
 
-```{definition}
+:::{.definition}
 A linear system of equations is called **consistent** if the system has either one or infinitely many solutions and is called **inconsistent** if the system has no solution.
-```
+:::
 
 #### There are no solutions:
 
@@ -385,9 +387,9 @@ dat %>%
 
 In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).
 
-```{definition}
+:::{.definition}
 Two linear systems of equations are called **equivalent** if both systems share the same **solution set**.
-```
+:::
 
 For example, the system of equations
 
@@ -828,9 +830,9 @@ ggplot(df, aes(x1, x2, z = x3)) +
 
 ### Existence and Uniqueness
 
-```{definition}
+:::{.definition}
 A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a **unique** solution if only one solution exists. 
-```
+:::
 
 :::{.example}
 Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
@@ -914,19 +916,19 @@ A matrix is in **reduced row echelon form** if it is in echelon form and
 :::
 
 
-```{definition}
+:::{.definition}
 Echelon matrices have the property of being **upper diagonal**. A matrix is said to be **upper diagonal** if all entries of the matrix at or above the diagonal are nonzero. 
-```
+:::
 
 * Example: **lower and non-lower diagonal matrices 
 
-```{definition}
+:::{.definition}
 Two matrices are **row-equivalent** if one matrix can be transformed to the other through elementary row operations.
-```
+:::
 
-```{theorem}
+:::{.theorem}
 A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
-```
+:::
 
 ```{exercise}
 Using elementary row operations, calculate the reduced row echelon form of the following matrices
@@ -939,9 +941,9 @@ Using elementary row operations, calculate the reduced row echelon form of the f
 
 The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.
 
-```{definition}
+:::{.definition}
 In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
-```
+:::
 
 :::{.example}
 **pivot position and pivot columns**
@@ -1016,9 +1018,9 @@ $$
 :::
 
 
-```{definition}
+:::{.definition}
 In a system of linear equations that is underdetermined (fewer equations than unknowns), the **determined/basic variables** are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called **free variable**.
-```
+:::
 
 
 :::{.example}
@@ -1034,9 +1036,9 @@ $$
 $$
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem
 
-```{theorem}
+:::{.theorem}
 A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
-```
+:::
 
 * **Example: consistent system of equations**
 
