@@ -6,6 +6,7 @@ $$
 \sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}
 \end{aligned}
 $$
+
 :::{.definition} 
 The set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ are called **linearly independent** if the only solution to the vector equation $\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}$ is the trivial solution. The set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ are called **linearly dependent** if there are coefficients $x_1, \ldots, x_K$ that are not all zero.
 :::

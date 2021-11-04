@@ -22,10 +22,12 @@ Any diagonal matrix $\mathbf{D}$ is diagonalizable becuase it is self-similar.
 :::
 
 
-:::{.theorem #diagonalization, name="The Diagonalization Theorem"}
+:::{.theorem #diagonalization name="The Diagonalization Theorem"}
+
 A $n \times n$ matrix $\mathbf{A}$ is **diagonalizable** if and only if the matrix $\mathbf{A}$ has $n$ linearly independent eigenvectors. 
 
 In addition, the $n \times n$ matrix $\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}$ with diagonal matrix $\mathbf{D}$ if and only if the columns of $\mathbf{P}$ are the lienarly independent eigenvectors of $\mathbf{A}$. Then, the diagonal elements of $\mathbf{D}$ are the eigenvalues of $\mathbf{A}$ that correspond to the eigenvectors in $\mathbf{P}$.
+
 :::
 
 :::{.proof}

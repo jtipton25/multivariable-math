@@ -89,7 +89,8 @@ runGitHub(rep = "multivariable-math",
 
 
 
-:::{.theorem, name="Determinants and Volume"}
+:::{.theorem name="Determinants and Volume"}
+
 Let $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ be vectors in $\mathcal{R}^n$, let $\mathcal{P}$ be the parallelpiped determined by these vectors, and let $\mathbf{A}$ be the matrix with columns $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$. Then, the absolute value of the determinant of $\mathbf{A}$ is the volume of the parallelpiped $\mathcal{P}$:
 
 $$
@@ -97,6 +98,7 @@ $$
 |\det(\mathbf{A})| = \operatorname{volume}(\mathcal{P})
 \end{aligned}
 $$
+
 :::
 
 <div class="fold-proof">

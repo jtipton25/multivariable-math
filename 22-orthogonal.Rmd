@@ -250,6 +250,8 @@ with respect to the unknown coefficients $\boldsymbol{\beta}$ is consistent and 
 
 :::{.proof}
 
+Show this in class
+
 :::
 
 In addition, if the columns of $\mathbf{X}$ are linearly independent, then the coefficients $\boldsymbol{\beta}$ are given by 
