@@ -218,7 +218,7 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 
 :::{.definition name="Saddle point"}
 
-A saddle point of a differentiable function $f(x, y)$ is a critical point $(a, b)$ of $f(x, y)$ where for all $\epsilon > 0$ there exists points $(x, y)$ within the disk of radius $\epsilon$ of the point $(a, b) ($\|(x, y) - (a, b)\| < \epsilon$) where $f(x, y) > f(a, b)$ and where $f(x, y) < f(a, b)$. In other words, there are points nearby the critical point that have both higher and lower values than the value $f(a, b)$. 
+A saddle point of a differentiable function $f(x, y)$ is a critical point $(a, b)$ of $f(x, y)$ where for all $\epsilon > 0$ there exists points $(x, y)$ within the disk of radius $\epsilon$ of the point $(a, b)$ (i.e., $\|(x, y) - (a, b)\| < \epsilon$) where $f(x, y) > f(a, b)$ and where $f(x, y) < f(a, b)$. In other words, there are points nearby the critical point that have both higher and lower values than the value $f(a, b)$. 
 
 :::
 

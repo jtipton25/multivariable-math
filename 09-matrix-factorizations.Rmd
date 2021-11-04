@@ -215,10 +215,10 @@ While it might not be completely obvious, once one has calculated the LU decompo
 </div>
 
 
-```{exercise}
+:::{.exercise}
 in lab:
 Solve some large systems of equations by brute force which shows how the LU decomposition is faster. 
-```    
+:::    
 
 ### Geometric interpretation of the LU factorization
 

@@ -171,9 +171,9 @@ Note that the subspace defined by the span of the basis vectors in $\mathcal{B}_
 
 :::
 
-```{exercise}
+:::{.exercise}
 What is the dimension of a basis for $\mathcal{R}^n$?
-```
+:::
 
 ## Rank
 

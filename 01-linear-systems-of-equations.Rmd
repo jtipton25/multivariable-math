@@ -930,12 +930,14 @@ Two matrices are **row-equivalent** if one matrix can be transformed to the othe
 A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
 :::
 
-```{exercise}
+:::{.exercise}
+
 Using elementary row operations, calculate the reduced row echelon form of the following matrices
 1) **fill in later**
 2) **fill in later**
 3) **fill in later**
-```
+
+:::`
 
 ### Pivot positions
 
