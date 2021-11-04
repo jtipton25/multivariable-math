@@ -30,9 +30,11 @@ Let $f(x, y) = \sqrt{1 - x^2 - y^2}$.
 The parabola
 
 Consider the function of two variables 
-\begin{align*}
+$$
+\begin{aligned}
 f(x, y) = x^2 + y^2
-\end{align*}
+\end{aligned}
+$$
 which defines the surface
 ```{r, echo = FALSE}
 parabola <- function(x, y) {
@@ -71,9 +73,11 @@ Notice that although the original parabola was continuous, these 2-d representat
 A saddle function
 
 Consider the function of two variables 
-\begin{align*}
+$$
+\begin{aligned}
 f(x, y) = x^2 - y^2
-\end{align*}
+\end{aligned}
+$$
 which defines the surface
 ```{r, echo = FALSE}
 saddle <- function(x, y) {
@@ -118,26 +122,34 @@ Let $P(x, y) \rightarrow P_0(a, b)$ be a path in the $x-y$ plane that starts at 
 For one-dimensional limits, "close" was defined as distance. Thus, for multivariable functions, "close" is defined as the Euclidean distance defined by a "ball" of radius $\delta$ and the limits examines the function output as the radius $\delta$ goes to 0.
 
 Recall that the distance $dist((x, y), (a, b))$ between two points $(x, y)$ and $(a, b)$ is 
-\begin{align*}
+$$
+\begin{aligned}
 dist((x, y), (a, b)) = \sqrt{(x-a)^2 + (y-b)^2}
-\end{align*}
+\end{aligned}
+$$
 
 ** Draw images**
 
 
 ```{definition, name = "Limit of a function of two variables"}
 The function f(x, y) has limit $L$ as $P(x, y) \rightarrow P_0(a, b)$, written
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} f(x, y) = \lim_{P \rightarrow P_0} f(x, y) = L,
-\end{align*}
+\end{aligned}
+$$
 if, for any $\epsilon > 0$ (the radius of the ball that defines the "closeness" of the point), there exists a $\delta > 0$ such that 
-\begin{align*}
+$$
+\begin{aligned}
 |f(x, y) - L| < \epsilon
-\end{align*}
+\end{aligned}
+$$
 whenever $(x, y)$ is in the domain of $f$ and 
-\begin{align*}
+$$
+\begin{aligned}
 0 < \sqrt{(x-a)^2 + (y-b)^2} < \delta.
-\end{align*}
+\end{aligned}
+$$
 ```
 
 In the definition, as the value of $\delta$ is getting smaller, the distance between the set of points $P(x, y)$ within radius $\delta$ of the point $P_0(a, b)$ is getting smaller. As a consequence, the limit in the definition above exists only if $f(x, y)$ approaches the value $L$ along **all possible paths** in the domain of $f$. 
@@ -152,39 +164,53 @@ In class notes
 Let $L$ and $M$ be real numbers and let $\lim_{(x, y) \rightarrow (a, b)}f(x, y) = L$ and $\lim_{(x, y) \rightarrow (a, b)}g(x, y) = M$ for functions $f(x, y)$ and $g(x, y)$. Let $c$ be a constant and $n>0$, then:
 
 1) **Sum of limits:**
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} \left( f(x, y) + g(x, y) \right) = L + M
-\end{align*}
+\end{aligned}
+$$
 
 2) **Difference of limits:**
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} \left( f(x, y) - g(x, y) \right) = L - M
-\end{align*}
+\end{aligned}
+$$
 
 3) **Scalar multiple of the limit:**
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} c f(x, y) = c L
-\end{align*}
+\end{aligned}
+$$
 
 4) **Product of limits:**
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} f(x, y) g(x, y) = LM
-\end{align*}
+\end{aligned}
+$$
 
 5) **Quotient of limits:** As long as $M>0$ we have
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} \frac{f(x, y)}{g(x, y)} = \frac{L}{M}
-\end{align*}
+\end{aligned}
+$$
 
 6) **Power of the limit:**
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} f(x, y)^n = L^n
-\end{align*}
+\end{aligned}
+$$
 
 7) **Root of the limit:** If $n$ is even, we assume $L > 0$
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (a, b)} f(x, y)^{1/n} = L^{1/n}
-\end{align*}
+\end{aligned}
+$$
 
 :::
 
@@ -216,10 +242,12 @@ A region $\mathcal{D}$ is said to be **open** if it only contains interior point
 
 :::{.example}
 Consider the $\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}$. Because the point $(4, 4)$ is not a valid point in the domain (can't divide by $4-4=0$), the point $(4, 4)$ is a boundary point of the domain. The boundary of the domain that is not contained in the domain is the set of points $x = y$. Assuming we are not taking a path along the boundary, we know that $x \neq y$ in the interior of the domain. Hence, 
-\begin{align*}
+$$
+\begin{aligned}
 \lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y} & = \lim_{(x, y) \rightarrow (4, 4)} \frac{(x - y)(x + y)}{x - y} \\
 & = \lim_{(x, y) \rightarrow (4, 4)} x + y  = 4 + 4 = 8\\
-\end{align*}
+\end{aligned}
+$$
 for all paths that do not cross the line $y = x$.
 :::
 

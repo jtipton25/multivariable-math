@@ -9,12 +9,12 @@ library(gg3D)
 Here we introduce the concept of the linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$. This equation is the most fundamental equation in all of statistics and data science. Given a matrix $\mathbf{A}$ and a vector of constants $\mathbf{b}$, the goal is to solve for the value (or values) of $\mathbf{x}$ that are a solution to this equation. The equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ is a matrix representation of the system of linear equations
 
 $$
-\begin{align*}
+\begin{aligned}
 (\#eq:matrix-equation)
 \mathbf{A} \mathbf{x} & = \mathbf{b} \\
 \begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} & = \mathbf{b} \\
 x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K & = \mathbf{b} \\
-\end{align*}
+\end{aligned}
 $$
 
 as long as the matrix $\mathbf{A}$ has $n$ rows and $K$ columns and the vectors $\mathbf{a}_k$ are $n$-dimensional.
@@ -27,9 +27,9 @@ as long as the matrix $\mathbf{A}$ has $n$ rows and $K$ columns and the vectors 
 
 Because the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ is equivalent to a linear system of equations $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}$, we can solve the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ by writing the equation in an augmented matrix form
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{b} \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 and then reducing the matrix to reduced row echelon form. This gives rise to the theorem
 
@@ -42,7 +42,7 @@ A solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ exists if
 
 * **Example: in class** Let $\mathbf{A} =\ldots$ and $\mathbf{b} = \ldots$. Is the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ consistent?
 
-```{theorem}
+:::{.theorem}
 For the $n \times K$ matrix $\mathbf{A}$, the following statements are equivalent:
 
 a) For each $\mathbf{b} \in \mathcal{R}^n$, the equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has at least one solution
@@ -52,25 +52,26 @@ b) Each $\mathbf{b} \in \mathcal{R}^n$ is a linear combination of the columns of
 c) The columns of $\mathbf{A}$ span $\mathcal{R}^n$
     
 d) $\mathbf{A}$ has $n$ pivot columns. ($\mathbf{A}$ has a pivot in every row)
-```
+
+:::
 
 ## Matrix-vector multiplication
 
 To calculate $\mathbf{A} \mathbf{x}$, we need to define matrix multiplication. The equivalence between the linear systems of equations $x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}$ and the matrix equation $\mathbf{A} \mathbf{x}$ gives a hint in how to do this. First, recall the definition of $\mathbf{A}$ and $\mathbf{x}$
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 a_{11} & a_{12} & \ldots & a_{1K} \\
 a_{21} & a_{22} & \ldots & a_{2K} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{n1} & a_{n2} & \ldots & a_{nK} \\
 \end{pmatrix} && \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_K \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 The matrix product $\mathbf{A}\mathbf{x}$ is the linear system of equations
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A}  \mathbf{x} & = \begin{pmatrix}
 a_{11} & a_{12} & \ldots & a_{1K} \\
 a_{21} & a_{22} & \ldots & a_{2K} \\
@@ -91,7 +92,7 @@ a_{21} x_1 + a_{22} x_2 + \ldots + a_{2K} x_K \\
 \vdots \\
 a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 Notice that the first row of the last matrix above has the sum first row of the matrix $\mathbf{A}$ multiplied by the corresponding elements in $\mathbf{x}$ (i.e., first element $a_{11}$ of the first row of $\mathbf{A}$ times the first element $x_1$ of $\mathbf{x}$ plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product $\mathbf{A} \mathbf{x}$.
 
@@ -123,63 +124,63 @@ b) $\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}$
 ```{definition}
 The matrix equation 
 $$
-\begin{align}
+\begin{aligned}
 (\#eq:homogeneous)
 \mathbf{A}\mathbf{x} = \mathbf{0}
-\end{align}
+\end{aligned}
 $$ 
 is called a homogeneous system of equations. The vector $\mathbf{0}$ is a vector of length $N$ composed of all zeros. The **trivial** solution of the homogeneous equation is when $\mathbf{x} = \mathbf{0}$ and is not a very useful solution. Typically one is interested in **nontrivial** solutions where $\mathbf{x} \neq \mathbf{0}$.
 ```
 
 The homogeneous linear system of equations can be written in augmented matrix form 
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{0} \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column $\mathbf{A}$ must not be a pivot column (Note: the last column of the augmented matrix will not be a pivot column because it will be a column of zeros). If every column of $\mathbf{A}$ were a pivot column, the reduced row echelon form of the augmented matrix would be 
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix}
 1 & 0 & \ldots & 0 & 0 \\
 0 & 1 & \ldots & 0 & 0 \\
 0 & 0 & \ldots & 1 & 0 
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 which implies the only solution is the trivial solution $\mathbf{0}$.
 
 * **Example: in class**
 
 $$
-\begin{align*}
+\begin{aligned}
 3 x_1 - 2 x_2 + 4 x_3 = 0 \\
 - 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
 5 x_1 - 6 x_2 + 6 x_3 = 0
-\end{align*}
+\end{aligned}
 $$
 * **Example: in class**
 
 Consider the equation
 
 $$
-\begin{align*}
+\begin{aligned}
 2x_1 + 4 x_2 - x_3 = 0.
-\end{align*}
+\end{aligned}
 $$
 we can write this as 
 $$
-\begin{align*}
+\begin{aligned}
 x_1 = -2 x_2 + \frac{1}{2} x_3
-\end{align*}
+\end{aligned}
 $$
 where $x_2$ and $x_3$ are free variables. Writing this as a solution $\mathbf{x}$ gives
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} -2 x_2 + \frac{1}{2} x_3 \\ x_2 \\ x_3 \end{pmatrix} = 
 x_2 \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} + 
 x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 which is a linear combination of the vectors $\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}$. This implies that we can write the solution $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ for scalars $a$ and $b$. Therefore, the solution set $\mathbf{x}$ is contained in the $\mbox{span}\{\mathbf{u}, \mathbf{v}\}$. Because the vectors $\mathbf{u}$ and $\mathbf{v}$ are linearly independent (they don't point in the same direction), the set of all linear combinations of $c \mathbf{u} + d \mathbf{v}$ defines a plane. 
 
@@ -223,31 +224,31 @@ This shift in location (but not in slope) is called a **translation**
 
 * **Example:** Show this shift for a system of linear equations where the solution set defines a plane. From example above, 
 $$
-\begin{align*}
+\begin{aligned}
 2x_1 + 4 x_2 - x_3 = 0.
-\end{align*}
+\end{aligned}
 $$
 has the parametric solution $\mathbf{x} = c \mathbf{u} + d \mathbf{v}$ with
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} &
 \mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 
 Now, if we change the system of linear equations so that we have the inhomogeneous equation
 $$
-\begin{align*}
+\begin{aligned}
 2x_1 + 4 x_2 - x_3 = 20.
-\end{align*}
+\end{aligned}
 $$
 we get the homogeneous solution set $x_1 = -2 x_2 + \frac{1}{2} x_3 + 10$ which can be written in parametric form as $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ with
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{u} & = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} & 
 \mathbf{v} & = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} & 
 \mathbf{p} & = \begin{pmatrix} 10 \\ 0 \\ 0 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 
 For plotting, we will solve these equations for $x_3$, letting $x_1$ and $x_2$ be free variables (this is just for the requirements of the plotting function). Thus, the homogeneous equation has the solution $x_3 = 2x_1 + 4x_2$ and the inhomogenous equation has the solution $x_3 = 2x_1 + 4x_2 - 20$.
@@ -285,11 +286,11 @@ ggplot(df, aes(x = x1, y = x2, z = x3, color = equation)) +
 Let's revisit the example from before
 
 $$
-\begin{align*}
+\begin{aligned}
 3 x_1 - 2 x_2 + 4 x_3 = 0 \\
 - 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
 5 x_1 - 6 x_2 + 6 x_3 = 0
-\end{align*}
+\end{aligned}
 $$
 but change this so that $\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}$
 
@@ -301,18 +302,18 @@ A <- matrix(c(3, -2, 5, -2, 4, -6, 4, -2, 6, 2, -6, 8), 3, 4)
 rref(A)
 ```
 $$
-\begin{align*}
+\begin{aligned}
 x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
 x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
-\end{align*}
+\end{aligned}
 $$
 which was the same solution set as the homoegenous solution plus the additional vector $\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}$. Thus, the inhomogenous solution is now $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ where 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{u} &= \begin{pmatrix} 1 \\ 0 \\ \frac{3}{2} \end{pmatrix} & 
 \mathbf{v} &= \begin{pmatrix} 0 \\ 1 \\ \frac{1}{4} \end{pmatrix} & 
 \mathbf{p} &= \begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
 
 ## Finding solutions

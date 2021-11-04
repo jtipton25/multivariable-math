@@ -28,10 +28,10 @@ if (!require(dasc2594)) {
 Let $x_1, x_2, \ldots, x_n$ be **variables** with **coefficients** $a_1, a_2, \ldots, a_n$, and $b$ are fixed and known numbers. Then, we say
 
 $$
-\begin{align}
+\begin{aligned}
 (\#eq:linear)
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
-\end{align}
+\end{aligned}
 $$
 
 is a **linear equation**. 
@@ -42,17 +42,17 @@ is a **linear equation**.
 The equation for a line with slope $m$ and $y$-intercept $b$ is
 
 $$
-\begin{align*}
+\begin{aligned}
 y & = m x + b,
-\end{align*}
+\end{aligned}
 $$
 
 is a linear equation because it can be re-written as 
 
 $$
-\begin{align*}
+\begin{aligned}
 y - m x & = b,
-\end{align*}
+\end{aligned}
 $$
 
 where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
@@ -62,21 +62,21 @@ where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
 The equations
 
 $$
-\begin{align*}
+\begin{aligned}
 \sqrt{19} x_1 & = (4 + \sqrt{2}) x_2 - x_3 - 9
 & \mbox{ and } && 
 -4 x_1 + 5 x_2 - 11 & = x_3
-\end{align*}
+\end{aligned}
 $$
 
 are both linear equations because they can be written as 
 
 $$
-\begin{align*}
+\begin{aligned}
 \sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 & = - 9 
 & \mbox{ and } &&
 -4 x_1 + 5 x_2 - x_3 & = 11,
-\end{align*}
+\end{aligned}
 $$
 
 respectively. 
@@ -86,11 +86,11 @@ respectively.
 The equations
 
 $$
-\begin{align*}
+\begin{aligned}
 x_1 & = x_2^2 + 3
 & \mbox{ and } && 
 x_1 + x_2 - x_1 x_2 & = 16
-\end{align*}
+\end{aligned}
 $$
 
 are not linear equations because they do not meet the form of \@ref(eq:linear) (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
@@ -108,21 +108,18 @@ A set of two or more linear equations that each contain the same set of variable
 ```{example}
 The equations
 
-$$
+
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9.
 \end{alignat*}
-$$
 
 are a system of equations. Note that in the second equation, the coefficient for $x_3$ is 0, meaning we could re-write the above example as
 
-$$
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}
-$$
 ```
 
 
@@ -188,24 +185,24 @@ A <- matrix(sample(-10:10, 6, replace = TRUE), 2, 3)
 
 :::{.example}
 Is $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  = \end{pmatrix}$ a solution to the system of equations
-\begin{alignat*}{3}
+\begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
-\end{alignat*}}
+\end{alignat*}
 :::
 
 
 <div class="fold-solution">
 :::{.solution}
 First, we plug in the values for $x_1 = 5$, $x_2 = 3$  and $x_3 = 6$. In the first equation, we get
-\begin{alignat*}{3}
+\begin{alignat*}{4}
 5   & {}+{} & 4 \times 3 & {}-{} & 6 & {}={} & 11 \\
-\end{alignat*}}
+\end{alignat*}
 which is true because $11 = 11$. Now we consider the second equation
 
-\begin{alignat*}{3}
+\begin{alignat*}{4}
 4 \times 5 & {}+{} & 5 \times 3 & {}+{} & 0 \times 6 & {}={} & 9.
-\end{alignat*}}
+\end{alignat*}
 which is false because $35 \neq = 9$. Thus, $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  = \end{pmatrix}$ is not a solution to the system of equations in the given example.
 :::
 </div>
@@ -214,12 +211,10 @@ which is false because $35 \neq = 9$. Thus, $\mathbf{x} = \begin{pmatrix} 5 \\ 3
 :::{.example}
 Consider the system of equations
 
-$$
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7.
 \end{alignat*}
-$$
 :::
 
 <div class="fold-solution">
@@ -228,47 +223,36 @@ $$
 To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
 
 
-$$
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x - 4 * (x) & {}+{} & 5 y - 4 * (4y) & {}={} & 7 - 4 * (8),
 \end{alignat*}
-$$
 where the part of the equations in ($\cdot$) is the top equation. This system of equations now simplifies to 
-
-$$
 \begin{alignat*}{3}
 x & {}+{} & 4 y & {}={} & 8 \\
 0 & {}+{} & - 11y & {}={} & -25,
 \end{alignat*}
-$$
 
 which gives $y = \frac{25}{11}$. Plugging this value into the top equation gives
 
-$$
 \begin{alignat*}{3}
 x & {}+{} & 4 \frac{25}{11} & {}={} & 8 \\
 0 & {}+{} & y & {}={} & \frac{25}{11},
 \end{alignat*}
-$$
 
 where we can solve $x = 8 - \frac{100}{11} = -\frac{12}{11}$ giving the solution of the form
 
-$$
 \begin{alignat*}{3}
 x & {}+{} & 0 & {}={} & -\frac{12}{11} \\
 0 & {}+{} & y & {}={} & \frac{25}{11},
 \end{alignat*}
-$$
 
 In this case, the system of equation has the solution $x = -\frac{12}{11}$ and $y = \frac{25}{11}$. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were 
 
-$$
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7,
 \end{alignat*}
-$$
 
 which, writing $y$ as a function of $x$ define two lines:
 
@@ -316,12 +300,12 @@ A linear system of equations is called **consistent** if the system has either o
 
 Consider the system of linear equations
 
-$$
+
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 16 y & {}={} & 18.
 \end{alignat*}
-$$
+
 
 ```{r no-solution, fig.cap = "Linear system of equations with no solution"}
 # define some grid points to evaluate the line
@@ -351,20 +335,18 @@ In this case, the linear equations are parallel lines and will never intersect s
 To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
 
 
-$$
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x  - 4(x) & {}+{} & 16 y - 4\times (4 y) & {}={} & 18 - 4 \times (8).
 \end{alignat*}
-$$
+
 where the part of the equations in `()` is the top equation. This system of equations now simplifies to 
 
-$$
 \begin{alignat*}{3}
 x & {}+{} & 4 y & {}={} & 8 \\
 0 x & {}+{} &  0 y & {}={} & -14,
 \end{alignat*}
-$$
+
 
 which gives $0 = -14$. From this, we see that we have reached a contradiction so there is not a solutoin to the system of equations.
 :::
@@ -378,12 +360,10 @@ We have seen this example in Figure \@ref(fig:one-solution).
 
 Consider the system of linear equations
 
-$$
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 16 y & {}={} & 32.
 \end{alignat*}
-$$
 
 ```{r infinite-solutions, fig.cap = "Linear system of equations with no solution"}
 # define some grid points to evaluate the line
@@ -410,32 +390,31 @@ Two linear systems of equations are called **equivalent** if both systems share 
 ```
 
 For example, the system of equations
-$$
+
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9
 \end{alignat*}
-$$
 
 and the system of equations
-$$
+
 \begin{alignat*}{4}
 2x_1   & {}+{} & 8 x_2 & {}-{} & 2 x_3 & {}={} & 22 \\
 8 x_1 & {}+{} & 10 x_2 & {}+{} & 4 x_3 & {}={} & 18.
 \end{alignat*}
-$$
+
 
 have the same solution set (the second set of equations is just 2 times the first set of equations).
 
 
 :::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
-$$
+
 \begin{alignat*}{3}
 4 x_1 & {}+{} & 5 x_2 & {}={} & 8 \\
 9 x_1 & {}-{} & 3 x_2 & {}={} & 4.
 \end{alignat*}
-$$
+
 :::
 
 
@@ -446,46 +425,38 @@ $$
 :::{.solution}
 Multiply the first equation by $\frac{1}{4}$ and the second equation by $\frac{1}{9}$ to get 
 
-$$
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
 x_1 & {}-{} &  \frac{1}{3}x_2 & {}={} & \frac{4}{9}.
 \end{alignat*}
-$$
 
 
 Subtract the first equation from the second equation
 
-$$
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
 0 & {}-{} &  (-\frac{1}{3} - \frac{5}{4}) x_2 & {}={} & \frac{4}{9} - 2,
 \end{alignat*}
-$$
 which reduces to 
-$$
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
 0 & {}-{} &  -\frac{19}{12} x_2 & {}={} & -\frac{14}{9},
 \end{alignat*}
-$$
+
 so that, dividing both sides of the second equation by $-\frac{19}{12}$ gives $x_2 = \frac{56}{57}$. Plugging this value of $x_2$ into the first equation gives
 
-$$
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} \left(\frac{56}{57}\right) & {}={} & 2 \\
 0 & {}-{} &   x_2 & {}={} & \frac{56}{57}
 \end{alignat*}
-$$
 
 and subtracting $\frac{5}{4} \frac{56}{57}$ from both sides of the first equation gives $x_1 = \frac{44}{57}$. You can check these solutions by verifying that the following two equations hold
 
-$$
 \begin{alignat*}{3}
 4 \left(\frac{44}{57}\right) & {}+{} & 5  \left(\frac{56}{57}\right) & {}={} & 8 \\
 9 \left(\frac{44}{57}\right) & {}-{} & 3 \left(\frac{56}{57}\right)& {}={} & 4
 \end{alignat*}
-$$
+
 which can be done in `R` using
 
 ```{r}
@@ -500,12 +471,12 @@ all.equal(9 * x1 - 3 * x2, 4)
 
 :::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
-$$
+
 \begin{alignat*}{4}
 7 x_1 & {}+{} & 3 x_2 & {}+{} & 4 x_3 & {}={} & 5\\
 4 x_1 & {}-{} & 5 x_2 &&        & {}={} & -2
 \end{alignat*}
-$$
+
 :::
 
 <!-- Solution -->
@@ -515,46 +486,40 @@ $$
 :::{.solution}
 Multiply the first equation by $\frac{1}{7}$ and the second equation by $\frac{1}{4}$ to get 
 
-$$
 \begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
 x_1 & {}-{} & \frac{5}{4} x_2 & {}+{} & 0 x_3       & {}={} & \frac{-1}{2}
 \end{alignat*}
-$$
-
 
 Subtract the first equation from the second equation
 
-$$
-\begin{alignat*}{3}
+\begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
 0 x_1 & {}+{} &  (-\frac{5}{4} - \frac{3}{7}) x_2 &{}+{}& -\frac{4}{7} x_3  & {}={} & - \frac{1}{2} - \frac{5}{7}
 \end{alignat*}
-$$
+
 which reduces to 
-$$
-\begin{alignat*}{3}
+
+\begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
 0 & {}-{} &  -\frac{47}{28} x_2 &{}-{}& \frac{4}{7} x_3 & {}={} & -\frac{17}{14}.
 \end{alignat*}
-$$
+
 Next, divide the second equation by $\frac{-47}{28}$ gives 
 
-$$
-\begin{alignat*}{3}
+\begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
 0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47}.
 \end{alignat*}
-$$
+
 
 Then, take the first equation and subtract $-\frac{3}{7}$ times the second row to get
 
-$$
-\begin{alignat*}{3}
+
+\begin{alignat*}{4}
 x_1 & {}+{} & 0 x_2 & {}+{} & \frac{20}{47} x_3 & {}={} & \frac{19}{47} \\
 0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47}.
 \end{alignat*}
-$$
 
 Which gives the solution
 $x_1 + \frac{20}{47} x_3 = \frac{19}{47}$, $x_2 + \frac{16}{47} x_3 = \frac{34}{47}$, and $x_3 = x_3$ is a free variable.
@@ -576,13 +541,13 @@ all.equal(4 * x1 - 5 * x2 + 0 * x3, -2)
 
 :::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
-$$
+
 \begin{alignat*}{3}
 4 x_1 & {}-{} & 2 x_2 & {}={} & 8\\
 2 x_1 & {}+{} & x_2 & {}={} & 7 \\
 -3 x_1 & {}+{} & 6 x_2 &{}={} & 11
 \end{alignat*}
-$$
+
 :::
 
 <!-- Solution -->
@@ -592,31 +557,28 @@ $$
 :::{.solution}
 Multiply the first equation by $\frac{1}{4}$, the second equation by $\frac{1}{2}$, and the third equation by $-\frac{1}{3}$ to get 
 
-$$
 \begin{alignat*}{3}
 x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 x_1 & {}+{} & \frac{1}{2} x_2 & {}={} & \frac{7}{2} \\
  x_1 & {}-{} & 2 x_2 &{}={} & -\frac{11}{3}
 \end{alignat*}
-$$
 
 Subtract the first equation from the second equation and also subtract the first equation from the third equation. Thus, we get
 
-$$
 \begin{alignat*}{3}
 x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 0 x_1 & {}+{} & x_2 & {}={} & \frac{3}{2} \\
 0 x_1 & {}-{} & \frac{3}{2} x_2 &{}={} & -\frac{17}{3}.
 \end{alignat*}
-$$
+
 Then, multiply the third equation by $-\frac{2}{3}$ to get
-$$
+
 \begin{alignat*}{3}
 x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 0 x_1 & {}+{} & x_2 & {}={} & 3 \\
 0 x_1 & {}+{} & x_2 &{}={} & - \frac{34}{9}.
 \end{alignat*}
-$$
+
 Notice that the second equation gives $x_2 = 3$ while the third equation gives $x_2 = -\frac{34}{9}$. This is a contradiction ($3 \neq -\frac{34}{9})$ which implies that the system of equations does not have a solution. Thus we say the system of equations is inconsistent.
 
 :::
@@ -642,9 +604,9 @@ For the elementary row operations listed above, we demonstrate these using the m
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 ```
 $$
-\begin{align*}
+\begin{aligned}
 `r array_to_latex(A)`
-\end{align*}
+\end{aligned}
 $$
 
 The matrix $\mathbf{A}$ can be represented in `R` using
@@ -672,9 +634,9 @@ The matrix with the first and second rows swapped is
 A1 <- A[c(2,1), ]
 ```
 $$
-\begin{align*}
+\begin{aligned}
 `r array_to_latex(A1)`
-\end{align*}
+\end{aligned}
 $$
 
 Notice that the first and second rows have now switched places. This can be done in `R` in a variety of ways. First, we extract the rows and place them "by hand" in `R`.
@@ -711,9 +673,9 @@ B[3, ] <- -3 * A[1, ] + A[3, ]
 
 First, we notice that -3 times the first row gives the row vector $`r array_to_latex(-3 * A[1, , drop = FALSE])`$. Then, we add this to the row vector of the third row  $`r array_to_latex(A[3, , drop = FALSE])`$ to get the row vector  $`r array_to_latex(-3 * A[1, , drop = FALSE] + A[3, , drop = FALSE])`$. Finally, this row vector replaces the third row of the matrix to give the result
 $$
-\begin{align*}
+\begin{aligned}
 `r array_to_latex(B)`
-\end{align*}
+\end{aligned}
 $$
 
 **Note:** Notice that by performing this row sum and replacement, we have made the first column of the third row of $\mathbf{A}$ a 0. This zeroing out of the columns will play a very important role moving forward.
@@ -747,9 +709,9 @@ B[2, ] <- 1/2 * B[2, ]
 
 The second row of $\mathbf{A}$ is the row vector $`r array_to_latex(A[2, , drop = FALSE])`$. Multiplying the second row by $\frac{1}{2}$ gives the row vector $`r array_to_latex(1/2 * A[2, , drop = FALSE], fraction = TRUE)`$. Plugging this into the matrix gives the full matrix with second row multiplied by $\frac{1}{2}$ as 
 $$
-\begin{align*}
+\begin{aligned}
 `r array_to_latex(B, fraction = TRUE)`
-\end{align*}
+\end{aligned}
 $$
 In `R`, the second row of $\mathbf{A}$ can be multiplied by $\frac{1}{2}$ as
 
@@ -764,20 +726,19 @@ A
 
 Consider the linear system of equations 
 
-$$
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9.
 \end{alignat*}
-$$
+
 The augmented matrix representation of this system of linear equations is given by the matrix
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix}
 1 & 4 & - 1 & 11 \\
 4 & 5 & 2   &  9
 \end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 where the first column of the matrix represents the variable $x_1$, the second column of the matrix represents the variable $x_2$, the third column of the matrix represents the variable $x_3$, and the fourth column of the matrix represents the constant terms. We can express the augmented form in `R` using a matrix
 ```{r}
@@ -818,10 +779,10 @@ To get this into a reasonable form, we will solve these equations as a function 
 $$x_3 = - \frac{19}{13} -\frac{11}{13} x_1.$$
 Then, plugging this into $x_3$ in the second equation gives 
 $$
-\begin{align*}
+\begin{aligned}
 x_2 & = \frac{35}{11} + \frac{6}{11} \left( - \frac{19}{13} -\frac{11}{13} x_1 \right) \\
 & = \frac{341}{143} - \frac{6}{13} x_1
-\end{align*}
+\end{aligned}
 $$
 which defines a linear relationship between $x_1$ and $x_2$. Notice that in these last two solutions, $x_1$ is a "free variable" and $x_2$ and $x_3$ are "determined" by $x_1$. 
 
@@ -872,7 +833,7 @@ A system of linear equations is said to be consistent if at least one solution e
 ```
 
 :::{.example}
-Is the system of linear equations consistent? IF the system is consistent, does it have a unique solution?
+Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
 
 
 ```{r, echo = FALSE}
@@ -923,27 +884,29 @@ $$
 Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc. 
 
 
-```{definition}
+:::{.definition}
 
 A matrix is said to be in **echelon** form if 
 
 1) all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)
 
 2) the leading entry/coefficient of a nonzero row (called the **pivot**) is always *strictly* to the right of the leading entry/coefficient of the row above
-```
+
+:::
 
 :::{.example}
 **echelon matrix example in class**
 :::
 
 
-```{definition}
+:::{.definition}
 A matrix is in **reduced row echelon form** if it is in echelon form and
 
 1) the leading entry/coefficient of each row is 1
 
 2) The leading entry/coefficient of 1 is the only nonzero entry in its column.
-```
+
+:::
 
 
 :::{.example}
@@ -1043,10 +1006,10 @@ which gives the solution ...
 Another example where we find a solution is
 
 $$
-\begin{align*}
+\begin{aligned}
 5 x_1 && + && 4 x_2 && - && 2 x_3 && = & 0 \\
 -3 x_1 && - && 2 x_2 && - && 4 x_3 && = & 1 \\
-\end{align*}
+\end{aligned}
 $$
 
 **Do same steps**
@@ -1063,7 +1026,7 @@ In a system of linear equations that is underdetermined (fewer equations than un
 :::
 
 
-### Existence and uniquenss from reduced row echelon form
+### Existence and uniqueness from reduced row echelon form
 
 The row echelon form is useful to determine if a system of linear equations is consistent (the system of equations has a solution). To check if a solution to a linear system of equations exists, convert the system of equations to an augmented matrix form. Then, reduce the augmented matrix to row echelon form using elementary matrix operations. As long as there is not an equation of the form 
 $$
@@ -1080,8 +1043,9 @@ A linear system of equations is consistent (has a solution) if the furthest righ
 ```{r, echo = FALSE, results = 'asis'}
 set.seed(1)
 A <- matrix(sample(-10:10, 12), 3, 4)
-cat(array_to_latex(A))
 ```
+
+$`r dasc2594::array_to_latex(A)`$
 
 * **Example: inconsistent system of equations**
 
@@ -1089,10 +1053,9 @@ cat(array_to_latex(A))
 ```{r, echo = FALSE, results = 'asis'}
 set.seed(1)
 A <- matrix(sample(-10:10, 16), 4, 4)
-cat(array_to_latex(A))
 ```
 
-
+$`r dasc2594::array_to_latex(A)`$
 
 
 

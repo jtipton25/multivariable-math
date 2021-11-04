@@ -17,10 +17,10 @@ where $a^{-1}$ is the inverse of $a$.
 
 The $n \times n$ **square** matrix $\mathbf{A}$ is said to be **invertible** if there exists a $n \times n$ matrix $\mathbf{C}$( which we call $\mathbf{A}^{-1}$ once we verify the inverse exists) such that 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{C}\mathbf{A} = \mathbf{A} \mathbf{C} & = \mathbf{I} \\
 \mathbf{A}^{-1} \mathbf{A} = \mathbf{A} \mathbf{A}^{-1} & = \mathbf{I}
-\end{align*}
+\end{aligned}
 $$
 where $\mathbf{I}$ is the $n \times n$ identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
 ```
@@ -41,9 +41,9 @@ B <- matrix(c(3, 2, -1, -1), 2, 2)
 
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = `r array_to_latex(A)` && \mathbf{B} = `r array_to_latex(B)`
-\end{align*}
+\end{aligned}
 $$
 
 ```{r}
@@ -60,9 +60,9 @@ Because $\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}$, we have $\
 ```{theorem}
 Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. If $ad - bc \neq 0$ then $\mathbf{A}$ is invertible and 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 If $ad - bc = 0$, then the matrix is not invertible.
 ```
@@ -228,9 +228,9 @@ Recall the elementary row operations:
 * **Question:** Do you see any patterns with how the example elementary matrices look?
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{E_1} = `r array_to_latex(E_1)` && \mathbf{E_2} = `r array_to_latex(E_2)` && \mathbf{E_3} = `r array_to_latex(E_3)`
-\end{align*}
+\end{aligned}
 $$    
     
 * The elementary matrices look like the identity matrix $\mathbf{I}$ with an elementary row operation applied to $\mathbf{I}$. In fact, this leads us to this general fact:
@@ -270,7 +270,7 @@ Using `R`
 
 ## The Invertible Matrix Theorem
 
-```{theorem, invertible-matrix, name = "The Invertible Matrix Theorem"}
+:::{.theorem, #invertible-matrix name = "The Invertible Matrix Theorem"}
 Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
 
 1) $\mathbf{A}$ is an invertible matrix.
@@ -296,7 +296,8 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are eq
 11) There is an $n \times n$ matrix $\mathbf{D}$ such that $\mathbf{A}\mathbf{D} = \mathbf{I}$.
 
 12) $\mathbf{A}'$ is an invertible matrix.
-```
+
+:::
 
 <div class="fold-proof">
 :::{.proof}
@@ -316,10 +317,10 @@ A result of the invertible matrix theorem is that if $\mathbf{A}$ and $\mathbf{B
 A linear transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ is said to be invertible if there exists a transformation $S:\mathcal{R}^n \rightarrow \mathcal{R}^n$ such that
 
 $$
-\begin{align*}
+\begin{aligned}
 S(T(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n
 T(S(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
-\end{align*}
+\end{aligned}
 $$
 ```
 

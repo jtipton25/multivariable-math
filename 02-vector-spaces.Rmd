@@ -21,20 +21,20 @@ For any real valued scalars $a, b \in \mathcal{R}$ and any vectors $\mathbf{x}, 
 
 1) **scalar multiplication**
 $$
-\begin{align*}
+\begin{aligned}
 a \mathbf{x} & = a \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
 & = \begin{pmatrix} a x_1 \\ a x_2 \\ \vdots \\ a x_n \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
     
 where the scalar $a$ is multiplied by each element of the vector. For example, 
 
 $$
-\begin{align*}
+\begin{aligned}
 4 \begin{pmatrix} 4 \\ 6 \\ 7 \\ 12 \end{pmatrix} 
 & = \begin{pmatrix} 4 * 4 \\ 4 * 6 \\ 4 * 7 \\ 4 * 12 \end{pmatrix} \\
 & = \begin{pmatrix} 16 \\ 24 \\ 28 \\ 48 \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
 
 In `R`, we can multiply the vector by a scalar as
@@ -53,9 +53,9 @@ x <- c(4, 6, 7, 12)
 2) **scalar multiplicative commutivity**
 
 $$
-\begin{align*}
+\begin{aligned}
 a (b \mathbf{x}) & = (ab) \mathbf{x} & = b (a \mathbf{x})
-\end{align*}
+\end{aligned}
 $$
     
 ```{r}
@@ -66,30 +66,30 @@ $$
 3) **scalar additive associativity**
 
 $$
-\begin{align*}
+\begin{aligned}
 a \mathbf{x} + b \mathbf{x} & = (a + b) \mathbf{x}
-\end{align*}
+\end{aligned}
 $$
 
 4) **vector additive associativity**
 
 $$
-\begin{align*}
+\begin{aligned}
 a \mathbf{x} + a \mathbf{y} & = a (\mathbf{x} + \mathbf{y})
-\end{align*}
+\end{aligned}
 $$
     
 5) **vector associativity**
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{x} + \mathbf{y} & = \mathbf{y} + \mathbf{x}
-\end{align*}
+\end{aligned}
 $$
 
 $$
-\begin{align*}
+\begin{aligned}
 (\mathbf{x} + \mathbf{y}) + \mathbf{z} & = \mathbf{x} + (\mathbf{y} + \mathbf{z})
-\end{align*}
+\end{aligned}
 $$
 
 
@@ -108,9 +108,9 @@ x + (y + z)
 6) **Identity Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $\mathbf{0}$, known as the *zero vector*, such that
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{x} + \mathbf{0} & = \mathbf{x}
-\end{align*}
+\end{aligned}
 $$
 
 ```{r}
@@ -121,9 +121,9 @@ x + rep(0, 4)
 7) **Inverse Element of Addition:** For any vector $\mathbf{x}$ of length $n$, there exists a vector $-\mathbf{x}$, known as the *additive inverse* vector, such that
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{x} + (- \mathbf{x}) & = \mathbf{0}
-\end{align*}
+\end{aligned}
 $$
 
 ```{r}
@@ -136,19 +136,19 @@ x + (-x)
 Two vectors of length $n$ can be added elementwise
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{x} + \mathbf{y} & = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} + \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix} \\
 & = \begin{pmatrix} x_1 + y_1 \\ x_2 + y_2 \\ \vdots \\ x_n + y_n \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
 
 For example, 
 
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} 3 \\ 1 \\ -4 \\ 3 \end{pmatrix} + \begin{pmatrix} -3 \\ 17 \\ -39 \\ 4 \end{pmatrix} & = \begin{pmatrix} 3 + (-3) \\ 1 + 17 \\ -4 + (-39) \\ 3 + 4 \end{pmatrix} \\
 & = \begin{pmatrix} 0 \\ 18 \\ -43 \\ 7 \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
 
 In `R`, we have
@@ -335,20 +335,20 @@ As the number of dimensions increases, the same interpretation can be used, but 
 We say that for any two scalars $a$ and $b$ and any two vectors $\mathbf{x}$ and $\mathbf{y}$ of length $n$, the sum
 
 $$
-\begin{align*}
+\begin{aligned}
 a \mathbf{x} + b \mathbf{y} & = \begin{pmatrix}
 a x_1 + b y_1 \\
 a x_2 + b y_2 \\
 \vdots \\
 a x_n + b y_n \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 
 is called a linear combination. The idea of a linear combination can be extended to $K$ different scalars $\{ a_1, \ldots, a_K \}$ and $K$ different vectors $\{ \mathbf{x}_1, \ldots, \mathbf{x}_K\}$ each of length $n$ as
 
 $$
- \begin{align*}
+ \begin{aligned}
 a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = 
 \sum_{k=1}^K a_k \mathbf{x}_k & = \begin{pmatrix}
 \sum_{k=1}^K a_k x_{k1} \\
@@ -356,49 +356,49 @@ a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K =
 \vdots \\
 \sum_{k=1}^K a_k x_{kn} \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 The scalars $a_k$ are called **coefficients** (sometimes also called **weights**). 
 
 * **Example:** Consider the linear combination $a \mathbf{u} + b \mathbf{v}$ where 
 
 $$
-\begin{align*}
-\mathbf{u} = \begin{pmatrix} 3 \\ 6\end{pmatrix} && \mathbf{v} = \begin{pmatrix} -2 \\ 1\end{pmatrix}. \end{align*}
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} 3 \\ 6\end{pmatrix} && \mathbf{v} = \begin{pmatrix} -2 \\ 1\end{pmatrix}. \end{aligned}
 $$
 Are there values of $a$ and $b$ such $a \mathbf{u} + b \mathbf{v} = \begin{pmatrix} 9 \\ - 4 \end{pmatrix}$? To answer this question, we can write the linear combination as 
 $$
-\begin{align*}
+\begin{aligned}
 a \begin{pmatrix} 3 \\ 6\end{pmatrix} + b \begin{pmatrix} -2 \\ 1\end{pmatrix} & = \begin{pmatrix} 9 \\ -4 \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
 which can be written using the property of scalar multiplication as
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} 3a \\ 6a \end{pmatrix} + \begin{pmatrix} -2b \\ b \end{pmatrix} & = \begin{pmatrix} 9 \\ -4 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 and using properties of vector addition can be written as
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} 3a - 2b \\ 6a + b \end{pmatrix} & = \begin{pmatrix} 9 \\ -4 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 Recognizing this as a system of linear equations
 $$
-\begin{align*}
+\begin{aligned}
 3a - 2b & = 9 \\ 
 6a + b & = -4,
-\end{align*}
+\end{aligned}
 $$
 the system of equations can be written in an augmented matrix form as
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix}
 3  & - 2 & 9\\
 6  &   1 & -4 
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 Reducing the augmented matrix to reduced row echelon form gives
 ```{r}
@@ -409,9 +409,9 @@ which has solutions $a = 0.0667$ and $b = -4.4$.
 * **Result:** Any vector equation $a_1 \mathbf{x}_1 + a_2 \mathbf{x}_2 +  \ldots + a_K \mathbf{x}_K = \mathbf{c}$ for a given constant vector $\mathbf{b}$ has the same solution set as the augmented matrix
 
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} \mathbf{x}_1 & \mathbf{x}_2 & \cdots & \mathbf{x}_K & \mathbf{b} \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 Equivalently, the set of vectors $\{\mathbf{x}_k\}_{k=1}^K$ can only be combined with linear coefficients $\{a_k\}_{k=1}^K$ to equal the vector $\mathbf{b}$ if the linear system of equations is consistent.
 

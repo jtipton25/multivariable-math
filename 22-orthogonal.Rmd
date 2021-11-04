@@ -14,17 +14,21 @@ set.seed(2021)
 Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then, the **inner product** of $\mathbf{u}$ and $\mathbf{v}$ is $\mathbf{u}' \mathbf{v}$. The vectors $\mathbf{u}$ and $\mathbf{v}$ are $n \times 1$ matrices where $\mathbf{u}'$ is a $1 \times n$ matrix and the inner product $\mathbf{u}' \mathbf{v}$ is a scalar ($1 \times 1$ matrix). The inner product is also sometimes called the dot product and written as $\mathbf{u} \cdot \mathbf{v}$. 
 
 If the vectors
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} & & \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} 
-\end{align*}
+\end{aligned}
+$$
 then $\mathbf{u}' \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n$
 :::
 
 :::{.example}
 Find the inner product $\mathbf{u}'\mathbf{v}$ and $\mathbf{v}'\mathbf{u}$ of
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{u} = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} & & \mathbf{v} = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix} 
-\end{align*}
+\end{aligned}
+$$
 
 * do by hand
 ```{r}
@@ -60,9 +64,11 @@ Based on the theorem above, the inner product of a vector with itself ($\mathbf{
 
 :::{.definition}
 The length of a vector $\mathbf{v} \in \mathcal{R}^n$, also called the vector **norm** $\| \mathbf{v} \|$ is defined as
-\begin{align*}
+$$
+\begin{aligned}
 \| \mathbf{v} \| & = \sqrt{\mathbf{v}'\mathbf{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
-\end{align*}
+\end{aligned}
+$$
 :::
 
 :::{.example}
@@ -84,9 +90,11 @@ In two dimensions, the Euclidean distance between the points $(x_1, y_1)$ and $(
 :::{.definition}
 Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the distance $dist(\mathbf{u}, \mathbf{v})$ between $\mathbf{u}$ and $\mathbf{v}$ is 
 
-\begin{align*}
+$$
+\begin{aligned}
 dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
-\end{align*}
+\end{aligned}
+$$
 :::
 
 :::{.example}
@@ -102,24 +110,28 @@ sqrt(sum((u-v)^2))
 
 The equivalent of perpendicular lines in $\mathcal{R}^n$ are known as orthogonal vectors.
 <!-- Geometrically, two vectors are defined as orthogonal if the distance between $\mathbf{u}$ and $\mathbf{v}$ is the same as the distance between $\mathbf{u}$ and $-\mathbf{v}$. **Draw picture -- perpendicular triangle** -->
-<!-- \begin{align*} -->
+<!-- $$\begin{aligned} -->
 <!-- dist(\mathbf{u}, - \mathbf{v}) & =  -->
-<!-- \end{align*} -->
+<!-- \end{aligned}$$ -->
 
 :::{.definition}
 The two vectors $\mathbf{u}$ and $\mathbf{v}$ in $\mathcal{R}^n$ are orthogonal if 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{u}' \mathbf{v} = 0
-\end{align*}
+\end{aligned}
+$$
 :::
 
 
 ## Angles between vectors
 
 Let $\mathbf{u}$ and $\mathbf{v}$ be vectors $\mathcal{R}^n$. Then, the angle between the vectors $\mathbf{u}$ and $\mathbf{v}$ is defined as the angle $\theta$ in the relationship
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{u}' \mathbf{v} = \| \mathbf{u} \| \| \mathbf{v} \| cos(\theta)
-\end{align*}
+\end{aligned}
+$$
 
 **see example: `angles-as-n-gets-large.R`**
 
@@ -144,16 +156,20 @@ Let the set $\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an ortho
 
 :::{.proof}
 Assume the set of vectors $\mathbf{v}_1, \ldots, \mathbf{v}_p$ are linearly dependent. Then, there exist coefficients $c_1, \ldots, c_p$ such that
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{0} & = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p 
-\end{align*}
+\end{aligned}
+$$
 Then, multiplying both equations on the left by $\mathbf{v}_1'$ gives
-\begin{align*}
+$$
+\begin{aligned}
 0 = \mathbf{v}_1' \mathbf{0} & = \mathbf{v}_1' (c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p) \\
 & = c_1 \mathbf{v}_1' \mathbf{v}_1 + c_2  \mathbf{v}_1' \mathbf{v}_2 + \cdots + c_p  \mathbf{v}_1' \mathbf{v}_p \\
 & = c_1 \mathbf{v}_1' \mathbf{v}_1 + c_2  0 + \cdots + c_p 0 \\
 & = c_1 \mathbf{v}_1' \mathbf{v}_1
-\end{align*}
+\end{aligned}
+$$
 which is only equal to 0 when $c_1$ is equal to 0 because $\mathbf{v}_1$ is a nonzero vector. The above left multiplication could be repeated for each vector $\mathbf{v}_i$ which gives all $c_i$ must equal 0. As the only solution to the starting equation has all 0 coefficients, the set of vectors $\mathcal{S}$ must be linearly independent.
 :::
 
@@ -164,20 +180,24 @@ A set of orthogonal vectors is called an **orthogonal basis**.
 :::{.theorem}
 Let $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an orthogonal basis of the subspace $\mathcal{W}$ of $\mathcal{R}^n$. Then for each $\mathbf{x} \in \mathcal{W}$, the coefficients for the linear combination of basis vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ for the vector $\mathbf{x}$ are
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} & = \frac{\mathbf{x}'\mathbf{v}_1}{\mathbf{v}_1'\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}'\mathbf{v}_2}{\mathbf{v}_2'\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}'\mathbf{v}_p}{\mathbf{v}_p'\mathbf{v}_p} \mathbf{v}_p \\
 & = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \\
-\end{align*}
+\end{aligned}
+$$
 where $c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}$. In other words, the coordinates of the vector $\mathbf{x}$ with respect to the orthogonal basis $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$  are the linear projection of the vector $\mathbf{x}$ on the respective vectors $\mathbf{v}_j$.
 :::
 
 
 :::{.proof}
 The orthogonality of the basis $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ gives
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x}'\mathbf{v}_j & = \left(c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \right)' \mathbf{v}_j \\
 & = c_j \mathbf{v}_j' \mathbf{v}_j
-\end{align*}
+\end{aligned}
+$$
 Because we know that $\mathbf{v}_j'\mathbf{v}_j$ is not zero (a vector can't be orthogonal to itself), we can divide the above equality by $\mathbf{v}_j' \mathbf{v}_j$ and solve for $c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}$
 :::
 
@@ -190,9 +210,11 @@ In fact, this is exactly the idea of using **least squares** estimation (linear 
 
 :::{.definition}
 Let $\mathbf{x}$ be a vector in $\mathcal{R}^n$ and let $\mathcal{W}$ be a subspace of $\mathcal{R}^n$. Then the vector $\mathbf{x}$ can be written as the **orthogonal decomposition** 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = \mathbf{x}_{\mathcal{W}} + \mathbf{x}_{\mathcal{W}^\perp}
-\end{align*}
+\end{aligned}
+$$
 where $\mathbf{x}_{\mathcal{W}}$ is the vector in $\mathcal{W}$ that is closest to $\mathbf{x}$ and is called the **orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}$** and $\mathbf{x}_{\mathcal{W}^\perp}$ is the orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}^{\perp}$, the subspace $\mathcal{W}^\perp$ of $\mathcal{R}^n$ that is complementary to $\mathcal{W}$ and is called the **orthogonal complement**.
 :::
 
@@ -202,10 +224,12 @@ This leads to the projection theorem that decomposes a vector $\mathbf{x} \in \m
 
 :::{.theorem}
 Let $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an orthogonal basis of the subspace $\mathcal{W}$ of $\mathcal{R}^n$. Then for each $\mathbf{x} \in \mathcal{R}^n$, the orthogonal projection of $\mathbf{x}$ onto $\mathcal{W}$ is given by
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x}_{\mathcal{W}} & = \frac{\mathbf{x}'\mathbf{v}_1}{\mathbf{v}_1'\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}'\mathbf{v}_2}{\mathbf{v}_2'\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}'\mathbf{v}_p}{\mathbf{v}_p'\mathbf{v}_p} \mathbf{v}_p \\
 & = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \\
-\end{align*}
+\end{aligned}
+$$
 where the coefficient $c_j$ corresponding to the vector $\mathbf{v}_j$ of the linear combination of vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ is given by $c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}$. In other words, the coordinates of the vector $\mathbf{x}$ with respect to the orthogonal basis $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$  are the linear projection of the vector $\mathbf{x}$ on the respective vectors $\mathbf{v}_j$.
 :::
 
@@ -214,9 +238,11 @@ You might be wondering what use orthogonal projections are. In fact, linear regr
 
 ```{theorem, orthogonal-matrix-projection, name = "Orthogonal Projection Theorem"}
 Let $\mathbf{X}$ be a $n \times p$ matrix, let $\mathcal{W} =$ col($\mathbf{X}$), and let $\mathbf{y}$ be a vector in $\mathcal{R}^n$. Then the matrix equation
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{X}'\mathbf{X} \boldsymbol{\beta} = \mathbf{X}' \mathbf{y}
-\end{align*}
+\end{aligned}
+$$
 with respect to the unknown coefficients $\boldsymbol{\beta}$ is consistent and $\mathbf{y}_{\mathcal{W}} = \mathbf{X}\boldsymbol{\beta}$ for any solution $\boldsymbol{\beta}$.
 ```
 
@@ -226,9 +252,12 @@ with respect to the unknown coefficients $\boldsymbol{\beta}$ is consistent and 
 
 ```
 
-In addition, if the columns of $\mathbf{X}$ are linearly independent, then the coefficients $\boldsymbol{\beta}$ are given by \begin{align*}
+In addition, if the columns of $\mathbf{X}$ are linearly independent, then the coefficients $\boldsymbol{\beta}$ are given by 
+$$
+\begin{aligned}
 \boldsymbol{\beta} = \left( \mathbf{X}'\mathbf{X} \right)^{-1} \mathbf{X}' \mathbf{y}
-\end{align*}
+\end{aligned}
+$$
 which is the least squares solution to the linear regression problem. For example, let `X` and `y` be defined as below
 ```{r}
 X <- cbind(1, c(2, -1, 3, -4, 5, 7, -2, 3))
@@ -270,7 +299,7 @@ data.frame(x = X[, 2], y = y, y_W = y_W) %>%
     geom_line(aes(x = x, y = y_W)) +
     geom_segment(aes(x = x, y = y_W, xend = x, yend = y_W + y_W_perp), color = "blue")
 ```
-Recall that the orthogonal projection gives the "closest" vector $\mathbf{y}_\mathcal{W}$ to $\mathbf{y}$ that is in the subspace $\mathcal{W}$ that is the span of the column space of $\mathbf{X}$. See [https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html](https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html) for an example.
+Recall that the orthogonal projection gives the "closest" vector $\mathbf{y}_W$ to $\mathbf{y}$ that is in the subspace $\mathcal{W}$ that is the span of the column space of $\mathbf{X}$. See [https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html](https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html) for an example.
 
 
 

@@ -9,9 +9,11 @@ library(dasc2594)
 :::{.definition #parallelpiped}
 The **parallelpiped** defined by $n$ vectors $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n$ with coefficients $x_1, x_2, \ldots, x_n$ is the subset
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathcal{P} = \{x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n | 0 \leq x_1, x_2, \ldots, x_n \leq 1 \}
-\end{align*}
+\end{aligned}
+$$
 :::
 
 
@@ -88,9 +90,11 @@ runGitHub(rep = "multivariable-math", username = "jtipton25", subdir = "shiny-ap
 ```{theorem, name = "Determinants and Volume"}
 Let $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$ be vectors in $\mathcal{R}^n$, let $\mathcal{P}$ be the parallelpiped determined by these vectors, and let $\mathbf{A}$ be the matrix with columns $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n$. Then, the absolute value of the determinant of $\mathbf{A}$ is the volume of the parallelpiped $\mathcal{P}$:
 
-\begin{align*}
+$$
+\begin{aligned}
 |\det(\mathbf{A})| = \operatorname{volume}(\mathcal{P})
-\end{align*}
+\end{aligned}
+$$
 ```
 <!-- ::: -->
 
@@ -125,9 +129,11 @@ d\) The identity matrix having volume 1 is easy. The vectors of the identity mat
 
 Because the absolute value of the determinant $|\det|$ is the only function that satisfies, these properties, we have
 
-\begin{align*}
+$$
+\begin{aligned}
 vol(\mathcal{P}_A) = |\det(\mathbf{A})|
-\end{align*}
+\end{aligned}
+$$
 :::
 </div>
 
@@ -138,7 +144,7 @@ vol(\mathcal{P}_A) = |\det(\mathbf{A})|
 ```
 
 :::{.example}
-2 by 2 matrix $`r array_to_latex(matrix(c("a", "b", "c", "d"), 2, 2))`$
+2 by 2 matrix $`r array_to_latex(matrix(c("a", "b", "c", "d"), 2, 2), fraction = FALSE)`$
 :::
 
 ```{example}
@@ -153,19 +159,24 @@ area of a triangle -- choose two sides and find area of parallelogram and divide
 Recall that in data science, a probability distribution is function that has volume under the surface of one. For common distributions, particularly the normal/Gaussian distribution, the determinant is the factor that scales the function so that the volume under the surface is one.
 
 The vector $\mathbf{y}$ is said to have a multivariate normal distribution with mean $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$  if the probability density function of $\mathbf{y}$ is 
-\begin{align*}
+$$
+\begin{aligned}
 f(\mathbf{y}) = (2 \pi)^{-n/2} |\det(\boldsymbol{\Sigma})|^{-1/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})}
-\end{align*}
+\end{aligned}
+$$
 
 Notice in this equation that the determinant $\det(\boldsymbol{\Sigma})$ plays a key role in the definition of the probability distribution. This is because 
 
-\begin{align*}
+$$\begin{aligned}
 \int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y} = |\det(\boldsymbol{\Sigma})|^{-1/2}
-\end{align*}
+\end{aligned}
+$$
 which implies that 
-\begin{align*}
+$$
+\begin{aligned}
 \frac{\int_{\mathbf{y}} (2 \pi)^{-n/2} e^{- \frac{1}{2} (\mathbf{y} - \boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\mathbf{y} - \boldsymbol{\mu})} \, d\mathbf{y}}{|\det(\boldsymbol{\Sigma})|^{-1/2}} = 1
-\end{align*}
+\end{aligned}
+$$
 
 In probability and statistics, the denominator is known as the ["normalizing constant."](https://en.wikipedia.org/wiki/Normalizing_constant)
 ```

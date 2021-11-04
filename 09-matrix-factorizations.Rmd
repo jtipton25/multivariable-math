@@ -17,7 +17,7 @@ First, we define lower and upper triangular matrices.
 ```{definition}
 The matrix $\mathbf{A}$ is said to be lower triangular if
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
 a_{11} & 0 & 0 & \cdots & 0 \\
 a_{21} & a_{22} & 0 & \cdots & 0 \\
@@ -25,11 +25,11 @@ a_{31} & a_{32} & a_{33} & \cdots & 0 \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 a_{n1} & a_{n2} & a_{n3} & \cdots & a_{nn} \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$    
 Similarly, the matrix $\mathbf{A}$ is said to be upper triangular if
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
 a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
 0 & a_{22} & a_{23} & \cdots & a_{2n} \\
@@ -37,7 +37,7 @@ a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & 0 & \cdots & a_{nn} \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$    
 ```
 
@@ -48,11 +48,11 @@ The LU factorization of a matrix $\mathbf{A}$ reduces the matrix $\mathbf{A}$ in
 Using the LU factorization, the matrix factorization $\mathbf{A} = \mathbf{L} \mathbf{U}$ can be used in the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{L} \mathbf{U}\mathbf{x} = \mathbf{b}$ by first solving the sub-equation $\mathbf{L} \mathbf{y} = \mathbf{b}$ and then solving the second sub-equation $\mathbf{U} \mathbf{x} = \mathbf{y}$ for $\mathbf{x}$. Thus, the matrix factorization applied to the matrix equation gives the pair of equations
 
 $$
-\begin{align*}
+\begin{aligned}
 (\#eq:LU)
 \mathbf{L} \mathbf{y} & = \mathbf{b} \\
 \mathbf{U} \mathbf{x} & = \mathbf{y}
-\end{align*}
+\end{aligned}
 $$
 
 At first glance, this seems like we are trading the challenge of solving one system of equations $\mathbf{A}\mathbf{x}$ \@ref(eq:matrix-equation) for the two equations in \@ref(eq:LU). However, the computational benefits arise due to the fact that $\mathbf{L}$ and $\mathbf{U}$ are triangular matrices and solving matrix equations with triangular matrices is much faster. 
@@ -82,9 +82,9 @@ b <- A %*% x
 Let $\mathbf{A} = `r array_to_latex(A)`$ which has the LU decomposition
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = `r array_to_latex(A)` = `r array_to_latex(L)` `r array_to_latex(U)`
-\end{align*}
+\end{aligned}
 $$
 and consider the system of equations defined by the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ where $\mathbf{b} = `r array_to_latex(as.matrix(b))`$. 
 
@@ -122,12 +122,14 @@ For the example, we will show how to solve a system of equations using the LU de
  
 1) Solve $\mathbf{L} \mathbf{y} = \mathbf{b}$ using augmented matrix
 
-\begin{align*}
+$$
+\begin{aligned}
 & & `r array_to_latex(L1)` & \stackrel{r_2 \leftarrow -\frac{1}{2} r_2 - r_1}{\huge \sim} & `r array_to_latex(L2)` \\
 & \stackrel{r_3 \leftarrow - r_3 - r_1}{\huge \sim} & `r array_to_latex(L3)` & \stackrel{r_4 \leftarrow - \frac{1}{2} r_4 - r_1}{\huge \sim} & `r array_to_latex(L4)` \\
 & \stackrel{r_2 \leftarrow 2 r_2}{\huge \sim} & `r array_to_latex(L5)` & \stackrel{r_3 \leftarrow \frac{1}{2} r_3 - r_2}{\huge \sim} & `r array_to_latex(L6)` \\
 & \stackrel{r_4 \leftarrow \frac{2}{3} r_4 - r_2}{\huge \sim} & `r array_to_latex(L7)` & \stackrel{r_3 \leftarrow \frac{2}{3} r_3}{\huge \sim} & `r array_to_latex(L8)` 
-\end{align*}
+\end{aligned}
+$$
 
 ```{r, echo = FALSE}
 U1 <- cbind(U, y)
@@ -151,13 +153,15 @@ x <- U8[, 5]
 2) solve $\mathbf{U} \mathbf{x} = \mathbf{y}$ using an augmented matrix and RREF.
 
 
-\begin{align*}
+$$
+\begin{aligned}
 & & `r array_to_latex(U1)` & \stackrel{r_2 \leftarrow \frac{1}{2} r_2}{\huge \sim} & `r array_to_latex(U2)` \\
 & \stackrel{r_3 \leftarrow \frac{1}{2} r_3}{\huge \sim} & `r array_to_latex(U3)` & \stackrel{r_4 \leftarrow - \frac{1}{3} r_4}{\huge \sim} & `r array_to_latex(U4)` \\
 & \stackrel{r_1 \leftarrow r_1 -2  r_3}{\huge \sim} & `r array_to_latex(U5)` & \stackrel{r_1 \leftarrow r_1 - 2 r_4}{\huge \sim} & `r array_to_latex(U6)` \\
 & \stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} & `r array_to_latex(U7)` & 
 \stackrel{r_3 \leftarrow r_3 + \frac{3}{2} r_4}{\huge \sim} & `r array_to_latex(U8)` 
-\end{align*}
+\end{aligned}
+$$
 
 3) compare to the solution $\mathbf{A}\mathbf{x} = \mathbf{b}$ using an augmented matrix and RREF.
 
@@ -189,7 +193,8 @@ A12[2, ] <- A12[2, ] - 3/2 * A12[4, ]
 A13 <- A12
 A13[3, ] <- A13[3, ] + 3/2 * A13[4,]
 ```
-\begin{align*}
+$$
+\begin{aligned}
 & & `r array_to_latex(A1)` & \stackrel{r_2 \leftarrow r_2 + 2 r_1}{\huge \sim} & `r array_to_latex(A2)` \\
 & \stackrel{r_3 \leftarrow r_3 + r_1}{\huge \sim} & `r array_to_latex(A3)` & \stackrel{r_4 \leftarrow r_4 + 2 r_1}{\huge \sim} & `r array_to_latex(A4)` \\
 & \stackrel{r_2 \leftarrow - \frac{1}{2} r_2}{\huge \sim} & `r array_to_latex(A5)` & \stackrel{r_3 \leftarrow r_3 + 4 r_2}{\huge \sim} & `r array_to_latex(A6)` \\
@@ -199,7 +204,8 @@ A13[3, ] <- A13[3, ] + 3/2 * A13[4,]
 & \stackrel{r_1 \leftarrow r_1 - r_4}{\huge \sim} & `r array_to_latex(A11)` & 
 \stackrel{r_2 \leftarrow r_2 - \frac{3}{2} r_4}{\huge \sim} & `r array_to_latex(A12)` \\
 & \stackrel{r_3 \leftarrow r_3 + \frac{3}{2} r_4}{\huge \sim} & `r array_to_latex(A13)`  
-\end{align*}
+\end{aligned}
+$$
 
 While it might not be completely obvious, once one has calculated the LU decomposition, it can often be much faster to solve systems of equations with the LU decomposition.
 
@@ -226,25 +232,25 @@ Notice that the upper-triangular matrix $\mathbf{U}$ is in echelon form. Congrat
 Combining the LU factorization and the fact that we can find an upper triangular matrix $\mathbf{U}$ using elementary row matrices, we have
 
 $$
-\begin{align}
+\begin{aligned}
 (\#eq:LU-alg)
 \mathbf{A} & = \mathbf{L} \mathbf{U} \\
 \mathbf{E}_k \cdots \mathbf{E}_1 \mathbf{A} & = \mathbf{U}.
-\end{align}
+\end{aligned}
 $$
 We also know that each of the elementary row matrices $\mathbf{E}_j$ are invertible (you can always re-swap rows, subtract instead of add rows, etc.) which says that each inverse $\mathbf{E}_j^{-1}$ exists. Thus, the product $\mathbf{E}_k \cdots \mathbf{E}_1$ must have an inverse which is 
 $$
-\begin{align*}
+\begin{aligned}
 (\mathbf{E}_k \cdots \mathbf{E}_1)^{-1} & = \mathbf{E}_1^{-1} \cdots \mathbf{E}_k^{-1}.
-\end{align*}
+\end{aligned}
 $$
 Plugging this inverse into \@ref(eq:LU-alg) gives (left multiplying by $(\mathbf{E}_k \cdots \mathbf{E}_1)^{-1}$ on both sides)
 $$
-\begin{align*}
+\begin{aligned}
 (\mathbf{E}_k \cdots \mathbf{E}_1)^{-1} (\mathbf{E}_k \cdots \mathbf{E}_1) \mathbf{A} & = (\mathbf{E}_k \cdots \mathbf{E}_1)^{-1}\mathbf{U} \\
  \mathbf{A} & = (\mathbf{E}_k \cdots \mathbf{E}_1)^{-1}\mathbf{U} \\
  & = \mathbf{L} \mathbf{U}
-\end{align*}
+\end{aligned}
 $$
 where $\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1)^{-1}$
 
@@ -264,24 +270,25 @@ Notice that the algorithm does not say to find a specific matrix $\mathbf{U}$. I
 
 A Cholesky decomposition is special type of LU decomposition. A Cholesky decomposition is an LU decomposition on a **symmetric, positive-definite** square matrix. 
 
-```{definition}
+:::{.definition}
 
 * A matrix $\mathbf{A}$ is said to by symmetric if $\mathbf{A} = \mathbf{A}'$
 
 * A $n \times n$ matrix is said to be positive definite if for all $\mathbf{x} \in \mathcal{R}^n$, the quadratic form $\mathbf{x}' \mathbf{A }\mathbf{x} \geq 0$        
-```
+
+:::
 
 Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a $n \times n$ symmetric matrix is positive definite if and only if the matrix $\mathbf{A}$ is invertible (which we know about by the invertible matrix theorem \@ref(thm:invertible-matrix)).
 
-```{definition}
+:::{.definition}
 Let $\mathbf{A}$ be a symmetric, positive definite matrix (by this, $\mathbf{A}$ is a $n \times n$ square matrix). Then
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \mathbf{L} \mathbf{L}'
-\end{align*}
+\end{aligned}
 $$
 is the Cholesky decomposition of $\mathbf{A}$ if $\mathbf{L}$ is a lower-triangular matrix. Also, the lower triangular Cholesky matrix $\mathbf{L}$ is unique. 
-```
+:::
 
 What makes the Cholesky factor special? 
 

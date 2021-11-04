@@ -14,7 +14,7 @@
 **Matrix Addition:** If the matrices $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (e.g., both $\mathbf{A}$ and $\mathbf{B}$ have the same number of rows $m$ and the same number of columns $n$), then
 
 $$
-\begin{align*}
+\begin{aligned}
 (\#eq:matrix-addition)
 \mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -32,7 +32,7 @@ a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
 a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
 \end{pmatrix} \\
 & = \left\{ a_{ij} + b_{ij} \right\}
-\end{align*}
+\end{aligned}
 $$
 
 **... Another way to **
@@ -73,7 +73,7 @@ A + B
 ```
 
 
-```{theorem}
+:::{.theorem}
 Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and let $a$ and $b$ be scalars, then:
 
 1) $\mathbf{A} + \mathbf{B}  = \mathbf{B} + \mathbf{A}$ \hfill [(commutivity of addition)]{style="float:right"}
@@ -87,7 +87,7 @@ Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and le
 5) $(a + b)\mathbf{A} = a \mathbf{A} + b \mathbf{A}$ \hfill [(scalar ...)]{style="float:right"} 
 
 6) $(ab)\mathbf{A} = a (b\mathbf{A})$ \hfill [(scalar ...)]{style="float:right"} 
-```
+:::
 
 ### Matrix Multipliation
 
@@ -96,7 +96,7 @@ Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and le
 
 
 $$
-\begin{align}
+\begin{aligned}
 (\#eq:matrix-multiplication)
 \mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -113,44 +113,44 @@ b_{n1} & b_{n2} & \cdots & b_{np}
 \vdots & \vdots & \ddots & \vdots \\
 \sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
 \end{pmatrix} 
-\end{align}
+\end{aligned}
 $$
 
 
 Another way to define matrix multiplication is through inner product notation. Define the $m \times n$ matrix $\mathbf{A}$ and the $n \times p$ matrix $\mathbf{B}$ as the partition
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
 \mathbf{a}_{2}' \\ 
 \vdots \\
 \mathbf{a}_{m}' \end{pmatrix}
 & \mbox{ and } 
 && \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
 
 where $\mathbf{a}_i$ and $\mathbf{b}_k$ are both $n$-vectors. Then, we have $\mathbf{C} = \mathbf{A} \mathbf{B}$ can be written as
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} \mathbf{B}  = \mathbf{A} \begin{pmatrix} \mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_p
 \end{pmatrix}  = \begin{pmatrix} \mathbf{A} \mathbf{b}_1 & \mathbf{A} \mathbf{b}_2 & \cdots & \mathbf{A} \mathbf{b}_p
 \end{pmatrix} 
-\end{align*}
+\end{aligned}
 $$
  
 Note that in this representation, each column of the matrix $\mathbf{A}\mathbf{B}$ is a linear combination the the columns of $\mathbf{A}$ with coefficients given by the corresponding column of $\mathbf{B}$.
  
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
 \mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
 \vdots & \vdots & \ddots & \vdots \\
 \mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
 \end{pmatrix} \\
 & = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
-\end{align*}
+\end{aligned}
 $$
  
 Written in this notation, we arrive at the multiplication rule for $\mathbf{C} = \mathbf{A} \mathbf{B}$ -- the $ik$th element $c_{ik}$ of $\mathbf{C}$ is the inner product of the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$.
@@ -223,27 +223,27 @@ $$
 The matrix transpose is an operator that swaps the rows and columns of a matrix. If $\mathbf{A}$ is an $m \times n$ matrix ($m$ rows and $n$ columns), then $\mathbf{A}'$ is a $n \times m$ matrix ($n$ rows and $m$ columns. Note: some use $\mathbf{A}^T$ to denote a transpose; I prefer the $'$ notation as it is much simpler and cleaner notation). The matrix 
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 has transpose
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A}' & = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{m1} \\
 a_{12} & a_{22} & \cdots & a_{m2} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{1n} & a_{2n} & \cdots & a_{mn}
 \end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
-```{theorem}
+:::{.theorem}
 Let $\mathbf{A}$ be an $m \times n$ matrix, then
 
 1) $(\mathbf{A}')' = \mathbf{A}$.
@@ -253,7 +253,8 @@ Let $\mathbf{A}$ be an $m \times n$ matrix, then
 3) For any scalar $c$, $(c \mathbf{A})' = c \mathbf{A}'$.
 
 4) Let $\mathbf{B}$ be an $n \times p$ matrix, then $( \mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'$ is an $p \times m$ matrix.
-```
+
+:::
 
 **Note:** The power of video games: GPUs and modern CPUs are becoming more and more parallelized. Because the $ij$th element of $\mathbf{A}\mathbf{B}$ requires only the $i$th row of $\mathbf{A}$ and the $j$th column of $\mathbf{B}$, matrix multiplication is easily parallelized under modern computing architectures. Thanks to video games, this parallelization has been made faster than ever.
 
@@ -272,26 +273,26 @@ Let $\mathbf{A}$ be an $m \times n$ matrix, then
 <!-- **Direct Sums:** For the $n \times p$ matrix $\mathbf{A}$ and the $m \times q$ matrix $\mathbf{B}$, the direct sum is -->
 
 <!-- $$ -->
-<!-- \begin{align*} -->
+<!-- \begin{aligned} -->
 <!-- \mathbf{C} & = \mathbf{A} \bigoplus \mathbf{B} \\ -->
 <!-- & = \begin{pmatrix} \mathbf{A} & \mathbf{0}_{n \times q} \\ -->
 <!-- \mathbf{0}_{m \times p} & \mathbf{B} -->
 <!-- \end{pmatrix} \\ -->
-<!-- \end{align*} -->
+<!-- \end{aligned} -->
 <!-- $$ -->
 
 <!-- where $\mathbf{0}_{n \times q}$ and $\mathbf{0}_{m \times p}$ is an are $n \times q$ and $m \times p$ matrices of all 0s, respectively.  -->
 
 <!-- The direct sum can be generalized to any arbitrary number of matrices as  -->
 <!-- $$ -->
-<!-- \begin{align*} -->
+<!-- \begin{aligned} -->
 <!-- \mathbf{C} & = \bigoplus_{i=1}^K \mathbf{A}_i \\ -->
 <!-- & = \begin{pmatrix} \mathbf{A}_1 & \mathbf{0} & \cdots & \mathbf{0} \\ -->
 <!-- \mathbf{0} & \mathbf{A}_2 &  \cdots & \mathbf{0} \\ -->
 <!-- \vdots & \vdots & \ddots & \vdots \\ -->
 <!-- \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_K \\ -->
 <!-- \end{pmatrix} \\ -->
-<!-- \end{align*} -->
+<!-- \end{aligned} -->
 <!-- $$ -->
 
 <!-- where the matrices $\mathbf{0}$ are all zeros of the appropriate dimension. -->

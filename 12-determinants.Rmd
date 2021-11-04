@@ -32,13 +32,15 @@ Let $\mathbf{A} = \begin{pmatrix} 5 & 3 \\ 1 & -3 \end{pmatrix}$. Find $\operato
 :::{.solution}
 We can calculate the determinant $\operatorname{det}(\mathbf{A})$ using row operations to get to reduced row echelon form.
 
-\begin{align*}
+$$
+\begin{aligned}
 && \begin{pmatrix} 5 & 3 \\ 1 & -3 \end{pmatrix} && \operatorname{det} = x \\
 \mbox{swap row 1 and row 2} && \begin{pmatrix} 1 & -3 \\ 5 & 3  \end{pmatrix} && \operatorname{det} = -x \\
 \mbox{row 2 = -5 * row 1 + row 2} && \begin{pmatrix} 1 & -3 \\ 0 & 18  \end{pmatrix} && \operatorname{det} = -x \\
 \mbox{row 2 } \div \mbox{ 18} && \begin{pmatrix} 1 & -3 \\ 0 & 1  \end{pmatrix} && \operatorname{det} = -\frac{x}{18} \\
 \mbox{row 1 = row 1 + 3 * row 2} && \begin{pmatrix} 1 & 0 \\ 0 & 1  \end{pmatrix} && \operatorname{det} = -\frac{x}{18} 
-\end{align*}
+\end{aligned}
+$$
 where the last matrix is in reduced row echelon form and is the identity matrix which has determinant $\operatorname{det}(\mathbf{I}) = 1$. Therefore $-\frac{x}{18} = 1$ which implies that $x = -18$ so that $\operatorname{det}(\mathbf{A}) = -18$
 Let's check our answer in R
 
@@ -61,13 +63,15 @@ Let $\mathbf{A} = \begin{pmatrix} 2 & 0 \\ -3 & 5 \end{pmatrix}$. Find $\operato
 :::{.solution}
 We can calculate the determinant $\operatorname{det}(\mathbf{A})$ using row operations to get to reduced row echelon form.
 
-\begin{align*}
+$$
+\begin{aligned}
 && \begin{pmatrix} 2 & 0 \\ -3 & 5 \end{pmatrix} && \operatorname{det} = x \\
 \mbox{multiply row 1 by }\frac{1}{2} && \begin{pmatrix} 1 & 0 \\ -3 & 5  \end{pmatrix} && \operatorname{det} = \frac{x}{2} \\
 \mbox{multiply row 2 by }\frac{-1}{3} && \begin{pmatrix} 1 & 0 \\ 1 & -\frac{5}{3} \end{pmatrix} && \operatorname{det} = -\frac{x}{6} \\
 \mbox{row 2 = row 2 - row 1} && \begin{pmatrix} 1 & 0 \\ 0 & -\frac{5}{3}  \end{pmatrix} && \operatorname{det} = -\frac{x}{6} \\
 \mbox{multiply row 2 by } - \frac{3}{5} && \begin{pmatrix} 1 & 0 \\ 0 & 1  \end{pmatrix} && \operatorname{det} = \frac{x}{10} 
-\end{align*}
+\end{aligned}
+$$
 where the last matrix is in reduced row echelon form and is the identity matrix which has determinant $\operatorname{det}(\mathbf{I}) = 1$. Therefore $\frac{x}{10} = 1$ which implies that $x = 10$ so that $\operatorname{det}(\mathbf{A}) = 10$
 Let's check our answer in R
 
@@ -110,15 +114,18 @@ For an $n \times n$ matrix $\mathbf{A}$,
 a) The (i, j) **minor** $\mathbf{A}_{-i-j}$ is the $(n-1) \times (n-1)$ matrix obtained by deleting the $i$th row and the $j$ column from $\mathbf{A}$
 
 b) The (i, j) **cofactor** $c_{ij}$ is defined using the determinant of the  minor where 
-\begin{align*}
+$$
+\begin{aligned}
 c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
-\end{align*}
+\end{aligned}
+$$
 :::
 
 Note: The cofactor of a scalar $a$ (a $1 \times 1$ matrix) is defined as $\mathbf{C}_{ij} = (-1)^{1 + 1} \det(a) = a$.
 
 Note: The leading term in the cofactor definition $\mathbf(-1)^{i + j}$ defines a checkerboard pattern shown below
-\begin{align*}
+$$
+\begin{aligned}
 \begin{pmatrix}
 + & - & + & - & \cdots \\
 - & + & - & + & \cdots \\
@@ -127,7 +134,8 @@ Note: The leading term in the cofactor definition $\mathbf(-1)^{i + j}$ defines 
 \vdots & \vdots & \vdots & \vdots & \ddots \\
 + & - & + & - & \cdots \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 
 :::{.example}
@@ -173,21 +181,26 @@ In `R`, given the minor `A_minor_23`, the cofactor is
 
 Note that in the cofactor definition of a $n \times n$ matrix it is assumed that you can calculate the determinant of the $n-1 \times n-1$ minor $\mathbf{A}_{-i-j}$. From this we see that each of the $n \times n$ cofactors of $\mathbf{A}$ are themselves the (signed) determinants of $n-1 \times n-1$ submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated. 
 
-```{theorem cofactor-expansion, name = "Cofactor exapansion"}
+:::{.theorem cofactor-expansion name = "Cofactor exapansion"}
 
 Let $\mathbf{A}$ be an $n \times n$ matrix with $ij$th elements $a_{ij}$. Then
 
 a) The **cofactor expansion along the $i$th row** (for any fixed row $i$) is 
-\begin{align*}
+$$
+\begin{aligned}
 \det(\mathbf{A}) = \sum_{j=1}^n a_{ij} c_{ij} = a_{i1} c_{i1} + a_{i2} c_{i2} + \cdots + a_{in} c_{in}
-\end{align*}
-
+\end{aligned}
+$$
+    
 b) The **cofactor expansion along the $j$th column** (for any fixed column $j$) is 
-\begin{align*}
+$$
+\begin{aligned}
 \det(\mathbf{A}) = \sum_{i=1}^n a_{ij} c_{ij} = a_{1j} c_{1j} + a_{2j} c_{2j} + \cdots + a_{nj} c_{nj}
-\end{align*}
+\end{aligned}
+$$
 
-```
+
+:::
 
 
 <div class="fold-proof">
@@ -215,15 +228,15 @@ Use the minor/cofactor definition to calculate the determinant of the $3 \times 
 :::{.solution}
 The determinant of $\mathbf{A}$ can be found by using Theorem (\@ref(thm:cofactor-expansion)) by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is 
 $$
-\begin{align*}
+\begin{aligned}
 \det(\mathbf{A}) = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13}
-\end{align*}
+\end{aligned}
 $$
 where $a_{ij}$ is the $ij$th element of $\mathbf{A}$. Thus, the cofactor expansion is
 $$
-\begin{align*}
+\begin{aligned}
 \det(\mathbf{A}) = 5 c_{11} + 0 c_{12} + 2 c_{13}
-\end{align*}
+\end{aligned}
 $$
 This implies that we only need to find the cofactors $c_{11}$ and $c_{13}$ (but not $c_{12}$ because it gets multiplied by 0). Thus, the cofactor expansion along the first row only requires finding 2 cofactors $c_{11}$ and $c_{13}$.
 
@@ -233,24 +246,24 @@ A_minor_13 <- A[-1, -3]
 ```
 The minor $\mathbf{A}_{-1-1}$ is the matrix $\mathbf{A}$ with the first row and first column removed and is $\mathbf{A}_{-1-1} = `r array_to_latex(A_minor_11)`$. The minor $\mathbf{A}_{-1-3}$ is the matrix $\mathbf{A}$ with the first row and third column removed and is $\mathbf{A}_{-1-3} = `r array_to_latex(A_minor_13)`$. The cofactor $c_{11}$ is given by 
 $$
-\begin{align*}
+\begin{aligned}
 c_{11} = (-1)^{1+1}((`r A_minor_11[1,1]`)(`r A_minor_11[2,2]`) - (`r A_minor_11[1,2]`) (`r A_minor_11[2,1]`)) = `r (-1)^(1+1) * det(A_minor_11)`
-\end{align*}
+\end{aligned}
 $$
 and the cofactor $c_{13}$ is given by 
 $$
-\begin{align*}
+\begin{aligned}
 c_{13} = (-1)^{1+3}((`r A_minor_13[1,1]`)(`r A_minor_13[2,2]`) - (`r A_minor_13[1,2]`) (`r A_minor_13[2,1]`)) = `r (-1)^(1+3) * det(A_minor_13)`
-\end{align*}
+\end{aligned}
 $$
 
 Combining these, the determinant of $\mathbf{A}$ using the cofactor expansion is
 $$
-\begin{align*}
+\begin{aligned}
 \det(\mathbf{A}) & = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13} \\
 & = (5) (`r (-1)^(1+1) * det(A_minor_11)`) + (0) (c_{12}) + (2) (`r (-1)^(1+3) * det(A_minor_13)`) \\
 & = `r det(A)`
-\end{align*}
+\end{aligned}
 $$
 :::
 
@@ -270,10 +283,10 @@ Use the minor/cofactor definition to calculate the determinant of the $3 \times 
 :::{.solution}
 The determinant of $\mathbf{A}$ can be found by using Theorem (\@ref(thm:cofactor-expansion)) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is 
 $$
-\begin{align*}
+\begin{aligned}
 \det(\mathbf{A}) & = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
 & = 4 c_{12} + 0 c_{22} + 0 c_{32}
-\end{align*}
+\end{aligned}
 $$
 This implies that we only need to find the cofactor $c_{12}$ (but not $c_{22}$ and $c_{32}$ because these get multiplied by 0). Thus, the cofactor expansion along the second column only requires finding the single cofactor $c_{12}$.
 
@@ -282,18 +295,18 @@ A_minor_12 <- A[-1, -2]
 ```
 The minor $\mathbf{A}_{-1-2}$ is the matrix $\mathbf{A}$ with the first row and second column removed and is $\mathbf{A}_{-1-2} = `r array_to_latex(A_minor_12)`$. The cofactor $c_{12}$ is given by 
 $$
-\begin{align*}
+\begin{aligned}
 c_{12} = (-1)^{1+2}((`r A_minor_12[1,1]`)(`r A_minor_12[2,2]`) - (`r A_minor_12[,2]`) (`r A_minor_12[2,1]`)) = `r (-1)^(1+1) * det(A_minor_12)`.
-\end{align*}
+\end{aligned}
 $$
 
 Thus, the determinant of $\mathbf{A}$ using the cofactor expansion is
 $$
-\begin{align*}
+\begin{aligned}
 \det(\mathbf{A}) & = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
 & = (`r A[1, 2]`) (`r (-1)^(1+2) * det(A_minor_12)`) + (`r A[2, 2]`) (c_{22}) + (`r A[3, 2]`) (c_{32}) \\
 & = `r det(A)`
-\end{align*}
+\end{aligned}
 $$
 :::
 
@@ -309,11 +322,11 @@ Let $\mathbf{A}$ be a $n \times n$ matrix that has all zero entries for the $j$t
 :::{.solution}
 Using the cofactor expansion theorem (Theorem (\@ref(thm:cofactor-expansion))), expand the determinant along the $j$th row. Then, because all entries of the $j$th row of $\mathbf{A}$ are zero, this gives
 $$
-\begin{align*}
+\begin{aligned}
 \det(\mathbf{A}) & = a_{j1} c_{j1} + a_{j2} c_{j2} + \cdots + a_{jn} c_{jn} \\
 & = 0 c_{j1} + 0 c_{j2} + \cdots + 0 c_{jn} \\
 & = 0
-\end{align*}
+\end{aligned}
 $$
 :::
 </div>
@@ -375,15 +388,19 @@ While commonly used for theoretical results, Cramer's rule is not commonly used 
 
 ```{theorem, name = "Cramer's Rule"}
 Let $\mathbf{A}$ be a $n \times n$ invertible matrix. Define $\mathbf{A}_i(\mathbf{b})$ as the matrix $\mathbf{A}$ with the $i$th column replace by the vector $\mathbf{b}$. For example, $\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 & \cdots & \mathbf{a}_{i-1} & \mathbf{b} & \mathbf{a}_{i+1} & \cdots & \mathbf{a}_n \end{pmatrix}$. Then, for any $\mathbf{b} \in \mathcal{R}^n$, the unique solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$ has entries given by 
-\begin{align*}
+$$
+\begin{aligned}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} & \mbox{ for } i = 1, 2, \ldots, n
-\end{align*}
+\end{aligned}
+$$
 ```
 
-```{example}
+:::{.example}
+
 In Cramer's rule, why do we know
 
 * the solution is unique for any $\mathbf{b}$? 
 
 * the determinant $\det(\mathbf{A}) \neq 0$?
-```
+
+:::

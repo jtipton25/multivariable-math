@@ -13,9 +13,11 @@ The characteristic equation/polynomial encodes information about the eigenvalues
 
 :::{.definition}
 Let $\mathbf{A}$ be a $n \times n$ matrix. The characteristic equation/polynomial of $\mathbf{A}$ is the function $f(\lambda)$ given by 
-\begin{align*}
+$$
+\begin{aligned}
 f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
-\end{align*}
+\end{aligned}
+$$
 :::
 
 While not obvious, the function $f(\lambda)$ is a polynomial of $\lambda$ but requires computing the determinant of the matrix $\mathbf{A} - \lambda \mathbf{I}$ which contains an unknown value $\lambda$.
@@ -83,13 +85,17 @@ The idea behind similar matrices is to understand how the linear transformations
 
 :::{.definition}
 The matrices $\mathbf{A}$ and $\mathbf{B}$ are said to be similar if there exists an invertible matrix $\mathbf{P}$ where 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
-\end{align*}
+\end{aligned}
+$$
 or equivalently
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{P}^{-1} \mathbf{A} \mathbf{P}=  \mathbf{B} 
-\end{align*}
+\end{aligned}
+$$
 :::
 
 Therefore, it is possible to change $\mathbf{A}$ into $\mathbf{B}$ with an invertible (one-to-one and onto) transformation. 
@@ -118,21 +124,27 @@ If $\mathbf{A}$ and $\mathbf{B}$ are $n \times n$ similar matrices, then $\mathb
 
 :::{.proof}
 If $\mathbf{A}$ and $\mathbf{B}$ are similar, then there exists an invertible matrix $\mathbf{P}$ such that
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
-\end{align*}
+\end{aligned}
+$$
 Therefore
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A}  - \lambda \mathbf{I} & = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{I} \\
 & = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P} \mathbf{P}^{-1} \\
 & =  \mathbf{P} \left( \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P}^{-1} \right) \\
 & =  \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1}\\
-\end{align*}
+\end{aligned}
+$$
 To get the characteristic equation, we need to solve for the determinant 
-\begin{align*}
+$$
+\begin{aligned}
 det\left( \mathbf{A}  - \lambda \mathbf{I} \right) & = det\left( \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1} \right) \\
 & = det\left( \mathbf{P} \right)  det\left( \mathbf{B} - \lambda \mathbf{I} \right) det\left(\mathbf{P}^{-1} \right) \\
-\end{align*}
+\end{aligned}
+$$
 We know that $det\left(\mathbf{P}^{-1} \right)$ = $\frac{1}{det\left(\mathbf{P} \right)}$ (or, equivalently $det\left(\mathbf{P} \right) det\left(\mathbf{P}^{-1} \right) = det\left(\mathbf{P} \mathbf{P}^{-1} \right) = det(\mathbf{I}) = 1$), we have $det\left( \mathbf{A}  - \lambda \mathbf{I} \right) = det\left( \mathbf{B} - \lambda \mathbf{I} \right)$ so that $\mathbf{A}$ and $\mathbf{B}$ have the same characteristic polynomial (and the same eigenvalues).
 :::
 

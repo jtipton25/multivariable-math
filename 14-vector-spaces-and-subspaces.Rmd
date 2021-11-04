@@ -36,9 +36,11 @@ Also, recall the special subspaces of the column space and the null space.
 The null space null($\mathbf{A}$) of an $m \times n$ $\mathbf{A}$ is the set of all solutions of the homogeneous equation $\mathbf{A} \mathbf{x} = \mathbf{0}$
 
 Another way to write null($\mathbf{A}$) is 
-\begin{align*}
+$$
+\begin{aligned}
 \mbox{null}(\mathbf{A}) = \{\mathbf{x} : \mathbf{x} \in \mathcal{R}^n \mbox{ and } \mathbf{A} \mathbf{x} = \mathbf{0} \}
-\end{align*}
+\end{aligned}
+$$
 :::
 
 
@@ -77,9 +79,11 @@ As a consequence, there will exist a set of vectors that span the null space nul
 
 Find a spanning set for null($\mathbf{A}$) where
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 7 & -2 & 7 & -4 & 5 \\ 2 & 0 & 3 & 3 & 9 \\ -5 & 2 & -5 & 7 & -2 \end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 * Find solution to system of homogeneous system of equations $\mathbf{A} \mathbf{x} = \mathbf{0}$
 
@@ -92,9 +96,11 @@ rref(cbind(A, 0))
 
 * general solution $x_1 = -1.5 x_4 + 4.5 x_5$, $x_2 = -7.25 x_4 - 2.75 x_5$, $x_3 = -6 x_5$ and both $x_4$ and $x_5$ are free. Write out the general solution in vector form.
 
-\begin{align*}
+$$
+\begin{aligned}
 \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} -1.5 x_4 + 4.5 x_5\\ -7.25 x_4 - 2.75 x_5 \\ -6 x_5 \\ x_4 \\ x_5 \end{pmatrix} = x_4 \begin{pmatrix} -1.5 \\ -7.25 \\ 0 \\ 1 \\ 0 \end{pmatrix} + x_5 \begin{pmatrix} 4.5 \\ 2.75 \\ -6 \\ 0 \\ 1 \end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 * From above, the free variables $x_4$ and $x_5$ are multiplied by the vectors $\mathbf{u} =  \begin{pmatrix} -1.5 \\ -7.25 \\ 0 \\ 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 4.5 \\ 2.75 \\ -6 \\ 0 \\ 1 \end{pmatrix}$ where $\{ \mathbf{u}, \mathbf{v} \}$ are a spanning set for the null($\mathbf{A}$)
 
@@ -114,13 +120,17 @@ Find a spanning set for null($\mathbf{A}$) where
 The columns space col($\mathbf{A}$) of an $m \times n$ $\mathbf{A}$ is the set of all linear combinations of the columns of $\mathbf{A}$. 
 
 If $\{ \mathbf{a}_1, \ldots, \mathbf{a}_n\}$ are the columns of $\mathbf{A}$, then 
-\begin{align*}
+$$
+\begin{aligned}
 \mbox{col}(\mathbf{A}) = \mbox{span}(\mathbf{A})
-\end{align*}
+\end{aligned}
+$$
 this can be written in set notation as 
-\begin{align*}
-\mbox{col}(\mathbf{A}) = \{ \mathbf{b} : \mathbf{A} \mathbf{x} = \mathbf{b} \mbox{ for some } $\mathbf{x} \in \mathcal{R}^n \}
-\end{align*}
+$$
+\begin{aligned}
+\mbox{col}(\mathbf{A}) = \{ \mathbf{b} : \mathbf{A} \mathbf{x} = \mathbf{b} \mbox{ for some } \mathbf{x} \in \mathcal{R}^n \}
+\end{aligned}
+$$
 :::
 
 :::{.theorem}
@@ -145,9 +155,11 @@ Compared to the null space, the column space is defined explicitly--it is the sp
 
 Find a spanning set for col($\mathbf{A}$) where
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 6 & 0 & 4 \\ 5 & -1 & -9 \\ -4 & 7 & 4 \\ 6 & 2 & 9 \end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 :::
 
 

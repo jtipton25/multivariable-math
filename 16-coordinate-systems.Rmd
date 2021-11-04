@@ -16,11 +16,13 @@ knitr::include_graphics(here::here("images", "descartes.jpg"))
 ```
 
 We already know about the cartesian coordinate system (x, y, z) which has the set of basis vectors
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} && 
 \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} && 
 \mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} 
-\end{align*}
+\end{aligned}
+$$
 
 However, using the concept of a basis for a subspace $\mathcal{H}$ of some vector space $\mathcal{V}$, we might want to use a different basis. Luckily, we have learned how to construct bases for col($\mathbf{A}$) and null($\mathbf{A}$). 
 
@@ -28,33 +30,43 @@ You might be wondering why we want to create different bases. The usual cartesia
 
 ```{theorem, name = "The unique representation Theorem"}
 Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis for the vector space $\mathcal{V}$. Then, for each $\mathbf{x}$ in $\mathcal{B}$, there exists a unique set of coefficients $c_1, \ldots, c_n$ such that
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
-\end{align*}
+\end{aligned}
+$$
 ```
 
 ```{proof}
 sketch: vectors of $\mathcal{B}$ span $\mathcal{V}$ so there exists a set of coefficienct $c_1, \ldots, c_n$ such that 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
-\end{align*}
+\end{aligned}
+$$
 is true. Assume another set of coefficients $d_1, \ldots, d_n$ exists such that 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = d_1 \mathbf{b}_1 + \ldots + d_n \mathbf{b}_n.
-\end{align*}
+\end{aligned}
+$$
 Subtract these two equations to get 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{0} = \mathbf{x} - \mathbf{x} = (c_1 - d_1) \mathbf{b}_1 + \ldots + (c_n - d_n) \mathbf{b}_n.
-\end{align*}
+\end{aligned}
+$$
 Because $\mathcal{B}$ is linearly independent by definition, all the weights in the equation above must be 0 (linear independence means the only solution to $\mathbf{A}\mathbf{x} = \mathbf{0}$ is the trivial solution). Therefore $c_i = d_i$ for $i = 1, \ldots, n$.
 ```
 
 
 :::{.definition}
 Suppose $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis for the vector space $\mathcal{V}$ and $\mathbf{x} \in \mathcal{V}$. The coordinates of $\mathbf{x}$ with respect to $\mathcal{B}$ are the coefficients $c_1, \ldots, c_n$ such that 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
-\end{align*}
+\end{aligned}
+$$
 :::
 
 :::{.example}
@@ -82,14 +94,22 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Standard cooridinates
 
 ## Coordinates in $\mathcal{R}^n$
 
-Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $[\mathbf{x}]_\mathcal{B} = \begin{pmatrix} [x_1]_\mathcal{B}, \ldots, [x_n]_\mathcal{B} \end{pmatrix}'$ of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ can be found by solving the matrix equation
-\begin{align*}
-\mathbf{P}_B [\mathbf{x}]_\mathcal{B} = \mathbf{x}
-\end{align*}
-The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $[\mathbf{x}]_\mathcal{B}$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
-\begin{align*}
-[\mathbf{x}]_\mathcal{B} = \mathbf{P}_B^{-1} \mathbf{x}
-\end{align*}
+Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $[\mathbf{x}]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}$ of $\mathbf{x}$
+
+with respect to the basis $\mathcal{B}$ can be found by solving the matrix equation
+
+
+$$
+\begin{aligned}
+\mathbf{P}_B [\mathbf{x}]_B = \mathbf{x}
+\end{aligned}
+$$
+The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $[\mathbf{x}]_B$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
+$$
+\begin{aligned}
+[\mathbf{x}]_B = \mathbf{P}_B^{-1} \mathbf{x}
+\end{aligned}
+$$
 
 :::{.theorem}
 Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for the vector space $\mathcal{V}$. Then, the coordinate mapping $\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}$ is a one-to-one and onto transformation from $\mathcal{V}$ to $\mathcal{R}^n$
@@ -97,27 +117,35 @@ Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for the v
 
 :::{.proof}
 First we want to show that multiplication by $\mathbf{P}_B^{-1}$ defines a linear transformation. First, take two vectors 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{u} &  = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
-\end{align*}
+\end{aligned}
+$$
 and 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{v} = d_1 \mathbf{b}_1 + \ldots + d_n \mathbf{b}_n
-\end{align*}
+\end{aligned}
+$$
 
 * First, we show the mapping preserves vector addition
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{u} + \mathbf{v} \rightarrow \mathbf{P}_B^{-1} (\mathbf{u} + \mathbf{v}) =  \mathbf{P}_B^{-1} \mathbf{u} + \mathbf{P}_B^{-1} \mathbf{v}
-\end{align*}
- which preserves vector addition
+\end{aligned}
+$$
+which preserves vector addition
 
 * Next, we show the mapping preserves scalar multiplication. Given scalar $a$, 
 
-\begin{align*}
+$$
+\begin{aligned}
 a\mathbf{u} \rightarrow \mathbf{P}_B^{-1} (a \mathbf{u}) =  a \mathbf{P}_B^{-1} \mathbf{u}
-\end{align*}
- which preserves scalar multiplication. 
+\end{aligned}
+$$
+which preserves scalar multiplication. 
 
 * Therefore, this is a linear transformation. one-to-one and onto come from fact that $\mathbf{P}_B$ is and $n \times n$ matrix with $n$ pivot columns ($n$ linearly independent vectors because it is a basis for $\mathcal{R}^n$)
 :::
@@ -138,13 +166,17 @@ In a vector space $\mathcal{V}$ with basis $\mathcal{B} = \{ \mathbf{b}_1, \ldot
 
 :::{.proof}
 Let $\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}$ be a set of vectors in $\mathcal{V}$ with $p > n$. The coordinate vectors $\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}$ form a linearly dependent set in $\mathcal{R}^n$ because there are more vectors ($p$) than entries ($n$) in each vector. Thus, there exist scalars $c_1, \ldots, c_p$, some nonzero, such that
-\begin{align*}
+$$
+\begin{aligned}
 c_1 \mathbf{P}_B \mathbf{u}_1 + \ldots + c_p \mathbf{P}_B \mathbf{u}_p = \mathbf{0}.
-\end{align*}
+\end{aligned}
+$$
 which by linearity implies 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{P}_B (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
-\end{align*}
+\end{aligned}
+$$
 
 :::
 
@@ -184,16 +216,20 @@ in class - span of 2 or 3 linearly dependent vectors
 
 :::{.theorem}
 Let $\mathcal{H}$ be a subspace of a finite-dimensional vector space $\V$. Then, any linearly independent set in $\mathcal{H}$ can be expanded, if necessary to form a basis for $\mathcal{H}$. As $\mathcal{H}$ is a subspace of the finite-dimensional vector space $\V$, $\mathcal{H}$ is a finite-dimensional vector space with
-\begin{align*}
+$$
+\begin{aligned}
 \mbox{dim}(\mathcal{H}) \leq \mbox{dim}(\mathcal{V})
-\end{align*}
+\end{aligned}
+$$
 :::
 
 For a vector space of known dimension $p$, finding a basis can be simplified by finding a linearly independent set of size $p$. 
 
-```{theorem, name = "The Basis Theorem"}
-Let $\V$ be a $p$ dimensional vector space with $p \geq 1$. Any linearly independent subset of $p$ vectors is a basis for $\V$. Equivalently, any set of $p$ vectors that span $\V$ is automatically a basis for $\V$.
-```
+:::{.theorem name = "The Basis Theorem"}
+
+Let $\mathcal{V}$ be a $p$ dimensional vector space with $p \geq 1$. Any linearly independent subset of $p$ vectors is a basis for $\mathcal{V}$. Equivalently, any set of $p$ vectors that span $\V$ is automatically a basis for $\mathcal{V}$.
+
+:::
 
 
 ## Dimensions of null($\mathbf{A}$) and col($\mathbf{A}$)

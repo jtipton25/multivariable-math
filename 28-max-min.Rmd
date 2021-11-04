@@ -63,7 +63,7 @@ dat %>%
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
     add_surface(
         contours = list(
@@ -81,12 +81,55 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
               name = c("local maximum", rep("saddle point", 4)))
 ```
 
+
+```{r, echo = FALSE}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
+    htmlwidgets::saveWidget(
+        plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+            add_surface(
+                contours = list(
+                    z = list(
+                        show=TRUE,
+                        usecolormap=TRUE,
+                        highlightcolor="#ff0000",
+                        project=list(z=TRUE)))) %>%
+            add_trace(x = critical_points$x, y = critical_points$y, 
+                      z = critical_points$z,
+                      mode = "markers", type = "scatter3d", 
+                      marker = list(size = 5, 
+                                    color = c("red", rep("orange", 4)), 
+                                    symbol = 104),
+                      name = c("local maximum", rep("saddle point", 4))),
+        file = "critical.html")
+    webshot2::webshot(url = "critical.html", 
+                      file = "critical.png", 
+                      delay = 1, zoom = 4, vheight = 500)
+    knitr::include_graphics("critical.png")
+
+} else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+    plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+        add_surface(
+            contours = list(
+                z = list(
+                    show=TRUE,
+                    usecolormap=TRUE,
+                    highlightcolor="#ff0000",
+                    project=list(z=TRUE)))) %>%
+        add_trace(x = critical_points$x, y = critical_points$y, 
+                  z = critical_points$z,
+                  mode = "markers", type = "scatter3d", 
+                  marker = list(size = 5, 
+                                color = c("red", rep("orange", 4)), 
+                                symbol = 104),
+                  name = c("local maximum", rep("saddle point", 4)))
+}
+```
 :::
 
 
 If a critical point isn't a local minimum/maximum, what else could this point be? One possible shape is what is called a saddle point. A saddle point is one in which the function $f(x, y)$ is increasing in one direction (say, along the x-axis) and decreasing along another direction (say, the y-axis). The surface is often said to resemble the shape of a saddle (or a Pringles chip). An example saddle point is shown in the plot below.
 
-```{r}
+```{r, eval = FALSE}
 f <- function(x, y) {
     x^2 - y^2
 }
@@ -112,6 +155,61 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
                             color = "red",
                             symbol = 104),
               name = "saddle point")
+```
+
+```{r, echo = FALSE}
+f <- function(x, y) {
+    x^2 - y^2
+}
+x <- seq(-1, 1, length.out = 40)
+y <- seq(-1, 1, length.out = 40)
+critical_points <- data.frame(x = 0, y = 0) %>%
+    mutate(z = f(x, y))
+dat <- expand_grid(x, y) %>%
+    mutate(z = f(x, y))
+
+
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
+    htmlwidgets::saveWidget(
+        plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+            add_surface(
+                contours = list(
+                    z = list(
+                        show=TRUE,
+                        usecolormap=TRUE,
+                        highlightcolor="#ff0000",
+                        project=list(z=TRUE)))) %>%
+            add_trace(x = critical_points$x, y = critical_points$y, 
+                      z = critical_points$z,
+                      mode = "markers", type = "scatter3d", 
+                      marker = list(size = 5, 
+                                    color = "red",
+                                    symbol = 104),
+                      name = "saddle point"),
+        file = "saddle.html")
+    webshot2::webshot(url = "saddle.html", 
+                      file = "saddle.png", 
+                      delay = 1, zoom = 4, vheight = 500)
+    knitr::include_graphics("saddle.png")
+    
+    
+} else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+    plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+        add_surface(
+            contours = list(
+                z = list(
+                    show=TRUE,
+                    usecolormap=TRUE,
+                    highlightcolor="#ff0000",
+                    project=list(z=TRUE)))) %>%
+        add_trace(x = critical_points$x, y = critical_points$y, 
+                  z = critical_points$z,
+                  mode = "markers", type = "scatter3d", 
+                  marker = list(size = 5, 
+                                color = "red",
+                                symbol = 104),
+                  name = "saddle point")
+}
 ```
 
 
@@ -146,7 +244,7 @@ find the critical points of $f(x, y) = xy(x - 3)(y - 4)$ and determine if they a
 find the critical points of $f(x, y)  = x^4 + y^4$ and determine if they are local maxima, minima, saddle points, or undetermined.
 :::
 
-```{r}
+```{r, eval = FALSE}
 f <- function(x, y) {
     x^4 + y^4
 }
@@ -172,6 +270,60 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
                             color = "red",
                             symbol = 104),
               name = "saddle point")
+```
+
+```{r, echo = FALSE}
+f <- function(x, y) {
+    x^4 + y^4
+}
+x <- seq(-1, 1, length.out = 40)
+y <- seq(-1, 1, length.out = 40)
+critical_points <- data.frame(x = 0, y = 0) %>%
+    mutate(z = f(x, y))
+dat <- expand_grid(x, y) %>%
+    mutate(z = f(x, y))
+
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
+    htmlwidgets::saveWidget(
+plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+    add_surface(
+        contours = list(
+            z = list(
+                show=TRUE,
+                usecolormap=TRUE,
+                highlightcolor="#ff0000",
+                project=list(z=TRUE)))) %>%
+    add_trace(x = critical_points$x, y = critical_points$y, 
+              z = critical_points$z,
+              mode = "markers", type = "scatter3d", 
+              marker = list(size = 5, 
+                            color = "red",
+                            symbol = 104),
+              name = "saddle point"),
+        file = "saddle2.html")
+    webshot2::webshot(url = "saddle2.html", 
+                      file = "saddle2.png", 
+                      delay = 1, zoom = 4, vheight = 500)
+    knitr::include_graphics("saddle2.png")
+    
+    
+} else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+    plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
+        add_surface(
+            contours = list(
+                z = list(
+                    show=TRUE,
+                    usecolormap=TRUE,
+                    highlightcolor="#ff0000",
+                    project=list(z=TRUE)))) %>%
+        add_trace(x = critical_points$x, y = critical_points$y, 
+                  z = critical_points$z,
+                  mode = "markers", type = "scatter3d", 
+                  marker = list(size = 5, 
+                                color = "red",
+                                symbol = 104),
+                  name = "saddle point")
+}
 ```
 
 

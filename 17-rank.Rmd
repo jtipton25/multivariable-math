@@ -11,9 +11,11 @@ Given an $m \times n$ matrix $\mathbf{A}$, the row space, row($\mathbf{A}$) is t
 
 
 Note: the row space of $\mathbf{A}$ is the column space of the transposed matrix $\mathcal{A}'$.
-\begin{align*}
+$$
+\begin{aligned}
 row(\mathbf{A}) = col(\mathbf{A}')
-\end{align*}
+\end{aligned}
+$$
 
 :::{.example}
 in class 
@@ -33,9 +35,11 @@ The rank of a matrix $\mathbf{A}$, rank($\mathbf{A}$) is the dimension of the co
 
 ```{theorem, name = "The Rank Theorem"}
 Let $\mathbf{A}$ be an $m \times n$ matrix. Then the dimension of are equal. The rank of $\mathbf{A}$ equals the number of pivot columns of $\mathbf{A}$ and 
-\begin{align*}
+$$
+\begin{aligned}
 rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
-\end{align*}
+\end{aligned}
+$$
 ```
 
 ```{proof}

@@ -32,13 +32,13 @@
 Another way to represent matrices is using a block (or partitioned) form. A block-representation of a matrix arises when the $n \times p$ matrix $\mathbf{A}$ is represented using smaller blocks as follows:
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\
 \mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\
 \vdots & \vdots & \ddots & \vdots \\
 \mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\
 \end{pmatrix} \\
-\end{align*}
+\end{aligned}
 $$
 
 where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n$ and $\sum_{k=1}^K p_k = p$.
@@ -46,18 +46,18 @@ where $\mathbf{A}_{ij}$ is a $n_j \times p_k$ matrix where $\sum_{j=1}^J n_j = n
 For example, the matrix
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
 5 & -22  & 2 \\
 -14 & 5 & 99 \\
 42 & -3 & 0\end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
 can be written in block matrix form with
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & =
 \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\
 \mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\
@@ -71,7 +71,7 @@ $$
 \end{bmatrix} &
 \begin{bmatrix} 99 \\ 0 \end{bmatrix}
 \end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
 where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $2 \times 1$ matrix, etc.
@@ -108,7 +108,7 @@ cbind(
 If $\mathbf{A}$ and $\mathbf{B}$ are both $m \times n$ block matrices with blocks in $r$ rows and $c$ columns where
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & =
 \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
 \mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
@@ -121,12 +121,12 @@ $$
 \vdots & \vdots & \ddots & \vdots \\
 \mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
 \end{pmatrix} \\
-\end{align*}
+\end{aligned}
 $$
 and each block $\mathbf{A}_{ij}$ and $\mathbf{B}_{ij}$ have the same dimension, then 
 
 $$
-\begin{align}
+\begin{aligned}
 (\#eq:block-matrix-addition)
 \mathbf{A} + \mathbf{B} & =
 \begin{pmatrix} \mathbf{A}_{11} + \mathbf{B}_{11} & \mathbf{A}_{12} + \mathbf{B}_{12} & \cdots & \mathbf{A}_{1c} + \mathbf{B}_{1c}\\
@@ -134,7 +134,7 @@ $$
 \vdots & \vdots & \ddots & \vdots \\
 \mathbf{A}_{r1} + \mathbf{B}_{r1} & \mathbf{A}_{r2} + \mathbf{B}_{r2} & \cdots & \mathbf{A}_{rc} + \mathbf{B}_{rc} \\
 \end{pmatrix}
-\end{align}
+\end{aligned}
 $$
 which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation \@ref(eq:block-matrix-addition) above to  \@ref(eq:matrix-addition)). The one requirement is that each of the blocks $\mathbf{A}_{ij}$ and $\mathbf{B}_{ij}$ have the same dimension. When this is true, we say that $\mathbf{A}$ and $\mathbf{B}$ are **conformable for block matrix addition**. 
 
@@ -142,7 +142,7 @@ which is a matrix where each block is the sum of the other blocks. Notice that i
 
 If $\mathbf{A}$ and $\mathbf{B}$ are both $m \times n$ block matrices with blocks in $r$ rows and $c$ columns (same as above) where
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & =
 \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
 \mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
@@ -155,12 +155,12 @@ $$
 \vdots & \vdots & \ddots & \vdots \\
 \mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
 \end{pmatrix} \\
-\end{align*}
+\end{aligned}
 $$
 and each row of blocks $\mathbf{A}_{ij}$ has the same number of columns as the block $\mathbf{B}_{ij}$ has rows, then the block matrices $\mathbf{A}$ and $\mathbf{B}$ are said to be **conformable for block matrix multiplication**. A consequence of this is that $r = c$. When this is the case, the matrix products is
 
 $$
-\begin{align*}
+\begin{aligned}
 (\#eq:block-matrix-multiplication)
 \mathbf{A} \mathbf{B} & =
 \begin{pmatrix} \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{jc} \\
@@ -168,7 +168,7 @@ $$
 \vdots & \vdots & \ddots & \vdots \\
 \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{jc} 
 \end{pmatrix}  
-\end{align*}
+\end{aligned}
 $$
 which can be said in words as "each block-element (the $ij$th element $(\mathbf{A} \mathbf{B})_{ij}$) of the block-matrix product $\mathbf{A} \mathbf{B}$ is the sum of the $i$th block-row of $\mathbf{A}$ and the $j$th block column of $\mathbf{B}$. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \@ref(eq:block-matrix-multiplication) above to \@ref(eq:matrix-multiplication)).
 
@@ -193,12 +193,12 @@ A solution to the example problem
 ```{theorem block-matrix-multiplication}
 The matrix product $\mathbf{A}\mathbf{B}$ of an $m \times n$ matrix $\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}$ with columns $\{\mathbf{a}_i\}_{i=1}^n$ and an $n \times p$ matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}$ with rows $\{\mathbf{b}_i'\}_{i=1}^n$ can be written as the column-row expansion below:
 $$
-\begin{align*}
+\begin{aligned}
 (\#eq:block-matrix-multiplication)
 \mathbf{A} \mathbf{B} & =
 \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix} \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix} \\
 & = \mathbf{a}_1 \mathbf{b}_1' + \mathbf{a}_2 \mathbf{b}_2' + \cdots + \mathbf{a}_n \mathbf{b}_n'
-\end{align*} 
+\end{aligned} 
 $$
 ```
 
@@ -217,7 +217,7 @@ There are many different forms of block matrices. Two that deserve special menti
 ```{definition}
 The matrix $\mathbf{A}$ is said to be block diagonal if
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
 \mathbf{A}_1 & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
 \mathbf{0} & \mathbf{A}_2 & \mathbf{0} & \cdots & \mathbf{0} \\
@@ -225,14 +225,14 @@ $$
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 \mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_n \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$    
 ```
 
 ```{definition}
 The matrix $\mathbf{A}$ is said to be block (upper) triangular if
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
 \mathbf{A}_{11} & \mathbf{A}_{12} & \mathbf{A}_{13} & \cdots & \mathbf{A}_{1n} \\
 \mathbf{0} & \mathbf{A}_{22} & \mathbf{A}_{23} & \cdots & \mathbf{A}_{2n} \\
@@ -240,12 +240,12 @@ $$
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 \mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_{nn} \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$    
     
 $\mathbf{A}$ is block (lower) triangular if    
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
 \mathbf{A}_{11} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
 \mathbf{A}_{21} & \mathbf{A}_{22} & \mathbf{0} & \cdots & \mathbf{0} \\
@@ -253,7 +253,7 @@ $$
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 \mathbf{A}_{m1} & \mathbf{A}_{m2} & \mathbf{A}_{m3} & \cdots & \mathbf{A}_{mn} \\
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$    
 ```
 
@@ -276,32 +276,38 @@ The inverse to $\mathbf{A}$ is a matrix $\mathbf{B} = \begin{pmatrix} \mathbf{B}
 
 For $\mathbf{B}$ to be the inverse of $\mathbf{A}$, $\mathbf{A}\mathbf{B} = \mathbf{B}\mathbf{A} = \mathbf{I} = \begin{pmatrix} \mathbf{I} & \mathbf{0} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}$ where $\mathbf{0}$ is a matrix of zeros of the appropriate size. Writing this out in blocks gives
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}  \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix} \\
 & = \begin{pmatrix} \mathbf{B}_{11} \mathbf{A}_{11} & \mathbf{B}_{11} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{B}_{21} \mathbf{A}_{11} & \mathbf{B}_{21} \mathbf{A}_{12} + \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 which gives that $\mathbf{B}_{11} = \mathbf{A}_{11}^{-1}$ because $\mathbf{B}_{11}^{-1}\mathbf{A}_{11} = \mathbf{I}$ and $\mathbf{A}_{11}$ is invertible. The equation also give $\mathbf{B}_{21} \mathbf{A}_{11} = \mathbf{0}$ and because $\mathbf{A}_{11}$ is an invertible matrix, the homogeneous equation $\mathbf{A}_{11}\mathbf{b} = \mathbf{0}$ has only the trivial solution for each column $\mathbf{b}$ of the matrix $\mathbf{B}_{21}$  which implies that $\mathbf{B}_{21} = \mathbf{0}$. Using these facts, we can rewrite the above equation as
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 Because the lower right entry $\mathbf{B}_{22} \mathbf{A}_{22}$ must equal $\mathbf{I}$, we have that $\mathbf{B}_{22} = \mathbf{A}_{22}^{-1}$. Then, the equation becomes
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 The final component is the upper right block. Because we are finding the inverse, we know that $\mathbf{0} = \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22}$. Subtracting $\mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ from both sides of the equation gives
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{B}_{12} \mathbf{A}_{22} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
 \mathbf{B}_{12} \mathbf{A}_{22} \mathbf{A}_{22}^{-1} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
 \mathbf{B}_{12} \mathbf{I} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
 \mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}
-\end{align*}
+\end{aligned}
 $$
 
 Thus, $\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}$

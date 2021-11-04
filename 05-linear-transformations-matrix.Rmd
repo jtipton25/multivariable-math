@@ -46,7 +46,7 @@ Using the matrix transformation notation, the domain of the transformation $T$ i
 
 :::{.example}
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 2 & 4 \\
 -3 & 1 \\
@@ -66,7 +66,7 @@ $$
 -2 \\
 -1
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 
 ```{r}
@@ -112,13 +112,14 @@ The solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{c}$ which c
 
 ## Linear Transformations
 
-```{definition} 
+:::{.definition} 
 A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is linear if
 
 1) $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$ for all $\mathbf{u}$ and $\mathbf{v}$ in the domain of $T$
   
 2) $T(c \mathbf{u}) = c T(\mathbf{u})$ for all scalars $c$ and all vectors $\mathbf{u}$ in the domain of $T$
-```
+
+:::
 
 Note: Because a linear transformation is equivalent to a matrix transformation, the definition above is equivalent to the following matrix-vector multiplication properties
 
@@ -192,7 +193,9 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r horizontal-expansion-animation, cache = TRUE, message = FALSE, echo = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE)
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE)
+}
 ```
 
 
@@ -227,8 +230,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r horizontal-contraction-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
 p  + gganimate::transition_states(time, wrap = FALSE) +
   ggtitle("Horizontal contraction")
+}
 ```
 
 ```{r horizontal-contraction-static, echo = FALSE}
@@ -261,8 +266,10 @@ p <- plot_transformation(transformation_matrix)
 
 ```{r vertical-expansion-animation, cache = TRUE, message = FALSE, echo = FALSE, dependson = -1}
 ## animate transformation
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
 p  + gganimate::transition_states(time, wrap = FALSE) +
   ggtitle("Vertical expansion")
+}
 ```
 
 
@@ -295,8 +302,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r vertical-contraction-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
 p  + gganimate::transition_states(time, wrap = FALSE) +
   ggtitle("Vertical contraction")
+}
 ```
 
 
@@ -338,8 +347,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r rotate-90-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Rotation by 90 degrees (pi / 2 radians)")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Rotation by 90 degrees (pi / 2 radians)")
+}
 ```
 
 
@@ -371,8 +382,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r rotate-45-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Rotation by -45 degrees (-pi / 4 radians)")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Rotation by -45 degrees (-pi / 4 radians)")
+}
 ```
 
 
@@ -408,8 +421,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r reflection-x-axis-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Reflection across x-axis")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across x-axis")
+}
 ```
 
 
@@ -440,8 +455,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r reflection-y-axis-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Reflection across y-axis")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across y-axis")
+}
 ```
 
 
@@ -471,8 +488,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r reflection-line-y-equals-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Reflection across line y = x")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across line y = x")
+}
 ```
 
 
@@ -501,8 +520,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r reflection-line-y-equals-minus-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Reflection across line y = -x")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across line y = -x")
+}
 ```
 
 
@@ -531,8 +552,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r reflection-origin-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Reflection across the origin")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across the origin")
+}
 ```
 
 
@@ -568,8 +591,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r horizontal-shear-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Horizontal Shear")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Horizontal Shear")
+}
 ```
 
 
@@ -600,8 +625,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r vertical-shear-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Vertical Shear")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Vertical Shear")
+}
 ```
 
 
@@ -637,8 +664,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r projection-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Projection onto the x-axis")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Projection onto the x-axis")
+}
 ```
 
 
@@ -667,8 +696,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r projection-y-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Projection onto the y-axis")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Projection onto the y-axis")
+}
 ```
 
 
@@ -700,8 +731,10 @@ p <- plot_transformation(transformation_matrix)
 ```
 
 ```{r identity-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
-p  + gganimate::transition_states(time, wrap = FALSE) +
-  ggtitle("Identity transformation")
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Identity transformation")
+}
 ```
 
 
@@ -803,7 +836,7 @@ b) There are at least two  different inputs into the function $T(\cdot)$ that ha
 
 c) There exist vectors $\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n$ such that $T(\mathbf{u}) = T(\mathbf{v})$
 
-```{theorem}
+:::{.theorem}
 Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
 
 1) $T$ is one-to-one.
@@ -819,7 +852,8 @@ Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transforma
 6) $\mathbf{A}$ has a pivot in every column.
 
 7) The range of $\mathbf{A}$ has dimension $n$
-```
+
+:::
 
 * **Example:** is the following matrix one-to-one?
 
@@ -874,7 +908,7 @@ The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \m
 
 3) There is a vector in the codomain that is not the output of any input vector.
 
-```{theorem} 
+:::{.theorem} 
 Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
   
 1) $T$ is onto
@@ -888,7 +922,8 @@ Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transforma
 6) $\mathbf{A}$ has a pivot in every row
 
 7) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ has dimension $m$
-```
+
+:::
 
 
 * **Example:**

@@ -12,9 +12,11 @@ We have just learned about change of basis in an abstract sense. Now, we will le
 
 :::{.definition}
 An **eigenvector** of an $n \times n$ matrix $\mathbf{A}$ is a nonzero vector $\mathbf{x}$ such that the matrix equation
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A} \mathbf{x} = \lambda \mathbf{x}
-\end{align*}
+\end{aligned}
+$$
 for some scalar $\lambda$. If there exists some $\lambda \neq 0$ (a non-trivial solutions), then $\lambda$ is called an **eigenvalue** of $\mathbf{A}$ corresponding to the eigenvector $\mathbf{x}$.
 :::
 
@@ -57,7 +59,7 @@ It is easy to check if a vector is an eigenvalue:
 # A
 # eigen(A)
 # v <- sample(-9:9, n, replace = TRUE)
-A <- as.character(MASS::fractions(matrix(c(0, 1/2, 0, 6, 0, 1/2, 8, 0, 0), 3, 3)))
+A <- matrix(c(0, 1/2, 0, 6, 0, 1/2, 8, 0, 0), 3, 3)
 u <- c(16, 4, 1)
 v <- c(2, 2, 2)
 ```
@@ -85,20 +87,26 @@ Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}
 
 :::{.proof}
 Suppose the set $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly dependent. Then, there is some $j$ such that $\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k$. If we choose the first linearly dependent vector as $j$, we know that the subset of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ is linearly independent and 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{v}_j & = x_1 \mathbf{v}_1 + \cdots x_{j-1} + \mathbf{v}_{j-1}
-\end{align*}
+\end{aligned}
+$$
 for some scalars $x_1, \ldots, x_{j-1}$. Multiplying the equation above on the left by $\mathbf{A}$ on both sides gives
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A}\mathbf{v}_j & = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{v}_{j-1}) \\
 \lambda_j \mathbf{v}_j & = x_1 \mathbf{A} \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
 & =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} + \mathbf{v}_{j-1} \\
-\end{align*}
+\end{aligned}
+$$
 Multiplying the first equation by $\lambda_j$ and subtracting this from the second equation gives
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{0} = \lambda_j \mathbf{v}_j - \lambda_j \mathbf{v}_j 
 & = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} + (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
-\end{align*}
+\end{aligned}
+$$
 Because $\lambda_k \neq \lambda_j$ for all $k < j$, the equation above implies a linear dependence among the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector $\mathbf{v}_j$ is violated and all the $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ are linearly independent.
 :::
 
@@ -108,12 +116,14 @@ Because $\lambda_k \neq \lambda_j$ for all $k < j$, the equation above implies a
 Given a square $n \times n$ matrix $\mathbf{A}$, we know how to check if a given vector $\mathbf{x}$ is an eigenvector and then how to find the eigenvalue associated with that eigenvector. Next, we want to check if a given number is an eigenvalue of $\mathbf{A}$ and to find all the eigenvectors corresponding to that eigenvalue. 
 
 Given a square $n \times n$ matrix $\mathbf{A}$ and a scalar $\lambda$, the eigenvectors of $\mathbf{A}$ associated with the scalar $\lambda$ (if there are eigenvectors associated with $\lambda$) are the nonzero solutoins to the equation $\mathbf{A} \mathbf{x} = \lambda \mathbf{x}$. This can be written as
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{A} \mathbf{x} & = \lambda \mathbf{x} \\
 \mathbf{A} \mathbf{x} -\lambda \mathbf{x} & = \mathbf{0} \\
 \mathbf{A} \mathbf{x} -\lambda \mathbf{I} \mathbf{x} & = \mathbf{0} \\
 \left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}. \\
-\end{align*}
+\end{aligned}
+$$
 Therefore, the eigenvectors of $\mathbf{A}$ associated with $\lambda$, if there are any, are the nontrivial solutions of the homogeneous matrix equation $\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$. In other words, the eigenvectors are the nonzero vectors in the null space null$\left( \mathbf{A} -\lambda \mathbf{I} \right)$. If there is not a nontrivial solution (solution $\mathbf{x} \neq \mathbf{0}$), then $\lambda$ is not an eigenvalue of $\mathbf{A}$.
 
 Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of $\mathbf{A}$. All we have to do is solve the system of linear equations $\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ for a given $\lambda$ (actually, for all $\lambda$s, which we can't do). If only there was some way to find eigenvalues $\lambda$ (hint: there is and it is coming next chapter).
@@ -129,27 +139,33 @@ lambda <- diag(eigen(A)$values)
 # eigen(A)
 ```
 Let $\mathbf{A} = `r array_to_latex(A)`$. Then an eigenvector with eigenvector $\lambda$ is a nontrival solution to 
-\begin{align*}
+$$
+\begin{aligned}
 \left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
-\end{align*}
+\end{aligned}
+$$
 which can be written as 
-\begin{align*}
+$$
+\begin{aligned}
 \begin{pmatrix} 
 `r A[1, 1]`  - \lambda & `r A[1, 2]` & `r A[1, 3]` \\
 `r A[2, 1]` & `r A[2, 2]` - \lambda & `r A[2, 3]` \\
 `r A[3, 1]` & `r A[3, 2]` & `r A[3, 3]` - \lambda
 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
-\end{align*}
+\end{aligned}
+$$
 which can be solved for a given $\lambda$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
 
 Letting $\lambda = `r lambda[1, 1]`$, we have
-\begin{align*}
+$$
+\begin{aligned}
 \begin{pmatrix} 
 `r A[1, 1]`  - `r lambda[1, 1]` & `r A[1, 2]` & `r A[1, 3]` \\
 `r A[2, 1]` & `r A[2, 2]` - `r lambda[1, 1]` & `r A[2, 3]` \\
 `r A[3, 1]` & `r A[3, 2]` & `r A[3, 3]` - `r lambda[1, 1]`
 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
-\end{align*}
+\end{aligned}
+$$
 which has solution
 
 ```{r, echo = FALSE}

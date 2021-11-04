@@ -13,9 +13,9 @@ In the previous section, we extended this analogy to vector spaces using the con
 :::{.theorem}
 For each vector $\mathbf{a}$ in the subspace $\mathcal{H}$ of $\mathcal{R}^n$, and a basis $\mathbf{b}_1, \ldots, \mathbf{b}_k$, there is a unique set of coefficients $x_1, \ldots, x_k$ such that 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{a} & = x_1 \mathbf{b}_1 + \cdots + x_k \mathbf{b}_k
-\end{align*}
+\end{aligned}
 $$
 :::
 
@@ -28,9 +28,11 @@ In class: assume contradiction that there are two ways $x_1, \ldots, x_k$ and $y
 
 :::{.definition #coordinates}
 Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}$ be a basis for a subspace $\mathcal{H}$ of $\mathcal{R}^n$. Then, for each $\mathbf{a} \in \mathcal{H}$, the **coordinates** of $\mathbf{a}$ with respect to the basis $\mathcal{B}$ are the set of coefficients $\{x_1, \ldots, x_k\}$ where
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{a} & = x_1 \mathbf{b}_1 + \cdots + x_k \mathbf{b}_k.
-\end{align*}
+\end{aligned}
+$$
 :::
 
 
@@ -52,16 +54,16 @@ It can be seen that $\mathbf{a} = 3 \mathbf{b}_1 - 2 \mathbf{b}_2 + 0 \mathbf{b}
 
 Now, the question is how to find such a solution in general. What we know is that if we write the matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \mathbf{b_2} & \mathbf{b_3} \end{pmatrix}$, then the coefficients for the vector $\mathbf{x}$ are the solutions to the matrix equation 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{B} \mathbf{x} = \mathbf{a}
-\end{align*}
+\end{aligned}
 $$
 Notice that this is the same matrix equation as $\mathbf{A} \mathbf{x} = \mathbf{b}$ but written in different notation that denotes that $\mathbf{B}$ is a basis. Because $\mathbf{B}$ is a basis, we know that there is a pivot in every column which tells us that as long as $\mathbf{a}$ is in the columnspace of $\mathbf{B}$, there will be a unique solution for the coordinates $\mathbf{x}$. Using an augmented matrix approach, you can solve for $\mathbf{x}$ using elementary row operations applied to the matrix
 $$
-\begin{align*}
+\begin{aligned}
 \begin{pmatrix} \mathbf{B} & \mathbf{a} \end{pmatrix} & = `r array_to_latex(cbind(b1, b2, b3, a))` \\
 & \stackrel{RREF}{\huge \sim} `r array_to_latex(rref(cbind(b1, b2, b3, a)))` 
-\end{align*}
+\end{aligned}
 $$
 which gives the solution that $\mathbf{x} = \begin{pmatrix} x_1 \\ x_ 2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 3 \\ -2 \\ 0\end{pmatrix}$
 
@@ -92,9 +94,11 @@ The **dimension** $\operatorname{dim}(\mathcal{H})$ of a nonzero subspace $\math
 :::{.example}
 Note that under this definition, the basis $\mathcal{B}$ is not unique. For example, the following bases for the 3-dimensional subspace $\mathcal{H}$ of $\mathcal{R}^3$ both have three linearly independent vectors.
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathcal{B}_1 =  \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \right\} 
-\end{align*}
+\end{aligned}
+$$
 
 Let $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$. What are the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ and $\mathcal{B}_2$?
 :::
@@ -105,15 +109,19 @@ Let $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$. What are the coord
 
 :::{.solution}
 Under the basis $\mathcal{B}_1$, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$ are $a_1 = 3$, $a_2 = 4$, and $a_3 = 0$ because 
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 =  \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
-\end{align*}
+\end{aligned}
+$$
 which we write as $[\mathbf{x}]_{B_1} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$. 
 
 The coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are $a_1 = 3$, $a_2 = 1$, and $a_3 = 0$ because
-\begin{align*}
+$$
+\begin{aligned}
 \mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}.
-\end{align*}
+\end{aligned}
+$$
 which we write as $[\mathbf{x}]_{B_2} = \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$.. 
 
 We can get these coordinates using `R` by creating augmented matrices and using row operations. For example, the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ are
@@ -153,9 +161,11 @@ rref(cbind(B2, x))[, 4]
 :::{.example}
 
 Also note that if two subspaces $\mathcal{H}_1$ and $\mathcal{H}_2$ have the same dimension (i.e., dim($\mathcal{H}_1$) = dim($\mathcal{H}_2$) = $p$), this does not mean that these are the same subspaces. For example, Let $\mathcal{H}_1$ and $\mathcal{H}_2$ be subspaces of $\mathcal{R}^3$ of dimension 2 with respective bases 
-\begin{align*}
+$$
+\begin{aligned}
 \mathcal{B}_1 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}. 
-\end{align*}
+\end{aligned}
+$$
 
 Note that the subspace defined by the span of the basis vectors in $\mathcal{B}_1$ is a plane in the x-y axes and the subspace defined by the span of the basis vectors in $\mathcal{B}_2$ is a plane in the x-z axes.
 
@@ -218,13 +228,14 @@ The rank($\mathbf{A}$) is number of linearly independent columns. The dimension 
 
 The following theorem states that any $p$ vectors in $\mathcal{R}^p$ that are linearly independent must span $\mathcal{R}^p$.
 
-```{theorem, name = "The Basis Theorem"}
+:::{.theorem name = "The Basis Theorem"}
 Let $\mathcal{H}$ be a p-dimensional subspace of $\mathcal{R}^n$. 
 
 1) Then any linearly independent set of $p$ elements in $\mathcal{H}$ is a basis for $\mathcal{H}$. 
 
 2) Equivalently, any set of $p$ elements of $\mathcal{H}$ that span $\mathcal{H}$ is a basis for $\mathcal{H}$
-```
+
+:::
 
 
 <div class="fold-proof">
@@ -239,7 +250,7 @@ We consider the two statements in the theorem above.
 
 
 
-```{theorem, name = "Invertible Matrix Theorem (again)"}
+:::{.theorem name = "Invertible Matrix Theorem (again)"}
 Let $\mathbf{A}$ be a $n \times n$ matrix. Then, in addition to the current conditions from Theorem (\@ref(thm:invertible-matrix)), the following statements are equivalent to $\mathbf{A}$ being an invertible matrix:
     
 a) The columns of $\mathbf{A}$ form a basis for $\mathcal{R}^n$
@@ -253,4 +264,5 @@ d) $\operatorname{rank}(\mathbf{A}) = n$
 e) $\operatorname{null}(\mathbf{A}) = \{\mathbf{0}\}$    
 
 f) $\operatorname{dim}(\operatorname{null}(\mathbf{A})) = 0$    
-```
+
+:::

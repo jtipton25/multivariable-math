@@ -2,20 +2,18 @@
 title: "Multivariable Mathematics for Data Science"
 author: "John Tipton"
 date: |
-    | Created 1 January 2020
-    | Last updated `r format(Sys.time(), '%d %B, %Y')`
+  | Created 1 January 2020
+  | Last updated `r format(Sys.time(), '%d %B, %Y')`
 output: pdf_document
-description: This is a minimal example of using the bookdown package to write a book.
-  The output format for this example is bookdown::gitbook.
 documentclass: book
 link-citations: yes
 bibliography:
 - book.bib
 - packages.bib
 site: bookdown::bookdown_site
-runtime: shiny
 biblio-style: apalike
-header-includes: preamble.tex
+description: This is a minimal example of using the bookdown package to write a book.
+  The output format for this example is bookdown::gitbook.
 ---
 
 
@@ -43,30 +41,33 @@ The motiviation for this text is to provide both a theoretical understanding of 
 
 ## Getting started in `R`
 
+TBD
+
+## Some videos that explain useful concepts of linear algebra
+
 - [3 Blue 1 Brown -- Essence of Linear Algebra](https://www.3blue1brown.com/lessons/eola-preview)
 
 - [3 Blue 1 Brown -- Vectors](https://www.3blue1brown.com/lessons/vectors)
 
-- [3 Blue 1 Brown -- ]()
 
-TBD
+
 
 ## Notation
 
 For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
 
 $$
-\begin{align*}
+\begin{aligned}
 \textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
 where the elements $x_1, \ldots, x_n$ are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the $x_i$s are stacked on top of one another) and the order matters. For example, the vector 
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{x} & = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 
 has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3 = 8$. Note that the vector $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is not the same as the vector $\begin{pmatrix}  8 \\ 2 \\ 5 \end{pmatrix}$ because the order of the elements matters.
@@ -74,9 +75,9 @@ has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3
 We can also write the vector as  
 
 $$
-\begin{align*}
+\begin{aligned}
 \textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
-\end{align*}
+\end{aligned}
 $$
 
 where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
@@ -130,13 +131,13 @@ t(tx)
 We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $m$ rows and $n$ columns as
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
 with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and the $j$th column.
@@ -144,12 +145,12 @@ with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and th
 If the matrix 
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
 5 & -22  & 2 \\
 -14 & 5 & 99 \\
 42 & -3 & 0\end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
 the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc. 
@@ -195,15 +196,15 @@ The matrix $\mathbf{A}$ can also be represented as a set of either column vector
 
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{align*}
+\end{aligned}
 $$
 
 where the notation $|$ is used to separate the vectors
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
 \end{pmatrix},
 & \mathbf{c}_2 & = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
@@ -211,7 +212,7 @@ $$
 & \cdots, &
 & \mathbf{c}_n & = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
 \end{pmatrix}
-\end{align*}
+\end{aligned}
 $$
 
 In `R` you can extract the columns using the `[` selection operator
@@ -231,20 +232,20 @@ cbind(c1, c2, c3)
 The row vector representation of $\mathbf{A}$ is 
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{align*}
+\end{aligned}
 $$
 
 where the row vectors $\mathbf{r}_i$ are
 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{r}_1 & = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
 \mathbf{r}_2 & = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
 & \vdots \\
 \mathbf{r}_m & = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{align*}
+\end{aligned}
 $$
 
 

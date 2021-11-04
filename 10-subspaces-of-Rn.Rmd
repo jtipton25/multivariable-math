@@ -33,14 +33,14 @@ Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector
 :::{.solution}
 To show that span$\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$, we must satisfy the three conditions of definition (\@ref(def:subspace)).
 
-1) $\mathbf{0} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ because $\mathbf{0} = 0 \mathbf{u} + 0 \mathbf{v}$ is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ with coefficients 0 and 0.
+1) $\mathbf{0} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ because $\mathbf{0} = 0 \mathbf{u} + 0 \mathbf{v}$ is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ with coefficients 0 and 0.
     
-2) Let $\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ and $\mathbf{y} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$. Then, by the definition of the span (Definition (\@ref(def:span))) there exists constants $a, b, c, d$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$ and $\mathbf{y} = c \mathbf{u} + d \mathbf{v}$. Thus, $\mathbf{x} + \mathbf{y} =  a \mathbf{u} + b \mathbf{v} + c \mathbf{u} + d \mathbf{v} =  (a + c) \mathbf{u} + (b + d) \mathbf{v}$ which, by definition, is in the span$\{\mathbf{u}, \mathbf{v}\}$. Thus, span$\{\mathbf{u}, \mathbf{v}\}$ is closed under addition.
+2) Let $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ and $\mathbf{y} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$. Then, by the definition of the span (Definition (\@ref(def:span))) there exists constants $a, b, c, d$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$ and $\mathbf{y} = c \mathbf{u} + d \mathbf{v}$. Thus, $\mathbf{x} + \mathbf{y} =  a \mathbf{u} + b \mathbf{v} + c \mathbf{u} + d \mathbf{v} =  (a + c) \mathbf{u} + (b + d) \mathbf{v}$ which, by definition, is in the span$\{\mathbf{u}, \mathbf{v}\}$. Thus, span$\{\mathbf{u}, \mathbf{v}\}$ is closed under addition.
 
 
-3) Let $\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ $c$ be a constant. Because $\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$, the definition of the span (Definition (\@ref(def:span))) implies there exists constants $a$ and $b$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$. Thus, $c\mathbf{x} = ca \mathbf{u} + cb \mathbf{v}$ which is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ and is therefore $c\mathbf{x} \in \mathbox{span}\{\mathbf{u}, \mathbf{v}\}$.
+3) Let $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ $c$ be a constant. Because $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$, the definition of the span (Definition (\@ref(def:span))) implies there exists constants $a$ and $b$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$. Thus, $c\mathbf{x} = ca \mathbf{u} + cb \mathbf{v}$ which is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ and is therefore $c\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$.
 
-Because all three requirements are met, we have shown that $\mathbox{span}\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$.
+Because all three requirements are met, we have shown that $\mbox{span}\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$.
 :::
 
 </div>
@@ -62,29 +62,29 @@ B) Is a line **not** through the origin a subspace?
 
 2) If $\mathbf{u}$ and $\mathbf{v}$ are on the line through the origin, then because the line through the origin is defined as the solution set of the equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ we know that 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} \mathbf{u} = \mathbf{0} && \mbox{ and } && \mathbf{A} \mathbf{v} = \mathbf{0}.
-\end{align*}
+\end{aligned}
 $$
 Then, the vector $\mathbf{u} + \mathbf{v}$ is in the subspace defined by the line through the origin because 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v} = \mathbf{0} + \mathbf{0} = \mathbf{0},
-\end{align*}
+\end{aligned}
 $$
 which is a solution to the matrix equation and therefore $\mathbf{u} + \mathbf{v}$ is a point on the line through the origin. 
 
 3) If $\mathbf{u}$ is a point on the line through the origin and $c$ is a scalar, then because the line through the origin is defined as the solution set of the equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ we know that 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} \mathbf{u} = \mathbf{0}.
-\end{align*}
+\end{aligned}
 $$
 Then, the vector $c \mathbf{u}$ is in the subspace defined by the line through the origin because 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{A} (c \mathbf{u}) = c \mathbf{A} \mathbf{u}  = c \mathbf{0} = \mathbf{0},
-\end{align*}
+\end{aligned}
 $$
 which is a solution to the matrix equation and therefore $c \mathbf{u}$ is a point on the line through the origin.
 
@@ -121,9 +121,9 @@ Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1
 :::{.solution}
 Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, and $\mathbf{a}_3$, the column space of $\mathbf{A}$ is the set of vectors $\mathbf{b}$ such that 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{b} = x_1 \mathbf{a_1} + x_2 \mathbf{a}_2 + x_3 \mathbf{a}_3.
-\end{align*}
+\end{aligned}
 $$
 Thus, the column space of $\mathbf{A}$ is the span of the vectors that makes up the columns of $\mathbf{A}$.
 :::
@@ -151,19 +151,19 @@ Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1
 
 Given the matrix $\mathbf{A} = `r array_to_latex(A)`$ with columns $\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$, and $\mathbf{a}_4$, the null space of $\mathbf{A}$ is the solution set of the homogeneous system of equations $\mathbf{A} \mathbf{x} = \mathbf{0}$.  Using an augmented matrix and transforming into reduced row echelon form gives the RREF form
 $$
-\begin{align*}
+\begin{aligned}
 `r array_to_latex(cbind(A, 0))` \sim `r array_to_latex(dasc2594::rref(cbind(A, 0)), fraction = TRUE)`
-\end{align*}
+\end{aligned}
 $$
 which tells us that the solution to the system of equations is 
 $$
-\begin{align*}
+\begin{aligned}
 x_1 - 15 x_4 -25 x_5 & = 0 \\
 x_2 - x_4 - 4 x_5 & = 0 \\
 x_3 + \frac{53}{4} x_4  + \frac{89}{4} x_5 & = 0\\
 x_4 & = x_4 \\
 x_5 & = x_5
-\end{align*}
+\end{aligned}
 $$
 Writing this solution as a vector times $x_4$ and a vector times $x_5$ gives the vectors $\begin{pmatrix} 15 \\ 1 \\ -\frac{53}{4} \\ 1 \\ 0 \end{pmatrix}$ and $\begin{pmatrix} 25 \\ 4 \\ -\frac{89}{4} \\ 0 \\ 1 \end{pmatrix}$.
 
@@ -200,7 +200,7 @@ A %*% c(-rref(A)[, 5], 0, 1)
 The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathcal{R}^n$. 
 ```
 
-```{proof}
+:::{.proof}
 Do in class
 Show that the three requirements of the defintion of a subspace in Definition (\@ref(def:subspace)) are met.
 
@@ -209,7 +209,8 @@ Show that the three requirements of the defintion of a subspace in Definition (\
 2)
 
 3)
-```
+
+:::
 
 * Example: give $\mathbf{A}$ and $\mathbf{x}$ and determine if $\mathbf{x}$ is in the null space of $\mathbf{A}$ using `R`
 
@@ -240,9 +241,9 @@ A basis for a vector is not unique. Just like you can represent the number 16 as
 :::{.definition #standard-basis}
 The **standard basis** for $\mathcal{R}^n$ is the set of vectors $\left\{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \right\}$ of length $n$ where the vector $\mathbf{e}_j$ is a vector that is 0 in every value except for a 1 in the $j$th position. For example, 
 $$
-\begin{align*}
+\begin{aligned}
 \mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, && \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, && \mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \\ \vdots \\ 0\end{pmatrix}, && \ldots, && \mathbf{e}_n = \begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}.
-\end{align*}
+\end{aligned}
 $$
 Notice that the matrix defined as having columns $\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n$ is the identity matrix $\mathbf{I}$.
 :::

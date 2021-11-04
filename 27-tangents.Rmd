@@ -11,7 +11,7 @@ Let $f(\mathbf{x})$ be a differentiable function at a point $\mathbf{a}$. Becaus
 
 :::{.example}
 For this example, we plot the function $f(x, y) = x^2 + y^2$ which has gradient $\nabla f(x, y) = \begin{pmatrix} 2x \\ 2y\end{pmatrix}$
-```{r}
+```{r, eval = FALSE}
 # f(x, y)
 target_fun <- function(x, y) {
     return(x^2 + y^2)
@@ -28,6 +28,91 @@ plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xl
 plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.1, -0.9), ylim = c(0.9, 1.1))
 ```
 
+
+
+```{r, echo = FALSE}
+target_fun <- function(x, y) {
+    return(x^2 + y^2)
+}
+# gradient f(x, y)
+grad_fun <- function(x, y) {
+    c(2 * x, 2 * y) # notice that the return value is a vector
+}
+
+# plot
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
+    htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1),
+                            file = "tangent1.html")
+    webshot2::webshot(url = "tangent1.html", 
+                      file = "tangent1.png", 
+                      delay = 1, zoom = 4, vheight = 500)
+    knitr::include_graphics("tangent1.png")
+    # plotly::orca(plot_ly(z = matrix(dat$z, 20, 20)) %>%
+    #                         add_surface(
+    #                           contours = list(
+    #                             z = list(
+    #                               show=TRUE,
+    #                               usecolormap=TRUE,
+    #                               highlightcolor="#ff0000",
+    #                               project=list(z=TRUE)))), 
+    #                       file = "contour.html")
+    
+} else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+    # plot 
+    plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1)
+}
+
+
+# zoomed-in plot
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
+    htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.5, 0.5), ylim = c(0.5, 1.5)),
+                            file = "tangent2.html")
+    webshot2::webshot(url = "tangent2.html", 
+                      file = "tangent2.png", 
+                      delay = 1, zoom = 4, vheight = 500)
+    knitr::include_graphics("tangent2.png")
+    # plotly::orca(plot_ly(z = matrix(dat$z, 20, 20)) %>%
+    #                         add_surface(
+    #                           contours = list(
+    #                             z = list(
+    #                               show=TRUE,
+    #                               usecolormap=TRUE,
+    #                               highlightcolor="#ff0000",
+    #                               project=list(z=TRUE)))), 
+    #                       file = "contour.html")
+    
+} else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+    # plot 
+    plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.5, 0.5), ylim = c(0.5, 1.5))
+    
+}
+
+
+# super zoomed in plot
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
+    htmlwidgets::saveWidget(plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.1, -0.9), ylim = c(0.9, 1.1)),
+                            file = "tangent3.html")
+    webshot2::webshot(url = "tangent3.html", 
+                      file = "tangent3.png", 
+                      delay = 1, zoom = 4, vheight = 500)
+    knitr::include_graphics("tangent3.png")
+    # plotly::orca(plot_ly(z = matrix(dat$z, 20, 20)) %>%
+    #                         add_surface(
+    #                           contours = list(
+    #                             z = list(
+    #                               show=TRUE,
+    #                               usecolormap=TRUE,
+    #                               highlightcolor="#ff0000",
+    #                               project=list(z=TRUE)))), 
+    #                       file = "contour.html")
+    
+} else if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+    # plot 
+    plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xlim = c(-1.1, -0.9), ylim = c(0.9, 1.1))
+
+}
+```
+
 :::
 
 
@@ -38,11 +123,13 @@ Notice in the code above that there are two functions needed to calculate the ta
 
 ```{definition, name = "Tangent plane"}
 Let $f(x, y)$ be a differentiable function at the point $(a, b)$. Then the tangent plane to the surface defined by the function $f(x, y)$ at the point $(a, b)$ is given by the equation
-\begin{align*}
+$$
+\begin{aligned}
 z & = f(a, b) + f_x(a, b) (x - a) + f_y(a, b) (y - b) \\
 & = f(a, b) + \nabla f(x, y) |_{(a, b)} \cdot \begin{pmatrix} x - a \\ y - b \end{pmatrix} \\
 & = f(a, b) + (\nabla f(x, y) |_{ (a, b)})' \begin{pmatrix} x - a \\ y - b \end{pmatrix} \\,
-\end{align*}
+\end{aligned}
+$$
 where the tangent plane is defined as the dot product of the graidient vector $\nabla f(x, y) |_{(a, b)}$ evaluated at the point $(a, b)$ and the vector $\begin{pmatrix} x - a \\ y - b \end{pmatrix}$ that is the coordinate-wise distance of the point $(x, y)$ from the point $(a, b)$.
 ```
 
@@ -58,20 +145,24 @@ Find the equation for the tangent plane for the function $f(x, y) = x^2 \cos(y) 
 This leads to the linearization equation for functions of $n$ variables. 
 ```{definition, name = "Linearization of a function"}
 Let $f(\mathbf{x})$ be a differentiable function at the point $\mathbf{a} = (a_1, a_2, \ldots, a_n)'$ for a function of inputs $\mathbf{x} = (x_1, x_2, \ldots, x_n)' \in \mathcal{R}^n$. Then the linearization of the function $f(\mathbf{x})$ at the point $\mathbf{a}$ is given by the equation
-\begin{align*}
+$$
+\begin{aligned}
 L(\mathbf{x}) & = f(\mathbf{a}) + \nabla f(\mathbf{x}) |_{\mathbf{a}} \cdot (\mathbf{x} - \mathbf{a}) \\
 & = f(\mathbf{a}) + \left( \nabla f(\mathbf{x}) |_{\mathbf{a}} \right)' (\mathbf{x} - \mathbf{a})
-\end{align*}
+\end{aligned}
+$$
 ```
 The quality of the linearization is high for points "close" to $\mathbf{a}$ and has higher error (defined as $\|L(\mathbf{x}) - f(\mathbf{x})\|$) as $\mathbf{x}$ gets further from $\mathbf{a}$.
 
 For points $\mathbf{x}$ "close" to the point $\mathbf{a}$, the exact difference in the function $z = f(\mathbf{x})$ is given by $\Delta z =  f(\mathbf{x}) - f(\mathbf{a})$. Plugging in the linear approximation, the differential $d z = L(\mathbf{x}) - f(\mathbf{a})$ is the linear approximation to the exact different $\Delta z$. Define $d \mathbf{x} = \begin{pmatrix} d x_1 \\ d x_2 \\ \vdots \\ d x_n \end{pmatrix} = \begin{pmatrix} x_1 - a_1 \\ x_2 - a_2 \\ \vdots \\ x_n - a_n \end{pmatrix}$ as the set of changes in each of the $n$ coordinates with respect to the standard basis $\{\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\}$ so that the linear change $d z$ of $f(\mathbf{x})$ at $\mathbf{a}$ is given by 
 
-\begin{align*}
+$$
+\begin{aligned}
 d z & =  \nabla f(\mathbf{x}) |_{\mathbf{a}} \cdot (\mathbf{x} - \mathbf{a}) \\
 & = \nabla f(\mathbf{x}) |_{\mathbf{a}} \cdot d \mathbf{x} \\
 & = \sum_{i=1}^n \frac{\partial f(\mathbf{x})}{\partial x_i} d x_i,
-\end{align*}
+\end{aligned}
+$$
 where the last term is a sum of the linear approximation in each of the $i = 1, \ldots, n$ coordinate directions.
 
 :::{.example}
@@ -99,36 +190,45 @@ linearization <- function(target_fun, grad_fun, x, y, z, a, b, c) {
 
 First, we find the gradient 
 
-\begin{align*}
+$$
+\begin{aligned}
 \nabla f(x, y, z) = \begin{pmatrix} 2x - 3y^2z^2 \\ -6xyz^2 \\ -6xy^2z - 8z \end{pmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 and evaluate the gradient at $(a, b, c) = (1, -2, -1)$ to get 
 
-\begin{align*}
+$$
+\begin{aligned}
 \nabla f(1, -2, -1) = \begin{pmatrix} 2(1) - 3(-2)^2(-1)^2 \\ -6(1)(-2)(-1)^2 \\ -6(1)(-2)^2(-1) - 8(-1) \end{pmatrix} = `r array_to_latex(matrix(grad_fun(1, -2, -1), 3, 1))` 
-\end{align*}
-
+\end{aligned}
+$$
 
 The function evaluated at the point $(a, b, c)$ is $f(1, -2, -1) = (1)^2 - 3(1)(-2)^2(-1)^2 - 4(-1)^2 = -15$.
 
 Therefore, the linear approximation $L(x, y, z)$ of $f(x, y, z)$ at the point $(a, b, c)$ is 
 
-\begin{align*}
+$$
+\begin{aligned}
 L(x, y, z) & = f(a, b, c) + \nabla f(a, b, c) \cdot \begin{pmatrix} x - 1 \\ y - (-2) \\ z - (-1) \end{pmatrix} \\
 & = -15 + 10(x - 1) - 12 (y + 2) - 32 (z + 1)
-\end{align*}
+\end{aligned}
+$$
 
 The linear approximation evaluated at the point $(0.95, -2.05, -1.05)$ is 
-\begin{align*}
+$$
+\begin{aligned}
 L(0.95, -2.05, -1.05) & = -15 - 10(0.95 - 1) + 12 (-2.05 + 2) + 32 (-1.05 + 1) = -16.7.
-\end{align*}
+\end{aligned}
+$$
 
 Compared to the true value of the function $f(x, y, z)$ is 
 
-\begin{align*}
+$$
+\begin{aligned}
 f(0.95, -2.05, -1.05) & = (1.05)^2 - 3(1.05)(-2.05)^2(-1.05)^2 - 4(-1.05)^2 = -16.71228,
-\end{align*}
+\end{aligned}
+$$
 which gives an approximation error of $f(x, y, z) - L(x, y, z) = `r target_fun(0.95, -2.05, -1.05)` - `r linearization(target_fun, grad_fun, 0.95, -2.05, -1.05, 1, -2, -1)` = `r target_fun(0.95, -2.05, -1.05) - linearization(target_fun, grad_fun, 0.95, -2.05, -1.05, 1, -2, -1)`$
 
 ```{r}
