@@ -31,7 +31,7 @@ jobs:
           brew install poppler
       
       - name: install latex and xelatex
-        if: runner.os = 'macOS'
+        if: runner.os == 'macOS'
         run: |
           brew install --cask basictex 
           sudo tlmgr update --self
