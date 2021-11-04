@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
+  <title>Chapter 22 Diagonalization | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 22 Diagonalization | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 22 Diagonalization | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="linear-systems-of-equations.html"/>
+<link rel="prev" href="the-characteristic-equation.html"/>
+<link rel="next" href="inner-product-length-and-orthogonality.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -340,218 +340,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 04 November, 2021</div></em></p>
+<div id="diagonalization" class="section level1">
+<h1><span class="header-section-number">Chapter 22</span> Diagonalization</h1>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="diagonalization.html#cb270-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb270-2"><a href="diagonalization.html#cb270-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb270-3"><a href="diagonalization.html#cb270-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="definition">
+<p><span id="def:unlabeled-div-249" class="definition"><strong>Definition 22.1  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if the matrix <span class="math inline">\(\mathbf{A}\)</span> is similar to a diagonal matrix. This is equivalent to saying there exists some invertible <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> such that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{A} &amp; = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
+\end{aligned}
+\]</span></p>
 </div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
-<p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
-<p>TBD</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-250" class="example"><strong>Example 22.1  </strong></span>Any diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> is diagonalizable becuase it is self-similar.</p>
 </div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
-<ul>
-<li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
-<li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
-</ul>
-</div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
-<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
-<p>We can also write the vector as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
-\end{aligned}
-\]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
-<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
-<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
-<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
-<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
-<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{aligned}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
-\end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
-&amp; \vdots \\
-\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<!-- ## Outline -->
-<!-- **Note: This is going to be revised and reformated throughout the class** -->
-<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
-<!-- 1) vector spaces and subspaces -->
-<!-- 2) dot products, cross products, projections -->
-<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
-<!-- 4) planes, surfaces, and lines in space -->
-<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
-<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
-<!-- 7) innner products, outer products, and norms -->
-<!-- 8) projections - orthogonal projections and least squares -->
-<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 11) limits, continuity, and partial derivatives -->
-<!-- 12) chain rule, directional derivatives -->
-<!-- 13) tangent planes, linear approximations, Taylor Series -->
-<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- Notes for revision -->
-<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
-<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
-<!-- 3) Introduce systems of equations and rref  -->
-<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
-<!-- 5) Introduce linear combinations, spans, linear independence -->
-<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
 
+<div class="theorem">
+<p><span id="thm:diagonalization" class="theorem"><strong>Theorem 22.1  (The Diagonalization Theorem)  </strong></span>A <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>diagonalizable</strong> if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors.</p>
+In addition, the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span> with diagonal matrix <span class="math inline">\(\mathbf{D}\)</span> if and only if the columns of <span class="math inline">\(\mathbf{P}\)</span> are the lienarly independent eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. Then, the diagonal elements of <span class="math inline">\(\mathbf{D}\)</span> are the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span> that correspond to the eigenvectors in <span class="math inline">\(\mathbf{P}\)</span>.
 </div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> This comes directly from Theorem <a href="eigenvectors-and-eigenvalues.html#thm:distinct-eigenvalues">20.1</a> where if a <span class="math inline">\(n \times n\)</span> matrix has <span class="math inline">\(n\)</span> distinct eigenvalues <span class="math inline">\(\lambda_1 \neq \lambda_2 \neq \cdots \neq \lambda_n\)</span>, the the corresponding eigenvalues <span class="math inline">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\)</span> are linearly independent.
 </div>
+
+<p>This theorem implies that the matrix <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable if and only if the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> form a basis for <span class="math inline">\(\mathcal{R}^n\)</span>. When this is the case, the set of eigenvectors is called an <strong>eigenbasis</strong>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-253" class="example"><strong>Example 22.2  </strong></span>Consider the following example of a diagonalizable matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="diagonalization.html#cb271-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">-4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb271-2"><a href="diagonalization.html#cb271-2"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    9   -3    1
+## [2,]    2    2    0
+## [3,]    0   -4    3</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="diagonalization.html#cb273-1"></a>eigen_A &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)</span>
+<span id="cb273-2"><a href="diagonalization.html#cb273-2"></a><span class="kw">str</span>(eigen_A)</span></code></pre></div>
+<pre><code>## List of 2
+##  $ values : num [1:3] 7.63 4.52 1.86
+##  $ vectors: num [1:3, 1:3] -0.905 -0.322 0.278 -0.407 -0.324 ...
+##  - attr(*, &quot;class&quot;)= chr &quot;eigen&quot;</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="diagonalization.html#cb275-1"></a>P &lt;-<span class="st"> </span>eigen_A<span class="op">$</span>vectors</span>
+<span id="cb275-2"><a href="diagonalization.html#cb275-2"></a>P</span></code></pre></div>
+<pre><code>##            [,1]       [,2]        [,3]
+## [1,] -0.9050468 -0.4069141 -0.01938647
+## [2,] -0.3217259 -0.3235720  0.27433148
+## [3,]  0.2781774  0.8542377  0.96143976</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="diagonalization.html#cb277-1"></a>D &lt;-<span class="st"> </span><span class="kw">diag</span>(eigen_A<span class="op">$</span>values)</span>
+<span id="cb277-2"><a href="diagonalization.html#cb277-2"></a>D</span></code></pre></div>
+<pre><code>##          [,1]     [,2]     [,3]
+## [1,] 7.626198 0.000000 0.000000
+## [2,] 0.000000 4.515138 0.000000
+## [3,] 0.000000 0.000000 1.858664</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="diagonalization.html#cb279-1"></a>P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<pre><code>##               [,1] [,2] [,3]
+## [1,]  9.000000e+00   -3    1
+## [2,]  2.000000e+00    2    0
+## [3,] -9.992007e-16   -4    3</code></pre>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="diagonalization.html#cb281-1"></a><span class="kw">all.equal</span>(A, P <span class="op">%*%</span><span class="st"> </span>D <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-254" class="theorem"><strong>Theorem 22.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> diagonalizable matrix with <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span>. Then, the matrix power <span class="math inline">\(\mathbf{A}^p\)</span> is
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
+\end{aligned}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-255" class="proof"><em>Proof</em>. </span>In class</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-256" class="example"><strong>Example 22.3  </strong></span>In this example, we apply the diagonalization theorem to the matrix <span class="math inline">\(\mathbf{A}\)</span></p>
+<p>Consider the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix}\)</span> which has eigenvalues 1, 2, 3. Then the standard basis <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\)</span> are corresponding eigenvectors (check the definition <span class="math inline">\(\mathbf{A} \lambda = \mathbf{v} \lambda\)</span>) because</p>
+<p><span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} &amp; = 1 * \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \\
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} &amp; = 2 * \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \\
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} &amp; = 3 * \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} 
+\end{aligned}
+\]</span>
+Thus, by the diagonlaization theorem, we have <span class="math inline">\(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\)</span> where <span class="math inline">\(\mathbf{P}\)</span> is the identity matrix and <span class="math inline">\(\mathbf{D}\)</span> is the diagonal matrix with entries 1, 2, 3.
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} &amp; = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}^{-1}
+\end{aligned}
+\]</span>
+which gives us that <span class="math inline">\(\mathbf{A}\)</span> is similar to itself.</p>
+<p>However, there is nothing in the diagonalization theorem that says that we must put the eigenvalues in the order 1, 2, 3. If we put the eigenvalues in the order 3, 2, 1, then the corresponding eigenvectors are <span class="math inline">\(\mathbf{e}_3\)</span>, <span class="math inline">\(\mathbf{e}_2\)</span>, and <span class="math inline">\(\mathbf{e}_1\)</span>. Using the diagonlaization theorem, we have <span class="math inline">\(\mathbf{A} = \tilde{\mathbf{P}} \tilde{\mathbf{D}} \tilde{\mathbf{P}}^{-1}\)</span> where <span class="math inline">\(\tilde{\mathbf{P}}\)</span> is the matrix with columns <span class="math inline">\(\mathbf{e}_3\)</span>, <span class="math inline">\(\mathbf{e}_2\)</span>, and <span class="math inline">\(\mathbf{e}_1\)</span> and <span class="math inline">\(\tilde{\mathbf{D}}\)</span> is the diagonal matrix with entries 3, 2, 1 which results in
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix} &amp; = \begin{pmatrix} 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \end{pmatrix} \begin{pmatrix} 3 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} \begin{pmatrix} 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \end{pmatrix}^{-1}
+\end{aligned}
+\]</span>
+which implies that the matrices <span class="math inline">\(\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 3 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 3 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span> are similar to each other</p>
+</div>
+
 </div>
 
 <script type="text/javascript">
@@ -588,8 +475,8 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-
-<a href="linear-systems-of-equations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-characteristic-equation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inner-product-length-and-orthogonality.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
+  <title>Chapter 27 The gradient and directional derivatives | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 27 The gradient and directional derivatives | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 27 The gradient and directional derivatives | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="linear-systems-of-equations.html"/>
+<link rel="prev" href="the-chain-rule.html"/>
+<link rel="next" href="tangent-planes-and-linear-approximations.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -340,215 +340,184 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 04 November, 2021</div></em></p>
+<div id="the-gradient-and-directional-derivatives" class="section level1">
+<h1><span class="header-section-number">Chapter 27</span> The gradient and directional derivatives</h1>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="the-gradient-and-directional-derivatives.html#cb310-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb310-2"><a href="the-gradient-and-directional-derivatives.html#cb310-2"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb310-3"><a href="the-gradient-and-directional-derivatives.html#cb310-3"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb310-4"><a href="the-gradient-and-directional-derivatives.html#cb310-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<p>Partial derivatives tell about how a rate of function changes in a particular direction (in the direction of a coordinate).</p>
+<p>Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.</p>
+<p>Suppose you are standing on a mountain surface at the point <span class="math inline">\((x, y, z)\)</span> in 3-dimensions where <span class="math inline">\(z = f(x, y)\)</span> is the function that gives the height of the mountain at location <span class="math inline">\((x, y)\)</span>. If you are standing at the point <span class="math inline">\((a, b)\)</span> in the <span class="math inline">\((x, y)\)</span> coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the <strong>directional derivative</strong> and the <strong>gradient</strong>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-287" class="definition"><strong>Definition 27.1  (Directional Derivative)  </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<span class="math display">\[
+\begin{aligned}
+D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - f(a, b)}{h}
+\end{aligned}
+\]</span>
+assuming the limit exists.
 </div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
-<p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
-<p>TBD</p>
+
+<p>To understand how the directional derivative relates to partial derivatives, in the definition above, let <span class="math inline">\(v_2 = 0\)</span> and to make <span class="math inline">\(\mathbf{v}\)</span> a unit vector, set <span class="math inline">\(v_1 = 1\)</span> (<span class="math inline">\(\mathbf{v}\)</span> is the standard basis vector <span class="math inline">\(\mathbf{e}_1\)</span>). Then, the limit in the directional derivative definition above becomes
+<span class="math display">\[
+\begin{aligned}
+\lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)}{h}
+\end{aligned}
+\]</span>
+which is the definition for the partial derivative of <span class="math inline">\(f\)</span> in the <span class="math inline">\(x\)</span> direction <span class="math inline">\(f_x = \frac{\partial f}{\partial x}\)</span> (Definition <a href="partial-derivatives.html#def:partial">25.1</a>). Likewise, letting <span class="math inline">\(\mathbf{v} = \mathbf{e}_2\)</span>, the standard basis vector in the y direction, gives the partial derivative in the y direction <span class="math inline">\(f_y = \frac{\partial f}{\partial y}\)</span>. Thus, one could pick any direction vector <span class="math inline">\(\mathbf{v}\)</span> and then calculate the partial derivative in that direction.</p>
+<!-- Now, observe that the vectors $\{\mathbf{e}_1, \mathbf{e}_2\}$ form a spanning set for $\mathcal{R}^2$, which contains the domain for all possible inputs into the function $f(\cdot, \cdot)$. -->
+<p>Now observe that any line that goes through the point <span class="math inline">\((a, b)\)</span> in the direction of the unit vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^2\)</span> can be written as the set of points <span class="math inline">\(\{(x = a + s v_1, y = b + s v_2) | s \in \mathcal{R} \}\)</span> which forms a line through the point <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span>. In this definition, the value <span class="math inline">\(s\)</span> determines the length of the vector because <span class="math inline">\(\mathbf{v}\)</span> is a unit vector. At <span class="math inline">\(s=0\)</span>, this definition corresponds to the point <span class="math inline">\((a, b)\)</span> and as <span class="math inline">\(s\)</span> increases, the points <span class="math inline">\((x, y)\)</span> are the set of points along the line that are distance <span class="math inline">\(|s|\)</span> away from <span class="math inline">\((a, b)\)</span>. Notice that this set defines a function <span class="math inline">\(g(s) = f(a + s v_1, b + s v_2) = f(x, y)\)</span> which is a single variable function of the two inputs <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> of <span class="math inline">\(f(x, y)\)</span>. Given this definition, the directional derivative of <span class="math inline">\(f(x, y)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> at the point <span class="math inline">\((a, b)\)</span> is now given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+D_{\mathbf{v}} f(a, b) &amp; = \frac{d}{ds}g(s)|_{s=0} \\
+&amp; = \frac{\partial f}{\partial x} \frac{dx}{ds} + \frac{\partial f}{\partial y} \frac{dy}{ds} |_{s=0} \\
+&amp; = f_x(a, b) v_1 + f_y(a, b) v_2 \\
+&amp; = \begin{pmatrix} f_x(a, b) &amp; f_y(a, b) \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
+\end{aligned}
+\]</span>
+which is the dot product of the vectors <span class="math inline">\(\begin{pmatrix} f_x(a, b) \\ f_y(a, b) \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>.</p>
+<p>Notice that the vector <span class="math inline">\(\mathbf{v}\)</span> is a unit vector and therefore the directional derivative is a weighted sum of the partial derivatives in the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> directions weighted by the vector <span class="math inline">\(\mathbf{v}\)</span> (weighted sums are sums where the coefficients sum to 1–in this case the sum is in the “distance” metric). As a consequence, we can find the directional derivative in any direction by changing the vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
+
+<div class="definition">
+<span id="def:directional-gradient" class="definition"><strong>Definition 27.2  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> a unit vector in the <span class="math inline">\(xy\)</span> plane. Then, the directional derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<span class="math display">\[
+\begin{aligned}
+D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
+\end{aligned}
+\]</span>
 </div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
+
+<div class="example">
+<p><span id="exm:unlabeled-div-304" class="example"><strong>Example 27.1  </strong></span>Compute the directional derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((2, 1)\)</span>.</p>
 <ul>
-<li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
-<li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
+<li>calculate the directional derivatives</li>
+<li>graph the directional derivatives using contour plots and segments</li>
+</ul>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="the-gradient-and-directional-derivatives.html#cb311-1"></a><span class="co"># the function</span></span>
+<span id="cb311-2"><a href="the-gradient-and-directional-derivatives.html#cb311-2"></a>target_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb311-3"><a href="the-gradient-and-directional-derivatives.html#cb311-3"></a>        <span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>y<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb311-4"><a href="the-gradient-and-directional-derivatives.html#cb311-4"></a>}</span>
+<span id="cb311-5"><a href="the-gradient-and-directional-derivatives.html#cb311-5"></a></span>
+<span id="cb311-6"><a href="the-gradient-and-directional-derivatives.html#cb311-6"></a><span class="co"># the gradient function</span></span>
+<span id="cb311-7"><a href="the-gradient-and-directional-derivatives.html#cb311-7"></a>gradient_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb311-8"><a href="the-gradient-and-directional-derivatives.html#cb311-8"></a>        <span class="kw">c</span>(<span class="dv">6</span><span class="op">*</span>x, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>y)</span>
+<span id="cb311-9"><a href="the-gradient-and-directional-derivatives.html#cb311-9"></a>}</span>
+<span id="cb311-10"><a href="the-gradient-and-directional-derivatives.html#cb311-10"></a></span>
+<span id="cb311-11"><a href="the-gradient-and-directional-derivatives.html#cb311-11"></a><span class="co"># define the unit vectors u and v</span></span>
+<span id="cb311-12"><a href="the-gradient-and-directional-derivatives.html#cb311-12"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">3</span>), <span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>))</span>
+<span id="cb311-13"><a href="the-gradient-and-directional-derivatives.html#cb311-13"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">2</span>), <span class="dv">-1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">2</span>))</span>
+<span id="cb311-14"><a href="the-gradient-and-directional-derivatives.html#cb311-14"></a></span>
+<span id="cb311-15"><a href="the-gradient-and-directional-derivatives.html#cb311-15"></a><span class="co"># create a set of gridpoints for plotting the function</span></span>
+<span id="cb311-16"><a href="the-gradient-and-directional-derivatives.html#cb311-16"></a>N &lt;-<span class="st"> </span><span class="dv">50</span></span>
+<span id="cb311-17"><a href="the-gradient-and-directional-derivatives.html#cb311-17"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> N)</span>
+<span id="cb311-18"><a href="the-gradient-and-directional-derivatives.html#cb311-18"></a>y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> N)</span>
+<span id="cb311-19"><a href="the-gradient-and-directional-derivatives.html#cb311-19"></a></span>
+<span id="cb311-20"><a href="the-gradient-and-directional-derivatives.html#cb311-20"></a>dat &lt;-<span class="st"> </span><span class="kw">expand_grid</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y) <span class="op">%&gt;%</span></span>
+<span id="cb311-21"><a href="the-gradient-and-directional-derivatives.html#cb311-21"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">target_fun</span>(x, y))</span>
+<span id="cb311-22"><a href="the-gradient-and-directional-derivatives.html#cb311-22"></a></span>
+<span id="cb311-23"><a href="the-gradient-and-directional-derivatives.html#cb311-23"></a><span class="co"># define the point (a, b)</span></span>
+<span id="cb311-24"><a href="the-gradient-and-directional-derivatives.html#cb311-24"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb311-25"><a href="the-gradient-and-directional-derivatives.html#cb311-25"></a>b &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb311-26"><a href="the-gradient-and-directional-derivatives.html#cb311-26"></a></span>
+<span id="cb311-27"><a href="the-gradient-and-directional-derivatives.html#cb311-27"></a><span class="co"># directional derivative of f in the direction of u</span></span>
+<span id="cb311-28"><a href="the-gradient-and-directional-derivatives.html#cb311-28"></a>Du_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>u)</span>
+<span id="cb311-29"><a href="the-gradient-and-directional-derivatives.html#cb311-29"></a>Du_ab</span></code></pre></div>
+<pre><code>## [1] 8.561196</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="the-gradient-and-directional-derivatives.html#cb313-1"></a>Dv_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>v)</span>
+<span id="cb313-2"><a href="the-gradient-and-directional-derivatives.html#cb313-2"></a>Dv_ab</span></code></pre></div>
+<pre><code>## [1] 7.071068</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="the-gradient-and-directional-derivatives.html#cb315-1"></a>q &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb315-2"><a href="the-gradient-and-directional-derivatives.html#cb315-2"></a>Dq_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>q)</span>
+<span id="cb315-3"><a href="the-gradient-and-directional-derivatives.html#cb315-3"></a>Dq_ab</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="the-gradient-and-directional-derivatives.html#cb317-1"></a><span class="co"># generate the plot</span></span>
+<span id="cb317-2"><a href="the-gradient-and-directional-derivatives.html#cb317-2"></a><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb317-3"><a href="the-gradient-and-directional-derivatives.html#cb317-3"></a><span class="st">        </span><span class="kw">geom_contour</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb317-4"><a href="the-gradient-and-directional-derivatives.html#cb317-4"></a><span class="st">        </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b)) <span class="op">+</span></span>
+<span id="cb317-5"><a href="the-gradient-and-directional-derivatives.html#cb317-5"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span>u[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Du_ab, <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span>u[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Du_ab), </span>
+<span id="cb317-6"><a href="the-gradient-and-directional-derivatives.html#cb317-6"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>))) <span class="op">+</span></span>
+<span id="cb317-7"><a href="the-gradient-and-directional-derivatives.html#cb317-7"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span>v[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Dv_ab, <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span>v[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Dv_ab), </span>
+<span id="cb317-8"><a href="the-gradient-and-directional-derivatives.html#cb317-8"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
+<span id="cb317-9"><a href="the-gradient-and-directional-derivatives.html#cb317-9"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">1</span>], <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">2</span>]), </span>
+<span id="cb317-10"><a href="the-gradient-and-directional-derivatives.html#cb317-10"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
+</div>
+<div id="the-gradient" class="section level2">
+<h2><span class="header-section-number">27.1</span> The Gradient</h2>
+<p>The directional derivative is a dot product of the partial derivatives and a unit vector. The gradient is similar, but rather than return a single value (a number), the gradient returns a vector at a point <span class="math inline">\((a, b)\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-289" class="definition"><strong>Definition 27.3  (The Gradient)  </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
+<span class="math display">\[
+\begin{aligned}
+\nabla f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \\
+ &amp; = \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} \mathbf{e}_1 + \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \mathbf{e}_2,
+\end{aligned}
+\]</span>
+where <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span> are the standard basis vectors in <span class="math inline">\(\mathcal{R}^2\)</span>.
+</div>
+
+<p>Notice that the directional derivative at the point <span class="math inline">\((a , b)\)</span> can be calculated using the gradient where
+<span class="math display">\[
+\begin{aligned}
+D_{\mathbf{v}} f(a, b) &amp; = \nabla f(a, b) \cdot \mathbf{v} \\
+&amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}
+\end{aligned}
+\]</span>
+the directional derivative is the dot product of the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b)\)</span> with the unit vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-306" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
+<ul>
+<li>calculate the gradient</li>
+<li>graph the gradient using contour plots and segments</li>
 </ul>
 </div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
-<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
-<p><span class="math display">\[
+<p>The gradient is critical in data science because is the tool that allows for finding the set of parameters for a given model that are “most likely” given the data. The gradient has the property in that at each point <span class="math inline">\((a, b)\)</span> where <span class="math inline">\(f(x, y)\)</span> is differentiable, the gradient points in the direction of the maximum rate of change.</p>
+<p>:::{theorem #gradient name = “The gradient and rates of change”}
+Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(\nabla f(a, b) \neq 0\)</span>. Then,</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(f\)</span> has its maximum rate of increase at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(\nabla f(a, b)\)</span>. Because the gradient is a weighted sum of the partial derivatives and the unit vector in the direction of the maximum change, the magnitude of the rate of change is <span class="math inline">\(\|\nabla f(a, b)\|\)</span> which is the length of the gradient vector.</p></li>
+<li><p><span class="math inline">\(f\)</span> has its maximum rate of decrease at the point <span class="math inline">\((a, b)\)</span> in the direction of the gradient <span class="math inline">\(-\nabla f(a, b)\)</span>. The rate of change in the direction of maximum rate of decrease is <span class="math inline">\(-\|\nabla f(a, b)\|\)</span>.</p></li>
+<li><p>The directional derivative is 0 in any direction orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>.</p></li>
+</ol>
+<p>:::</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-307" class="example"><strong>Example 27.3  </strong></span>Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
+<ul>
+<li>graph the function as contours and plot the gradient as a segment</li>
+</ul>
+</div>
+<div id="the-gradient-and-the-tangent-line" class="section level3">
+<h3><span class="header-section-number">27.1.1</span> The gradient and the tangent line</h3>
+<p>Theorem <a href="#thm:gradient"><strong>??</strong></a> states that the directional derivative at the point <span class="math inline">\((a, b)\)</span> is 0 in any direction that is orthogonal to <span class="math inline">\(\nabla f(a, b)\)</span>. Because the directional derivative is the rate of change of the function in the direction of <span class="math inline">\(\mathbf{v}\)</span>, the directional derivative being 0 means that the function <span class="math inline">\(f(x, y)\)</span> is not is not changing in the direction of the vector <span class="math inline">\(\mathbf{v}\)</span>. Therefore, we know that the vector <span class="math inline">\(\mathbf{v}\)</span> and the vector <span class="math inline">\(\nabla f(x, y)|_{(a,b)}\)</span> are orthogonal because the definition of the directional derivative in definition <a href="the-gradient-and-directional-derivatives.html#def:directional-gradient">27.2</a> states that
+<span class="math display">\[
 \begin{aligned}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+D_{\mathbf{v}} f(a, b)  = \nabla f(a, b) \cdot \mathbf{v} = \left(\nabla f(a, b) \right)&#39;  \mathbf{v} = 0
+\end{aligned}
+\]</span>
+which is only true if the gradient <span class="math inline">\(\nabla f(a, b)\)</span> is orthogonal to <span class="math inline">\(\mathbf{v}\)</span>. Because the vector <span class="math inline">\(\mathbf{v}\)</span> points in the direction of 0 change in <span class="math inline">\(f(x,y)\)</span>, the vector <span class="math inline">\(\mathbf{v}\)</span> is a tangent line to the level curve. <strong>See drawing</strong></p>
+<p>Using this, one can calculate the tangent to the level curve at the point <span class="math inline">\((a, b)\)</span> as the dot-product equation
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} f_x(x, y) &amp; f_y(x, y) \end{pmatrix} \begin{pmatrix} x - a \\ y - b \end{pmatrix} =  f_x (x-a) + f_y (y-b) = 0.
 \end{aligned}
 \]</span></p>
-<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-290" class="example"><strong>Example 27.4  </strong></span>For the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^3\)</span>, find a vector orthogonal to the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b) = (2, 1)\)</span>.
+</div>
+
+</div>
+<div id="the-gradient-in-higher-dimensions" class="section level3">
+<h3><span class="header-section-number">27.1.2</span> The gradient in higher dimensions</h3>
+<p>We can extend the gradient to higher dimensional functions. Let <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 &amp; x_2 &amp; \cdots &amp; x_n \end{pmatrix}&#39;\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the gradient of <span class="math inline">\(f\)</span> at a point <span class="math inline">\(\mathbf{a} = (a_1, a_2, \ldots, a_n)\)</span> is</p>
 <p><span class="math display">\[
 \begin{aligned}
-\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+ \nabla f(\mathbf{a}) = \begin{pmatrix} \frac{\partial f(\mathbf{x})}{\partial x_1}|_{\mathbf{x} = \mathbf{a}} \\ \frac{\partial f(\mathbf{x})}{\partial x_2}|_{\mathbf{x} = \mathbf{a}} \\  \vdots \\ \frac{\partial f(\mathbf{x})}{\partial x_n}|_{\mathbf{x} = \mathbf{a}} \end{pmatrix} = \begin{pmatrix} f_{x_1}(\mathbf{a}) \\ f_{x_2}(\mathbf{a}) \\  \vdots \\ f_{x_n}(\mathbf{a}) \end{pmatrix} 
 \end{aligned}
 \]</span></p>
-<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
-<p>We can also write the vector as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
-\end{aligned}
-\]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
-<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
-<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
-<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
-<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
-<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{aligned}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
-\end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
-&amp; \vdots \\
-\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<!-- ## Outline -->
-<!-- **Note: This is going to be revised and reformated throughout the class** -->
-<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
-<!-- 1) vector spaces and subspaces -->
-<!-- 2) dot products, cross products, projections -->
-<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
-<!-- 4) planes, surfaces, and lines in space -->
-<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
-<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
-<!-- 7) innner products, outer products, and norms -->
-<!-- 8) projections - orthogonal projections and least squares -->
-<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 11) limits, continuity, and partial derivatives -->
-<!-- 12) chain rule, directional derivatives -->
-<!-- 13) tangent planes, linear approximations, Taylor Series -->
-<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- Notes for revision -->
-<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
-<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
-<!-- 3) Introduce systems of equations and rref  -->
-<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
-<!-- 5) Introduce linear combinations, spans, linear independence -->
-<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
 
 </div>
 </div>
@@ -588,8 +557,8 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-
-<a href="linear-systems-of-equations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-chain-rule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tangent-planes-and-linear-approximations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

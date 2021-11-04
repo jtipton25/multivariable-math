@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
+  <title>Chapter 17 Coordinate Systems and Dimension | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 17 Coordinate Systems and Dimension | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 17 Coordinate Systems and Dimension | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="linear-systems-of-equations.html"/>
+<link rel="prev" href="linearly-independent-sets-and-bases.html"/>
+<link rel="next" href="rank-1.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -340,217 +340,202 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 04 November, 2021</div></em></p>
-</div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
-<p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
-<p>TBD</p>
-</div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
+<div id="coordinate-systems-and-dimension" class="section level1">
+<h1><span class="header-section-number">Chapter 17</span> Coordinate Systems and Dimension</h1>
 <ul>
-<li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
-<li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
+<li><a href="https://www.3blue1brown.com/lessons/change-of-basis">3 Blue 1 Brown – Change of basis</a></li>
+</ul>
+
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="coordinate-systems-and-dimension.html#cb252-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb252-2"><a href="coordinate-systems-and-dimension.html#cb252-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<p><img src="images/descartes.jpg" width="408" /></p>
+<p>We already know about the cartesian coordinate system (x, y, z) which has the set of basis vectors
+<span class="math display">\[
+\begin{aligned}
+\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} &amp;&amp; 
+\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} &amp;&amp; 
+\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} 
+\end{aligned}
+\]</span></p>
+<p>However, using the concept of a basis for a subspace <span class="math inline">\(\mathcal{H}\)</span> of some vector space <span class="math inline">\(\mathcal{V}\)</span>, we might want to use a different basis. Luckily, we have learned how to construct bases for col(<span class="math inline">\(\mathbf{A}\)</span>) and null(<span class="math inline">\(\mathbf{A}\)</span>).</p>
+<p>You might be wondering why we want to create different bases. The usual cartesian basis has been good enough for me so far (unless you have used polar coordinates). In data science, the data often live in a high dimensional space (i.e., there are a number of data variables). However, while the data might have many variables, some of these variables are partially dependent and thus the space in which the data are embedded might be well approximated using a subspace of the original variables which can increase computation speed (less computation with fewer variables – recall from lab how the inverse of <span class="math inline">\(\mathbf{X}&#39;\mathbf{X}\)</span> took much much longer with larger numbers of variables). Thus, understanding different coordinate systems and how to change coordinate systems can lead to more efficient data representation and model fitting.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-233" class="theorem"><strong>Theorem 17.1  (The unique representation Theorem)  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, for each <span class="math inline">\(\mathbf{x}\)</span> in <span class="math inline">\(\mathcal{B}\)</span>, there exists a unique set of coefficients <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
+<span class="math display">\[
+\begin{aligned}
+\mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
+\end{aligned}
+\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> sketch: vectors of <span class="math inline">\(\mathcal{B}\)</span> span <span class="math inline">\(\mathcal{V}\)</span> so there exists a set of coefficienct <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
+<span class="math display">\[
+\begin{aligned}
+\mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
+\end{aligned}
+\]</span>
+is true. Assume another set of coefficients <span class="math inline">\(d_1, \ldots, d_n\)</span> exists such that
+<span class="math display">\[
+\begin{aligned}
+\mathbf{x} = d_1 \mathbf{b}_1 + \ldots + d_n \mathbf{b}_n.
+\end{aligned}
+\]</span>
+Subtract these two equations to get
+<span class="math display">\[
+\begin{aligned}
+\mathbf{0} = \mathbf{x} - \mathbf{x} = (c_1 - d_1) \mathbf{b}_1 + \ldots + (c_n - d_n) \mathbf{b}_n.
+\end{aligned}
+\]</span>
+Because <span class="math inline">\(\mathcal{B}\)</span> is linearly independent by definition, all the weights in the equation above must be 0 (linear independence means the only solution to <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> is the trivial solution). Therefore <span class="math inline">\(c_i = d_i\)</span> for <span class="math inline">\(i = 1, \ldots, n\)</span>.
+</div>
+
+<div class="definition">
+<p><span id="def:unlabeled-div-203" class="definition"><strong>Definition 17.1  </strong></span>Suppose <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span> and <span class="math inline">\(\mathbf{x} \in \mathcal{V}\)</span>. The coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to <span class="math inline">\(\mathcal{B}\)</span> are the coefficients <span class="math inline">\(c_1, \ldots, c_n\)</span> such that
+<span class="math display">\[
+\begin{aligned}
+\mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
+\end{aligned}
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-204" class="example"><strong>Example 17.1  </strong></span>In class using standard basis in 2-dimensions and vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-205" class="example"><strong>Example 17.2  </strong></span>In class using basis in 2-dimensions <span class="math inline">\(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(b_2 = \begin{pmatrix} 0.5 \\ 1 \end{pmatrix}\)</span> and vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)</span></p>
+</div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="coordinate-systems-and-dimension.html#cb253-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb253-2"><a href="coordinate-systems-and-dimension.html#cb253-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb253-3"><a href="coordinate-systems-and-dimension.html#cb253-3"></a>  <span class="dv">1</span>, <span class="fl">0.5</span>,</span>
+<span id="cb253-4"><a href="coordinate-systems-and-dimension.html#cb253-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb253-5"><a href="coordinate-systems-and-dimension.html#cb253-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb253-6"><a href="coordinate-systems-and-dimension.html#cb253-6"></a></span>
+<span id="cb253-7"><a href="coordinate-systems-and-dimension.html#cb253-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix) <span class="op">+</span></span>
+<span id="cb253-8"><a href="coordinate-systems-and-dimension.html#cb253-8"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">2</span>))</span>
+<span id="cb253-9"><a href="coordinate-systems-and-dimension.html#cb253-9"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>time, <span class="dt">labeller =</span> <span class="kw">labeller</span>(<span class="dt">time =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span> =<span class="st"> &quot;Standard cooridinates&quot;</span>, <span class="st">&quot;2&quot;</span> =<span class="st"> &quot;Shear cooridnates&quot;</span>))) </span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<div id="coordinates-in-mathcalrn" class="section level2">
+<h2><span class="header-section-number">17.1</span> Coordinates in <span class="math inline">\(\mathcal{R}^n\)</span></h2>
+<p>Let <span class="math inline">\(\mathbf{x}\)</span> be defined with the standard coordinates. Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> be a basis in <span class="math inline">\(\mathcal{R}^n\)</span>. Define <span class="math inline">\(\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 &amp; \cdots &amp; \mathbf{b}_n \end{pmatrix}\)</span> as the matrix with columns the vectors of the basis. Then, the coordinates <span class="math inline">\([\mathbf{x}]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}\)</span> of <span class="math inline">\(\mathbf{x}\)</span></p>
+<p>with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> can be found by solving the matrix equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{P}_B [\mathbf{x}]_B = \mathbf{x}
+\end{aligned}
+\]</span>
+The matrix <span class="math inline">\(\mathbf{P}_B\)</span> is called the <strong>change-of-coordinates matrix</strong> from <span class="math inline">\(\mathcal{B}\)</span> to the standard basis in <span class="math inline">\(\mathcal{R}^n\)</span>. The solution set (the coefficients) <span class="math inline">\([\mathbf{x}]_B\)</span> can be found using row operations or by using the fact that because the columns of <span class="math inline">\(\mathbf{P}_B\)</span> spans <span class="math inline">\(\mathcal{R}^n\)</span> the matrix <span class="math inline">\(\mathbf{P}_B\)</span> is invertible. Then, the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> is
+<span class="math display">\[
+\begin{aligned}
+[\mathbf{x}]_B = \mathbf{P}_B^{-1} \mathbf{x}
+\end{aligned}
+\]</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-206" class="theorem"><strong>Theorem 17.2  </strong></span>Let <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span> be a basis for the vector space <span class="math inline">\(\mathcal{V}\)</span>. Then, the coordinate mapping <span class="math inline">\(\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}\)</span> is a one-to-one and onto transformation from <span class="math inline">\(\mathcal{V}\)</span> to <span class="math inline">\(\mathcal{R}^n\)</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-207" class="proof"><em>Proof</em>. </span>First we want to show that multiplication by <span class="math inline">\(\mathbf{P}_B^{-1}\)</span> defines a linear transformation. First, take two vectors
+<span class="math display">\[
+\begin{aligned}
+\mathbf{u} &amp;  = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
+\end{aligned}
+\]</span>
+and
+<span class="math display">\[
+\begin{aligned}
+\mathbf{v} = d_1 \mathbf{b}_1 + \ldots + d_n \mathbf{b}_n
+\end{aligned}
+\]</span></p>
+<ul>
+<li>First, we show the mapping preserves vector addition</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{u} + \mathbf{v} \rightarrow \mathbf{P}_B^{-1} (\mathbf{u} + \mathbf{v}) =  \mathbf{P}_B^{-1} \mathbf{u} + \mathbf{P}_B^{-1} \mathbf{v}
+\end{aligned}
+\]</span>
+which preserves vector addition</p>
+<ul>
+<li>Next, we show the mapping preserves scalar multiplication. Given scalar <span class="math inline">\(a\)</span>,</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+a\mathbf{u} \rightarrow \mathbf{P}_B^{-1} (a \mathbf{u}) =  a \mathbf{P}_B^{-1} \mathbf{u}
+\end{aligned}
+\]</span>
+which preserves scalar multiplication.</p>
+<ul>
+<li>Therefore, this is a linear transformation. one-to-one and onto come from fact that <span class="math inline">\(\mathbf{P}_B\)</span> is and <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(n\)</span> pivot columns (<span class="math inline">\(n\)</span> linearly independent vectors because it is a basis for <span class="math inline">\(\mathcal{R}^n\)</span>)</li>
 </ul>
 </div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
-<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
-<p>We can also write the vector as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
-\end{aligned}
-\]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
-<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
-<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
-<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
-<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
-<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{aligned}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
-\end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
-&amp; \vdots \\
-\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<!-- ## Outline -->
-<!-- **Note: This is going to be revised and reformated throughout the class** -->
-<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
-<!-- 1) vector spaces and subspaces -->
-<!-- 2) dot products, cross products, projections -->
-<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
-<!-- 4) planes, surfaces, and lines in space -->
-<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
-<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
-<!-- 7) innner products, outer products, and norms -->
-<!-- 8) projections - orthogonal projections and least squares -->
-<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 11) limits, continuity, and partial derivatives -->
-<!-- 12) chain rule, directional derivatives -->
-<!-- 13) tangent planes, linear approximations, Taylor Series -->
-<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- Notes for revision -->
-<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
-<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
-<!-- 3) Introduce systems of equations and rref  -->
-<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
-<!-- 5) Introduce linear combinations, spans, linear independence -->
-<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
-
+<div class="example">
+<p><span id="exm:unlabeled-div-208" class="example"><strong>Example 17.3  </strong></span>in class–Give basis in <span class="math inline">\(\mathcal{R}^4\)</span>, find coefficients with respect to this basis for the vector <span class="math inline">\(\mathbf{x}\)</span></p>
 </div>
+</div>
+<div id="dimension-of-a-vector-space" class="section level2">
+<h2><span class="header-section-number">17.2</span> Dimension of a vector space</h2>
+<p>In some sense, we already know about the dimension of a vector space through the concept of a span. The span of a set of vectors defines the dimension of the vector space.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-209" class="theorem"><strong>Theorem 17.3  </strong></span>In a vector space <span class="math inline">\(\mathcal{V}\)</span> with basis <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\)</span>, any set in <span class="math inline">\(\mathcal{V}\)</span> containing more than <span class="math inline">\(n\)</span> vectors must be linearly dependent.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-210" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\)</span> be a set of vectors in <span class="math inline">\(\mathcal{V}\)</span> with <span class="math inline">\(p &gt; n\)</span>. The coordinate vectors <span class="math inline">\(\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}\)</span> form a linearly dependent set in <span class="math inline">\(\mathcal{R}^n\)</span> because there are more vectors (<span class="math inline">\(p\)</span>) than entries (<span class="math inline">\(n\)</span>) in each vector. Thus, there exist scalars <span class="math inline">\(c_1, \ldots, c_p\)</span>, some nonzero, such that
+<span class="math display">\[
+\begin{aligned}
+c_1 \mathbf{P}_B \mathbf{u}_1 + \ldots + c_p \mathbf{P}_B \mathbf{u}_p = \mathbf{0}.
+\end{aligned}
+\]</span>
+which by linearity implies
+<span class="math display">\[
+\begin{aligned}
+\mathbf{P}_B (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
+\end{aligned}
+\]</span></p>
+</div>
+<p>Because the matrix <span class="math inline">\(\mathbf{P}_{B}\)</span> is a <span class="math inline">\(n \times n\)</span> matrix with n linearly independent columns, the only way the equation above can equal <span class="math inline">\(\mathbf{0}\)</span> is if the vector <span class="math inline">\(c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}\)</span> (by the invertible matrix theorem). Therefore, the set of vectors <span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\)</span> is linearly dependent because there are coefficients that allow the vectors to sum to <span class="math inline">\(\mathbf{0}\)</span>. Thus, we know that for a vector space <span class="math inline">\(\mathcal{V}\)</span> that has a basis <span class="math inline">\({\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}}\)</span> that consists on <span class="math inline">\(n\)</span> vectors, then every linearly independent set of vectors in <span class="math inline">\(\mathcal{V}\)</span> contains at most <span class="math inline">\(n\)</span> vectors.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-211" class="theorem"><strong>Theorem 17.4  </strong></span>If a vector space <span class="math inline">\({\mathcal{V}}\)</span> has a basis with <span class="math inline">\(n\)</span> vectors, then every other basis of <span class="math inline">\({\mathcal{V}}\)</span> must also contain exactly <span class="math inline">\(n\)</span> vectors.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-212" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\mathcal{B}_1\)</span> be a basis of <span class="math inline">\({\mathcal{V}}\)</span> containing <span class="math inline">\(n\)</span> vectors and let <span class="math inline">\(\mathcal{B}_2\)</span> be any other basis of <span class="math inline">\({\mathcal{V}}\)</span>. Because <span class="math inline">\(\mathcal{B}_1\)</span> and <span class="math inline">\(\mathcal{B}_2\)</span> are both bases, they both contain sets of linearly independent vectors. As such, the previous theorem states that each of these bases contain at most <span class="math inline">\(n\)</span> vectors (otherwise the sets wouldn’t be linearly independent). Because <span class="math inline">\(\mathcal{B}_2\)</span> is a basis and the basis <span class="math inline">\(\mathcal{B}_1\)</span> contains <span class="math inline">\(n\)</span> vectors, <span class="math inline">\(\mathcal{B}_2\)</span> must contain at least <span class="math inline">\(n\)</span> vectors. These results combined are only satisfied when <span class="math inline">\(\mathcal{B}_2\)</span> contains <span class="math inline">\(n\)</span> vectors.</p>
+</div>
+<p>Like the span defined by the columns of a matrix <span class="math inline">\(\mathbf{A}\)</span>, there is an abstract concept called dimension which measures the “size” of a vector space.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-213" class="definition"><strong>Definition 17.2  </strong></span>If <span class="math inline">\({\mathcal{V}}\)</span> is spanned by a finite set of vectors, then <span class="math inline">\({\mathcal{V}}\)</span> is said to be finite dimensional. If <span class="math inline">\({\mathcal{V}}\)</span> is not spanned by a finite set of vectors, <span class="math inline">\({\mathcal{V}}\)</span> is said to be infinite dimensional. The smallest set of vectors that spans <span class="math inline">\({\mathcal{V}}\)</span> is a basis for <span class="math inline">\({\mathcal{V}}\)</span> and the number of vectors in this basis is called the <strong>dimension</strong> of <span class="math inline">\({\mathcal{V}}\)</span> and written as dim(<span class="math inline">\({\mathcal{V}}\)</span>). If <span class="math inline">\({\mathcal{V}}= \{\mathbf{0}\}\)</span>, then dim(<span class="math inline">\({\mathcal{V}}\)</span>) is said to be 0.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-214" class="example"><strong>Example 17.4  </strong></span>in class - span of 2 or 3 linearly independent vectors</p>
+<ul>
+<li>span, dim, and geometry</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-215" class="example"><strong>Example 17.5  </strong></span>in class - span of 2 or 3 linearly dependent vectors</p>
+<ul>
+<li>span, dim, and geometry</li>
+</ul>
+</div>
+</div>
+<div id="subspaces-of-finite-dimension" class="section level2">
+<h2><span class="header-section-number">17.3</span> Subspaces of finite dimension</h2>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-216" class="theorem"><strong>Theorem 17.5  </strong></span>Let <span class="math inline">\(\mathcal{H}\)</span> be a subspace of a finite-dimensional vector space <span class="math inline">\({\mathcal{V}}\)</span>. Then, any linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> can be expanded, if necessary to form a basis for <span class="math inline">\(\mathcal{H}\)</span>. As <span class="math inline">\(\mathcal{H}\)</span> is a subspace of the finite-dimensional vector space <span class="math inline">\({\mathcal{V}}\)</span>, <span class="math inline">\(\mathcal{H}\)</span> is a finite-dimensional vector space with
+<span class="math display">\[
+\begin{aligned}
+\mbox{dim}(\mathcal{H}) \leq \mbox{dim}(\mathcal{V})
+\end{aligned}
+\]</span></p>
+</div>
+<p>For a vector space of known dimension <span class="math inline">\(p\)</span>, finding a basis can be simplified by finding a linearly independent set of size <span class="math inline">\(p\)</span>.</p>
+<p>:::{.theorem name = “The Basis Theorem”}</p>
+<p>Let <span class="math inline">\(\mathcal{V}\)</span> be a <span class="math inline">\(p\)</span> dimensional vector space with <span class="math inline">\(p \geq 1\)</span>. Any linearly independent subset of <span class="math inline">\(p\)</span> vectors is a basis for <span class="math inline">\(\mathcal{V}\)</span>. Equivalently, any set of <span class="math inline">\(p\)</span> vectors that span <span class="math inline">\({\mathcal{V}}\)</span> is automatically a basis for <span class="math inline">\(\mathcal{V}\)</span>.</p>
+<p>:::</p>
+</div>
+<div id="dimensions-of-nullmathbfa-and-colmathbfa" class="section level2">
+<h2><span class="header-section-number">17.4</span> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</h2>
+<p>The dimension of null(<span class="math inline">\(\mathbf{A}\)</span>) are the number of free variables in <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> and the dimension of col(<span class="math inline">\(\mathbf{A}\)</span>) is the number of pivot columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+
 </div>
 </div>
 
@@ -588,8 +573,8 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-
-<a href="linear-systems-of-equations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linearly-independent-sets-and-bases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rank-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

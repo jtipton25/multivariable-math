@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
+  <title>Chapter 13 Determinants | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 13 Determinants | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 13 Determinants | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="linear-systems-of-equations.html"/>
+<link rel="prev" href="dimension-and-rank.html"/>
+<link rel="next" href="determinants-and-volumes.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -340,217 +340,300 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 04 November, 2021</div></em></p>
-</div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
-<p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
-<p>TBD</p>
-</div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
+<div id="determinants" class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> Determinants</h1>
 <ul>
-<li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
-<li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
+<li><a href="https://www.3blue1brown.com/lessons/determinant">3 Blue 1 Brown – The determinant</a></li>
 </ul>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="determinants.html#cb229-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb229-2"><a href="determinants.html#cb229-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<div class="definition">
+<p><span id="def:determinant" class="definition"><strong>Definition 13.1  </strong></span>The determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> is a function of a square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> whose output is a real number that satisfies the following properties based on elementary row operations</p>
+<ol style="list-style-type: decimal">
+<li><p>The determinant of the <span class="math inline">\(n \times n\)</span> identity matrix <span class="math inline">\(\mathbf{I}\)</span> is equal to 1</p></li>
+<li><p>If a scalar multiple of one row of <span class="math inline">\(\mathbf{A}\)</span> is added to another row of <span class="math inline">\(\mathbf{A}\)</span>, then the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> is unchanged.</p></li>
+<li><p>Scaling a row of <span class="math inline">\(\mathbf{A}\)</span> by a constant <span class="math inline">\(c\)</span> multiples the determinant by <span class="math inline">\(c\)</span></p></li>
+<li><p>Swapping two rows of a matrix <span class="math inline">\(\mathbf{A}\)</span> multiplies the determinant by -1</p></li>
+</ol>
 </div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
-<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
+<p>The determinant is the unique function mapping square matrices to the real number line that satisfies the above definition.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-157" class="example"><strong>Example 13.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>. Find <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-37" class="solution"><em>Solution</em>. </span>We can calculate the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> using row operations to get to reduced row echelon form.</p>
 <p><span class="math display">\[
 \begin{aligned}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+&amp;&amp; \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix} &amp;&amp; \operatorname{det} = x \\
+\mbox{swap row 1 and row 2} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 5 &amp; 3  \end{pmatrix} &amp;&amp; \operatorname{det} = -x \\
+\mbox{row 2 = -5 * row 1 + row 2} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 0 &amp; 18  \end{pmatrix} &amp;&amp; \operatorname{det} = -x \\
+\mbox{row 2 } \div \mbox{ 18} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{18} \\
+\mbox{row 1 = row 1 + 3 * row 2} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{18} 
 \end{aligned}
-\]</span></p>
-<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
+\]</span>
+where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(-\frac{x}{18} = 1\)</span> which implies that <span class="math inline">\(x = -18\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = -18\)</span>
+Let’s check our answer in R</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="determinants.html#cb230-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">-3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb230-2"><a href="determinants.html#cb230-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
+<pre><code>## [1] -18</code></pre>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-158" class="example"><strong>Example 13.2  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 0 \\ -3 &amp; 5 \end{pmatrix}\)</span>. Find <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-38" class="solution"><em>Solution</em>. </span>We can calculate the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> using row operations to get to reduced row echelon form.</p>
 <p><span class="math display">\[
 \begin{aligned}
-\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+&amp;&amp; \begin{pmatrix} 2 &amp; 0 \\ -3 &amp; 5 \end{pmatrix} &amp;&amp; \operatorname{det} = x \\
+\mbox{multiply row 1 by }\frac{1}{2} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ -3 &amp; 5  \end{pmatrix} &amp;&amp; \operatorname{det} = \frac{x}{2} \\
+\mbox{multiply row 2 by }\frac{-1}{3} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 1 &amp; -\frac{5}{3} \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{6} \\
+\mbox{row 2 = row 2 - row 1} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -\frac{5}{3}  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{6} \\
+\mbox{multiply row 2 by } - \frac{3}{5} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = \frac{x}{10} 
 \end{aligned}
-\]</span></p>
-<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
-<p>We can also write the vector as</p>
-<p><span class="math display">\[
+\]</span>
+where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(\frac{x}{10} = 1\)</span> which implies that <span class="math inline">\(x = 10\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = 10\)</span>
+Let’s check our answer in R</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="determinants.html#cb232-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb232-2"><a href="determinants.html#cb232-2"></a><span class="kw">det</span>(A)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</div>
+</div>
+<div id="determinants-of-2-times-2-matrices" class="section level2">
+<h2><span class="header-section-number">13.1</span> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</h2>
+<div class="definition">
+<p><span id="def:det22" class="definition"><strong>Definition 13.2  </strong></span>If <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A}) = ad - bc\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-159" class="example"><strong>Example 13.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>. What is <span class="math inline">\(\det(\mathbf{A})\)</span>?</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-39" class="solution"><em>Solution</em>. </span>Using Definition (<a href="determinants.html#def:det22">13.2</a>), the determinant of <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is <span class="math inline">\(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)</span></p>
+</div>
+</div>
+</div>
+<div id="determinants-of-n-times-n-matrices" class="section level2">
+<h2><span class="header-section-number">13.2</span> Determinants of <span class="math inline">\(n \times n\)</span> matrices</h2>
+<p>To better understand determinants of <span class="math inline">\(n \times n\)</span> matrices, we need to define the two concepts of a matrix <strong>minor</strong> and <strong>cofactor</strong>.</p>
+<div class="definition">
+<p><span id="def:minor-cofactor" class="definition"><strong>Definition 13.3  </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The (i, j) <strong>minor</strong> <span class="math inline">\(\mathbf{A}_{-i-j}\)</span> is the <span class="math inline">\((n-1) \times (n-1)\)</span> matrix obtained by deleting the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span> column from <span class="math inline">\(\mathbf{A}\)</span></p></li>
+<li><p>The (i, j) <strong>cofactor</strong> <span class="math inline">\(c_{ij}\)</span> is defined using the determinant of the minor where
+<span class="math display">\[
 \begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
+c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
 \end{aligned}
-\]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
-<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
-<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
-<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
-<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
-<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
-<p><span class="math display">\[
+\]</span></p></li>
+</ol>
+</div>
+<p>Note: The cofactor of a scalar <span class="math inline">\(a\)</span> (a <span class="math inline">\(1 \times 1\)</span> matrix) is defined as <span class="math inline">\(\mathbf{C}_{ij} = (-1)^{1 + 1} \det(a) = a\)</span>.</p>
+<p>Note: The leading term in the cofactor definition <span class="math inline">\(\mathbf(-1)^{i + j}\)</span> defines a checkerboard pattern shown below
+<span class="math display">\[
 \begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{aligned}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
+\begin{pmatrix}
++ &amp; - &amp; + &amp; - &amp; \cdots \\
+- &amp; + &amp; - &amp; + &amp; \cdots \\
++ &amp; - &amp; + &amp; - &amp; \cdots \\
+- &amp; + &amp; - &amp; + &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots \\
++ &amp; - &amp; + &amp; - &amp; \cdots \\
 \end{pmatrix}
 \end{aligned}
 \]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
-&amp; \vdots \\
-\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<!-- ## Outline -->
-<!-- **Note: This is going to be revised and reformated throughout the class** -->
-<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
-<!-- 1) vector spaces and subspaces -->
-<!-- 2) dot products, cross products, projections -->
-<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
-<!-- 4) planes, surfaces, and lines in space -->
-<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
-<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
-<!-- 7) innner products, outer products, and norms -->
-<!-- 8) projections - orthogonal projections and least squares -->
-<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 11) limits, continuity, and partial derivatives -->
-<!-- 12) chain rule, directional derivatives -->
-<!-- 13) tangent planes, linear approximations, Taylor Series -->
-<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- Notes for revision -->
-<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
-<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
-<!-- 3) Introduce systems of equations and rref  -->
-<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
-<!-- 5) Introduce linear combinations, spans, linear independence -->
-<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
-
+<div class="example">
+<p><span id="exm:unlabeled-div-160" class="example"><strong>Example 13.4  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -3 &amp; 1 \\ 4 &amp; 2 &amp; -3 \\ 7 &amp; 4 &amp; 7 \end{pmatrix}\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span></p></li>
+<li><p>Find the cofactor <span class="math inline">\(c_{23}\)</span></p></li>
+</ol>
 </div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-40" class="solution"><em>Solution</em>. </span>Using Definition (<a href="determinants.html#def:minor-cofactor">13.3</a>), the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the second row and third column removed.</p>
+<p>Thus, the minor <span class="math inline">\(\mathbf{A}_{-2-3} = \begin{pmatrix} 1 &amp; -3 \\ 7 &amp; 4 \end{pmatrix}\)</span>.</p>
+<p>In <code>R</code>, this can be found by first defining the matrix <code>A</code> as</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="determinants.html#cb234-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>,<span class="dv">7</span>, <span class="dv">-3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">-3</span>, <span class="dv">7</span>), <span class="dv">3</span>,<span class="dv">3</span>)</span></code></pre></div>
+<p>then finding the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> as</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="determinants.html#cb235-1"></a>A_minor_<span class="dv">23</span> &lt;-<span class="st"> </span>A[<span class="op">-</span><span class="dv">2</span>, <span class="dv">-3</span>]</span></code></pre></div>
+<p>The matrix cofactor <span class="math inline">\(c_{23} = (-1)^{2+3} \det \mathbf{A}_{-2-3} = (-1) * ((1)(4) - (-3) (7)) = -25\)</span></p>
+<p>In <code>R</code>, given the minor <code>A_minor_23</code>, the cofactor is</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="determinants.html#cb236-1"></a>(<span class="op">-</span><span class="dv">1</span>)<span class="op">^</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">det</span>(A_minor_<span class="dv">23</span>)</span></code></pre></div>
+<pre><code>## [1] -25</code></pre>
+</div>
+</div>
+<p>Note that in the cofactor definition of a <span class="math inline">\(n \times n\)</span> matrix it is assumed that you can calculate the determinant of the <span class="math inline">\(n-1 \times n-1\)</span> minor <span class="math inline">\(\mathbf{A}_{-i-j}\)</span>. From this we see that each of the <span class="math inline">\(n \times n\)</span> cofactors of <span class="math inline">\(\mathbf{A}\)</span> are themselves the (signed) determinants of <span class="math inline">\(n-1 \times n-1\)</span> submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated.</p>
+<p>:::{.theorem cofactor-expansion name = “Cofactor exapansion”}</p>
+<p>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(ij\)</span>th elements <span class="math inline">\(a_{ij}\)</span>. Then</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The <strong>cofactor expansion along the <span class="math inline">\(i\)</span>th row</strong> (for any fixed row <span class="math inline">\(i\)</span>) is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = \sum_{j=1}^n a_{ij} c_{ij} = a_{i1} c_{i1} + a_{i2} c_{i2} + \cdots + a_{in} c_{in}
+\end{aligned}
+\]</span></p></li>
+<li><p>The <strong>cofactor expansion along the <span class="math inline">\(j\)</span>th column</strong> (for any fixed column <span class="math inline">\(j\)</span>) is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = \sum_{i=1}^n a_{ij} c_{ij} = a_{1j} c_{1j} + a_{2j} c_{2j} + \cdots + a_{nj} c_{nj}
+\end{aligned}
+\]</span></p></li>
+</ol>
+<p>:::</p>
+<div class="fold-proof">
+<div class="proof">
+<p><span id="unlabeled-div-41" class="proof"><em>Proof</em>. </span>This is quite complex. For those interested, an example is available <a href="https://textbooks.math.gatech.edu/ila/determinants-cofactors.html">here</a></p>
+</div>
+</div>
+<p><strong>Note:</strong>
+The above theorem states that there are actually <span class="math inline">\(2n\)</span> ways to calculate the determinant–one for each row and column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-161" class="example"><strong>Example 13.5  </strong></span>Use the minor/cofactor definition to calculate the determinant of the <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 0 &amp; 2 \\ 1 &amp; 3 &amp; 3 \\ 2 &amp; -4 &amp; 1 \end{pmatrix}\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-42" class="solution"><em>Solution</em>. </span>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (<a href="#thm:cofactor-expansion"><strong>??</strong></a>) by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13}
+\end{aligned}
+\]</span>
+where <span class="math inline">\(a_{ij}\)</span> is the <span class="math inline">\(ij\)</span>th element of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the cofactor expansion is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = 5 c_{11} + 0 c_{12} + 2 c_{13}
+\end{aligned}
+\]</span>
+This implies that we only need to find the cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span> (but not <span class="math inline">\(c_{12}\)</span> because it gets multiplied by 0). Thus, the cofactor expansion along the first row only requires finding 2 cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span>.</p>
+<p>The minor <span class="math inline">\(\mathbf{A}_{-1-1}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and first column removed and is <span class="math inline">\(\mathbf{A}_{-1-1} = \begin{pmatrix} 3 &amp; 3 \\ -4 &amp; 1 \end{pmatrix}\)</span>. The minor <span class="math inline">\(\mathbf{A}_{-1-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and third column removed and is <span class="math inline">\(\mathbf{A}_{-1-3} = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; -4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{11}\)</span> is given by
+<span class="math display">\[
+\begin{aligned}
+c_{11} = (-1)^{1+1}((3)(1) - (3) (-4)) = 15
+\end{aligned}
+\]</span>
+and the cofactor <span class="math inline">\(c_{13}\)</span> is given by
+<span class="math display">\[
+\begin{aligned}
+c_{13} = (-1)^{1+3}((1)(-4) - (3) (2)) = -10
+\end{aligned}
+\]</span></p>
+<p>Combining these, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13} \\
+&amp; = (5) (15) + (0) (c_{12}) + (2) (-10) \\
+&amp; = 55
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-162" class="example"><strong>Example 13.6  </strong></span>Use the minor/cofactor definition to calculate the determinant of the <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; -1 \\ -3 &amp; 0 &amp; 2 \\ 2 &amp; 0 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-43" class="solution"><em>Solution</em>. </span>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (<a href="#thm:cofactor-expansion"><strong>??</strong></a>) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
+&amp; = 4 c_{12} + 0 c_{22} + 0 c_{32}
+\end{aligned}
+\]</span>
+This implies that we only need to find the cofactor <span class="math inline">\(c_{12}\)</span> (but not <span class="math inline">\(c_{22}\)</span> and <span class="math inline">\(c_{32}\)</span> because these get multiplied by 0). Thus, the cofactor expansion along the second column only requires finding the single cofactor <span class="math inline">\(c_{12}\)</span>.</p>
+<p>The minor <span class="math inline">\(\mathbf{A}_{-1-2}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and second column removed and is <span class="math inline">\(\mathbf{A}_{-1-2} = \begin{pmatrix} -3 &amp; 2 \\ 2 &amp; 4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{12}\)</span> is given by
+<span class="math display">\[
+\begin{aligned}
+c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
+\end{aligned}
+\]</span></p>
+<p>Thus, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
+&amp; = (4) (16) + (0) (c_{22}) + (0) (c_{32}) \\
+&amp; = 64
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-163" class="example"><strong>Example 13.7  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix that has all zero entries for the <span class="math inline">\(j\)</span>th row. Find <span class="math inline">\(\det(\mathbf{A})\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-44" class="solution"><em>Solution</em>. </span>Using the cofactor expansion theorem (Theorem (<a href="#thm:cofactor-expansion"><strong>??</strong></a>)), expand the determinant along the <span class="math inline">\(j\)</span>th row. Then, because all entries of the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> are zero, this gives
+<span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{j1} c_{j1} + a_{j2} c_{j2} + \cdots + a_{jn} c_{jn} \\
+&amp; = 0 c_{j1} + 0 c_{j2} + \cdots + 0 c_{jn} \\
+&amp; = 0
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<!-- ::: {.example} -->
+<!-- in class: determinant of a matrix where at least one row is a linear combination of the other rows -->
+<!-- ::: -->
+<!-- :::{.solution} -->
+<!-- Without loss of generality, assume that the row that is a linear combination of the other rows is the first row. Then, the determinant can be found using the cofactor expansion.  -->
+<!-- ::: -->
+<div class="theorem">
+<p><span id="thm:unlabeled-div-164" class="theorem"><strong>Theorem 13.1  </strong></span>The determinant of a matrix <span class="math inline">\(\mathbf{A}\)</span> is equal to the determinant of its transpose <span class="math inline">\(\mathbf{A}&#39;\)</span>. In other words, <span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span></p>
+</div>
+<div class="fold-proof">
+<div class="proof">
+<p><span id="unlabeled-div-45" class="proof"><em>Proof</em>. </span>Follows directly from cofactor expansion theorem. The expansion along a given row/column of <span class="math inline">\(\mathbf{A}\)</span> is equivalent to expansion along the corresponding column/row of <span class="math inline">\(\mathbf{A}&#39;\)</span> (notice the row/column for <span class="math inline">\(\mathbf{A}\)</span> got swapped to column/row for <span class="math inline">\(\mathbf{A}&#39;\)</span>).</p>
+</div>
+</div>
+</div>
+<div id="properties-of-determinants" class="section level2">
+<h2><span class="header-section-number">13.3</span> Properties of determinants</h2>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-165" class="theorem"><strong>Theorem 13.2  </strong></span>A <span class="math inline">\(n \times n\)</span> square matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p>
+</div>
+<div class="fold-proof">
+<div class="proof">
+<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>From the invertible matrix theorem (Theorem <a href="#thm:invertible-matrix"><strong>??</strong></a>), we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
+</div>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-166" class="theorem"><strong>Theorem 13.3  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices, <span class="math inline">\(\mathbf{I}\)</span> is an <span class="math inline">\(n \times n\)</span> identity matrix, and <span class="math inline">\(c\)</span> is a scalar, we have</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\det(\mathbf{I}) = 1\)</span></p></li>
+<li><p><span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}&#39;)\)</span></p></li>
+<li><p><span class="math inline">\(\det(\mathbf{A}^{-1}) = 1 / \det(\mathbf{A})\)</span> if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span> (<span class="math inline">\(\mathbf{A}\)</span> is invertible)</p></li>
+<li><p><span class="math inline">\(\det(\mathbf{A}\mathbf{B}) = \det(\mathbf{A})\det(\mathbf{B})\)</span></p></li>
+<li><p><span class="math inline">\(\det(c\mathbf{A}) = c^n \det(\mathbf{A})\)</span></p></li>
+</ol>
+</div>
+</div>
+<div id="cramers-rule-and-determinants" class="section level2">
+<h2><span class="header-section-number">13.4</span> Cramer’s Rule and Determinants</h2>
+<ul>
+<li><a href="https://www.3blue1brown.com/lessons/cramers-rule">3 Blue 1 Brown – Cramer’s rule</a>
+While commonly used for theoretical results, Cramer’s rule is not commonly used in applied linear algebra. As such, we will mention Cramer’s rule but not focus on it.</li>
+</ul>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-211" class="theorem"><strong>Theorem 13.4  (Cramer’s Rule)  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by
+<span class="math display">\[
+\begin{aligned}
+x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for } i = 1, 2, \ldots, n
+\end{aligned}
+\]</span>
+</div>
+
+<div class="example">
+<p><span id="exm:unlabeled-div-168" class="example"><strong>Example 13.8  </strong></span>In Cramer’s rule, why do we know</p>
+<ul>
+<li><p>the solution is unique for any <span class="math inline">\(\mathbf{b}\)</span>?</p></li>
+<li><p>the determinant <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span>?</p></li>
+</ul>
+</div>
+
 </div>
 </div>
 
@@ -588,8 +671,8 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-
-<a href="linear-systems-of-equations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dimension-and-rank.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="determinants-and-volumes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

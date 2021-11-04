@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
+  <title>Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 21 The Characteristic Equation | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="linear-systems-of-equations.html"/>
+<link rel="prev" href="eigenvectors-and-eigenvalues.html"/>
+<link rel="next" href="diagonalization.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -340,217 +340,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 04 November, 2021</div></em></p>
-</div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
-<p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
-<p>TBD</p>
-</div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
+<div id="the-characteristic-equation" class="section level1">
+<h1><span class="header-section-number">Chapter 21</span> The Characteristic Equation</h1>
 <ul>
-<li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
-<li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
+<li><a href="https://www.3blue1brown.com/lessons/quick-eigen">3 Blue 1 Brown –</a></li>
+</ul>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="the-characteristic-equation.html#cb259-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb259-2"><a href="the-characteristic-equation.html#cb259-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<p>The characteristic equation/polynomial encodes information about the eigenvalues of the characteristic equation. In the previous chapter, we showed how we can decide if a scalar <span class="math inline">\(\lambda\)</span> is an eigenvalue of a matrix and how to find the vectors associated with the eigenvalue. However, we did not learn how to find eigenvalues (other than to just randomly try <span class="math inline">\(\lambda\)</span>). The characteristic equation/polynomial allows for determining the eigenvalues <span class="math inline">\(\lambda\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-238" class="definition"><strong>Definition 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix. The characteristic equation/polynomial of <span class="math inline">\(\mathbf{A}\)</span> is the function <span class="math inline">\(f(\lambda)\)</span> given by
+<span class="math display">\[
+\begin{aligned}
+f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
+\end{aligned}
+\]</span></p>
+</div>
+<p>While not obvious, the function <span class="math inline">\(f(\lambda)\)</span> is a polynomial of <span class="math inline">\(\lambda\)</span> but requires computing the determinant of the matrix <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> which contains an unknown value <span class="math inline">\(\lambda\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-239" class="example"><strong>Example 21.1  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span></p>
+<ul>
+<li>do in class</li>
 </ul>
 </div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
-<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
-<p>We can also write the vector as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
-\end{aligned}
-\]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
-<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
-<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
-<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
-<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
-<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{aligned}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
-\end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
-&amp; \vdots \\
-\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<!-- ## Outline -->
-<!-- **Note: This is going to be revised and reformated throughout the class** -->
-<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
-<!-- 1) vector spaces and subspaces -->
-<!-- 2) dot products, cross products, projections -->
-<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
-<!-- 4) planes, surfaces, and lines in space -->
-<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
-<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
-<!-- 7) innner products, outer products, and norms -->
-<!-- 8) projections - orthogonal projections and least squares -->
-<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 11) limits, continuity, and partial derivatives -->
-<!-- 12) chain rule, directional derivatives -->
-<!-- 13) tangent planes, linear approximations, Taylor Series -->
-<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- Notes for revision -->
-<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
-<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
-<!-- 3) Introduce systems of equations and rref  -->
-<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
-<!-- 5) Introduce linear combinations, spans, linear independence -->
-<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
-
+<div class="example">
+<p><span id="exm:unlabeled-div-240" class="example"><strong>Example 21.2  </strong></span>Find the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span></p>
+<ul>
+<li>do in class (expand cofactors along the third column)</li>
+</ul>
 </div>
+<p>Once the characteristic equation is defined, we can use the equation to solve for the eigenvalues.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-241" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})\)</span> be a characteristic polynomial. Then, the number <span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(f(\lambda_0) = 0\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-242" class="proof"><em>Proof</em>. </span>By the invertible matrix theorem, the matrix <span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution if and only if <span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span>. Therefore, the following statements are equivalent:</p>
+<ul>
+<li><p><span class="math inline">\(\lambda_0\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda_0 \mathbf{x}\)</span> has a nontrivial solution</p></li>
+<li><p><span class="math inline">\((\mathbf{A} - \lambda_0 \mathbf{I}) \mathbf{x} = \mathbf{0}\)</span> has a nontrivial solution</p></li>
+<li><p><span class="math inline">\(\mathbf{A} - \lambda_0 \mathbf{I}\)</span> is not invertible</p></li>
+<li><p><span class="math inline">\(det(\mathbf{A} - \lambda_0 \mathbf{I}) = \mathbf{0}\)</span></p></li>
+<li><p><span class="math inline">\(f(\lambda_0) = 0\)</span></p></li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-243" class="example"><strong>Example 21.3  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 5 \\ 2 &amp; -1 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
+<ul>
+<li>do in class</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-244" class="example"><strong>Example 21.4  </strong></span>Using the characteristic equation of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 \end{pmatrix}\)</span>, solve for the eigenvalues and find a basis for the <span class="math inline">\(\lambda\)</span>-eigenspaces</p>
+<ul>
+<li>do in class (expand cofactors along the third column)</li>
+</ul>
+</div>
+<div id="similarity" class="section level2">
+<h2><span class="header-section-number">21.1</span> Similarity</h2>
+<p>The idea behind similar matrices is to understand how the linear transformations implied by the transformation behave. Two matrices are similar if their transformation behavior (rotation, expansion/contraction, etc.) is the same but the coordinates on which the matrix operates are different.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-245" class="definition"><strong>Definition 21.2  </strong></span>The matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are said to be similar if there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> where
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
+\end{aligned}
+\]</span>
+or equivalently
+<span class="math display">\[
+\begin{aligned}
+\mathbf{P}^{-1} \mathbf{A} \mathbf{P}=  \mathbf{B} 
+\end{aligned}
+\]</span></p>
+</div>
+<p>Therefore, it is possible to change <span class="math inline">\(\mathbf{A}\)</span> into <span class="math inline">\(\mathbf{B}\)</span> with an invertible (one-to-one and onto) transformation.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-246" class="example"><strong>Example 21.5  </strong></span>Consider the following example with matrices <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> defined as below:</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="the-characteristic-equation.html#cb260-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb260-2"><a href="the-characteristic-equation.html#cb260-2"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    0
+## [2,]    0   -2</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="the-characteristic-equation.html#cb262-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">12</span>, <span class="dv">-10</span>, <span class="dv">15</span>, <span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb262-2"><a href="the-characteristic-equation.html#cb262-2"></a>B</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  -12   15
+## [2,]  -10   13</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="the-characteristic-equation.html#cb264-1"></a>P &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb264-2"><a href="the-characteristic-equation.html#cb264-2"></a>P</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   -2    3
+## [2,]    1   -1</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="the-characteristic-equation.html#cb266-1"></a>P <span class="op">%*%</span><span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(P)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    0
+## [2,]    0   -2</code></pre>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="the-characteristic-equation.html#cb268-1"></a><span class="kw">solve</span>(P) <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>P</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  -12   15
+## [2,]  -10   13</code></pre>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-247" class="theorem"><strong>Theorem 21.2  </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> similar matrices, then <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> will have the same characteristic polynomial and therefore the same eigenvalues.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-248" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are similar, then there exists an invertible matrix <span class="math inline">\(\mathbf{P}\)</span> such that
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A} = \mathbf{P} \mathbf{B} \mathbf{P}^{-1}
+\end{aligned}
+\]</span>
+Therefore
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A}  - \lambda \mathbf{I} &amp; = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{I} \\
+&amp; = \mathbf{P} \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P} \mathbf{P}^{-1} \\
+&amp; =  \mathbf{P} \left( \mathbf{B} \mathbf{P}^{-1} - \lambda \mathbf{P}^{-1} \right) \\
+&amp; =  \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1}\\
+\end{aligned}
+\]</span>
+To get the characteristic equation, we need to solve for the determinant
+<span class="math display">\[
+\begin{aligned}
+det\left( \mathbf{A}  - \lambda \mathbf{I} \right) &amp; = det\left( \mathbf{P} \left( \mathbf{B} - \lambda \mathbf{I} \right) \mathbf{P}^{-1} \right) \\
+&amp; = det\left( \mathbf{P} \right)  det\left( \mathbf{B} - \lambda \mathbf{I} \right) det\left(\mathbf{P}^{-1} \right) \\
+\end{aligned}
+\]</span>
+We know that <span class="math inline">\(det\left(\mathbf{P}^{-1} \right)\)</span> = <span class="math inline">\(\frac{1}{det\left(\mathbf{P} \right)}\)</span> (or, equivalently <span class="math inline">\(det\left(\mathbf{P} \right) det\left(\mathbf{P}^{-1} \right) = det\left(\mathbf{P} \mathbf{P}^{-1} \right) = det(\mathbf{I}) = 1\)</span>), we have <span class="math inline">\(det\left( \mathbf{A} - \lambda \mathbf{I} \right) = det\left( \mathbf{B} - \lambda \mathbf{I} \right)\)</span> so that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> have the same characteristic polynomial (and the same eigenvalues).</p>
+</div>
+</div>
+<div id="the-geometric-interpetation-of-similar-matrices" class="section level2">
+<h2><span class="header-section-number">21.2</span> The geometric interpetation of similar matrices</h2>
+<p>In general, similar matrices do similar things in different spaces (different spaces in terms of different bases).</p>
+<p><a href="https://textbooks.math.gatech.edu/ila/similarity.html">Example here</a></p>
+
 </div>
 </div>
 
@@ -588,8 +511,8 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-
-<a href="linear-systems-of-equations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="eigenvectors-and-eigenvalues.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="diagonalization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

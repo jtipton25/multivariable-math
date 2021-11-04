@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
+  <title>Chapter 25 Partial Derivatives | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 25 Partial Derivatives | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 25 Partial Derivatives | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="linear-systems-of-equations.html"/>
+<link rel="prev" href="graphs-and-limits.html"/>
+<link rel="next" href="the-chain-rule.html"/>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -340,217 +340,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 04 November, 2021</div></em></p>
-</div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
-<p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
-<p>TBD</p>
-</div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
-<ul>
-<li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
-<li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
-</ul>
-</div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
-<p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the elements <span class="math inline">\(x_1, \ldots, x_n\)</span> are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the <span class="math inline">\(x_i\)</span>s are stacked on top of one another) and the order matters. For example, the vector</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{x} &amp; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>has the first element <span class="math inline">\(x_1 = 5\)</span>, second element <span class="math inline">\(x_2 = 2\)</span> and third element <span class="math inline">\(x_3 = 8\)</span>. Note that the vector <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is not the same as the vector <span class="math inline">\(\begin{pmatrix} 8 \\ 2 \\ 5 \end{pmatrix}\)</span> because the order of the elements matters.</p>
-<p>We can also write the vector as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
-\end{aligned}
-\]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
-<p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
-<p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
-<p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
-<p>One can use the index operator <span class="math inline">\([\hspace{2mm}]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
-<p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
-<p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>with <span class="math inline">\(a_{ij}\)</span> being the value of the matrix <span class="math inline">\(\mathbf{A}\)</span> in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</p>
-<p>If the matrix</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} 5 &amp; 7 &amp; 1 \\
-5 &amp; -22  &amp; 2 \\
--14 &amp; 5 &amp; 99 \\
-42 &amp; -3 &amp; 0\end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
-<p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
-<p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
-<p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
-\end{aligned}
-\]</span></p>
-<p>where the notation <span class="math inline">\(|\)</span> is used to separate the vectors</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
-\end{pmatrix},
-&amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
-&amp; \cdots, &amp;
-&amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
-\end{pmatrix}
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
-<p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
-<p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{A} &amp; = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
-\end{aligned}
-\]</span></p>
-<p>where the row vectors <span class="math inline">\(\mathbf{r}_i\)</span> are</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{r}_1 &amp; = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
-\mathbf{r}_2 &amp; = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
-&amp; \vdots \\
-\mathbf{r}_m &amp; = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
-\end{aligned}
-\]</span></p>
-<p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
-<p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
-<!-- ## Outline -->
-<!-- **Note: This is going to be revised and reformated throughout the class** -->
-<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
-<!-- 1) vector spaces and subspaces -->
-<!-- 2) dot products, cross products, projections -->
-<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
-<!-- 4) planes, surfaces, and lines in space -->
-<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
-<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
-<!-- 7) innner products, outer products, and norms -->
-<!-- 8) projections - orthogonal projections and least squares -->
-<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
-<!-- singular value decomposition, pre-whitening -->
-<!-- 11) limits, continuity, and partial derivatives -->
-<!-- 12) chain rule, directional derivatives -->
-<!-- 13) tangent planes, linear approximations, Taylor Series -->
-<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
-<!-- Notes for revision -->
-<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
-<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
-<!-- 3) Introduce systems of equations and rref  -->
-<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
-<!-- 5) Introduce linear combinations, spans, linear independence -->
-<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
+<div id="partial-derivatives" class="section level1">
+<h1><span class="header-section-number">Chapter 25</span> Partial Derivatives</h1>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="partial-derivatives.html#cb306-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb306-2"><a href="partial-derivatives.html#cb306-2"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb306-3"><a href="partial-derivatives.html#cb306-3"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb306-4"><a href="partial-derivatives.html#cb306-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<p>Recall that for a function of one variable, the derivative gives the rate of change of the function with respect to that variable. The function <span class="math inline">\(f(x)\)</span> has an instantaneous rate of change <span class="math inline">\(\frac{d}{dx}f(x)\)</span>, assuming the derivative <span class="math inline">\(\frac{d}{dx}f(x)\)</span> exists.</p>
+<p>This concept can be extended to functions of multivariables where we now have to specify a direction in which the function changes. For example, consider a mountain which is very steep in the north/south direction but is much less steep in the east/west direction. Thus, the directional derivative in the north/south direction will have a larger absolute value (higher rate of change) than the directional derivative in the east/west direction.</p>
+<p>For example, consider the function</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="partial-derivatives.html#cb307-1"></a>mountain &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb307-2"><a href="partial-derivatives.html#cb307-2"></a>    <span class="dv">4</span> <span class="op">-</span><span class="st"> </span><span class="dv">9</span> <span class="op">*</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>y<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb307-3"><a href="partial-derivatives.html#cb307-3"></a>}</span>
+<span id="cb307-4"><a href="partial-derivatives.html#cb307-4"></a>dat &lt;-<span class="st"> </span><span class="kw">expand_grid</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length.out =</span> <span class="dv">20</span>), <span class="dt">y =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length.out =</span> <span class="dv">20</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb307-5"><a href="partial-derivatives.html#cb307-5"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">mountain</span>(x, y))</span>
+<span id="cb307-6"><a href="partial-derivatives.html#cb307-6"></a></span>
+<span id="cb307-7"><a href="partial-derivatives.html#cb307-7"></a>dat <span class="op">%&gt;%</span></span>
+<span id="cb307-8"><a href="partial-derivatives.html#cb307-8"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb307-9"><a href="partial-derivatives.html#cb307-9"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
+<span id="cb307-10"><a href="partial-derivatives.html#cb307-10"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-275-1.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="partial-derivatives.html#cb308-1"></a><span class="kw">plot_ly</span>(<span class="dt">z =</span> <span class="kw">matrix</span>(dat<span class="op">$</span>z, <span class="dv">20</span>, <span class="dv">20</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb308-2"><a href="partial-derivatives.html#cb308-2"></a><span class="st">    </span><span class="kw">add_surface</span>(</span>
+<span id="cb308-3"><a href="partial-derivatives.html#cb308-3"></a>        <span class="dt">contours =</span> <span class="kw">list</span>(</span>
+<span id="cb308-4"><a href="partial-derivatives.html#cb308-4"></a>            <span class="dt">z =</span> <span class="kw">list</span>(</span>
+<span id="cb308-5"><a href="partial-derivatives.html#cb308-5"></a>                <span class="dt">show=</span><span class="ot">TRUE</span>,</span>
+<span id="cb308-6"><a href="partial-derivatives.html#cb308-6"></a>                <span class="dt">usecolormap=</span><span class="ot">TRUE</span>,</span>
+<span id="cb308-7"><a href="partial-derivatives.html#cb308-7"></a>                <span class="dt">highlightcolor=</span><span class="st">&quot;#ff0000&quot;</span>,</span>
+<span id="cb308-8"><a href="partial-derivatives.html#cb308-8"></a>                <span class="dt">project=</span><span class="kw">list</span>(<span class="dt">z=</span><span class="ot">TRUE</span>)</span>
+<span id="cb308-9"><a href="partial-derivatives.html#cb308-9"></a>            )</span>
+<span id="cb308-10"><a href="partial-derivatives.html#cb308-10"></a>        )</span>
+<span id="cb308-11"><a href="partial-derivatives.html#cb308-11"></a>    )</span></code></pre></div>
+<div id="htmlwidget-86a5adb9e68bf345bfa5" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-86a5adb9e68bf345bfa5">{"x":{"visdat":{"5620388e1934":["function () ","plotlyVisDat"]},"cur_data":"5620388e1934","attrs":{"5620388e1934":{"z":[[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.5623268698061,-6.37119113573407,-6.37119113573407,-9.5623268698061,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590028,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083103,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099713,0.0110803324099726,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132964,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828257,2.49307479224377,2.49307479224377,-0.698060941828257,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828256,2.49307479224377,2.49307479224377,-0.698060941828256,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132963,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083102,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099731,0.0110803324099744,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590027,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.56232686980609,-6.37119113573407,-6.37119113573407,-9.56232686980609,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.5623268698061,-6.37119113573407,-6.37119113573407,-9.5623268698061,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590028,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083103,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099713,0.0110803324099726,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132964,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828257,2.49307479224377,2.49307479224377,-0.698060941828257,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828256,2.49307479224377,2.49307479224377,-0.698060941828256,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132963,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083102,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099731,0.0110803324099744,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590027,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.56232686980609,-6.37119113573407,-6.37119113573407,-9.56232686980609,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156]],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Note that the partial derivative asks the question “What is the rate of change of one variable holding all the other variables constant?” Thus, the question can be phrased as what is the derivative of the function <span class="math inline">\(f(x, y)\)</span> at the point <span class="math inline">\((a, b)\)</span> where we only let one variable change? To make the notation of a partial derivative clear, a special symbol is used where <span class="math inline">\(\frac{\partial}{\partial x}\)</span> is the partial derivative with respect to the <span class="math inline">\(x\)</span> variable (holding the y variable constant).</p>
+<p><strong>draw surfaces with marginal slices</strong></p>
 
+<div class="definition">
+<p><span id="def:partial" class="definition"><strong>Definition 25.1  </strong></span>The partial derivative of the function <span class="math inline">\(f(x, y)\)</span> with respect to <span class="math inline">\(x\)</span> at the point <span class="math inline">\((a, b)\)</span> is
+<span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial x} f(x, y) = f_x(x, y) &amp; = \lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)} {h}.
+\end{aligned}
+\]</span></p>
+The partial derivative of the function <span class="math inline">\(f(x, y)\)</span> with respect to <span class="math inline">\(y\)</span> at the point <span class="math inline">\((a, b)\)</span> is
+<span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial y} f(x, y) = f_y(x, y) &amp; = \lim_{h \rightarrow 0} \frac{f(a, b + h) - f(a, b)} {h},
+\end{aligned}
+\]</span>
+as long as these limits exist.
 </div>
+
+<div class="example">
+<p><span id="exm:unlabeled-div-291" class="example"><strong>Example 25.1  </strong></span><strong>partial derivatives using limit definition</strong></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-292" class="example"><strong>Example 25.2  </strong></span>Let <span class="math inline">\(f(x, y) = 3x^2 - 4 y^3 + 3\)</span>, Compute <span class="math inline">\(\frac{\partial}{\partial x}f(x, y)\)</span> and <span class="math inline">\(\frac{\partial}{\partial y}f(x, y)\)</span>. Then evaluate each derivative at <span class="math inline">\((-2, 3)\)</span>.</p>
+</div>
+<p>Notice that you can find partial derivatives by holding all the other variables constant and then finding the equivalent univariate derivative.</p>
+<div id="higher-order-partial-derivatives" class="section level2">
+<h2><span class="header-section-number">25.1</span> Higher-order partial derivatives</h2>
+<p>We can calculate the partial derivatives of partial derivatives. The derivatives could be with respect to the same variable repeatedly or the derivatives could be with respect to different variables in which case we call these <strong>mixed partial derivatives</strong>. Notation for higher order partial derivatives is <span class="math inline">\(\frac{\partial^2}{\partial x \partial y} f(x, y) = f_{xy}(x, y)\)</span> which says first take the partial derivative of with respect to <span class="math inline">\(y\)</span> then take the partial derivative with respect to <span class="math inline">\(x\)</span>. The possible sets of second-order partial derivatives for functions of two variables are shown in the table below</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Notation 1</th>
+<th>Notation 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\frac{\partial}{\partial x}\frac{\partial}{\partial x} f(x, y) = \frac{\partial^2}{\partial x^2} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{xx}(x, y)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\frac{\partial}{\partial y}\frac{\partial}{\partial y} f(x, y) = \frac{\partial^2}{\partial y^2} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{yy}(x, y)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\frac{\partial}{\partial x}\frac{\partial}{\partial y} f(x, y) = \frac{\partial^2}{\partial x \partial y} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{xy}(x, y)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\frac{\partial}{\partial y}\frac{\partial}{\partial x} f(x, y) = \frac{\partial^2}{\partial y \partial x} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{yx}(x, y)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="example">
+<p><span id="exm:unlabeled-div-293" class="example"><strong>Example 25.3  </strong></span>Find the four second-order partial derivatives of <span class="math inline">\(f(x, y) = 3x^2y^3 + 4xy - 3x^2\)</span></p>
+</div>
+<p>Note that the order in which mixed partial derivatives are taken can sometimes change the result. However, it is often the case that the order of the partial derivatives can be switched.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-278" class="theorem"><strong>Theorem 25.1  </strong></span>Let the function <span class="math inline">\(f(x, y)\)</span> be defined on an open domain <span class="math inline">\(\mathcal{D}\)</span> of <span class="math inline">\(\mathcal{R}^2\)</span> and assume that <span class="math inline">\(f_{xy}\)</span> and <span class="math inline">\(f_{yx}\)</span> are continuous over the domain <span class="math inline">\(\mathcal{D}\)</span>. Then, <span class="math inline">\(f_{xy} = f_{yx}\)</span> for all points in the domain <span class="math inline">\(\mathcal{D}\)</span>.
+</div>
+
+<p>Many of the commonly used functional forms in data science meet the criteria above. Thus, for many of the commonly used functions in data science, the order of evaluation of partial derivatives often does not matter. In practice, it is always good practice to verify this though.</p>
+<!-- ## Differentiability -->
+<!-- We have learned how to calculate a derivative, but an important characteristic is whether a derivative exists.  -->
+
 </div>
 </div>
 
@@ -588,8 +482,8 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-
-<a href="linear-systems-of-equations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphs-and-limits.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-chain-rule.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
