@@ -4,7 +4,6 @@ author: "John Tipton"
 date: |
   | Created 1 January 2020
   | Last updated `r format(Sys.time(), '%d %B, %Y')`
-output: pdf_document
 documentclass: book
 link-citations: yes
 bibliography:
@@ -12,8 +11,11 @@ bibliography:
 - packages.bib
 site: bookdown::bookdown_site
 biblio-style: apalike
-description: This is a minimal example of using the bookdown package to write a book.
-  The output format for this example is bookdown::gitbook.
+description: This is a text for Multivariable Mathematics for Data Science. 
+  This text is used at the University of Arkansas for the course DASC 2594 
+  that exposes students to topics in linear algebra and vector calculus that
+  are needed for success in data science. As such, a large focus of the text
+  is on computation for these topics.
 ---
 
 
