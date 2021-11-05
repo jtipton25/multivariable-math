@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Vector Spaces and Subspaces | Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Vector Spaces and Subspaces | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 15 Vector Spaces and Subspaces | Multivariable Mathematics for Data Science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
 <meta name="author" content="John Tipton" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="determinants-and-volumes.html"/>
 <link rel="next" href="linearly-independent-sets-and-bases.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +49,16 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -348,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Recall the definition of a subspace:</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-180" class="definition"><strong>Definition 15.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of a vector space <span class="math inline">\(\mathcal{V}\)</span> is a subset of <span class="math inline">\(\mathcal{V}\)</span> such that</p>
+<p><span id="def:unlabeled-div-179" class="definition"><strong>Definition 15.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of a vector space <span class="math inline">\(\mathcal{V}\)</span> is a subset of <span class="math inline">\(\mathcal{V}\)</span> such that</p>
 <ul>
 <li><p><span class="math inline">\(\mathcal{H}\)</span> contains the zero vector – <span class="math inline">\(\mathbf{0} \in \mathcal{H}\)</span></p></li>
 <li><p><span class="math inline">\(\mathcal{H}\)</span> is closed under vector addition. Therefore, for <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{H}\)</span>, the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span></p></li>
@@ -362,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="null-space" class="section level3">
 <h3><span class="header-section-number">15.1.1</span> Null space</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-181" class="definition"><strong>Definition 15.2  </strong></span>The null space null(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions of the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
+<p><span id="def:unlabeled-div-180" class="definition"><strong>Definition 15.2  </strong></span>The null space null(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions of the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
 <p>Another way to write null(<span class="math inline">\(\mathbf{A}\)</span>) is
 <span class="math display">\[
 \begin{aligned}
@@ -371,10 +374,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-182" class="theorem"><strong>Theorem 15.1  </strong></span>The null space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="thm:unlabeled-div-181" class="theorem"><strong>Theorem 15.1  </strong></span>The null space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-183" class="proof"><em>Proof</em>. </span>To show that the null space of <span class="math inline">\(\mathbf{A}\)</span>, denoted null(<span class="math inline">\(\mathbf{A})\)</span>, is a subspace we need to show the following</p>
+<p><span id="unlabeled-div-182" class="proof"><em>Proof</em>. </span>To show that the null space of <span class="math inline">\(\mathbf{A}\)</span>, denoted null(<span class="math inline">\(\mathbf{A})\)</span>, is a subspace we need to show the following</p>
 <ol style="list-style-type: decimal">
 <li><p>The zero vector <span class="math inline">\(\mathbf{0}\)</span> is in the null space of <span class="math inline">\(\mathbf{A}\)</span></p></li>
 <li><p>The null space of <span class="math inline">\(\mathbf{A}\)</span> is closed under addition</p></li>
@@ -433,7 +436,7 @@ Find a spanning set for null(<span class="math inline">\(\mathbf{A}\)</span>) wh
 <div id="column-space" class="section level3">
 <h3><span class="header-section-number">15.1.2</span> Column space</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-186" class="definition"><strong>Definition 15.3  </strong></span>The columns space col(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p><span id="def:unlabeled-div-185" class="definition"><strong>Definition 15.3  </strong></span>The columns space col(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>If <span class="math inline">\(\{ \mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span> are the columns of <span class="math inline">\(\mathbf{A}\)</span>, then
 <span class="math display">\[
 \begin{aligned}
@@ -448,10 +451,10 @@ this can be written in set notation as
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-187" class="theorem"><strong>Theorem 15.2  </strong></span>The column space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="thm:unlabeled-div-186" class="theorem"><strong>Theorem 15.2  </strong></span>The column space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-188" class="proof"><em>Proof</em>. </span>Do in class</p>
+<p><span id="unlabeled-div-187" class="proof"><em>Proof</em>. </span>Do in class</p>
 <ul>
 <li><p><span class="math inline">\(\mathbf{0}\)</span> vector</p></li>
 <li><p>sum of vectors</p></li>
@@ -519,7 +522,6 @@ $(document).ready(function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -538,6 +540,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -558,6 +561,10 @@ gitbook.start({
 "text": null
 },
 "download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

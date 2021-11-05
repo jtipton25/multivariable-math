@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Linear Transformations | Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Linear Transformations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Linear Transformations | Multivariable Mathematics for Data Science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
 <meta name="author" content="John Tipton" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="linear-independence.html"/>
 <link rel="next" href="matrix-operations.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +49,16 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -368,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-104" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
+<p><span id="exm:unlabeled-div-103" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 2 &amp; 4 \\
@@ -433,7 +436,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-transformations-1" class="section level2">
 <h2><span class="header-section-number">6.1</span> Linear Transformations</h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<p><span id="def:unlabeled-div-104" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
 <li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
@@ -724,7 +727,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <div id="one-to-one-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> One-to-one transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-106" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <p><img src="images/one-to-one.png" width="100%" /></p>
 <p><img src="images/not-one-to-one.png" width="100%" /></p>
@@ -784,7 +787,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-107" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-106" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
@@ -820,7 +823,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <div id="onto-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Onto transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-108" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
+<p><span id="def:unlabeled-div-107" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
 </div>
 <p><img src="images/onto.png" width="100%" /></p>
 <p><img src="images/not-onto.png" width="100%" /></p>
@@ -836,7 +839,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-109" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-108" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is onto</p></li>
 <li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>
@@ -911,7 +914,6 @@ $(document).ready(function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -930,6 +932,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -950,6 +953,10 @@ gitbook.start({
 "text": null
 },
 "download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

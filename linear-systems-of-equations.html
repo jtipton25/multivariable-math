@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Linear Systems of Equations | Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Linear Systems of Equations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Linear Systems of Equations | Multivariable Mathematics for Data Science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
 <meta name="author" content="John Tipton" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="vector-spaces.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +49,16 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -559,7 +562,7 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 <span id="cb33-5"><a href="linear-systems-of-equations.html#cb33-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
 <span id="cb33-6"><a href="linear-systems-of-equations.html#cb33-6"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">-12</span><span class="op">/</span><span class="dv">11</span>, <span class="dt">y =</span> <span class="dv">25</span><span class="op">/</span><span class="dv">11</span>), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
 <span id="cb33-7"><a href="linear-systems-of-equations.html#cb33-7"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:one-solution"></span>
+<div class="figure"><span style="display:block;" id="fig:one-solution"></span>
 <img src="multivariable-math_files/figure-html/one-solution-1.png" alt="Linear system of equations with one solution" width="672" />
 <p class="caption">
 Figure 2.1: Linear system of equations with one solution
@@ -606,7 +609,7 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 <span id="cb36-4"><a href="linear-systems-of-equations.html#cb36-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
 <span id="cb36-5"><a href="linear-systems-of-equations.html#cb36-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
 <span id="cb36-6"><a href="linear-systems-of-equations.html#cb36-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:no-solution"></span>
+<div class="figure"><span style="display:block;" id="fig:no-solution"></span>
 <img src="multivariable-math_files/figure-html/no-solution-1.png" alt="Linear system of equations with no solution" width="672" />
 <p class="caption">
 Figure 2.2: Linear system of equations with no solution
@@ -660,7 +663,7 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 <span id="cb39-4"><a href="linear-systems-of-equations.html#cb39-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
 <span id="cb39-5"><a href="linear-systems-of-equations.html#cb39-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
 <span id="cb39-6"><a href="linear-systems-of-equations.html#cb39-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:infinite-solutions"></span>
+<div class="figure"><span style="display:block;" id="fig:infinite-solutions"></span>
 <img src="multivariable-math_files/figure-html/infinite-solutions-1.png" alt="Linear system of equations with no solution" width="672" />
 <p class="caption">
 Figure 2.3: Linear system of equations with no solution
@@ -1086,22 +1089,20 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <div class="theorem">
 <p><span id="thm:unlabeled-div-77" class="theorem"><strong>Theorem 2.1  </strong></span>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.</p>
 </div>
-
-<div class="exercise">
-<span id="exr:unnamed-chunk-41" class="exercise"><strong>Exercise 2.1  </strong></span>Using elementary row operations, calculate the reduced row echelon form of the following matrices
+<p>:::{.exercise}</p>
+<p>Using elementary row operations, calculate the reduced row echelon form of the following matrices
 1) <strong>fill in later</strong>
 2) <strong>fill in later</strong>
-3) <strong>fill in later</strong>
-</div>
-
+3) <strong>fill in later</strong></p>
+<p>:::`</p>
 <div id="pivot-positions" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Pivot positions</h3>
 <p>The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
+<p><span id="def:unlabeled-div-78" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-80" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
+<p><span id="exm:unlabeled-div-79" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
 </div>
 </div>
 <div id="finding-the-reduced-row-echelon-form" class="section level3">
@@ -1115,7 +1116,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <li>Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.</li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-81" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
+<p><span id="exm:unlabeled-div-80" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
 </div>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="linear-systems-of-equations.html#cb73-1"></a><span class="co"># pracma library</span></span>
 <span id="cb73-2"><a href="linear-systems-of-equations.html#cb73-2"></a><span class="co"># rref example in class</span></span></code></pre></div>
@@ -1142,7 +1143,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-83" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
+<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
 <p><span class="math display">\[
 \begin{aligned}
 5 x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; 2 x_3 &amp;&amp; = &amp; 0 \\
@@ -1152,10 +1153,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <p><strong>Do same steps</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-84" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
+<p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-85" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
+<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
 </div>
 </div>
 <div id="existence-and-uniqueness-from-reduced-row-echelon-form" class="section level3">
@@ -1166,7 +1167,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 \]</span>
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-86" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
+<p><span id="thm:unlabeled-div-85" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
 </div>
 <ul>
 <li><strong>Example: consistent system of equations</strong></li>
@@ -1220,7 +1221,6 @@ $(document).ready(function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1239,6 +1239,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1259,6 +1260,10 @@ gitbook.start({
 "text": null
 },
 "download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

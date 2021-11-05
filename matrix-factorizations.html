@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Matrix Factorizations | Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Matrix Factorizations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Matrix Factorizations | Multivariable Mathematics for Data Science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
 <meta name="author" content="John Tipton" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="block-matrices.html"/>
 <link rel="next" href="subspaces-Rn.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +49,16 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -352,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> The LU factorization</h2>
 <p>First, we define lower and upper triangular matrices.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-128" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
+<p><span id="def:unlabeled-div-127" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
@@ -388,7 +391,7 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 \]</span></p>
 <p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-129" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
+<p><span id="exm:unlabeled-div-128" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; -1 &amp; 0 &amp; 0 \\ -1 &amp; -2 &amp; -3 &amp; 0 \\ -2 &amp; -3 &amp; 0 &amp; -3 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ 0 &amp; 2 &amp; 0 &amp; 3 \\ 0 &amp; 0 &amp; 2 &amp; -3 \\ 0 &amp; 0 &amp; 0 &amp; -3 \end{pmatrix}
@@ -446,12 +449,10 @@ and consider the system of equations defined by the matrix equation <span class=
 <p>While it might not be completely obvious, once one has calculated the LU decomposition, it can often be much faster to solve systems of equations with the LU decomposition.</p>
 </div>
 </div>
-
 <div class="exercise">
-<span id="exr:unnamed-chunk-112" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
-Solve some large systems of equations by brute force which shows how the LU decomposition is faster.
+<p><span id="exr:unlabeled-div-129" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
+Solve some large systems of equations by brute force which shows how the LU decomposition is faster.</p>
 </div>
-
 <div id="geometric-interpretation-of-the-lu-factorization" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Geometric interpretation of the LU factorization</h3>
 <ul>
@@ -505,7 +506,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 </div>
 <p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>).</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-132" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
+<p><span id="def:unlabeled-div-131" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \mathbf{L} \mathbf{L}&#39;
@@ -541,7 +542,7 @@ is the Cholesky decomposition of <span class="math inline">\(\mathbf{A}\)</span>
 <span id="cb177-19"><a href="matrix-factorizations.html#cb177-19"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
 <span id="cb177-20"><a href="matrix-factorizations.html#cb177-20"></a><span class="st">    </span><span class="kw">geom_density2d</span>() <span class="op">+</span></span>
 <span id="cb177-21"><a href="matrix-factorizations.html#cb177-21"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>variable)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -585,7 +586,6 @@ $(document).ready(function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -604,6 +604,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -624,6 +625,10 @@ gitbook.start({
 "text": null
 },
 "download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

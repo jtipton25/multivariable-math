@@ -2,16 +2,13 @@ eq:linear
 fig:one-solution
 fig:no-solution
 fig:infinite-solutions
-exr:unnamed-chunk-41
 eq:matrix-equation
 eq:matrix-addition
 eq:matrix-multiplication
 eq:block-matrix-addition
 eq:column-row-matrix-multiplication
 eq:LU
-exr:unnamed-chunk-112
 eq:LU-alg
-exr:unnamed-chunk-143
 preface
 getting-started-in-r
 some-videos-that-explain-useful-concepts-of-linear-algebra

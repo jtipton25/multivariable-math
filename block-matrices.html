@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Block Matrices | Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Block Matrices | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 9 Block Matrices | Multivariable Mathematics for Data Science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
 <meta name="author" content="John Tipton" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="matrix-inverse.html"/>
 <link rel="next" href="matrix-factorizations.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +49,16 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -508,7 +511,7 @@ and each row of blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> has 
 \]</span>
 which can be said in words as "each block-element (the <span class="math inline">\(ij\)</span>th element <span class="math inline">\((\mathbf{A} \mathbf{B})_{ij}\)</span>) of the block-matrix product <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is the sum of the <span class="math inline">\(i\)</span>th block-row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th block column of <span class="math inline">\(\mathbf{B}\)</span>. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation <a href="block-matrices.html#eq:block-matrix-multiplication">(9.3)</a> above to <a href="matrix-operations.html#eq:matrix-multiplication">(7.2)</a>).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-123" class="example"><strong>Example 9.1  </strong></span>in class</p>
+<p><span id="exm:unlabeled-div-122" class="example"><strong>Example 9.1  </strong></span>in class</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -531,14 +534,14 @@ which can be said in words as "each block-element (the <span class="math inline"
 </div>
 <p><strong>Recall:</strong> The notation <span class="math inline">\(\mathbf{b}_i&#39;\)</span> has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-124" class="example"><strong>Example 9.2  </strong></span>in class</p>
+<p><span id="exm:unlabeled-div-123" class="example"><strong>Example 9.2  </strong></span>in class</p>
 </div>
 </div>
 <div id="special-block-matrices" class="section level2">
 <h2><span class="header-section-number">9.4</span> Special Block Matrices</h2>
 <p>There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-125" class="definition"><strong>Definition 9.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block diagonal if
+<p><span id="def:unlabeled-div-124" class="definition"><strong>Definition 9.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block diagonal if
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
@@ -552,7 +555,7 @@ which can be said in words as "each block-element (the <span class="math inline"
 \]</span></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-126" class="definition"><strong>Definition 9.2  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block (upper) triangular if
+<p><span id="def:unlabeled-div-125" class="definition"><strong>Definition 9.2  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block (upper) triangular if
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
@@ -578,7 +581,7 @@ which can be said in words as "each block-element (the <span class="math inline"
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-127" class="example"><strong>Example 9.3  </strong></span>Assume that <span class="math inline">\(\mathbf{A}\)</span>, which has the form
+<p><span id="exm:unlabeled-div-126" class="example"><strong>Example 9.3  </strong></span>Assume that <span class="math inline">\(\mathbf{A}\)</span>, which has the form
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} \\ \mathbf{0} &amp; \mathbf{A}_{22} \end{pmatrix},  
 \]</span><br />
@@ -661,7 +664,6 @@ $(document).ready(function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -680,6 +682,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -700,6 +703,10 @@ gitbook.start({
 "text": null
 },
 "download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

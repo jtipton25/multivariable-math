@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Matrix equations | Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Matrix equations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 4 Matrix equations | Multivariable Mathematics for Data Science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
 
 <meta name="author" content="John Tipton" />
@@ -32,7 +32,8 @@
   
 <link rel="prev" href="vector-spaces.html"/>
 <link rel="next" href="linear-independence.html"/>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +49,16 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -370,7 +373,7 @@ x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 \]</span>
 and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-88" class="theorem"><strong>Theorem 4.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.</p>
+<p><span id="thm:unlabeled-div-87" class="theorem"><strong>Theorem 4.1  </strong></span>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.</p>
 </div>
 </div>
 <div id="existence-of-solutions" class="section level2">
@@ -380,7 +383,7 @@ and then reducing the matrix to reduced row echelon form. This gives rise to the
 <li><strong>Example: in class</strong> Let <span class="math inline">\(\mathbf{A} =\ldots\)</span> and <span class="math inline">\(\mathbf{b} = \ldots\)</span>. Is the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> consistent?</li>
 </ul>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-89" class="theorem"><strong>Theorem 4.2  </strong></span>For the <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-88" class="theorem"><strong>Theorem 4.2  </strong></span>For the <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the following statements are equivalent:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>For each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has at least one solution</p></li>
 <li><p>Each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span></p></li>
@@ -429,7 +432,7 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 \]</span>
 Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-90" class="definition"><strong>Definition 4.1  </strong></span>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span></p>
+<p><span id="def:unlabeled-div-89" class="definition"><strong>Definition 4.1  </strong></span>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span></p>
 </div>
 <ul>
 <li><p><strong>Example: in class</strong></p></li>
@@ -454,7 +457,7 @@ Notice that the first row of the last matrix above has the sum first row of the 
 <div id="homogeneous-linear-systems-of-equations" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Homogeneous linear systems of equations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-91" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
+<p><span id="def:unlabeled-div-90" class="definition"><strong>Definition 4.2  </strong></span>The matrix equation
 <span class="math display" id="eq:homogeneous">\[
 \begin{aligned}
 \mathbf{A}\mathbf{x} = \mathbf{0}
@@ -513,7 +516,7 @@ x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 \]</span>
 which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 4.3  </strong></span>A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.</p>
+<p><span id="def:unlabeled-div-91" class="definition"><strong>Definition 4.3  </strong></span>A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.</p>
 </div>
 </div>
 </div>
@@ -543,7 +546,7 @@ where <span class="math inline">\(m\)</span> is the slope and <span class="math 
 <span id="cb119-17"><a href="matrix-equation.html#cb119-17"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">y =</span> y, <span class="dt">label =</span> text), </span>
 <span id="cb119-18"><a href="matrix-equation.html#cb119-18"></a>        <span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
 <span id="cb119-19"><a href="matrix-equation.html#cb119-19"></a>        <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) </span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p>This shift in location (but not in slope) is called a <strong>translation</strong></p>
 <ul>
 <li><strong>Example:</strong> Show this shift for a system of linear equations where the solution set defines a plane. From example above,
@@ -600,7 +603,7 @@ we get the homogeneous solution set <span class="math inline">\(x_1 = -2 x_2 + \
 <span id="cb120-23"><a href="matrix-equation.html#cb120-23"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), </span>
 <span id="cb120-24"><a href="matrix-equation.html#cb120-24"></a>            <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
 <pre><code>## Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <ul>
 <li><strong>Example: in class</strong>
 Let’s revisit the example from before</li>
@@ -690,7 +693,6 @@ $(document).ready(function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -709,6 +711,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -729,6 +732,10 @@ gitbook.start({
 "text": null
 },
 "download": ["multivariable-math.pdf", "multivariable-math.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

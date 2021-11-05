@@ -170,7 +170,7 @@
 \title{Multivariable Mathematics for Data Science}
 \author{John Tipton}
 \date{Created 1 January 2020\\
-Last updated 04 November, 2021}
+Last updated 05 November, 2021}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -184,6 +184,8 @@ Last updated 04 November, 2021}
 \newtheorem{example}{Example}[chapter]
 \theoremstyle{definition}
 \newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 \newtheorem*{solution}{Solution}
@@ -569,8 +571,6 @@ and you can give the row representation of the matrix \texttt{A} with with row b
 \subsection{Linear equations}\label{linear-equations}}
 
 \begin{definition}[Linear Equations]
-\protect\hypertarget{def:unlabeled-div-48}{}\label{def:unlabeled-div-48}
-
 Let \(x_1, x_2, \ldots, x_n\) be \textbf{variables} with \textbf{coefficients} \(a_1, a_2, \ldots, a_n\), and \(b\) are fixed and known numbers. Then, we say
 
 \[
@@ -581,12 +581,9 @@ a_1 x_1 + a_2 x_2 + \cdots + a_n x_n & = b
 \]
 
 is a \textbf{linear equation}.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-49}{}\label{exm:unlabeled-div-49}
-
 The equation for a line with slope \(m\) and \(y\)-intercept \(b\) is
 
 \[
@@ -604,12 +601,9 @@ y - m x & = b,
 \]
 
 where \(a_1 = 1\), \(a_2 = m\), \(x_1 = y\) and \(x_2 = x\).
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-50}{}\label{exm:unlabeled-div-50}
-
 The equations
 
 \[
@@ -631,12 +625,9 @@ are both linear equations because they can be written as
 \]
 
 respectively.
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
-
 The equations
 
 \[
@@ -648,22 +639,16 @@ x_1 + x_2 - x_1 x_2 & = 16
 \]
 
 are not linear equations because they do not meet the form of \eqref{eq:linear} (The first equation above has a quadratic power of \(x_2\) and the second equation has a product of \(x_1\) and \(x_2\)).
-
 \end{example}
 
 \hypertarget{systems-of-linear-equations}{%
 \subsection{Systems of linear equations}\label{systems-of-linear-equations}}
 
 \begin{definition}[System of equations]
-\protect\hypertarget{def:unlabeled-div-52}{}\label{def:unlabeled-div-52}
-
 A set of two or more linear equations that each contain the same set of variables is called a \textbf{system of linear equations}.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-53}{}\label{exm:unlabeled-div-53}
-
 The equations
 
 \begin{alignat*}{4}
@@ -677,61 +662,40 @@ are a system of equations. Note that in the second equation, the coefficient for
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}
-
 \end{example}
 
 For the following, are these linear equations?
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-54}{}\label{exm:unlabeled-div-54}
-
 \(x_1 + 3 x_1 x_2 = 5\)
-
 \end{example}
 
 \begin{solution}
-
 This is a linear equation because the equation can be written as \(a_1 x_1 + a_2 x_2 = b\) where \(a_1 = 1\), \(a_2 = 3\) and \(b = 5\)
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-55}{}\label{exm:unlabeled-div-55}
-
 \(5x + 7y + 8z = 11.2\)
-
 \end{example}
 
 \begin{solution}
-
 This is a linear equation because the equation can be written as \(a_1 x_1 + a_2 x_2 + a_3 x_3= b\) where \(a_1 = 5\), \(a_2 = 7\), \(a_3 = 8\) and \(b = 11.2\). The variables \(x_1 = x\), \(x_2 = y\), and \(x_3 = z\).
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-56}{}\label{exm:unlabeled-div-56}
-
 \(\frac{1}{4} y + \sqrt{2} z = 2^6\)
-
 \end{example}
 
 \begin{solution}
-
 This is a linear equation because the equation can be written as \(a_1 x_1 + a_2 x_2 = b\) where \(a_1 = \frac{1}{4}\), \(a_2 = \sqrt{2}\), and \(b = 2^6\). The variables \(x_1 = y\), \(x_2 = z\) enter the equation linearly.
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-57}{}\label{exm:unlabeled-div-57}
-
 \(x + 4 y^2 = 9\)
-
 \end{example}
 
 \begin{solution}
-
 This is not a linear equation because the equation cannot be written as \(a_1 x_1 + a_2 x_2 = b\) because \(x_1 = x\) and \(x_2 = y\) so that the equation is written as \(a_1 x_1 + a_2 x_2^2 = b\) where \(a_1 = 1\), \(a_2 = 4\), and \(b = 9\). The variable \(x_2 = y\) enters the equation in a non-linear (quadratic) manner.
-
 \end{solution}
 
 \hypertarget{solutions-of-linear-systems}{%
@@ -740,25 +704,18 @@ This is not a linear equation because the equation cannot be written as \(a_1 x_
 A fundamental question when presented with a linear system of equations is whether the system has a solution.
 
 \begin{definition}[Solution of systems of equations]
-\protect\hypertarget{def:unlabeled-div-58}{}\label{def:unlabeled-div-58}
-
 A solution to a system means that there are numbers \((s_1, s_2, \ldots, s_n)\) that each of the variables \(x_1, x_2, \ldots, x_n\) take that allow for all the equations to simultaneously be true.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-59}{}\label{exm:unlabeled-div-59}
-
 Is \(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\) a solution to the system of equations
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}
-
 \end{example}
 
 \begin{solution}
-
 First, we plug in the values for \(x_1 = 5\), \(x_2 = 3\) and \(x_3 = 6\). In the first equation, we get
 \begin{alignat*}{4}
 5   & {}+{} & 4 \times 3 & {}-{} & 6 & {}={} & 11 \\
@@ -769,23 +726,18 @@ which is true because \(11 = 11\). Now we consider the second equation
 4 \times 5 & {}+{} & 5 \times 3 & {}+{} & 0 \times 6 & {}={} & 9.
 \end{alignat*}
 which is false because \(35 \neq = 9\). Thus, \(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 = \end{pmatrix}\) is not a solution to the system of equations in the given example.
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-60}{}\label{exm:unlabeled-div-60}
-
 Consider the system of equations
 
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7.
 \end{alignat*}
-
 \end{example}
 
 \begin{solution}
-
 To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
 
 \begin{alignat*}{3}
@@ -872,7 +824,6 @@ Let's plot these equations in \texttt{R} and see what they look like
 \end{figure}
 
 From this plot, it is clear that the solution to the system of equations is the location where the two lines intersect!
-
 \end{solution}
 
 \hypertarget{types-of-solutions}{%
@@ -892,10 +843,7 @@ Typically, there are 3 cases for the solutions to a system of linear equations
 \end{enumerate}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-61}{}\label{def:unlabeled-div-61}
-
 A linear system of equations is called \textbf{consistent} if the system has either one or infinitely many solutions and is called \textbf{inconsistent} if the system has no solution.
-
 \end{definition}
 
 \hypertarget{there-are-no-solutions}{%
@@ -949,7 +897,6 @@ x   & {}+{} & 4 y & {}={} & 8 \\
 In this case, the linear equations are parallel lines and will never intersect so therefore there is no solution.
 
 \begin{solution}
-
 To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like
 
 \begin{alignat*}{3}
@@ -965,7 +912,6 @@ x & {}+{} & 4 y & {}={} & 8 \\
 \end{alignat*}
 
 which gives \(0 = -14\). From this, we see that we have reached a contradiction so there is not a solutoin to the system of equations.
-
 \end{solution}
 
 \hypertarget{there-is-one-solution}{%
@@ -1024,10 +970,7 @@ x   & {}+{} & 4 y & {}={} & 8 \\
 In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-62}{}\label{def:unlabeled-div-62}
-
 Two linear systems of equations are called \textbf{equivalent} if both systems share the same \textbf{solution set}.
-
 \end{definition}
 
 For example, the system of equations
@@ -1047,15 +990,12 @@ and the system of equations
 have the same solution set (the second set of equations is just 2 times the first set of equations).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-63}{}\label{exm:unlabeled-div-63}
-
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 
 \begin{alignat*}{3}
 4 x_1 & {}+{} & 5 x_2 & {}={} & 8 \\
 9 x_1 & {}-{} & 3 x_2 & {}={} & 4.
 \end{alignat*}
-
 \end{example}
 
 \begin{solution}
@@ -1120,15 +1060,12 @@ which can be done in \texttt{R} using
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-64}{}\label{exm:unlabeled-div-64}
-
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 
 \begin{alignat*}{4}
 7 x_1 & {}+{} & 3 x_2 & {}+{} & 4 x_3 & {}={} & 5\\
 4 x_1 & {}-{} & 5 x_2 &&        & {}={} & -2
 \end{alignat*}
-
 \end{example}
 
 \begin{solution}
@@ -1202,8 +1139,6 @@ The solution can be checked in \texttt{R} using
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-65}{}\label{exm:unlabeled-div-65}
-
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
 
 \begin{alignat*}{3}
@@ -1211,11 +1146,9 @@ For the following system of equations, determine if a solution(s) exist and if s
 2 x_1 & {}+{} & x_2 & {}={} & 7 \\
 -3 x_1 & {}+{} & 6 x_2 &{}={} & 11
 \end{alignat*}
-
 \end{example}
 
 \begin{solution}
-
 Multiply the first equation by \(\frac{1}{4}\), the second equation by \(\frac{1}{2}\), and the third equation by \(-\frac{1}{3}\) to get
 
 \begin{alignat*}{3}
@@ -1241,7 +1174,6 @@ x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 \end{alignat*}
 
 Notice that the second equation gives \(x_2 = 3\) while the third equation gives \(x_2 = -\frac{34}{9}\). This is a contradiction (\(3 \neq -\frac{34}{9})\) which implies that the system of equations does not have a solution. Thus we say the system of equations is inconsistent.
-
 \end{solution}
 
 \hypertarget{elementary-row-and-column-operations-on-matrices}{%
@@ -1263,7 +1195,6 @@ The elementary row (column) operations include
 Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-66}{}\label{exm:unlabeled-div-66}
 
 For the elementary row operations listed above, we demonstrate these using the matrix
 
@@ -1619,44 +1550,31 @@ In the plot below, the two planes (red and blue) are the geometric plots of the 
 \subsection{Existence and Uniqueness}\label{existence-and-uniqueness}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-68}{}\label{def:unlabeled-div-68}
-
 A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a \textbf{unique} solution if only one solution exists.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-69}{}\label{exm:unlabeled-div-69}
-
 Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
 
 \[
 \begin{alignedat}{4}  16 x_1 & {}+{} & 2 x_2 & {}+{} & 3 x_3 & {}={} & 13\\ 5 x_1 & {}+{} & 11 x_2 & {}+{} & 10 x_3 & {}={} & 8\\ 9 x_1 & {}+{} & 7 x_2 & {}+{} & 6 x_3 & {}={} & 12\\ 4 x_1 & {}+{} & 14 x_2 & {}+{} & 15 x_3 & {}={} & 1 \end{alignedat}
 \]
-
 \end{example}
 
 \begin{solution}
-
 \textbf{fill in solution here}
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-70}{}\label{exm:unlabeled-div-70}
-
 Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
 
 \[
 \begin{alignedat}{4}   x_1 & {}+{} & 2 x_2 & {}+{} & 3 x_3 & {}={} & 5\\  x_1 & {}+{} & 3 x_2 & {}+{} & 2 x_3 & {}={} & 2\\ 3 x_1 & {}+{} & 2 x_2 & {}+{} &  x_3 & {}={} & 7 \end{alignedat}
 \]
-
 \end{example}
 
 \begin{solution}
-
 \textbf{fill in solution here}
-
 \end{solution}
 
 \hypertarget{reduce-row-echelon-form}{%
@@ -1665,7 +1583,6 @@ Is the system of linear equations consistent? If the system is consistent, does 
 Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-71}{}\label{def:unlabeled-div-71}
 
 A matrix is said to be in \textbf{echelon} form if
 
@@ -1680,14 +1597,10 @@ A matrix is said to be in \textbf{echelon} form if
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-72}{}\label{exm:unlabeled-div-72}
-
 \textbf{echelon matrix example in class}
-
 \end{example}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-73}{}\label{def:unlabeled-div-73}
 
 A matrix is in \textbf{reduced row echelon form} if it is in echelon form and
 
@@ -1702,17 +1615,11 @@ A matrix is in \textbf{reduced row echelon form} if it is in echelon form and
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-74}{}\label{exm:unlabeled-div-74}
-
 \textbf{rref matrix example in class}
-
 \end{example}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-75}{}\label{def:unlabeled-div-75}
-
 Echelon matrices have the property of being \textbf{upper diagonal}. A matrix is said to be \textbf{upper diagonal} if all entries of the matrix at or above the diagonal are nonzero.
-
 \end{definition}
 
 \begin{itemize}
@@ -1722,25 +1629,21 @@ Echelon matrices have the property of being \textbf{upper diagonal}. A matrix is
 \end{itemize}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-76}{}\label{def:unlabeled-div-76}
-
 Two matrices are \textbf{row-equivalent} if one matrix can be transformed to the other through elementary row operations.
-
 \end{definition}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-77}{}\label{thm:unlabeled-div-77}
-
 A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.
-
 \end{theorem}
 
-\begin{exercise}
-\protect\hypertarget{exr:unnamed-chunk-41}{}{\label{exr:unnamed-chunk-41} }Using elementary row operations, calculate the reduced row echelon form of the following matrices
+:::\{.exercise\}
+
+Using elementary row operations, calculate the reduced row echelon form of the following matrices
 1) \textbf{fill in later}
 2) \textbf{fill in later}
 3) \textbf{fill in later}
-\end{exercise}
+
+:::`
 
 \hypertarget{pivot-positions}{%
 \subsection{Pivot positions}\label{pivot-positions}}
@@ -1748,17 +1651,11 @@ A nonzero matrix can be transformed into more than one echelon forms. However, t
 The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-78}{}\label{def:unlabeled-div-78}
-
 In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-79}{}\label{exm:unlabeled-div-79}
-
 \textbf{pivot position and pivot columns}
-
 \end{example}
 
 \hypertarget{finding-the-reduced-row-echelon-form}{%
@@ -1782,10 +1679,7 @@ Calculating the reduced row echelon form is known as Gaussian elimination, which
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-80}{}\label{exm:unlabeled-div-80}
-
 \textbf{in class}
-
 \end{example}
 
 \begin{Shaded}
@@ -1828,7 +1722,6 @@ Calculating the reduced row echelon form, gives
 which gives the solution \ldots{}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-81}{}\label{exm:unlabeled-div-81}
 
 \begin{itemize}
 \tightlist
@@ -1839,8 +1732,6 @@ which gives the solution \ldots{}
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-82}{}\label{exm:unlabeled-div-82}
-
 Another example where we find a solution is
 
 \[
@@ -1851,21 +1742,14 @@ Another example where we find a solution is
 \]
 
 \textbf{Do same steps}
-
 \end{example}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-83}{}\label{def:unlabeled-div-83}
-
 In a system of linear equations that is underdetermined (fewer equations than unknowns), the \textbf{determined/basic variables} are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called \textbf{free variable}.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-84}{}\label{exm:unlabeled-div-84}
-
 \textbf{in class}
-
 \end{example}
 
 \hypertarget{existence-and-uniqueness-from-reduced-row-echelon-form}{%
@@ -1878,10 +1762,7 @@ The row echelon form is useful to determine if a system of linear equations is c
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-85}{}\label{thm:unlabeled-div-85}
-
 A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.
-
 \end{theorem}
 
 \begin{itemize}
@@ -2260,15 +2141,15 @@ Let \(\mathcal{R}^2\) be a real coordinate space of \(2\) dimensions. You are al
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 A vector space is a generalization of this representation. In \(\mathcal{R}^2\), we say that the vector \(\mathbf{z} = c(2, 3)\) is centered at the origin (0, 0) and has length 2 in the \(x\)-axis and length 3 in the \(y\)-axis. The plot below shows this vector
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 We can also decompose the vector \(\mathbf{z}\) into its \(x\) and \(y\) components. The \(x\) component of \(\mathbf{z}\) is (2, 0) and the \(y\) component of \(\mathbf{z}\) is (0, 3). The following plot shows the \(x\) component (2, 0) in blue and the \(y\) component (0, 3) in red.
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 The below Shiny app allows you to plot the vector for any \((x, y)\) pair of your choosing.
 
@@ -2299,7 +2180,7 @@ We can represent the addition of vectors geometrically as well. Consider the two
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-63-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 We can represent the sum using vectors by adding \(\mathbf{u}\) first then adding \(\mathbf{v}\) to \(\mathbf{u}\) or by adding \(\mathbf{v}\) first and then \(\mathbf{u}\) to get
 
@@ -2328,7 +2209,7 @@ We can represent the sum using vectors by adding \(\mathbf{u}\) first then addin
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-64-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-63-1.pdf}
 
 Notice that the sum of these vectors defines a parallelogram where the sum \(\mathbf{u} + \mathbf{v}\) is the diagonal of the shaded parallelogram. This geometric interpretation will serve as a basis for interpreting vector equations in higher dimensions where typical visualization methods fail.
 
@@ -2349,7 +2230,7 @@ We can represent the multiplication of a vector by a scalar geometrically as wel
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-65-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-64-1.pdf}
 
 In fact, if \(a\) is allowed to take on any values, then the set of all possible values of \(a \mathbf{u}\) for all values of \(a\) defines an infinite line
 
@@ -2365,7 +2246,7 @@ In fact, if \(a\) is allowed to take on any values, then the set of all possible
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-66-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-65-1.pdf}
 
 \hypertarget{the-geometric-interpretation-of-vectors-in-mathcalr3}{%
 \subsection{\texorpdfstring{The geometric interpretation of vectors in \(\mathcal{R}^3\)}{The geometric interpretation of vectors in \textbackslash mathcal\{R\}\^{}3}}\label{the-geometric-interpretation-of-vectors-in-mathcalr3}}
@@ -2488,7 +2369,7 @@ Equivalently, the set of vectors \(\{\mathbf{x}_k\}_{k=1}^K\) can only be combin
 
 Consider the vectors \(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\) shown in the figure below on the left.
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-69-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -2496,23 +2377,17 @@ Consider the vectors \(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{
   \textbf{Exercise:} Given \(\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\), estimate the linear combination of \(\mathbf{u}\) and \(\mathbf{v}\) that gives the point \(\mathbf{w}\) in the figure below.
 \end{itemize}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-70-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-69-1.pdf}
 
 \hypertarget{span}{%
 \section{Span}\label{span}}
 
 \begin{definition}[Span]
-\protect\hypertarget{def:span}{}\label{def:span}
-
-Let \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) be vectors in \(\mathcal{R}^n\). We say the vector \(\mathbf{w}\) is in the span of \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) (\(\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}\)) if there exists coefficients \(x_1, \ldots, x_K\) such that \(\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k\).
-
+\protect\hypertarget{def:span}{}\label{def:span}Let \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) be vectors in \(\mathcal{R}^n\). We say the vector \(\mathbf{w}\) is in the span of \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) (\(\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}\)) if there exists coefficients \(x_1, \ldots, x_K\) such that \(\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k\).
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-86}{}\label{exm:unlabeled-div-86}
-
 While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, \(x\), and \(x^2\). Then, the functions \(-4 + 3x^2\) (\(a_1 = -4, a_2 = 0, a_3 = 3\)) and \(-3 + 4x - 2x^2\) (\(a_1 = -3, a_2 = 4, a_3 = -2\)) are in the span of functions \(\{1, x, x^2\}\), but the functions \(x^3\), \(x^4 - 2x^2\), etc., are not in the span of \(\{1, x, x^2\}\) because you cannot write these as a linear combination of \(a_1 1 + a_2 x + a_3 x^2\).
-
 \end{example}
 
 \hypertarget{geometric-example-of-the-span}{%
@@ -2541,7 +2416,7 @@ While not a vector notation, you already understand the span from polynomial fun
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-71-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-70-1.pdf}
 
 From the example above, we can answer the question ``Is the point (a, b) on the line defined by the vector \(\mathbf{u}\)?'' by asking whether the point (a, b) is in the \(span\{\mathbf{u}\}\). While this is trivial for such a simple problem, the use of the span will make things easier in higher dimensions.
 
@@ -2605,10 +2480,7 @@ Because the matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{b}\) is equivalent
 and then reducing the matrix to reduced row echelon form. This gives rise to the theorem
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-87}{}\label{thm:unlabeled-div-87}
-
 The matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{b}\), the vector equation \(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\), and the augmented matrix \(\begin{pmatrix} \mathbf{a}_1 & \ldots & \mathbf{a}_K & \mathbf{b} \end{pmatrix}\) all have the same solution set.
-
 \end{theorem}
 
 \hypertarget{existence-of-solutions}{%
@@ -2623,7 +2495,6 @@ A solution to the matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{b}\) exists 
 \end{itemize}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-88}{}\label{thm:unlabeled-div-88}
 
 For the \(n \times K\) matrix \(\mathbf{A}\), the following statements are equivalent:
 
@@ -2684,10 +2555,7 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 Notice that the first row of the last matrix above has the sum first row of the matrix \(\mathbf{A}\) multiplied by the corresponding elements in \(\mathbf{x}\) (i.e., first element \(a_{11}\) of the first row of \(\mathbf{A}\) times the first element \(x_1\) of \(\mathbf{x}\) plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product \(\mathbf{A} \mathbf{x}\).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-89}{}\label{def:unlabeled-div-89}
-
 The product \(\mathbf{A}\mathbf{x}\) of a \(n \times K\) matrix \(\mathbf{A}\) with a \(K\)-vector \(\mathbf{x}\) is a \(n\)-vector where the \(i\)th element of \(\mathbf{A}\mathbf{x}\) is the sum of the \(i\)th row of \(\mathbf{A}\) times the corresponding elements of the vector \(\mathbf{x}\)
-
 \end{definition}
 
 \begin{itemize}
@@ -2728,8 +2596,6 @@ If \(\mathbf{A}\) is a \(n \times K\) matrix, \(\mathbf{u}\) and \(\mathbf{v}\) 
 \subsection{Homogeneous linear systems of equations}\label{homogeneous-linear-systems-of-equations}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-90}{}\label{def:unlabeled-div-90}
-
 The matrix equation
 \[
 \begin{aligned}
@@ -2738,7 +2604,6 @@ The matrix equation
 \label{eq:homogeneous}
 \]
 is called a homogeneous system of equations. The vector \(\mathbf{0}\) is a vector of length \(N\) composed of all zeros. The \textbf{trivial} solution of the homogeneous equation is when \(\mathbf{x} = \mathbf{0}\) and is not a very useful solution. Typically one is interested in \textbf{nontrivial} solutions where \(\mathbf{x} \neq \mathbf{0}\).
-
 \end{definition}
 
 The homogeneous linear system of equations can be written in augmented matrix form
@@ -2798,10 +2663,7 @@ x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 which is a linear combination of the vectors \(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\). This implies that we can write the solution \(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\) for scalars \(a\) and \(b\). Therefore, the solution set \(\mathbf{x}\) is contained in the \(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\). Because the vectors \(\mathbf{u}\) and \(\mathbf{v}\) are linearly independent (they don't point in the same direction), the set of all linear combinations of \(c \mathbf{u} + d \mathbf{v}\) defines a plane.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-91}{}\label{def:unlabeled-div-91}
-
 A solution set of the form \(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\) is called a \textbf{parametric vector solution}.
-
 \end{definition}
 
 \hypertarget{solutions-to-nonhomogeneous-systems}{%
@@ -2837,7 +2699,7 @@ where \(m\) is the slope and \(b\) is the y-intercept. Setting \(b = 0\) gives a
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-73-1.pdf}
 
 This shift in location (but not in slope) is called a \textbf{translation}
 
@@ -2909,7 +2771,7 @@ For plotting, we will solve these equations for \(x_3\), letting \(x_1\) and \(x
 ## Warning: Removed 4 row(s) containing missing values (geom_path).
 \end{verbatim}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-75-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -2992,17 +2854,11 @@ Recall the homogeneous equation \(\mathbf{A} \mathbf{x} = \mathbf{0}\) can be wr
 \]
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-92}{}\label{def:unlabeled-div-92}
-
 The set of vectors \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) are called \textbf{linearly independent} if the only solution to the vector equation \(\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}\) is the trivial solution. The set of vectors \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) are called \textbf{linearly dependent} if there are coefficients \(x_1, \ldots, x_K\) that are not all zero.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-93}{}\label{exm:unlabeled-div-93}
-
 \textbf{In class}
-
 \end{example}
 
 What does it mean for a set of vectors to be \textbf{linearly dependent}? This means that there is at least one vector \(\mathbf{a}_k\) that can be written as a sum of the other vectors with coefficients \(x_k\):
@@ -3014,28 +2870,18 @@ What does it mean for a set of vectors to be \textbf{linearly dependent}? This m
 Note: \textbf{linear dependence} does not imply that all vectors \(\mathbf{a}_{k}\) can be written as a linear combination of other vectors, just that there is at least one such vector in the set.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-94}{}\label{exm:unlabeled-div-94}
-
 \textbf{Example: in class -- determine if the vectors are linearly independent and solve the dependence relation}
-
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-95}{}\label{thm:unlabeled-div-95}
-
 The matrix \(\mathbf{A}\) has linearly independent columns if and only if the matrix equation \(\mathbf{A}\mathbf{x} = \mathbf{0}\) has only the trivial solution.
-
 \end{theorem}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-96}{}\label{exm:unlabeled-div-96}
-
 \textbf{Example: in class} A set of a single vector
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-97}{}\label{exm:unlabeled-div-97}
 
 \textbf{Example: in class} A set of two vectors
 
@@ -3049,36 +2895,23 @@ The matrix \(\mathbf{A}\) has linearly independent columns if and only if the ma
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-98}{}\label{thm:unlabeled-div-98}
-
 If an \(n \times K\) matrix \(\mathbf{A}\) has \(K > n\), then the columns of \(\mathbf{A}\) are linearly dependent. In other words, if a set of vectors \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) contains more vectors than entries within vectors, the set of vectors is linearly dependent.
-
 \end{theorem}
 
 \begin{proof}
-
 If \(K>n\), there are more variables (\(K\)) than equations (\(n\)). Therefore, there is at least one free variable and this implies that the homogeneous equation \(\mathbf{A}\mathbf{x}=\mathbf{0}\) has a non-trivial solution \eqref{eq:homogeneous}
-
 \end{proof}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-100}{}\label{thm:unlabeled-div-100}
-
 If a set of vectors \(\mathbf{a}_1, \ldots, \mathbf{a}_K\) contains the \(\mathbf{0}\) vector, then the the set of vectors is linearly dependent.
-
 \end{theorem}
 
 \begin{proof}
-
 \textbf{in class}
-
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-102}{}\label{exm:unlabeled-div-102}
-
 In class: Determine whether the following sets of vectors are linearly dependent
-
 \end{example}
 
 \hypertarget{linear-transformations}{%
@@ -3134,8 +2967,6 @@ In the case of matrix transformations (linear transformations), the function \(T
 Using the matrix transformation notation, the domain of the transformation \(T\) is \(\mathcal{R}^n\), the codomain of \(\mathcal{T}\) \(\mathcal{R}^m\). The range of the transformation \(T\) is the set of all linear combinations of the columns of \(\mathbf{A}\) (the \(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)) because the transformation \(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\) is a linear combination \(\sum_{i=1}^n x_i \mathbf{a}_i\) of the columns \(\{\mathbf{a}_i\}_{i=1}^n\) of \(\mathbf{A}\) with coefficients \(x_1, \ldots, x_n\)
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-103}{}\label{exm:unlabeled-div-103}
-
 \[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
@@ -3249,14 +3080,12 @@ Use the reduced row echelon form of the matrix equation \(\mathbf{A} \mathbf{x} 
 \end{verbatim}
 
 The solution to the matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{c}\) which can be found from the reduced row echelon form of the augmented matrix above results in no solution because the last column (the augmented column) is a pivot column. Thus, the system of equations is inconsistent and \(\mathbf{c}\) cannot be written as a linear combination of the columns of \(\mathbf{A}\) which means that \(\mathbf{c}\) is not in the range of \(T\).
-
 \end{example}
 
 \hypertarget{linear-transformations-1}{%
 \section{Linear Transformations}\label{linear-transformations-1}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-104}{}\label{def:unlabeled-div-104}
 
 A transformation \(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\) is linear if
 
@@ -3645,10 +3474,7 @@ The identity transformation is the transformation that leaves the vector input u
 \subsection{One-to-one transformations}\label{one-to-one-transformations}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-105}{}\label{def:unlabeled-div-105}
-
 A transformation \(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\) is called \textbf{one-to-one} if every vector \(\mathbf{b}\) in the image \(\mathcal{R}^m\), the equation \(T(\mathbf{x}) = \mathbf{b}\) has \textbf{at most} one solution in \(\mathcal{R}^n\).
-
 \end{definition}
 
 \includegraphics[width=1\linewidth]{images/one-to-one}
@@ -3680,7 +3506,6 @@ The following statements are equivalent was of saying \(T:\mathcal{R}^n \rightar
 \end{enumerate}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-106}{}\label{thm:unlabeled-div-106}
 
 Let \(\mathbf{A}\mathbf{x}\) be the matrix representation of the linear transformation \(T(\mathbf{x})\) for the \(m \times n\) matrix \(\mathbf{A}\). Then the following statements are equivalent:
 
@@ -3738,10 +3563,7 @@ Let \(\mathbf{A}\mathbf{x}\) be the matrix representation of the linear transfor
 \subsection{Onto transformations}\label{onto-transformations}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-107}{}\label{def:unlabeled-div-107}
-
 A transformation \(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\) is called \textbf{onto} if, for every vector \(\mathbf{b} \in \mathcal{R}^m\), the equation \(T(\mathbf{x}) = \mathbf{b}\) has \textbf{at least} one solution \(\mathbf{x} \in \mathcal{R}^n\)
-
 \end{definition}
 
 \includegraphics[width=1\linewidth]{images/onto}
@@ -3771,7 +3593,6 @@ The following are equivalent ways of saying that \(T:\mathcal{R}^n \rightarrow \
 \end{enumerate}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-108}{}\label{thm:unlabeled-div-108}
 
 Let \(\mathbf{A}\mathbf{x}\) be the matrix representation of the linear transformation \(T(\mathbf{x})\) for the \(m \times n\) matrix \(\mathbf{A}\). Then the following statements are equivalent:
 
@@ -3980,7 +3801,6 @@ If \(\mathbf{A}\) and \(\mathbf{B}\) are of different dimensions (they differ in
 \end{verbatim}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-109}{}\label{thm:unlabeled-div-109}
 
 Let \(\mathbf{A}\), \(\mathbf{B}\), and \(\mathbf{C}\) be \(m \times n\) matrices and let \(a\) and \(b\) be scalars, then:
 
@@ -4172,7 +3992,6 @@ a_{1n} & a_{2n} & \cdots & a_{mn}
 \]
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-110}{}\label{thm:unlabeled-div-110}
 
 Let \(\mathbf{A}\) be an \(m \times n\) matrix, then
 
@@ -4217,9 +4036,7 @@ a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
 where \(a^{-1}\) is the inverse of \(a\).
 
 \begin{definition}[Matrix Inverse]
-\protect\hypertarget{def:matrix-inverse}{}\label{def:matrix-inverse}
-
-The \(n \times n\) \textbf{square} matrix \(\mathbf{A}\) is said to be \textbf{invertible} if there exists a \(n \times n\) matrix \(\mathbf{C}\)( which we call \(\mathbf{A}^{-1}\) once we verify the inverse exists) such that
+\protect\hypertarget{def:matrix-inverse}{}\label{def:matrix-inverse}The \(n \times n\) \textbf{square} matrix \(\mathbf{A}\) is said to be \textbf{invertible} if there exists a \(n \times n\) matrix \(\mathbf{C}\)( which we call \(\mathbf{A}^{-1}\) once we verify the inverse exists) such that
 \[
 \begin{aligned}
 \mathbf{C}\mathbf{A} = \mathbf{A} \mathbf{C} & = \mathbf{I} \\
@@ -4227,7 +4044,6 @@ The \(n \times n\) \textbf{square} matrix \(\mathbf{A}\) is said to be \textbf{i
 \end{aligned}
 \]
 where \(\mathbf{I}\) is the \(n \times n\) identity matrix (the matrix with 1s on the diagonal and zeros everywhere else).
-
 \end{definition}
 
 In \texttt{R}, an identity matrix is easy to construct. An \(n \times n\) identity matrix can be constructed using the \texttt{diag()} function
@@ -4249,8 +4065,6 @@ In \texttt{R}, an identity matrix is easy to construct. An \(n \times n\) identi
 \end{verbatim}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-111}{}\label{exm:unlabeled-div-111}
-
 \[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 1 & -1 \\ 2 & -3 \end{pmatrix} && \mathbf{B} = \begin{pmatrix} 3 & -1 \\ 2 & -1 \end{pmatrix}
@@ -4284,12 +4098,9 @@ In \texttt{R}, an identity matrix is easy to construct. An \(n \times n\) identi
 \end{verbatim}
 
 Because \(\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}\), we have \(\mathbf{A}\) is an invertible matrix with inverse \(\mathbf{B} = \mathbf{A}^{-1}\).
-
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-112}{}\label{thm:unlabeled-div-112}
-
 Let \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\). If \(ad - bc \neq 0\) then \(\mathbf{A}\) is invertible and
 \[
 \begin{aligned}
@@ -4297,7 +4108,6 @@ Let \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\). If \(ad - bc 
 \end{aligned}
 \]
 If \(ad - bc = 0\), then the matrix is not invertible.
-
 \end{theorem}
 
 \begin{itemize}
@@ -4317,32 +4127,23 @@ If \(ad - bc = 0\), then the matrix is not invertible.
 \end{itemize}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-113}{}\label{def:unlabeled-div-113}
-
 For the \(2 \times 2\) matrix \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\), the term \(ad - bc\) is called the \textbf{determinant} of the matrix \(\mathbf{A}\) and is written as \(\operatorname{det}(\mathbf{A})\). Sometimes the determinant is written as \(| \mathbf{A}|\)
-
 \end{definition}
 
 A consequence of the above theorem is that a \(2 \times 2\) matrix is invertible only if its determinant is nonzero.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-114}{}\label{exm:unlabeled-div-114}
-
 Determine if the following \(2 \times 2\) matrix is invertible
 
 \(\mathbf{A} = \begin{pmatrix} 4 & -4 \\ -1 & 2 \end{pmatrix}\)
-
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-115}{}\label{thm:unlabeled-div-115}
-
 If the \(n \times n\) matrix \(\mathbf{A}\) is invertible, then for each \(\mathbf{b} \in \mathcal{R}^n\), the matrix equation
 \[
 \mathbf{A} \mathbf{x} = \mathbf{b}
 \]
 has the unique solution \(\mathbf{x} = \mathbf{A}^{-1} \mathbf{b}\).
-
 \end{theorem}
 
 \begin{proof}
@@ -4360,12 +4161,9 @@ There are two things to show \ldots{}
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-117}{}\label{exm:unlabeled-div-117}
-
 Let \(\mathbf{A} = \begin{pmatrix} 4 & -4 & -2 \\ 5 & 2 & -5 \\ -4 & 6 & 1 \end{pmatrix}\) and \(\mathbf{b} = \begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix}\)
 
 Find the solution to \(\mathbf{A} \mathbf{x} = \mathbf{b}\)
-
 \end{example}
 
 \begin{theorem}[Invertible Matrix Theorem]
@@ -4604,10 +4402,7 @@ Recall the elementary row operations:
 The next theorem is quite important as the result gives an algorithm for calculating the inverse of a \(n \times n\) matrix \(\mathbf{A}\) which also makes it possible to solve matrix equations \(\mathbf{A}\mathbf{x} = \mathbf{b}\)
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-118}{}\label{thm:unlabeled-div-118}
-
 If an \(n \times n\) matrix \(\mathbf{A}\) is invertible, then \(\mathbf{A}\) is row-equivalent to \(\mathbf{I}\) (\(\mathbf{A} \sim \mathbf{I}\); row-equivalent means \(\mathbf{A}\) can be reduced to \(\mathbf{I}\) using elementary row operations). The row-equivalency implies that there is a series of elementary row operations (e.g., elementary matrices \(\mathbf{E}_1, \ldots, \mathbf{E}_k\)) that converts \(\mathbf{A}\) to \(\mathbf{I}\). In addition, the application of these row matrices to \(\mathbf{I}\) transforms \(\mathbf{I}\) to the matrix inverse \(\mathbf{A}^{-1}\).
-
 \end{theorem}
 
 \begin{itemize}
@@ -4624,12 +4419,9 @@ The previous theorem states that for a \(n \times n\) invertible matrix \(\mathb
 Create the augmented matrix \(\begin{pmatrix} \mathbf{A} & \mathbf{I} \end{pmatrix}\) and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form \(\begin{pmatrix} \mathbf{I} & \mathbf{A}^{-1} \end{pmatrix}\) then \(\mathbf{A}^{-1}\) is the inverse of \(\mathbf{A}\). If the leading matrix in the augmented matrix is not the identity matrix \(\mathbf{I}\), then \(\mathbf{A}\) is not row equivalent to \(\mathbf{I}\) and is therefore not invertible.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-119}{}\label{exm:unlabeled-div-119}
-
 Let \(\mathbf{A} = \begin{pmatrix} -3 & -3 & -4 \\ -4 & 2 & -4 \\ 4 & -4 & 4 \end{pmatrix}\). Does \(\mathbf{A}\) have an inverse, and if so, what is it?
 
 Using \texttt{R}
-
 \end{example}
 
 \hypertarget{the-invertible-matrix-theorem}{%
@@ -4671,9 +4463,7 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix. Then the following statements ar
 \end{theorem}
 
 \begin{proof}
-
 \textbf{In class}
-
 \end{proof}
 
 A result of the invertible matrix theorem is that if \(\mathbf{A}\) and \(\mathbf{B}\) are \(n \times n\) matrices with \(\mathbf{A} \mathbf{B} = \mathbf{I}\) then \(\mathbf{A} = \mathbf{B}^{-1}\) and \(\mathbf{B} = \mathbf{A}^{-1}\).
@@ -4682,8 +4472,6 @@ A result of the invertible matrix theorem is that if \(\mathbf{A}\) and \(\mathb
 \section{Invertible Linear Transformations}\label{invertible-linear-transformations}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-120}{}\label{def:unlabeled-div-120}
-
 A linear transformation \(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\) is said to be invertible if there exists a transformation \(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\) such that
 
 \[
@@ -4692,7 +4480,6 @@ S(T(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n
 T(S(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{itemize}
@@ -4702,10 +4489,7 @@ T(S(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
 \end{itemize}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-121}{}\label{thm:unlabeled-div-121}
-
 Let \(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\) be a linear transformation and let \(\mathbf{A}\) be the matrix representing the transformation \(T\). Then the transformation \(T\) is invertible if and only if the matrix \(\mathbf{A}\) is invertible. Therefore, the matrix that represents \(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\), the inverse transformation of \(T\), is unique and is represented by the matrix \(\mathbf{A}^{-1}\).
-
 \end{theorem}
 
 \hypertarget{block-matrices}{%
@@ -4890,25 +4674,18 @@ and each row of blocks \(\mathbf{A}_{ij}\) has the same number of columns as the
 which can be said in words as "each block-element (the \(ij\)th element \((\mathbf{A} \mathbf{B})_{ij}\)) of the block-matrix product \(\mathbf{A} \mathbf{B}\) is the sum of the \(i\)th block-row of \(\mathbf{A}\) and the \(j\)th block column of \(\mathbf{B}\). Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \eqref{eq:block-matrix-multiplication} above to \eqref{eq:matrix-multiplication}).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-122}{}\label{exm:unlabeled-div-122}
-
 in class
-
 \end{example}
 
 \begin{solution}
-
 A solution to the example problem
-
 \end{solution}
 
 \hypertarget{the-column-row-matrix-product}{%
 \section{The column-row matrix product}\label{the-column-row-matrix-product}}
 
 \begin{theorem}
-\protect\hypertarget{thm:block-matrix-multiplication}{}\label{thm:block-matrix-multiplication}
-
-The matrix product \(\mathbf{A}\mathbf{B}\) of an \(m \times n\) matrix \(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}\) with columns \(\{\mathbf{a}_i\}_{i=1}^n\) and an \(n \times p\) matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}\) with rows \(\{\mathbf{b}_i'\}_{i=1}^n\) can be written as the column-row expansion below:
+\protect\hypertarget{thm:block-matrix-multiplication}{}\label{thm:block-matrix-multiplication}The matrix product \(\mathbf{A}\mathbf{B}\) of an \(m \times n\) matrix \(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}\) with columns \(\{\mathbf{a}_i\}_{i=1}^n\) and an \(n \times p\) matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}\) with rows \(\{\mathbf{b}_i'\}_{i=1}^n\) can be written as the column-row expansion below:
 \[
 \begin{aligned}
 \mathbf{A} \mathbf{B} & =
@@ -4917,16 +4694,12 @@ The matrix product \(\mathbf{A}\mathbf{B}\) of an \(m \times n\) matrix \(\mathb
 \end{aligned} 
 \label{eq:block-matrix-multiplication}
 \]
-
 \end{theorem}
 
 \textbf{Recall:} The notation \(\mathbf{b}_i'\) has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-123}{}\label{exm:unlabeled-div-123}
-
 in class
-
 \end{example}
 
 \hypertarget{special-block-matrices}{%
@@ -4935,8 +4708,6 @@ in class
 There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-124}{}\label{def:unlabeled-div-124}
-
 The matrix \(\mathbf{A}\) is said to be block diagonal if
 \[
 \begin{aligned}
@@ -4949,12 +4720,9 @@ The matrix \(\mathbf{A}\) is said to be block diagonal if
 \end{pmatrix}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-125}{}\label{def:unlabeled-div-125}
-
 The matrix \(\mathbf{A}\) is said to be block (upper) triangular if
 \[
 \begin{aligned}
@@ -4980,22 +4748,17 @@ The matrix \(\mathbf{A}\) is said to be block (upper) triangular if
 \end{pmatrix}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-126}{}\label{exm:unlabeled-div-126}
-
 Assume that \(\mathbf{A}\), which has the form
 \[
 \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix},  
 \]\\
 is an invertible matrix where \(\mathbf{A}_{11}\) a \(p \times p\) invertible matrix, \(\mathbf{A}_{12}\) a \(p \times q\) matrix, and \(\mathbf{A}_{22}\) is a \(q \times q\) invertible matrix. Solve for \(\mathbf{A}^{-1}\)
-
 \end{example}
 
 \begin{solution}
-
 The inverse to \(\mathbf{A}\) is a matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}\) with blocks \(\mathbf{B}_{11}\), \(\mathbf{B}_{12}\), \(\mathbf{B}_{21}\), and \(\mathbf{B}_{22}\) of appropriate size to be conformable with the blocks \(\mathbf{A}_{11}\), \(\mathbf{A}_{12}\), and\(\mathbf{A}_{22}\) that make up the matrix \(\mathbf{A}\).
 
 For \(\mathbf{B}\) to be the inverse of \(\mathbf{A}\), \(\mathbf{A}\mathbf{B} = \mathbf{B}\mathbf{A} = \mathbf{I} = \begin{pmatrix} \mathbf{I} & \mathbf{0} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}\) where \(\mathbf{0}\) is a matrix of zeros of the appropriate size. Writing this out in blocks gives
@@ -5035,7 +4798,6 @@ The final component is the upper right block. Because we are finding the inverse
 \]
 
 Thus, \(\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}\)
-
 \end{solution}
 
 \hypertarget{matrix-factorizations}{%
@@ -5058,8 +4820,6 @@ In scalar mathematics, a factorization is an expression that writes a scalar \(a
 First, we define lower and upper triangular matrices.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-127}{}\label{def:unlabeled-div-127}
-
 The matrix \(\mathbf{A}\) is said to be lower triangular if
 \[
 \begin{aligned}
@@ -5084,7 +4844,6 @@ a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
 \end{pmatrix}
 \end{aligned}
 \]
-
 \end{definition}
 
 The LU factorization of a matrix \(\mathbf{A}\) reduces the matrix \(\mathbf{A}\) into two components. The first component \(\mathbf{L}\) is a lower-triangular matrix and the second component \(\mathbf{U}\) is an upper triangular matrix.
@@ -5102,7 +4861,6 @@ Using the LU factorization, the matrix factorization \(\mathbf{A} = \mathbf{L} \
 At first glance, this seems like we are trading the challenge of solving one system of equations \(\mathbf{A}\mathbf{x}\) \eqref{eq:matrix-equation} for the two equations in \eqref{eq:LU}. However, the computational benefits arise due to the fact that \(\mathbf{L}\) and \(\mathbf{U}\) are triangular matrices and solving matrix equations with triangular matrices is much faster.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-128}{}\label{exm:unlabeled-div-128}
 
 Let \(\mathbf{A} = \begin{pmatrix} 1 & 0 & 2 & -2 \\ -2 & -2 & -4 & 1 \\ -1 & -4 & -8 & 5 \\ -2 & -6 & -4 & 4 \end{pmatrix}\) which has the LU decomposition
 
@@ -5126,7 +4884,6 @@ and consider the system of equations defined by the matrix equation \(\mathbf{A}
 \end{example}
 
 \begin{solution}
-
 For the example, we will show how to solve a system of equations using the LU decomposition for the equation defined above.
 
 \begin{enumerate}
@@ -5186,11 +4943,10 @@ For the example, we will show how to solve a system of equations using the LU de
 \]
 
 While it might not be completely obvious, once one has calculated the LU decomposition, it can often be much faster to solve systems of equations with the LU decomposition.
-
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:unnamed-chunk-112}{}{\label{exr:unnamed-chunk-112} }in lab:
+in lab:
 Solve some large systems of equations by brute force which shows how the LU decomposition is faster.
 \end{exercise}
 
@@ -5253,7 +5009,6 @@ Notice that the algorithm does not say to find a specific matrix \(\mathbf{U}\).
 A Cholesky decomposition is special type of LU decomposition. A Cholesky decomposition is an LU decomposition on a \textbf{symmetric, positive-definite} square matrix.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-129}{}\label{def:unlabeled-div-129}
 
 \begin{itemize}
 \item
@@ -5267,8 +5022,6 @@ A Cholesky decomposition is special type of LU decomposition. A Cholesky decompo
 Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a \(n \times n\) symmetric matrix is positive definite if and only if the matrix \(\mathbf{A}\) is invertible (which we know about by the invertible matrix theorem \ref{thm:invertible-matrix}).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-130}{}\label{def:unlabeled-div-130}
-
 Let \(\mathbf{A}\) be a symmetric, positive definite matrix (by this, \(\mathbf{A}\) is a \(n \times n\) square matrix). Then
 \[
 \begin{aligned}
@@ -5276,7 +5029,6 @@ Let \(\mathbf{A}\) be a symmetric, positive definite matrix (by this, \(\mathbf{
 \end{aligned}
 \]
 is the Cholesky decomposition of \(\mathbf{A}\) if \(\mathbf{L}\) is a lower-triangular matrix. Also, the lower triangular Cholesky matrix \(\mathbf{L}\) is unique.
-
 \end{definition}
 
 What makes the Cholesky factor special?
@@ -5318,7 +5070,7 @@ Let \(\mathbf{y} \sim \operatorname{N}(\mathbf{0}, \boldsymbol{\Sigma})\), and \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-113-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-111-1.pdf}
 
 \hypertarget{subspaces-Rn}{%
 \chapter{\texorpdfstring{Subspaces of \(\mathcal{R}^n\)}{Subspaces of \textbackslash mathcal\{R\}\^{}n}}\label{subspaces-Rn}}
@@ -5358,14 +5110,10 @@ A subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) is a set that has the properties
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-131}{}\label{exm:unlabeled-div-131}
-
 Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors in \(\mathcal{R}^n\). Then the vector space defined by span\(\{\mathbf{u}, \mathbf{v} \}\) is a subspace of \(\mathcal{R}^n\)
-
 \end{example}
 
 \begin{solution}
-
 To show that span\(\{\mathbf{u}, \mathbf{v}\}\) is a subspace of \(\mathcal{R}^n\), we must satisfy the three conditions of definition (\ref{def:subspace}).
 
 \begin{enumerate}
@@ -5379,11 +5127,9 @@ To show that span\(\{\mathbf{u}, \mathbf{v}\}\) is a subspace of \(\mathcal{R}^n
 \end{enumerate}
 
 Because all three requirements are met, we have shown that \(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\) is a subspace of \(\mathcal{R}^n\).
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-132}{}\label{exm:unlabeled-div-132}
 
 Recall that a solution to the matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{0}\) that has one free variable is a line through the origin and the solution to the matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{b}\) that has one free variable is a line parallel to the prior line that does not go through the origin.
 
@@ -5456,21 +5202,14 @@ Recall that a solution to the matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{
 \section{Special subspaces: column space and null space}\label{special-subspaces-column-space-and-null-space}}
 
 \begin{definition}
-\protect\hypertarget{def:column-space}{}\label{def:column-space}
-
-The \textbf{column space}, denoted \(\operatorname{col}(\mathbf{A})\), of a \(m \times n\) matrix \(\mathbf{A}\) which has columns \(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\) is the set of vectors that are linear combinations of the columns of \(\mathbf{A}\) which is equivalent to the span\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\).
-
+\protect\hypertarget{def:column-space}{}\label{def:column-space}The \textbf{column space}, denoted \(\operatorname{col}(\mathbf{A})\), of a \(m \times n\) matrix \(\mathbf{A}\) which has columns \(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\) is the set of vectors that are linear combinations of the columns of \(\mathbf{A}\) which is equivalent to the span\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\).
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-133}{}\label{exm:unlabeled-div-133}
-
 Given the matrix \(\mathbf{A} = \begin{pmatrix} 1 & -8 & -9 \\ -3 & 3 & -5 \\ 1 & 0 & 6 \\ -2 & -1 & -1 \end{pmatrix}\) with columns \(\mathbf{a}_1\), \(\mathbf{a}_2\), and \(\mathbf{a}_3\), what is the column space of \(\mathbf{A}\)?
-
 \end{example}
 
 \begin{solution}
-
 Given the matrix \(\mathbf{A} = \begin{pmatrix} 1 & -8 & -9 \\ -3 & 3 & -5 \\ 1 & 0 & 6 \\ -2 & -1 & -1 \end{pmatrix}\) with columns \(\mathbf{a}_1\), \(\mathbf{a}_2\), and \(\mathbf{a}_3\), the column space of \(\mathbf{A}\) is the set of vectors \(\mathbf{b}\) such that
 \[
 \begin{aligned}
@@ -5478,23 +5217,16 @@ Given the matrix \(\mathbf{A} = \begin{pmatrix} 1 & -8 & -9 \\ -3 & 3 & -5 \\ 1 
 \end{aligned}
 \]
 Thus, the column space of \(\mathbf{A}\) is the span of the vectors that makes up the columns of \(\mathbf{A}\).
-
 \end{solution}
 
 \begin{definition}
-\protect\hypertarget{def:null-space}{}\label{def:null-space}
-
-The \textbf{null space}, denoted \(\operatorname{null}(\mathbf{A})\), of a matrix \(\mathbf{A}\) is the set of all solutions to the homogeneous matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{0}\).
-
+\protect\hypertarget{def:null-space}{}\label{def:null-space}The \textbf{null space}, denoted \(\operatorname{null}(\mathbf{A})\), of a matrix \(\mathbf{A}\) is the set of all solutions to the homogeneous matrix equation \(\mathbf{A} \mathbf{x} = \mathbf{0}\).
 \end{definition}
 
 While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by \(\mathbf{A}\) maps to \(\mathbf{0}\). In other words, the null space of \(\mathbf{A}\) is the set of vectors \(\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-134}{}\label{exm:unlabeled-div-134}
-
 Given the matrix \(\mathbf{A} = \begin{pmatrix} -3 & -3 & -4 & -5 & -2 \\ -4 & 2 & -4 & 5 & 3 \\ 4 & -4 & 4 & -3 & 5 \end{pmatrix}\) with columns \(\mathbf{a}_1\), \(\mathbf{a}_2\), \(\mathbf{a}_3\), and \(\mathbf{a}_4\), find vectors that span the null space of \(\mathbf{A}\).
-
 \end{example}
 
 \begin{solution}
@@ -5603,10 +5335,7 @@ We check that these vectors are in null(\(\mathbf{A}\)) by using matrix multipli
 \end{solution}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-135}{}\label{thm:unlabeled-div-135}
-
 The null space of a n \(m \times m\) matrix \(\mathbf{A}\) is a subspace of \(\mathcal{R}^n\).
-
 \end{theorem}
 
 \begin{proof}
@@ -5633,9 +5362,7 @@ Show that the three requirements of the defintion of a subspace in Definition (\
 \section{The basis of a subspace}\label{the-basis-of-a-subspace}}
 
 \begin{definition}
-\protect\hypertarget{def:basis}{}\label{def:basis}
-
-A \textbf{basis} for a subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) is
+\protect\hypertarget{def:basis}{}\label{def:basis}A \textbf{basis} for a subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) is
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
@@ -5647,61 +5374,43 @@ A \textbf{basis} for a subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) is
 \end{enumerate}
 
 Equivlently, a baisis is a set of linearly independent vectors \(\mathbf{u}_1, \ldots, \mathbf{u}_k\) such that span\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\).
-
 \end{definition}
 
 The requirement that the vectors of a basis are linearly independent while spanning a subspace \(\mathcal{H}\) means that a basis is a \textbf{minimal spanning set} for the subspace \(\mathcal{H}\)
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-137}{}\label{exm:unlabeled-div-137}
-
 Is a basis for a vector space unique?
-
 \end{example}
 
 \begin{solution}
-
 A basis for a vector is not unique. Just like you can represent the number 16 as \(1.6 * 10^1\) (base 10) or \(2^4\) (base 2), the basis for a vector space is also not unique.
-
 \end{solution}
 
 \begin{definition}
-\protect\hypertarget{def:standard-basis}{}\label{def:standard-basis}
-
-The \textbf{standard basis} for \(\mathcal{R}^n\) is the set of vectors \(\left\{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \right\}\) of length \(n\) where the vector \(\mathbf{e}_j\) is a vector that is 0 in every value except for a 1 in the \(j\)th position. For example,
+\protect\hypertarget{def:standard-basis}{}\label{def:standard-basis}The \textbf{standard basis} for \(\mathcal{R}^n\) is the set of vectors \(\left\{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \right\}\) of length \(n\) where the vector \(\mathbf{e}_j\) is a vector that is 0 in every value except for a 1 in the \(j\)th position. For example,
 \[
 \begin{aligned}
 \mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, && \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, && \mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \\ \vdots \\ 0\end{pmatrix}, && \ldots, && \mathbf{e}_n = \begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}.
 \end{aligned}
 \]
 Notice that the matrix defined as having columns \(\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\) is the identity matrix \(\mathbf{I}\).
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-138}{}\label{exm:unlabeled-div-138}
-
 What is the standard basis for \(\mathcal{R}^3\)?
-
 \end{example}
 
 \begin{solution}
-
 The standard basis for \(\mathcal{R}^3\) are the x-, y-, and z-axes. These are written as vectors where the x-axis is \(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\), the y-axis is \(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\), and the z-axis is \(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1\end{pmatrix}\),
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-139}{}\label{exm:unlabeled-div-139}
-
 Do the following set of vectors form a basis for \(\mathcal{R}^3\)?
 
 \(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\), \(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\), and \(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)
-
 \end{example}
 
 \begin{solution}
-
 For the set of vectors \(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\), \(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\), and \(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\) to form a basis for \(\mathcal{R}^3\), we need to satisfy the two conditions in Definition (\ref{def:basis}). Both conditions of Definition (\ref{def:basis}) can be checked by combining the set of vectors \(\mathbf{x}\), \(\mathbf{y}\), and \(\mathbf{z}\) into a matrix and using RREF to determine the span\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) and determine whether the set of vectors \(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) is linearly independent. The matrix of the vectors is
 \[
 \begin{pmatrix} 2 & -1 & 1 \\ 1 & 1 & 0 \\ 2 & 1 & 2 \end{pmatrix}
@@ -5740,20 +5449,15 @@ Next, we convert \texttt{A} to reduced row echelon form to get the row equivalen
 \end{verbatim}
 
 Because this reduced row echelon form has a pivot in each column we know the columns of the matrix \texttt{A} are linearly independent. Because there are 3 pivot columns in total, we know the span of the columns of \texttt{A} is \(\mathcal{R}^3\). Therefore, the vectors \(\mathbf{x}, \mathbf{y}, \mathbf{z}\) forms a basis for \(\mathcal{R}^3\).
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-140}{}\label{exm:unlabeled-div-140}
-
 Do the following set of vectors form a basis for \(\mathcal{R}^3\)?
 
 \(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\), \(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\), \(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\), and \(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\)
-
 \end{example}
 
 \begin{solution}
-
 For the set of vectors \(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\), \(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\), \(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\), and \(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\) to form a basis for \(\mathcal{R}^3\), we need to satisfy the two conditions in Definition (\ref{def:basis}). Both conditions of Definition (\ref{def:basis}) can be checked by combining the set of vectors \(\mathbf{w}\), \(\mathbf{x}\), \(\mathbf{y}\), and \(\mathbf{z}\) into a matrix and using RREF to determine the span\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) and determine whether the set of vectors \(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) is linearly independent. The matrix of the vectors is
 \[
 \begin{pmatrix} 2 & -1 & 1 & 4 \\ 1 & 1 & 0 & 2 \\ 2 & 1 & 2 & -2 \end{pmatrix}
@@ -5793,20 +5497,15 @@ Next, we convert \texttt{A} to reduced row echelon form to get the row equivalen
 \end{verbatim}
 
 Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix \texttt{A} are linearly dependent. Because there are 3 pivot columns in total, we know the span of the columns of \texttt{A} is \(\mathcal{R}^3\). Because the set of vectors \(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) are linearly dependent, they do not form a basis for \(\mathcal{R}^3\).
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-141}{}\label{exm:unlabeled-div-141}
-
 Do the following set of vectors form a basis for \(\mathcal{R}^3\)?
 
 \(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\), \(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\), and \(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\)
-
 \end{example}
 
 \begin{solution}
-
 For the set of vectors \(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\), \(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\), and \(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\) to form a basis for \(\mathcal{R}^3\), we need to satisfy the two conditions in Definition (\ref{def:basis}). Both conditions of Definition (\ref{def:basis}) can be checked by combining the set of vectors \(\mathbf{x}\), \(\mathbf{y}\), and \(\mathbf{z}\) into a matrix and using RREF to determine the span\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) and determine whether the set of vectors \(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) is linearly independent. The matrix of the vectors is
 \[
 \begin{pmatrix} 4 & 3 & 5 \\ 3 & -3 & 9 \\ 2 & 4 & 0 \end{pmatrix}
@@ -5845,17 +5544,13 @@ Next, we convert \texttt{A} to reduced row echelon form to get the row equivalen
 \end{verbatim}
 
 Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix \texttt{A} are linearly dependent. Because there are 2 pivot columns in total, we know the span of the columns of \texttt{A} is \(\mathcal{R}^2\) which is not \(\mathcal{R}^3\). Because the set of vectors \(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\) are linearly dependent and do not span \(\mathcal{R}^3\), they do not form a basis for \(\mathcal{R}^3\).
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-142}{}\label{exm:unlabeled-div-142}
-
 Using \texttt{R}, find a basis for the null space of the matrix
 \[
 \mathbf{A} = \begin{pmatrix} 2 & 4 & 1 & 3 \\ -1 & -2 & 6 & 5 \\ 1 & 2 & -3 & 2 \end{pmatrix}
 \]
-
 \end{example}
 
 \begin{solution}
@@ -5912,34 +5607,25 @@ In addition, any linear combination of the basis is also in the null space
 \end{solution}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-143}{}\label{thm:unlabeled-div-143}
-
 The pivot columns of a matrix \(\mathbf{A}\) form a basis for the column space of \(\mathbf{A}\).
-
 \end{theorem}
 
 \textbf{Note:} Use the columns of \(\mathbf{A}\), not the columns of the matrix in echelon form.
 
 \begin{proof}
-
 We will provide just a sketch of the proof here. First, the column space (Definition \ref{def:column-space}) is the space defined by the linear combination of the columns of \(\mathbf{A}\). Thus, the span of any subset of the vectors that make up the columns of \(\mathbf{A}\) must, by definition, be in the column space of \(\mathbf{A}\), because any linear combination of the subset of vectors is just a linear combination of the full set of vectors with the coefficients of the vectors in the subset with the same coefficients and the coefficients of the vectors not in the subset equal to 0. Thus, the span of the subset of the vectors is contained within the span of the columns of \(\mathbf{A}\), which is defined as the column space.
 
 Now, choose the subset of columns of \(\mathbf{A}\) that correspond to the pivot columns of the reduced row echelon form of \(\mathbf{A}\). If the span of the columns of \(\mathbf{A} = \mathcal{R}^p\), then 1) there must be \(p\) pivot columns in the reduced row echelon form of \(\mathbf{A}\) and 2) there are \(p\) vectors in the subset of vectors where the columns of \(\mathbf{A}\) are pivot columns. Thus, the subset of vectors spans \(\mathcal{R}^p\) (the columnspace) and, by definition, there are \(p\) pivot columns (therefore there is a pivot in each column) so the subset of vectors defined by the pivot columns of \(\mathbf{A}\) are linearly independent.
-
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-144}{}\label{exm:unlabeled-div-144}
-
 Find a basis for the column space of the matrix
 \[
 \mathbf{A} = \begin{pmatrix} 3 & 1 & 2 & -3 \\ 4 & 1 & -3 & -2 \\ 4 & -1 & -3 & 1 \end{pmatrix}
 \]
-
 \end{example}
 
 \begin{solution}
-
 Given the matrix \(\mathbf{A}\), we first find its reduced row echelon form
 \[
 \begin{pmatrix} 1 & 0 & 0 & -11/34 \\ 0 & 1 & 0 & -3/2 \\ 0 & 0 & 1 & -9/34 \end{pmatrix}
@@ -5947,21 +5633,16 @@ Given the matrix \(\mathbf{A}\), we first find its reduced row echelon form
 which has pivots in the first three columns. Thus, the column space of \(\mathbf{A}\), which is defined as the linear combination of the vectors of \(\mathbf{A}\), spans \(\mathcal{R}^3\) because there are three pivot columns. The first three columns of \(\mathbf{A}\) are \(\begin{pmatrix} 3 \\ 4 \\ 4 \end{pmatrix}\), \(\begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}\), and \(\begin{pmatrix} 2 \\ -3 \\ -3 \end{pmatrix}\). Because these 3 vectors are linearly independent (they are each pivot columns in the reduced row echelon form of \(\mathbf{A}\)) and they span \(\mathcal{R}^3\), they form a basis for the column space of \(\mathbf{A}\).
 
 Thus, any vector in the columns space of \(\mathbf{A}\) (for example, the fourth column of \(\mathbf{A}\)) can be written as a linear combination of the basis vectors of the columns space of \(\mathbf{A}\).
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-145}{}\label{exm:unlabeled-div-145}
-
 Find a basis for the column space of the matrix
 \[
 \begin{pmatrix} -4 & 1 \\ 8 & -2 \\ 6 & 3 \\ 9 & 7 \end{pmatrix}
 \]
-
 \end{example}
 
 \begin{solution}
-
 Given the matrix \(\mathbf{A}\), we first find its reduced row echelon form
 \[
 \begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 0 & 0 \\ 0 & 0 \end{pmatrix}
@@ -5969,7 +5650,6 @@ Given the matrix \(\mathbf{A}\), we first find its reduced row echelon form
 which has pivots in the first two columns. Thus, the column space of \(\mathbf{A}\), which is defined as the linear combination of the vectors of \(\mathbf{A}\), spans \(\mathcal{R}^2\) because there are two pivot columns. The first two columns of \(\mathbf{A}\) are \(\begin{pmatrix} -4 \\ 8 \\ 6 \\ 9 \end{pmatrix}\) and \(\begin{pmatrix} 1 \\ -2 \\ 3 \\ 7 \end{pmatrix}\). Because these 2 vectors are linearly independent (they are each pivot columns) and they span \(\mathcal{R}^2\), they form a basis for the column space of \(\mathbf{A}\).
 
 Note however, that the first two columns of the reduced row echelon form of \(\mathbf{A}\) (the vectors \(\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}\) and \(\begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}\)) do not form a basis for the column space of \(\mathbf{A}\). This can be seen because The first two columns of \(\mathbf{A}\) have non-zero entries in the 3rd and 4th elements.
-
 \end{solution}
 
 \hypertarget{dimension-and-rank}{%
@@ -5989,40 +5669,29 @@ Recall the idea of polynomials (e.g., a polynomial of order \(p\) is \(a_1x^p + 
 In the previous section, we extended this analogy to vector spaces using the concept of a minimal spanning set. Consider the basis \(\mathbf{b}_1, \ldots, \mathbf{b}_k\) for a subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) where span\(\{\mathbf{b}_1, \ldots, \mathbf{b}_k\} = \mathcal{H}\). Because the set \(\mathbf{b}_1, \ldots, \mathbf{b}_k\) is a basis, the set of vectors is linearly independent. Then, because the set \(\mathbf{b}_1, \ldots, \mathbf{b}_k\) is a basis, we have the following result.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-146}{}\label{thm:unlabeled-div-146}
-
 For each vector \(\mathbf{a}\) in the subspace \(\mathcal{H}\) of \(\mathcal{R}^n\), and a basis \(\mathbf{b}_1, \ldots, \mathbf{b}_k\), there is a unique set of coefficients \(x_1, \ldots, x_k\) such that
 \[
 \begin{aligned}
 \mathbf{a} & = x_1 \mathbf{b}_1 + \cdots + x_k \mathbf{b}_k
 \end{aligned}
 \]
-
 \end{theorem}
 
 \begin{proof}
-
 In class: assume contradiction that there are two ways \(x_1, \ldots, x_k\) and \(y_1, \ldots, y_k\)\ldots{} Show that this violates the assumption of linear dependence.
-
 \end{proof}
 
 \begin{definition}
-\protect\hypertarget{def:coordinates}{}\label{def:coordinates}
-
-Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}\) be a basis for a subspace \(\mathcal{H}\) of \(\mathcal{R}^n\). Then, for each \(\mathbf{a} \in \mathcal{H}\), the \textbf{coordinates} of \(\mathbf{a}\) with respect to the basis \(\mathcal{B}\) are the set of coefficients \(\{x_1, \ldots, x_k\}\) where
+\protect\hypertarget{def:coordinates}{}\label{def:coordinates}Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}\) be a basis for a subspace \(\mathcal{H}\) of \(\mathcal{R}^n\). Then, for each \(\mathbf{a} \in \mathcal{H}\), the \textbf{coordinates} of \(\mathbf{a}\) with respect to the basis \(\mathcal{B}\) are the set of coefficients \(\{x_1, \ldots, x_k\}\) where
 \[
 \begin{aligned}
 \mathbf{a} & = x_1 \mathbf{b}_1 + \cdots + x_k \mathbf{b}_k.
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-147}{}\label{exm:unlabeled-div-147}
-
 Let \(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix}, \mathbf{b}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}\) and \(\mathbf{a} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\). What are the coordinates of \(\mathbf{a}\) with respect to the basis \(\mathcal{B}\)?
-
 \end{example}
 
 \begin{solution}
@@ -6070,15 +5739,10 @@ In \texttt{R}, this can be done as
 \section{Dimension of a subspace}\label{dimension-of-a-subspace}}
 
 \begin{definition}
-\protect\hypertarget{def:dimension}{}\label{def:dimension}
-
-The \textbf{dimension} \(\operatorname{dim}(\mathcal{H})\) of a nonzero subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) is the number of (nonzero) vectors that make up a basis \(\mathcal{B}\) for \(\mathcal{H}\). The dimension of the subspace \(\mathcal{H} = \{\mathbf{0}\}\) that contains only the \(\mathbf{0}\) vectors is defined as 0.
-
+\protect\hypertarget{def:dimension}{}\label{def:dimension}The \textbf{dimension} \(\operatorname{dim}(\mathcal{H})\) of a nonzero subspace \(\mathcal{H}\) of \(\mathcal{R}^n\) is the number of (nonzero) vectors that make up a basis \(\mathcal{B}\) for \(\mathcal{H}\). The dimension of the subspace \(\mathcal{H} = \{\mathbf{0}\}\) that contains only the \(\mathbf{0}\) vectors is defined as 0.
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-148}{}\label{exm:unlabeled-div-148}
-
 Note that under this definition, the basis \(\mathcal{B}\) is not unique. For example, the following bases for the 3-dimensional subspace \(\mathcal{H}\) of \(\mathcal{R}^3\) both have three linearly independent vectors.
 
 \[
@@ -6088,7 +5752,6 @@ Note that under this definition, the basis \(\mathcal{B}\) is not unique. For ex
 \]
 
 Let \(\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}\). What are the coordinates of \(\mathbf{x}\) with respect to \(\mathcal{B}_1\) and \(\mathcal{B}_2\)?
-
 \end{example}
 
 \begin{solution}
@@ -6246,8 +5909,6 @@ which gives the coordinates
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-149}{}\label{exm:unlabeled-div-149}
-
 Also note that if two subspaces \(\mathcal{H}_1\) and \(\mathcal{H}_2\) have the same dimension (i.e., dim(\(\mathcal{H}_1\)) = dim(\(\mathcal{H}_2\)) = \(p\)), this does not mean that these are the same subspaces. For example, Let \(\mathcal{H}_1\) and \(\mathcal{H}_2\) be subspaces of \(\mathcal{R}^3\) of dimension 2 with respective bases
 \[
 \begin{aligned}
@@ -6256,27 +5917,22 @@ Also note that if two subspaces \(\mathcal{H}_1\) and \(\mathcal{H}_2\) have the
 \]
 
 Note that the subspace defined by the span of the basis vectors in \(\mathcal{B}_1\) is a plane in the x-y axes and the subspace defined by the span of the basis vectors in \(\mathcal{B}_2\) is a plane in the x-z axes.
-
 \end{example}
 
 \begin{exercise}
-\protect\hypertarget{exr:unnamed-chunk-143}{}{\label{exr:unnamed-chunk-143} }What is the dimension of a basis for \(\mathcal{R}^n\)?
+What is the dimension of a basis for \(\mathcal{R}^n\)?
 \end{exercise}
 
 \hypertarget{rank}{%
 \section{Rank}\label{rank}}
 
 \begin{definition}
-\protect\hypertarget{def:rank}{}\label{def:rank}
-
-The \textbf{rank} of a matrix \(\mathbf{A}\), denoted as \(\operatorname{rank}(\mathbf{A})\), is the dimension of the column space of \(\mathcal{A}\).
-
+\protect\hypertarget{def:rank}{}\label{def:rank}The \textbf{rank} of a matrix \(\mathbf{A}\), denoted as \(\operatorname{rank}(\mathbf{A})\), is the dimension of the column space of \(\mathcal{A}\).
 \end{definition}
 
 Recall that the pivot columns of \(\mathbf{A}\) form a basis for the column space of \(\mathbf{A}\). Hence, the number of pivot columns in the matrix \(\mathbf{A}\) is the rank of the matrix \(\mathbf{A}\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-150}{}\label{exm:unlabeled-div-150}
 
 Determine the rank of the following matrices
 
@@ -6309,22 +5965,16 @@ Using Definition (\ref{def:rank}), the rank of \(\mathbf{A}\) is equal to the di
 \end{solution}
 
 \begin{theorem}[The Rank Theorem]
-\protect\hypertarget{thm:unlabeled-div-151}{}\label{thm:unlabeled-div-151}
-
 If a matrix \(\mathbf{A}\) has \(n\) columns, then \(\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n\)
-
 \end{theorem}
 
 \begin{proof}
-
 The rank(\(\mathbf{A}\)) is number of linearly independent columns. The dimension for the null(\(\mathbf{A}\)) is the number of linearly dependent columns of \(\mathbf{A}\) (non-trivial solutions to \(\mathbf{A}\mathbf{x}=\mathbf{0}\)).
-
 \end{proof}
 
 The following theorem states that any \(p\) vectors in \(\mathcal{R}^p\) that are linearly independent must span \(\mathcal{R}^p\).
 
 \begin{theorem}[The Basis Theorem]
-\protect\hypertarget{thm:unlabeled-div-152}{}\label{thm:unlabeled-div-152}
 
 Let \(\mathcal{H}\) be a p-dimensional subspace of \(\mathcal{R}^n\).
 
@@ -6353,7 +6003,6 @@ We consider the two statements in the theorem above.
 \end{proof}
 
 \begin{theorem}[Invertible Matrix Theorem (again)]
-\protect\hypertarget{thm:unlabeled-div-153}{}\label{thm:unlabeled-div-153}
 
 Let \(\mathbf{A}\) be a \(n \times n\) matrix. Then, in addition to the current conditions from Theorem (\ref{thm:invertible-matrix}), the following statements are equivalent to \(\mathbf{A}\) being an invertible matrix:
 
@@ -6413,10 +6062,7 @@ The determinant \(\operatorname{det}(\mathbf{A})\) is a function of a square \(n
 The determinant is the unique function mapping square matrices to the real number line that satisfies the above definition.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-154}{}\label{exm:unlabeled-div-154}
-
 Let \(\mathbf{A} = \begin{pmatrix} 5 & 3 \\ 1 & -3 \end{pmatrix}\). Find \(\operatorname{det}(\mathbf{A})\).
-
 \end{example}
 
 \begin{solution}
@@ -6449,10 +6095,7 @@ Let's check our answer in R
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-155}{}\label{exm:unlabeled-div-155}
-
 Let \(\mathbf{A} = \begin{pmatrix} 2 & 0 \\ -3 & 5 \end{pmatrix}\). Find \(\operatorname{det}(\mathbf{A})\).
-
 \end{example}
 
 \begin{solution}
@@ -6488,23 +6131,15 @@ Let's check our answer in R
 \section{\texorpdfstring{Determinants of \(2 \times 2\) matrices}{Determinants of 2 \textbackslash times 2 matrices}}\label{determinants-of-2-times-2-matrices}}
 
 \begin{definition}
-\protect\hypertarget{def:det22}{}\label{def:det22}
-
-If \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) is a \(2 \times 2\) matrix, the determinant \(\operatorname{det}(\mathbf{A}) = ad - bc\)
-
+\protect\hypertarget{def:det22}{}\label{def:det22}If \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) is a \(2 \times 2\) matrix, the determinant \(\operatorname{det}(\mathbf{A}) = ad - bc\)
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-156}{}\label{exm:unlabeled-div-156}
-
 Let \(\mathbf{A} = \begin{pmatrix} 5 & 3 \\ 1 & -3 \end{pmatrix}\). What is \(\det(\mathbf{A})\)?
-
 \end{example}
 
 \begin{solution}
-
 Using Definition (\ref{def:det22}), the determinant of \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) is \(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)
-
 \end{solution}
 
 \hypertarget{determinants-of-n-times-n-matrices}{%
@@ -6549,7 +6184,6 @@ Note: The leading term in the cofactor definition \(\mathbf(-1)^{i + j}\) define
 \]
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-157}{}\label{exm:unlabeled-div-157}
 
 Let \(\mathbf{A} = \begin{pmatrix} 1 & -3 & 1 \\ 4 & 2 & -3 \\ 7 & 4 & 7 \end{pmatrix}\).
 
@@ -6629,23 +6263,17 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix with \(ij\)th elements \(a_{ij}\)
 \end{theorem}
 
 \begin{proof}
-
 This is quite complex. For those interested, an example is available \href{https://textbooks.math.gatech.edu/ila/determinants-cofactors.html}{here}
-
 \end{proof}
 
 \textbf{Note:}
 The above theorem states that there are actually \(2n\) ways to calculate the determinant--one for each row and column of \(\mathbf{A}\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-158}{}\label{exm:unlabeled-div-158}
-
 Use the minor/cofactor definition to calculate the determinant of the \(3 \times 3\) matrix \(\mathbf{A} = \begin{pmatrix} 5 & 0 & 2 \\ 1 & 3 & 3 \\ 2 & -4 & 1 \end{pmatrix}\)
-
 \end{example}
 
 \begin{solution}
-
 The determinant of \(\mathbf{A}\) can be found by using Theorem (\ref{thm:cofactor-expansion}) by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is
 \[
 \begin{aligned}
@@ -6681,18 +6309,13 @@ Combining these, the determinant of \(\mathbf{A}\) using the cofactor expansion 
 & = 55
 \end{aligned}
 \]
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-159}{}\label{exm:unlabeled-div-159}
-
 Use the minor/cofactor definition to calculate the determinant of the \(3 \times 3\) matrix \(\mathbf{A} = \begin{pmatrix} 2 & 4 & -1 \\ -3 & 0 & 2 \\ 2 & 0 & 4 \end{pmatrix}\)
-
 \end{example}
 
 \begin{solution}
-
 The determinant of \(\mathbf{A}\) can be found by using Theorem (\ref{thm:cofactor-expansion}) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is
 \[
 \begin{aligned}
@@ -6717,18 +6340,13 @@ Thus, the determinant of \(\mathbf{A}\) using the cofactor expansion is
 & = 64
 \end{aligned}
 \]
-
 \end{solution}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-160}{}\label{exm:unlabeled-div-160}
-
 Let \(\mathbf{A}\) be a \(n \times n\) matrix that has all zero entries for the \(j\)th row. Find \(\det(\mathbf{A})\)
-
 \end{example}
 
 \begin{solution}
-
 Using the cofactor expansion theorem (Theorem (\ref{thm:cofactor-expansion})), expand the determinant along the \(j\)th row. Then, because all entries of the \(j\)th row of \(\mathbf{A}\) are zero, this gives
 \[
 \begin{aligned}
@@ -6737,40 +6355,28 @@ Using the cofactor expansion theorem (Theorem (\ref{thm:cofactor-expansion})), e
 & = 0
 \end{aligned}
 \]
-
 \end{solution}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-161}{}\label{thm:unlabeled-div-161}
-
 The determinant of a matrix \(\mathbf{A}\) is equal to the determinant of its transpose \(\mathbf{A}'\). In other words, \(\det(\mathbf{A}) = \det(\mathbf{A}')\)
-
 \end{theorem}
 
 \begin{proof}
-
 Follows directly from cofactor expansion theorem. The expansion along a given row/column of \(\mathbf{A}\) is equivalent to expansion along the corresponding column/row of \(\mathbf{A}'\) (notice the row/column for \(\mathbf{A}\) got swapped to column/row for \(\mathbf{A}'\)).
-
 \end{proof}
 
 \hypertarget{properties-of-determinants}{%
 \section{Properties of determinants}\label{properties-of-determinants}}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-162}{}\label{thm:unlabeled-div-162}
-
 A \(n \times n\) square matrix \(\mathbf{A}\) is invertible if and only if \(\det(\mathbf{A}) \neq 0\)
-
 \end{theorem}
 
 \begin{proof}
-
 From the invertible matrix theorem (Theorem \ref{thm:invertible-matrix}), we know that the matrix \(\mathbf{A}\) is invertible if and only if every column of \(\mathbf{A}\) is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of \(\mathbf{A}\) are linearly independent and the matrix is invertible.
-
 \end{proof}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-163}{}\label{thm:unlabeled-div-163}
 
 If \(\mathbf{A}\) and \(\mathbf{B}\) are \(n \times n\) matrices, \(\mathbf{I}\) is an \(n \times n\) identity matrix, and \(c\) is a scalar, we have
 
@@ -6801,19 +6407,15 @@ If \(\mathbf{A}\) and \(\mathbf{B}\) are \(n \times n\) matrices, \(\mathbf{I}\)
 \end{itemize}
 
 \begin{theorem}[Cramer's Rule]
-\protect\hypertarget{thm:unlabeled-div-164}{}\label{thm:unlabeled-div-164}
-
 Let \(\mathbf{A}\) be a \(n \times n\) invertible matrix. Define \(\mathbf{A}_i(\mathbf{b})\) as the matrix \(\mathbf{A}\) with the \(i\)th column replace by the vector \(\mathbf{b}\). For example, \(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 & \cdots & \mathbf{a}_{i-1} & \mathbf{b} & \mathbf{a}_{i+1} & \cdots & \mathbf{a}_n \end{pmatrix}\). Then, for any \(\mathbf{b} \in \mathcal{R}^n\), the unique solution to \(\mathbf{A} \mathbf{x} = \mathbf{b}\) has entries given by
 \[
 \begin{aligned}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} & \mbox{ for } i = 1, 2, \ldots, n
 \end{aligned}
 \]
-
 \end{theorem}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-165}{}\label{exm:unlabeled-div-165}
 
 In Cramer's rule, why do we know
 
@@ -6837,29 +6439,22 @@ In Cramer's rule, why do we know
 \end{Shaded}
 
 \begin{definition}
-\protect\hypertarget{def:parallelpiped}{}\label{def:parallelpiped}
-
-The \textbf{parallelpiped} defined by \(n\) vectors \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n\) with coefficients \(x_1, x_2, \ldots, x_n\) is the subset
+\protect\hypertarget{def:parallelpiped}{}\label{def:parallelpiped}The \textbf{parallelpiped} defined by \(n\) vectors \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n \in \mathcal{R}^n\) with coefficients \(x_1, x_2, \ldots, x_n\) is the subset
 
 \[
 \begin{aligned}
 \mathcal{P} = \{x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n | 0 \leq x_1, x_2, \ldots, x_n \leq 1 \}
 \end{aligned}
 \]
-
 \end{definition}
 
 The determinant is a function that takes the vectors \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\) that make up the columns of \(\mathbf{A}\) and returns the volume of the parallelpiped \(\mathcal{P}\) from Definition (\ref{def:parallelpiped})
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-166}{}\label{exm:unlabeled-div-166}
-
 The unit cube: in class--use standard vectors \(\mathbf{e}_1, \mathbf{e}_2\), and \(\mathbf{e}_3\)
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-167}{}\label{exm:unlabeled-div-167}
 
 parallelograms in \(\mathcal{R}^2\): the unit square
 
@@ -6880,7 +6475,7 @@ parallelograms in \(\mathcal{R}^2\): the unit square
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-159-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-156-1.pdf}
 
 Which implies that if \(\mathbf{A} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\) has \(\det(\mathbf{A}) = 1\) because \(\mathbf{A} = \mathbf{I}\) the identity matrix.
 
@@ -6897,7 +6492,6 @@ Which implies that if \(\mathbf{A} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-168}{}\label{exm:unlabeled-div-168}
 
 parallelograms in \(\mathcal{R}^2\): A larger square
 
@@ -6918,7 +6512,7 @@ parallelograms in \(\mathcal{R}^2\): A larger square
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-161-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-158-1.pdf}
 
 Which implies that if \(\mathbf{A} = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}\) has \(\det(\mathbf{A}) = 4\) because \(\mathbf{A} = 2 \mathbf{I}\) and the rule is for a constant \(c, \det(c\mathbf{A}) = c^n \det(\mathbf{A})\)
 
@@ -6946,8 +6540,6 @@ The Shiny app below allows you to plot the vector for any \((x, y)\) pair of you
 \end{Shaded}
 
 \begin{theorem}[Determinants and Volume]
-\protect\hypertarget{thm:unlabeled-div-169}{}\label{thm:unlabeled-div-169}
-
 Let \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\) be vectors in \(\mathcal{R}^n\), let \(\mathcal{P}\) be the parallelpiped determined by these vectors, and let \(\mathbf{A}\) be the matrix with columns \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\). Then, the absolute value of the determinant of \(\mathbf{A}\) is the volume of the parallelpiped \(\mathcal{P}\):
 
 \[
@@ -6955,11 +6547,9 @@ Let \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_n\) be vectors in \(\mathca
 |\det(\mathbf{A})| = \operatorname{volume}(\mathcal{P})
 \end{aligned}
 \]
-
 \end{theorem}
 
 \begin{proof}
-
 Recall the 4 defining properties (Definition \ref{def:determinant}) that characterize the determinant. These properties also characterize the absolute value of the determinant.
 
 From the 4 defining properties, the absolute value of the determinant \(|\det|\) is a function on square \(n \times n\) matrices that satisfies the properties
@@ -6997,37 +6587,25 @@ Because the absolute value of the determinant \(|\det|\) is the only function th
 vol(\mathcal{P}_A) = |\det(\mathbf{A})|
 \end{aligned}
 \]
-
 \end{proof}
 
 \textbf{Note:} Because \(\det(\mathbf{A}) = \det(\mathbf{A}')\), the absolute value of the determinant is equal to the volume of the parallelpiped defined by the columns of \(\mathbf{A}\) (we could just have easily done all the calculations on the columns of \(\mathbf{A}\) as the rows of \(\mathbf{A}\)).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-170}{}\label{exm:unlabeled-div-170}
-
 1 by 1 matrix \(a\) (length) has \(\det(a) = a\)
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-171}{}\label{exm:unlabeled-div-171}
-
 2 by 2 matrix \(\begin{pmatrix} a & c \\ b & d \end{pmatrix}\)
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-172}{}\label{exm:unlabeled-div-172}
-
 Find the area of a parallelogram with sides defined by the vectors \(\begin{pmatrix} 2 \\ 4 \end{pmatrix}\) and \(\begin{pmatrix} -1 \\ 2 \end{pmatrix}\)
-
 \end{example}
 
 area of a triangle -- choose two sides and find area of parallelogram and divide by 2
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-173}{}\label{exm:unlabeled-div-173}
-
 Recall that in data science, a probability distribution is function that has volume under the surface of one. For common distributions, particularly the normal/Gaussian distribution, the determinant is the factor that scales the function so that the volume under the surface is one.
 
 The vector \(\mathbf{y}\) is said to have a multivariate normal distribution with mean \(\boldsymbol{\mu}\) and covariance matrix \(\boldsymbol{\Sigma}\) if the probability density function of \(\mathbf{y}\) is
@@ -7051,24 +6629,17 @@ which implies that
 \]
 
 In probability and statistics, the denominator is known as the \href{https://en.wikipedia.org/wiki/Normalizing_constant}{``normalizing constant.''}
-
 \end{example}
 
 \hypertarget{volumes-of-parallelpipeds}{%
 \section{Volumes of Parallelpipeds}\label{volumes-of-parallelpipeds}}
 
 \begin{proposition}
-\protect\hypertarget{prp:unlabeled-div-174}{}\label{prp:unlabeled-div-174}
-
 Let \(\mathbf{a}_1\) and \(\mathbf{a}_2\) be nonzero vectors. Then, for any scalar \(c\), the area of the parallelpiped defined by \(\mathbf{a}_1\) and \(\mathbf{a}_2\) is the same as the area of the parallelpiped defined by the vectors \(\mathbf{a}_1\) and \(\mathbf{a}_2 + c \mathbf{a}_1\) (an elementary column operation).
-
 \end{proposition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-175}{}\label{exm:unlabeled-div-175}
-
 Draw a parallelpiped in class. Recall that areas of a parallelpiped are defined (in 2 dimensions) as the length of the base times the height perpindicular to the base. In 3 dimensions, the volume of a parallelpiped is the base times the width (the area of the base) times the height.
-
 \end{example}
 
 \hypertarget{volumes-of-linear-transformations}{%
@@ -7077,10 +6648,7 @@ Draw a parallelpiped in class. Recall that areas of a parallelpiped are defined 
 Recall linear transformations \(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\) (Section \ref{linear-transformations}) where for any \(\mathbf{x} \in \mathcal{R}^n\) (the domain), \(T(\mathbf{x}) = \mathbf{A} \mathbf{x} \in \mathcal{R}^n\) (the codomain).
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-176}{}\label{thm:unlabeled-div-176}
-
 Let \(\mathcal{S}\) be a set in the domain that has a volume \(vol(\mathcal{S})\). Then, the volume of the image of the set under the transformation \(T(\mathcal{S})\) is \(vol(T(\mathcal{S})) = |\det(\mathbf{A})|vol(\mathcal{S})\)
-
 \end{theorem}
 
 \hypertarget{vector-spaces-and-subspaces}{%
@@ -7095,7 +6663,6 @@ Let \(\mathcal{S}\) be a set in the domain that has a volume \(vol(\mathcal{S})\
 Recall the definition of a subspace:
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-177}{}\label{def:unlabeled-div-177}
 
 A subspace \(\mathcal{H}\) of a vector space \(\mathcal{V}\) is a subset of \(\mathcal{V}\) such that
 
@@ -7121,8 +6688,6 @@ Also, recall the special subspaces of the column space and the null space.
 \subsection{Null space}\label{null-space}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-178}{}\label{def:unlabeled-div-178}
-
 The null space null(\(\mathbf{A}\)) of an \(m \times n\) \(\mathbf{A}\) is the set of all solutions of the homogeneous equation \(\mathbf{A} \mathbf{x} = \mathbf{0}\)
 
 Another way to write null(\(\mathbf{A}\)) is
@@ -7131,18 +6696,13 @@ Another way to write null(\(\mathbf{A}\)) is
 \mbox{null}(\mathbf{A}) = \{\mathbf{x} : \mathbf{x} \in \mathcal{R}^n \mbox{ and } \mathbf{A} \mathbf{x} = \mathbf{0} \}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-179}{}\label{thm:unlabeled-div-179}
-
 The null space of an \(m \times n\) matrix \(\mathbf{A}\) is a subspace of \(\mathcal{R}^n\).
-
 \end{theorem}
 
 \begin{proof}
-
 To show that the null space of \(\mathbf{A}\), denoted null(\(\mathbf{A})\), is a subspace we need to show the following
 
 \begin{enumerate}
@@ -7168,13 +6728,11 @@ The null space of \(\mathbf{A}\) is defined as the set of vectors \(\mathbf{x}\)
 \end{enumerate}
 
 Because the three requirements for a subspace are met, this gives us that the null space of \(\mathbf{A}\) is a subspace.
-
 \end{proof}
 
 As a consequence, there will exist a set of vectors that span the null space null(\(\mathbf{A}\)). However, the null space of \(\mathbf{A}\) is defined implicitly. This means that the null space of \(\mathbf{A}\) is not obvious given the vectors of \(\mathbf{A}\) and must be checked/calculated.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-181}{}\label{exm:unlabeled-div-181}
 
 \begin{itemize}
 \tightlist
@@ -7232,7 +6790,6 @@ Find a spanning set for null(\(\mathbf{A}\)) where
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-182}{}\label{exm:unlabeled-div-182}
 
 \begin{itemize}
 \tightlist
@@ -7247,8 +6804,6 @@ Find a spanning set for null(\(\mathbf{A}\)) where
 \subsection{Column space}\label{column-space}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-183}{}\label{def:unlabeled-div-183}
-
 The columns space col(\(\mathbf{A}\)) of an \(m \times n\) \(\mathbf{A}\) is the set of all linear combinations of the columns of \(\mathbf{A}\).
 
 If \(\{ \mathbf{a}_1, \ldots, \mathbf{a}_n\}\) are the columns of \(\mathbf{A}\), then
@@ -7263,14 +6818,10 @@ this can be written in set notation as
 \mbox{col}(\mathbf{A}) = \{ \mathbf{b} : \mathbf{A} \mathbf{x} = \mathbf{b} \mbox{ for some } \mathbf{x} \in \mathcal{R}^n \}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-184}{}\label{thm:unlabeled-div-184}
-
 The column space of an \(m \times n\) matrix \(\mathbf{A}\) is a subspace of \(\mathcal{R}^n\).
-
 \end{theorem}
 
 \begin{proof}
@@ -7291,7 +6842,6 @@ Do in class
 Compared to the null space, the column space is defined explicitly--it is the span of the columns of \(\mathbf{A}\). The definition of the column space results in the fact that col(\(\mathbf{A}\)) is the range of the linear transformation \(\mathbf{x} \rightarrow \mathbf{A} \mathbf{x}\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-186}{}\label{exm:unlabeled-div-186}
 
 \begin{itemize}
 \tightlist
@@ -7334,7 +6884,6 @@ x_1 \mathbf{v}_1 + \cdots + x_n \mathbf{v}_n = \mathbf{0}
 is the trivial solution \(\mathbf{x} = \mathbf{0}\). In other words, it is not possible to write any of the vectors in the set \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_n\}\) as a linear combination of the other vectors.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-187}{}\label{def:unlabeled-div-187}
 
 Let \(\mathcal{H}\) be a subspace of a vector space \(\mathcal{V}\). Then, the set of vectors \(\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}\) is a \textbf{basis} for \(\mathcal{H}\) if
 
@@ -7353,7 +6902,6 @@ Let \(\mathcal{H}\) be a subspace of a vector space \(\mathcal{V}\). Then, the s
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-188}{}\label{exm:unlabeled-div-188}
 
 \begin{itemize}
 \tightlist
@@ -7364,7 +6912,6 @@ Let \(\mathcal{H}\) be a subspace of a vector space \(\mathcal{V}\). Then, the s
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-189}{}\label{exm:unlabeled-div-189}
 
 \begin{itemize}
 \tightlist
@@ -7375,7 +6922,6 @@ Let \(\mathcal{H}\) be a subspace of a vector space \(\mathcal{V}\). Then, the s
 \end{example}
 
 \begin{theorem}[The Spanning Set Theorem]
-\protect\hypertarget{thm:unlabeled-div-190}{}\label{thm:unlabeled-div-190}
 
 Let \(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) be vectors in the vector space \(\mathcal{V}\) and let \(\mathcal{H}\) = span(\(\mathbf{v}_1, \ldots, \mathbf{v}_n\))
 
@@ -7419,7 +6965,6 @@ Let \(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) be vectors in the v
 \section{\texorpdfstring{Bases for null(\(\mathbf{A}\)) and col(\(\mathbf{A}\))}{Bases for null(\textbackslash mathbf\{A\}) and col(\textbackslash mathbf\{A\})}}\label{bases-for-nullmathbfa-and-colmathbfa}}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-192}{}\label{exm:unlabeled-div-192}
 
 Find a basis for the col(\(\mathbf{A}\)) where
 
@@ -7446,7 +6991,6 @@ Find a basis for the col(\(\mathbf{A}\)) where
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-193}{}\label{exm:unlabeled-div-193}
 
 Find a basis for the null(\(\mathbf{A}\)) where
 
@@ -7486,8 +7030,6 @@ Find a basis for the null(\(\mathbf{A}\)) where
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-194}{}\label{exm:unlabeled-div-194}
-
 The matrix \(4 \times 5\) \(\mathbf{A}\) has columns given by the vectors \(\mathbf{a}_1, \ldots, \mathbf{a}_5\) and is row equivalent to the matrix
 \[
 \begin{aligned}
@@ -7495,7 +7037,6 @@ The matrix \(4 \times 5\) \(\mathbf{A}\) has columns given by the vectors \(\mat
 \end{aligned}
 \]
 What is a basis for col(\(\mathbf{A}\)) in terms of the vectors \(\mathbf{a}_1, \ldots, \mathbf{a}_5\)
-
 \end{example}
 
 \begin{itemize}
@@ -7505,7 +7046,6 @@ What is a basis for col(\(\mathbf{A}\)) in terms of the vectors \(\mathbf{a}_1, 
 \end{itemize}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-195}{}\label{exm:unlabeled-div-195}
 
 The matrix \(\mathbf{A}\) is row equivalent to the matrix \(\mathbf{B}\)
 
@@ -7538,16 +7078,11 @@ The matrix \(\mathbf{A}\) is row equivalent to the matrix \(\mathbf{B}\)
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-196}{}\label{thm:unlabeled-div-196}
-
 The pivot columns of a matrix \(\mathbf{A}\) for a basis for col(\(\mathbf{A}\))
-
 \end{theorem}
 
 \begin{proof}
-
 sketch: \(\mathbf{B}\) rref of \(\mathbf{A}\), linearly independent columns of \(\mathbf{B}\) are same as linearly independent columns in \(\mathbf{A}\). Other (non-pviot) columns are linearly dependent. By spanning set theorem, non-pivot columns can be removed from the spanning set without changing the span, leaving only the pivot columns of \(\mathbf{A}\) as a basis for col(\$)
-
 \end{proof}
 
 \hypertarget{coordinate-systems-and-dimension}{%
@@ -7585,19 +7120,15 @@ However, using the concept of a basis for a subspace \(\mathcal{H}\) of some vec
 You might be wondering why we want to create different bases. The usual cartesian basis has been good enough for me so far (unless you have used polar coordinates). In data science, the data often live in a high dimensional space (i.e., there are a number of data variables). However, while the data might have many variables, some of these variables are partially dependent and thus the space in which the data are embedded might be well approximated using a subspace of the original variables which can increase computation speed (less computation with fewer variables -- recall from lab how the inverse of \(\mathbf{X}'\mathbf{X}\) took much much longer with larger numbers of variables). Thus, understanding different coordinate systems and how to change coordinate systems can lead to more efficient data representation and model fitting.
 
 \begin{theorem}[The unique representation Theorem]
-\protect\hypertarget{thm:unlabeled-div-198}{}\label{thm:unlabeled-div-198}
-
 Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\) be a basis for the vector space \(\mathcal{V}\). Then, for each \(\mathbf{x}\) in \(\mathcal{B}\), there exists a unique set of coefficients \(c_1, \ldots, c_n\) such that
 \[
 \begin{aligned}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
 \end{aligned}
 \]
-
 \end{theorem}
 
 \begin{proof}
-
 sketch: vectors of \(\mathcal{B}\) span \(\mathcal{V}\) so there exists a set of coefficienct \(c_1, \ldots, c_n\) such that
 \[
 \begin{aligned}
@@ -7617,33 +7148,23 @@ Subtract these two equations to get
 \end{aligned}
 \]
 Because \(\mathcal{B}\) is linearly independent by definition, all the weights in the equation above must be 0 (linear independence means the only solution to \(\mathbf{A}\mathbf{x} = \mathbf{0}\) is the trivial solution). Therefore \(c_i = d_i\) for \(i = 1, \ldots, n\).
-
 \end{proof}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-200}{}\label{def:unlabeled-div-200}
-
 Suppose \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\) be a basis for the vector space \(\mathcal{V}\) and \(\mathbf{x} \in \mathcal{V}\). The coordinates of \(\mathbf{x}\) with respect to \(\mathcal{B}\) are the coefficients \(c_1, \ldots, c_n\) such that
 \[
 \begin{aligned}
 \mathbf{x} = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-201}{}\label{exm:unlabeled-div-201}
-
 In class using standard basis in 2-dimensions and vector \(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-202}{}\label{exm:unlabeled-div-202}
-
 In class using basis in 2-dimensions \(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\) and \(b_2 = \begin{pmatrix} 0.5 \\ 1 \end{pmatrix}\) and vector \(\mathbf{x} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}\)
-
 \end{example}
 
 \begin{Shaded}
@@ -7660,7 +7181,7 @@ In class using basis in 2-dimensions \(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-173-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-170-1.pdf}
 
 \hypertarget{coordinates-in-mathcalrn}{%
 \section{\texorpdfstring{Coordinates in \(\mathcal{R}^n\)}{Coordinates in \textbackslash mathcal\{R\}\^{}n}}\label{coordinates-in-mathcalrn}}
@@ -7682,10 +7203,7 @@ The matrix \(\mathbf{P}_B\) is called the \textbf{change-of-coordinates matrix} 
 \]
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-203}{}\label{thm:unlabeled-div-203}
-
 Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\) be a basis for the vector space \(\mathcal{V}\). Then, the coordinate mapping \(\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}\) is a one-to-one and onto transformation from \(\mathcal{V}\) to \(\mathcal{R}^n\)
-
 \end{theorem}
 
 \begin{proof}
@@ -7738,10 +7256,7 @@ which preserves scalar multiplication.
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-205}{}\label{exm:unlabeled-div-205}
-
 in class--Give basis in \(\mathcal{R}^4\), find coefficients with respect to this basis for the vector \(\mathbf{x}\)
-
 \end{example}
 
 \hypertarget{dimension-of-a-vector-space}{%
@@ -7750,14 +7265,10 @@ in class--Give basis in \(\mathcal{R}^4\), find coefficients with respect to thi
 In some sense, we already know about the dimension of a vector space through the concept of a span. The span of a set of vectors defines the dimension of the vector space.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-206}{}\label{thm:unlabeled-div-206}
-
 In a vector space \(\mathcal{V}\) with basis \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\), any set in \(\mathcal{V}\) containing more than \(n\) vectors must be linearly dependent.
-
 \end{theorem}
 
 \begin{proof}
-
 Let \(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\) be a set of vectors in \(\mathcal{V}\) with \(p > n\). The coordinate vectors \(\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}\) form a linearly dependent set in \(\mathcal{R}^n\) because there are more vectors (\(p\)) than entries (\(n\)) in each vector. Thus, there exist scalars \(c_1, \ldots, c_p\), some nonzero, such that
 \[
 \begin{aligned}
@@ -7770,35 +7281,25 @@ which by linearity implies
 \mathbf{P}_B (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
 \end{aligned}
 \]
-
 \end{proof}
 
 Because the matrix \(\mathbf{P}_{B}\) is a \(n \times n\) matrix with n linearly independent columns, the only way the equation above can equal \(\mathbf{0}\) is if the vector \(c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}\) (by the invertible matrix theorem). Therefore, the set of vectors \(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\) is linearly dependent because there are coefficients that allow the vectors to sum to \(\mathbf{0}\). Thus, we know that for a vector space \(\mathcal{V}\) that has a basis \({\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}}\) that consists on \(n\) vectors, then every linearly independent set of vectors in \(\mathcal{V}\) contains at most \(n\) vectors.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-208}{}\label{thm:unlabeled-div-208}
-
 If a vector space \({\mathcal{V}}\) has a basis with \(n\) vectors, then every other basis of \({\mathcal{V}}\) must also contain exactly \(n\) vectors.
-
 \end{theorem}
 
 \begin{proof}
-
 Let \(\mathcal{B}_1\) be a basis of \({\mathcal{V}}\) containing \(n\) vectors and let \(\mathcal{B}_2\) be any other basis of \({\mathcal{V}}\). Because \(\mathcal{B}_1\) and \(\mathcal{B}_2\) are both bases, they both contain sets of linearly independent vectors. As such, the previous theorem states that each of these bases contain at most \(n\) vectors (otherwise the sets wouldn't be linearly independent). Because \(\mathcal{B}_2\) is a basis and the basis \(\mathcal{B}_1\) contains \(n\) vectors, \(\mathcal{B}_2\) must contain at least \(n\) vectors. These results combined are only satisfied when \(\mathcal{B}_2\) contains \(n\) vectors.
-
 \end{proof}
 
 Like the span defined by the columns of a matrix \(\mathbf{A}\), there is an abstract concept called dimension which measures the ``size'' of a vector space.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-210}{}\label{def:unlabeled-div-210}
-
 If \({\mathcal{V}}\) is spanned by a finite set of vectors, then \({\mathcal{V}}\) is said to be finite dimensional. If \({\mathcal{V}}\) is not spanned by a finite set of vectors, \({\mathcal{V}}\) is said to be infinite dimensional. The smallest set of vectors that spans \({\mathcal{V}}\) is a basis for \({\mathcal{V}}\) and the number of vectors in this basis is called the \textbf{dimension} of \({\mathcal{V}}\) and written as dim(\({\mathcal{V}}\)). If \({\mathcal{V}}= \{\mathbf{0}\}\), then dim(\({\mathcal{V}}\)) is said to be 0.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-211}{}\label{exm:unlabeled-div-211}
 
 in class - span of 2 or 3 linearly independent vectors
 
@@ -7811,7 +7312,6 @@ in class - span of 2 or 3 linearly independent vectors
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-212}{}\label{exm:unlabeled-div-212}
 
 in class - span of 2 or 3 linearly dependent vectors
 
@@ -7827,24 +7327,18 @@ in class - span of 2 or 3 linearly dependent vectors
 \section{Subspaces of finite dimension}\label{subspaces-of-finite-dimension}}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-213}{}\label{thm:unlabeled-div-213}
-
 Let \(\mathcal{H}\) be a subspace of a finite-dimensional vector space \({\mathcal{V}}\). Then, any linearly independent set in \(\mathcal{H}\) can be expanded, if necessary to form a basis for \(\mathcal{H}\). As \(\mathcal{H}\) is a subspace of the finite-dimensional vector space \({\mathcal{V}}\), \(\mathcal{H}\) is a finite-dimensional vector space with
 \[
 \begin{aligned}
 \mbox{dim}(\mathcal{H}) \leq \mbox{dim}(\mathcal{V})
 \end{aligned}
 \]
-
 \end{theorem}
 
 For a vector space of known dimension \(p\), finding a basis can be simplified by finding a linearly independent set of size \(p\).
 
 \begin{theorem}[The Basis Theorem]
-\protect\hypertarget{thm:unlabeled-div-214}{}\label{thm:unlabeled-div-214}
-
 Let \(\mathcal{V}\) be a \(p\) dimensional vector space with \(p \geq 1\). Any linearly independent subset of \(p\) vectors is a basis for \(\mathcal{V}\). Equivalently, any set of \(p\) vectors that span \({\mathcal{V}}\) is automatically a basis for \(\mathcal{V}\).
-
 \end{theorem}
 
 \hypertarget{dimensions-of-nullmathbfa-and-colmathbfa}{%
@@ -7863,10 +7357,7 @@ The dimension of null(\(\mathbf{A}\)) are the number of free variables in \(\mat
 \end{Shaded}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-215}{}\label{def:unlabeled-div-215}
-
 Given an \(m \times n\) matrix \(\mathbf{A}\), the row space, row(\(\mathbf{A}\)) is the set of linearly independent rows of \(\mathbf{A}\). Thus, the row space is the span of the rows of \(\mathbf{A}\).
-
 \end{definition}
 
 Note: the row space of \(\mathbf{A}\) is the column space of the transposed matrix \(\mathcal{A}'\).
@@ -7877,66 +7368,44 @@ row(\mathbf{A}) = col(\mathbf{A}')
 \]
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-216}{}\label{exm:unlabeled-div-216}
-
 in class
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-217}{}\label{exm:unlabeled-div-217}
-
 Find basis for row space, column space, and null space of \(\mathbf{A}\)
-
 \end{example}
 
 \hypertarget{rank-2}{%
 \section{Rank}\label{rank-2}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-218}{}\label{def:unlabeled-div-218}
-
 The rank of a matrix \(\mathbf{A}\), rank(\(\mathbf{A}\)) is the dimension of the column space col(\(\mathbf{A}\))
-
 \end{definition}
 
 \begin{theorem}[The Rank Theorem]
-\protect\hypertarget{thm:unlabeled-div-219}{}\label{thm:unlabeled-div-219}
-
 Let \(\mathbf{A}\) be an \(m \times n\) matrix. Then the dimension of are equal. The rank of \(\mathbf{A}\) equals the number of pivot columns of \(\mathbf{A}\) and
 \[
 \begin{aligned}
 rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
 \end{aligned}
 \]
-
 \end{theorem}
 
 \begin{proof}
-
 rank(\(\mathbf{A}\)) is the number of pivot columns. dim(null(\(\mathbf{A}\))) is the number of non-pivot columns. The pivot columns + non-pivot columns are the number of columns.
-
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-221}{}\label{exm:unlabeled-div-221}
-
 in class
 
 \(\mathbf{A}\) is an \(m \times n\) matrix with dim(null(\(\mathbf{A}\))) = p.~What is rank(\(\mathbf{A}\))
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-222}{}\label{exm:unlabeled-div-222}
-
 \(\mathbf{A}\) is a 6x9 matrix. Is it possible for null(\(\mathbf{A}\)) = 2?
-
 \end{example}
 
 \begin{theorem}[Invertible Matrix Theorm + Rank]
-\protect\hypertarget{thm:unlabeled-div-223}{}\label{thm:unlabeled-div-223}
-
 This is an extension of the prior statement of the invertible matrix theorem \ref{thm:invertible-matrix}
 Let \(\mathbf{A}\) be an \(n \times n\) matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
 
@@ -7951,7 +7420,6 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix. Then the following statements ar
 17) null(\(\mathbf{A}\)) = \(\{\mathbf{0}\}\)
 
 18) dim(null(\(\mathbf{A}\))) = 0
-
 \end{theorem}
 
 \hypertarget{change-of-basis}{%
@@ -7996,17 +7464,11 @@ Now, we can combine these ideas. Given a vector \(\left[\mathbf{x}\right]_B\) wr
 \textbf{Draw diagram}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-224}{}\label{exm:unlabeled-div-224}
-
 2-d change of basis
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-225}{}\label{exm:unlabeled-div-225}
-
 3-d change of basis
-
 \end{example}
 
 \hypertarget{eigenvectors-and-eigenvalues}{%
@@ -8029,8 +7491,6 @@ Now, we can combine these ideas. Given a vector \(\left[\mathbf{x}\right]_B\) wr
 We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is ``data-driven'' called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-226}{}\label{def:unlabeled-div-226}
-
 An \textbf{eigenvector} of an \(n \times n\) matrix \(\mathbf{A}\) is a nonzero vector \(\mathbf{x}\) such that the matrix equation
 \[
 \begin{aligned}
@@ -8038,18 +7498,14 @@ An \textbf{eigenvector} of an \(n \times n\) matrix \(\mathbf{A}\) is a nonzero 
 \end{aligned}
 \]
 for some scalar \(\lambda\). If there exists some \(\lambda \neq 0\) (a non-trivial solutions), then \(\lambda\) is called an \textbf{eigenvalue} of \(\mathbf{A}\) corresponding to the eigenvector \(\mathbf{x}\).
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-227}{}\label{exm:unlabeled-div-227}
-
 It is easy to check if a vector is an eigenvalue:
 
 Let \(\mathbf{A} = \begin{pmatrix} 0 & 6 & 8 \\ 1/2 & 0 & 0 \\ 0 & 1/2 & 0 \end{pmatrix}\), \(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\), and \(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\). Determine if \(\mathbf{u}\) or \(\mathbf{v}\) are eigenvectors of \(\mathbf{A}\). If they are eigenvectors, what are the associated eigenvalues.
 
 Now, plot \(\mathbf{u}\), \(\mathbf{A} \mathbf{u}\), \(\mathbf{v}\), and \(\mathbf{A} \mathbf{v}\) to show this relationship geometrically.
-
 \end{example}
 
 An eigenvector is a (nonzero) vector \(\mathbf{x}\) that gets mapped to a scalar multiple of itself \(\lambda \mathbf{x}\) by the matrix transformation \(\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}\). As such, we say that \(\mathbf{x}\) and \(\mathbf{A} \mathbf{x}\) are collinear with the origin (\(\mathbf{0}\)) in the sense that these points lie on the same line that goes through the origin.
@@ -8057,22 +7513,15 @@ An eigenvector is a (nonzero) vector \(\mathbf{x}\) that gets mapped to a scalar
 \textbf{Note:} The matrix \(\mathbf{A}\) must be an \(n \times n\) square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-228}{}\label{exm:unlabeled-div-228}
-
 Example: reflection
 Draw images: \url{https://textbooks.math.gatech.edu/ila/eigenvectors.html}
-
 \end{example}
 
 \begin{theorem}[The distinct eigenvalues theorem]
-\protect\hypertarget{thm:distinct-eigenvalues}{}\label{thm:distinct-eigenvalues}
-
-Let \(\mathbf{v}_1, \ldots, \mathbf{v}_n\) be eigenvectors of a matrix \(\mathbf{A}\) and suppose the corresponding eigenvalues are \(\lambda_1, \lambda_2, \ldots, \lambda_n\) are all distinct (different values). Then, the set of vectors \(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) is linearly independent.
-
+\protect\hypertarget{thm:distinct-eigenvalues}{}\label{thm:distinct-eigenvalues}Let \(\mathbf{v}_1, \ldots, \mathbf{v}_n\) be eigenvectors of a matrix \(\mathbf{A}\) and suppose the corresponding eigenvalues are \(\lambda_1, \lambda_2, \ldots, \lambda_n\) are all distinct (different values). Then, the set of vectors \(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) is linearly independent.
 \end{theorem}
 
 \begin{proof}
-
 Suppose the set \(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) is linearly dependent. Then, there is some \(j\) such that \(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\). If we choose the first linearly dependent vector as \(j\), we know that the subset of vectors \(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\) is linearly independent and
 \[
 \begin{aligned}
@@ -8095,7 +7544,6 @@ Multiplying the first equation by \(\lambda_j\) and subtracting this from the se
 \end{aligned}
 \]
 Because \(\lambda_k \neq \lambda_j\) for all \(k < j\), the equation above implies a linear dependence among the set of vectors \(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\) which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector \(\mathbf{v}_j\) is violated and all the \(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) are linearly independent.
-
 \end{proof}
 
 \hypertarget{eigenspaces}{%
@@ -8117,7 +7565,6 @@ Therefore, the eigenvectors of \(\mathbf{A}\) associated with \(\lambda\), if th
 Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of \(\mathbf{A}\). All we have to do is solve the system of linear equations \(\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\) for a given \(\lambda\) (actually, for all \(\lambda\)s, which we can't do). If only there was some way to find eigenvalues \(\lambda\) (hint: there is and it is coming next chapter).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-230}{}\label{exm:unlabeled-div-230}
 
 Let \(\mathbf{A} = \begin{pmatrix} 3 & 6 & -8 \\ 0 & 0 & 6 \\ 0 & 0 & 2 \end{pmatrix}\). Then an eigenvector with eigenvector \(\lambda\) is a nontrival solution to
 \[
@@ -8166,16 +7613,12 @@ which has solution
 \end{example}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-231}{}\label{def:unlabeled-div-231}
-
 Let \(\mathbf{A}\) be an \(n \times n\) matrix and let \(\lambda\) be an eigenvalue of \(\mathbf{A}\). Then, the \textbf{\(\lambda\)-eigenspace} of \(\mathbf{A}\) is the solution set of the matrix equation \(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\) which is the subspace null(\(\mathbf{A} - \lambda \mathbf{I}\)).
-
 \end{definition}
 
 Therefore, the \(\lambda\)-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector \(\mathbf{0}\) and all the eigenvectors of \(\mathbf{A}\) with corresponding eigenvalue \(\lambda\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-232}{}\label{exm:unlabeled-div-232}
 
 For \(\lambda\) = -2, 1, and 3, decide if \(\lambda\) is a eigenvalue of the matrix \(\mathbf{A} = \begin{pmatrix} 2 & -4 \\ -1 & 1 \end{pmatrix}\) and if so, compute a basis for the \(\lambda\)-eigenspace.
 
@@ -8214,7 +7657,6 @@ Let \(\mathbf{A}\) be a \(n \times n\) matrix and let \(\lambda\) be a scalar.
 Note that this leads of a fact about the \(0\)-eigenspace.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-233}{}\label{def:unlabeled-div-233}
 
 Let \(\mathbf{A}\) be an \(n \times n\) matrix. Then
 
@@ -8229,13 +7671,10 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix. Then
 \end{definition}
 
 \begin{proof}
-
 0 is an eigenvalue of \(\mathbf{A}\) if and only if null\((\mathbf{A} - 0 \mathbf{I})\) = null\((\mathbf{A})\). By the invertible matrix theorem, \(\mathbf{A}\) is invertible if and only if null\((\mathbf{A}) = \{\mathbf{0}\}\) but we know that the 0-eigenspace of \(\mathbf{A}\) is not the trivial set \(\{\mathbf{0}\}\) because 0 is an eigenvalue.
-
 \end{proof}
 
 \begin{theorem}[Invertible Matrix Theorm + eigenspaces]
-\protect\hypertarget{thm:unlabeled-div-235}{}\label{thm:unlabeled-div-235}
 
 This is an extension of the prior statement of the invertible matrix theorem \ref{thm:invertible-matrix}
 Let \(\mathbf{A}\) be an \(n \times n\) matrix and \(T: \mathcal{R}^n \rightarrow \mathcal{R}^n\) be the linear transformation given by \(T(\mathbf{x}) = \mathbf{A}\mathbf{x}\). Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
@@ -8287,21 +7726,17 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix and \(T: \mathcal{R}^n \rightarro
 The characteristic equation/polynomial encodes information about the eigenvalues of the characteristic equation. In the previous chapter, we showed how we can decide if a scalar \(\lambda\) is an eigenvalue of a matrix and how to find the vectors associated with the eigenvalue. However, we did not learn how to find eigenvalues (other than to just randomly try \(\lambda\)). The characteristic equation/polynomial allows for determining the eigenvalues \(\lambda\).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-236}{}\label{def:unlabeled-div-236}
-
 Let \(\mathbf{A}\) be a \(n \times n\) matrix. The characteristic equation/polynomial of \(\mathbf{A}\) is the function \(f(\lambda)\) given by
 \[
 \begin{aligned}
 f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})
 \end{aligned}
 \]
-
 \end{definition}
 
 While not obvious, the function \(f(\lambda)\) is a polynomial of \(\lambda\) but requires computing the determinant of the matrix \(\mathbf{A} - \lambda \mathbf{I}\) which contains an unknown value \(\lambda\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-237}{}\label{exm:unlabeled-div-237}
 
 Find the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 3 & 5 \\ 2 & -1 \end{pmatrix}\)
 
@@ -8314,7 +7749,6 @@ Find the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 3 
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-238}{}\label{exm:unlabeled-div-238}
 
 Find the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 0 & 6 & 8 \\ \frac{1}{2} & 0 & 0 \\ 0 & \frac{1}{2} & 0 \end{pmatrix}\)
 
@@ -8329,10 +7763,7 @@ Find the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 0 
 Once the characteristic equation is defined, we can use the equation to solve for the eigenvalues.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-239}{}\label{thm:unlabeled-div-239}
-
 Let \(\mathbf{A}\) be a \(n \times n\) matrix and let \(f(\lambda) = det(\mathbf{A} - \lambda \mathbf{I})\) be a characteristic polynomial. Then, the number \(\lambda_0\) is an eigenvalue of \(\mathbf{A}\) if and only if \(f(\lambda_0) = 0\).
-
 \end{theorem}
 
 \begin{proof}
@@ -8357,7 +7788,6 @@ By the invertible matrix theorem, the matrix \((\mathbf{A} - \lambda_0 \mathbf{I
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-241}{}\label{exm:unlabeled-div-241}
 
 Using the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 3 & 5 \\ 2 & -1 \end{pmatrix}\), solve for the eigenvalues and find a basis for the \(\lambda\)-eigenspaces
 
@@ -8370,7 +7800,6 @@ Using the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 3
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-242}{}\label{exm:unlabeled-div-242}
 
 Using the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 0 & 6 & 8 \\ \frac{1}{2} & 0 & 0 \\ 0 & \frac{1}{2} & 0 \end{pmatrix}\), solve for the eigenvalues and find a basis for the \(\lambda\)-eigenspaces
 
@@ -8388,8 +7817,6 @@ Using the characteristic equation of the matrix \(\mathbf{A} = \begin{pmatrix} 0
 The idea behind similar matrices is to understand how the linear transformations implied by the transformation behave. Two matrices are similar if their transformation behavior (rotation, expansion/contraction, etc.) is the same but the coordinates on which the matrix operates are different.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-243}{}\label{def:unlabeled-div-243}
-
 The matrices \(\mathbf{A}\) and \(\mathbf{B}\) are said to be similar if there exists an invertible matrix \(\mathbf{P}\) where
 \[
 \begin{aligned}
@@ -8402,13 +7829,11 @@ or equivalently
 \mathbf{P}^{-1} \mathbf{A} \mathbf{P}=  \mathbf{B} 
 \end{aligned}
 \]
-
 \end{definition}
 
 Therefore, it is possible to change \(\mathbf{A}\) into \(\mathbf{B}\) with an invertible (one-to-one and onto) transformation.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-244}{}\label{exm:unlabeled-div-244}
 
 Consider the following example with matrices \(\mathbf{A}\), \(\mathbf{B}\), and \(\mathbf{P}\) defined as below:
 
@@ -8478,14 +7903,10 @@ Consider the following example with matrices \(\mathbf{A}\), \(\mathbf{B}\), and
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-245}{}\label{thm:unlabeled-div-245}
-
 If \(\mathbf{A}\) and \(\mathbf{B}\) are \(n \times n\) similar matrices, then \(\mathbf{A}\) and \(\mathbf{B}\) will have the same characteristic polynomial and therefore the same eigenvalues.
-
 \end{theorem}
 
 \begin{proof}
-
 If \(\mathbf{A}\) and \(\mathbf{B}\) are similar, then there exists an invertible matrix \(\mathbf{P}\) such that
 \[
 \begin{aligned}
@@ -8509,7 +7930,6 @@ det\left( \mathbf{A}  - \lambda \mathbf{I} \right) & = det\left( \mathbf{P} \lef
 \end{aligned}
 \]
 We know that \(det\left(\mathbf{P}^{-1} \right)\) = \(\frac{1}{det\left(\mathbf{P} \right)}\) (or, equivalently \(det\left(\mathbf{P} \right) det\left(\mathbf{P}^{-1} \right) = det\left(\mathbf{P} \mathbf{P}^{-1} \right) = det(\mathbf{I}) = 1\)), we have \(det\left( \mathbf{A} - \lambda \mathbf{I} \right) = det\left( \mathbf{B} - \lambda \mathbf{I} \right)\) so that \(\mathbf{A}\) and \(\mathbf{B}\) have the same characteristic polynomial (and the same eigenvalues).
-
 \end{proof}
 
 \hypertarget{the-geometric-interpetation-of-similar-matrices}{%
@@ -8531,8 +7951,6 @@ In general, similar matrices do similar things in different spaces (different sp
 \end{Shaded}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-247}{}\label{def:unlabeled-div-247}
-
 A \(n \times n\) matrix \(\mathbf{A}\) is \textbf{diagonalizable} if the matrix \(\mathbf{A}\) is similar to a diagonal matrix. This is equivalent to saying there exists some invertible \(n \times n\) matrix \(\mathbf{P}\) and diagonal matrix \(\mathbf{D}\) such that
 
 \[
@@ -8540,35 +7958,25 @@ A \(n \times n\) matrix \(\mathbf{A}\) is \textbf{diagonalizable} if the matrix 
 \mathbf{A} & = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-248}{}\label{exm:unlabeled-div-248}
-
 Any diagonal matrix \(\mathbf{D}\) is diagonalizable becuase it is self-similar.
-
 \end{example}
 
 \begin{theorem}[The Diagonalization Theorem]
-\protect\hypertarget{thm:diagonalization}{}\label{thm:diagonalization}
-
-A \(n \times n\) matrix \(\mathbf{A}\) is \textbf{diagonalizable} if and only if the matrix \(\mathbf{A}\) has \(n\) linearly independent eigenvectors.
+\protect\hypertarget{thm:diagonalization}{}\label{thm:diagonalization}A \(n \times n\) matrix \(\mathbf{A}\) is \textbf{diagonalizable} if and only if the matrix \(\mathbf{A}\) has \(n\) linearly independent eigenvectors.
 
 In addition, the \(n \times n\) matrix \(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\) with diagonal matrix \(\mathbf{D}\) if and only if the columns of \(\mathbf{P}\) are the lienarly independent eigenvectors of \(\mathbf{A}\). Then, the diagonal elements of \(\mathbf{D}\) are the eigenvalues of \(\mathbf{A}\) that correspond to the eigenvectors in \(\mathbf{P}\).
-
 \end{theorem}
 
 \begin{proof}
-
 This comes directly from Theorem \ref{thm:distinct-eigenvalues} where if a \(n \times n\) matrix has \(n\) distinct eigenvalues \(\lambda_1 \neq \lambda_2 \neq \cdots \neq \lambda_n\), the the corresponding eigenvalues \(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\) are linearly independent.
-
 \end{proof}
 
 This theorem implies that the matrix \(\mathbf{A}\) is diagonalizable if and only if the eigenvectors of \(\mathbf{A}\) form a basis for \(\mathcal{R}^n\). When this is the case, the set of eigenvectors is called an \textbf{eigenbasis}.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-250}{}\label{exm:unlabeled-div-250}
 
 Consider the following example of a diagonalizable matrix \(\mathbf{A}\)
 
@@ -8654,26 +8062,19 @@ Consider the following example of a diagonalizable matrix \(\mathbf{A}\)
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-251}{}\label{thm:unlabeled-div-251}
-
 Let \(\mathbf{A}\) be a \(n \times n\) diagonalizable matrix with \(\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}\). Then, the matrix power \(\mathbf{A}^p\) is
 \[
 \begin{aligned}
 \mathbf{A}^p = \mathbf{P} \mathbf{D}^p \mathbf{P}^{-1}
 \end{aligned}
 \]
-
 \end{theorem}
 
 \begin{proof}
-
 In class
-
 \end{proof}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-253}{}\label{exm:unlabeled-div-253}
-
 In this example, we apply the diagonalization theorem to the matrix \(\mathbf{A}\)
 
 Consider the matrix \(\mathbf{A} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}\) which has eigenvalues 1, 2, 3. Then the standard basis \(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\), \(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\), and \(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\) are corresponding eigenvectors (check the definition \(\mathbf{A} \lambda = \mathbf{v} \lambda\)) because
@@ -8700,7 +8101,6 @@ However, there is nothing in the diagonalization theorem that says that we must 
 \end{aligned}
 \]
 which implies that the matrices \(\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}\) and \(\begin{pmatrix} 3 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 1 \end{pmatrix}\) are similar to each other
-
 \end{example}
 
 \hypertarget{inner-product-length-and-orthogonality}{%
@@ -8721,8 +8121,6 @@ which implies that the matrices \(\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 
 \end{Shaded}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-254}{}\label{def:unlabeled-div-254}
-
 Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors in \(\mathcal{R}^n\). Then, the \textbf{inner product} of \(\mathbf{u}\) and \(\mathbf{v}\) is \(\mathbf{u}' \mathbf{v}\). The vectors \(\mathbf{u}\) and \(\mathbf{v}\) are \(n \times 1\) matrices where \(\mathbf{u}'\) is a \(1 \times n\) matrix and the inner product \(\mathbf{u}' \mathbf{v}\) is a scalar (\(1 \times 1\) matrix). The inner product is also sometimes called the dot product and written as \(\mathbf{u} \cdot \mathbf{v}\).
 
 If the vectors
@@ -8732,11 +8130,9 @@ If the vectors
 \end{aligned}
 \]
 then \(\mathbf{u}' \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n\)
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-255}{}\label{exm:unlabeled-div-255}
 
 Find the inner product \(\mathbf{u}'\mathbf{v}\) and \(\mathbf{v}'\mathbf{u}\) of
 \[
@@ -8802,7 +8198,6 @@ Find the inner product \(\mathbf{u}'\mathbf{v}\) and \(\mathbf{v}'\mathbf{u}\) o
 The properties of inner products are defined with the following theorem.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-256}{}\label{thm:unlabeled-div-256}
 
 Let \(\mathbf{u}\), \(\mathbf{v}\), and \(\mathbf{w}\) be vectors in \(\mathcal{R}^n\) and let \(c\) be a scalar. Then
 
@@ -8823,31 +8218,22 @@ Let \(\mathbf{u}\), \(\mathbf{v}\), and \(\mathbf{w}\) be vectors in \(\mathcal{
 Based on the theorem above, the inner product of a vector with itself (\(\mathbf{u}'\mathbf{u}\)) is strictly non-negative. Thus, we can define the length of the vector \(\mathbf{u}\) (also called the \textbf{norm} of the vector \(\mathbf{u}\)).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-257}{}\label{def:unlabeled-div-257}
-
 The length of a vector \(\mathbf{v} \in \mathcal{R}^n\), also called the vector \textbf{norm} \(\| \mathbf{v} \|\) is defined as
 \[
 \begin{aligned}
 \| \mathbf{v} \| & = \sqrt{\mathbf{v}'\mathbf{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-258}{}\label{exm:unlabeled-div-258}
-
 Let \(\mathbf{v} = \begin{pmatrix} a \\ b \end{pmatrix} \in \mathcal{R}^2\). Show that the definition of the norm satisfies the Pythagorean theorem.
-
 \end{example}
 
 Another property of the norm is how the norm changes based on scalar multiplication. Let \(\mathbf{v} \in \mathcal{R}^n\) be a vector and let \(c\) be a scalar. Then \(\|c \mathbf{v}\| = |c|\|\mathbf{v}\|\)
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-259}{}\label{def:unlabeled-div-259}
-
 A vector \(\mathbf{v} \in \mathcal{R}^n\) whose length/norm is 1 is called a \textbf{unit} vector. Any vector can be made into a unit vector through \textbf{normalization} by multiplying the vector \(\mathbf{v}\) by \(\frac{1}{\|\mathbf{v}\|}\) to get a unit vector \(\mathbf{u} = \frac{\mathbf{v}}{\|\mathbf{v}\|}\) in the same direction as \(\mathbf{v}\).
-
 \end{definition}
 
 \hypertarget{distance}{%
@@ -8856,8 +8242,6 @@ A vector \(\mathbf{v} \in \mathcal{R}^n\) whose length/norm is 1 is called a \te
 In two dimensions, the Euclidean distance between the points \((x_1, y_1)\) and \((x_2, y_2)\) is defined as \(\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\). In higher dimensions, a similar definition holds.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-260}{}\label{def:unlabeled-div-260}
-
 Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors in \(\mathcal{R}^n\). Then the distance \(dist(\mathbf{u}, \mathbf{v})\) between \(\mathbf{u}\) and \(\mathbf{v}\) is
 
 \[
@@ -8865,11 +8249,9 @@ Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors in \(\mathcal{R}^n\). Then the 
 dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-261}{}\label{exm:unlabeled-div-261}
 
 Distance between two 3-dimensional vectors
 
@@ -8893,15 +8275,12 @@ Distance between two 3-dimensional vectors
 The equivalent of perpendicular lines in \(\mathcal{R}^n\) are known as orthogonal vectors.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-262}{}\label{def:unlabeled-div-262}
-
 The two vectors \(\mathbf{u}\) and \(\mathbf{v}\) in \(\mathcal{R}^n\) are orthogonal if
 \[
 \begin{aligned}
 \mathbf{u}' \mathbf{v} = 0
 \end{aligned}
 \]
-
 \end{definition}
 
 \hypertarget{angles-between-vectors}{%
@@ -8922,7 +8301,6 @@ Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors \(\mathcal{R}^n\). Then, the an
 The set of vectors \(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) in \(\mathcal{R}^n\) is said to be an \textbf{orthogonal set} if every pair of vectors is orthogonal. In other words, for all \(i \neq j\), \(\mathbf{v}_i' \mathbf{v}_j = 0\). The set is called an \textbf{orthonormal set} if the set of vectors are orthogonal and for \(i = 1, \ldots, p\), each vector \(\mathbf{v}_i\) in the set has length \(\| \mathbf{v}_i \| = 1\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-263}{}\label{exm:unlabeled-div-263}
 
 Show the set of vectors \(\left\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \right\}\) is orthogonal
 
@@ -8937,14 +8315,10 @@ Show the set of vectors \(\left\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \en
 If the set of vectors \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) are an orthogonal set, then the set of vectors \(\left\{ \frac{\mathbf{v}_1}{\|\mathbf{v}_1\|}, \ldots, \frac{\mathbf{v}_p}{\|\mathbf{v}_p\|} \right\}\) is an orthonormal set. Note that for each \(i\), the length of the vector \(\frac{\mathbf{v}_i} {\|\mathbf{v}_i \|} = 1\)
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-264}{}\label{thm:unlabeled-div-264}
-
 Let the set \(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) be an orthogonal set of nonzero vectors in \(\mathcal{R}^n\). Then, the set of vectors in \(\mathcal{S}\) are linearly independent and therefore are a basis for the space spanned by \(\mathcal{S}\).
-
 \end{theorem}
 
 \begin{proof}
-
 Assume the set of vectors \(\mathbf{v}_1, \ldots, \mathbf{v}_p\) are linearly dependent. Then, there exist coefficients \(c_1, \ldots, c_p\) such that
 \[
 \begin{aligned}
@@ -8961,14 +8335,11 @@ Then, multiplying both equations on the left by \(\mathbf{v}_1'\) gives
 \end{aligned}
 \]
 which is only equal to 0 when \(c_1\) is equal to 0 because \(\mathbf{v}_1\) is a nonzero vector. The above left multiplication could be repeated for each vector \(\mathbf{v}_i\) which gives all \(c_i\) must equal 0. As the only solution to the starting equation has all 0 coefficients, the set of vectors \(\mathcal{S}\) must be linearly independent.
-
 \end{proof}
 
 A set of orthogonal vectors is called an \textbf{orthogonal basis}.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-266}{}\label{thm:unlabeled-div-266}
-
 Let \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) be an orthogonal basis of the subspace \(\mathcal{W}\) of \(\mathcal{R}^n\). Then for each \(\mathbf{x} \in \mathcal{W}\), the coefficients for the linear combination of basis vectors \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) for the vector \(\mathbf{x}\) are
 
 \[
@@ -8978,11 +8349,9 @@ Let \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) be an orthogonal basis of the s
 \end{aligned}
 \]
 where \(c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}\). In other words, the coordinates of the vector \(\mathbf{x}\) with respect to the orthogonal basis \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) are the linear projection of the vector \(\mathbf{x}\) on the respective vectors \(\mathbf{v}_j\).
-
 \end{theorem}
 
 \begin{proof}
-
 The orthogonality of the basis \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) gives
 \[
 \begin{aligned}
@@ -8991,7 +8360,6 @@ The orthogonality of the basis \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) give
 \end{aligned}
 \]
 Because we know that \(\mathbf{v}_j'\mathbf{v}_j\) is not zero (a vector can't be orthogonal to itself), we can divide the above equality by \(\mathbf{v}_j' \mathbf{v}_j\) and solve for \(c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}\)
-
 \end{proof}
 
 Thus, for a vector \(\mathbf{x}\) in the standard basis, the coordinates of \(\mathbf{x}\) with respect to an orthogonal basis can be easily calculated using dot products (rather than matrix inverses) which is an easier computation.
@@ -9002,8 +8370,6 @@ In fact, this is exactly the idea of using \textbf{least squares} estimation (li
 \section{Orthogonal projections}\label{orthogonal-projections}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-268}{}\label{def:unlabeled-div-268}
-
 Let \(\mathbf{x}\) be a vector in \(\mathcal{R}^n\) and let \(\mathcal{W}\) be a subspace of \(\mathcal{R}^n\). Then the vector \(\mathbf{x}\) can be written as the \textbf{orthogonal decomposition}
 \[
 \begin{aligned}
@@ -9011,7 +8377,6 @@ Let \(\mathbf{x}\) be a vector in \(\mathcal{R}^n\) and let \(\mathcal{W}\) be a
 \end{aligned}
 \]
 where \(\mathbf{x}_{\mathcal{W}}\) is the vector in \(\mathcal{W}\) that is closest to \(\mathbf{x}\) and is called the \textbf{orthogonal projection of \(\mathbf{x}\) onto \(\mathcal{W}\)} and \(\mathbf{x}_{\mathcal{W}^\perp}\) is the orthogonal projection of \(\mathbf{x}\) onto \(\mathcal{W}^{\perp}\), the subspace \(\mathcal{W}^\perp\) of \(\mathcal{R}^n\) that is complementary to \(\mathcal{W}\) and is called the \textbf{orthogonal complement}.
-
 \end{definition}
 
 \textbf{Draw picture in class - W is a plane, orthogonal projection of a vector onto the plane}
@@ -9019,8 +8384,6 @@ where \(\mathbf{x}_{\mathcal{W}}\) is the vector in \(\mathcal{W}\) that is clos
 This leads to the projection theorem that decomposes a vector \(\mathbf{x} \in \mathcal{R}^n\) into components that are
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-269}{}\label{thm:unlabeled-div-269}
-
 Let \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) be an orthogonal basis of the subspace \(\mathcal{W}\) of \(\mathcal{R}^n\). Then for each \(\mathbf{x} \in \mathcal{R}^n\), the orthogonal projection of \(\mathbf{x}\) onto \(\mathcal{W}\) is given by
 \[
 \begin{aligned}
@@ -9029,28 +8392,22 @@ Let \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) be an orthogonal basis of the s
 \end{aligned}
 \]
 where the coefficient \(c_j\) corresponding to the vector \(\mathbf{v}_j\) of the linear combination of vectors \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) is given by \(c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}\). In other words, the coordinates of the vector \(\mathbf{x}\) with respect to the orthogonal basis \(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\) are the linear projection of the vector \(\mathbf{x}\) on the respective vectors \(\mathbf{v}_j\).
-
 \end{theorem}
 
 You might be wondering what use orthogonal projections are. In fact, linear regression (and most common regression models) use orthogonal projections to fit a line (or surface) of best fit. This leads to the important theorem that allows us to project a vector \(\mathbf{y} \in \mathcal{R}^n\) onto the column space of a \(n \times p\) matrix \(\mathbf{X}\) (which is exactly the linear regression of \(\mathbf{y}\) onto \(\mathbf{X}\)).
 
 \begin{theorem}[Orthogonal Projection Theorem]
-\protect\hypertarget{thm:orthogonal-matrix-projection}{}\label{thm:orthogonal-matrix-projection}
-
-Let \(\mathbf{X}\) be a \(n \times p\) matrix, let \(\mathcal{W} =\) col(\(\mathbf{X}\)), and let \(\mathbf{y}\) be a vector in \(\mathcal{R}^n\). Then the matrix equation
+\protect\hypertarget{thm:orthogonal-matrix-projection}{}\label{thm:orthogonal-matrix-projection}Let \(\mathbf{X}\) be a \(n \times p\) matrix, let \(\mathcal{W} =\) col(\(\mathbf{X}\)), and let \(\mathbf{y}\) be a vector in \(\mathcal{R}^n\). Then the matrix equation
 \[
 \begin{aligned}
 \mathbf{X}'\mathbf{X} \boldsymbol{\beta} = \mathbf{X}' \mathbf{y}
 \end{aligned}
 \]
 with respect to the unknown coefficients \(\boldsymbol{\beta}\) is consistent and \(\mathbf{y}_{\mathcal{W}} = \mathbf{X}\boldsymbol{\beta}\) for any solution \(\boldsymbol{\beta}\).
-
 \end{theorem}
 
 \begin{proof}
-
 Show this in class
-
 \end{proof}
 
 In addition, if the columns of \(\mathbf{X}\) are linearly independent, then the coefficients \(\boldsymbol{\beta}\) are given by
@@ -9079,7 +8436,7 @@ Plotting this data shows the strong positive linear relationship
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-191-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-188-1.pdf}
 We can solve for the coefficients \texttt{beta} using the linear project theorem
 
 \begin{Shaded}
@@ -9108,7 +8465,7 @@ Plotting the projection \(\mathbf{y}_{\mathcal{W}}\) gives
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-194-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-191-1.pdf}
 The complement of the project (called the \textbf{residuals} in statistics) is given by \(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)
 
 \begin{Shaded}
@@ -9130,7 +8487,7 @@ and can be visualized as the orthogonal projection using segments
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-196-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-193-1.pdf}
 Recall that the orthogonal projection gives the ``closest'' vector \(\mathbf{y}_W\) to \(\mathbf{y}\) that is in the subspace \(\mathcal{W}\) that is the span of the column space of \(\mathbf{X}\). See \url{https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html} for an example.
 
 \hypertarget{graphs-and-limits}{%
@@ -9147,14 +8504,10 @@ Recall that the orthogonal projection gives the ``closest'' vector \(\mathbf{y}_
 Here we start a transition to topics in vector calculus. We will start with a discussion of functions of two variables (although the functions are not assumed to be linear). We define a function of two variables explicitly as \(z = f(x, y)\).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-271}{}\label{def:unlabeled-div-271}
-
 Like with linear functions, we can define the domain and range for general functions of two variables. A function \(f(x, y)\) assigns each point \((x, y)\) in some \textbf{domain} \(\mathcal{D}\) in \(\mathcal{R}^2\) to a unique number \(z\) in a subset of \(\mathcal{R}\). The set of inputs \(\mathcal{D}\) is called the \textbf{domain} of the function and the \textbf{range} is the set of real numbers \(z\) that are the output of the function over all the inputs in \(\mathcal{D}\)
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-272}{}\label{exm:unlabeled-div-272}
 
 Let \(f(x, y) = \sqrt{1 - x^2 - y^2}\).
 
@@ -9171,14 +8524,54 @@ Let \(f(x, y) = \sqrt{1 - x^2 - y^2}\).
 \section{Graphs and level curves}\label{graphs-and-level-curves}}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-273}{}\label{exm:unlabeled-div-273}
-
 The parabola
 
 Consider the function of two variables
 \[
 \begin{aligned}
 f(x, y) = x^2 + y^2
+\end{aligned}
+\]
+which defines the surface
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-195-1.pdf}
+The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{expand.grid}\NormalTok{(x, y)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Var1, }\DataTypeTok{y =}\NormalTok{ Var2) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{parabola}\NormalTok{(x, y)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{z =}\NormalTok{ z)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_contour}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{coord_fixed}\NormalTok{(}\DataTypeTok{ratio =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-196-1.pdf}
+where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{expand.grid}\NormalTok{(x, y)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Var1, }\DataTypeTok{y =}\NormalTok{ Var2) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{parabola}\NormalTok{(x, y)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{z =}\NormalTok{ z)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_contour_filled}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{coord_fixed}\NormalTok{(}\DataTypeTok{ratio =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-197-1.pdf}
+Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
+\end{example}
+
+\begin{example}
+A saddle function
+
+Consider the function of two variables
+\[
+\begin{aligned}
+f(x, y) = x^2 - y^2
 \end{aligned}
 \]
 which defines the surface
@@ -9189,7 +8582,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \begin{Highlighting}[]
 \KeywordTok{data.frame}\NormalTok{(}\KeywordTok{expand.grid}\NormalTok{(x, y)) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Var1, }\DataTypeTok{y =}\NormalTok{ Var2) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{parabola}\NormalTok{(x, y)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{saddle}\NormalTok{(x, y)) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{z =}\NormalTok{ z)) }\OperatorTok{+}
 \StringTok{    }\KeywordTok{geom_contour}\NormalTok{() }\OperatorTok{+}
 \StringTok{    }\KeywordTok{coord_fixed}\NormalTok{(}\DataTypeTok{ratio =} \DecValTok{1}\NormalTok{)}
@@ -9203,7 +8596,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \begin{Highlighting}[]
 \KeywordTok{data.frame}\NormalTok{(}\KeywordTok{expand.grid}\NormalTok{(x, y)) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Var1, }\DataTypeTok{y =}\NormalTok{ Var2) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{parabola}\NormalTok{(x, y)) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{saddle}\NormalTok{(x, y)) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{z =}\NormalTok{ z)) }\OperatorTok{+}
 \StringTok{    }\KeywordTok{geom_contour_filled}\NormalTok{() }\OperatorTok{+}
 \StringTok{    }\KeywordTok{coord_fixed}\NormalTok{(}\DataTypeTok{ratio =} \DecValTok{1}\NormalTok{)}
@@ -9211,53 +8604,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Shaded}
 
 \includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-200-1.pdf}
-Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
-
-\end{example}
-
-\begin{example}
-\protect\hypertarget{exm:unlabeled-div-274}{}\label{exm:unlabeled-div-274}
-
-A saddle function
-
-Consider the function of two variables
-\[
-\begin{aligned}
-f(x, y) = x^2 - y^2
-\end{aligned}
-\]
-which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-201-1.pdf}
-The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{expand.grid}\NormalTok{(x, y)) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Var1, }\DataTypeTok{y =}\NormalTok{ Var2) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{saddle}\NormalTok{(x, y)) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{z =}\NormalTok{ z)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_contour}\NormalTok{() }\OperatorTok{+}
-\StringTok{    }\KeywordTok{coord_fixed}\NormalTok{(}\DataTypeTok{ratio =} \DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-202-1.pdf}
-where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{expand.grid}\NormalTok{(x, y)) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Var1, }\DataTypeTok{y =}\NormalTok{ Var2) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{z =} \KeywordTok{saddle}\NormalTok{(x, y)) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{z =}\NormalTok{ z)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_contour_filled}\NormalTok{() }\OperatorTok{+}
-\StringTok{    }\KeywordTok{coord_fixed}\NormalTok{(}\DataTypeTok{ratio =} \DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-203-1.pdf}
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
-
 \end{example}
 
 \hypertarget{limits}{%
@@ -9279,8 +8626,6 @@ dist((x, y), (a, b)) = \sqrt{(x-a)^2 + (y-b)^2}
 ** Draw images**
 
 \begin{definition}[Limit of a function of two variables]
-\protect\hypertarget{def:unlabeled-div-275}{}\label{def:unlabeled-div-275}
-
 The function f(x, y) has limit \(L\) as \(P(x, y) \rightarrow P_0(a, b)\), written
 \[
 \begin{aligned}
@@ -9299,21 +8644,16 @@ whenever \((x, y)\) is in the domain of \(f\) and
 0 < \sqrt{(x-a)^2 + (y-b)^2} < \delta.
 \end{aligned}
 \]
-
 \end{definition}
 
 In the definition, as the value of \(\delta\) is getting smaller, the distance between the set of points \(P(x, y)\) within radius \(\delta\) of the point \(P_0(a, b)\) is getting smaller. As a consequence, the limit in the definition above exists only if \(f(x, y)\) approaches the value \(L\) along \textbf{all possible paths} in the domain of \(f\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-276}{}\label{exm:unlabeled-div-276}
-
 In class notes
 * \textbf{Future work: write out hand-written examples}
-
 \end{example}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-277}{}\label{thm:unlabeled-div-277}
 
 Let \(L\) and \(M\) be real numbers and let \(\lim_{(x, y) \rightarrow (a, b)}f(x, y) = L\) and \(\lim_{(x, y) \rightarrow (a, b)}g(x, y) = M\) for functions \(f(x, y)\) and \(g(x, y)\). Let \(c\) be a constant and \(n>0\), then:
 
@@ -9373,17 +8713,13 @@ Let \(L\) and \(M\) be real numbers and let \(\lim_{(x, y) \rightarrow (a, b)}f(
 \end{theorem}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-278}{}\label{exm:unlabeled-div-278}
-
 Use the rules above to evaluate the limit \(\lim_{(x, y) \rightarrow (2, 3)} 4x^3y + \sqrt{xy}\)
-
 \end{example}
 
 \hypertarget{boundary-points}{%
 \subsection{Boundary points}\label{boundary-points}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-279}{}\label{def:unlabeled-div-279}
 
 Define a region \(\mathcal{D}\) in \(\mathcal{R}^2\).
 
@@ -9397,24 +8733,16 @@ Define a region \(\mathcal{D}\) in \(\mathcal{R}^2\).
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-280}{}\label{exm:unlabeled-div-280}
-
 Let \(f(x, y) = \sqrt{1 - x^2 - y^2}\). The boundary points are all the points on the unit circle an the interior points are all the points on the interior of the unit disk. \textbf{draw picture}
-
 \end{example}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-281}{}\label{def:unlabeled-div-281}
-
 A region \(\mathcal{D}\) is said to be \textbf{open} if it only contains interior points (i.e., \(\mathcal{D}\) has no boundary points). A region \(\mathcal{D}\) is said to be \textbf{closed} if the region contains all its boundary points.
-
 \end{definition}
 
 \textbf{Figure: limit paths along the boundary}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-282}{}\label{exm:unlabeled-div-282}
-
 Consider the \(\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}\). Because the point \((4, 4)\) is not a valid point in the domain (can't divide by \(4-4=0\)), the point \((4, 4)\) is a boundary point of the domain. The boundary of the domain that is not contained in the domain is the set of points \(x = y\). Assuming we are not taking a path along the boundary, we know that \(x \neq y\) in the interior of the domain. Hence,
 \[
 \begin{aligned}
@@ -9423,14 +8751,10 @@ Consider the \(\lim_{(x, y) \rightarrow (4, 4)} \frac{x^2 - y^2}{x - y}\). Becau
 \end{aligned}
 \]
 for all paths that do not cross the line \(y = x\).
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-283}{}\label{exm:unlabeled-div-283}
-
 \textbf{nonexistence of limit in class}
-
 \end{example}
 
 \hypertarget{continuity}{%
@@ -9439,7 +8763,6 @@ for all paths that do not cross the line \(y = x\).
 A very important property of functions is continuity. In a general sense, a function is continuous if two nearby input values result in nearby output values. As a graph, this means that there are no hops, skips, or jumps.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-284}{}\label{def:unlabeled-div-284}
 
 The function \(f(x, y)\) is said to be continuous at the point \((a, b)\) if the following are true
 
@@ -9456,11 +8779,8 @@ The function \(f(x, y)\) is said to be continuous at the point \((a, b)\) if the
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-285}{}\label{exm:unlabeled-div-285}
-
 \textbf{checking continuity in class}
 \(f(x, y) = \begin{cases} \frac{x^2 - y^2}{x - y} & \mbox{ if } x \neq y \\ x + y & \mbox{ if } x = y \\ \end{cases}\)
-
 \end{example}
 
 \hypertarget{partial-derivatives}{%
@@ -9496,7 +8816,7 @@ For example, consider the function
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-206-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-203-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9520,9 +8840,7 @@ Note that the partial derivative asks the question ``What is the rate of change 
 \textbf{draw surfaces with marginal slices}
 
 \begin{definition}
-\protect\hypertarget{def:partial}{}\label{def:partial}
-
-The partial derivative of the function \(f(x, y)\) with respect to \(x\) at the point \((a, b)\) is
+\protect\hypertarget{def:partial}{}\label{def:partial}The partial derivative of the function \(f(x, y)\) with respect to \(x\) at the point \((a, b)\) is
 \[
 \begin{aligned}
 \frac{\partial}{\partial x} f(x, y) = f_x(x, y) & = \lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)} {h}.
@@ -9536,21 +8854,14 @@ The partial derivative of the function \(f(x, y)\) with respect to \(y\) at the 
 \end{aligned}
 \]
 as long as these limits exist.
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-286}{}\label{exm:unlabeled-div-286}
-
 \textbf{partial derivatives using limit definition}
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-287}{}\label{exm:unlabeled-div-287}
-
 Let \(f(x, y) = 3x^2 - 4 y^3 + 3\), Compute \(\frac{\partial}{\partial x}f(x, y)\) and \(\frac{\partial}{\partial y}f(x, y)\). Then evaluate each derivative at \((-2, 3)\).
-
 \end{example}
 
 Notice that you can find partial derivatives by holding all the other variables constant and then finding the equivalent univariate derivative.
@@ -9593,19 +8904,13 @@ Notation 2\strut
 \end{longtable}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-288}{}\label{exm:unlabeled-div-288}
-
 Find the four second-order partial derivatives of \(f(x, y) = 3x^2y^3 + 4xy - 3x^2\)
-
 \end{example}
 
 Note that the order in which mixed partial derivatives are taken can sometimes change the result. However, it is often the case that the order of the partial derivatives can be switched.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-289}{}\label{thm:unlabeled-div-289}
-
 Let the function \(f(x, y)\) be defined on an open domain \(\mathcal{D}\) of \(\mathcal{R}^2\) and assume that \(f_{xy}\) and \(f_{yx}\) are continuous over the domain \(\mathcal{D}\). Then, \(f_{xy} = f_{yx}\) for all points in the domain \(\mathcal{D}\).
-
 \end{theorem}
 
 Many of the commonly used functional forms in data science meet the criteria above. Thus, for many of the commonly used functions in data science, the order of evaluation of partial derivatives often does not matter. In practice, it is always good practice to verify this though.
@@ -9632,10 +8937,7 @@ We can write \(z = g(y) = g(f(x))\) and using this notation, the change in \(z\)
 \]
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-290}{}\label{exm:unlabeled-div-290}
-
 Let \(z = f(y) = y^3\) and let \(y = g(x) = e^{x}\) what is \(\frac{dz}{dx}\)?
-
 \end{example}
 
 \hypertarget{the-chain-rule-with-one-independent-variable}{%
@@ -9644,7 +8946,6 @@ Let \(z = f(y) = y^3\) and let \(y = g(x) = e^{x}\) what is \(\frac{dz}{dx}\)?
 \textbf{Drawing in class}
 
 \begin{definition}[Chain rule for one independent variable]
-\protect\hypertarget{def:unlabeled-div-291}{}\label{def:unlabeled-div-291}
 
 Let \(z\) be a differentiable function of two variables \(x\) and \(y\) so that \(z = f(x, y)\) and let \(x=g(t)\) be a function of \(t\) and \(y=h(t)\) a function of \(t\). Written in functional form, \(z\) can be written as \(z = f(x, y) = f(g(t), h(t))\), with \(x=g(t)\) and \(y=h(t)\). Then we can define the derivative of \(z\) with respect to \(t\) as
 \[
@@ -9663,10 +8964,7 @@ Let \(z\) be a differentiable function of two variables \(x\) and \(y\) so that 
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-292}{}\label{exm:unlabeled-div-292}
-
 Let \(z = x^2 + e^y\) and let \(x = \cos(t)\) and \(y = \sin(t)\)
-
 \end{example}
 
 The results from above can also be extended to have more than two intermediate variables.
@@ -9679,8 +8977,6 @@ The results from above can also be extended to have more than two intermediate v
 Often, functions will have more than one independent variables.
 
 \begin{definition}[Chain rule for two independent variables]
-\protect\hypertarget{def:unlabeled-div-293}{}\label{def:unlabeled-div-293}
-
 Let \(z\) be a differentiable function of two variables \(x\) and \(y\) so that \(z = f(x, y)\) and let \(x=g(t, s)\) be a function of \(s\) and \(t\) and \(y=h(s, t)\) a function of \(s\) and \(t\). Written in functional form, \(z\) can be written as \(z = f(x, y) = f(g(s, t), h(s, t))\), with \(x=g(s, t)\) and \(y=h(s, t)\). Then we can define the partial derivative of \(z\) with respect to \(s\) as
 \[
 \begin{aligned}
@@ -9693,14 +8989,10 @@ the partial derivative of \(z\) with respect to \(t\) as
 \frac{\partial z}{\partial t} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial t} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial t}
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-294}{}\label{exm:unlabeled-div-294}
-
 Let \(z = f(x, y) = x^2 e^y\) and let \(x = 2s - t\) and \(y = 4s^3-3t^2\)
-
 \end{example}
 
 \hypertarget{the-chain-rule-in-matrix-notation}{%
@@ -9709,8 +9001,6 @@ Let \(z = f(x, y) = x^2 e^y\) and let \(x = 2s - t\) and \(y = 4s^3-3t^2\)
 To get a better understanding of the chain rule, it helps to show the chain rule using matrix notation. Using the matrix notation will enable you to apply the chain rule to any number of intermediate variables. For example, consider the extension of the definition for the chain rule of a function with one independent variable.
 
 \begin{definition}[Matrix chain rule for one independent variable]
-\protect\hypertarget{def:unlabeled-div-295}{}\label{def:unlabeled-div-295}
-
 Let \(z\) be a differentiable function of two variables \(x\) and \(y\) so that \(z = f(x, y)\) and let \(x=g(t)\) be a function of \(t\) and \(y=h(t)\) a function of \(t\). Written in functional form, \(z\) can be written as \(z = f(x, y) = f(g(t), h(t))\), with \(x=g(t)\) and \(y=h(t)\). Then we can define the derivative of \(z\) with respect to \(t\) as
 \[
 \begin{aligned}
@@ -9724,14 +9014,11 @@ Written in matrix notation, this is
 \frac{dz}{dt} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{dx}{dt} \\  \frac{dy}{dt} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt}
 \end{aligned}
 \]
-
 \end{definition}
 
 The definition above for the chain rule with two variables is given by
 
 \begin{definition}[Chain rule for two independent variables]
-\protect\hypertarget{def:unlabeled-div-296}{}\label{def:unlabeled-div-296}
-
 Let \(z\) be a differentiable function of two variables \(x\) and \(y\) so that \(z = f(x, y)\) and let \(x=g(t, s)\) be a function of \(s\) and \(t\) and \(y=h(s, t)\) a function of \(s\) and \(t\). Written in functional form, \(z\) can be written as \(z = f(x, y) = f(g(s, t), h(s, t))\), with \(x=g(s, t)\) and \(y=h(s, t)\). Then we can define the partial derivative of \(z\) with respect to \(s\) as
 \[
 \begin{aligned}
@@ -9757,7 +9044,6 @@ which, in matrix notation is
 \frac{dz}{dt} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{\partial x}{\partial t} \\  \frac{\partial y}{\partial t} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial t} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial t}
 \end{aligned}
 \]
-
 \end{definition}
 
 This use of matrix notation for derivatives will be useful in understanding the \textbf{gradient}.
@@ -9781,8 +9067,6 @@ Think about trying to find the maximum of a real-valued function (finding the mi
 Suppose you are standing on a mountain surface at the point \((x, y, z)\) in 3-dimensions where \(z = f(x, y)\) is the function that gives the height of the mountain at location \((x, y)\). If you are standing at the point \((a, b)\) in the \((x, y)\) coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the \textbf{directional derivative} and the \textbf{gradient}.
 
 \begin{definition}[Directional Derivative]
-\protect\hypertarget{def:unlabeled-div-297}{}\label{def:unlabeled-div-297}
-
 Given a function \(f(x,y)\) that is differentiable at \((a, b)\) and a unit vector \(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\) in the \(x-y\) plane, the \textbf{directional derivative} of \(f\) at \((a, b)\) in the direction of \(\mathbf{v}\) is
 \[
 \begin{aligned}
@@ -9790,7 +9074,6 @@ D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - 
 \end{aligned}
 \]
 assuming the limit exists.
-
 \end{definition}
 
 To understand how the directional derivative relates to partial derivatives, in the definition above, let \(v_2 = 0\) and to make \(\mathbf{v}\) a unit vector, set \(v_1 = 1\) (\(\mathbf{v}\) is the standard basis vector \(\mathbf{e}_1\)). Then, the limit in the directional derivative definition above becomes
@@ -9816,20 +9099,15 @@ which is the dot product of the vectors \(\begin{pmatrix} f_x(a, b) \\ f_y(a, b)
 Notice that the vector \(\mathbf{v}\) is a unit vector and therefore the directional derivative is a weighted sum of the partial derivatives in the \(x\) and \(y\) directions weighted by the vector \(\mathbf{v}\) (weighted sums are sums where the coefficients sum to 1--in this case the sum is in the ``distance'' metric). As a consequence, we can find the directional derivative in any direction by changing the vector \(\mathbf{v}\).
 
 \begin{definition}
-\protect\hypertarget{def:directional-gradient}{}\label{def:directional-gradient}
-
-Let \(f(x, y)\) be a differentiable function at \((a, b)\) and \(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\) a unit vector in the \(xy\) plane. Then, the directional derivative of \(f\) at \((a, b)\) in the direction of \(\mathbf{v}\) is
+\protect\hypertarget{def:directional-gradient}{}\label{def:directional-gradient}Let \(f(x, y)\) be a differentiable function at \((a, b)\) and \(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\) a unit vector in the \(xy\) plane. Then, the directional derivative of \(f\) at \((a, b)\) in the direction of \(\mathbf{v}\) is
 \[
 \begin{aligned}
 D_{\mathbf{v}} f(a, b) & = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} & \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
 \end{aligned}
 \]
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-298}{}\label{exm:unlabeled-div-298}
-
 Compute the directional derivative of \(f(x, y) = 3x^2 + y^2\) in the direction of \(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\) at the point \((2, 1)\).
 
 \begin{itemize}
@@ -9916,8 +9194,7 @@ Compute the directional derivative of \(f(x, y) = 3x^2 + y^2\) in the direction 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-211-1.pdf}
-
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-208-1.pdf}
 \end{example}
 
 \hypertarget{the-gradient}{%
@@ -9926,8 +9203,6 @@ Compute the directional derivative of \(f(x, y) = 3x^2 + y^2\) in the direction 
 The directional derivative is a dot product of the partial derivatives and a unit vector. The gradient is similar, but rather than return a single value (a number), the gradient returns a vector at a point \((a, b)\).
 
 \begin{definition}[The Gradient]
-\protect\hypertarget{def:unlabeled-div-299}{}\label{def:unlabeled-div-299}
-
 Let \(f(x, y)\) be a differentiable function at \((a, b)\). Then, the gradient of \(f\) at \((a, b)\) is
 \[
 \begin{aligned}
@@ -9936,7 +9211,6 @@ Let \(f(x, y)\) be a differentiable function at \((a, b)\). Then, the gradient o
 \end{aligned}
 \]
 where \(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\) and \(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\) are the standard basis vectors in \(\mathcal{R}^2\).
-
 \end{definition}
 
 Notice that the directional derivative at the point \((a , b)\) can be calculated using the gradient where
@@ -9949,7 +9223,6 @@ D_{\mathbf{v}} f(a, b) & = \nabla f(a, b) \cdot \mathbf{v} \\
 the directional derivative is the dot product of the gradient \(\nabla f(a, b)\) at the point \((a, b)\) with the unit vector \(\mathbf{v}\).
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-300}{}\label{exm:unlabeled-div-300}
 
 Compute the gradient of \(f(x, y) = 3x^2 + y^2\) at the point \((3, 1)\).
 
@@ -9983,7 +9256,6 @@ Let \(f(x, y)\) be a differentiable function at \((a, b)\) with \(\nabla f(a, b)
 \end{theorem}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-301}{}\label{exm:unlabeled-div-301}
 
 Consider the function \(f(x, y) = 3x^2 - 2xy + y^2\). At the point \((3, 1)\), what is the direction of steepest descent? Steepest ascent?
 
@@ -10014,10 +9286,7 @@ Using this, one can calculate the tangent to the level curve at the point \((a, 
 \]
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-302}{}\label{exm:unlabeled-div-302}
-
 For the function \(f(x, y) = 3x^2 - 2xy + y^3\), find a vector orthogonal to the gradient \(\nabla f(a, b)\) at the point \((a, b) = (2, 1)\).
-
 \end{example}
 
 \hypertarget{the-gradient-in-higher-dimensions}{%
@@ -10046,8 +9315,6 @@ We can extend the gradient to higher dimensional functions. Let \(\mathbf{x} = \
 Let \(f(\mathbf{x})\) be a differentiable function at a point \(\mathbf{a}\). Because the function is differentiable at \(\mathbf{a}\), this means that all paths \(P_\mathbf{a}\) that approach the point \(\mathbf{a}\) from all directions all take on values \(f(P_\mathbf{a})\) that are ``close'' to \(f(\mathbf{a})\). Mathematically, we describe this as \textbf{smoothness}. A more explicit description says that as the paths \(P_{\mathbf{a}}\) get very close to \(\mathbf{a}\), the space over which these paths are defined starts to look more and more like a flat surface--the \textbf{tangent plane}.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-303}{}\label{exm:unlabeled-div-303}
-
 For this example, we plot the function \(f(x, y) = x^2 + y^2\) which has gradient \(\nabla f(x, y) = \begin{pmatrix} 2x \\ 2y\end{pmatrix}\)
 
 \begin{Shaded}
@@ -10072,7 +9339,6 @@ For this example, we plot the function \(f(x, y) = x^2 + y^2\) which has gradien
 \includegraphics[width=1\linewidth]{./webshot-images/tangent1}
 \includegraphics[width=1\linewidth]{./webshot-images/tangent2}
 \includegraphics[width=1\linewidth]{./webshot-images/tangent3}
-
 \end{example}
 
 A consequence of this result that when you zoom in on a differentiable function the function looks like a flat plane is that the function \(f(x, y)\) can be approximated locally as a linear function (local approximation just means that if you are really ``close'' to the point \((a, b)\) that the function will behave like a tangent plane if the function is differentiable). Intuitively, this makes sense as if the derivative exists, the directional derivatives are just vectors and a linear combination of vectors (in \(\mathcal{R}^2\)) produces a tangent plane (in higher dimensions, this is called a \textbf{hyperplane}). This means that if the function \(f(x, y)\) is differentiable at the point \((a, b)\), then \(f(x, y)\) for points \((x, y)\) close to \((a, b)\) is approximated by the linear tangent plane.
@@ -10080,8 +9346,6 @@ A consequence of this result that when you zoom in on a differentiable function 
 Notice in the code above that there are two functions needed to calculate the tangent plane: the function \(f(x, y)\) and the gradient \(\nabla f(x, y)\). This can be seen in the definition of the tangent plane.
 
 \begin{definition}[Tangent plane]
-\protect\hypertarget{def:unlabeled-div-304}{}\label{def:unlabeled-div-304}
-
 Let \(f(x, y)\) be a differentiable function at the point \((a, b)\). Then the tangent plane to the surface defined by the function \(f(x, y)\) at the point \((a, b)\) is given by the equation
 \[
 \begin{aligned}
@@ -10091,11 +9355,9 @@ z & = f(a, b) + f_x(a, b) (x - a) + f_y(a, b) (y - b) \\
 \end{aligned}
 \]
 where the tangent plane is defined as the dot product of the graidient vector \(\nabla f(x, y) |_{(a, b)}\) evaluated at the point \((a, b)\) and the vector \(\begin{pmatrix} x - a \\ y - b \end{pmatrix}\) that is the coordinate-wise distance of the point \((x, y)\) from the point \((a, b)\).
-
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-305}{}\label{exm:unlabeled-div-305}
 
 Find the equation for the tangent plane for the function \(f(x, y) = x^2 \cos(y) - y^2 \cos(x)\) at the point \((\frac{\pi}{2}, \frac{pi}{4})\)
 
@@ -10112,8 +9374,6 @@ Find the equation for the tangent plane for the function \(f(x, y) = x^2 \cos(y)
 This leads to the linearization equation for functions of \(n\) variables.
 
 \begin{definition}[Linearization of a function]
-\protect\hypertarget{def:unlabeled-div-306}{}\label{def:unlabeled-div-306}
-
 Let \(f(\mathbf{x})\) be a differentiable function at the point \(\mathbf{a} = (a_1, a_2, \ldots, a_n)'\) for a function of inputs \(\mathbf{x} = (x_1, x_2, \ldots, x_n)' \in \mathcal{R}^n\). Then the linearization of the function \(f(\mathbf{x})\) at the point \(\mathbf{a}\) is given by the equation
 \[
 \begin{aligned}
@@ -10121,7 +9381,6 @@ L(\mathbf{x}) & = f(\mathbf{a}) + \nabla f(\mathbf{x}) |_{\mathbf{a}} \cdot (\ma
 & = f(\mathbf{a}) + \left( \nabla f(\mathbf{x}) |_{\mathbf{a}} \right)' (\mathbf{x} - \mathbf{a})
 \end{aligned}
 \]
-
 \end{definition}
 
 The quality of the linearization is high for points ``close'' to \(\mathbf{a}\) and has higher error (defined as \(\|L(\mathbf{x}) - f(\mathbf{x})\|\)) as \(\mathbf{x}\) gets further from \(\mathbf{a}\).
@@ -10138,7 +9397,6 @@ d z & =  \nabla f(\mathbf{x}) |_{\mathbf{a}} \cdot (\mathbf{x} - \mathbf{a}) \\
 where the last term is a sum of the linear approximation in each of the \(i = 1, \ldots, n\) coordinate directions.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-307}{}\label{exm:unlabeled-div-307}
 
 Approximate the linear change of the function \(f(x, y, z) = x^2 - 3xy^2z^2 - 4z^2\) at the point \((a, b, c) = (1, -2, -1)\) evaluated at the point \((x, y, z) = (0.95, -2.05, -1.05)\). Compare this to the exact value of the function \(f(x, y, z)\)
 
@@ -10275,19 +9533,13 @@ To characterize these minimum values, we consider two different types of minimum
 A local minimum of the function \(f(x, y)\) is a point \((a, b)\) where the values of the function \(f(a, b)\) evaluated at \((a, b)\) is less than or equal to the function \(f(a + \Delta x, b + \Delta y)\) at any nearby point \((a + \Delta x, b + \Delta y)\), where \(\Delta x\) and \(\Delta y\) are very small values.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-308}{}\label{def:unlabeled-div-308}
-
 Let \((a, b)\) be a point in the domian \(\mathcal{D}\) of the function \(f(x, y)\). If there exists an \(\epsilon > 0\) such that \(\|(x, y) - (a, b)\| < \epsilon\) (the point \((x, y)\) is close to the point \((a, b)\) for a given disk of radius \(\epsilon\) at the point \((a, b)\)), then if \(f(a, b) \leq f(x, y)\), the point \((a, b)\) is called a \textbf{local minimum} value of the function \(f(x, y)\).
-
 \end{definition}
 
 In terms of finding a minimum of a surface, the local minimum is any point on the surface from which one cannot walk downhill if one can only take small steps. Like in univariate functions, local minimums also have a relationship to the partial derivatives.
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-309}{}\label{thm:unlabeled-div-309}
-
 If \(f(x, y)\) has a local minimum at the point \((a, b)\) and \(f(x, y)\) is a differentiable function at \((a, b)\), then the partial derivatives \(\frac{\partial f(x, y)}{\partial x}|_{(a, b)} = f_x(a, b) = 0\) and \(\frac{\partial f(x, y)}{\partial y}|_{(a, b)} = f_y(a, b) = 0\)
-
 \end{theorem}
 
 \textbf{Note:} the converse is not necessarily true: just because \(f_x(a, b) = 0\) and \(f_y(a, b) = 0\), this doesn't mean that we have a minimum point at \((a, b)\).
@@ -10295,7 +9547,6 @@ If \(f(x, y)\) has a local minimum at the point \((a, b)\) and \(f(x, y)\) is a 
 As stated above, the fact that the partial derivatives \(f_x(a, b) = 0\) and \(f_y(a, b) = 0\) does not imply that the point \((a, b)\) is a local minimum. Instead, the partial derivatives being 0 only implies that \((a, b)\) is a critical point of the function \(f(x, y)\).
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-310}{}\label{def:unlabeled-div-310}
 
 The point \((a, b)\) is a critical point of the function \(f(x, y)\) if either
 
@@ -10310,8 +9561,6 @@ The point \((a, b)\) is a critical point of the function \(f(x, y)\) if either
 \end{definition}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-311}{}\label{exm:unlabeled-div-311}
-
 find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\).
 * plot the critical points using \texttt{plotly()}
 
@@ -10337,7 +9586,7 @@ find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-218-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-215-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10360,7 +9609,6 @@ find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\).
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{./webshot-images/critical}
-
 \end{example}
 
 If a critical point isn't a local minimum/maximum, what else could this point be? One possible shape is what is called a saddle point. A saddle point is one in which the function \(f(x, y)\) is increasing in one direction (say, along the x-axis) and decreasing along another direction (say, the y-axis). The surface is often said to resemble the shape of a saddle (or a Pringles chip). An example saddle point is shown in the plot below.
@@ -10398,16 +9646,12 @@ If a critical point isn't a local minimum/maximum, what else could this point be
 \includegraphics[width=1\linewidth]{./webshot-images/saddle}
 
 \begin{definition}[Saddle point]
-\protect\hypertarget{def:unlabeled-div-312}{}\label{def:unlabeled-div-312}
-
-A saddle point of a differentiable function \(f(x, y)\) is a critical point \((a, b)\) of \(f(x, y)\) where for all \(\epsilon > 0\) there exists points \((x, y)\) within the disk of radius \(\epsilon\) of the point \((a, b) (\)\textbar(x, y) - (a, b)\textbar{} \textless{} \epsilon\$) where \(f(x, y) > f(a, b)\) and where \(f(x, y) < f(a, b)\). In other words, there are points nearby the critical point that have both higher and lower values than the value \(f(a, b)\).
-
+A saddle point of a differentiable function \(f(x, y)\) is a critical point \((a, b)\) of \(f(x, y)\) where for all \(\epsilon > 0\) there exists points \((x, y)\) within the disk of radius \(\epsilon\) of the point \((a, b)\) (i.e., \(\|(x, y) - (a, b)\| < \epsilon\)) where \(f(x, y) > f(a, b)\) and where \(f(x, y) < f(a, b)\). In other words, there are points nearby the critical point that have both higher and lower values than the value \(f(a, b)\).
 \end{definition}
 
 Finding critical points is a first step in finding minimums, however, we need a method to determine whether a critical point is a local minimum/maximum or a saddle point. To determine this, the second derivative test is useful.
 
 \begin{theorem}[Second Derivative Test]
-\protect\hypertarget{thm:unlabeled-div-313}{}\label{thm:unlabeled-div-313}
 
 Let \(f_x(a, b) = f_y(a, b) = 0\) so that the point \((a, b)\) is a critical point. Also let the \(f(x, y)\) be second-order differentiable (the second partial derivatives exists) throughout the open disk \(\| (x, y) - (a, b)\|< \epsilon\) for some \(\epsilon > 0\). Then
 
@@ -10426,17 +9670,11 @@ Let \(f_x(a, b) = f_y(a, b) = 0\) so that the point \((a, b)\) is a critical poi
 \end{theorem}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-314}{}\label{exm:unlabeled-div-314}
-
 find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\) and determine if they are local maxima, minima, saddle points, or undetermined.
-
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-315}{}\label{exm:unlabeled-div-315}
-
 find the critical points of \(f(x, y) = x^4 + y^4\) and determine if they are local maxima, minima, saddle points, or undetermined.
-
 \end{example}
 
 \begin{Shaded}
@@ -10477,7 +9715,6 @@ find the critical points of \(f(x, y) = x^4 + y^4\) and determine if they are lo
 We have shown how you can find critical points \((a, b)\) by finding points that have 0 partial derivatives in each direction (\(f_x(a, b) = f_y(a, b) = 0\)) and we have shown how to characterize these critical points using the second derivative test. In data science, we are often interested in finding the ``best'' model, not just the ``best local'' model. So a question arises is whether the local minima/maxima that we find are the global minima/maxima. To determine this, we have to define the global minima/maxima.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-316}{}\label{def:unlabeled-div-316}
 
 If \(f(x, y)\) is a function defined over a domain (or a subset of the domain) \(\mathcal{D} \in \mathcal{R}^2\) that contains the point \((a, b)\), we say
 
@@ -10507,10 +9744,7 @@ Let \(f(x, y)\) be a function on a closed (the set contains its boundary points)
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-317}{}\label{exm:unlabeled-div-317}
-
 Let \(f(x, y) = x^2 - 4xy + y^2\) over the region \([-2,2]\times[-2, 2]\)
-
 \end{example}
 
 In data science problems, it is often difficult to analyze the functions analytically (using the tools of calculus directly). Instead, one can use numeric techniques to find minima and maxima. Two techniques that we will discuss are grid search and gradient descent.
@@ -10521,7 +9755,6 @@ In data science problems, it is often difficult to analyze the functions analyti
 If the number of input variables in the function is small, one can find global minima and maxima using grid search. To find a global minima/maxima in \(\mathcal{R}^2\), one creates a grid over the domain \(\mathcal{D}\) and evaluates the function \(f(x, y)\) at these grid points and finds the numerical solution.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-318}{}\label{exm:unlabeled-div-318}
 
 Let \(f(x, y) = x^2 - 2xy + y^2\) over the region \([-2,2]\times[-2, 2]\)
 
