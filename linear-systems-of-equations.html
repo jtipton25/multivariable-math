@@ -278,7 +278,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="rank-1.html"><a href="rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
 <li class="chapter" data-level="18.1" data-path="rank-1.html"><a href="rank-1.html#rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
+<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a><ul>
+<li class="chapter" data-level="19.1" data-path="change-of-basis.html"><a href="change-of-basis.html#changing-coordinates-between-different-bases"><i class="fa fa-check"></i><b>19.1</b> Changing coordinates between different bases</a></li>
+</ul></li>
 <li class="chapter" data-level="20" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
 <li class="chapter" data-level="20.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#eigenspaces"><i class="fa fa-check"></i><b>20.1</b> Eigenspaces</a><ul>
 <li class="chapter" data-level="20.1.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#computing-eigenspaces"><i class="fa fa-check"></i><b>20.1.1</b> Computing Eigenspaces</a></li>
@@ -370,7 +372,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-equations" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Linear equations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-48" class="definition"><strong>Definition 2.1  (Linear Equations) </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
+<p><span id="def:unlabeled-div-66" class="definition"><strong>Definition 2.1  (Linear Equations) </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
 <p><span class="math display" id="eq:linear">\[
 \begin{aligned}
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
@@ -380,7 +382,7 @@ a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
 <p>is a <strong>linear equation</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 2.1  </strong></span>The equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
+<p><span id="exm:unlabeled-div-67" class="example"><strong>Example 2.1  </strong></span>The equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
 <p><span class="math display">\[
 \begin{aligned}
 y &amp; = m x + b,
@@ -395,7 +397,7 @@ y - m x &amp; = b,
 <p>where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = m\)</span>, <span class="math inline">\(x_1 = y\)</span> and <span class="math inline">\(x_2 = x\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 2.2  </strong></span>The equations</p>
+<p><span id="exm:unlabeled-div-68" class="example"><strong>Example 2.2  </strong></span>The equations</p>
 <p><span class="math display">\[
 \begin{aligned}
 \sqrt{19} x_1 &amp; = (4 + \sqrt{2}) x_2 - x_3 - 9
@@ -414,7 +416,7 @@ y - m x &amp; = b,
 <p>respectively.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 2.3  </strong></span>The equations</p>
+<p><span id="exm:unlabeled-div-69" class="example"><strong>Example 2.3  </strong></span>The equations</p>
 <p><span class="math display">\[
 \begin{aligned}
 x_1 &amp; = x_2^2 + 3
@@ -428,10 +430,10 @@ x_1 + x_2 - x_1 x_2 &amp; = 16
 <div id="systems-of-linear-equations" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Systems of linear equations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-52" class="definition"><strong>Definition 2.2  (System of equations) </strong></span>A set of two or more linear equations that each contain the same set of variables is called a <strong>system of linear equations</strong>.</p>
+<p><span id="def:unlabeled-div-70" class="definition"><strong>Definition 2.2  (System of equations) </strong></span>A set of two or more linear equations that each contain the same set of variables is called a <strong>system of linear equations</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 2.4  </strong></span>The equations</p>
+<p><span id="exm:unlabeled-div-71" class="example"><strong>Example 2.4  </strong></span>The equations</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 9.
@@ -444,7 +446,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 <p>For the following, are these linear equations?</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 2.5  </strong></span><span class="math inline">\(x_1 + 3 x_1 x_2 = 5\)</span></p>
+<p><span id="exm:unlabeled-div-72" class="example"><strong>Example 2.5  </strong></span><span class="math inline">\(x_1 + 3 x_1 x_2 = 5\)</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -452,7 +454,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 2.6  </strong></span><span class="math inline">\(5x + 7y + 8z = 11.2\)</span></p>
+<p><span id="exm:unlabeled-div-73" class="example"><strong>Example 2.6  </strong></span><span class="math inline">\(5x + 7y + 8z = 11.2\)</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -460,7 +462,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 2.7  </strong></span><span class="math inline">\(\frac{1}{4} y + \sqrt{2} z = 2^6\)</span></p>
+<p><span id="exm:unlabeled-div-74" class="example"><strong>Example 2.7  </strong></span><span class="math inline">\(\frac{1}{4} y + \sqrt{2} z = 2^6\)</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -468,7 +470,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 2.8  </strong></span><span class="math inline">\(x + 4 y^2 = 9\)</span></p>
+<p><span id="exm:unlabeled-div-75" class="example"><strong>Example 2.8  </strong></span><span class="math inline">\(x + 4 y^2 = 9\)</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
@@ -480,10 +482,10 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 <h3><span class="header-section-number">2.1.3</span> Solutions of linear systems</h3>
 <p>A fundamental question when presented with a linear system of equations is whether the system has a solution.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-58" class="definition"><strong>Definition 2.3  (Solution of systems of equations) </strong></span>A solution to a system means that there are numbers <span class="math inline">\((s_1, s_2, \ldots, s_n)\)</span> that each of the variables <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> take that allow for all the equations to simultaneously be true.</p>
+<p><span id="def:unlabeled-div-76" class="definition"><strong>Definition 2.3  (Solution of systems of equations) </strong></span>A solution to a system means that there are numbers <span class="math inline">\((s_1, s_2, \ldots, s_n)\)</span> that each of the variables <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> take that allow for all the equations to simultaneously be true.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> a solution to the system of equations
+<p><span id="exm:unlabeled-div-77" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> a solution to the system of equations
 <span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9.
@@ -503,7 +505,7 @@ which is false because <span class="math inline">\(35 \neq = 9\)</span>. Thus, <
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-60" class="example"><strong>Example 2.10  </strong></span>Consider the system of equations</p>
+<p><span id="exm:unlabeled-div-78" class="example"><strong>Example 2.10  </strong></span>Consider the system of equations</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7.
@@ -581,7 +583,7 @@ Figure 2.1: Linear system of equations with one solution
 <li>There are infinitely many solutions</li>
 </ol>
 <div class="definition">
-<p><span id="def:unlabeled-div-61" class="definition"><strong>Definition 2.4  </strong></span>A linear system of equations is called <strong>consistent</strong> if the system has either one or infinitely many solutions and is called <strong>inconsistent</strong> if the system has no solution.</p>
+<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 2.4  </strong></span>A linear system of equations is called <strong>consistent</strong> if the system has either one or infinitely many solutions and is called <strong>inconsistent</strong> if the system has no solution.</p>
 </div>
 <div id="there-are-no-solutions" class="section level4">
 <h4><span class="header-section-number">2.1.4.1</span> There are no solutions:</h4>
@@ -671,7 +673,7 @@ Figure 2.3: Linear system of equations with no solution
 </div>
 <p>In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-62" class="definition"><strong>Definition 2.5  </strong></span>Two linear systems of equations are called <strong>equivalent</strong> if both systems share the same <strong>solution set</strong>.</p>
+<p><span id="def:unlabeled-div-80" class="definition"><strong>Definition 2.5  </strong></span>Two linear systems of equations are called <strong>equivalent</strong> if both systems share the same <strong>solution set</strong>.</p>
 </div>
 <p>For example, the system of equations</p>
 <p><span class="math display">\[\begin{alignat*}{4}
@@ -685,7 +687,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 \end{alignat*}\]</span></p>
 <p>have the same solution set (the second set of equations is just 2 times the first set of equations).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-63" class="example"><strong>Example 2.11  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
+<p><span id="exm:unlabeled-div-81" class="example"><strong>Example 2.11  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}={} &amp; 8 \\
 9 x_1 &amp; {}-{} &amp; 3 x_2 &amp; {}={} &amp; 4.
@@ -728,7 +730,7 @@ x_1 &amp; {}+{} &amp; \frac{5}{4} \left(\frac{56}{57}\right) &amp; {}={} &amp; 2
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-64" class="example"><strong>Example 2.12  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
+<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 2.12  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 7 x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 4 x_3 &amp; {}={} &amp; 5\\
 4 x_1 &amp; {}-{} &amp; 5 x_2 &amp;&amp;        &amp; {}={} &amp; -2
@@ -778,7 +780,7 @@ x_1 &amp; {}+{} &amp; 0 x_2 &amp; {}+{} &amp; \frac{20}{47} x_3 &amp; {}={} &amp
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-65" class="example"><strong>Example 2.13  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
+<p><span id="exm:unlabeled-div-83" class="example"><strong>Example 2.13  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 4 x_1 &amp; {}-{} &amp; 2 x_2 &amp; {}={} &amp; 8\\
 2 x_1 &amp; {}+{} &amp; x_2 &amp; {}={} &amp; 7 \\
@@ -821,7 +823,7 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 </ol>
 <p>Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-66" class="example"><strong>Example 2.14  </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
+<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 2.14  </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
 <p><span class="math display">\[
 \begin{aligned}
 \begin{pmatrix} 1 &amp; 4 &amp; 7 \\ 2 &amp; 5 &amp; 8 \\ 3 &amp; 6 &amp; 9 \end{pmatrix}
@@ -836,7 +838,7 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-67" class="solution"><em>Solution</em>. </span>Here we present examples of the elementary row operations</p>
+<p><span id="unlabeled-div-85" class="solution"><em>Solution</em>. </span>Here we present examples of the elementary row operations</p>
 <ol style="list-style-type: decimal">
 <li>Swap the first and second rows.</li>
 </ol>
@@ -1026,10 +1028,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <div id="existence-and-uniqueness" class="section level3">
 <h3><span class="header-section-number">2.1.7</span> Existence and Uniqueness</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-68" class="definition"><strong>Definition 2.6  </strong></span>A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a <strong>unique</strong> solution if only one solution exists.</p>
+<p><span id="def:unlabeled-div-86" class="definition"><strong>Definition 2.6  </strong></span>A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a <strong>unique</strong> solution if only one solution exists.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-69" class="example"><strong>Example 2.15  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span id="exm:unlabeled-div-87" class="example"><strong>Example 2.15  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignedat}{4}  16 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 13\\ 5 x_1 &amp; {}+{} &amp; 11 x_2 &amp; {}+{} &amp; 10 x_3 &amp; {}={} &amp; 8\\ 9 x_1 &amp; {}+{} &amp; 7 x_2 &amp; {}+{} &amp; 6 x_3 &amp; {}={} &amp; 12\\ 4 x_1 &amp; {}+{} &amp; 14 x_2 &amp; {}+{} &amp; 15 x_3 &amp; {}={} &amp; 1 \end{alignedat}
 \]</span></p>
@@ -1041,7 +1043,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-70" class="example"><strong>Example 2.16  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span id="exm:unlabeled-div-88" class="example"><strong>Example 2.16  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignedat}{4}   x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 5\\  x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 2\\ 3 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp;  x_3 &amp; {}={} &amp; 7 \end{alignedat}
 \]</span></p>
@@ -1058,36 +1060,36 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <h2><span class="header-section-number">2.2</span> Reduce row echelon form</h2>
 <p>Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-71" class="definition"><strong>Definition 2.7  </strong></span>A matrix is said to be in <strong>echelon</strong> form if</p>
+<p><span id="def:unlabeled-div-89" class="definition"><strong>Definition 2.7  </strong></span>A matrix is said to be in <strong>echelon</strong> form if</p>
 <ol style="list-style-type: decimal">
 <li><p>all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)</p></li>
 <li><p>the leading entry/coefficient of a nonzero row (called the <strong>pivot</strong>) is always <em>strictly</em> to the right of the leading entry/coefficient of the row above</p></li>
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-72" class="example"><strong>Example 2.17  </strong></span><strong>echelon matrix example in class</strong></p>
+<p><span id="exm:unlabeled-div-90" class="example"><strong>Example 2.17  </strong></span><strong>echelon matrix example in class</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-73" class="definition"><strong>Definition 2.8  </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
+<p><span id="def:unlabeled-div-91" class="definition"><strong>Definition 2.8  </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
 <ol style="list-style-type: decimal">
 <li><p>the leading entry/coefficient of each row is 1</p></li>
 <li><p>The leading entry/coefficient of 1 is the only nonzero entry in its column.</p></li>
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-74" class="example"><strong>Example 2.18  </strong></span><strong>rref matrix example in class</strong></p>
+<p><span id="exm:unlabeled-div-92" class="example"><strong>Example 2.18  </strong></span><strong>rref matrix example in class</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-75" class="definition"><strong>Definition 2.9  </strong></span>Echelon matrices have the property of being <strong>upper diagonal</strong>. A matrix is said to be <strong>upper diagonal</strong> if all entries of the matrix at or above the diagonal are nonzero.</p>
+<p><span id="def:unlabeled-div-93" class="definition"><strong>Definition 2.9  </strong></span>Echelon matrices have the property of being <strong>upper diagonal</strong>. A matrix is said to be <strong>upper diagonal</strong> if all entries of the matrix at or above the diagonal are nonzero.</p>
 </div>
 <ul>
 <li>Example: **lower and non-lower diagonal matrices</li>
 </ul>
 <div class="definition">
-<p><span id="def:unlabeled-div-76" class="definition"><strong>Definition 2.10  </strong></span>Two matrices are <strong>row-equivalent</strong> if one matrix can be transformed to the other through elementary row operations.</p>
+<p><span id="def:unlabeled-div-94" class="definition"><strong>Definition 2.10  </strong></span>Two matrices are <strong>row-equivalent</strong> if one matrix can be transformed to the other through elementary row operations.</p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-77" class="theorem"><strong>Theorem 2.1  </strong></span>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.</p>
+<p><span id="thm:unlabeled-div-95" class="theorem"><strong>Theorem 2.1  </strong></span>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.</p>
 </div>
 <p>:::{.exercise}</p>
 <p>Using elementary row operations, calculate the reduced row echelon form of the following matrices
@@ -1099,10 +1101,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <h3><span class="header-section-number">2.2.1</span> Pivot positions</h3>
 <p>The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-78" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
+<p><span id="def:unlabeled-div-96" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-79" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
+<p><span id="exm:unlabeled-div-97" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
 </div>
 </div>
 <div id="finding-the-reduced-row-echelon-form" class="section level3">
@@ -1116,7 +1118,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <li>Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.</li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-80" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
+<p><span id="exm:unlabeled-div-98" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
 </div>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="linear-systems-of-equations.html#cb73-1"></a><span class="co"># pracma library</span></span>
 <span id="cb73-2"><a href="linear-systems-of-equations.html#cb73-2"></a><span class="co"># rref example in class</span></span></code></pre></div>
@@ -1143,7 +1145,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
+<p><span id="exm:unlabeled-div-100" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
 <p><span class="math display">\[
 \begin{aligned}
 5 x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; 2 x_3 &amp;&amp; = &amp; 0 \\
@@ -1153,10 +1155,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <p><strong>Do same steps</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
+<p><span id="def:unlabeled-div-101" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
+<p><span id="exm:unlabeled-div-102" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
 </div>
 </div>
 <div id="existence-and-uniqueness-from-reduced-row-echelon-form" class="section level3">
@@ -1167,7 +1169,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 \]</span>
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-85" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
+<p><span id="thm:unlabeled-div-103" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
 </div>
 <ul>
 <li><strong>Example: consistent system of equations</strong></li>

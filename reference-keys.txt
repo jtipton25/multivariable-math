@@ -134,6 +134,7 @@ dimensions-of-nullmathbfa-and-colmathbfa
 rank-1
 rank-2
 change-of-basis
+changing-coordinates-between-different-bases
 eigenvectors-and-eigenvalues
 eigenspaces
 computing-eigenspaces

@@ -278,7 +278,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="rank-1.html"><a href="rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
 <li class="chapter" data-level="18.1" data-path="rank-1.html"><a href="rank-1.html#rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
+<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a><ul>
+<li class="chapter" data-level="19.1" data-path="change-of-basis.html"><a href="change-of-basis.html#changing-coordinates-between-different-bases"><i class="fa fa-check"></i><b>19.1</b> Changing coordinates between different bases</a></li>
+</ul></li>
 <li class="chapter" data-level="20" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
 <li class="chapter" data-level="20.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#eigenspaces"><i class="fa fa-check"></i><b>20.1</b> Eigenspaces</a><ul>
 <li class="chapter" data-level="20.1.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#computing-eigenspaces"><i class="fa fa-check"></i><b>20.1.1</b> Computing Eigenspaces</a></li>
@@ -355,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> The LU factorization</h2>
 <p>First, we define lower and upper triangular matrices.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-127" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
+<p><span id="def:unlabeled-div-144" class="definition"><strong>Definition 10.1  </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be lower triangular if
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 
@@ -391,7 +393,7 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 \]</span></p>
 <p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="matrix-equation.html#eq:matrix-equation">(4.1)</a> for the two equations in <a href="matrix-factorizations.html#eq:LU">(10.1)</a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-128" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
+<p><span id="exm:unlabeled-div-145" class="example"><strong>Example 10.1  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; -1 &amp; 0 &amp; 0 \\ -1 &amp; -2 &amp; -3 &amp; 0 \\ -2 &amp; -3 &amp; 0 &amp; -3 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ 0 &amp; 2 &amp; 0 &amp; 3 \\ 0 &amp; 0 &amp; 2 &amp; -3 \\ 0 &amp; 0 &amp; 0 &amp; -3 \end{pmatrix}
@@ -450,7 +452,7 @@ and consider the system of equations defined by the matrix equation <span class=
 </div>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-129" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
+<p><span id="exr:unlabeled-div-146" class="exercise"><strong>Exercise 10.1  </strong></span>in lab:
 Solve some large systems of equations by brute force which shows how the LU decomposition is faster.</p>
 </div>
 <div id="geometric-interpretation-of-the-lu-factorization" class="section level3">
@@ -506,7 +508,7 @@ where <span class="math inline">\(\mathbf{L} = (\mathbf{E}_k \cdots \mathbf{E}_1
 </div>
 <p>Note: the condition of positive definiteness is actually impossible to check. Can you show this is true for all vectors? Luckily, a <span class="math inline">\(n \times n\)</span> symmetric matrix is positive definite if and only if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible (which we know about by the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>).</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-131" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
+<p><span id="def:unlabeled-div-148" class="definition"><strong>Definition 10.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a symmetric, positive definite matrix (by this, <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times n\)</span> square matrix). Then
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \mathbf{L} \mathbf{L}&#39;

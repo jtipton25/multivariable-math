@@ -278,7 +278,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="rank-1.html"><a href="rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
 <li class="chapter" data-level="18.1" data-path="rank-1.html"><a href="rank-1.html#rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
+<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a><ul>
+<li class="chapter" data-level="19.1" data-path="change-of-basis.html"><a href="change-of-basis.html#changing-coordinates-between-different-bases"><i class="fa fa-check"></i><b>19.1</b> Changing coordinates between different bases</a></li>
+</ul></li>
 <li class="chapter" data-level="20" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
 <li class="chapter" data-level="20.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#eigenspaces"><i class="fa fa-check"></i><b>20.1</b> Eigenspaces</a><ul>
 <li class="chapter" data-level="20.1.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#computing-eigenspaces"><i class="fa fa-check"></i><b>20.1.1</b> Computing Eigenspaces</a></li>
@@ -346,10 +348,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="the-chain-rule" class="section level1">
 <h1><span class="header-section-number">Chapter 26</span> The chain rule</h1>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="the-chain-rule.html#cb309-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb309-2"><a href="the-chain-rule.html#cb309-2"></a><span class="kw">library</span>(plotly)</span>
-<span id="cb309-3"><a href="the-chain-rule.html#cb309-3"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb309-4"><a href="the-chain-rule.html#cb309-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="the-chain-rule.html#cb321-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb321-2"><a href="the-chain-rule.html#cb321-2"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb321-3"><a href="the-chain-rule.html#cb321-3"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb321-4"><a href="the-chain-rule.html#cb321-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>Recall the univariate chain rule: If <span class="math inline">\(y = f(x)\)</span> is a function of <span class="math inline">\(x\)</span> and <span class="math inline">\(z = g(y)\)</span> is a function of <span class="math inline">\(y\)</span>, a question of interest is "What is the change in <span class="math inline">\(z\)</span> relative to change in <span class="math inline">\(x\)</span>?</p>
 <p>We can write <span class="math inline">\(z = g(y) = g(f(x))\)</span> and using this notation, the change in <span class="math inline">\(z\)</span> with respect to the variable <span class="math inline">\(x\)</span> is <span class="math inline">\(\frac{dz}{dx} = \frac{dz}{dy}\frac{dy}{dx} = \frac{df(y)}{dy}\frac{dg(x)}{dx}\)</span>. Written in functional form
 <span class="math display">\[

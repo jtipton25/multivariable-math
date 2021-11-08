@@ -170,7 +170,7 @@
 \title{Multivariable Mathematics for Data Science}
 \author{John Tipton}
 \date{Created 1 January 2020\\
-Last updated 05 November, 2021}
+Last updated 08 November, 2021}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -4100,8 +4100,8 @@ In \texttt{R}, an identity matrix is easy to construct. An \(n \times n\) identi
 Because \(\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}\), we have \(\mathbf{A}\) is an invertible matrix with inverse \(\mathbf{B} = \mathbf{A}^{-1}\).
 \end{example}
 
-\begin{theorem}
-Let \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\). If \(ad - bc \neq 0\) then \(\mathbf{A}\) is invertible and
+\begin{theorem}[Matrix Inverse for 2 by 2 matrix]
+\protect\hypertarget{thm:matrix-2by2}{}\label{thm:matrix-2by2}Let \(\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\). If \(ad - bc \neq 0\) then \(\mathbf{A}\) is invertible and
 \[
 \begin{aligned}
 \mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
@@ -6937,6 +6937,8 @@ Let \(\mathcal{S} = \{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\) be vectors in the v
 
 \begin{proof}
 
+We will show the proof for bot parts (a) and (b) of the theroem
+
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
@@ -7186,29 +7188,29 @@ In class using basis in 2-dimensions \(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix
 \hypertarget{coordinates-in-mathcalrn}{%
 \section{\texorpdfstring{Coordinates in \(\mathcal{R}^n\)}{Coordinates in \textbackslash mathcal\{R\}\^{}n}}\label{coordinates-in-mathcalrn}}
 
-Let \(\mathbf{x}\) be defined with the standard coordinates. Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\) be a basis in \(\mathcal{R}^n\). Define \(\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}\) as the matrix with columns the vectors of the basis. Then, the coordinates \(\left[\mathbf{x}\right]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}\) of \(\mathbf{x}\)
+Let \(\mathbf{x}\) be defined with the standard coordinates. Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\) be a basis in \(\mathcal{R}^n\). Define \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}\) as the matrix with columns the vectors of the basis. Then, the coordinates \(\left[\mathbf{x}\right]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}\) of \(\mathbf{x}\)
 
 with respect to the basis \(\mathcal{B}\) can be found by solving the matrix equation
 
 \[
 \begin{aligned}
-\mathbf{P}_B \left[\mathbf{x}\right]_B = \mathbf{x}
+\mathbf{B} \left[\mathbf{x}\right]_B = \mathbf{x}
 \end{aligned}
 \]
-The matrix \(\mathbf{P}_B\) is called the \textbf{change-of-coordinates matrix} from \(\mathcal{B}\) to the standard basis in \(\mathcal{R}^n\). The solution set (the coefficients) \(\left[\mathbf{x}\right]_B\) can be found using row operations or by using the fact that because the columns of \(\mathbf{P}_B\) spans \(\mathcal{R}^n\) the matrix \(\mathbf{P}_B\) is invertible. Then, the coordinates of \(\mathbf{x}\) with respect to the basis \(\mathcal{B}\) is
+The matrix \(\mathbf{B}\) is called the \textbf{change-of-coordinates matrix} from \(\mathcal{B}\) to the standard basis in \(\mathcal{R}^n\). The solution set (the coefficients) \(\left[\mathbf{x}\right]_B\) can be found using row operations or by using the fact that because the columns of \(\mathbf{B}\) spans \(\mathcal{R}^n\) the matrix \(\mathbf{B}\) is invertible. Then, the coordinates of \(\mathbf{x}\) with respect to the basis \(\mathcal{B}\) is
 \[
 \begin{aligned}
-\left[\mathbf{x}\right]_B = \mathbf{P}_B^{-1} \mathbf{x}
+\left[\mathbf{x}\right]_B = \mathbf{B}^{-1} \mathbf{x}
 \end{aligned}
 \]
 
 \begin{theorem}
-Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\) be a basis for the vector space \(\mathcal{V}\). Then, the coordinate mapping \(\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}\) is a one-to-one and onto transformation from \(\mathcal{V}\) to \(\mathcal{R}^n\)
+Let \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}\) be a basis for the vector space \(\mathcal{V}\). Then, the coordinate mapping \(\mathbf{x} \rightarrow \mathbf{B}^{-1} \mathbf{x}\) is a one-to-one and onto transformation from \(\mathcal{V}\) to \(\mathcal{R}^n\)
 \end{theorem}
 
 \begin{proof}
 
-First we want to show that multiplication by \(\mathbf{P}_B^{-1}\) defines a linear transformation. First, take two vectors
+First we want to show that multiplication by \(\mathbf{B}^{-1}\) defines a linear transformation. First, take two vectors
 \[
 \begin{aligned}
 \mathbf{u} &  = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
@@ -7229,7 +7231,7 @@ and
 
 \[
 \begin{aligned}
-\mathbf{u} + \mathbf{v} \rightarrow \mathbf{P}_B^{-1} (\mathbf{u} + \mathbf{v}) =  \mathbf{P}_B^{-1} \mathbf{u} + \mathbf{P}_B^{-1} \mathbf{v}
+\mathbf{u} + \mathbf{v} \rightarrow \mathbf{B}^{-1} (\mathbf{u} + \mathbf{v}) =  \mathbf{B}^{-1} \mathbf{u} + \mathbf{B}^{-1} \mathbf{v}
 \end{aligned}
 \]
 which preserves vector addition
@@ -7242,7 +7244,7 @@ which preserves vector addition
 
 \[
 \begin{aligned}
-a\mathbf{u} \rightarrow \mathbf{P}_B^{-1} (a \mathbf{u}) =  a \mathbf{P}_B^{-1} \mathbf{u}
+a\mathbf{u} \rightarrow \mathbf{B}^{-1} (a \mathbf{u}) =  a \mathbf{B}^{-1} \mathbf{u}
 \end{aligned}
 \]
 which preserves scalar multiplication.
@@ -7250,7 +7252,7 @@ which preserves scalar multiplication.
 \begin{itemize}
 \tightlist
 \item
-  Therefore, this is a linear transformation. one-to-one and onto come from fact that \(\mathbf{P}_B\) is and \(n \times n\) matrix with \(n\) pivot columns (\(n\) linearly independent vectors because it is a basis for \(\mathcal{R}^n\))
+  Therefore, this is a linear transformation. one-to-one and onto come from fact that \(\mathbf{B}\) is and \(n \times n\) matrix with \(n\) pivot columns (\(n\) linearly independent vectors because it is a basis for \(\mathcal{R}^n\))
 \end{itemize}
 
 \end{proof}
@@ -7269,21 +7271,21 @@ In a vector space \(\mathcal{V}\) with basis \(\mathcal{B} = \{ \mathbf{b}_1, \l
 \end{theorem}
 
 \begin{proof}
-Let \(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\) be a set of vectors in \(\mathcal{V}\) with \(p > n\). The coordinate vectors \(\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}\) form a linearly dependent set in \(\mathcal{R}^n\) because there are more vectors (\(p\)) than entries (\(n\)) in each vector. Thus, there exist scalars \(c_1, \ldots, c_p\), some nonzero, such that
+Let \(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\) be a set of vectors in \(\mathcal{V}\) with \(p > n\). The coordinate vectors \(\{\mathbf{B} \mathbf{u}_1, \ldots, \mathbf{B} \mathbf{u}_p\}\) form a linearly dependent set in \(\mathcal{R}^n\) because there are more vectors (\(p\)) than entries (\(n\)) in each vector. Thus, there exist scalars \(c_1, \ldots, c_p\), some nonzero, such that
 \[
 \begin{aligned}
-c_1 \mathbf{P}_B \mathbf{u}_1 + \ldots + c_p \mathbf{P}_B \mathbf{u}_p = \mathbf{0}.
+c_1 \mathbf{B} \mathbf{u}_1 + \ldots + c_p \mathbf{B} \mathbf{u}_p = \mathbf{0}.
 \end{aligned}
 \]
 which by linearity implies
 \[
 \begin{aligned}
-\mathbf{P}_B (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
+\mathbf{B} (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
 \end{aligned}
 \]
 \end{proof}
 
-Because the matrix \(\mathbf{P}_{B}\) is a \(n \times n\) matrix with n linearly independent columns, the only way the equation above can equal \(\mathbf{0}\) is if the vector \(c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}\) (by the invertible matrix theorem). Therefore, the set of vectors \(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\) is linearly dependent because there are coefficients that allow the vectors to sum to \(\mathbf{0}\). Thus, we know that for a vector space \(\mathcal{V}\) that has a basis \({\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}}\) that consists on \(n\) vectors, then every linearly independent set of vectors in \(\mathcal{V}\) contains at most \(n\) vectors.
+Because the matrix \(\mathbf{B}\) is a \(n \times n\) matrix with n linearly independent columns, the only way the equation above can equal \(\mathbf{0}\) is if the vector \(c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}\) (by the invertible matrix theorem). Therefore, the set of vectors \(\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}\) is linearly dependent because there are coefficients that allow the vectors to sum to \(\mathbf{0}\). Thus, we know that for a vector space \(\mathcal{V}\) that has a basis \({\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}}\) that consists on \(n\) vectors, then every linearly independent set of vectors in \(\mathcal{V}\) contains at most \(n\) vectors.
 
 \begin{theorem}
 If a vector space \({\mathcal{V}}\) has a basis with \(n\) vectors, then every other basis of \({\mathcal{V}}\) must also contain exactly \(n\) vectors.
@@ -7392,7 +7394,7 @@ rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
 \end{theorem}
 
 \begin{proof}
-rank(\(\mathbf{A}\)) is the number of pivot columns. dim(null(\(\mathbf{A}\))) is the number of non-pivot columns. The pivot columns + non-pivot columns are the number of columns.
+The rank(\(\mathbf{A}\)) is the number of pivot columns and dim(null(\(\mathbf{A}\))) is the number of non-pivot columns. The number of pivot columns (rank(\(\mathbf{A}\))) + the number of non-pivot columns (dim(null(\(\mathbf{A}\)))) are the number of columns.
 \end{proof}
 
 \begin{example}
@@ -7431,41 +7433,221 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix. Then the following statements ar
   \href{https://www.3blue1brown.com/lessons/change-of-basis}{3 Blue 1 Brown -- Change of basis}
 \end{itemize}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(dasc2594)}
+\end{Highlighting}
+\end{Shaded}
+
 Consider two bases \(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\) and \(\mathcal{C} = \{ \mathbf{c}_1, \ldots, \mathbf{c}_n \}\) for a vector space \(\mathcal{V}\). If we have a vector \(\left[\mathbf{x}\right]_B\) with coordinates in \(\mathcal{B}\), what are the coordinates of \(\left[\mathbf{x}\right]_C\) with respect to \(\mathcal{C}\)?
 
 \begin{itemize}
 \tightlist
 \item
-  Recall: we know how to change from the standard coordinates to the basis \(\mathcal{B}\). If \(\mathbf{x}\) is a vector in the standard coordinates and \(\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}\) is a matrix with columns given by the basis \(\mathbf{B}\), the coordinates of \(\left[\mathbf{x}\right]_B\) of the vector \(\mathbf{x}\) with respect to the basis \(\mathcal{B}\) are
+  Recall: we know how to change from the standard coordinates to the basis \(\mathcal{B}\). If \(\mathbf{x}\) is a vector in the standard coordinates and \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}\) is a matrix with columns given by the basis \(\mathbf{B}\), the coordinates of \(\left[\mathbf{x}\right]_B\) of the vector \(\mathbf{x}\) with respect to the basis \(\mathcal{B}\) are
   \[
   \begin{aligned}
-  \left[\mathbf{x}\right]_B = \mathbf{P}_B^{-1} \mathbf{x}
+  \left[\mathbf{x}\right]_B = \mathbf{B}^{-1} \mathbf{x}
   \end{aligned}
   \]
   and, as a consequence, given a vector \(\left[\mathbf{x}\right]_B\) with coordinates with respect to the basis \(\mathcal{B}\), the vector of coefficients \(\mathbf{x}\) with standard coordinates is given by
   \[
   \begin{aligned}
-  \mathbf{x} = \mathbf{P}_B \left[\mathbf{x}\right]_B.
+  \mathbf{x} = \mathbf{B} \left[\mathbf{x}\right]_B.
   \end{aligned}
   \]
 \end{itemize}
 
 Notice that change of coordinates is a linear transformation from \(\mathcal{B}\) to \(\mathcal{C}\) with transformation matrix \(\mathbf{A}\). Despite the more complex notation, this is just another linear transformation {[}\href{https://www.youtube.com/watch?v=VGhij2qmOs4}{link}{]}.
 
-\textbf{Draw diagram}
+:::\{.example\}
+Show the change of basis from the basis \(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\) to the basis \(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\). To do this, represent the columns that make up the basis \(\mathcal{B}\) as the matrix \(\mathbf{B} = \begin{pmatrix} \frac{1}{2} & -1 \\ 1 & 0 \end{pmatrix}\) and represent the columns that make up the basis \(\mathcal{C}\) as the matrix \(\mathbf{C} = \begin{pmatrix} 0 & \frac{1}{2} \\ 1 & -\frac{1}{2} \end{pmatrix}\). Then, the change of basis can be represented as
 
-Now, we can combine these ideas. Given a vector \(\left[\mathbf{x}\right]_B\) written with coordinates with respect to the basis \(\mathcal{B}\), we can find the coordinates of \(\left[\mathbf{x}\right]_C\) with respect to the basis \(\mathcal{C}\). First, we find the coordinates of the vector \(\mathbf{x}\) with respect to the standard basis then find the coordinates of \(\left[\mathbf{x}\right]_C\) with respect to the basis \(\mathcal{C}\). Let \(\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}\) and \(\mathbf{P}_C = \begin{pmatrix} \mathbf{c}_1 & \ldots & \mathbf{c}_n \end{pmatrix}\), then given a vector \(\left[\mathbf{x}\right]_B\) with coordinates with respect to the basis \(\mathcal{B}\), the coordinates \(\left[\mathbf{x}\right]_C\) of this vector with respect to the basis \(\mathcal{C}\) is
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{C <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{-1}\OperatorTok{/}\DecValTok{2}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\NormalTok{p <-}\StringTok{ }\KeywordTok{plot_change_basis}\NormalTok{(B, C)}
+\end{Highlighting}
+\end{Shaded}
+
+which can be represented with the static images
+
+\includegraphics{multivariable-math_files/figure-latex/change-basis-static-1.pdf}
+
+The change of basis represents a linear transformation. When previously discussing linear transformations in Chapter \ref{linear-transformations}, we considered a linear transformation from the standard basis \(\mathcal{I}\) defined by the basis vectors \(\left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}\) with the vectors represented as the columns of the identity matrix \(\mathbf{I}\). We can consider a change of basis as two consecutive linear transformations. First, a linear transformation from the basis \(\mathcal{B}\) to the standard basis \(\mathcal{I}\) and then a linear transformation from the standard basis \(\mathcal{I}\) to the basis \(\mathcal{C}\). This can be represented using the following example code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p <-}\StringTok{ }\KeywordTok{plot_change_basis}\NormalTok{(B, C, }\DataTypeTok{plot_standard_basis =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{multivariable-math_files/figure-latex/change-basis-I-static-1.pdf}
+
+\hypertarget{changing-coordinates-between-different-bases}{%
+\section{Changing coordinates between different bases}\label{changing-coordinates-between-different-bases}}
+
+Now, we can combine these ideas. Given a vector \(\left[\mathbf{x}\right]_B\) written with coordinates with respect to the basis \(\mathcal{B}\), we can find the coordinates of \(\left[\mathbf{x}\right]_C\) with respect to the basis \(\mathcal{C}\). First, we find the coordinates of the vector \(\mathbf{x}\) with respect to the standard basis then find the coordinates of \(\left[\mathbf{x}\right]_C\) with respect to the basis \(\mathcal{C}\). Let \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \ldots & \mathbf{b}_n \end{pmatrix}\) and \(\mathbf{C} = \begin{pmatrix} \mathbf{c}_1 & \ldots & \mathbf{c}_n \end{pmatrix}\), then given a vector \(\left[\mathbf{x}\right]_B\) with coordinates with respect to the basis \(\mathcal{B}\), the coordinates \(\left[\mathbf{x}\right]_C\) of this vector with respect to the basis \(\mathcal{C}\) is
 \[
 \begin{aligned}
-\left[\mathbf{x}\right]_C = \mathbf{P}_C^{-1} \mathbf{P}_B \left[\mathbf{x}\right]_B.
+\left[\mathbf{x}\right]_C = \mathbf{C}^{-1} \mathbf{B} \left[\mathbf{x}\right]_B.
 \end{aligned}
 \]
 
 \textbf{Draw diagram}
 
 \begin{example}
-2-d change of basis
+
+Working with the same bases \(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\) and \(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\) from the previous example, Let \(\left[\mathbf{x}\right]_B = \begin{pmatrix} -3/2 \\ 1/2 \end{pmatrix}\) be the coordinates of the vector \(\mathbf{x}\) with respect to the basis \(\mathcal{B} = \left\{ \begin{pmatrix} 1/2 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\). Find
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  the coordinates of \(\mathbf{x}\) with respect to the standard basis and
+\item
+  the coordinates of \(\mathbf{x}\) with respect to the basis \(\mathcal{C}\).
+\end{enumerate}
+
 \end{example}
+
+\begin{solution}
+
+Here we solve the two questions from the example above.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Recall that the coordinates \(\left[\mathbf{x}\right]_B\) of \(\mathbf{x}\) with respect to the basis \(\mathcal{B}\) mean that the vector \(\mathbf{x}\) can be written as a linear combination of the basis vectors \(\mathbf{b}_1\) and \(\mathbf{b}_2\) with coefficients given by the elements in \(\left[\mathbf{x}\right]_B = \begin{pmatrix} \left[x_1\right]_B \\ \left[x_2\right]_B \end{pmatrix}\). This results in the equation
+\end{enumerate}
+
+\[
+\begin{aligned}
+\mathbf{x} & = \left[x_1\right]_B \mathbf{b}_1 + \left[x_2\right]_B \mathbf{b}_2
+\end{aligned}
+\]
+Plugging the values from the example gives
+\[
+\begin{aligned}
+\mathbf{x} & = \left[x_1\right]_B \mathbf{b}_1 + \left[x_2\right]_B \mathbf{b}_2 \\
+& = -1.5 \begin{pmatrix} 1/2 \\ 1 \end{pmatrix} + 0.5 \begin{pmatrix} -1 \\ 0 \end{pmatrix} \\
+& = \begin{pmatrix} -3/4 \\ -3/2 \end{pmatrix} + \begin{pmatrix} -1/2 \\ 0 \end{pmatrix} \\
+& = \begin{pmatrix} -5/4 \\ -3/2 \end{pmatrix}
+\end{aligned}
+\]
+2) Now, recall the coordinates \(\left[\mathbf{x}\right]_C\) of \(\mathbf{x}\) with respect to the basis \(\mathcal{C}\) mean that the vector \(\mathbf{x}\) can be written as a linear combination of the basis vectors \(\mathbf{c}_1\) and \(\mathbf{c}_2\) with coefficients given by the elements in \(\left[\mathbf{x}\right]_C = \begin{pmatrix} \left[x_1\right]_C \\ \left[x_2\right]_C \end{pmatrix}\). This results in the equation
+
+\[
+\begin{aligned}
+\mathbf{x} & = \left[x_1\right]_C \mathbf{c}_1 + \left[x_2\right]_C \mathbf{c}_2
+\end{aligned}
+\]
+However, unlike part (1), we do not know the coefficients \(\left[\mathbf{x}\right]\) but need to solve for them. Rewriting the above equation in the form of \(\mathbf{A}\mathbf{x} = \mathbf{b}\) gives
+\[
+\begin{aligned}
+\mathbf{C} \left[ \mathbf{x} \right]_C & = \mathbf{x}
+\end{aligned}
+\]
+Because the matrix of basis vectors \(\mathbf{C}\) is an invertible matrix (a basis is a linearly independent spanning set), the coefficients \(\left[\mathbf{x}\right]_C\) can be solved using the equation
+\[
+\begin{aligned}
+\mathbf{C} \left[ \mathbf{x} \right]_C & = \mathbf{x} \\
+\mathbf{C}^{-1} \mathbf{C}\left[ \mathbf{x} \right]_C & = \mathbf{C}^{-1}\mathbf{x} \\
+\left[ \mathbf{x} \right]_C & = \mathbf{C}^{-1} \mathbf{x} 
+\end{aligned}
+\]
+The matrix inverse \(\mathbf{C}^{-1}\) can be found using theorem \ref{thm:matrix-2by2} to get \(\mathbf{C}^{-1} = \begin{pmatrix} 1 & 2 \\ 1 & 0 \end{pmatrix}\). Then, plugging in the values from the example gives
+
+\[
+\begin{aligned}
+\left[ \mathbf{x} \right]_C & = \mathbf{C}^{-1} \mathbf{x} \\
+& = \begin{pmatrix} 1 & 2 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} -5/4 \\ -3/2 \end{pmatrix} \\
+& = \begin{pmatrix} -17/4 \\ -5/4 \end{pmatrix}
+\end{aligned}
+\]
+Another way to change coordinates is to change directly from basis \(\mathcal{B}\) to \(\mathcal{C}\) without going through the intermediate transformation to the standard coordinates. Combining the results from (1) and (2) gives
+\[
+\begin{aligned}
+\left[ \mathbf{x} \right]_C & = \mathbf{C}^{-1} \mathbf{x} \\
+& = \mathbf{C}^{-1} \mathbf{B} \left[\mathbf{x}\right]_B
+\end{aligned}
+\]
+so that one can change coordinates from the basis \(\mathcal{B}\) to the basis \(\mathcal{C}\) using the linear transformation defined by the matrix multiplication \(\mathbf{C}^{-1} \mathbf{B}\).
+
+In \texttt{R}, first define the basis matrices \texttt{B} and \texttt{C} and the coordinates \texttt{x\_b} of the vector \(\mathbf{x}\) with respect to the basis \(\mathcal{B}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{C <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{-1}\OperatorTok{/}\DecValTok{2}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{x_b <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+1) The coordinates \texttt{x} with respect to the standard basis is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\NormalTok{B }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_b}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]
+## [1,] -1.25
+## [2,] -1.50
+\end{verbatim}
+
+2) The coordinates \texttt{x\_c} with respect to the basis \(\mathcal{C}\) can be found by calculating the matrix inverse \texttt{C\_inv} and then using the matrix inverse to calculate the coordinates with respect to the basis \(\mathcal{C}\) as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{C_inv <-}\StringTok{ }\KeywordTok{solve}\NormalTok{(C)}
+\NormalTok{x_c <-}\StringTok{ }\NormalTok{C_inv }\OperatorTok{%*%}\StringTok{ }\NormalTok{x}
+\NormalTok{x_c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]
+## [1,] -4.25
+## [2,] -1.25
+\end{verbatim}
+
+Done as a single transformation, the linear transformation is defined as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OperatorTok{%*%}\StringTok{ }\NormalTok{C_inv}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,] -0.5    1
+## [2,]  1.0    2
+\end{verbatim}
+
+which gives the coordinates
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OperatorTok{%*%}\StringTok{ }\NormalTok{C_inv }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]
+## [1,]  1.25
+## [2,] -0.50
+\end{verbatim}
+
+\end{solution}
 
 \begin{example}
 3-d change of basis
@@ -8436,7 +8618,7 @@ Plotting this data shows the strong positive linear relationship
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-188-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-195-1.pdf}
 We can solve for the coefficients \texttt{beta} using the linear project theorem
 
 \begin{Shaded}
@@ -8465,7 +8647,7 @@ Plotting the projection \(\mathbf{y}_{\mathcal{W}}\) gives
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-191-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-198-1.pdf}
 The complement of the project (called the \textbf{residuals} in statistics) is given by \(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)
 
 \begin{Shaded}
@@ -8487,7 +8669,7 @@ and can be visualized as the orthogonal projection using segments
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-193-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-200-1.pdf}
 Recall that the orthogonal projection gives the ``closest'' vector \(\mathbf{y}_W\) to \(\mathbf{y}\) that is in the subspace \(\mathcal{W}\) that is the span of the column space of \(\mathbf{X}\). See \url{https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html} for an example.
 
 \hypertarget{graphs-and-limits}{%
@@ -8533,7 +8715,7 @@ f(x, y) = x^2 + y^2
 \end{aligned}
 \]
 which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-195-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-202-1.pdf}
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
 
 \begin{Shaded}
@@ -8547,7 +8729,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-196-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-203-1.pdf}
 where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
 
 \begin{Shaded}
@@ -8561,7 +8743,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-197-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-204-1.pdf}
 Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
 \end{example}
 
@@ -8575,7 +8757,7 @@ f(x, y) = x^2 - y^2
 \end{aligned}
 \]
 which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-198-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-205-1.pdf}
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
 
 \begin{Shaded}
@@ -8589,7 +8771,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-199-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-206-1.pdf}
 where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
 
 \begin{Shaded}
@@ -8603,7 +8785,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-200-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-207-1.pdf}
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
 \end{example}
 
@@ -8816,7 +8998,7 @@ For example, consider the function
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-203-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-210-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9194,7 +9376,7 @@ Compute the directional derivative of \(f(x, y) = 3x^2 + y^2\) in the direction 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-208-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-215-1.pdf}
 \end{example}
 
 \hypertarget{the-gradient}{%
@@ -9586,7 +9768,7 @@ find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-215-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-222-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]

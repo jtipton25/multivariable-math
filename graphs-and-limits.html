@@ -278,7 +278,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="rank-1.html"><a href="rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
 <li class="chapter" data-level="18.1" data-path="rank-1.html"><a href="rank-1.html#rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a></li>
+<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a><ul>
+<li class="chapter" data-level="19.1" data-path="change-of-basis.html"><a href="change-of-basis.html#changing-coordinates-between-different-bases"><i class="fa fa-check"></i><b>19.1</b> Changing coordinates between different bases</a></li>
+</ul></li>
 <li class="chapter" data-level="20" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
 <li class="chapter" data-level="20.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#eigenspaces"><i class="fa fa-check"></i><b>20.1</b> Eigenspaces</a><ul>
 <li class="chapter" data-level="20.1.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#computing-eigenspaces"><i class="fa fa-check"></i><b>20.1.1</b> Computing Eigenspaces</a></li>
@@ -346,9 +348,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="graphs-and-limits" class="section level1">
 <h1><span class="header-section-number">Chapter 24</span> Graphs and Limits</h1>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="graphs-and-limits.html#cb301-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb301-2"><a href="graphs-and-limits.html#cb301-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb301-3"><a href="graphs-and-limits.html#cb301-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="graphs-and-limits.html#cb313-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb313-2"><a href="graphs-and-limits.html#cb313-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb313-3"><a href="graphs-and-limits.html#cb313-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>Here we start a transition to topics in vector calculus. We will start with a discussion of functions of two variables (although the functions are not assumed to be linear). We define a function of two variables explicitly as <span class="math inline">\(z = f(x, y)\)</span>.</p>
 <div class="definition">
 <p><span id="def:unlabeled-div-273" class="definition"><strong>Definition 24.1  </strong></span>Like with linear functions, we can define the domain and range for general functions of two variables. A function <span class="math inline">\(f(x, y)\)</span> assigns each point <span class="math inline">\((x, y)\)</span> in some <strong>domain</strong> <span class="math inline">\(\mathcal{D}\)</span> in <span class="math inline">\(\mathcal{R}^2\)</span> to a unique number <span class="math inline">\(z\)</span> in a subset of <span class="math inline">\(\mathcal{R}\)</span>. The set of inputs <span class="math inline">\(\mathcal{D}\)</span> is called the <strong>domain</strong> of the function and the <strong>range</strong> is the set of real numbers <span class="math inline">\(z\)</span> that are the output of the function over all the inputs in <span class="math inline">\(\mathcal{D}\)</span></p>
@@ -371,23 +373,23 @@ f(x, y) = x^2 + y^2
 \end{aligned}
 \]</span>
 which defines the surface
-<img src="multivariable-math_files/figure-html/unnamed-chunk-195-1.png" width="672" />
+<img src="multivariable-math_files/figure-html/unnamed-chunk-202-1.png" width="672" />
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="graphs-and-limits.html#cb302-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb302-2"><a href="graphs-and-limits.html#cb302-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
-<span id="cb302-3"><a href="graphs-and-limits.html#cb302-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">parabola</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb302-4"><a href="graphs-and-limits.html#cb302-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
-<span id="cb302-5"><a href="graphs-and-limits.html#cb302-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
-<span id="cb302-6"><a href="graphs-and-limits.html#cb302-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-196-1.png" width="672" />
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="graphs-and-limits.html#cb314-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb314-2"><a href="graphs-and-limits.html#cb314-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb314-3"><a href="graphs-and-limits.html#cb314-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">parabola</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb314-4"><a href="graphs-and-limits.html#cb314-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb314-5"><a href="graphs-and-limits.html#cb314-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
+<span id="cb314-6"><a href="graphs-and-limits.html#cb314-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-203-1.png" width="672" />
 where each curve in the (x, y) plane has exactly the same value of <span class="math inline">\(f(x, y)\)</span>. Alternatively, this can be represented using filled level curves</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="graphs-and-limits.html#cb303-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb303-2"><a href="graphs-and-limits.html#cb303-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
-<span id="cb303-3"><a href="graphs-and-limits.html#cb303-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">parabola</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb303-4"><a href="graphs-and-limits.html#cb303-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
-<span id="cb303-5"><a href="graphs-and-limits.html#cb303-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
-<span id="cb303-6"><a href="graphs-and-limits.html#cb303-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-197-1.png" width="672" />
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="graphs-and-limits.html#cb315-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb315-2"><a href="graphs-and-limits.html#cb315-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb315-3"><a href="graphs-and-limits.html#cb315-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">parabola</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb315-4"><a href="graphs-and-limits.html#cb315-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb315-5"><a href="graphs-and-limits.html#cb315-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
+<span id="cb315-6"><a href="graphs-and-limits.html#cb315-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-204-1.png" width="672" />
 Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
 </div>
 <div class="example">
@@ -399,23 +401,23 @@ f(x, y) = x^2 - y^2
 \end{aligned}
 \]</span>
 which defines the surface
-<img src="multivariable-math_files/figure-html/unnamed-chunk-198-1.png" width="672" />
+<img src="multivariable-math_files/figure-html/unnamed-chunk-205-1.png" width="672" />
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="graphs-and-limits.html#cb304-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb304-2"><a href="graphs-and-limits.html#cb304-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
-<span id="cb304-3"><a href="graphs-and-limits.html#cb304-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">saddle</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb304-4"><a href="graphs-and-limits.html#cb304-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
-<span id="cb304-5"><a href="graphs-and-limits.html#cb304-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
-<span id="cb304-6"><a href="graphs-and-limits.html#cb304-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-199-1.png" width="672" />
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="graphs-and-limits.html#cb316-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb316-2"><a href="graphs-and-limits.html#cb316-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb316-3"><a href="graphs-and-limits.html#cb316-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">saddle</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb316-4"><a href="graphs-and-limits.html#cb316-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb316-5"><a href="graphs-and-limits.html#cb316-5"></a><span class="st">    </span><span class="kw">geom_contour</span>() <span class="op">+</span></span>
+<span id="cb316-6"><a href="graphs-and-limits.html#cb316-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-206-1.png" width="672" />
 where each curve in the (x, y) plane has exactly the same value of <span class="math inline">\(f(x, y)\)</span>. Alternatively, this can be represented using filled level curves</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="graphs-and-limits.html#cb305-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb305-2"><a href="graphs-and-limits.html#cb305-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
-<span id="cb305-3"><a href="graphs-and-limits.html#cb305-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">saddle</span>(x, y)) <span class="op">%&gt;%</span></span>
-<span id="cb305-4"><a href="graphs-and-limits.html#cb305-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
-<span id="cb305-5"><a href="graphs-and-limits.html#cb305-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
-<span id="cb305-6"><a href="graphs-and-limits.html#cb305-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-200-1.png" width="672" />
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="graphs-and-limits.html#cb317-1"></a><span class="kw">data.frame</span>(<span class="kw">expand.grid</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb317-2"><a href="graphs-and-limits.html#cb317-2"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> Var2) <span class="op">%&gt;%</span></span>
+<span id="cb317-3"><a href="graphs-and-limits.html#cb317-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">saddle</span>(x, y)) <span class="op">%&gt;%</span></span>
+<span id="cb317-4"><a href="graphs-and-limits.html#cb317-4"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb317-5"><a href="graphs-and-limits.html#cb317-5"></a><span class="st">    </span><span class="kw">geom_contour_filled</span>() <span class="op">+</span></span>
+<span id="cb317-6"><a href="graphs-and-limits.html#cb317-6"></a><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-207-1.png" width="672" />
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.</p>
 </div>
 </div>
