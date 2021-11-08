@@ -268,8 +268,8 @@
       "RemoteRepo": "dasc2594",
       "RemoteUsername": "jtipton25",
       "RemoteRef": "HEAD",
-      "RemoteSha": "3659f0b9d8724e3baade80c1ac5b65c70246f6cc",
-      "Hash": "72f6cdf4be6b65ead9b73137723b063e"
+      "RemoteSha": "b07c75d07cb232899904ef89e247b58378c80c1f",
+      "Hash": "7ae6c33f52dfc3dea79eecc219d75180"
     },
     "data.table": {
       "Package": "data.table",
@@ -460,10 +460,10 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.4.2",
+      "Version": "1.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6efd734b14c6471cfe443345f3e35e29"
+      "Hash": "5ccb956a6d09b4ca448094582f8c7571"
     },
     "googledrive": {
       "Package": "googledrive",
@@ -1083,10 +1083,10 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.5",
+      "Version": "3.1.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "36eb05ad4cfdfeaa56f5a9b2a1311efd"
+      "Hash": "8a8f02d1934dfd6431c671361510dd0b"
     },
     "tidyr": {
       "Package": "tidyr",

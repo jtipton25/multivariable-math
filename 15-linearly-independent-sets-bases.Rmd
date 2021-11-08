@@ -47,7 +47,10 @@ b) If $\mathcal{H} \neq \{\mathbf{0}\}$, then some subset of $\mathcal{S}$ spans
 
 :::
 
+<div class="fold-proof">
 :::{.proof}
+We will show the proof for bot parts (a) and (b) of the theroem
+
 a) WLOG assume $\mathbf{v}_n$ is a linear combination of $\mathbf{v}_1, \ldots, \mathbf{v}_{n-1}$ (if not, permute the labels to make the linearly dependent vector the $n$th vector). Then
 $$
 \begin{aligned}
@@ -67,6 +70,9 @@ for scalars $c_1, \ldots, c_n$. Plugging the result from \@ref(eq:span-set-theor
 b) As the vectors in $\mathcal{S}$ span $\mathcal{H}$, if there is a linearly dependent vector in $\mathcal{S}$, this vector can be removed from $\mathcal{S}$ and the span of this subset of $\mathcal{S}$ will still span $\mathcal{H}$. As long as $\mathbf{H} \neq \{\mathbf{0}\}$, there must be a least one nonzero vector in $\mathbf{S}$ so the removing of linearly dependent vectors will stop with at least one vector. As all of the linearly dependent vectors have been removed, the subset of $\mathcal{S}$ created in this manner will be a set of linearly independent vectors that span $\mathcal{H}$.
 
 :::
+
+</div>
+
 
 ## Bases for null($\mathbf{A}$) and col($\mathbf{A}$)
 
@@ -149,7 +155,9 @@ $$
 The pivot columns of a matrix $\mathbf{A}$ for a basis for col($\mathbf{A}$)
 :::
 
+<div class="fold-proof">
 :::{.proof}
 sketch: $\mathbf{B}$ rref of $\mathbf{A}$, linearly independent columns of $\mathbf{B}$ are same as linearly independent columns in $\mathbf{A}$. Other (non-pviot) columns are linearly dependent. By spanning set theorem, non-pivot columns can be removed from the spanning set without changing the span, leaving only the pivot columns of $\mathbf{A}$ as a basis for col($\)
 :::
+</div>
 

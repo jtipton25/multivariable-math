@@ -85,6 +85,7 @@ Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}
 :::
 
 
+<div class="fold-proof">
 :::{.proof}
 Suppose the set $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly dependent. Then, there is some $j$ such that $\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k$. If we choose the first linearly dependent vector as $j$, we know that the subset of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ is linearly independent and 
 $$
@@ -109,6 +110,7 @@ $$
 $$
 Because $\lambda_k \neq \lambda_j$ for all $k < j$, the equation above implies a linear dependence among the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector $\mathbf{v}_j$ is violated and all the $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ are linearly independent.
 :::
+</div>
 
 
 ## Eigenspaces
@@ -226,9 +228,11 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then
 2) If 0 is an eigenvalue of $\mathbf{A}$, then the 0-eigenspace of $\mathbf{A}$ is null$(\mathbf{A})$.
 :::
 
+<div class="fold-proof">
 :::{.proof}
 0 is an eigenvalue of $\mathbf{A}$ if and only if null$(\mathbf{A} - 0 \mathbf{I})$ = null$(\mathbf{A})$. By the invertible matrix theorem, $\mathbf{A}$ is invertible if and only if null$(\mathbf{A}) = \{\mathbf{0}\}$ but we know that the 0-eigenspace of $\mathbf{A}$ is not the trivial set $\{\mathbf{0}\}$ because 0 is an eigenvalue.
 :::
+</div>
 
 
 :::{.theorem name="Invertible Matrix Theorm + eigenspaces"}

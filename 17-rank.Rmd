@@ -43,10 +43,11 @@ $$
 :::
 
 
+<div class="fold-proof">
 :::{.proof}
-rank($\mathbf{A}$) is the number of pivot columns. dim(null($\mathbf{A}$)) is the number of non-pivot columns. The pivot columns + non-pivot columns are the number of columns. 
+The rank($\mathbf{A}$) is the number of pivot columns and dim(null($\mathbf{A}$)) is the number of non-pivot columns. The number of pivot columns (rank($\mathbf{A}$)) + the number of non-pivot columns (dim(null($\mathbf{A}$))) are the number of columns. 
 :::
-
+</div>
 
 :::{.example}
 in class

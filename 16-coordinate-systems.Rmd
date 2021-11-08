@@ -37,6 +37,8 @@ $$
 $$
 :::
 
+
+<div class="fold-proof">
 :::{.proof}
 sketch: vectors of $\mathcal{B}$ span $\mathcal{V}$ so there exists a set of coefficienct $c_1, \ldots, c_n$ such that 
 $$
@@ -58,6 +60,7 @@ $$
 $$
 Because $\mathcal{B}$ is linearly independent by definition, all the weights in the equation above must be 0 (linear independence means the only solution to $\mathbf{A}\mathbf{x} = \mathbf{0}$ is the trivial solution). Therefore $c_i = d_i$ for $i = 1, \ldots, n$.
 :::
+</div>
 
 
 :::{.definition}
@@ -94,29 +97,30 @@ p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Standard cooridinates
 
 ## Coordinates in $\mathcal{R}^n$
 
-Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{P}_B = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $\left[\mathbf{x}\right]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}$ of $\mathbf{x}$
+Let $\mathbf{x}$ be defined with the standard coordinates. Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}$ be a basis in $\mathcal{R}^n$. Define $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n \end{pmatrix}$ as the matrix with columns the vectors of the basis. Then, the coordinates $\left[\mathbf{x}\right]_B = \begin{pmatrix} [x_1]_B \\ \vdots \\ [x_n]_B \end{pmatrix}$ of $\mathbf{x}$
 
 with respect to the basis $\mathcal{B}$ can be found by solving the matrix equation
 
 
 $$
 \begin{aligned}
-\mathbf{P}_B \left[\mathbf{x}\right]_B = \mathbf{x}
+\mathbf{B} \left[\mathbf{x}\right]_B = \mathbf{x}
 \end{aligned}
 $$
-The matrix $\mathbf{P}_B$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $\left[\mathbf{x}\right]_B$ can be found using row operations or by using the fact that because the columns of $\mathbf{P}_B$ spans $\mathcal{R}^n$ the matrix $\mathbf{P}_B$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
+The matrix $\mathbf{B}$ is called the **change-of-coordinates matrix** from $\mathcal{B}$ to the standard basis in $\mathcal{R}^n$. The solution set (the coefficients) $\left[\mathbf{x}\right]_B$ can be found using row operations or by using the fact that because the columns of $\mathbf{B}$ spans $\mathcal{R}^n$ the matrix $\mathbf{B}$ is invertible. Then, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}$ is
 $$
 \begin{aligned}
-\left[\mathbf{x}\right]_B = \mathbf{P}_B^{-1} \mathbf{x}
+\left[\mathbf{x}\right]_B = \mathbf{B}^{-1} \mathbf{x}
 \end{aligned}
 $$
 
 :::{.theorem}
-Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for the vector space $\mathcal{V}$. Then, the coordinate mapping $\mathbf{x} \rightarrow \mathbf{P}^{-1} \mathbf{x}$ is a one-to-one and onto transformation from $\mathcal{V}$ to $\mathcal{R}^n$
+Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for the vector space $\mathcal{V}$. Then, the coordinate mapping $\mathbf{x} \rightarrow \mathbf{B}^{-1} \mathbf{x}$ is a one-to-one and onto transformation from $\mathcal{V}$ to $\mathcal{R}^n$
 :::
 
+<div class="fold-proof">
 :::{.proof}
-First we want to show that multiplication by $\mathbf{P}_B^{-1}$ defines a linear transformation. First, take two vectors 
+First we want to show that multiplication by $\mathbf{B}^{-1}$ defines a linear transformation. First, take two vectors 
 $$
 \begin{aligned}
 \mathbf{u} &  = c_1 \mathbf{b}_1 + \ldots + c_n \mathbf{b}_n
@@ -133,7 +137,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbf{u} + \mathbf{v} \rightarrow \mathbf{P}_B^{-1} (\mathbf{u} + \mathbf{v}) =  \mathbf{P}_B^{-1} \mathbf{u} + \mathbf{P}_B^{-1} \mathbf{v}
+\mathbf{u} + \mathbf{v} \rightarrow \mathbf{B}^{-1} (\mathbf{u} + \mathbf{v}) =  \mathbf{B}^{-1} \mathbf{u} + \mathbf{B}^{-1} \mathbf{v}
 \end{aligned}
 $$
 which preserves vector addition
@@ -142,13 +146,14 @@ which preserves vector addition
 
 $$
 \begin{aligned}
-a\mathbf{u} \rightarrow \mathbf{P}_B^{-1} (a \mathbf{u}) =  a \mathbf{P}_B^{-1} \mathbf{u}
+a\mathbf{u} \rightarrow \mathbf{B}^{-1} (a \mathbf{u}) =  a \mathbf{B}^{-1} \mathbf{u}
 \end{aligned}
 $$
 which preserves scalar multiplication. 
 
-* Therefore, this is a linear transformation. one-to-one and onto come from fact that $\mathbf{P}_B$ is and $n \times n$ matrix with $n$ pivot columns ($n$ linearly independent vectors because it is a basis for $\mathcal{R}^n$)
+* Therefore, this is a linear transformation. one-to-one and onto come from fact that $\mathbf{B}$ is and $n \times n$ matrix with $n$ pivot columns ($n$ linearly independent vectors because it is a basis for $\mathcal{R}^n$)
 :::
+</div>
 
 
 :::{.example}
@@ -164,32 +169,34 @@ In some sense, we already know about the dimension of a vector space through the
 In a vector space $\mathcal{V}$ with basis $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n\}$, any set in $\mathcal{V}$ containing more than $n$ vectors must be linearly dependent.
 :::
 
+<div class="fold-proof">
 :::{.proof}
-Let $\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}$ be a set of vectors in $\mathcal{V}$ with $p > n$. The coordinate vectors $\{\mathbf{P}_B \mathbf{u}_1, \ldots, \mathbf{P}_B \mathbf{u}_p\}$ form a linearly dependent set in $\mathcal{R}^n$ because there are more vectors ($p$) than entries ($n$) in each vector. Thus, there exist scalars $c_1, \ldots, c_p$, some nonzero, such that
+Let $\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}$ be a set of vectors in $\mathcal{V}$ with $p > n$. The coordinate vectors $\{\mathbf{B} \mathbf{u}_1, \ldots, \mathbf{B} \mathbf{u}_p\}$ form a linearly dependent set in $\mathcal{R}^n$ because there are more vectors ($p$) than entries ($n$) in each vector. Thus, there exist scalars $c_1, \ldots, c_p$, some nonzero, such that
 $$
 \begin{aligned}
-c_1 \mathbf{P}_B \mathbf{u}_1 + \ldots + c_p \mathbf{P}_B \mathbf{u}_p = \mathbf{0}.
+c_1 \mathbf{B} \mathbf{u}_1 + \ldots + c_p \mathbf{B} \mathbf{u}_p = \mathbf{0}.
 \end{aligned}
 $$
 which by linearity implies 
 $$
 \begin{aligned}
-\mathbf{P}_B (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
+\mathbf{B} (c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p) = \mathbf{0} 
 \end{aligned}
 $$
-
 :::
+</div>
 
-Because the matrix $\mathbf{P}_{B}$ is a $n \times n$ matrix with n linearly independent columns, the only way the equation above can equal $\mathbf{0}$ is if the vector $c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}$ (by the invertible matrix theorem). Therefore, the set of vectors $\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}$ is linearly dependent because there are coefficients that allow the vectors to sum to $\mathbf{0}$. Thus, we know that for a vector space $\mathcal{V}$ that has a basis $\basis$ that consists on $n$ vectors, then every linearly independent set of vectors in $\mathcal{V}$ contains at most $n$ vectors. 
+Because the matrix $\mathbf{B}$ is a $n \times n$ matrix with n linearly independent columns, the only way the equation above can equal $\mathbf{0}$ is if the vector $c_1 \mathbf{u}_1 + \ldots + c_p \mathbf{u}_p = \mathbf{0}$ (by the invertible matrix theorem). Therefore, the set of vectors $\{\mathbf{u}_1, \ldots, \mathbf{u}_p \}$ is linearly dependent because there are coefficients that allow the vectors to sum to $\mathbf{0}$. Thus, we know that for a vector space $\mathcal{V}$ that has a basis $\basis$ that consists on $n$ vectors, then every linearly independent set of vectors in $\mathcal{V}$ contains at most $n$ vectors. 
 
 :::{.theorem}
 If a vector space $\V$ has a basis with $n$ vectors, then every other basis of $\V$ must also contain exactly $n$ vectors.
 :::
 
+<div class="fold-proof">
 :::{.proof}
 Let $\mathcal{B}_1$ be a basis of $\V$ containing $n$ vectors and let $\mathcal{B}_2$ be any other basis of $\V$. Because $\mathcal{B}_1$ and $\mathcal{B}_2$ are both bases, they both contain sets of linearly independent vectors. As such, the previous theorem states that each of these bases contain at most $n$ vectors (otherwise the sets wouldn't be linearly independent). Because $\mathcal{B}_2$ is a basis and the basis $\mathcal{B}_1$ contains $n$ vectors, $\mathcal{B}_2$ must contain at least $n$ vectors. These results combined are only satisfied when $\mathcal{B}_2$ contains $n$ vectors.
 :::
-
+</div>
 
 Like the span defined by the columns of a matrix $\mathbf{A}$, there is an abstract concept called dimension which measures the "size" of a vector space.
 

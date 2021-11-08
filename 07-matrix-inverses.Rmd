@@ -57,7 +57,7 @@ Because $\mathbf{A} \mathbf{B} = \mathbf{B} \mathbf{A} = \mathbf{I}$, we have $\
 :::
 
 
-:::{.theorem}
+:::{.theorem #matrix-2by2 name="Matrix Inverse for 2 by 2 matrix"}
 Let $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. If $ad - bc \neq 0$ then $\mathbf{A}$ is invertible and 
 $$
 \begin{aligned}

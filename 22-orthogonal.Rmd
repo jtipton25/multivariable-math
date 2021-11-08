@@ -154,6 +154,7 @@ If the set of vectors $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ are an orthogon
 Let the set $\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ be an orthogonal set of nonzero vectors in $\mathcal{R}^n$. Then, the set of vectors in $\mathcal{S}$ are linearly independent and therefore are a basis for the space spanned by $\mathcal{S}$.
 :::
 
+<div class="fold-proof">
 :::{.proof}
 Assume the set of vectors $\mathbf{v}_1, \ldots, \mathbf{v}_p$ are linearly dependent. Then, there exist coefficients $c_1, \ldots, c_p$ such that
 $$
@@ -172,7 +173,7 @@ $$
 $$
 which is only equal to 0 when $c_1$ is equal to 0 because $\mathbf{v}_1$ is a nonzero vector. The above left multiplication could be repeated for each vector $\mathbf{v}_i$ which gives all $c_i$ must equal 0. As the only solution to the starting equation has all 0 coefficients, the set of vectors $\mathcal{S}$ must be linearly independent.
 :::
-
+</div>
 
 A set of orthogonal vectors is called an **orthogonal basis**.
 
@@ -190,6 +191,7 @@ where $c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}$. In othe
 :::
 
 
+<div class="fold-proof">
 :::{.proof}
 The orthogonality of the basis $\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$ gives
 $$
@@ -200,6 +202,8 @@ $$
 $$
 Because we know that $\mathbf{v}_j'\mathbf{v}_j$ is not zero (a vector can't be orthogonal to itself), we can divide the above equality by $\mathbf{v}_j' \mathbf{v}_j$ and solve for $c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}$
 :::
+</div>
+
 
 Thus, for a vector $\mathbf{x}$ in the standard basis, the coordinates of $\mathbf{x}$ with respect to an orthogonal basis can be easily calculated using dot products (rather than matrix inverses) which is an easier computation.
 
@@ -248,11 +252,12 @@ with respect to the unknown coefficients $\boldsymbol{\beta}$ is consistent and 
 
 
 
+<div class="fold-proof">
 :::{.proof}
-
 Show this in class
-
 :::
+</div>
+
 
 In addition, if the columns of $\mathbf{X}$ are linearly independent, then the coefficients $\boldsymbol{\beta}$ are given by 
 $$
