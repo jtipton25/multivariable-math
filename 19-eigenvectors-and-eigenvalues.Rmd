@@ -918,7 +918,7 @@ $$
 `r array_to_latex(A)` `r array_to_latex(c(3, 0, 1))` & = `r array_to_latex(A %*% c(3, 0, 1))`  = `r lambda[1]` `r array_to_latex(c(3, 0, 1))`
 \end{aligned}
 $$
-Thus, the basis for 3-eigenspace is $\left\{ `r array_to_latex(c(-4, 1, 0))`, `r array_to_latex(c(3, 0, 1))`\right\}$. Note that this is the same as finding a bais for the null space of $\right(\mathbf{A} - \lambda \mathbf{I} \right)$.
+Thus, the basis for 3-eigenspace is $\left\{ `r array_to_latex(c(-4, 1, 0))`, `r array_to_latex(c(3, 0, 1))`\right\}$. Note that this is the same as finding a basis for the null space of $\left(\mathbf{A} - \lambda \mathbf{I} \right)$.
 
 
 Using `R`, this is 
