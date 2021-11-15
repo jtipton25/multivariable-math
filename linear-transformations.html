@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-121" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
+<p><span id="exm:unlabeled-div-127" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 2 &amp; 4 \\
@@ -438,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-transformations-1" class="section level2">
 <h2><span class="header-section-number">6.1</span> Linear Transformations</h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-122" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<p><span id="def:unlabeled-div-128" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
 <li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
@@ -729,7 +729,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <div id="one-to-one-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> One-to-one transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-123" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="def:unlabeled-div-129" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <p><img src="images/one-to-one.png" width="100%" /></p>
 <p><img src="images/not-one-to-one.png" width="100%" /></p>
@@ -789,7 +789,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-124" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-130" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
@@ -825,7 +825,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <div id="onto-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Onto transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-125" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
+<p><span id="def:unlabeled-div-131" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
 </div>
 <p><img src="images/onto.png" width="100%" /></p>
 <p><img src="images/not-onto.png" width="100%" /></p>
@@ -841,7 +841,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-126" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-132" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is onto</p></li>
 <li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>

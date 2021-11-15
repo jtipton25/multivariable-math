@@ -356,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb267-3"><a href="eigenvectors-and-eigenvalues.html#cb267-3"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is “data-driven” called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-237" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
+<p><span id="def:unlabeled-div-243" class="definition"><strong>Definition 20.1  </strong></span>An <strong>eigenvector</strong> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that the matrix equation
 <span class="math display">\[
 \begin{aligned}
 \mathbf{A} \mathbf{x} = \lambda \mathbf{x}
@@ -365,14 +365,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 for some scalar <span class="math inline">\(\lambda\)</span>. If there exists some <span class="math inline">\(\lambda \neq 0\)</span> (a non-trivial solutions), then <span class="math inline">\(\lambda\)</span> is called an <strong>eigenvalue</strong> of <span class="math inline">\(\mathbf{A}\)</span> corresponding to the eigenvector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-238" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
+<p><span id="exm:unlabeled-div-244" class="example"><strong>Example 20.1  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 1/2 &amp; 0 &amp; 0 \\ 0 &amp; 1/2 &amp; 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\)</span>. Determine if <span class="math inline">\(\mathbf{u}\)</span> or <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. If they are eigenvectors, what are the associated eigenvalues.</p>
-<p>Now, plot <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> to show this relationship geometrically.</p>
 </div>
-<p>An eigenvector is a (nonzero) vector <span class="math inline">\(\mathbf{x}\)</span> that gets mapped to a scalar multiple of itself <span class="math inline">\(\lambda \mathbf{x}\)</span> by the matrix transformation <span class="math inline">\(\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}\)</span>. As such, we say that <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> are collinear with the origin (<span class="math inline">\(\mathbf{0}\)</span>) in the sense that these points lie on the same line that goes through the origin.</p>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-57" class="solution"><em>Solution</em>. </span>Here we demonstrate the eigenvector/eigenvalue relationship.</p>
+<ol style="list-style-type: lower-alpha">
+<li>If <span class="math inline">\(\mathbf{u}\)</span> is an eigenvector of a matrix <span class="math inline">\(\mathbf{A}\)</span>, then there exists some constant <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(\mathbf{A} \mathbf{u} = \lambda \mathbf{u}\)</span>. Checking this gives
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A} \mathbf{u} &amp; = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 1/2 &amp; 0 &amp; 0 \\ 0 &amp; 1/2 &amp; 0 \end{pmatrix} \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix} \\
+&amp; = \begin{pmatrix} 32 \\ 8 \\ 2 \end{pmatrix} \\ 
+&amp; = 2 \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+which shows that <span class="math inline">\(\mathbf{u}\)</span> is an eigenvector of <span class="math inline">\(\mathbf{A}\)</span> with associated eigenvalue <span class="math inline">\(\lambda = 2\)</span>. Now, we check if <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector of <span class="math inline">\(\mathbf{A}\)</span>
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A} \mathbf{v} &amp; = \begin{pmatrix} 0 &amp; 6 &amp; 8 \\ 1/2 &amp; 0 &amp; 0 \\ 0 &amp; 1/2 &amp; 0 \end{pmatrix} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} \\
+&amp; = \begin{pmatrix} 28 \\ 1 \\ 1 \end{pmatrix} 
+\end{aligned}
+\]</span>
+where there is no number <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(\begin{pmatrix} 28 \\ 1 \\ 1 \end{pmatrix} = \lambda \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\)</span>. In <code>R</code>, this can be shown</li>
+</ol>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="eigenvectors-and-eigenvalues.html#cb268-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb268-2"><a href="eigenvectors-and-eigenvalues.html#cb268-2"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]  0.0  6.0    8
+## [2,]  0.5  0.0    0
+## [3,]  0.0  0.5    0</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="eigenvectors-and-eigenvalues.html#cb270-1"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">4</span>, <span class="dv">1</span>)</span>
+<span id="cb270-2"><a href="eigenvectors-and-eigenvalues.html#cb270-2"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)      </span>
+<span id="cb270-3"><a href="eigenvectors-and-eigenvalues.html#cb270-3"></a><span class="co"># is u an eigenvector of A?</span></span>
+<span id="cb270-4"><a href="eigenvectors-and-eigenvalues.html#cb270-4"></a>A <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]   32
+## [2,]    8
+## [3,]    2</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="eigenvectors-and-eigenvalues.html#cb272-1"></a><span class="co"># yes, because A %*% u = 2 u</span></span>
+<span id="cb272-2"><a href="eigenvectors-and-eigenvalues.html#cb272-2"></a><span class="co"># 2 is the eigenvalue associated with u</span></span>
+<span id="cb272-3"><a href="eigenvectors-and-eigenvalues.html#cb272-3"></a></span>
+<span id="cb272-4"><a href="eigenvectors-and-eigenvalues.html#cb272-4"></a><span class="co"># is v an eigenvector of A?</span></span>
+<span id="cb272-5"><a href="eigenvectors-and-eigenvalues.html#cb272-5"></a>A <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]   28
+## [2,]    1
+## [3,]    1</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="eigenvectors-and-eigenvalues.html#cb274-1"></a><span class="co"># not an eigenvectos because A %*% v is not equal to lambda * v for some lambda</span></span></code></pre></div>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-245" class="example"><strong>Example 20.2  </strong></span>It is easy to check if a vector is an eigenvalue:</p>
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{u} = \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>. Determine if <span class="math inline">\(\mathbf{u}\)</span> or <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. If they are eigenvectors, what are the associated eigenvalues. Now, plot <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> to show this relationship geometrically.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-58" class="solution"><em>Solution</em>. </span>First, we determine if the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>If <span class="math inline">\(\mathbf{u}\)</span> is an eigenvector of a matrix <span class="math inline">\(\mathbf{A}\)</span>, then there exists some constant <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(\mathbf{A} \mathbf{u} = \lambda \mathbf{u}\)</span>. Checking this gives
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A} \mathbf{u} &amp; = \begin{pmatrix} 2 &amp; 1 \\ 0 &amp; 1 \end{pmatrix} \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix} \\
+&amp; = \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix} 
+\end{aligned}
+\]</span>
+which shows that <span class="math inline">\(\mathbf{u}\)</span> is an eigenvector of <span class="math inline">\(\mathbf{A}\)</span> with associated eigenvalue <span class="math inline">\(\lambda = 1\)</span>. Now, we check if <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector of <span class="math inline">\(\mathbf{A}\)</span>
+<span class="math display">\[
+\begin{aligned}
+\mathbf{A} \mathbf{v} &amp; = \begin{pmatrix} 2 &amp; 1 \\ 0 &amp; 1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \\
+&amp; = \begin{pmatrix} 3 \\ 1 \end{pmatrix} 
+\end{aligned}
+\]</span>
+where there is no number <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(\begin{pmatrix} 3 \\ 1 \end{pmatrix} = \lambda \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>. In <code>R</code>, this can be shown</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="eigenvectors-and-eigenvalues.html#cb275-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb275-2"><a href="eigenvectors-and-eigenvalues.html#cb275-2"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="kw">sqrt</span>(<span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb275-3"><a href="eigenvectors-and-eigenvalues.html#cb275-3"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb275-4"><a href="eigenvectors-and-eigenvalues.html#cb275-4"></a></span>
+<span id="cb275-5"><a href="eigenvectors-and-eigenvalues.html#cb275-5"></a><span class="co"># is u an eigenvector of A?</span></span>
+<span id="cb275-6"><a href="eigenvectors-and-eigenvalues.html#cb275-6"></a>A <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
+<pre><code>##            [,1]
+## [1,] -0.7071068
+## [2,]  0.7071068</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="eigenvectors-and-eigenvalues.html#cb277-1"></a><span class="co"># yes, because A %*% u = u</span></span>
+<span id="cb277-2"><a href="eigenvectors-and-eigenvalues.html#cb277-2"></a><span class="co"># 1 is the eigenvalue associated with u</span></span>
+<span id="cb277-3"><a href="eigenvectors-and-eigenvalues.html#cb277-3"></a></span>
+<span id="cb277-4"><a href="eigenvectors-and-eigenvalues.html#cb277-4"></a><span class="co"># is v an eigenvector of A?</span></span>
+<span id="cb277-5"><a href="eigenvectors-and-eigenvalues.html#cb277-5"></a>A <span class="op">%*%</span><span class="st"> </span>v</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    3
+## [2,]    1</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="eigenvectors-and-eigenvalues.html#cb279-1"></a><span class="co"># not an eigenvectos because A %*% v is not equal to lambda * v for some lambda</span></span></code></pre></div>
+<p>Now, we will plot the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> as well as the vectors transformed by the matrix <span class="math inline">\(\mathbf{A}\)</span> (i.e., <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span>). The code below plot the vector <span class="math inline">\(\mathbf{u}\)</span> in dark blue and the transformed vector <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span> in light blue. The code also plots the vector <span class="math inline">\(\mathbf{v}\)</span> in dark red and the transformed vector <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> in light red.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="eigenvectors-and-eigenvalues.html#cb280-1"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb280-2"><a href="eigenvectors-and-eigenvalues.html#cb280-2"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> u[<span class="dv">1</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> u[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;dark blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb280-3"><a href="eigenvectors-and-eigenvalues.html#cb280-3"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> (A <span class="op">%*%</span><span class="st"> </span>u)[<span class="dv">1</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> (A <span class="op">%*%</span><span class="st"> </span>u)[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;light blue&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb280-4"><a href="eigenvectors-and-eigenvalues.html#cb280-4"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> v[<span class="dv">1</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> v[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;dark red&quot;</span>) <span class="op">+</span></span>
+<span id="cb280-5"><a href="eigenvectors-and-eigenvalues.html#cb280-5"></a><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> (A <span class="op">%*%</span><span class="st"> </span>v)[<span class="dv">1</span>], <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> (A <span class="op">%*%</span><span class="st"> </span>v)[<span class="dv">2</span>]), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb280-6"><a href="eigenvectors-and-eigenvalues.html#cb280-6"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="multivariable-math_files/figure-html/unnamed-chunk-184-1.png" width="672" />
+Notice that the multiplication of <span class="math inline">\(\mathbf{u}\)</span> by <span class="math inline">\(\mathbf{A}\)</span> gives a vector <span class="math inline">\(\mathbf{A} \mathbf{u}\)</span> that points along the same line as <span class="math inline">\(\mathbf{u}\)</span> because <span class="math inline">\(\mathbf{u}\)</span> is an eigenvector of <span class="math inline">\(\mathbf{A}\)</span>. In comparison, the vector <span class="math inline">\(\mathbf{v}\)</span> is not an eigenvector of <span class="math inline">\(\mathbf{A}\)</span> and multiplication of <span class="math inline">\(\mathbf{v}\)</span> by <span class="math inline">\(\mathbf{A}\)</span> gives a vector <span class="math inline">\(\mathbf{A} \mathbf{v}\)</span> that <em>does not</em> point along the same line as the vector <span class="math inline">\(\mathbf{u}\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-246" class="example"><strong>Example 20.3  </strong></span>Come up with another example and another plot that shows the similar result as the example above.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-59" class="solution"><em>Solution</em>. </span>The solution (TBD)</p>
+</div>
+</div>
+<p>Thus, we end up with the understanding that nn eigenvector is a (nonzero) vector <span class="math inline">\(\mathbf{x}\)</span> that gets mapped to a scalar multiple of itself <span class="math inline">\(\lambda \mathbf{x}\)</span> by the matrix transformation defined by <span class="math inline">\(T: \mathbf{x} \rightarrow \mathbf{A}\mathbf{x} = \mathbf{x}\)</span>. As such, when <span class="math inline">\(\mathbf{x}\)</span> is an eigenvector of <span class="math inline">\(\mathbf{A}\)</span> we say that <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> are collinear with the origin (<span class="math inline">\(\mathbf{0}\)</span>) and each other in the sense that these points lie on the same line that goes through the origin.</p>
 <p><strong>Note:</strong> The matrix <span class="math inline">\(\mathbf{A}\)</span> must be an <span class="math inline">\(n \times n\)</span> square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-239" class="example"><strong>Example 20.2  </strong></span>Example: reflection
+<p><span id="exm:unlabeled-div-247" class="example"><strong>Example 20.4  </strong></span>Example: reflection
 Draw images: <a href="https://textbooks.math.gatech.edu/ila/eigenvectors.html">https://textbooks.math.gatech.edu/ila/eigenvectors.html</a></p>
 </div>
 <div class="theorem">
@@ -380,7 +485,7 @@ Draw images: <a href="https://textbooks.math.gatech.edu/ila/eigenvectors.html">h
 </div>
 <div class="fold-proof">
 <div class="proof">
-<p><span id="unlabeled-div-57" class="proof"><em>Proof</em>. </span>Suppose the set <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly dependent. Then, there is some <span class="math inline">\(j\)</span> such that <span class="math inline">\(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\)</span>. If we choose the first linearly dependent vector as <span class="math inline">\(j\)</span>, we know that the subset of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> is linearly independent and
+<p><span id="unlabeled-div-60" class="proof"><em>Proof</em>. </span>Suppose the set <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}\)</span> is linearly dependent. Then, there is some <span class="math inline">\(j\)</span> such that <span class="math inline">\(\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k\)</span>. If we choose the first linearly dependent vector as <span class="math inline">\(j\)</span>, we know that the subset of vectors <span class="math inline">\(\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}\)</span> is linearly independent and
 <span class="math display">\[
 \begin{aligned}
 \mathbf{v}_j &amp; = x_1 \mathbf{v}_1 + \cdots x_{j-1} + \mathbf{v}_{j-1}
@@ -419,7 +524,7 @@ Because <span class="math inline">\(\lambda_k \neq \lambda_j\)</span> for all <s
 Therefore, the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> associated with <span class="math inline">\(\lambda\)</span>, if there are any, are the nontrivial solutions of the homogeneous matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span>. In other words, the eigenvectors are the nonzero vectors in the null space null<span class="math inline">\(\left( \mathbf{A} -\lambda \mathbf{I} \right)\)</span>. If there is not a nontrivial solution (solution <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>), then <span class="math inline">\(\lambda\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. All we have to do is solve the system of linear equations <span class="math inline">\(\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> for a given <span class="math inline">\(\lambda\)</span> (actually, for all <span class="math inline">\(\lambda\)</span>s, which we can’t do). If only there was some way to find eigenvalues <span class="math inline">\(\lambda\)</span> (hint: there is and it is coming next chapter).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-240" class="example"><strong>Example 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 6 &amp; -8 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 2 \end{pmatrix}\)</span>. Then an eigenvector with eigenvector <span class="math inline">\(\lambda\)</span> is a nontrival solution to
+<p><span id="exm:unlabeled-div-248" class="example"><strong>Example 20.5  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 6 &amp; -8 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 2 \end{pmatrix}\)</span>. Then an eigenvector with eigenvector <span class="math inline">\(\lambda\)</span> is a nontrival solution to
 <span class="math display">\[
 \begin{aligned}
 \left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
@@ -446,25 +551,608 @@ which can be solved for a given <span class="math inline">\(\lambda\)</span> usi
 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
 \end{aligned}
 \]</span>
-which has solution</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="eigenvectors-and-eigenvalues.html#cb268-1"></a>lambda &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb268-2"><a href="eigenvectors-and-eigenvalues.html#cb268-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+which can be written as the matrix equation
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 0 &amp; 6 &amp; -8 \\ 0 &amp; -3 &amp; 6 \\ 0 &amp; 0 &amp; -1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+Note that the columns of the matrix above are not linearly independent. Thus, we can solve a non-unique solution (the solution set is a line going through the origin) by finding the reduce row echelon form of an augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 0 &amp; 6 &amp; -8 &amp; 0 \\ 0 &amp; -3 &amp; 6 &amp; 0 \\ 0 &amp; 0 &amp; -1 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1 &amp; = x_1 \\
+x_2 &amp; = 0 \\
+x_3 &amp; = 0
+\end{aligned}
+\]</span>
+Fixing <span class="math inline">\(x_1 = 1\)</span> gives the eigenvector associated with <span class="math inline">\(\lambda = 3\)</span> of <span class="math inline">\(\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 3 &amp; 6 &amp; -8 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 2 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} &amp; = \begin{pmatrix} 3 \\ 0 \\ 0 \end{pmatrix}  = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+\end{aligned}
+\]</span></p>
+<p>Using <code>R</code>, this can be done as</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="eigenvectors-and-eigenvalues.html#cb281-1"></a>lambda &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb281-2"><a href="eigenvectors-and-eigenvalues.html#cb281-2"></a><span class="co"># apply rref to the augmented matrix</span></span>
+<span id="cb281-3"><a href="eigenvectors-and-eigenvalues.html#cb281-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    0    1    0    0
 ## [2,]    0    0    1    0
 ## [3,]    0    0    0    0</code></pre>
+<p>where the solution set is determined from the RREF form of the augmented matrix of the equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-249" class="example"><strong>Example 20.6  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -21/5 &amp; -34/5 &amp; 18/5 \\ -6/5 &amp; -14/5 &amp; 3/5 \\ -4 &amp; -10 &amp; 5 \end{pmatrix}\)</span>. Find the eigenvectors associated with the eigenvalues (a) <span class="math inline">\(\lambda_1 = -4\)</span>, (b) <span class="math inline">\(\lambda_2 = 3\)</span>, and (c) <span class="math inline">\(\lambda_3 = -1\)</span>.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-61" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -21/5 &amp; -34/5 &amp; 18/5 \\ -6/5 &amp; -14/5 &amp; 3/5 \\ -4 &amp; -10 &amp; 5 \end{pmatrix}\)</span>, we can find the eigenvectors associated with the given eigenvalues</p>
+<ol style="list-style-type: lower-alpha">
+<li>The eigenvalues associated with the first eigenvector <span class="math inline">\(\lambda_1 = -4\)</span> by solving
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda_1 \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - \lambda_1 &amp; -34/5 &amp; 18/5 \\
+-6/5 &amp; -14/5 - \lambda_1 &amp; 3/5 \\
+-4 &amp; -10 &amp; 5 - \lambda_1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda_1\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form.</li>
+</ol>
+<p>Letting <span class="math inline">\(\lambda_1 = -4\)</span>, we have
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - -4 &amp; -34/5 &amp; 18/5 \\
+-6/5 &amp; -14/5 - -4 &amp; 3/5 \\
+-4 &amp; -10 &amp; 5 - -4
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -1/5 &amp; -34/5 &amp; 18/5 &amp; 0 \\ -6/5 &amp; 6/5 &amp; 3/5 &amp; 0 \\ -4 &amp; -10 &amp; 9 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -1/5 &amp; -34/5 &amp; 18/5 &amp; 0 \\ -6/5 &amp; 6/5 &amp; 3/5 &amp; 0 \\ -4 &amp; -10 &amp; 9 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 1 &amp; -1/2 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1 - x_3 &amp; = 0 \\
+x_2 - \frac{1}{2} x_3 &amp; = 0 \\
+x_3 &amp; = x_3
+\end{aligned}
+\]</span>
+Fixing <span class="math inline">\(x_3 = 1\)</span> gives the eigenvector associated with <span class="math inline">\(\lambda_1 = -4\)</span> of <span class="math inline">\(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x}_1 = \lambda_1 \mathbf{x}_1\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -21/5 &amp; -34/5 &amp; 18/5 \\ -6/5 &amp; -14/5 &amp; 3/5 \\ -4 &amp; -10 &amp; 5 \end{pmatrix} \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} -4 \\ -2 \\ -4 \end{pmatrix}  = -4 \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="eigenvectors-and-eigenvalues.html#cb283-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">21</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-6</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-4</span>, <span class="dv">-34</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-14</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-10</span>, <span class="dv">18</span><span class="op">/</span><span class="dv">5</span>,  <span class="dv">3</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb283-2"><a href="eigenvectors-and-eigenvalues.html#cb283-2"></a>lambda_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="dv">-4</span></span>
+<span id="cb283-3"><a href="eigenvectors-and-eigenvalues.html#cb283-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0 -1.0    0
+## [2,]    0    1 -0.5    0
+## [3,]    0    0  0.0    0</code></pre>
+<p>Verifying that the eigenvalue <span class="math inline">\(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\)</span> is an eigenvector is</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="eigenvectors-and-eigenvalues.html#cb285-1"></a>x_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb285-2"><a href="eigenvectors-and-eigenvalues.html#cb285-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x_<span class="dv">1</span>), lambda_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x_<span class="dv">1</span>) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The eigenvalues associated with the second eigenvector <span class="math inline">\(\lambda_2 = 3\)</span> by solving
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda_2 \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - \lambda_2 &amp; -34/5 &amp; 18/5 \\
+-6/5 &amp; -14/5 - \lambda_2 &amp; 3/5 \\
+-4 &amp; -10 &amp; 5 - \lambda_2
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda_2\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form.</li>
+</ol>
+<p>Letting <span class="math inline">\(\lambda_2 = 3\)</span>, we have
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - 3 &amp; -34/5 &amp; 18/5 \\
+-6/5 &amp; -14/5 - 3 &amp; 3/5 \\
+-4 &amp; -10 &amp; 5 - 3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -36/5 &amp; -34/5 &amp; 18/5 &amp; 0 \\ -6/5 &amp; -29/5 &amp; 3/5 &amp; 0 \\ -4 &amp; -10 &amp; 2 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -36/5 &amp; -34/5 &amp; 18/5 &amp; 0 \\ -6/5 &amp; -29/5 &amp; 3/5 &amp; 0 \\ -4 &amp; -10 &amp; 2 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; -1/2 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1 - \frac{1}{2} x_3 &amp; = 0 \\
+x_2  &amp; = 0 \\
+x_3 &amp; = x_3
+\end{aligned}
+\]</span>
+Fixing <span class="math inline">\(x_3 = 1\)</span> gives the eigenvector associated with <span class="math inline">\(\lambda_2 = 3\)</span> of <span class="math inline">\(\mathbf{x}_2 = \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -21/5 &amp; -34/5 &amp; 18/5 \\ -6/5 &amp; -14/5 &amp; 3/5 \\ -4 &amp; -10 &amp; 5 \end{pmatrix} \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} 3/2 \\ 0 \\ 3 \end{pmatrix}  = 3 \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="eigenvectors-and-eigenvalues.html#cb287-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">21</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-6</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-4</span>, <span class="dv">-34</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-14</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-10</span>, <span class="dv">18</span><span class="op">/</span><span class="dv">5</span>,  <span class="dv">3</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb287-2"><a href="eigenvectors-and-eigenvalues.html#cb287-2"></a>lambda_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb287-3"><a href="eigenvectors-and-eigenvalues.html#cb287-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0 -0.5    0
+## [2,]    0    1  0.0    0
+## [3,]    0    0  0.0    0</code></pre>
+<p>Verifying that the eigenvalue <span class="math inline">\(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\)</span> is an eigenvector is</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="eigenvectors-and-eigenvalues.html#cb289-1"></a>x_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb289-2"><a href="eigenvectors-and-eigenvalues.html#cb289-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x_<span class="dv">2</span>), lambda_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>x_<span class="dv">2</span>) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The eigenvalues associated with the third eigenvector <span class="math inline">\(\lambda_3 = -1\)</span> by solving
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda_3 \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - \lambda_3 &amp; -34/5 &amp; 18/5 \\
+-6/5 &amp; -14/5 - \lambda_3 &amp; 3/5 \\
+-4 &amp; -10 &amp; 5 - \lambda_3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda_3\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form.</li>
+</ol>
+<p>Letting <span class="math inline">\(\lambda_3 = -1\)</span>, we have
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - -1 &amp; -34/5 &amp; 18/5 \\
+-6/5 &amp; -14/5 - -1 &amp; 3/5 \\
+-4 &amp; -10 &amp; 5 - -1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -16/5 &amp; -34/5 &amp; 18/5 &amp; 0 \\ -6/5 &amp; -9/5 &amp; 3/5 &amp; 0 \\ -4 &amp; -10 &amp; 6 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -16/5 &amp; -34/5 &amp; 18/5 &amp; 0 \\ -6/5 &amp; -9/5 &amp; 3/5 &amp; 0 \\ -4 &amp; -10 &amp; 6 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1 + x_3 &amp; = 0 \\
+x_2  - x_3 &amp; = 0 \\
+x_3 &amp; = x_3
+\end{aligned}
+\]</span>
+Fixing <span class="math inline">\(x_3 = 1\)</span> gives the eigenvector associated with <span class="math inline">\(\lambda_3 = -1\)</span> of <span class="math inline">\(\mathbf{x}_3 = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -21/5 &amp; -34/5 &amp; 18/5 \\ -6/5 &amp; -14/5 &amp; 3/5 \\ -4 &amp; -10 &amp; 5 \end{pmatrix} \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} 1 \\ -1 \\ -1 \end{pmatrix}  = -1 \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="eigenvectors-and-eigenvalues.html#cb291-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">21</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-6</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-4</span>, <span class="dv">-34</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-14</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-10</span>, <span class="dv">18</span><span class="op">/</span><span class="dv">5</span>,  <span class="dv">3</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb291-2"><a href="eigenvectors-and-eigenvalues.html#cb291-2"></a>lambda_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="dv">-1</span></span>
+<span id="cb291-3"><a href="eigenvectors-and-eigenvalues.html#cb291-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda_<span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    1    0
+## [2,]    0    1   -1    0
+## [3,]    0    0    0    0</code></pre>
+<p>Verifying that the eigenvalue <span class="math inline">\(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\)</span> is an eigenvector is</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="eigenvectors-and-eigenvalues.html#cb293-1"></a>x_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb293-2"><a href="eigenvectors-and-eigenvalues.html#cb293-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x_<span class="dv">3</span>), lambda_<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x_<span class="dv">3</span>) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Now, let’s compare the output of the <code>eigen()</code> function in <code>R</code> to these eigenvectors calculated “by hand.” The <code>eigen()</code> function returns the two objects named <code>$values</code> that contain the eigenvalues of <span class="math inline">\(\mathbf{A}\)</span> and the object <code>$vectors</code> that contains a matrix of eigenvectors as the columns fo the matrix. Each eigenvalue corresponds to the respective column of the eigenvector matrix.</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="eigenvectors-and-eigenvalues.html#cb295-1"></a><span class="kw">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] -4  3 -1
+## 
+## $vectors
+##           [,1]          [,2]       [,3]
+## [1,] 0.6666667 -4.472136e-01 -0.5773503
+## [2,] 0.3333333 -2.428613e-16  0.5773503
+## [3,] 0.6666667 -8.944272e-01  0.5773503</code></pre>
+<p>Note that the eigenvectors returned by the <code>eigen()</code> function are the same as those in the example, but the vectors are different. However, the vectors from <code>eigen()</code> point in the same direction as those found “by hand” and only differ in the length of the vector. For example, we found the eigenvector associated with the eigenvalue -4 to be <span class="math inline">\(\begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\)</span> which points in the same direction as the vector from <code>eigen()</code> of <span class="math inline">\(\begin{pmatrix} 2/3 \\ 1/3 \\ 2/3 \end{pmatrix}\)</span> which is just a scalar multiple of the vector found “by hand.” Recall that when we found a solution using RREF and the augmented matrix, the solution set was infinite (a line) and we just set the free variable equal to 1. Another equally valid solution would be to set the free variable so that the total length of the vector is 1, and this is what the <code>eigen()</code> function does.</p>
+</div>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-241" class="definition"><strong>Definition 20.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. Then, the <strong><span class="math inline">\(\lambda\)</span>-eigenspace</strong> of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> which is the subspace null(<span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span>).</p>
+<p><span id="def:unlabeled-div-250" class="definition"><strong>Definition 20.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(\lambda\)</span> be an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. Then, the <strong><span class="math inline">\(\lambda\)</span>-eigenspace</strong> of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> which is the subspace null(<span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span>).</p>
 </div>
 <p>Therefore, the <span class="math inline">\(\lambda\)</span>-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector <span class="math inline">\(\mathbf{0}\)</span> and all the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> with corresponding eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-242" class="example"><strong>Example 20.4  </strong></span>For <span class="math inline">\(\lambda\)</span> = -2, 1, and 3, decide if <span class="math inline">\(\lambda\)</span> is a eigenvalue of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; -4 \\ -1 &amp; 1 \end{pmatrix}\)</span> and if so, compute a basis for the <span class="math inline">\(\lambda\)</span>-eigenspace.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="eigenvectors-and-eigenvalues.html#cb270-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">-4</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
-<ul>
-<li><p>Calculate using rref on <span class="math inline">\(\mathbf{A} - \lambda \mathbf{I}\)</span> augmented with <span class="math inline">\(\mathbf{0}\)</span> and solve in parametric form</p></li>
-<li><p>After doing all three <span class="math inline">\(\lambda\)</span>s, draw a graphic showing the <span class="math inline">\(\lambda\)</span>-eignenspace basis.</p></li>
-</ul>
+<p><span id="exm:unlabeled-div-251" class="example"><strong>Example 20.7  </strong></span>For <span class="math inline">\(\lambda\)</span> = (a) -2, (b) 1, and (c) 3, decide if <span class="math inline">\(\lambda\)</span> is a eigenvalue of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 0 \\ -3 &amp; 2 \end{pmatrix}\)</span> and if so, compute a basis for the <span class="math inline">\(\lambda\)</span>-eigenspace.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-62" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A}\)</span> defined in the example, we will check if any of the values of <span class="math inline">\(\lambda\)</span> are eigenvalues.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="eigenvectors-and-eigenvalues.html#cb297-1"></a>A &lt;-<span class="st">  </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-3</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>First, we check if <span class="math inline">\(\lambda = -2\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. If <span class="math inline">\(\lambda = -2\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>, then there is a non-trivial solution to
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+The homogeneous system of equations can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+3  - \lambda &amp; 0 \\
+-3 &amp; 2 - \lambda 
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda = -2\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form where
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+3  - -2 &amp; 0 \\
+-3 &amp; 2 - -2
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 5 &amp; 0 &amp; 0 \\ -3 &amp; 4 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 5 &amp; 0 &amp; 0 \\ -3 &amp; 4 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1  &amp; = 0 \\
+x_2  &amp; = 0 
+\end{aligned}
+\]</span>
+which is the trivial solution. Thus, <span class="math inline">\(\lambda = -2\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</li>
+</ol>
+<p>Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="eigenvectors-and-eigenvalues.html#cb298-1"></a>A &lt;-<span class="st">  </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-3</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb298-2"><a href="eigenvectors-and-eigenvalues.html#cb298-2"></a>lambda &lt;-<span class="st"> </span><span class="dv">-2</span></span>
+<span id="cb298-3"><a href="eigenvectors-and-eigenvalues.html#cb298-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0</code></pre>
+<p>Because there is only the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>, <span class="math inline">\(\lambda = -2\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="eigenvectors-and-eigenvalues.html#cb300-1"></a>lambda &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Next, we check if <span class="math inline">\(\lambda = 1\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. If <span class="math inline">\(\lambda = 1\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>, then there is a non-trivial solution to
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+The homogeneous system of equations can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+3  - \lambda &amp; 0 \\
+-3 &amp; 2 - \lambda 
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda = 1\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form where
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+3  - 1 &amp; 0 \\
+-3 &amp; 2 - 1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 2 &amp; 0 &amp; 0 \\ -3 &amp; 1 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 2 &amp; 0 &amp; 0 \\ -3 &amp; 1 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1  &amp; = 0 \\
+x_2  &amp; = 0 
+\end{aligned}
+\]</span>
+which is the trivial solution. Thus, <span class="math inline">\(\lambda = 1\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</li>
+</ol>
+<p>Fixing <span class="math inline">\(x_3 = 1\)</span> gives the eigenvector associated with <span class="math inline">\(\lambda_3 = NA\)</span> of <span class="math inline">\(\mathbf{x}_3 = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 3 &amp; 0 \\ -3 &amp; 2 \end{pmatrix} \begin{pmatrix} -1 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} -3 \\ 5 \end{pmatrix}  = 1 \begin{pmatrix} -1 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="eigenvectors-and-eigenvalues.html#cb301-1"></a>A &lt;-<span class="st">  </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-3</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb301-2"><a href="eigenvectors-and-eigenvalues.html#cb301-2"></a>lambda &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb301-3"><a href="eigenvectors-and-eigenvalues.html#cb301-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0</code></pre>
+<p>Because there is only the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>, <span class="math inline">\(\lambda = 1\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="eigenvectors-and-eigenvalues.html#cb303-1"></a>lambda &lt;-<span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Next, we check if <span class="math inline">\(\lambda = 3\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>. If <span class="math inline">\(\lambda = 3\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>, then there is a non-trivial solution to
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+The homogeneous system of equations can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+3  - \lambda &amp; 0 \\
+-3 &amp; 2 - \lambda 
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda = 3\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form where
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+3  - 3 &amp; 0 \\
+-3 &amp; 2 - 3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 0 &amp; 0 &amp; 0 \\ -3 &amp; -1 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 0 &amp; 0 &amp; 0 \\ -3 &amp; -1 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 1/3 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1  + \frac{1}{3} x_2 &amp; = 0 \\
+x_2  &amp; = x_2
+\end{aligned}
+\]</span>
+where the solution can be chosen by setting <span class="math inline">\(x_2 = 1\)</span> giving the eigenvector associated with <span class="math inline">\(\lambda = 3\)</span> of <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1/3 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda \mathbf{x}\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 3 &amp; 0 \\ -3 &amp; 2 \end{pmatrix} \begin{pmatrix} -1/3 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} -1 \\ 3 \end{pmatrix}  = 3 \begin{pmatrix} -1/3 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Using <code>R</code>, this is</li>
+</ol>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="eigenvectors-and-eigenvalues.html#cb304-1"></a>A &lt;-<span class="st">  </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">-3</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb304-2"><a href="eigenvectors-and-eigenvalues.html#cb304-2"></a>lambda &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb304-3"><a href="eigenvectors-and-eigenvalues.html#cb304-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1]      [,2] [,3]
+## [1,]    1 0.3333333    0
+## [2,]    0 0.0000000    0</code></pre>
+<p>Verifying that the eigenvalue <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1/3 \\ 1 \end{pmatrix}\)</span> is an eigenvector is</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="eigenvectors-and-eigenvalues.html#cb306-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb306-2"><a href="eigenvectors-and-eigenvalues.html#cb306-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x), lambda <span class="op">*</span><span class="st"> </span>x) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Now, because we know that <span class="math inline">\(\lambda = 3\)</span> is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> and the homogeneous system of equations <span class="math inline">\(\left(\mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> has a unique solution, the vector <span class="math inline">\(\begin{pmatrix} -1/3 \\ 1 \end{pmatrix}\)</span> forms a basis for the 3-eigenspace of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-252" class="example"><strong>Example 20.8  </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 17/5 &amp; 8/5 &amp; -6/5 \\ 0 &amp; 3 &amp; 0 \\ 4/5 &amp; 16/5 &amp; 3/5 \end{pmatrix}\)</span>. Find the eigenvectors associated with the eigenvalues (a) <span class="math inline">\(\lambda = 3\)</span> and (b) <span class="math inline">\(\lambda = 1\)</span>. For each eigen value, also find the basis for the associated eigen-space.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-63" class="solution"><em>Solution</em>. </span>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 17/5 &amp; 8/5 &amp; -6/5 \\ 0 &amp; 3 &amp; 0 \\ 4/5 &amp; 16/5 &amp; 3/5 \end{pmatrix}\)</span>, we can find the eigenvectors associated with the given eigenvalues</p>
+<ol style="list-style-type: lower-alpha">
+<li>The eigenvalues associated with the first eigenvector <span class="math inline">\(\lambda = 3\)</span> by solving
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+17/5  - \lambda &amp; 8/5 &amp; -6/5 \\
+0 &amp; 3 - \lambda &amp; 0 \\
+4/5 &amp; 16/5 &amp; 3/5 - \lambda
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form.</li>
+</ol>
+<p>Letting <span class="math inline">\(\lambda = 3\)</span>, we have
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+17/5  - 3 &amp; 8/5 &amp; -6/5 \\
+0 &amp; 3 - 3 &amp; 0 \\
+4/5 &amp; 16/5 &amp; 3/5 - 3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 2/5 &amp; 8/5 &amp; -6/5 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 4/5 &amp; 16/5 &amp; -12/5 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 2/5 &amp; 8/5 &amp; -6/5 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 4/5 &amp; 16/5 &amp; -12/5 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 4 &amp; -3 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1 + 4 x_2 - x_33 &amp; = 0 \\
+x_2 &amp; = x_2 \\
+x_3 &amp; = x_3
+\end{aligned}
+\]</span>
+Where there are two free variables which suggests that the dimension of the solution space is 2 (the solution set defines a plane and will have 2 basis vectors. Fixing <span class="math inline">\(x_2 = 1\)</span> and <span class="math inline">\(x_3 = 0\)</span> gives the first eigenvector associated with <span class="math inline">\(\lambda = 3\)</span> of <span class="math inline">\(\mathbf{x}_1 = \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x}_1 = \lambda \mathbf{x}_1\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 17/5 &amp; 8/5 &amp; -6/5 \\ 0 &amp; 3 &amp; 0 \\ 4/5 &amp; 16/5 &amp; 3/5 \end{pmatrix} \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix} &amp; = \begin{pmatrix} -12 \\ 3 \\ 0 \end{pmatrix}  = 3 \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+The second basis vector for the eigenspace associated with <span class="math inline">\(\lambda = 3\)</span> can be found by fixing <span class="math inline">\(x_2 = 0\)</span> and <span class="math inline">\(x_3 = 1\)</span> to get the eigenvector <span class="math inline">\(\mathbf{x}_2 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x}_2 = \lambda \mathbf{x}_2\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 17/5 &amp; 8/5 &amp; -6/5 \\ 0 &amp; 3 &amp; 0 \\ 4/5 &amp; 16/5 &amp; 3/5 \end{pmatrix} \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} 9 \\ 0 \\ 3 \end{pmatrix}  = 3 \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Thus, the basis for 3-eigenspace is <span class="math inline">\(\left\{ \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}\right\}\)</span>. Note that this is the same as finding a basis for the null space of <span class="math inline">\(\left(\mathbf{A} - \lambda \mathbf{I} \right)\)</span>.</p>
+<p>Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="eigenvectors-and-eigenvalues.html#cb308-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">17</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">8</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">16</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-6</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb308-2"><a href="eigenvectors-and-eigenvalues.html#cb308-2"></a>lambda &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb308-3"><a href="eigenvectors-and-eigenvalues.html#cb308-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4   -3    0
+## [2,]    0    0    0    0
+## [3,]    0    0    0    0</code></pre>
+<p>Verifying that the eigenvalue <span class="math inline">\(\mathbf{x}_1 = \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}\)</span> is an eigenvector and that <span class="math inline">\(\mathbf{x}_2 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}\)</span> is an eigenvector</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="eigenvectors-and-eigenvalues.html#cb310-1"></a>x_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb310-2"><a href="eigenvectors-and-eigenvalues.html#cb310-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x_<span class="dv">1</span>), lambda <span class="op">*</span><span class="st"> </span>x_<span class="dv">1</span>) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="eigenvectors-and-eigenvalues.html#cb312-1"></a>x_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb312-2"><a href="eigenvectors-and-eigenvalues.html#cb312-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x_<span class="dv">2</span>), lambda <span class="op">*</span><span class="st"> </span>x_<span class="dv">2</span>) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="eigenvectors-and-eigenvalues.html#cb314-1"></a>lambda &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The eigenvalues associated with the second eigenvector <span class="math inline">\(\lambda = 1\)</span> by solving
+<span class="math display">\[
+\begin{aligned}
+\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which can be written as
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+17/5  - \lambda &amp; 8/5 &amp; -6/5 \\
+0 &amp; 3 - \lambda &amp; 0 \\
+4/5 &amp; 16/5 &amp; 3/5 - \lambda
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+and can be solved for <span class="math inline">\(\lambda\)</span> using an augmented matrix form and row operations to reduce to reduced row echelon form.</li>
+</ol>
+<p>Letting <span class="math inline">\(\lambda = 1\)</span>, we have
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 
+17/5  - 1 &amp; 8/5 &amp; -6/5 \\
+0 &amp; 3 - 1 &amp; 0 \\
+4/5 &amp; 16/5 &amp; 3/5 - 1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &amp; = \mathbf{0}
+\end{aligned}
+\]</span>
+which results in the augmented matrix
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 12/5 &amp; 8/5 &amp; -6/5 &amp; 0 \\ 0 &amp; 2 &amp; 0 &amp; 0 \\ 4/5 &amp; 16/5 &amp; -2/5 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+Reducing the augmented matrix to reduced row echelon form gives
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 12/5 &amp; 8/5 &amp; -6/5 &amp; 0 \\ 0 &amp; 2 &amp; 0 &amp; 0 \\ 4/5 &amp; 16/5 &amp; -2/5 &amp; 0 \end{pmatrix} &amp; \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 &amp; 0 &amp; -1/2 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span>
+which has solution
+<span class="math display">\[
+\begin{aligned}
+x_1 - \frac{1}{2} x_3 &amp; = 0 \\
+x_2  &amp; = 0 \\
+x_3 &amp; = x_3
+\end{aligned}
+\]</span>
+Fixing <span class="math inline">\(x_3 = 1\)</span> gives the eigenvector associated with <span class="math inline">\(\lambda= 1\)</span> of <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}\)</span>. We can verify that this is an eigenvector associated with eigenvalue <span class="math inline">\(\lambda = 1\)</span> with matrix multiplication to show <span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda \mathbf{x}\)</span>
+<span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} 17/5 &amp; 8/5 &amp; -6/5 \\ 0 &amp; 3 &amp; 0 \\ 4/5 &amp; 16/5 &amp; 3/5 \end{pmatrix} \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix} &amp; = \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}  = NA \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}
+\end{aligned}
+\]</span>
+Therefore, a basis for the 1-eigenspace is <span class="math inline">\(\left\{ \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix} \right\}\)</span></p>
+<p>Using <code>R</code>, this is</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="eigenvectors-and-eigenvalues.html#cb315-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">17</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">8</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">16</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">-6</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb315-2"><a href="eigenvectors-and-eigenvalues.html#cb315-2"></a>lambda &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb315-3"><a href="eigenvectors-and-eigenvalues.html#cb315-3"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A <span class="op">-</span><span class="st"> </span>lambda <span class="op">*</span><span class="st"> </span><span class="kw">diag</span>(<span class="kw">nrow</span>(A)), <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0 -0.5    0
+## [2,]    0    1  0.0    0
+## [3,]    0    0  0.0    0</code></pre>
+<p>Verifying that the eigenvalue <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\)</span> is an eigenvector associated with eigenvalue <span class="math inline">\(\lambda = 1\)</span> is</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="eigenvectors-and-eigenvalues.html#cb317-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb317-2"><a href="eigenvectors-and-eigenvalues.html#cb317-2"></a><span class="kw">all.equal</span>(<span class="kw">drop</span>(A <span class="op">%*%</span><span class="st"> </span>x), lambda <span class="op">*</span><span class="st"> </span>x) <span class="co"># drop() makes a matrix with one column a vector</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
 </div>
 <div id="computing-eigenspaces" class="section level3">
 <h3><span class="header-section-number">20.1.1</span> Computing Eigenspaces</h3>
@@ -477,7 +1165,7 @@ which has solution</p>
 </ol>
 <p>Note that this leads of a fact about the <span class="math inline">\(0\)</span>-eigenspace.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-243" class="definition"><strong>Definition 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then</p>
+<p><span id="def:unlabeled-div-253" class="definition"><strong>Definition 20.3  </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. Then</p>
 <ol style="list-style-type: decimal">
 <li><p>The number 0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if <span class="math inline">\(\mathbf{A}\)</span> is not invertible.</p></li>
 <li><p>If 0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>, then the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is null<span class="math inline">\((\mathbf{A})\)</span>.</p></li>
@@ -485,11 +1173,11 @@ which has solution</p>
 </div>
 <div class="fold-proof">
 <div class="proof">
-<p><span id="unlabeled-div-58" class="proof"><em>Proof</em>. </span>0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if null<span class="math inline">\((\mathbf{A} - 0 \mathbf{I})\)</span> = null<span class="math inline">\((\mathbf{A})\)</span>. By the invertible matrix theorem, <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if null<span class="math inline">\((\mathbf{A}) = \{\mathbf{0}\}\)</span> but we know that the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is not the trivial set <span class="math inline">\(\{\mathbf{0}\}\)</span> because 0 is an eigenvalue.</p>
+<p><span id="unlabeled-div-64" class="proof"><em>Proof</em>. </span>0 is an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if and only if null<span class="math inline">\((\mathbf{A} - 0 \mathbf{I})\)</span> = null<span class="math inline">\((\mathbf{A})\)</span>. By the invertible matrix theorem, <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if null<span class="math inline">\((\mathbf{A}) = \{\mathbf{0}\}\)</span> but we know that the 0-eigenspace of <span class="math inline">\(\mathbf{A}\)</span> is not the trivial set <span class="math inline">\(\{\mathbf{0}\}\)</span> because 0 is an eigenvalue.</p>
 </div>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-244" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces) </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>
+<p><span id="thm:unlabeled-div-254" class="theorem"><strong>Theorem 20.2  (Invertible Matrix Theorm + eigenspaces) </strong></span>This is an extension of the prior statement of the invertible matrix theorem <a href="matrix-inverse.html#thm:invertible-matrix">8.4</a>
 Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(T: \mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> be the linear transformation given by <span class="math inline">\(T(\mathbf{x}) = \mathbf{A}\mathbf{x}\)</span>. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathbf{A}\)</span> is invertible.</p></li>

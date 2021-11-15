@@ -170,7 +170,7 @@
 \title{Multivariable Mathematics for Data Science}
 \author{John Tipton}
 \date{Created 1 January 2020\\
-Last updated 08 November, 2021}
+Last updated 15 November, 2021}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -7686,11 +7686,179 @@ for some scalar \(\lambda\). If there exists some \(\lambda \neq 0\) (a non-triv
 It is easy to check if a vector is an eigenvalue:
 
 Let \(\mathbf{A} = \begin{pmatrix} 0 & 6 & 8 \\ 1/2 & 0 & 0 \\ 0 & 1/2 & 0 \end{pmatrix}\), \(\mathbf{u} = \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}\), and \(\mathbf{v} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\). Determine if \(\mathbf{u}\) or \(\mathbf{v}\) are eigenvectors of \(\mathbf{A}\). If they are eigenvectors, what are the associated eigenvalues.
-
-Now, plot \(\mathbf{u}\), \(\mathbf{A} \mathbf{u}\), \(\mathbf{v}\), and \(\mathbf{A} \mathbf{v}\) to show this relationship geometrically.
 \end{example}
 
-An eigenvector is a (nonzero) vector \(\mathbf{x}\) that gets mapped to a scalar multiple of itself \(\lambda \mathbf{x}\) by the matrix transformation \(\mathbf{A}\mathbf{x} \rightarrow \lambda \mathbf{x}\). As such, we say that \(\mathbf{x}\) and \(\mathbf{A} \mathbf{x}\) are collinear with the origin (\(\mathbf{0}\)) in the sense that these points lie on the same line that goes through the origin.
+\begin{solution}
+
+Here we demonstrate the eigenvector/eigenvalue relationship.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  If \(\mathbf{u}\) is an eigenvector of a matrix \(\mathbf{A}\), then there exists some constant \(\lambda\) such that \(\mathbf{A} \mathbf{u} = \lambda \mathbf{u}\). Checking this gives
+  \[
+  \begin{aligned}
+  \mathbf{A} \mathbf{u} & = \begin{pmatrix} 0 & 6 & 8 \\ 1/2 & 0 & 0 \\ 0 & 1/2 & 0 \end{pmatrix} \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix} \\
+  & = \begin{pmatrix} 32 \\ 8 \\ 2 \end{pmatrix} \\ 
+  & = 2 \begin{pmatrix} 16 \\ 4 \\ 1 \end{pmatrix}
+  \end{aligned}
+  \]
+  which shows that \(\mathbf{u}\) is an eigenvector of \(\mathbf{A}\) with associated eigenvalue \(\lambda = 2\). Now, we check if \(\mathbf{v}\) is an eigenvector of \(\mathbf{A}\)
+  \[
+  \begin{aligned}
+  \mathbf{A} \mathbf{v} & = \begin{pmatrix} 0 & 6 & 8 \\ 1/2 & 0 & 0 \\ 0 & 1/2 & 0 \end{pmatrix} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} \\
+  & = \begin{pmatrix} 28 \\ 1 \\ 1 \end{pmatrix} 
+  \end{aligned}
+  \]
+  where there is no number \(\lambda\) such that \(\begin{pmatrix} 28 \\ 1 \\ 1 \end{pmatrix} = \lambda \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}\). In \texttt{R}, this can be shown
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]  0.0  6.0    8
+## [2,]  0.5  0.0    0
+## [3,]  0.0  0.5    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{v <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)      }
+\CommentTok{# is u an eigenvector of A?}
+\NormalTok{A }\OperatorTok{%*%}\StringTok{ }\NormalTok{u}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]   32
+## [2,]    8
+## [3,]    2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# yes, because A %*% u = 2 u}
+\CommentTok{# 2 is the eigenvalue associated with u}
+
+\CommentTok{# is v an eigenvector of A?}
+\NormalTok{A }\OperatorTok{%*%}\StringTok{ }\NormalTok{v}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]   28
+## [2,]    1
+## [3,]    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# not an eigenvectos because A %*% v is not equal to lambda * v for some lambda}
+\end{Highlighting}
+\end{Shaded}
+
+\end{solution}
+
+\begin{example}
+It is easy to check if a vector is an eigenvalue:
+
+Let \(\mathbf{A} = \begin{pmatrix} 2 & 1 \\ 0 & 1 \end{pmatrix}\), \(\mathbf{u} = \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix}\), and \(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\). Determine if \(\mathbf{u}\) or \(\mathbf{v}\) are eigenvectors of \(\mathbf{A}\). If they are eigenvectors, what are the associated eigenvalues. Now, plot \(\mathbf{u}\), \(\mathbf{A} \mathbf{u}\), \(\mathbf{v}\), and \(\mathbf{A} \mathbf{v}\) to show this relationship geometrically.
+\end{example}
+
+\begin{solution}
+First, we determine if the vectors \(\mathbf{u}\) and \(\mathbf{v}\) are eigenvectors of \(\mathbf{A}\).
+
+If \(\mathbf{u}\) is an eigenvector of a matrix \(\mathbf{A}\), then there exists some constant \(\lambda\) such that \(\mathbf{A} \mathbf{u} = \lambda \mathbf{u}\). Checking this gives
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{u} & = \begin{pmatrix} 2 & 1 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix} \\
+& = \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix} 
+\end{aligned}
+\]
+which shows that \(\mathbf{u}\) is an eigenvector of \(\mathbf{A}\) with associated eigenvalue \(\lambda = 1\). Now, we check if \(\mathbf{v}\) is an eigenvector of \(\mathbf{A}\)
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{v} & = \begin{pmatrix} 2 & 1 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \\
+& = \begin{pmatrix} 3 \\ 1 \end{pmatrix} 
+\end{aligned}
+\]
+where there is no number \(\lambda\) such that \(\begin{pmatrix} 3 \\ 1 \end{pmatrix} = \lambda \begin{pmatrix} 1 \\ 1 \end{pmatrix}\). In \texttt{R}, this can be shown
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{u <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{)}
+\NormalTok{v <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\CommentTok{# is u an eigenvector of A?}
+\NormalTok{A }\OperatorTok{%*%}\StringTok{ }\NormalTok{u}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            [,1]
+## [1,] -0.7071068
+## [2,]  0.7071068
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# yes, because A %*% u = u}
+\CommentTok{# 1 is the eigenvalue associated with u}
+
+\CommentTok{# is v an eigenvector of A?}
+\NormalTok{A }\OperatorTok{%*%}\StringTok{ }\NormalTok{v}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]    3
+## [2,]    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# not an eigenvectos because A %*% v is not equal to lambda * v for some lambda}
+\end{Highlighting}
+\end{Shaded}
+
+Now, we will plot the vectors \(\mathbf{u}\) and \(\mathbf{v}\) as well as the vectors transformed by the matrix \(\mathbf{A}\) (i.e., \(\mathbf{A} \mathbf{u}\) and \(\mathbf{A} \mathbf{v}\)). The code below plot the vector \(\mathbf{u}\) in dark blue and the transformed vector \(\mathbf{A} \mathbf{u}\) in light blue. The code also plots the vector \(\mathbf{v}\) in dark red and the transformed vector \(\mathbf{A} \mathbf{v}\) in light red.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_segment}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\NormalTok{, }\DataTypeTok{xend =}\NormalTok{ u[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =} \DecValTok{0}\NormalTok{, }\DataTypeTok{yend =}\NormalTok{ u[}\DecValTok{2}\NormalTok{]), }\DataTypeTok{color =} \StringTok{"dark blue"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_segment}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\NormalTok{, }\DataTypeTok{xend =}\NormalTok{ (A }\OperatorTok{%*%}\StringTok{ }\NormalTok{u)[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =} \DecValTok{0}\NormalTok{, }\DataTypeTok{yend =}\NormalTok{ (A }\OperatorTok{%*%}\StringTok{ }\NormalTok{u)[}\DecValTok{2}\NormalTok{]), }\DataTypeTok{color =} \StringTok{"light blue"}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_segment}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\NormalTok{, }\DataTypeTok{xend =}\NormalTok{ v[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =} \DecValTok{0}\NormalTok{, }\DataTypeTok{yend =}\NormalTok{ v[}\DecValTok{2}\NormalTok{]), }\DataTypeTok{color =} \StringTok{"dark red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_segment}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\NormalTok{, }\DataTypeTok{xend =}\NormalTok{ (A }\OperatorTok{%*%}\StringTok{ }\NormalTok{v)[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =} \DecValTok{0}\NormalTok{, }\DataTypeTok{yend =}\NormalTok{ (A }\OperatorTok{%*%}\StringTok{ }\NormalTok{v)[}\DecValTok{2}\NormalTok{]), }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{coord_cartesian}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-184-1.pdf}
+Notice that the multiplication of \(\mathbf{u}\) by \(\mathbf{A}\) gives a vector \(\mathbf{A} \mathbf{u}\) that points along the same line as \(\mathbf{u}\) because \(\mathbf{u}\) is an eigenvector of \(\mathbf{A}\). In comparison, the vector \(\mathbf{v}\) is not an eigenvector of \(\mathbf{A}\) and multiplication of \(\mathbf{v}\) by \(\mathbf{A}\) gives a vector \(\mathbf{A} \mathbf{v}\) that \emph{does not} point along the same line as the vector \(\mathbf{u}\).
+\end{solution}
+
+\begin{example}
+Come up with another example and another plot that shows the similar result as the example above.
+\end{example}
+
+\begin{solution}
+The solution (TBD)
+\end{solution}
+
+Thus, we end up with the understanding that nn eigenvector is a (nonzero) vector \(\mathbf{x}\) that gets mapped to a scalar multiple of itself \(\lambda \mathbf{x}\) by the matrix transformation defined by \(T: \mathbf{x} \rightarrow \mathbf{A}\mathbf{x} = \mathbf{x}\). As such, when \(\mathbf{x}\) is an eigenvector of \(\mathbf{A}\) we say that \(\mathbf{x}\) and \(\mathbf{A} \mathbf{x}\) are collinear with the origin (\(\mathbf{0}\)) and each other in the sense that these points lie on the same line that goes through the origin.
 
 \textbf{Note:} The matrix \(\mathbf{A}\) must be an \(n \times n\) square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.
 
@@ -7747,7 +7915,6 @@ Therefore, the eigenvectors of \(\mathbf{A}\) associated with \(\lambda\), if th
 Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of \(\mathbf{A}\). All we have to do is solve the system of linear equations \(\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\) for a given \(\lambda\) (actually, for all \(\lambda\)s, which we can't do). If only there was some way to find eigenvalues \(\lambda\) (hint: there is and it is coming next chapter).
 
 \begin{example}
-
 Let \(\mathbf{A} = \begin{pmatrix} 3 & 6 & -8 \\ 0 & 0 & 6 \\ 0 & 0 & 2 \end{pmatrix}\). Then an eigenvector with eigenvector \(\lambda\) is a nontrival solution to
 \[
 \begin{aligned}
@@ -7776,11 +7943,39 @@ Letting \(\lambda = 3\), we have
 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
 \end{aligned}
 \]
+which can be written as the matrix equation
+\[
+\begin{aligned}
+\begin{pmatrix} 0 & 6 & -8 \\ 0 & -3 & 6 \\ 0 & 0 & -1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+\]
+Note that the columns of the matrix above are not linearly independent. Thus, we can solve a non-unique solution (the solution set is a line going through the origin) by finding the reduce row echelon form of an augmented matrix
+\[
+\begin{aligned}
+\begin{pmatrix} 0 & 6 & -8 & 0 \\ 0 & -3 & 6 & 0 \\ 0 & 0 & -1 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{aligned}
+\]
 which has solution
+\[
+\begin{aligned}
+x_1 & = x_1 \\
+x_2 & = 0 \\
+x_3 & = 0
+\end{aligned}
+\]
+Fixing \(x_1 = 1\) gives the eigenvector associated with \(\lambda = 3\) of \(\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication
+\[
+\begin{aligned}
+\begin{pmatrix} 3 & 6 & -8 \\ 0 & 0 & 6 \\ 0 & 0 & 2 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} & = \begin{pmatrix} 3 \\ 0 \\ 0 \end{pmatrix}  = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+\end{aligned}
+\]
+
+Using \texttt{R}, this can be done as
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{lambda <-}\StringTok{ }\DecValTok{3}
+\CommentTok{# apply rref to the augmented matrix}
 \KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -7792,7 +7987,307 @@ which has solution
 ## [3,]    0    0    0    0
 \end{verbatim}
 
+where the solution set is determined from the RREF form of the augmented matrix of the equation \(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)
 \end{example}
+
+\begin{example}
+Let \(\mathbf{A} = \begin{pmatrix} -21/5 & -34/5 & 18/5 \\ -6/5 & -14/5 & 3/5 \\ -4 & -10 & 5 \end{pmatrix}\). Find the eigenvectors associated with the eigenvalues (a) \(\lambda_1 = -4\), (b) \(\lambda_2 = 3\), and (c) \(\lambda_3 = -1\).
+\end{example}
+
+\begin{solution}
+Given the matrix \(\mathbf{A} = \begin{pmatrix} -21/5 & -34/5 & 18/5 \\ -6/5 & -14/5 & 3/5 \\ -4 & -10 & 5 \end{pmatrix}\), we can find the eigenvectors associated with the given eigenvalues
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  The eigenvalues associated with the first eigenvector \(\lambda_1 = -4\) by solving
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda_1 \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  -21/5  - \lambda_1 & -34/5 & 18/5 \\
+  -6/5 & -14/5 - \lambda_1 & 3/5 \\
+  -4 & -10 & 5 - \lambda_1
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda_1\) using an augmented matrix form and row operations to reduce to reduced row echelon form.
+\end{enumerate}
+
+Letting \(\lambda_1 = -4\), we have
+\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - -4 & -34/5 & 18/5 \\
+-6/5 & -14/5 - -4 & 3/5 \\
+-4 & -10 & 5 - -4
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+\]
+which results in the augmented matrix
+\[
+\begin{aligned}
+\begin{pmatrix} -1/5 & -34/5 & 18/5 & 0 \\ -6/5 & 6/5 & 3/5 & 0 \\ -4 & -10 & 9 & 0 \end{pmatrix}
+\end{aligned}
+\]
+Reducing the augmented matrix to reduced row echelon form gives
+\[
+\begin{aligned}
+\begin{pmatrix} -1/5 & -34/5 & 18/5 & 0 \\ -6/5 & 6/5 & 3/5 & 0 \\ -4 & -10 & 9 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 0 & -1 & 0 \\ 0 & 1 & -1/2 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{aligned}
+\]
+which has solution
+\[
+\begin{aligned}
+x_1 - x_3 & = 0 \\
+x_2 - \frac{1}{2} x_3 & = 0 \\
+x_3 & = x_3
+\end{aligned}
+\]
+Fixing \(x_3 = 1\) gives the eigenvector associated with \(\lambda_1 = -4\) of \(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x}_1 = \lambda_1 \mathbf{x}_1\)
+\[
+\begin{aligned}
+\begin{pmatrix} -21/5 & -34/5 & 18/5 \\ -6/5 & -14/5 & 3/5 \\ -4 & -10 & 5 \end{pmatrix} \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix} & = \begin{pmatrix} -4 \\ -2 \\ -4 \end{pmatrix}  = -4 \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{21}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-6}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-4}\NormalTok{, }\DecValTok{-34}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-14}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-10}\NormalTok{, }\DecValTok{18}\OperatorTok{/}\DecValTok{5}\NormalTok{,  }\DecValTok{3}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{lambda_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\DecValTok{-4}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda_}\DecValTok{1} \OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    0 -1.0    0
+## [2,]    0    1 -0.5    0
+## [3,]    0    0  0.0    0
+\end{verbatim}
+
+Verifying that the eigenvalue \(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\) is an eigenvector is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_}\DecValTok{1}\NormalTok{), lambda_}\DecValTok{1} \OperatorTok{*}\StringTok{ }\NormalTok{x_}\DecValTok{1}\NormalTok{) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The eigenvalues associated with the second eigenvector \(\lambda_2 = 3\) by solving
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda_2 \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  -21/5  - \lambda_2 & -34/5 & 18/5 \\
+  -6/5 & -14/5 - \lambda_2 & 3/5 \\
+  -4 & -10 & 5 - \lambda_2
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda_2\) using an augmented matrix form and row operations to reduce to reduced row echelon form.
+\end{enumerate}
+
+Letting \(\lambda_2 = 3\), we have
+\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - 3 & -34/5 & 18/5 \\
+-6/5 & -14/5 - 3 & 3/5 \\
+-4 & -10 & 5 - 3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+\]
+which results in the augmented matrix
+\[
+\begin{aligned}
+\begin{pmatrix} -36/5 & -34/5 & 18/5 & 0 \\ -6/5 & -29/5 & 3/5 & 0 \\ -4 & -10 & 2 & 0 \end{pmatrix}
+\end{aligned}
+\]
+Reducing the augmented matrix to reduced row echelon form gives
+\[
+\begin{aligned}
+\begin{pmatrix} -36/5 & -34/5 & 18/5 & 0 \\ -6/5 & -29/5 & 3/5 & 0 \\ -4 & -10 & 2 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 0 & -1/2 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{aligned}
+\]
+which has solution
+\[
+\begin{aligned}
+x_1 - \frac{1}{2} x_3 & = 0 \\
+x_2  & = 0 \\
+x_3 & = x_3
+\end{aligned}
+\]
+Fixing \(x_3 = 1\) gives the eigenvector associated with \(\lambda_2 = 3\) of \(\mathbf{x}_2 = \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2\)
+\[
+\begin{aligned}
+\begin{pmatrix} -21/5 & -34/5 & 18/5 \\ -6/5 & -14/5 & 3/5 \\ -4 & -10 & 5 \end{pmatrix} \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix} & = \begin{pmatrix} 3/2 \\ 0 \\ 3 \end{pmatrix}  = 3 \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{21}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-6}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-4}\NormalTok{, }\DecValTok{-34}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-14}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-10}\NormalTok{, }\DecValTok{18}\OperatorTok{/}\DecValTok{5}\NormalTok{,  }\DecValTok{3}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{lambda_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\DecValTok{3}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda_}\DecValTok{2} \OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    0 -0.5    0
+## [2,]    0    1  0.0    0
+## [3,]    0    0  0.0    0
+\end{verbatim}
+
+Verifying that the eigenvalue \(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\) is an eigenvector is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_}\DecValTok{2}\NormalTok{), lambda_}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{x_}\DecValTok{2}\NormalTok{) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The eigenvalues associated with the third eigenvector \(\lambda_3 = -1\) by solving
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda_3 \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  -21/5  - \lambda_3 & -34/5 & 18/5 \\
+  -6/5 & -14/5 - \lambda_3 & 3/5 \\
+  -4 & -10 & 5 - \lambda_3
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda_3\) using an augmented matrix form and row operations to reduce to reduced row echelon form.
+\end{enumerate}
+
+Letting \(\lambda_3 = -1\), we have
+\[
+\begin{aligned}
+\begin{pmatrix} 
+-21/5  - -1 & -34/5 & 18/5 \\
+-6/5 & -14/5 - -1 & 3/5 \\
+-4 & -10 & 5 - -1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+\]
+which results in the augmented matrix
+\[
+\begin{aligned}
+\begin{pmatrix} -16/5 & -34/5 & 18/5 & 0 \\ -6/5 & -9/5 & 3/5 & 0 \\ -4 & -10 & 6 & 0 \end{pmatrix}
+\end{aligned}
+\]
+Reducing the augmented matrix to reduced row echelon form gives
+\[
+\begin{aligned}
+\begin{pmatrix} -16/5 & -34/5 & 18/5 & 0 \\ -6/5 & -9/5 & 3/5 & 0 \\ -4 & -10 & 6 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{aligned}
+\]
+which has solution
+\[
+\begin{aligned}
+x_1 + x_3 & = 0 \\
+x_2  - x_3 & = 0 \\
+x_3 & = x_3
+\end{aligned}
+\]
+Fixing \(x_3 = 1\) gives the eigenvector associated with \(\lambda_3 = -1\) of \(\mathbf{x}_3 = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2\)
+\[
+\begin{aligned}
+\begin{pmatrix} -21/5 & -34/5 & 18/5 \\ -6/5 & -14/5 & 3/5 \\ -4 & -10 & 5 \end{pmatrix} \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix} & = \begin{pmatrix} 1 \\ -1 \\ -1 \end{pmatrix}  = -1 \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{21}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-6}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-4}\NormalTok{, }\DecValTok{-34}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-14}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-10}\NormalTok{, }\DecValTok{18}\OperatorTok{/}\DecValTok{5}\NormalTok{,  }\DecValTok{3}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{lambda_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\DecValTok{-1}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda_}\DecValTok{3} \OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    1    0
+## [2,]    0    1   -1    0
+## [3,]    0    0    0    0
+\end{verbatim}
+
+Verifying that the eigenvalue \(\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\) is an eigenvector is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_}\DecValTok{3}\NormalTok{), lambda_}\DecValTok{3} \OperatorTok{*}\StringTok{ }\NormalTok{x_}\DecValTok{3}\NormalTok{) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Now, let's compare the output of the \texttt{eigen()} function in \texttt{R} to these eigenvectors calculated ``by hand.'' The \texttt{eigen()} function returns the two objects named \texttt{\$values} that contain the eigenvalues of \(\mathbf{A}\) and the object \texttt{\$vectors} that contains a matrix of eigenvectors as the columns fo the matrix. Each eigenvalue corresponds to the respective column of the eigenvector matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{eigen}\NormalTok{(A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## eigen() decomposition
+## $values
+## [1] -4  3 -1
+## 
+## $vectors
+##           [,1]          [,2]       [,3]
+## [1,] 0.6666667 -4.472136e-01 -0.5773503
+## [2,] 0.3333333 -2.428613e-16  0.5773503
+## [3,] 0.6666667 -8.944272e-01  0.5773503
+\end{verbatim}
+
+Note that the eigenvectors returned by the \texttt{eigen()} function are the same as those in the example, but the vectors are different. However, the vectors from \texttt{eigen()} point in the same direction as those found ``by hand'' and only differ in the length of the vector. For example, we found the eigenvector associated with the eigenvalue -4 to be \(\begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\) which points in the same direction as the vector from \texttt{eigen()} of \(\begin{pmatrix} 2/3 \\ 1/3 \\ 2/3 \end{pmatrix}\) which is just a scalar multiple of the vector found ``by hand.'' Recall that when we found a solution using RREF and the augmented matrix, the solution set was infinite (a line) and we just set the free variable equal to 1. Another equally valid solution would be to set the free variable so that the total length of the vector is 1, and this is what the \texttt{eigen()} function does.
+\end{solution}
 
 \begin{definition}
 Let \(\mathbf{A}\) be an \(n \times n\) matrix and let \(\lambda\) be an eigenvalue of \(\mathbf{A}\). Then, the \textbf{\(\lambda\)-eigenspace} of \(\mathbf{A}\) is the solution set of the matrix equation \(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\) which is the subspace null(\(\mathbf{A} - \lambda \mathbf{I}\)).
@@ -7801,23 +8296,475 @@ Let \(\mathbf{A}\) be an \(n \times n\) matrix and let \(\lambda\) be an eigenva
 Therefore, the \(\lambda\)-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector \(\mathbf{0}\) and all the eigenvectors of \(\mathbf{A}\) with corresponding eigenvalue \(\lambda\).
 
 \begin{example}
+For \(\lambda\) = (a) -2, (b) 1, and (c) 3, decide if \(\lambda\) is a eigenvalue of the matrix \(\mathbf{A} = \begin{pmatrix} 3 & 0 \\ -3 & 2 \end{pmatrix}\) and if so, compute a basis for the \(\lambda\)-eigenspace.
+\end{example}
 
-For \(\lambda\) = -2, 1, and 3, decide if \(\lambda\) is a eigenvalue of the matrix \(\mathbf{A} = \begin{pmatrix} 2 & -4 \\ -1 & 1 \end{pmatrix}\) and if so, compute a basis for the \(\lambda\)-eigenspace.
+\begin{solution}
+Given the matrix \(\mathbf{A}\) defined in the example, we will check if any of the values of \(\lambda\) are eigenvalues.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{-1}\NormalTok{, }\DecValTok{-4}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{A <-}\StringTok{  }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
 \item
-  Calculate using rref on \(\mathbf{A} - \lambda \mathbf{I}\) augmented with \(\mathbf{0}\) and solve in parametric form
-\item
-  After doing all three \(\lambda\)s, draw a graphic showing the \(\lambda\)-eignenspace basis.
-\end{itemize}
+  First, we check if \(\lambda = -2\) is an eigenvalue of \(\mathbf{A}\). If \(\lambda = -2\) is an eigenvalue of \(\mathbf{A}\), then there is a non-trivial solution to
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  The homogeneous system of equations can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  3  - \lambda & 0 \\
+  -3 & 2 - \lambda 
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda = -2\) using an augmented matrix form and row operations to reduce to reduced row echelon form where
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  3  - -2 & 0 \\
+  -3 & 2 - -2
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which results in the augmented matrix
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 5 & 0 & 0 \\ -3 & 4 & 0 \end{pmatrix}
+  \end{aligned}
+  \]
+  Reducing the augmented matrix to reduced row echelon form gives
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 5 & 0 & 0 \\ -3 & 4 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}
+  \end{aligned}
+  \]
+  which has solution
+  \[
+  \begin{aligned}
+  x_1  & = 0 \\
+  x_2  & = 0 
+  \end{aligned}
+  \]
+  which is the trivial solution. Thus, \(\lambda = -2\) is not an eigenvalue of \(\mathbf{A}\).
+\end{enumerate}
 
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{  }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{-2}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+\end{verbatim}
+
+Because there is only the trivial solution \(\mathbf{x} = \mathbf{0}\), \(\lambda = -2\) is not an eigenvalue of \(\mathbf{A}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Next, we check if \(\lambda = 1\) is an eigenvalue of \(\mathbf{A}\). If \(\lambda = 1\) is an eigenvalue of \(\mathbf{A}\), then there is a non-trivial solution to
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  The homogeneous system of equations can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  3  - \lambda & 0 \\
+  -3 & 2 - \lambda 
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda = 1\) using an augmented matrix form and row operations to reduce to reduced row echelon form where
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  3  - 1 & 0 \\
+  -3 & 2 - 1
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which results in the augmented matrix
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 2 & 0 & 0 \\ -3 & 1 & 0 \end{pmatrix}
+  \end{aligned}
+  \]
+  Reducing the augmented matrix to reduced row echelon form gives
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 2 & 0 & 0 \\ -3 & 1 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}
+  \end{aligned}
+  \]
+  which has solution
+  \[
+  \begin{aligned}
+  x_1  & = 0 \\
+  x_2  & = 0 
+  \end{aligned}
+  \]
+  which is the trivial solution. Thus, \(\lambda = 1\) is not an eigenvalue of \(\mathbf{A}\).
+\end{enumerate}
+
+Fixing \(x_3 = 1\) gives the eigenvector associated with \(\lambda_3 = NA\) of \(\mathbf{x}_3 = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2\)
+\[
+\begin{aligned}
+\begin{pmatrix} 3 & 0 \\ -3 & 2 \end{pmatrix} \begin{pmatrix} -1 \\ 1 \end{pmatrix} & = \begin{pmatrix} -3 \\ 5 \end{pmatrix}  = 1 \begin{pmatrix} -1 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{  }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{1}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+\end{verbatim}
+
+Because there is only the trivial solution \(\mathbf{x} = \mathbf{0}\), \(\lambda = 1\) is not an eigenvalue of \(\mathbf{A}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Next, we check if \(\lambda = 3\) is an eigenvalue of \(\mathbf{A}\). If \(\lambda = 3\) is an eigenvalue of \(\mathbf{A}\), then there is a non-trivial solution to
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  The homogeneous system of equations can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  3  - \lambda & 0 \\
+  -3 & 2 - \lambda 
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda = 3\) using an augmented matrix form and row operations to reduce to reduced row echelon form where
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  3  - 3 & 0 \\
+  -3 & 2 - 3
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which results in the augmented matrix
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 0 & 0 & 0 \\ -3 & -1 & 0 \end{pmatrix}
+  \end{aligned}
+  \]
+  Reducing the augmented matrix to reduced row echelon form gives
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 0 & 0 & 0 \\ -3 & -1 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 1/3 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+  \end{aligned}
+  \]
+  which has solution
+  \[
+  \begin{aligned}
+  x_1  + \frac{1}{3} x_2 & = 0 \\
+  x_2  & = x_2
+  \end{aligned}
+  \]
+  where the solution can be chosen by setting \(x_2 = 1\) giving the eigenvector associated with \(\lambda = 3\) of \(\mathbf{x} = \begin{pmatrix} -1/3 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x} = \lambda \mathbf{x}\)
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 3 & 0 \\ -3 & 2 \end{pmatrix} \begin{pmatrix} -1/3 \\ 1 \end{pmatrix} & = \begin{pmatrix} -1 \\ 3 \end{pmatrix}  = 3 \begin{pmatrix} -1/3 \\ 1 \end{pmatrix}
+  \end{aligned}
+  \]
+  Using \texttt{R}, this is
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{  }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{3}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]      [,2] [,3]
+## [1,]    1 0.3333333    0
+## [2,]    0 0.0000000    0
+\end{verbatim}
+
+Verifying that the eigenvalue \(\mathbf{x} = \begin{pmatrix} -1/3 \\ 1 \end{pmatrix}\) is an eigenvector is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x), lambda }\OperatorTok{*}\StringTok{ }\NormalTok{x) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Now, because we know that \(\lambda = 3\) is an eigenvalue of \(\mathbf{A}\) and the homogeneous system of equations \(\left(\mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\) has a unique solution, the vector \(\begin{pmatrix} -1/3 \\ 1 \end{pmatrix}\) forms a basis for the 3-eigenspace of \(\mathbf{A}\).
+\end{solution}
+
+\begin{example}
+Let \(\mathbf{A} = \begin{pmatrix} 17/5 & 8/5 & -6/5 \\ 0 & 3 & 0 \\ 4/5 & 16/5 & 3/5 \end{pmatrix}\). Find the eigenvectors associated with the eigenvalues (a) \(\lambda = 3\) and (b) \(\lambda = 1\). For each eigen value, also find the basis for the associated eigen-space.
 \end{example}
+
+\begin{solution}
+
+Given the matrix \(\mathbf{A} = \begin{pmatrix} 17/5 & 8/5 & -6/5 \\ 0 & 3 & 0 \\ 4/5 & 16/5 & 3/5 \end{pmatrix}\), we can find the eigenvectors associated with the given eigenvalues
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  The eigenvalues associated with the first eigenvector \(\lambda = 3\) by solving
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  17/5  - \lambda & 8/5 & -6/5 \\
+  0 & 3 - \lambda & 0 \\
+  4/5 & 16/5 & 3/5 - \lambda
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda\) using an augmented matrix form and row operations to reduce to reduced row echelon form.
+\end{enumerate}
+
+Letting \(\lambda = 3\), we have
+\[
+\begin{aligned}
+\begin{pmatrix} 
+17/5  - 3 & 8/5 & -6/5 \\
+0 & 3 - 3 & 0 \\
+4/5 & 16/5 & 3/5 - 3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+\]
+which results in the augmented matrix
+\[
+\begin{aligned}
+\begin{pmatrix} 2/5 & 8/5 & -6/5 & 0 \\ 0 & 0 & 0 & 0 \\ 4/5 & 16/5 & -12/5 & 0 \end{pmatrix}
+\end{aligned}
+\]
+Reducing the augmented matrix to reduced row echelon form gives
+\[
+\begin{aligned}
+\begin{pmatrix} 2/5 & 8/5 & -6/5 & 0 \\ 0 & 0 & 0 & 0 \\ 4/5 & 16/5 & -12/5 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 4 & -3 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{aligned}
+\]
+which has solution
+\[
+\begin{aligned}
+x_1 + 4 x_2 - x_33 & = 0 \\
+x_2 & = x_2 \\
+x_3 & = x_3
+\end{aligned}
+\]
+Where there are two free variables which suggests that the dimension of the solution space is 2 (the solution set defines a plane and will have 2 basis vectors. Fixing \(x_2 = 1\) and \(x_3 = 0\) gives the first eigenvector associated with \(\lambda = 3\) of \(\mathbf{x}_1 = \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x}_1 = \lambda \mathbf{x}_1\)
+\[
+\begin{aligned}
+\begin{pmatrix} 17/5 & 8/5 & -6/5 \\ 0 & 3 & 0 \\ 4/5 & 16/5 & 3/5 \end{pmatrix} \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix} & = \begin{pmatrix} -12 \\ 3 \\ 0 \end{pmatrix}  = 3 \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}
+\end{aligned}
+\]
+The second basis vector for the eigenspace associated with \(\lambda = 3\) can be found by fixing \(x_2 = 0\) and \(x_3 = 1\) to get the eigenvector \(\mathbf{x}_2 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector with matrix multiplication to show \(\mathbf{A} \mathbf{x}_2 = \lambda \mathbf{x}_2\)
+\[
+\begin{aligned}
+\begin{pmatrix} 17/5 & 8/5 & -6/5 \\ 0 & 3 & 0 \\ 4/5 & 16/5 & 3/5 \end{pmatrix} \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix} & = \begin{pmatrix} 9 \\ 0 \\ 3 \end{pmatrix}  = 3 \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+Thus, the basis for 3-eigenspace is \(\left\{ \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}\right\}\). Note that this is the same as finding a basis for the null space of \(\left(\mathbf{A} - \lambda \mathbf{I} \right)\).
+
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{17}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{8}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{16}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-6}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\OperatorTok{/}\DecValTok{5}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{3}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4   -3    0
+## [2,]    0    0    0    0
+## [3,]    0    0    0    0
+\end{verbatim}
+
+Verifying that the eigenvalue \(\mathbf{x}_1 = \begin{pmatrix} -4 \\ 1 \\ 0 \end{pmatrix}\) is an eigenvector and that \(\mathbf{x}_2 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}\) is an eigenvector
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_}\DecValTok{1}\NormalTok{), lambda }\OperatorTok{*}\StringTok{ }\NormalTok{x_}\DecValTok{1}\NormalTok{) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x_}\DecValTok{2}\NormalTok{), lambda }\OperatorTok{*}\StringTok{ }\NormalTok{x_}\DecValTok{2}\NormalTok{) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The eigenvalues associated with the second eigenvector \(\lambda = 1\) by solving
+  \[
+  \begin{aligned}
+  \left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+  \end{aligned}
+  \]
+  which can be written as
+  \[
+  \begin{aligned}
+  \begin{pmatrix} 
+  17/5  - \lambda & 8/5 & -6/5 \\
+  0 & 3 - \lambda & 0 \\
+  4/5 & 16/5 & 3/5 - \lambda
+  \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+  \end{aligned}
+  \]
+  and can be solved for \(\lambda\) using an augmented matrix form and row operations to reduce to reduced row echelon form.
+\end{enumerate}
+
+Letting \(\lambda = 1\), we have
+\[
+\begin{aligned}
+\begin{pmatrix} 
+17/5  - 1 & 8/5 & -6/5 \\
+0 & 3 - 1 & 0 \\
+4/5 & 16/5 & 3/5 - 1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+\]
+which results in the augmented matrix
+\[
+\begin{aligned}
+\begin{pmatrix} 12/5 & 8/5 & -6/5 & 0 \\ 0 & 2 & 0 & 0 \\ 4/5 & 16/5 & -2/5 & 0 \end{pmatrix}
+\end{aligned}
+\]
+Reducing the augmented matrix to reduced row echelon form gives
+\[
+\begin{aligned}
+\begin{pmatrix} 12/5 & 8/5 & -6/5 & 0 \\ 0 & 2 & 0 & 0 \\ 4/5 & 16/5 & -2/5 & 0 \end{pmatrix} & \stackrel{rref}{\huge \sim} \begin{pmatrix} 1 & 0 & -1/2 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{aligned}
+\]
+which has solution
+\[
+\begin{aligned}
+x_1 - \frac{1}{2} x_3 & = 0 \\
+x_2  & = 0 \\
+x_3 & = x_3
+\end{aligned}
+\]
+Fixing \(x_3 = 1\) gives the eigenvector associated with \(\lambda= 1\) of \(\mathbf{x} = \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}\). We can verify that this is an eigenvector associated with eigenvalue \(\lambda = 1\) with matrix multiplication to show \(\mathbf{A} \mathbf{x} = \lambda \mathbf{x}\)
+\[
+\begin{aligned}
+\begin{pmatrix} 17/5 & 8/5 & -6/5 \\ 0 & 3 & 0 \\ 4/5 & 16/5 & 3/5 \end{pmatrix} \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix} & = \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}  = NA \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+Therefore, a basis for the 1-eigenspace is \(\left\{ \begin{pmatrix} 1/2 \\ 0 \\ 1 \end{pmatrix} \right\}\)
+
+Using \texttt{R}, this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{17}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{8}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{16}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{-6}\OperatorTok{/}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\OperatorTok{/}\DecValTok{5}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{1}
+\KeywordTok{rref}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(A }\OperatorTok{-}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(A)), }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    0 -0.5    0
+## [2,]    0    1  0.0    0
+## [3,]    0    0  0.0    0
+\end{verbatim}
+
+Verifying that the eigenvalue \(\mathbf{x} = \begin{pmatrix} 1 \\ 1/2 \\ 1 \end{pmatrix}\) is an eigenvector associated with eigenvalue \(\lambda = 1\) is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{all.equal}\NormalTok{(}\KeywordTok{drop}\NormalTok{(A }\OperatorTok{%*%}\StringTok{ }\NormalTok{x), lambda }\OperatorTok{*}\StringTok{ }\NormalTok{x) }\CommentTok{# drop() makes a matrix with one column a vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\end{solution}
 
 \hypertarget{computing-eigenspaces}{%
 \subsection{Computing Eigenspaces}\label{computing-eigenspaces}}
@@ -8618,7 +9565,7 @@ Plotting this data shows the strong positive linear relationship
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-195-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-227-1.pdf}
 We can solve for the coefficients \texttt{beta} using the linear project theorem
 
 \begin{Shaded}
@@ -8647,7 +9594,7 @@ Plotting the projection \(\mathbf{y}_{\mathcal{W}}\) gives
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-198-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-230-1.pdf}
 The complement of the project (called the \textbf{residuals} in statistics) is given by \(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)
 
 \begin{Shaded}
@@ -8669,7 +9616,7 @@ and can be visualized as the orthogonal projection using segments
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-200-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-232-1.pdf}
 Recall that the orthogonal projection gives the ``closest'' vector \(\mathbf{y}_W\) to \(\mathbf{y}\) that is in the subspace \(\mathcal{W}\) that is the span of the column space of \(\mathbf{X}\). See \url{https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html} for an example.
 
 \hypertarget{graphs-and-limits}{%
@@ -8715,7 +9662,7 @@ f(x, y) = x^2 + y^2
 \end{aligned}
 \]
 which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-202-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-234-1.pdf}
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
 
 \begin{Shaded}
@@ -8729,7 +9676,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-203-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-235-1.pdf}
 where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
 
 \begin{Shaded}
@@ -8743,7 +9690,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-204-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-236-1.pdf}
 Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
 \end{example}
 
@@ -8757,7 +9704,7 @@ f(x, y) = x^2 - y^2
 \end{aligned}
 \]
 which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-205-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-237-1.pdf}
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
 
 \begin{Shaded}
@@ -8771,7 +9718,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-206-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-238-1.pdf}
 where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
 
 \begin{Shaded}
@@ -8785,7 +9732,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-207-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-239-1.pdf}
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
 \end{example}
 
@@ -8998,7 +9945,7 @@ For example, consider the function
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-210-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-242-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9376,7 +10323,7 @@ Compute the directional derivative of \(f(x, y) = 3x^2 + y^2\) in the direction 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-215-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-247-1.pdf}
 \end{example}
 
 \hypertarget{the-gradient}{%
@@ -9768,7 +10715,7 @@ find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-222-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-254-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
