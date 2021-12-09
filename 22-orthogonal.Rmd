@@ -132,8 +132,97 @@ $$
 \mathbf{u}' \mathbf{v} = \| \mathbf{u} \| \| \mathbf{v} \| cos(\theta)
 \end{aligned}
 $$
+Solving for the angle $\theta$ results in the equation
+$$
+\begin{aligned}
+\theta = arccos \left( \frac{\mathbf{u}' \mathbf{v}}{\| \mathbf{u} \| \| \mathbf{v} \|} \right)
+\end{aligned}
+$$
+where $arccos(\cdot)$ is inverse cosine function, which is `acos()` in `R`.
+
 
 **see example: `angles-as-n-gets-large.R`**
+
+:::{.example}
+```{r, echo = FALSE}
+u <- c(1, 4, 6)
+v <- c(-5, 2, 4)
+```
+
+Let $\mathbf{u} = `r array_to_latex(u)`$ and $\mathbf{v} = `r array_to_latex(v)`$. What is the angle between these two vectors?
+:::
+
+
+<div class="fold-solution">
+:::{.solution}
+The angle between the vectors $\mathbf{u}$ and $\mathbf{v}$ depends on the dot product between the two vectors and the norms (lengths) of the two vectors. The inner product of $\mathbf{u}$ and $\mathbf{v}$ is
+$$
+\begin{aligned}
+\mathbf{u}'\mathbf{v} = `r array_to_latex(t(u))` `r array_to_latex(v)` = `r u[1]`*`r v[1]` +`r u[2]`*`r v[2]` + `r u[3]`*`r v[3]` = `r sum(u*v)`
+\end{aligned}
+$$
+where the vector $\mathbf{u}$ has length
+$$
+\|\mathbf{u}\| = \sqrt{u_1^2 + u_2^2 + u_3^2} = \sqrt{`r u[1]`^2 + `r u[2]`^2 + `r u[3]`^2} = \sqrt{`r sum(u^2)`} = `r norm(u, type = '2')`
+$$
+and the vector $\mathbf{v}$ has length
+$$
+\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + v_3^2} = \sqrt{`r v[1]`^2 + `r v[2]`^2 + `r v[3]`^2} = \sqrt{`r sum(v^2)`} = `r norm(v, type = '2')`
+$$
+Plugging these into the equation for the angle $\theta$ gives
+$$
+\begin{aligned}
+\theta = arccos \left( \frac{\mathbf{u}' \mathbf{v}}{\| \mathbf{u} \| \| \mathbf{v} \|} \right) \\
+= arccos \left( \frac{`r sum(u*v)`}{ `r norm(u, type = '2')` * `r norm(v, type = '2')`} \right) \\
+= `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2')))`
+\end{aligned}
+$$
+which gives an angle of $\theta$ = `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2')))` radians between the vector $\mathbf{u}$ and $\mathbf{v}$. In degrees, this angle is $\theta$ = `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2')))` * $\frac{180}{\pi}$ = `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2'))) * 180 / pi` degrees.
+
+In `R`, this angle can be found by finding the dot product of $\mathbf{u}$ and $\mathbf{v}$
+```{r}
+u <- c(1, 4, 6)
+v <- c(-5, 2, 4)
+sum(u * v) # dot product of u and v
+```
+as well as the lengths of these two vectors
+```{r}
+sqrt(sum(u^2)) # length of u
+sqrt(sum(v^2)) # length of v
+```
+Combining these, the angle $\theta$ can be calculate in radians as
+```{r}
+theta <- acos(sum(u * v) / (sqrt(sum(u^2)) * sqrt(sum(v^2))))
+theta
+```
+and in degrees this is 
+```{r}
+theta * 180 / pi
+```
+
+<!-- # cosine angle -->
+<!-- u <- c(1, 1) -->
+<!-- v <- c(-1, 2) -->
+<!-- sum(u * v) -->
+<!-- # euclidean norm -->
+<!-- norm(u, type = '2')  -->
+<!-- sqrt(sum(u^2)) -->
+<!-- norm(v, type = '2')  -->
+<!-- sqrt(sum(v^2)) -->
+
+<!-- theta <- acos(sum(u * v) / (norm(u, "2") * norm(v, "2"))) -->
+<!-- theta -->
+<!-- theta / (pi / 2) -->
+<!-- ``` -->
+
+:::
+
+</div>
+
+
+
+
+
 
 ## Orthogonal sets 
 

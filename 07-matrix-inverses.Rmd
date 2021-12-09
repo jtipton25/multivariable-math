@@ -158,7 +158,7 @@ Here we prove the three statements from the theorem above. All three statements 
 
 
 
-* **Note:** A consequence of theorem \@ref(thm:invertible-matrix1) (2) is that the product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}$
+* **Note:** A consequence of theorem \@ref(thm:invertible-matrix) (2) is that the product of $k$ invertible $n \times n$ matrices $\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k$ has inverse $\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}$
 
 ## Elementary matrices
 

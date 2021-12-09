@@ -1,3 +1,4 @@
+library(tidyverse)
 vector_angles <- function(n, B = 5000, sample_type = "integer") {
     
     if (!(sample_type %in% c("integer", "gaussian"))) 
