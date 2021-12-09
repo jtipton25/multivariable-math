@@ -513,11 +513,11 @@ a \mathbf{x} + a \mathbf{y} &amp; = a (\mathbf{x} + \mathbf{y})
 <span id="cb108-8"><a href="vector-spaces.html#cb108-8"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb108-9"><a href="vector-spaces.html#cb108-9"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
 <span id="cb108-10"><a href="vector-spaces.html#cb108-10"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/geometric-interpretation-1.png" width="672" /></p>
 <p>A vector space is a generalization of this representation. In <span class="math inline">\(\mathcal{R}^2\)</span>, we say that the vector <span class="math inline">\(\mathbf{z} = c(2, 3)\)</span> is centered at the origin (0, 0) and has length 2 in the <span class="math inline">\(x\)</span>-axis and length 3 in the <span class="math inline">\(y\)</span>-axis. The plot below shows this vector</p>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-vector-1.png" width="672" /></p>
 <p>We can also decompose the vector <span class="math inline">\(\mathbf{z}\)</span> into its <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> components. The <span class="math inline">\(x\)</span> component of <span class="math inline">\(\mathbf{z}\)</span> is (2, 0) and the <span class="math inline">\(y\)</span> component of <span class="math inline">\(\mathbf{z}\)</span> is (0, 3). The following plot shows the <span class="math inline">\(x\)</span> component (2, 0) in blue and the <span class="math inline">\(y\)</span> component (0, 3) in red.</p>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-vector-components-1.png" width="672" /></p>
 <p>The below Shiny app allows you to plot the vector for any <span class="math inline">\((x, y)\)</span> pair of your choosing.</p>
 <p>The shiny app can be downloaded and run on your own computer using</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="vector-spaces.html#cb109-1"></a><span class="kw">library</span>(shiny)</span>
@@ -533,7 +533,7 @@ a \mathbf{x} + a \mathbf{y} &amp; = a (\mathbf{x} + \mathbf{y})
 <span id="cb110-4"><a href="vector-spaces.html#cb110-4"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb110-5"><a href="vector-spaces.html#cb110-5"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
 <span id="cb110-6"><a href="vector-spaces.html#cb110-6"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>))</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-add-vectors-1.png" width="672" /></p>
 <p>We can represent the sum using vectors by adding <span class="math inline">\(\mathbf{u}\)</span> first then adding <span class="math inline">\(\mathbf{v}\)</span> to <span class="math inline">\(\mathbf{u}\)</span> or by adding <span class="math inline">\(\mathbf{v}\)</span> first and then <span class="math inline">\(\mathbf{u}\)</span> to get</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="vector-spaces.html#cb111-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">-2</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span>
 <span id="cb111-2"><a href="vector-spaces.html#cb111-2"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
@@ -555,7 +555,7 @@ a \mathbf{x} + a \mathbf{y} &amp; = a (\mathbf{x} + \mathbf{y})
 <span id="cb111-18"><a href="vector-spaces.html#cb111-18"></a><span class="st">    </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
 <span id="cb111-19"><a href="vector-spaces.html#cb111-19"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;v + u&quot;</span>)</span>
 <span id="cb111-20"><a href="vector-spaces.html#cb111-20"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-add-vectors-parallelogram-1.png" width="672" /></p>
 <p>Notice that the sum of these vectors defines a parallelogram where the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is the diagonal of the shaded parallelogram. This geometric interpretation will serve as a basis for interpreting vector equations in higher dimensions where typical visualization methods fail.</p>
 </div>
 </div>
@@ -569,7 +569,7 @@ a \mathbf{x} + a \mathbf{y} &amp; = a (\mathbf{x} + \mathbf{y})
 <span id="cb112-5"><a href="vector-spaces.html#cb112-5"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb112-6"><a href="vector-spaces.html#cb112-6"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
 <span id="cb112-7"><a href="vector-spaces.html#cb112-7"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>))</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-scalar-multiplication-1.png" width="672" /></p>
 <p>In fact, if <span class="math inline">\(a\)</span> is allowed to take on any values, then the set of all possible values of <span class="math inline">\(a \mathbf{u}\)</span> for all values of <span class="math inline">\(a\)</span> defines an infinite line</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="vector-spaces.html#cb113-1"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
 <span id="cb113-2"><a href="vector-spaces.html#cb113-2"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">intercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st">  </span></span>
@@ -578,7 +578,7 @@ a \mathbf{x} + a \mathbf{y} &amp; = a (\mathbf{x} + \mathbf{y})
 <span id="cb113-5"><a href="vector-spaces.html#cb113-5"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb113-6"><a href="vector-spaces.html#cb113-6"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span></span>
 <span id="cb113-7"><a href="vector-spaces.html#cb113-7"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>)) </span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-line-1.png" width="672" /></p>
 </div>
 <div id="the-geometric-interpretation-of-vectors-in-mathcalr3" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></h3>
@@ -675,11 +675,11 @@ Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k
 <div id="the-geometric-interpretation-of-linear-combinations-of-vectors" class="section level3">
 <h3><span class="header-section-number">3.2.6</span> The geometric interpretation of linear combinations of vectors</h3>
 <p>Consider the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span> shown in the figure below on the left.</p>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-linear-combination-1.png" width="672" /></p>
 <ul>
 <li><strong>Exercise:</strong> Given <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>, estimate the linear combination of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> that gives the point <span class="math inline">\(\mathbf{w}\)</span> in the figure below.</li>
 </ul>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-transformation-1.png" width="672" /></p>
 </div>
 </div>
 <div id="span" class="section level2">
@@ -688,7 +688,7 @@ Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k
 <p><span id="def:span" class="definition"><strong>Definition 3.1  (Span) </strong></span>Let <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. We say the vector <span class="math inline">\(\mathbf{w}\)</span> is in the span of <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> (<span class="math inline">\(\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}\)</span>) if there exists coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> such that <span class="math inline">\(\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-110" class="example"><strong>Example 3.1  </strong></span>While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, <span class="math inline">\(x\)</span>, and <span class="math inline">\(x^2\)</span>. Then, the functions <span class="math inline">\(-4 + 3x^2\)</span> (<span class="math inline">\(a_1 = -4, a_2 = 0, a_3 = 3\)</span>) and <span class="math inline">\(-3 + 4x - 2x^2\)</span> (<span class="math inline">\(a_1 = -3, a_2 = 4, a_3 = -2\)</span>) are in the span of functions <span class="math inline">\(\{1, x, x^2\}\)</span>, but the functions <span class="math inline">\(x^3\)</span>, <span class="math inline">\(x^4 - 2x^2\)</span>, etc., are not in the span of <span class="math inline">\(\{1, x, x^2\}\)</span> because you cannot write these as a linear combination of <span class="math inline">\(a_1 1 + a_2 x + a_3 x^2\)</span>.</p>
+<p><span id="exm:unlabeled-div-111" class="example"><strong>Example 3.1  </strong></span>While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, <span class="math inline">\(x\)</span>, and <span class="math inline">\(x^2\)</span>. Then, the functions <span class="math inline">\(-4 + 3x^2\)</span> (<span class="math inline">\(a_1 = -4, a_2 = 0, a_3 = 3\)</span>) and <span class="math inline">\(-3 + 4x - 2x^2\)</span> (<span class="math inline">\(a_1 = -3, a_2 = 4, a_3 = -2\)</span>) are in the span of functions <span class="math inline">\(\{1, x, x^2\}\)</span>, but the functions <span class="math inline">\(x^3\)</span>, <span class="math inline">\(x^4 - 2x^2\)</span>, etc., are not in the span of <span class="math inline">\(\{1, x, x^2\}\)</span> because you cannot write these as a linear combination of <span class="math inline">\(a_1 1 + a_2 x + a_3 x^2\)</span>.</p>
 </div>
 <div id="geometric-example-of-the-span" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Geometric example of the span</h3>
@@ -707,7 +707,7 @@ Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k
 <span id="cb116-10"><a href="vector-spaces.html#cb116-10"></a>              <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">label =</span> text), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>,</span>
 <span id="cb116-11"><a href="vector-spaces.html#cb116-11"></a>              <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;orange&quot;</span>)) <span class="op">+</span></span>
 <span id="cb116-12"><a href="vector-spaces.html#cb116-12"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;span{u} is the blue line </span><span class="ch">\n</span><span class="st">w is in span{u}</span><span class="ch">\n</span><span class="st">v is not in span{u}&quot;</span>)</span></code></pre></div>
-<p><img src="multivariable-math_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><img src="multivariable-math_files/figure-html/plot-example-span-1.png" width="672" /></p>
 <p>From the example above, we can answer the question “Is the point (a, b) on the line defined by the vector <span class="math inline">\(\mathbf{u}\)</span>?” by asking whether the point (a, b) is in the <span class="math inline">\(span\{\mathbf{u}\}\)</span>. While this is trivial for such a simple problem, the use of the span will make things easier in higher dimensions.</p>
 <ul>
 <li><strong>Example: do in class</strong> 2 3-d vectors that are not scalar multiples of each other define a plane. Does a point lie within the plane? Use the span to answer this question.</li>

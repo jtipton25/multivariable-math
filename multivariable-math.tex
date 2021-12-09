@@ -170,7 +170,7 @@
 \title{Multivariable Mathematics for Data Science}
 \author{John Tipton}
 \date{Created 1 January 2020\\
-Last updated 15 November, 2021}
+Last updated 09 December, 2021}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1544,7 +1544,7 @@ In the plot below, the two planes (red and blue) are the geometric plots of the 
 ## Warning: Removed 2 row(s) containing missing values (geom_path).
 \end{verbatim}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-solution-1.pdf}
 
 \hypertarget{existence-and-uniqueness}{%
 \subsection{Existence and Uniqueness}\label{existence-and-uniqueness}}
@@ -2141,15 +2141,15 @@ Let \(\mathcal{R}^2\) be a real coordinate space of \(2\) dimensions. You are al
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/geometric-interpretation-1.pdf}
 
 A vector space is a generalization of this representation. In \(\mathcal{R}^2\), we say that the vector \(\mathbf{z} = c(2, 3)\) is centered at the origin (0, 0) and has length 2 in the \(x\)-axis and length 3 in the \(y\)-axis. The plot below shows this vector
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-vector-1.pdf}
 
 We can also decompose the vector \(\mathbf{z}\) into its \(x\) and \(y\) components. The \(x\) component of \(\mathbf{z}\) is (2, 0) and the \(y\) component of \(\mathbf{z}\) is (0, 3). The following plot shows the \(x\) component (2, 0) in blue and the \(y\) component (0, 3) in red.
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-vector-components-1.pdf}
 
 The below Shiny app allows you to plot the vector for any \((x, y)\) pair of your choosing.
 
@@ -2180,7 +2180,7 @@ We can represent the addition of vectors geometrically as well. Consider the two
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-add-vectors-1.pdf}
 
 We can represent the sum using vectors by adding \(\mathbf{u}\) first then adding \(\mathbf{v}\) to \(\mathbf{u}\) or by adding \(\mathbf{v}\) first and then \(\mathbf{u}\) to get
 
@@ -2209,7 +2209,7 @@ We can represent the sum using vectors by adding \(\mathbf{u}\) first then addin
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-63-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-add-vectors-parallelogram-1.pdf}
 
 Notice that the sum of these vectors defines a parallelogram where the sum \(\mathbf{u} + \mathbf{v}\) is the diagonal of the shaded parallelogram. This geometric interpretation will serve as a basis for interpreting vector equations in higher dimensions where typical visualization methods fail.
 
@@ -2230,7 +2230,7 @@ We can represent the multiplication of a vector by a scalar geometrically as wel
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-64-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-scalar-multiplication-1.pdf}
 
 In fact, if \(a\) is allowed to take on any values, then the set of all possible values of \(a \mathbf{u}\) for all values of \(a\) defines an infinite line
 
@@ -2246,7 +2246,7 @@ In fact, if \(a\) is allowed to take on any values, then the set of all possible
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-65-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-line-1.pdf}
 
 \hypertarget{the-geometric-interpretation-of-vectors-in-mathcalr3}{%
 \subsection{\texorpdfstring{The geometric interpretation of vectors in \(\mathcal{R}^3\)}{The geometric interpretation of vectors in \textbackslash mathcal\{R\}\^{}3}}\label{the-geometric-interpretation-of-vectors-in-mathcalr3}}
@@ -2369,7 +2369,7 @@ Equivalently, the set of vectors \(\{\mathbf{x}_k\}_{k=1}^K\) can only be combin
 
 Consider the vectors \(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\) shown in the figure below on the left.
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-linear-combination-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -2377,7 +2377,7 @@ Consider the vectors \(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{
   \textbf{Exercise:} Given \(\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\), estimate the linear combination of \(\mathbf{u}\) and \(\mathbf{v}\) that gives the point \(\mathbf{w}\) in the figure below.
 \end{itemize}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-69-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-transformation-1.pdf}
 
 \hypertarget{span}{%
 \section{Span}\label{span}}
@@ -2416,7 +2416,7 @@ While not a vector notation, you already understand the span from polynomial fun
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-70-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-example-span-1.pdf}
 
 From the example above, we can answer the question ``Is the point (a, b) on the line defined by the vector \(\mathbf{u}\)?'' by asking whether the point (a, b) is in the \(span\{\mathbf{u}\}\). While this is trivial for such a simple problem, the use of the span will make things easier in higher dimensions.
 
@@ -2699,7 +2699,7 @@ where \(m\) is the slope and \(b\) is the y-intercept. Setting \(b = 0\) gives a
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-inhomogeneous-1.pdf}
 
 This shift in location (but not in slope) is called a \textbf{translation}
 
@@ -2771,7 +2771,7 @@ For plotting, we will solve these equations for \(x_3\), letting \(x_1\) and \(x
 ## Warning: Removed 4 row(s) containing missing values (geom_path).
 \end{verbatim}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-parallel-planes-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -4207,7 +4207,7 @@ Here we prove the three statements from the theorem above. All three statements 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Note:} A consequence of theorem \ref{thm:invertible-matrix1} (2) is that the product of \(k\) invertible \(n \times n\) matrices \(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k\) has inverse \(\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}\)
+  \textbf{Note:} A consequence of theorem \ref{thm:invertible-matrix} (2) is that the product of \(k\) invertible \(n \times n\) matrices \(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k\) has inverse \(\mathbf{A}_k^{-1} \mathbf{A}_{k-1}^{-1} \cdots \mathbf{A}_1^{-1}\)
 \end{itemize}
 
 \hypertarget{elementary-matrices}{%
@@ -5070,7 +5070,7 @@ Let \(\mathbf{y} \sim \operatorname{N}(\mathbf{0}, \boldsymbol{\Sigma})\), and \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-111-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-cholesky-1.pdf}
 
 \hypertarget{subspaces-Rn}{%
 \chapter{\texorpdfstring{Subspaces of \(\mathcal{R}^n\)}{Subspaces of \textbackslash mathcal\{R\}\^{}n}}\label{subspaces-Rn}}
@@ -6475,7 +6475,7 @@ parallelograms in \(\mathcal{R}^2\): the unit square
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-156-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-parallelpiped-1-1.pdf}
 
 Which implies that if \(\mathbf{A} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\) has \(\det(\mathbf{A}) = 1\) because \(\mathbf{A} = \mathbf{I}\) the identity matrix.
 
@@ -6512,7 +6512,7 @@ parallelograms in \(\mathcal{R}^2\): A larger square
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-158-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-parallelpiped-3-1.pdf}
 
 Which implies that if \(\mathbf{A} = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}\) has \(\det(\mathbf{A}) = 4\) because \(\mathbf{A} = 2 \mathbf{I}\) and the rule is for a constant \(c, \det(c\mathbf{A}) = c^n \det(\mathbf{A})\)
 
@@ -7183,7 +7183,7 @@ In class using basis in 2-dimensions \(b_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-170-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/plot-transformation-basis-1-1.pdf}
 
 \hypertarget{coordinates-in-mathcalrn}{%
 \section{\texorpdfstring{Coordinates in \(\mathcal{R}^n\)}{Coordinates in \textbackslash mathcal\{R\}\^{}n}}\label{coordinates-in-mathcalrn}}
@@ -7846,7 +7846,7 @@ Now, we will plot the vectors \(\mathbf{u}\) and \(\mathbf{v}\) as well as the v
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-184-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-eigenvalue-5-1.pdf}
 Notice that the multiplication of \(\mathbf{u}\) by \(\mathbf{A}\) gives a vector \(\mathbf{A} \mathbf{u}\) that points along the same line as \(\mathbf{u}\) because \(\mathbf{u}\) is an eigenvector of \(\mathbf{A}\). In comparison, the vector \(\mathbf{v}\) is not an eigenvector of \(\mathbf{A}\) and multiplication of \(\mathbf{v}\) by \(\mathbf{A}\) gives a vector \(\mathbf{A} \mathbf{v}\) that \emph{does not} point along the same line as the vector \(\mathbf{u}\).
 \end{solution}
 
@@ -9421,8 +9421,108 @@ Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors \(\mathcal{R}^n\). Then, the an
 \mathbf{u}' \mathbf{v} = \| \mathbf{u} \| \| \mathbf{v} \| cos(\theta)
 \end{aligned}
 \]
+Solving for the angle \(\theta\) results in the equation
+\[
+\begin{aligned}
+\theta = arccos \left( \frac{\mathbf{u}' \mathbf{v}}{\| \mathbf{u} \| \| \mathbf{v} \|} \right)
+\end{aligned}
+\]
+where \(arccos(\cdot)\) is inverse cosine function, which is \texttt{acos()} in \texttt{R}.
 
 \textbf{see example: \texttt{angles-as-n-gets-large.R}}
+
+\begin{example}
+Let \(\mathbf{u} = \begin{pmatrix} 1 \\ 4 \\ 6 \end{pmatrix}\) and \(\mathbf{v} = \begin{pmatrix} -5 \\ 2 \\ 4 \end{pmatrix}\). What is the angle between these two vectors?
+\end{example}
+
+\begin{solution}
+
+The angle between the vectors \(\mathbf{u}\) and \(\mathbf{v}\) depends on the dot product between the two vectors and the norms (lengths) of the two vectors. The inner product of \(\mathbf{u}\) and \(\mathbf{v}\) is
+\[
+\begin{aligned}
+\mathbf{u}'\mathbf{v} = \begin{pmatrix} 1 & 4 & 6 \end{pmatrix} \begin{pmatrix} -5 \\ 2 \\ 4 \end{pmatrix} = 1*-5 +4*2 + 6*4 = 27
+\end{aligned}
+\]
+where the vector \(\mathbf{u}\) has length
+\[
+\|\mathbf{u}\| = \sqrt{u_1^2 + u_2^2 + u_3^2} = \sqrt{1^2 + 4^2 + 6^2} = \sqrt{53} = 7.2801099
+\]
+and the vector \(\mathbf{v}\) has length
+\[
+\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + v_3^2} = \sqrt{-5^2 + 2^2 + 4^2} = \sqrt{45} = 6.7082039
+\]
+Plugging these into the equation for the angle \(\theta\) gives
+\[
+\begin{aligned}
+\theta = arccos \left( \frac{\mathbf{u}' \mathbf{v}}{\| \mathbf{u} \| \| \mathbf{v} \|} \right) \\
+= arccos \left( \frac{27}{ 7.2801099 * 6.7082039} \right) \\
+= 0.984997
+\end{aligned}
+\]
+which gives an angle of \(\theta\) = 0.984997 radians between the vector \(\mathbf{u}\) and \(\mathbf{v}\). In degrees, this angle is \(\theta\) = 0.984997 * \(\frac{180}{\pi}\) = 56.4361716 degrees.
+
+In \texttt{R}, this angle can be found by finding the dot product of \(\mathbf{u}\) and \(\mathbf{v}\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{v <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\KeywordTok{sum}\NormalTok{(u }\OperatorTok{*}\StringTok{ }\NormalTok{v) }\CommentTok{# dot product of u and v}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 27
+\end{verbatim}
+
+as well as the lengths of these two vectors
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{sum}\NormalTok{(u}\OperatorTok{^}\DecValTok{2}\NormalTok{)) }\CommentTok{# length of u}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.28011
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{sum}\NormalTok{(v}\OperatorTok{^}\DecValTok{2}\NormalTok{)) }\CommentTok{# length of v}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6.708204
+\end{verbatim}
+
+Combining these, the angle \(\theta\) can be calculate in radians as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta <-}\StringTok{ }\KeywordTok{acos}\NormalTok{(}\KeywordTok{sum}\NormalTok{(u }\OperatorTok{*}\StringTok{ }\NormalTok{v) }\OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{sum}\NormalTok{(u}\OperatorTok{^}\DecValTok{2}\NormalTok{)) }\OperatorTok{*}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{sum}\NormalTok{(v}\OperatorTok{^}\DecValTok{2}\NormalTok{))))}
+\NormalTok{theta}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.984997
+\end{verbatim}
+
+and in degrees this is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta }\OperatorTok{*}\StringTok{ }\DecValTok{180} \OperatorTok{/}\StringTok{ }\NormalTok{pi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 56.43617
+\end{verbatim}
+
+\end{solution}
 
 \hypertarget{orthogonal-sets}{%
 \section{Orthogonal sets}\label{orthogonal-sets}}
@@ -9565,7 +9665,7 @@ Plotting this data shows the strong positive linear relationship
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-227-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-least-squares-2-1.pdf}
 We can solve for the coefficients \texttt{beta} using the linear project theorem
 
 \begin{Shaded}
@@ -9594,7 +9694,7 @@ Plotting the projection \(\mathbf{y}_{\mathcal{W}}\) gives
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-230-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-least-squares-5-1.pdf}
 The complement of the project (called the \textbf{residuals} in statistics) is given by \(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)
 
 \begin{Shaded}
@@ -9616,7 +9716,7 @@ and can be visualized as the orthogonal projection using segments
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-232-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-least-squares-7-1.pdf}
 Recall that the orthogonal projection gives the ``closest'' vector \(\mathbf{y}_W\) to \(\mathbf{y}\) that is in the subspace \(\mathcal{W}\) that is the span of the column space of \(\mathbf{X}\). See \url{https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html} for an example.
 
 \hypertarget{graphs-and-limits}{%
@@ -9662,7 +9762,7 @@ f(x, y) = x^2 + y^2
 \end{aligned}
 \]
 which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-234-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-parabola-1-1.pdf}
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
 
 \begin{Shaded}
@@ -9676,7 +9776,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-235-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-4-1.pdf}
 where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
 
 \begin{Shaded}
@@ -9690,7 +9790,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-236-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-parabola-2-1.pdf}
 Notice that although the original parabola was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
 \end{example}
 
@@ -9704,7 +9804,7 @@ f(x, y) = x^2 - y^2
 \end{aligned}
 \]
 which defines the surface
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-237-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-saddle-1-1.pdf}
 The 3-dimensional surface can be represented in 2-dimensions using level curves (think of a topographic map)
 
 \begin{Shaded}
@@ -9718,7 +9818,7 @@ The 3-dimensional surface can be represented in 2-dimensions using level curves 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-238-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-5-1.pdf}
 where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). Alternatively, this can be represented using filled level curves
 
 \begin{Shaded}
@@ -9732,7 +9832,7 @@ where each curve in the (x, y) plane has exactly the same value of \(f(x, y)\). 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-239-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-saddle-2-1.pdf}
 Notice that although the original saddle was continuous, these 2-d representations simplify the diagram by representing the contours as discrete values.
 \end{example}
 
@@ -9945,7 +10045,7 @@ For example, consider the function
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-242-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-mountain-1-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10323,7 +10423,7 @@ Compute the directional derivative of \(f(x, y) = 3x^2 + y^2\) in the direction 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-247-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-directional-derivative-1-1.pdf}
 \end{example}
 
 \hypertarget{the-gradient}{%
@@ -10559,7 +10659,7 @@ L(x, y, z) & = f(a, b, c) + \nabla f(a, b, c) \cdot \begin{pmatrix} x - 1 \\ y -
 The linear approximation evaluated at the point \((0.95, -2.05, -1.05)\) is
 \[
 \begin{aligned}
-L(0.95, -2.05, -1.05) & = -15 - 10(0.95 - 1) + 12 (-2.05 + 2) + 32 (-1.05 + 1) = -16.7.
+L(0.95, -2.05, -1.05) & = -15 + 10(0.95 - 1) - 12 (-2.05 + 2) - 32 (-1.05 + 1) = -16.7.
 \end{aligned}
 \]
 
@@ -10715,7 +10815,7 @@ find the critical points of \(f(x, y) = xy(x - 3)(y - 4)\).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{multivariable-math_files/figure-latex/unnamed-chunk-254-1.pdf}
+\includegraphics{multivariable-math_files/figure-latex/example-critical-1-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
