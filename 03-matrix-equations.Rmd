@@ -1,6 +1,6 @@
 # Matrix equations {#matrix-equation}
 
-```{r}
+```{r setup-03}
 library(tidyverse)
 library(dasc2594)
 library(gg3D)
@@ -198,7 +198,7 @@ y = mx + b
 $$
 where $m$ is the slope and $b$ is the y-intercept. Setting $b = 0$ gives a simple homogenous linear equation where the y-intercept goes through the origin (0, 0). When $b$ is nonzero, the line keeps the same slope but is shifted upward/downward by $b$. 
 
-```{r}
+```{r plot-inhomogeneous}
 ggplot(data = data.frame(x = 0, y = 0), aes(x, y)) +
     geom_vline(xintercept = 0) +
     geom_hline(yintercept = 0) +
@@ -254,7 +254,7 @@ $$
 For plotting, we will solve these equations for $x_3$, letting $x_1$ and $x_2$ be free variables (this is just for the requirements of the plotting function). Thus, the homogeneous equation has the solution $x_3 = 2x_1 + 4x_2$ and the inhomogenous equation has the solution $x_3 = 2x_1 + 4x_2 - 20$.
 
 
-```{r}
+```{r plot-parallel-planes}
 # uses gg3D library
 n <- 60
 x1 <- x2 <- seq(-10, 10, length = n)
@@ -297,7 +297,7 @@ but change this so that $\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}
 * **Write this as a parametric solution with a mean shift**
 
 
-```{r}
+```{r define-matrix-03}
 A <- matrix(c(3, -2, 5, -2, 4, -6, 4, -2, 6, 2, -6, 8), 3, 4)
 rref(A)
 ```

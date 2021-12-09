@@ -2,7 +2,7 @@
 
 - [3 Blue 1 Brown -- Change of basis](https://www.3blue1brown.com/lessons/change-of-basis)
 
-```{r}
+```{r setup-18}
 library(tidyverse)
 library(dasc2594)
 ```
@@ -82,7 +82,7 @@ $$
 
 :::{.example}
 
-```{r, echo = FALSE}
+```{r example-change-basis-1, echo = FALSE}
 B <- matrix(c(1/2, 1, -1, 0), 2, 2)
 C <- matrix(c(0, 1/2, 1, -1/2), 2, 2)
 C_inv <- solve(C)
@@ -159,7 +159,7 @@ so that one can change coordinates from the basis $\mathcal{B}$ to the basis $\m
 
 In `R`, first define the basis matrices `B` and `C` and the coordinates `x_b` of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}$.
 
-```{r}
+```{r example-change-basis-2}
 B <- matrix(c(1/2, 1, -1, 0), 2, 2)
 C <- matrix(c(0, 1/2, 1, -1/2), 2, 2)
 x_b <- c(-3/2, 1/2)
@@ -167,13 +167,13 @@ x_b <- c(-3/2, 1/2)
 
 1\) The coordinates `x` with respect to the standard basis is
 
-```{r}
+```{r example-change-basis-3}
 x <- B %*% x_b
 x
 ```
 
 2\) The coordinates `x_c` with respect to the basis $\mathcal{C}$ can be found by calculating the matrix inverse `C_inv` and then using the matrix inverse to calculate the coordinates with respect to the basis $\mathcal{C}$ as
-```{r}
+```{r example-change-basis-4}
 C_inv <- solve(C)
 x_c <- C_inv %*% x
 x_c
@@ -181,11 +181,11 @@ x_c
 
 Done as a single transformation, the linear transformation is defined as
 
-```{r}
+```{r example-change-basis-5}
 B %*% C_inv
 ```
 which gives the coordinates
-```{r}
+```{r example-change-basis-6}
 B %*% C_inv %*% x_b
 ```
 

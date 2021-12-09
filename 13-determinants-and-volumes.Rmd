@@ -1,6 +1,6 @@
 # Determinants and volumes
 
-```{r, message = FALSE}
+```{r setup-13, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 ```
@@ -27,7 +27,7 @@ The unit cube: in class--use standard vectors $\mathbf{e}_1, \mathbf{e}_2$, and 
 :::{.example}
 parallelograms in $\mathcal{R}^2$: the unit square
 
-```{r}
+```{r example-parallelpiped-1}
 df_vector <- data.frame(x = c(1, 0), y = c(0, 1))
 df_polygon <- data.frame(x = c(0, 1, 1, 0), y = c(0, 0, 1, 1))
 p1 <- ggplot() +
@@ -44,7 +44,7 @@ p1
 
 Which implies that if $\mathbf{A} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ has $\det(\mathbf{A}) = 1$ because $\mathbf{A} = \mathbf{I}$ the identity matrix. 
 
-```{r}
+```{r example-parallelpiped-2}
 det(matrix(c(1, 0, 0, 1), 2, 2))
 ```
 :::
@@ -53,7 +53,7 @@ det(matrix(c(1, 0, 0, 1), 2, 2))
 ::: {.example}
 parallelograms in $\mathcal{R}^2$: A larger square
 
-```{r}
+```{r example-parallelpiped-3}
 df_vector <- data.frame(x = c(2, 0), y = c(0, 2))
 df_polygon <- data.frame(x = c(0, 2, 2, 0), y = c(0, 0, 2, 2))
 p1 <- ggplot() +
@@ -72,7 +72,7 @@ p1
 Which implies that if $\mathbf{A} = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$ has $\det(\mathbf{A}) = 4$ because $\mathbf{A} = 2 \mathbf{I}$ and the rule is for a constant $c, \det(c\mathbf{A}) = c^n \det(\mathbf{A})$
 
 
-```{r}
+```{r example-parallelpiped-4}
 det(matrix(c(2, 0, 0, 2), 2, 2))
 ```
 :::
@@ -80,7 +80,7 @@ det(matrix(c(2, 0, 0, 2), 2, 2))
 
 The Shiny app below allows you to plot the vector for any $(x, y)$ pair of your choosing.
 
-```{r, echo = TRUE, eval = FALSE}
+```{r shiny-app-determinants, echo = TRUE, eval = FALSE}
 library(shiny)
 runGitHub(rep = "multivariable-math",
           username = "jtipton25",

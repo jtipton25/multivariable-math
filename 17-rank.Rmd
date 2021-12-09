@@ -1,6 +1,6 @@
 # Rank
 
-```{r, message = FALSE}
+```{r setup-17, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 ```

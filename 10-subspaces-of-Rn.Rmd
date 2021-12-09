@@ -5,7 +5,7 @@
 - [3 Blue 1 Brown -- Inverse Matrices, column space, and null space](https://www.3blue1brown.com/lessons/inverse-matrices)
 
 
-```{r, message = FALSE}
+```{r setup-10, message = FALSE}
 library(dasc2594)
 ```
 
@@ -109,7 +109,7 @@ The **column space**, denoted $\operatorname{col}(\mathbf{A})$, of a $m \times n
 :::
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-column-space, echo = FALSE}
 set.seed(404)
 A <- matrix(sample(-9:9, 12, TRUE), 4, 3)
 ```
@@ -137,7 +137,7 @@ The **null space**, denoted $\operatorname{null}(\mathbf{A})$, of a matrix $\mat
 While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by $\mathbf{A}$ maps to $\mathbf{0}$. In other words, the null space of $\mathbf{A}$ is the set of vectors $\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}$.
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-null-space, echo = FALSE}
 set.seed(2021)
 A <- matrix(c(-3L, -4L, 4L, -3L, 2L, -4L, -4L, -4L, 4L, -5L, 5L, -3L, -2L, 3L, 5L), 3, 5)
 ```
@@ -169,24 +169,24 @@ Writing this solution as a vector times $x_4$ and a vector times $x_5$ gives the
 
 
 In `R`, this is shown by starting with the matrix `A`
-```{r}
+```{r example-null-space-2}
 A <- matrix(c(-3, -4, 4, -3, 2, -4, -4, -4, 4, -5, 5, -3, -2, 3, 5), 3, 5)
 A
 ```
 Looking at the reduced row echelon form of $\mathbf{A}$ gives
-```{r}
+```{r example-null-space-3}
 rref(A)
 ```
 where the columns of interest are the non-pivot columns. For this matrix $\mathbf{A}$, the fourth and fifth columns of $\mathbf{A}$ are the non-pivot columns. The fourth column or the RREF form corresponds to the variable $x_4$ and the fifth column corresponds to the variable $x_5$. Thus, you can extract the vectors that form the null space from these fourth and fifth columns of the RREF form of $\mathbf{A}$ like so
 
-```{r}
+```{r example-null-space-4}
 # the nullspace vector corresponding to x4 = 1 and x5 = 0
 c(-rref(A)[, 4], 1, 0)
 # the nullspace vector corresponding to x4 = 0 and x5 = 1
 c(-rref(A)[, 5], 0, 1)
 ```
 We check that these vectors are in null($\mathbf{A}$) by using matrix multiplication and verifying that these are zero (at least up to numeric overflow/underflow)
-```{r}
+```{r example-null-space-5}
 A %*% c(-rref(A)[, 4], 1, 0)
 A %*% c(-rref(A)[, 5], 0, 1)
 
@@ -262,7 +262,7 @@ The standard basis for $\mathcal{R}^3$ are the x-, y-, and z-axes. These are wri
 
 :::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
-```{r, echo = FALSE}
+```{r example-basis, echo = FALSE}
 set.seed(2021)
 x <- c(2, 1, 2)
 y <- c(-1, 1, 1)
@@ -287,7 +287,7 @@ Because the reduced row echelon form of the matrix has 3 pivot columns, the  spa
 
 Using `R`, we can show this result first by creating the vectors `x`, `y`, and `z` and then joining these into a matrix `A` using `cbind()`
 
-```{r}
+```{r example basis-2}
 x <- c(2, 1, 2)
 y <- c(-1, 1, 1)
 z <- c(1, 0, 2)
@@ -296,7 +296,7 @@ A <- cbind(x, y, z)
 ```
 Next, we convert `A` to reduced row echelon form to get the row equivalent matrix 
 
-```{r}
+```{r  example basis-3}
 rref(A)
 ```
 Because this reduced row echelon form has a pivot in each column we know the columns of the matrix `A` are linearly independent. Because there are 3 pivot columns in total, we know the span of the columns of `A` is $\mathcal{R}^3$. Therefore, the vectors $\mathbf{x}, \mathbf{y}, \mathbf{z}$ forms a basis for $\mathcal{R}^3$.
@@ -308,7 +308,7 @@ Because this reduced row echelon form has a pivot in each column we know the col
 
 :::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
-```{r, echo = FALSE}
+```{r  example basis-4, echo = FALSE}
 set.seed(2021)
 w <- c(2, 1, 2)
 x <- c(-1, 1, 1)
@@ -335,7 +335,7 @@ Because the reduced row echelon form of the matrix has 3 pivot columns, the  spa
 
 Using `R`, we can show this result first by creating the vectors `w`, x`, `y`, and `z` and then joining these into a matrix `A` using `cbind()`
 
-```{r}
+```{r example basis-5}
 w <- c(2, 1, 2)
 x <- c(-1, 1, 1)
 y <- c(1, 0, 2)
@@ -345,7 +345,7 @@ A <- cbind(w, x, y, z)
 ```
 Next, we convert `A` to reduced row echelon form to get the row equivalent matrix 
 
-```{r}
+```{r example basis-6}
 rref(A)
 ```
 Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix `A` are linearly dependent. Because there are 3 pivot columns in total, we know the span of the columns of `A` is $\mathcal{R}^3$. Because the set of vectors $\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ are linearly dependent, they do not form a basis for $\mathcal{R}^3$.
@@ -359,7 +359,7 @@ Because this reduced row echelon form does not have a pivot in each column, we k
 
 :::{.example}
 Do the following set of vectors form a basis for $\mathcal{R}^3$?
-```{r, echo = FALSE}
+```{r  example basis-7, echo = FALSE}
 set.seed(404)
 x <- c(4, 3, 2)
 y <- c(3, -3, 4)
@@ -385,7 +385,7 @@ Because the reduced row echelon form of the matrix has 2 pivot columns, the span
 
 Using `R`, we can show this result first by creating the vectors x`, `y`, and `z` and then joining these into a matrix `A` using `cbind()`
 
-```{r}
+```{r  example basis-8}
 x <- c(4, 3, 2)
 y <- c(3, -3, 4)
 z <- c(5, 9, 0)
@@ -394,7 +394,7 @@ A <- cbind(x, y, z)
 ```
 Next, we convert `A` to reduced row echelon form to get the row equivalent matrix 
 
-```{r}
+```{r example basis-9}
 rref(A)
 ```
 Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix `A` are linearly dependent. Because there are 2 pivot columns in total, we know the span of the columns of `A` is $\mathcal{R}^2$ which is not $\mathcal{R}^3$. Because the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ are linearly dependent and do not span $\mathcal{R}^3$, they do not form a basis for $\mathcal{R}^3$.
@@ -419,7 +419,7 @@ $$
 
 Given the matrix $\mathbf{A}$, we look for non-trivial solutions to $\mathbf{A} \mathbf{x} = \mathbf{0}$
 
-```{r}
+```{r example basis-null-1}
 A <- matrix(c(2, -1, 1, 4, -2, 2, 1, 6, -3, 3, 5, 2), 3, 4)
 rref(cbind(A, 0))
 ```
@@ -429,14 +429,14 @@ which has solution $x_1 = -2 x_2$, $x_2 = \mbox{free}$, $x_3 = 0$ and $x_4 = 0$.
 
 We can check this by showing that $\mathbf{A} \mathbf{v} = \mathbf{0}$
 
-```{r}
+```{r example basis-null-2}
 v <- c(-2, 1, 0, 0)
 A %*% v
 ```
 
 In addition, any linear combination of the basis is also in the null space
 
-```{r}
+```{r example basis-null-3}
 A %*% (5*v)
 ```
 
@@ -459,10 +459,8 @@ Now, choose the subset of columns of $\mathbf{A}$ that correspond to the pivot c
 :::
 
 </div>
-<!-- corollary -->
 
-<!-- ```{corollary} -->
-<!-- ``` -->
+
 
 :::{.example}
 Find a basis for the column space of the matrix
@@ -476,7 +474,7 @@ $$
 :::{.solution}
 
 
-```{r, echo = FALSE}
+```{r example basis-col-1, echo = FALSE}
 A <- matrix(c(3, 4, 4, 1, 1, -1, 2, -3, -3, -3, -2, 1), 3, 4)
 ```
 Given the matrix $\mathbf{A}$, we first find its reduced row echelon form
@@ -491,7 +489,7 @@ Thus, any vector in the columns space of $\mathbf{A}$ (for example, the fourth c
 </div>
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example basis-col-2, echo = FALSE}
 A <- matrix(c(-4, 8, 6, 9, 1, -2, 3, 7), 4, 2)
 ```
 
@@ -506,7 +504,7 @@ $$
 :::{.solution}
 
 
-```{r, echo = FALSE}
+```{r example basis-col-3, echo = FALSE}
 A <- matrix(c(-4, 8, 6, 9, 1, -2, 3, 7), 4, 2)
 ```
 Given the matrix $\mathbf{A}$, we first find its reduced row echelon form

@@ -78,7 +78,7 @@ $$
 where $\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}$ is a $2 \times 2$ matrix,  $\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ is a $2 \times 1$ matrix, etc.
 
 
-```{r}
+```{r example-block-matri}
 A_11 <- matrix(c(5, 5, 7, -22), 2, 2)
 A_12 <- c(1, 2)
 A_21 <- matrix(c(-14, 42, 5, -3), 2, 2)

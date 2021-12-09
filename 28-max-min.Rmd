@@ -1,6 +1,6 @@
 # Minimums and Maximums
 
-```{r, message = FALSE}
+```{r setup-28, message = FALSE}
 library(tidyverse)
 library(plotly)
 library(dasc2594)
@@ -44,7 +44,7 @@ b) at least one partial derivative does not exist at $(a, b)$.
 find the critical points of $f(x, y) = xy(x - 3)(y - 4)$.
 * plot the critical points using `plotly()`
 
-```{r}
+```{r example-critical-1}
 f <- function(x, y) {
     x * y * (x - 3) * (y - 4)
 }
@@ -65,7 +65,7 @@ dat %>%
 ```
 
 
-```{r, eval = FALSE}
+```{r example-critical-2, eval = FALSE}
 plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
     add_surface(
         contours = list(
@@ -84,7 +84,7 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
 ```
 
 
-```{r, echo = FALSE, out.width="100%"}
+```{r example-critical-3, echo = FALSE, out.width="100%"}
 if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
     htmlwidgets::saveWidget(
         plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
@@ -131,7 +131,7 @@ if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("latex", "docx")) {
 
 If a critical point isn't a local minimum/maximum, what else could this point be? One possible shape is what is called a saddle point. A saddle point is one in which the function $f(x, y)$ is increasing in one direction (say, along the x-axis) and decreasing along another direction (say, the y-axis). The surface is often said to resemble the shape of a saddle (or a Pringles chip). An example saddle point is shown in the plot below.
 
-```{r, eval = FALSE}
+```{r example-critical-4, eval = FALSE}
 f <- function(x, y) {
     x^2 - y^2
 }
@@ -159,7 +159,7 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
               name = "saddle point")
 ```
 
-```{r, echo = FALSE, out.width="100%"}
+```{r example-critical-5, echo = FALSE, out.width="100%"}
 f <- function(x, y) {
     x^2 - y^2
 }
@@ -250,7 +250,7 @@ find the critical points of $f(x, y) = xy(x - 3)(y - 4)$ and determine if they a
 find the critical points of $f(x, y)  = x^4 + y^4$ and determine if they are local maxima, minima, saddle points, or undetermined.
 :::
 
-```{r, eval = FALSE}
+```{r example-critical-6, eval = FALSE}
 f <- function(x, y) {
     x^4 + y^4
 }
@@ -278,7 +278,7 @@ plot_ly(x = x, y = y, z = matrix(dat$z, 40, 40)) %>%
               name = "saddle point")
 ```
 
-```{r, echo = FALSE, out.width="100%"}
+```{r example-critical-7, echo = FALSE, out.width="100%"}
 f <- function(x, y) {
     x^4 + y^4
 }
@@ -374,7 +374,7 @@ If the number of input variables in the function is small, one can find global m
 :::{.example}
 Let $f(x, y) = x^2 - 2xy + y^2$ over the region $[-2,2]\times[-2, 2]$
 
-```{r}
+```{r example-critical-8}
 target_fun <- function(x, y) {
     x^2 - 4 * x * y + y^2
 }

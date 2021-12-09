@@ -1,6 +1,6 @@
 # Matrix Factorizations {#matrix-factorizations}
 
-```{r, message = FALSE}
+```{r setup-09, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 library(mvnfast)
@@ -57,7 +57,7 @@ $$
 
 At first glance, this seems like we are trading the challenge of solving one system of equations $\mathbf{A}\mathbf{x}$ \@ref(eq:matrix-equation) for the two equations in \@ref(eq:LU). However, the computational benefits arise due to the fact that $\mathbf{L}$ and $\mathbf{U}$ are triangular matrices and solving matrix equations with triangular matrices is much faster. 
 
-```{r, echo = FALSE, include = FALSE}
+```{r example-LU, echo = FALSE, include = FALSE}
 # create a LU matrix
 set.seed(11)
 L <- matrix(sample(-3:3, 16, replace = TRUE), 4, 4)
@@ -99,7 +99,7 @@ and consider the system of equations defined by the matrix equation $\mathbf{A} 
 <div class="fold-solution">
 
 :::{.solution}
-```{r, echo = FALSE}
+```{r exampleLU-solution, echo = FALSE}
 L1 <- cbind(L, b)
 L2 <- L1
 L2[2, ] <- -1/2 * L2[2, ] - L2[1, ]
@@ -132,7 +132,7 @@ $$
 \end{aligned}
 $$
 
-```{r, echo = FALSE}
+```{r example-LU-solution2, echo = FALSE}
 U1 <- cbind(U, y)
 U2 <- U1
 U2[2, ] <- 1/2 * U2[2, ]
@@ -167,7 +167,7 @@ $$
 3) compare to the solution $\mathbf{A}\mathbf{x} = \mathbf{b}$ using an augmented matrix and RREF.
 
 
-```{r, echo = FALSE}
+```{r example-LU-solution-3, echo = FALSE}
 A1 <- cbind(A, b)
 A2 <- A1
 A2[2, ] <- A2[2, ] + 2 * A2[1, ]
@@ -301,7 +301,7 @@ What makes the Cholesky factor special?
 
 Let $\mathbf{y} \sim \operatorname{N}(\mathbf{0}, \boldsymbol{\Sigma})$, and $\boldsymbol{\Sigma} = \mathbf{L} \mathbf{L}'$. Then, if $\mathbf{z} \sim \operatorname{N}(\mathbf{0}, \mathbf{I})$, then $\mathbf{L} \mathbf{z} \sim \operatorname{N}(\mathbf{0}, \boldsymbol{\Sigma})$. We say the $\mathbf{y}$ and $\mathbf{L}\mathbf{z}$ are equal in distribution.
 
-```{r, message = FALSE}
+```{r example-cholesky, message = FALSE}
 # simulate N 2-dimensional random normal vectors 
 N <- 5000
 mu    <- rep(0, 2)

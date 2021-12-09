@@ -44,7 +44,7 @@ $$
 
 If $\mathbf{A}$ and $\mathbf{B}$ are of the same dimension (same number of rows and columns) you can add the matrices together
 
-```{r}
+```{r define-matrix-addition}
 A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
 B <- matrix(c(7, -24, 3, 9, 11, -9), 3, 2)
 A
@@ -55,7 +55,7 @@ A + B
 
 We can also write this using `for` loops
 
-```{r}
+```{r matrix-addition-for-loop}
 # initialize an empty matrix to fill
 C <- matrix(0, 3, 2)
 
@@ -69,7 +69,7 @@ C
 
 If $\mathbf{A}$ and $\mathbf{B}$ are of different dimensions (they differ in either the number of rows or columns), `R` will return an error warning you that the matrices are of different sizes and can't be added
 
-```{r, error = TRUE}
+```{r matrix-addition-noncomformable, error = TRUE}
 A <- matrix(c(4, 1, 33, 2, 0, -4), 3, 2)
 B <- matrix(c(7, -24, 3, 9), 2, 2)
 A

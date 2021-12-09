@@ -3,7 +3,7 @@
 
 - [3 Blue 1 Brown -- Linear combinations, span, and basis vectors](https://www.3blue1brown.com/lessons/span)
 
-```{r}
+```{r setup-02}
 library(shiny)
 library(patchwork)
 library(tidyverse)
@@ -39,13 +39,13 @@ $$
 
 In `R`, we can multiply the vector by a scalar as
 
-```{r}
+```{r scalar-multiply-vector}
 4 * c(4, 6, 7, 12)
 ```
 
 or if the vector $\mathbf{x} = \left( 4, 6, 7, 12 \right)'$ we can write this as
 
-```{r}
+```{r scalar-multiply-vector2}
 x <- c(4, 6, 7, 12)
 4 * x
 ```
@@ -58,7 +58,7 @@ a (b \mathbf{x}) & = (ab) \mathbf{x} & = b (a \mathbf{x})
 \end{aligned}
 $$
     
-```{r}
+```{r scalar-multiply-commutivity}
 4 * (6 * x) 
 (4 * 6) * x
 ```
@@ -93,7 +93,7 @@ $$
 $$
 
 
-```{r}
+```{r add-vectors}
 x <- c(1, 2, 3, 4)
 y <- c(4, 3, 5, 1)
 z <- c(5, 2, 4, 6)
@@ -113,7 +113,7 @@ $$
 \end{aligned}
 $$
 
-```{r}
+```{r identity-add}
 x + 0
 x + rep(0, 4)
 ```
@@ -126,7 +126,7 @@ $$
 \end{aligned}
 $$
 
-```{r}
+```{r add-inverse}
 x + (-x)
 ```
 
@@ -153,7 +153,7 @@ $$
 
 In `R`, we have
 
-```{r}
+```{r vector-add-r}
 x <- c(3, 1, -4, 3)
 y <- c(-3, 17, -39, 4)
 x + y
@@ -161,7 +161,7 @@ x + y
 
 If two vectors $\mathbf{x}$ and $\mathbf{y}$ are of different lengths, then they cannot be added together. Using `R`, we get the following error:
 
-```{r}
+```{r vector-add-r2}
 x <- c(1, 2, 3)
 y <- c(1, 2, 3, 4)
 x + y
@@ -171,7 +171,7 @@ The error is telling us that the vector $\mathbf{x}$ and the vector $\mathbf{y}$
 
 Be careful when adding vectors in `R`. `R` uses "recycling" which means two vectors of different lengths can be added together if one vector is of a length that is a multiple of the other vector. For example, if $\mathbf{x} = (1, 2)'$ is a vector of length 2 and $\mathbf{y} = (1, 2, 3, 4)$ is a vector of length 4, `R` will add $\mathbf{x} + \mathbf{y}$ by replicating the vector $\mathbf{x}$ twice (i.e., $\mathbf{x} + \mathbf{y} = \left( \mathbf{x}', \mathbf{x}' \right)' = \left(1, 2, 1, 2 \right)' + \mathbf{y}$) 
 
-```{r}
+```{r vector-add-recycle}
 x <- c(1, 2)
 y <- c(1, 2, 3, 4)
 x + y
@@ -183,7 +183,7 @@ c(1, 2, 1, 2) + y
 
 Let $\mathcal{R}^2$ be a real coordinate space of $2$ dimensions. You are already familiar with the Cartesian plane that consists of ordered pairs $(x, y)$. The Cartesian plane defines the real coordinate space $\mathbf{R}^2$ of two dimensions. In $\mathbf{R}^2$, the location of any point of interest can be defined using the $x$ and $y$. For example, the plot below shows the location of the point (2, 3)
 
-```{r}
+```{r geometric-interpretation}
 dat <- data.frame(
     x = 2,
     y = 3
@@ -198,7 +198,7 @@ ggplot(data = dat, aes(x = x, y = y)) +
 
 A vector space is a generalization of this representation. In $\mathcal{R}^2$, we say that the vector $\mathbf{z} = c(2, 3)$ is centered at the origin (0, 0) and has length 2 in the $x$-axis and length 3 in the $y$-axis. The plot below shows this vector
 
-```{r, echo = FALSE}
+```{r plot-vector, echo = FALSE}
 ggplot(data = dat, aes(x = x, y = y)) +
     geom_segment(aes(x = 0, xend = x, y = 0, yend = y), arrow = arrow()) +
     geom_vline(xintercept = 0) + 
@@ -208,7 +208,7 @@ ggplot(data = dat, aes(x = x, y = y)) +
 
 We can also decompose the vector $\mathbf{z}$ into its $x$ and $y$ components. The $x$ component of $\mathbf{z}$ is (2, 0) and the $y$ component of $\mathbf{z}$ is (0, 3). The following plot shows the $x$ component (2, 0) in blue and the $y$ component (0, 3) in red.
 
-```{r, echo = FALSE}
+```{r plot-vector-components, echo = FALSE}
 ggplot(data = dat, aes(x = x, y = y)) +
     geom_segment(aes(x = 0, xend = x, y = 0, yend = y), arrow = arrow()) +
     geom_segment(aes(x = 0, xend = x, y = 0, yend = 0), arrow = arrow(), color = "blue") +
@@ -221,7 +221,7 @@ ggplot(data = dat, aes(x = x, y = y)) +
 
 The below Shiny app allows you to plot the vector for any $(x, y)$ pair of your choosing.
 
-```{r, echo = FALSE, eval = FALSE}
+```{r shiny-app-vectors, echo = FALSE, eval = FALSE}
 library(shiny)
 runGitHub(rep = "multivariable-math",
           username = "jtipton25", 
@@ -230,7 +230,7 @@ runGitHub(rep = "multivariable-math",
 
 The shiny app can be downloaded and run on your own computer using 
 
-```{r, eval = FALSE}
+```{r shin-app-vectors2, eval = FALSE}
 library(shiny)
 runGitHub(rep = "multivariable-math", 
           username = "jtipton25",
@@ -241,7 +241,7 @@ runGitHub(rep = "multivariable-math",
 
 We can represent the addition of vectors geometrically as well. Consider the two vectors $\mathbf{u}$ = (3, 2) and $\mathbf{v}$ = (-2, 1) where $\mathbf{u} + \mathbf{v}$ = (1, 3).
 
-```{r}
+```{r, plot-add-vectors}
 data.frame(x = c(3, -2, 1), y = c(2, 1, 3), vector = c("u", "v", "u+v")) %>%
     ggplot() +
     geom_point(aes(x = x, y = y, color = vector)) +
@@ -252,7 +252,7 @@ data.frame(x = c(3, -2, 1), y = c(2, 1, 3), vector = c("u", "v", "u+v")) %>%
 
 We can represent the sum using vectors by adding $\mathbf{u}$ first then adding $\mathbf{v}$ to $\mathbf{u}$ or by adding $\mathbf{v}$ first and then $\mathbf{u}$ to get
 
-```{r}
+```{r plot-add-vectors-parallelogram}
 df <- data.frame(x = c(0, 3, 1, -2), y = c(0, 2, 3, 1))
 p1 <- ggplot() +
     geom_segment(aes(x = 0, xend = 3, y = 0, yend = 2), arrow = arrow(), color = "blue") +
@@ -282,7 +282,7 @@ Notice that the sum of these vectors defines a parallelogram where the sum $\mat
 
 We can represent the multiplication of a vector by a scalar geometrically as well. Consider the vector $\mathbf{u}$ = (3, 2) and the scalars $a = 2$ and $b = -1$. Then, we can plot $\mathbf{u}$, $a\mathbf{u}$, and $b\mathbf{u}$.
 
-```{r}
+```{r plot-scalar-multiplication}
 data.frame(x = c(3, 2 * 3, -1 * 3), y = c(2, 2 * 2, -1 * 2), vector = c("u", "a*u", "b*u")) %>%
     ggplot() +
     geom_point(aes(x = x, y = y, color = vector)) +
@@ -294,7 +294,7 @@ data.frame(x = c(3, 2 * 3, -1 * 3), y = c(2, 2 * 2, -1 * 2), vector = c("u", "a*
 
 In fact, if $a$ is allowed to take on any values, then the set of all possible values of $a \mathbf{u}$ for all values of $a$ defines an infinite line
 
-```{r}
+```{r plot-line}
 ggplot() +
     geom_abline(slope = 2/3, intercept = 0) +  
     geom_point(aes(x = 3, y = 2)) +
@@ -310,7 +310,7 @@ ggplot() +
 Let the vector $\mathbf{u} = c(-2, 3, 5)$. Then, the figure below shows the vector in 3 dimensions.
 
 **Draw picture by hand**
-```{r, echo = FALSE}
+```{r plot-3d-vector, echo = FALSE}
 # # uses gg3D library
 # u <- c(-2, 3, 5)
 # theta <- NULL
@@ -405,7 +405,7 @@ $$
 \end{aligned}
 $$
 Reducing the augmented matrix to reduced row echelon form gives
-```{r}
+```{r rref-augmented-matrix}
 rref(matrix(c(3, 6, -2, 1, 9, -4), 2, 3))
 ```
 which has solutions $a = 0.0667$ and $b = -4.4$.
@@ -423,7 +423,7 @@ Equivalently, the set of vectors $\{\mathbf{x}_k\}_{k=1}^K$ can only be combined
 
 Consider the vectors $\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ shown in the figure below on the left.
 
-```{r, echo = FALSE}
+```{r plot-linear-combination, echo = FALSE}
 df <- data.frame(x = c(sqrt(2), 1), y = c(-sqrt(2), 1))
 p1 <- ggplot() +
     geom_segment(aes(x = 0, xend = sqrt(2), y = 0, yend = -sqrt(2)), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "blue") +
@@ -491,7 +491,7 @@ p1 + p2
 * **Exercise:** Given $\mathbf{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, estimate the linear combination of $\mathbf{u}$ and $\mathbf{v}$ that gives the point $\mathbf{w}$ in the figure below.
 
 
-```{r, echo = FALSE}
+```{r plot-transformation, echo = FALSE}
 transformation_matrix <- tribble(~ x, ~ y,
                                  3, 0,
                                  -1, 1) %>% 
@@ -565,7 +565,7 @@ While not a vector notation, you already understand the span from polynomial fun
 * **Example:** Consider the vector $\mathbf{u} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$. Then, the vector $\mathbf{w} = \begin{pmatrix} 4 \\ 2 \end{pmatrix}$ is in the $\mbox{span}\{\mathbf{u}\}$ because $\mathbf{w} = 2 \mathbf{u}$ but the vector $\mathbf{v} = \begin{pmatrix} 4 \\ -4 \end{pmatrix}$ is not in the $\mbox{span}\{\mathbf{u}\}$ because there is no coefficient $a$ such that $\mathbf{w} = a \mathbf{u}$. In this example, the vector $\mathbf{u}$ is a 2-dimensional vector (lives in $\mathcal{R}^2$--a plane) but the $\mbox{span}\{\mathbf{u}\}$ lives in 1-dimension (a line).
 
 
-```{r}
+```{r plot-example-span}
 ggplot() +
     geom_abline(slope = 1/2, intercept = 0, color = "blue", size = 2) +  
     geom_segment(aes(x = 0, xend = 2, y = 0, yend = 1), arrow = arrow(length = unit(0.1, "inches")), size = 1.5, color = "red") +
@@ -587,7 +587,7 @@ From the example above, we can answer the question "Is the point (a, b) on the l
 
 The shiny app below demonstrates how the concept of span can be understood in 2 dimensions. The app can be downloaded and run
 
-```{r, eval = FALSE}
+```{r shiny-app-span, eval = FALSE}
 library(shiny)
 runGitHub(rep = "multivariable-math",
           username = "jtipton25", 

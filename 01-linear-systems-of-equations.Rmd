@@ -1,6 +1,6 @@
 # Linear Systems of Equations {#linear-systems-of-equations}
 
-```{r, message = FALSE}
+```{r setup-01, message = FALSE}
 library(tidyverse)
 
 # For 3-d plotting
@@ -180,7 +180,7 @@ A fundamental question when presented with a linear system of equations is wheth
 A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true.
 :::
 
-```{r, echo = FALSE}
+```{r system1, echo = FALSE}
 set.seed(1)
 A <- matrix(sample(-10:10, 6, replace = TRUE), 2, 3)
 ```
@@ -461,7 +461,7 @@ and subtracting $\frac{5}{4} \frac{56}{57}$ from both sides of the first equatio
 
 which can be done in `R` using
 
-```{r}
+```{r solution-example-1}
 x1 <- 44/57
 x2 <- 56/57
 all.equal(4 * x1 + 5 * x2, 8)
@@ -528,7 +528,7 @@ $x_1 + \frac{20}{47} x_3 = \frac{19}{47}$, $x_2 + \frac{16}{47} x_3 = \frac{34}{
 
 The solution can be checked in `R` using
 
-```{r}
+```{r solution-example-2}
 # this is a free variable, you can assign it any value
 x3 <- 3
 x1 <- 19/47 - 20/47 * x3
@@ -602,7 +602,7 @@ Note that these operations are exactly what we used to solve the equation using 
 
 :::{.example}
 For the elementary row operations listed above, we demonstrate these using the matrix
-```{r, echo = FALSE}
+```{r elementary-row, echo = FALSE}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 ```
 $$
@@ -613,7 +613,7 @@ $$
 
 The matrix $\mathbf{A}$ can be represented in `R` using
 
-```{r, eval = FALSE}
+```{r elementary-row-matrix, eval = FALSE}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 ```
 
@@ -632,7 +632,7 @@ Here we present examples of the elementary row operations
 
 The matrix with the first and second rows swapped is 
 
-```{r, echo = FALSE}
+```{r swap-rows, echo = FALSE}
 A1 <- A[c(2,1), ]
 ```
 $$
@@ -643,7 +643,7 @@ $$
 
 Notice that the first and second rows have now switched places. This can be done in `R` in a variety of ways. First, we extract the rows and place them "by hand" in `R`.
 
-```{r}
+```{r swap-rows2}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 # extract the rows
 row1 <- A[1, ] 
@@ -654,13 +654,13 @@ A[2, ] <- row1
 A
 ```
 Another way to do this is to use the function `rbind()` that binds rows together into a matrix. 
-```{r}
+```{r swap-rows3}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 # bind row 2, row 1, and row 3 togethter
 rbind(A[2, ], A[1, ], A[3, ])
 ```
 Yet another way to swap the first two rows is to use a vectorized operation. This allows for fast and efficient coding and computing. The vectorized row swap is 
-```{r}
+```{r swap-rows4}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 # Take the 2nd, 1st, and 3rd row of A, in that order
 A[c(2, 1, 3), ]
@@ -668,7 +668,7 @@ A[c(2, 1, 3), ]
 
 2) Add -3 times the first row to the third row.
 
-```{r, echo = FALSE}
+```{r add-rows, echo = FALSE}
 B <- A
 B[3, ] <- -3 * A[1, ] + A[3, ]
 ```
@@ -684,7 +684,7 @@ $$
 
 Using `R`, this can be done as
 
-```{r}
+```{r add-rows2}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 # extract the rows 
 row1 <- A[1, ]
@@ -694,7 +694,7 @@ A
 ```
 
 Another way to do this row sum and replacement is
-```{r}
+```{r add-rows3}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 A[3, ] <- -3 * A[1, ] + A[3, ]
 A
@@ -703,7 +703,7 @@ A
 
 3) Multiply the second row by $\frac{1}{2}$.
 
-```{r, echo = FALSE}
+```{r scalar-multiply-row, echo = FALSE}
 A <- matrix(c(1:9), 3, 3, byrow = FALSE)
 B <- A
 B[2, ] <- 1/2 * B[2, ]
@@ -717,7 +717,7 @@ $$
 $$
 In `R`, the second row of $\mathbf{A}$ can be multiplied by $\frac{1}{2}$ as
 
-```{r}
+```{r scalar-multiply-row2}
 A[2, ] <- 1/2 * A[2, ]
 A
 ```
@@ -743,12 +743,12 @@ $$
 \end{aligned}
 $$
 where the first column of the matrix represents the variable $x_1$, the second column of the matrix represents the variable $x_2$, the third column of the matrix represents the variable $x_3$, and the fourth column of the matrix represents the constant terms. We can express the augmented form in `R` using a matrix
-```{r}
+```{r augmented-matrix}
 augmented_matrix <- matrix(c(1, 4, 4, 5, -1, 2, 11, 9), 2, 4)
 augmented_matrix
 ```
 and to make clear the respective variables, we can add in column names as a matrix attribute using the `colnames()` function
-```{r}
+```{r augmented_matrix-names}
 colnames(augmented_matrix) <- c("x1", "x2", "x3", "constants")
 augmented_matrix
 ```
@@ -756,17 +756,17 @@ augmented_matrix
 which adds labels to each of the columns.
 
 Now, using elementary row operations on the matrix, we can attempt to find solutions to the system of equations. First, we multiply the first row by -4 and add it to the second row of the matrix and replace the second row with this sum
-```{r}
+```{r augmented-row1}
 augmented_matrix[2, ] <- -4 * augmented_matrix[1, ] + augmented_matrix[2, ]
 augmented_matrix
 ```
 Next, scale the second row to have a leading value of 1 by dividing by -11
-```{r}
+```{r augmented-row2}
 augmented_matrix[2, ] <- augmented_matrix[2, ] / (-11)
 augmented_matrix
 ```
 We can then multiply the second row by -4 and add it to the first row and replace the first row with this value.
-```{r}
+```{r augmented-row3}
 augmented_matrix[1, ] <- augmented_matrix[1, ] - 4 * augmented_matrix[2, ]
 augmented_matrix
 ```
@@ -792,7 +792,7 @@ which defines a linear relationship between $x_1$ and $x_2$. Notice that in thes
 In the plot below, the two planes (red and blue) are the geometric plots of the linear equations in the system of equations (the red plane is the top equation and the blue plane is the bottom equation). The purple line is the equation for the solution given the free variable $x_3$ and lies at the intersection of the two planes, much like the point in the two lines in figure **linking reference here** lies at the intersection of the two points. 
 
 
-```{r}
+```{r plot-solution}
 # uses gg3D library
 n <- 60
 x1 <- x2 <- seq(-10, 10, length = n)
@@ -838,7 +838,7 @@ A system of linear equations is said to be consistent if at least one solution e
 Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
 
 
-```{r, echo = FALSE}
+```{r example-system, echo = FALSE}
 A <- matrix(c(16, 5, 9, 4, 2, 11, 7, 14, 3, 10, 6, 15), 4, 3)
 b <- c(13, 8, 12, 1)
 ```
@@ -862,7 +862,7 @@ $$
 
 Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?
 
-```{r, echo = FALSE}
+```{r example-system2, echo = FALSE}
 A <- matrix(c(1, 1, 3, 2, 3, 2, 3, 2, 1), 3, 3)
 b <- c(5, 2, 7)
 ```
@@ -968,7 +968,7 @@ Calculating the reduced row echelon form is known as Gaussian elimination, which
 :::
 
 
-```{r}
+```{r libraries-pracma}
 # pracma library
 # rref example in class
 ```
@@ -976,7 +976,7 @@ Calculating the reduced row echelon form is known as Gaussian elimination, which
 ### Using reduced row echelon forms to solve systems of linear equations
 
 When a system of linear equations is expressed as an augmented matrix, the reduced row echelon form can be used to find solutions to those systems of equations. Consider the systems of equations
-```{r, echo = FALSE}
+```{r rref-solve, echo = FALSE}
 A <- matrix(c(3, 2, 4, 8, -4, 5, -4, -1, 0), 3, 3)
 b <- c(6, 8, 9)
 ```
@@ -992,11 +992,11 @@ $$
 
 In `R`, this is the matrix
 
-```{r}
+```{r rref-solve-example}
 # define matrix
 ```
 Calculating the reduced row echelon form, gives
-```{r}
+```{r rref-solve-example2}
 # calculate rref of augmented matrix
 ```
 which gives the solution ...
@@ -1044,7 +1044,7 @@ A linear system of equations is consistent (has a solution) if the furthest righ
 
 * **Example: consistent system of equations**
 
-```{r, echo = FALSE, results = 'asis'}
+```{r consistent-example, echo = FALSE, results = 'asis'}
 set.seed(1)
 A <- matrix(sample(-10:10, 12), 3, 4)
 ```
@@ -1054,7 +1054,7 @@ $`r dasc2594::array_to_latex(A)`$
 * **Example: inconsistent system of equations**
 
 
-```{r, echo = FALSE, results = 'asis'}
+```{r inconsistent-example, echo = FALSE, results = 'asis'}
 set.seed(1)
 A <- matrix(sample(-10:10, 16), 4, 4)
 ```

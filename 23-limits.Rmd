@@ -1,6 +1,6 @@
 # Graphs and Limits
 
-```{r, message = FALSE}
+```{r setup-23, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 set.seed(2021)
@@ -36,7 +36,7 @@ f(x, y) = x^2 + y^2
 \end{aligned}
 $$
 which defines the surface
-```{r, echo = FALSE}
+```{r example-parabola-1, echo = FALSE}
 parabola <- function(x, y) {
     return(x^2 + y^2)
 }
@@ -57,7 +57,7 @@ data.frame(expand.grid(x, y)) %>%
     coord_fixed(ratio = 1)
 ```
 where each curve in the (x, y) plane has exactly the same value of $f(x, y)$. Alternatively, this can be represented using filled level curves 
-```{r}
+```{r example-parabola-2}
 data.frame(expand.grid(x, y)) %>%
     rename(x = Var1, y = Var2) %>%
     mutate(z = parabola(x, y)) %>%
@@ -79,7 +79,7 @@ f(x, y) = x^2 - y^2
 \end{aligned}
 $$
 which defines the surface
-```{r, echo = FALSE}
+```{r example-saddle-1, echo = FALSE}
 saddle <- function(x, y) {
     return(x^2 - y^2)
 }
@@ -100,7 +100,7 @@ data.frame(expand.grid(x, y)) %>%
     coord_fixed(ratio = 1)
 ```
 where each curve in the (x, y) plane has exactly the same value of $f(x, y)$. Alternatively, this can be represented using filled level curves 
-```{r}
+```{r example-saddle-2}
 data.frame(expand.grid(x, y)) %>%
     rename(x = Var1, y = Var2) %>%
     mutate(z = saddle(x, y)) %>%

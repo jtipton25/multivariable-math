@@ -1,6 +1,6 @@
 # The gradient and directional derivatives
 
-```{r, message = FALSE}
+```{r setup-26, message = FALSE}
 library(tidyverse)
 library(plotly)
 library(dasc2594)
@@ -63,7 +63,7 @@ Compute the directional derivative of $f(x, y) = 3x^2 + y^2$ in the direction of
 * calculate the directional derivatives
 * graph the directional derivatives using contour plots and segments
 
-```{r}
+```{r example-directional-derivative-1}
 # the function
 target_fun <- function(x, y) {
         3 * x^2 + y^2

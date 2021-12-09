@@ -1,6 +1,6 @@
 # Tangent planes and linear approximations
 
-```{r, message = FALSE}
+```{r setup-27, message = FALSE}
 library(tidyverse)
 library(plotly)
 library(dasc2594)
@@ -11,7 +11,7 @@ Let $f(\mathbf{x})$ be a differentiable function at a point $\mathbf{a}$. Becaus
 
 :::{.example}
 For this example, we plot the function $f(x, y) = x^2 + y^2$ which has gradient $\nabla f(x, y) = \begin{pmatrix} 2x \\ 2y\end{pmatrix}$
-```{r, eval = FALSE}
+```{r example-tangent-1, eval = FALSE}
 # f(x, y)
 target_fun <- function(x, y) {
     return(x^2 + y^2)
@@ -30,7 +30,7 @@ plot_tangent_plane(target_fun = target_fun, grad_fun = grad_fun, a=-1, b = 1, xl
 
 
 
-```{r, echo = FALSE, out.width = "100%"}
+```{r example-tangent-2, echo = FALSE, out.width = "100%"}
 target_fun <- function(x, y) {
     return(x^2 + y^2)
 }
@@ -148,7 +148,7 @@ where the last term is a sum of the linear approximation in each of the $i = 1, 
 Approximate the linear change of the function $f(x, y, z) = x^2 - 3xy^2z^2 - 4z^2$ at the point $(a, b, c) = (1, -2, -1)$ evaluated at the point $(x, y, z) = (0.95, -2.05, -1.05)$. Compare this to the exact value of the function $f(x, y, z)$
 
 
-```{r, echo = FALSE}
+```{r example-tangent-3, echo = FALSE}
 target_fun <- function(x, y, z) {
         x^2 - 3 * x * y^2 * z^2 - 4 * z^2
 } 
@@ -210,7 +210,7 @@ f(0.95, -2.05, -1.05) & = (1.05)^2 - 3(1.05)(-2.05)^2(-1.05)^2 - 4(-1.05)^2 = -1
 $$
 which gives an approximation error of $f(x, y, z) - L(x, y, z) = `r target_fun(0.95, -2.05, -1.05)` - `r linearization(target_fun, grad_fun, 0.95, -2.05, -1.05, 1, -2, -1)` = `r target_fun(0.95, -2.05, -1.05) - linearization(target_fun, grad_fun, 0.95, -2.05, -1.05, 1, -2, -1)`$
 
-```{r}
+```{r example-tangent-4}
 target_fun <- function(x, y, z) {
         x^2 - 3 * x * y^2 * z^2 - 4 * z^2
 } 

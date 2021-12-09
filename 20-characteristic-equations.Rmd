@@ -4,7 +4,7 @@
 - [3 Blue 1 Brown -- ](https://www.3blue1brown.com/lessons/quick-eigen)
 
 
-```{r, message = FALSE}
+```{r setup-20, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 ```
@@ -104,7 +104,7 @@ Therefore, it is possible to change $\mathbf{A}$ into $\mathbf{B}$ with an inver
 
 :::{.example}
 Consider the following example with matrices $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{P}$ defined as below:
-```{r}
+```{r example-characteristic-1}
 A <- matrix(c(3, 0, 0, -2), 2, 2)
 A
 

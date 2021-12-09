@@ -19,7 +19,7 @@ description: This is a text for Multivariable Mathematics for Data Science.
 ---
 
 
-```{r include = FALSE, echo = FALSE, message = FALSE}
+```{r setup-index, include = FALSE, echo = FALSE, message = FALSE}
 library(tidyverse)
 library(shiny)
 
@@ -87,44 +87,44 @@ where the $'$ symbol represents the transpose function. For our example matrix, 
 
 To create a vector we can use the concatenate function `c()`. For example, the vector $\mathbf{x} = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ can be created as the `R` object using
 
-```{r}
+```{r define-vector}
 x <- c(5, 2, 8)
 ```
 
 where the `<-` assigns the values in the vector `c(5, 2, 8)` to the object named `x`. To print the values of `x`, we can use
 
-```{r}
+```{r print-vector}
 x
 ```
 
 which prints the elements of x. Notice that `R` prints the elements of $\mathbf{x}$ in a row; however, $\mathbf{x}$ is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a `data.frame`, then the vector will be presented as a column vector
 
-```{r}
+```{r define-dataframe}
 data.frame(x)
 ```
 
 One can use the index operator $[\ ]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
 
-```{r}
+```{r subset1}
 x[1]
 ```
 
 and the third element of $\mathbf{x}$, $x_3$, is
 
-```{r}
+```{r subset3}
 x[3]
 ```
 
 The transpose function `t()` turns a column vector into a row vector (or a row vector into a column vector). For example the transpose $\mathbf{x}'$ of $\mathbf{x}$ is 
 
-```{r}
+```{r define-transpose}
 tx <- t(x)
 tx
 ```
 
 where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vector. The transpose of `tx`. Notice the indices on the output of the row vector `tx`. The index operator `[1, ]` selects the first row to `tx` and the index operator `[, 1]` gives the first column `tx`. Taking the transpose again gives us back the original column vector
 
-```{r}
+```{r transpose-transpose}
 t(tx)
 ```
 
@@ -159,7 +159,7 @@ the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc.
 
 In `R`, we can define the matrix A using the `matrix()` function
 
-```{r}
+```{r define-matrix}
 A <- matrix(
     data = c(5, 5, -14, 42, 7, -22, 5, -3, 1, 2, 99, 0),
     nrow = 4,
@@ -171,7 +171,7 @@ A
 
 Notice in the above creation of $\mathbf{A}$, we wrote defined the elements of the  $\mathbf{A}$ using the columns stacked on top of one another. If we want to fill in the elements of $\mathbf{A}$ using the rows, we can add the option `byrow = TRUE` to the `matrix()` function
 
-```{r}
+```{r define-matrix-row}
 A <- matrix(
     data  = c(5, 7, 1, 5, -22, 2, -14, 5, 99, 42, -3, 0), 
     nrow  = 4,
@@ -183,13 +183,13 @@ A
 
 To select the $ij$th elements of $\mathbf{A}$, we use the subset operator `[` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
 
-```{r}
+```{r matrix-select1}
 A[1, 1]
 ```
 
 The element $a_{3, 3} = 99$ in the third row and third column can be selected using
 
-```{r}
+```{r matrix-select2}
 A[3, 3]
 ```
 
@@ -219,7 +219,7 @@ $$
 
 In `R` you can extract the columns using the `[` selection operator
 
-```{r}
+```{r matrix-select-columns}
 c1 <- A[, 1] # first column
 c2 <- A[, 2] # second column
 c3 <- A[, 3] # third column
@@ -227,7 +227,7 @@ c3 <- A[, 3] # third column
 
 and you can give the column representation of the matrix `A` with with column bind function `cbind()`
 
-```{r}
+```{r matrix-bind-cols}
 cbind(c1, c2, c3)
 ```
 
@@ -253,7 +253,7 @@ $$
 
 In `R` you can extract the rows using the `[` selection operator
 
-```{r}
+```{r matrix-select-rows}
 r1 <- A[1, ] # first row
 r2 <- A[2, ] # second row
 r3 <- A[3, ] # third row
@@ -262,7 +262,7 @@ r4 <- A[4, ] # fourth row
 
 and you can give the row representation of the matrix `A` with with row bind function `rbind()`
 
-```{r}
+```{r matrix-bind-rows}
 rbind(r1, r2, r3, r4)
 ```
 
@@ -307,7 +307,7 @@ rbind(r1, r2, r3, r4)
 
 <!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
 
-```{r include=FALSE}
+```{r setup-bib, include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'

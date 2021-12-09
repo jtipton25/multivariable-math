@@ -2,7 +2,7 @@
 
 - [3 Blue 1 Brown -- Eigenvalues](https://www.3blue1brown.com/lessons/eigenvalues)
 
-```{r, message = FALSE}
+```{r setup-19, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 set.seed(2021)
@@ -23,7 +23,7 @@ for some scalar $\lambda$. If there exists some $\lambda \neq 0$ (a non-trivial 
 
 ::: {.example}
 It is easy to check if a vector is an eigenvalue:
-```{r, echo = FALSE}
+```{r example-eigenvalue-1, echo = FALSE}
 # n <- 3
 # n_iter <- 5
 # # simulate some eigenvectors, eigenvalues, and a matrix
@@ -91,7 +91,7 @@ $$
 where there is no number $\lambda$ such that $`r array_to_latex(A %*% v)` = \lambda `r array_to_latex(v)`$. In `R`, this can be shown
 
 
-```{r}
+```{r example-eigenvalue-2}
 A <- matrix(c(0, 1/2, 0, 6, 0, 1/2, 8, 0, 0), 3, 3)
 A
 u <- c(16, 4, 1)
@@ -114,7 +114,7 @@ A %*% v
 
 :::{.example}
 It is easy to check if a vector is an eigenvalue:
-```{r, echo = FALSE}
+```{r example-eigenvalue-3, echo = FALSE}
 A <- matrix(c(2, 0, 1, 1), 2, 2)
 
 # # show these are eigen vectors
@@ -177,7 +177,7 @@ $$
 $$
 where there is no number $\lambda$ such that $`r array_to_latex(A %*% v)` = \lambda `r array_to_latex(v)`$. In `R`, this can be shown
 
-```{r}
+```{r example-eigenvalue-4}
 A <- matrix(c(2, 0, 1, 1), 2, 2)
 u <- c(-sqrt(2)/2, sqrt(2) / 2)
 v <- c(1, 1)
@@ -195,7 +195,7 @@ A %*% v
 
 Now, we will plot the vectors $\mathbf{u}$ and $\mathbf{v}$ as well as the vectors transformed by the matrix $\mathbf{A}$ (i.e., $\mathbf{A} \mathbf{u}$ and $\mathbf{A} \mathbf{v}$). The code below plot the vector $\mathbf{u}$ in dark blue and the transformed vector $\mathbf{A} \mathbf{u}$ in light blue. The code also plots the vector $\mathbf{v}$ in dark red and the transformed vector $\mathbf{A} \mathbf{v}$ in light red.
 
-```{r}
+```{r example-eigenvalue-5}
 ggplot() +
     geom_segment(aes(x = 0, xend = u[1], y = 0, yend = u[2]), color = "dark blue") +
     geom_segment(aes(x = 0, xend = (A %*% u)[1], y = 0, yend = (A %*% u)[2]), color = "light blue", lty = 2) +
@@ -284,7 +284,7 @@ Therefore, the eigenvectors of $\mathbf{A}$ associated with $\lambda$, if there 
 Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of $\mathbf{A}$. All we have to do is solve the system of linear equations $\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ for a given $\lambda$ (actually, for all $\lambda$s, which we can't do). If only there was some way to find eigenvalues $\lambda$ (hint: there is and it is coming next chapter).
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-eigenvalue-6, echo = FALSE}
 n <- 3
 # simulate some eigenvectors, eigenvalues, and a matrix
 A <- matrix(c(3, 0, 0, 6, 0, 0, -8, 6, 2), 3, 3)
@@ -350,12 +350,12 @@ $$
 
 Using `R`, this can be done as
 
-```{r, echo = FALSE}
+```{r example-eigenvalue-7, echo = FALSE}
 lambda <- lambda[1, 1]
 ```
 
 
-```{r}
+```{r example-eigenvalue-8}
 lambda <- 3
 # apply rref to the augmented matrix
 rref(cbind(A - lambda * diag(nrow(A)), 0))
@@ -365,7 +365,7 @@ where the solution set is determined from the RREF form of the augmented matrix 
 
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-eigenvalue-9, echo = FALSE}
 n <- 3
 # simulate some eigenvectors, eigenvalues, and a matrix
 U <- matrix(sample(-4:4, n^2, replace = TRUE), n, n)
@@ -436,18 +436,18 @@ $$
 \end{aligned}
 $$
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-10, echo = FALSE}
 lambda_1 <- lambda[1]
 ```
 
 
-```{r}
+```{r example-eigenvalue-11}
 A <- matrix(c(-21/5, -6/5, -4, -34/5, -14/5, -10, 18/5,  3/5, 5), 3, 3)
 lambda_1 <- -4
 rref(cbind(A - lambda_1 * diag(nrow(A)), 0))
 ```
 Verifying that the eigenvalue $\mathbf{x}_1 = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector is
-```{r}
+```{r example-eigenvalue-12}
 x_1 <- c(1, 1/2, 1)
 all.equal(drop(A %*% x_1), lambda_1 * x_1) # drop() makes a matrix with one column a vector
 
@@ -509,18 +509,18 @@ $$
 \end{aligned}
 $$
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-13, echo = FALSE}
 lambda_2 <- lambda[2]
 ```
 
 
-```{r}
+```{r example-eigenvalue-14}
 A <- matrix(c(-21/5, -6/5, -4, -34/5, -14/5, -10, 18/5,  3/5, 5), 3, 3)
 lambda_2 <- 3
 rref(cbind(A - lambda_2 * diag(nrow(A)), 0))
 ```
 Verifying that the eigenvalue $\mathbf{x}_1 = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector is
-```{r}
+```{r example-eigenvalue-15}
 x_2 <- c(1/2, 0, 1)
 all.equal(drop(A %*% x_2), lambda_2 * x_2) # drop() makes a matrix with one column a vector
 ```
@@ -580,12 +580,12 @@ $$
 \end{aligned}
 $$
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-16, echo = FALSE}
 lambda_3 <- lambda[3]
 ```
 
 
-```{r}
+```{r example-eigenvalue-17}
 A <- matrix(c(-21/5, -6/5, -4, -34/5, -14/5, -10, 18/5,  3/5, 5), 3, 3)
 lambda_3 <- -1
 rref(cbind(A - lambda_3 * diag(nrow(A)), 0))
@@ -597,7 +597,7 @@ all.equal(drop(A %*% x_3), lambda_3 * x_3) # drop() makes a matrix with one colu
 ```
 
 Now, let's compare the output of the `eigen()` function in `R` to these eigenvectors calculated "by hand." The `eigen()` function returns the two objects named `$values` that contain the eigenvalues of $\mathbf{A}$ and the object `$vectors` that contains a matrix of eigenvectors as the columns fo the matrix. Each eigenvalue corresponds to the respective column of the eigenvector matrix.
-```{r}
+```{r example-eigenvalue-18}
 eigen(A)
 ```
 
@@ -615,7 +615,7 @@ Let $\mathbf{A}$ be an $n \times n$ matrix and let $\lambda$ be an eigenvalue of
 Therefore, the $\lambda$-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector $\mathbf{0}$ and all the eigenvectors of $\mathbf{A}$ with corresponding eigenvalue $\lambda$.
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-eigenvalue-19, echo = FALSE}
 A <-  matrix(c(3, -3, 0, 2), 2, 2)
 lambda <- -2
 ```
@@ -628,7 +628,7 @@ For $\lambda$ = (a) -2, (b) 1, and (c) 3, decide if $\lambda$ is a eigenvalue of
 :::{.solution}
 Given the matrix $\mathbf{A}$ defined in the example, we will check if any of the values of $\lambda$ are eigenvalues. 
 
-```{r, eval = FALSE}
+```{r example-eigenvalue-20, eval = FALSE}
 A <-  matrix(c(3, -3, 0, 2), 2, 2)
 ```
 
@@ -678,12 +678,12 @@ $$
 which is the trivial solution. Thus, $\lambda = -2$ is not an eigenvalue of $\mathbf{A}$.
 
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-21, echo = FALSE}
 lambda <- -2
 ```
 
 
-```{r}
+```{r example-eigenvalue-22}
 A <-  matrix(c(3, -3, 0, 2), 2, 2)
 lambda <- -2
 rref(cbind(A - lambda * diag(nrow(A)), 0))
@@ -693,7 +693,7 @@ Because there is only the trivial solution $\mathbf{x} = \mathbf{0}$, $\lambda =
 
 
 
-```{r}
+```{r example-eigenvalue-23}
 lambda <- 1
 ```
 b) Next, we check if $\lambda = 1$ is an eigenvalue of $\mathbf{A}$. If $\lambda = 1$ is an eigenvalue of $\mathbf{A}$, then there is a non-trivial solution to
@@ -748,12 +748,12 @@ $$
 \end{aligned}
 $$
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-24, echo = FALSE}
 lambda <- 1
 ```
 
 
-```{r}
+```{r example-eigenvalue-25}
 A <-  matrix(c(3, -3, 0, 2), 2, 2)
 lambda <- 1
 rref(cbind(A - lambda * diag(nrow(A)), 0))
@@ -765,7 +765,7 @@ Because there is only the trivial solution $\mathbf{x} = \mathbf{0}$, $\lambda =
 
 
 
-```{r}
+```{r example-eigenvalue-26}
 lambda <- 3
 ```
 c) Next, we check if $\lambda = 3$ is an eigenvalue of $\mathbf{A}$. If $\lambda = 3$ is an eigenvalue of $\mathbf{A}$, then there is a non-trivial solution to
@@ -819,13 +819,13 @@ $$
 $$
 Using `R`, this is 
 
-```{r}
+```{r example-eigenvalue-27}
 A <-  matrix(c(3, -3, 0, 2), 2, 2)
 lambda <- 3
 rref(cbind(A - lambda * diag(nrow(A)), 0))
 ```
 Verifying that the eigenvalue $\mathbf{x} = `r array_to_latex(c(-1/3, 1))`$ is an eigenvector is
-```{r}
+```{r example-eigenvalue-28}
 x <- c(-1/3, 1)
 all.equal(drop(A %*% x), lambda * x) # drop() makes a matrix with one column a vector
 ```
@@ -837,7 +837,7 @@ Now, because we know that $\lambda = 3$ is an eigenvalue of $\mathbf{A}$ and the
 
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-eigenvalue-29, echo = FALSE}
 set.seed(2021)
 n <- 3
 # simulate some eigenvectors, eigenvalues, and a matrix
@@ -854,7 +854,7 @@ Let $\mathbf{A} = `r array_to_latex(A)`$. Find the eigenvectors associated with 
 :::{.solution}
 Given the matrix $\mathbf{A} = `r array_to_latex(A)`$, we can find the eigenvectors associated with the given eigenvalues
 
-```{r, echo = FALSE}
+```{r example-eigenvalue-30, echo = FALSE}
 lambda <- 3
 ```
 
@@ -922,12 +922,12 @@ Thus, the basis for 3-eigenspace is $\left\{ `r array_to_latex(c(-4, 1, 0))`, `r
 
 
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-31, echo = FALSE}
 lambda <- 3
 ```
 
 
-```{r}
+```{r example-eigenvalue-32}
 A <- matrix(c(17/5, 0, 4/5, 8/5, 3, 16/5, -6/5, 0, 3/5), 3, 3)
 lambda <- 3
 rref(cbind(A - lambda * diag(nrow(A)), 0))
@@ -942,7 +942,7 @@ all.equal(drop(A %*% x_2), lambda * x_2) # drop() makes a matrix with one column
 ```
 
 
-```{r}
+```{r example-eigenvalue-33}
 lambda <- 1
 ```
 b) The eigenvalues associated with the second eigenvector $\lambda = `r lambda`$ by solving
@@ -1003,18 +1003,18 @@ Therefore, a basis for the 1-eigenspace is $\left\{ `r array_to_latex(c(1/2, 0, 
 
 
 Using `R`, this is 
-```{r, echo = FALSE}
+```{r example-eigenvalue-34, echo = FALSE}
 lambda <- 1
 ```
 
 
-```{r}
+```{r example-eigenvalue-35}
 A <- matrix(c(17/5, 0, 4/5, 8/5, 3, 16/5, -6/5, 0, 3/5), 3, 3)
 lambda <- 1
 rref(cbind(A - lambda * diag(nrow(A)), 0))
 ```
 Verifying that the eigenvalue $\mathbf{x} = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector associated with eigenvalue $\lambda = `r lambda`$ is
-```{r}
+```{r example-eigenvalue-36}
 x <- c(1/2, 0, 1)
 all.equal(drop(A %*% x), lambda * x) # drop() makes a matrix with one column a vector
 ```

@@ -2,7 +2,7 @@
 
 - [3 Blue 1 Brown -- Inverse Matrices, column space, and null space](https://www.3blue1brown.com/lessons/inverse-matrices)
 
-```{r, message = FALSE}
+```{r intro-07, message = FALSE}
 library(dasc2594)
 library(tidyverse)
 ```
@@ -27,14 +27,14 @@ where $\mathbf{I}$ is the $n \times n$ identity matrix (the matrix with 1s on th
 
 
 In `R`, an identity matrix is easy to construct. An $n \times n$ identity matrix can be constructed using the `diag()` function
-```{r}
+```{r identity}
 n <- 4
 I <- diag(n)
 I
 ```
 
 :::{.example}
-```{r, echo = FALSE}
+```{r setup-example-07, echo = FALSE}
 A <- matrix(c(1, 2, -1, -3), 2, 2)
 B <- matrix(c(3, 2, -1, -1), 2, 2) 
 ```
@@ -46,7 +46,7 @@ $$
 \end{aligned}
 $$
 
-```{r}
+```{r example-inverse}
 # check if B is the inverse of A
 A %*% B
 # check if B is the inverse of A
@@ -82,7 +82,7 @@ A consequence of the above theorem is that a $2 \times 2$ matrix is invertible o
 :::{.example}
 Determine if the following $2 \times 2$ matrix is invertible
 
-```{r, echo = FALSE}
+```{r determine-invertibility, echo = FALSE}
 A <- matrix(c(4, -1, -4, 2), 2, 2)
 ```
 $\mathbf{A} = `r array_to_latex(A)`$
@@ -109,7 +109,7 @@ There are two things to show ...
 
 :::{.example}
 
-```{r, echo = FALSE}
+```{r example-unique-solution, echo = FALSE}
 A <- matrix(c(4, 5, -4, -4, 2, 6, -2, -5, 1), 3, 3)
 b <- c(3, 1, 2)
 # solve(A, b)
@@ -172,7 +172,7 @@ Recall the elementary row operations:
 
 * **Example:** Consider a $3 \times 3$ matrix 
 
-    ```{r}
+    ```{r example-row-operations-matrix}
     A <- matrix(c(4, 5, 9, -2, -4, 1, 4, 6, -2), 3, 3)
     ```
     
@@ -181,12 +181,12 @@ Recall the elementary row operations:
     
     1) What is the elementary matrix (let's call it $\mathbf{E}_1$ that swaps the first and second rows of $\mathbf{A}$?
     
-    ```{r}
+    ```{r example-row-operations-matrix1}
     E_1 <- matrix(c(0, 1, 0, 1, 0, 0,  0, 0, 1), 3, 3)
     ```
     $\mathbf{E}_1 = `r array_to_latex(E_1)`$
     
-    ```{r}
+    ```{r example-row-operations-matrix2}
     A
     ## left multiple A by E_1
     E_1 %*% A
@@ -196,12 +196,12 @@ Recall the elementary row operations:
     
     2) What is the elementary matrix (let's call it $\mathbf{E}_2$ that adds two times the first of $\mathbf{A}$ to the third row of $\mathbf{A}$?
     
-    ```{r}
+    ```{r example-row-operations-matrix3}
     E_2 <- matrix(c(1, 0, 2, 0, 1, 0, 0, 0, 1), 3, 3)
     ```
     $\mathbf{E}_2 = `r array_to_latex(E_2)`$
     
-    ```{r}
+    ```{r example-row-operations-matrix4}
     A
     ## left multiple A by E_2
     E_2 %*% A
@@ -211,12 +211,12 @@ Recall the elementary row operations:
     
     3) What is the elementary matrix (let's call it $\mathbf{E}_3$ that mutliples the second row of $\mathbf{A}$ by 3?
     
-    ```{r}
+    ```{r example-row-operations-matrix5}
     E_3 <- matrix(c(1, 0, 0, 0, 3, 0, 0, 0, 1), 3, 3)
     ```
     $\mathbf{E}_3 = `r array_to_latex(E_3)`$
     
-    ```{r}
+    ```{r example-row-operations-matrix6}
     A
     ## left multiple A by E_3
     E_3 %*% A
@@ -255,7 +255,7 @@ The previous theorem states that for a $n \times n$ invertible matrix $\mathbf{A
 Create the augmented matrix $\begin{pmatrix} \mathbf{A} & \mathbf{I} \end{pmatrix}$ and row reduce the augmented matrix. If the row-reduced augmented matrix is of the form $\begin{pmatrix} \mathbf{I} & \mathbf{A}^{-1} \end{pmatrix}$ then $\mathbf{A}^{-1}$ is the inverse of $\mathbf{A}$. If the leading matrix in the augmented matrix is not the identity matrix $\mathbf{I}$, then $\mathbf{A}$ is not row equivalent to $\mathbf{I}$ and is therefore not invertible.
 
 :::{.example}
-```{r, echo = FALSE, include = FALSE}
+```{r example-augmented-inverse, echo = FALSE, include = FALSE}
 set.seed(2021)
 A <- matrix(sample(-9:9, 9, replace = TRUE), 3, 3)
 solve(A)

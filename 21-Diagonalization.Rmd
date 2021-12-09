@@ -1,7 +1,7 @@
 # Diagonalization
 
 
-```{r, message = FALSE}
+```{r setup-21, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 set.seed(2021)
@@ -42,7 +42,7 @@ This theorem implies that the matrix $\mathbf{A}$ is diagonalizable if and only 
 
 Consider the following example of a diagonalizable matrix $\mathbf{A}$
 
-```{r}
+```{r example-diagonalization-1}
 A <- matrix(c(9, 2, 0, -3, 2, -4, 1, 0, 3), 3, 3)
 A
 eigen_A <- eigen(A)
@@ -75,7 +75,7 @@ In class
 </div>
 
 
-```{r, echo = FALSE}
+```{r example-diagonalization-2, echo = FALSE}
 A <- diag(c(1, 2, 3))
 ```
 

@@ -5,7 +5,7 @@
 - [3 Blue 1 Brown -- Abstract vector spaces](https://www.3blue1brown.com/lessons/abstract-vector-spaces)
 
 
-```{r, echo = FALSE}
+```{r setup-14, echo = FALSE}
 library(tidyverse)
 library(dasc2594)
 ```
@@ -87,7 +87,7 @@ $$
 
 * Find solution to system of homogeneous system of equations $\mathbf{A} \mathbf{x} = \mathbf{0}$
 
-```{r}
+```{r example-homogeneous}
 A <- matrix(c(7, 2, -5, -2, 0, 2, 7, 3, -5, -4, 3, 7, 5, 9, -2), 3, 5)
 rref(cbind(A, 0))
 ```
@@ -165,7 +165,7 @@ $$
 
 ### Understanding the differerneces between the column space and the null space
 
-```{r, echo = FALSE, out.width="100%"}
+```{r image-null-vs-column, echo = FALSE, out.width="100%"}
 knitr::include_graphics(here::here("images", "null-column.jpg"))
 ```
 

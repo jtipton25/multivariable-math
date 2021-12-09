@@ -1,6 +1,6 @@
 # Linearly independent sets and bases
 
-```{r, message = FALSE}
+```{r setup-15, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 ```
@@ -78,7 +78,7 @@ b) As the vectors in $\mathcal{S}$ span $\mathcal{H}$, if there is a linearly de
 
 :::{.example}
 Find a basis for the col($\mathbf{A}$) where
-```{r}
+```{r example-basis-null-col-1}
 set.seed(2021)
 A <- matrix(sample(-9:9, 15, replace = TRUE), 5, 3)
 ```
@@ -95,7 +95,7 @@ $$
 
 :::{.example}
 Find a basis for the null($\mathbf{A}$) where
-```{r}
+```{r example-basis-null-col-2}
 set.seed(2021)
 A <- matrix(sample(-9:9, 15, replace = TRUE), 5, 3)
 ```
@@ -130,7 +130,7 @@ What is a basis for col($\mathbf{A}$) in terms of the vectors $\mathbf{a}_1, \ld
 :::{.example}
 
 The matrix $\mathbf{A}$ is row equivalent to the matrix $\mathbf{B}$
-```{r, echo = TRUE}
+```{r example-basis-null-col-3, echo = TRUE}
 A <- matrix(c(1, 3, 2, 5, 4, 12 , 8, 20, 0, 1, 1, 2, 2, 5, 3, 8, -1, 5, 2, 8), 4, 5)
 B <- rref(A)
 ```

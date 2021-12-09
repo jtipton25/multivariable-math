@@ -1,6 +1,6 @@
 # The chain rule
 
-```{r, message = FALSE}
+```{r setup-25, message = FALSE}
 library(tidyverse)
 library(plotly)
 library(dasc2594)

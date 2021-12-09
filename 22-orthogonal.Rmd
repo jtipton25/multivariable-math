@@ -3,7 +3,7 @@
 - [3 Blue 1 Brown -- The dot prodcut](https://www.3blue1brown.com/lessons/dot-products)
 
 
-```{r, message = FALSE}
+```{r setup-22, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 set.seed(2021)
@@ -31,7 +31,7 @@ $$
 $$
 
 * do by hand
-```{r}
+```{r example-inner-prod}
 u <- c(2, -3, 1)
 v <- c(4, -2, 3)
 # u'v
@@ -99,7 +99,7 @@ $$
 
 :::{.example}
 Distance between two 3-dimensional vectors
-```{r}
+```{r example-distance}
 u <- c(3, -5, 1)
 v <- c(4, 3, -2)
 sqrt(sum((u-v)^2))
@@ -144,7 +144,7 @@ where $arccos(\cdot)$ is inverse cosine function, which is `acos()` in `R`.
 **see example: `angles-as-n-gets-large.R`**
 
 :::{.example}
-```{r, echo = FALSE}
+```{r example-angles-1, echo = FALSE}
 u <- c(1, 4, 6)
 v <- c(-5, 2, 4)
 ```
@@ -180,23 +180,23 @@ $$
 which gives an angle of $\theta$ = `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2')))` radians between the vector $\mathbf{u}$ and $\mathbf{v}$. In degrees, this angle is $\theta$ = `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2')))` * $\frac{180}{\pi}$ = `r acos(sum(u*v) / ( norm(u, type = '2') *  norm(v, type = '2'))) * 180 / pi` degrees.
 
 In `R`, this angle can be found by finding the dot product of $\mathbf{u}$ and $\mathbf{v}$
-```{r}
+```{r example-angles-2}
 u <- c(1, 4, 6)
 v <- c(-5, 2, 4)
 sum(u * v) # dot product of u and v
 ```
 as well as the lengths of these two vectors
-```{r}
+```{r example-angles-3}
 sqrt(sum(u^2)) # length of u
 sqrt(sum(v^2)) # length of v
 ```
 Combining these, the angle $\theta$ can be calculate in radians as
-```{r}
+```{r example-angles-4}
 theta <- acos(sum(u * v) / (sqrt(sum(u^2)) * sqrt(sum(v^2))))
 theta
 ```
 and in degrees this is 
-```{r}
+```{r example-angles-5}
 theta * 180 / pi
 ```
 
@@ -355,27 +355,27 @@ $$
 \end{aligned}
 $$
 which is the least squares solution to the linear regression problem. For example, let `X` and `y` be defined as below
-```{r}
+```{r example-least-squares-1}
 X <- cbind(1, c(2, -1, 3, -4, 5, 7, -2, 3))
 y <- c(5, 3, 4, -9, 11, 12, -5, 6)
 ```
 Plotting this data shows the strong positive linear relationship
-```{r}
+```{r example-least-squares-2}
 # The first column is a basis for a constant term (the intercept)
 data.frame(x = X[, 2], y = y) %>% 
     ggplot(aes(x = x, y = y)) +
     geom_point()
 ```
 We can solve for the coefficients `beta` using the linear project theorem
-```{r}
+```{r example-least-squares-3}
 beta <- solve(t(X) %*% X) %*% t(X) %*% y
 ```
 and using this solution, solve for the projection $\mathbf{y}_{\mathcal{W}}$ of $\mathbf{y}$ onto $\mathbf{X}$
-```{r}
+```{r example-least-squares-4}
 y_W <- X %*% beta
 ```
 Plotting the projection $\mathbf{y}_{\mathcal{W}}$ gives
-```{r}
+```{r example-least-squares-5}
 # The first column is a basis for a constant term (the intercept)
 data.frame(x = X[, 2], y = y, y_W = y_W) %>% 
     ggplot(aes(x = x, y = y)) +
@@ -383,11 +383,11 @@ data.frame(x = X[, 2], y = y, y_W = y_W) %>%
     geom_line(aes(x = x, y = y_W))
 ```
 The complement of the project (called the **residuals** in statistics) is given by $\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}$
-```{r}
+```{r example-least-squares-6}
 y_W_perp <- y - y_W
 ```
 and can be visualized as the orthogonal projection using segments
-```{r}
+```{r example-least-squares-7}
 # The first column is a basis for a constant term (the intercept)
 data.frame(x = X[, 2], y = y, y_W = y_W) %>% 
     ggplot(aes(x = x, y = y)) +

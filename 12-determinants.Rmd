@@ -2,7 +2,7 @@
 
 - [3 Blue 1 Brown -- The determinant](https://www.3blue1brown.com/lessons/determinant)
 
-```{r, message = FALSE}
+```{r setup-12, message = FALSE}
 library(tidyverse)
 library(dasc2594)
 ```
@@ -45,7 +45,7 @@ $$
 where the last matrix is in reduced row echelon form and is the identity matrix which has determinant $\operatorname{det}(\mathbf{I}) = 1$. Therefore $-\frac{x}{18} = 1$ which implies that $x = -18$ so that $\operatorname{det}(\mathbf{A}) = -18$
 Let's check our answer in R
 
-````{r}
+````{r example-det-1}
 A <- matrix(c(5, 1, 3, -3), 2, 2)
 det(A)
 ````
@@ -76,7 +76,7 @@ $$
 where the last matrix is in reduced row echelon form and is the identity matrix which has determinant $\operatorname{det}(\mathbf{I}) = 1$. Therefore $\frac{x}{10} = 1$ which implies that $x = 10$ so that $\operatorname{det}(\mathbf{A}) = 10$
 Let's check our answer in R
 
-````{r}
+````{r example-det-2}
 A <- matrix(c(2, -3, 0, 5), 2, 2)
 det(A)
 ````
@@ -140,7 +140,7 @@ $$
 
 
 :::{.example}
-```{r, echo = FALSE}
+```{r  example-det-3, echo = FALSE}
 A <- matrix(c(1, 4,7, -3, 2, 4, 1, -3, 7), 3,3)
 ```
 
@@ -156,24 +156,24 @@ b) Find the cofactor $c_{23}$
 
 :::{.solution}
 Using Definition (\@ref(def:minor-cofactor)), the minor $\mathbf{A}_{-2-3}$ is the matrix $\mathbf{A}$ with the second row and third column removed. 
-```{r, echo = FALSE}
+```{r  example-det-4, echo = FALSE}
 A_minor_23 <- A[-2, -3]
 ```
 Thus, the minor $\mathbf{A}_{-2-3} = `r array_to_latex(A_minor_23)`$.
 
 In `R`, this can be found by first defining the matrix `A` as
-```{r}
+```{r example-det-5}
 A <- matrix(c(1, 4,7, -3, 2, 4, 1, -3, 7), 3,3)
 ```
 then finding the minor $\mathbf{A}_{-2-3}$ as
-```{r}
+```{r example-det-6}
 A_minor_23 <- A[-2, -3]
 ```
 
 The matrix cofactor $c_{23} = (-1)^{2+3} \det \mathbf{A}_{-2-3} = (-1) * ((`r A_minor_23[1,1]`)(`r A_minor_23[2,2]`) - (`r A_minor_23[1,2]`) (`r A_minor_23[2,1]`)) = -25$
 
 In `R`, given the minor `A_minor_23`, the cofactor is 
-```{r}
+```{r example-det-7}
 (-1)^(2+3) * det(A_minor_23)
 ```
 
@@ -217,7 +217,7 @@ The above theorem states that there are actually $2n$ ways to calculate the dete
 
 
 ::: {.example}
-```{r, echo = FALSE}
+```{r example-det-8, echo = FALSE}
 A <- matrix(c(5, 1, 2, 0, 3, -4, 2, 3, 1), 3, 3)
 ```
 Use the minor/cofactor definition to calculate the determinant of the $3 \times 3$ matrix $\mathbf{A} = `r array_to_latex(A)`$
@@ -241,7 +241,7 @@ $$
 $$
 This implies that we only need to find the cofactors $c_{11}$ and $c_{13}$ (but not $c_{12}$ because it gets multiplied by 0). Thus, the cofactor expansion along the first row only requires finding 2 cofactors $c_{11}$ and $c_{13}$.
 
-```{r, echo = FALSE}
+```{r example-det-9, echo = FALSE}
 A_minor_11 <- A[-1, -1]
 A_minor_13 <- A[-1, -3]
 ```
@@ -272,7 +272,7 @@ $$
 
 
 ::: {.example}
-```{r, echo = FALSE}
+```{r example-det-10, echo = FALSE}
 A <- matrix(c(2, -3, 2, 4, 0, 0, -1, 2, 4), 3, 3)
 ```
 Use the minor/cofactor definition to calculate the determinant of the $3 \times 3$ matrix $\mathbf{A} = `r array_to_latex(A)`$
@@ -291,7 +291,7 @@ $$
 $$
 This implies that we only need to find the cofactor $c_{12}$ (but not $c_{22}$ and $c_{32}$ because these get multiplied by 0). Thus, the cofactor expansion along the second column only requires finding the single cofactor $c_{12}$.
 
-```{r, echo = FALSE}
+```{r example-det-11, echo = FALSE}
 A_minor_12 <- A[-1, -2]
 ```
 The minor $\mathbf{A}_{-1-2}$ is the matrix $\mathbf{A}$ with the first row and second column removed and is $\mathbf{A}_{-1-2} = `r array_to_latex(A_minor_12)`$. The cofactor $c_{12}$ is given by 
