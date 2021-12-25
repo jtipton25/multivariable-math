@@ -39,6 +39,22 @@ is a **linear equation**.
 
 
 :::{.example}
+Show the equation for a line with slope $m$ and $y$-intercept $b$ is
+
+$$
+\begin{aligned}
+y & = m x + b,
+\end{aligned}
+$$
+
+is a linear equation.
+
+:::
+
+
+<div class="fold-solution">
+
+:::{.solution}
 The equation for a line with slope $m$ and $y$-intercept $b$ is
 
 $$
@@ -55,46 +71,179 @@ y - m x & = b,
 \end{aligned}
 $$
 
-where $a_1 = 1$, $a_2 = m$, $x_1 = y$ and $x_2 = x$.
+where $a_1 = 1$, $a_2 = m$, $x_1 = y$, $x_2 = x$, and $b=b$.
 :::
+</div>
 
 :::{.example}
-The equations
+Determine if the equation below is a linear equation
+
+$$
+\begin{aligned}
+\sqrt{19} x_1 & = (4 + \sqrt{2}) x_2 - x_3 - 9.
+\end{aligned}
+$$
+:::
+
+
+<div class="fold-solution">
+
+:::{.solution}
+The equation
 
 $$
 \begin{aligned}
 \sqrt{19} x_1 & = (4 + \sqrt{2}) x_2 - x_3 - 9
-& \mbox{ and } && 
--4 x_1 + 5 x_2 - 11 & = x_3
 \end{aligned}
 $$
 
-are both linear equations because they can be written as 
+is a linear equation because it can be written as 
 
 $$
 \begin{aligned}
-\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 & = - 9 
-& \mbox{ and } &&
--4 x_1 + 5 x_2 - x_3 & = 11,
+\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 & = - 9
 \end{aligned}
 $$
-
-respectively. 
+where $a_1 = \sqrt{19}$, $a_2 = 4 + \sqrt{2}$, $a_3 = 1$ and $b = -9$
 :::
+</div>
+
 
 :::{.example}
-The equations
+Determine if the equation below is a linear equation
+
+$$
+\begin{aligned}
+-4 x_1 + 5 x_2 - 11 & = x_3.
+\end{aligned}
+$$
+:::
+
+
+<div class="fold-solution">
+
+:::{.solution}
+The equation
+
+$$
+\begin{aligned}
+-4 x_1 + 5 x_2 - 11 & = x_3
+\end{aligned}
+$$
+is a linear equation because it can be written as 
+
+$$
+\begin{aligned}
+-4 x_1 + 5 x_2 - x_3 & = 11.
+\end{aligned}
+$$
+:::
+</div>
+
+
+:::{.example}
+Determine if the equation
 
 $$
 \begin{aligned}
 x_1 & = x_2^2 + 3
-& \mbox{ and } && 
+\end{aligned}
+$$
+
+is a linear equation.
+:::
+
+
+<div class="fold-solution">
+:::{solution}
+The equation
+
+$$
+\begin{aligned}
+x_1 & = x_2^2 + 3
+\end{aligned}
+$$
+
+is not a linear equation because it does not meet the form of \@ref(eq:linear) because the equation has a quadratic power of $x_2$.
+:::
+</div>
+
+
+:::{.example}
+Determine if the equation
+
+$$
+\begin{aligned}
 x_1 + x_2 - x_1 x_2 & = 16
 \end{aligned}
 $$
 
-are not linear equations because they do not meet the form of \@ref(eq:linear) (The first equation above has a quadratic power of $x_2$ and the second equation has a product of $x_1$ and $x_2$).
+is a linear equation.
 :::
+
+
+<div class="fold-solution">
+:::{solution}
+The equation
+
+$$
+\begin{aligned}
+x_1 + x_2 - x_1 x_2 & = 16
+\end{aligned}
+$$
+
+is not a linear equation because it does not meet the form of \@ref(eq:linear) because there is a product $x_1x_2$ of $x_1$ and $x_2$.
+:::
+</div>
+
+
+:::{.example}
+Is the following equation a linear equation?
+$x_1 + 3 x_1 x_2 = 5$
+:::
+
+<div class="fold-solution">
+:::{.solution}
+This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = 1$, $a_2 = 3$ and $b = 5$
+:::
+</div>
+
+
+:::{.example}
+Is the following equation a linear equation?
+$5x + 7y + 8z = 11.2$
+:::
+
+<div class="fold-solution">
+:::{.solution}
+This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 + a_3 x_3= b$ where $a_1 = 5$, $a_2 = 7$, $a_3 = 8$ and $b = 11.2$. The variables $x_1 = x$, $x_2 = y$, and $x_3 = z$.
+:::
+</div>
+
+:::{.example}
+Is the following equation a linear equation?
+$\frac{1}{4} y + \sqrt{2} z = 2^6$
+:::    
+    
+    
+<div class="fold-solution">
+:::{.solution}
+This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = \frac{1}{4}$, $a_2 = \sqrt{2}$, and $b = 2^6$. The variables $x_1 = y$, $x_2 = z$ enter the equation linearly.
+:::
+</div>
+
+:::{.example}
+Is the following equation a linear equation?
+$x + 4 y^2 = 9$
+:::
+
+
+<div class="fold-solution">
+:::{.solution}
+This is not a linear equation because the equation cannot be written as $a_1 x_1 + a_2 x_2 = b$ because $x_1 = x$ and $x_2 = y$ so that the equation is written as $a_1 x_1 + a_2 x_2^2 = b$ where $a_1 = 1$, $a_2 = 4$, and $b = 9$. The variable $x_2 = y$ enters the equation in a non-linear (quadratic) manner.
+:::
+</div>
+
 
 
 
@@ -108,14 +257,22 @@ A set of two or more linear equations that each contain the same set of variable
 
 
 :::{.example}
-The equations
-
+Determine if the following equations are a system of linear equations.
 
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
-4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9.
+4 x_1 & {}+{} & 5 x_2 & {}{} &     & {}={} & 9.
 \end{alignat*}
+:::
 
+
+<div class="fold-solution">
+:::{.solution}
+The set of equations
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}{} &     & {}={} & 9.
+\end{alignat*}
 are a system of equations. Note that in the second equation, the coefficient for $x_3$ is 0, meaning we could re-write the above example as
 
 \begin{alignat*}{4}
@@ -123,53 +280,33 @@ x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
 \end{alignat*}
 :::
-
-
-
-For the following, are these linear equations?
-
-:::{.example}
-$x_1 + 3 x_1 x_2 = 5$
-:::
-
-<div class="fold-solution">
-:::{.solution}
-This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = 1$, $a_2 = 3$ and $b = 5$
-:::
 </div>
 
 
-:::{.example}
-$5x + 7y + 8z = 11.2$
-:::
-
-<div class="fold-solution">
-:::{.solution}
-This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 + a_3 x_3= b$ where $a_1 = 5$, $a_2 = 7$, $a_3 = 8$ and $b = 11.2$. The variables $x_1 = x$, $x_2 = y$, and $x_3 = z$.
-:::
-</div>
 
 :::{.example}
-$\frac{1}{4} y + \sqrt{2} z = 2^6$
-:::    
-    
-    
-<div class="fold-solution">
-:::{.solution}
-This is a linear equation because the equation can be written as $a_1 x_1 + a_2 x_2 = b$ where $a_1 = \frac{1}{4}$, $a_2 = \sqrt{2}$, and $b = 2^6$. The variables $x_1 = y$, $x_2 = z$ enter the equation linearly.
-:::
-</div>
+Determine if the following equations are a system of linear equations.
 
-:::{.example}
-$x + 4 y^2 = 9$
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_1 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & \pi.
+\end{alignat*}
 :::
 
 
 <div class="fold-solution">
 :::{.solution}
-This is not a linear equation because the equation cannot be written as $a_1 x_1 + a_2 x_2 = b$ because $x_1 = x$ and $x_2 = y$ so that the equation is written as $a_1 x_1 + a_2 x_2^2 = b$ where $a_1 = 1$, $a_2 = 4$, and $b = 9$. The variable $x_2 = y$ enters the equation in a non-linear (quadratic) manner.
+The set of equations
+\begin{alignat*}{4}
+x_1   & {}+{} & 4 x_1 x_2 & {}-{} & x_3 & {}={} & 11 \\
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & \pi
+\end{alignat*}
+are not a linear system of equations. Note that in the first equation, there is a nonlinear term $x_1 x_2$ and because of this, equation one cannot be written in the form of \@ref(eq:linear).
 :::
 </div>
+
+For the remainder of the section on linear algebra, we will focus on linear equations.
+
 
 
 ### Solutions of linear systems
@@ -180,23 +317,38 @@ A fundamental question when presented with a linear system of equations is wheth
 A solution to a system means that there are numbers $(s_1, s_2, \ldots, s_n)$ that each of the variables $x_1, x_2, \ldots, x_n$ take that allow for all the equations to simultaneously be true.
 :::
 
+
+Checking if a vector is a solution is straightforward. You just substitute the values of the vector into the equations and see if the equations are satisfied. For example, if we consider the equation
+$$
+x_1 + x_2 = 7,
+$$
+the vector $\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}$ is a valid solution because 
+$$
+4 + 3 = 7
+$$
+but the vector $\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 5 \\ 9 \end{pmatrix}$ is not a valid solution because 
+$$
+5 + 9 \neq 7.
+$$
+
+
 ```{r system1, echo = FALSE}
 set.seed(1)
 A <- matrix(sample(-10:10, 6, replace = TRUE), 2, 3)
 ```
 
 :::{.example}
-Is $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}$ a solution to the system of equations
+Is $\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}$ a solution to the system of equations
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
-4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9.
+4 x_1 & {}+{} & 5 x_2 & {}+{} & 0 x_3 & {}={} & 9?
 \end{alignat*}
 :::
 
 
 <div class="fold-solution">
 :::{.solution}
-First, we plug in the values for $x_1 = 5$, $x_2 = 3$  and $x_3 = 6$. In the first equation, we get
+First, we plug in the values for $x_1 = 5$, $x_2 = 3$  and $x_3 = 6$ into the system of equations. In the first equation, we get
 \begin{alignat*}{4}
 5   & {}+{} & 4 \times 3 & {}-{} & 6 & {}={} & 11 \\
 \end{alignat*}
@@ -211,12 +363,158 @@ which is false because $35 \neq = 9$. Thus, $\mathbf{x} = \begin{pmatrix} 5 \\ 3
 
 
 :::{.example}
+Finding a solution a system of equations is more challenging. To find a solution, we add/subtract equations to cancel out variables. For example, consider the following example. You work in a small zoo. In the zoo, there are ostriches (one head, two legs, and no horns), one-horned rhinos (one head, four legs, and one horn), and two-horned antelope (one head, four legs, and two horns). Consider the following statements about the set of animals in the zoo:
+
+1) There are 12 heads
+
+2) There are 38 feet
+
+3) There are 10 horns
+
+Using this information, how many ostriches, rhinos, and antelope are there.
+
+:::
+
+
+
+<div class="fold-solution">
+
+:::{.solution}
+Letting the variable $o$ represent the number of ostriches, $r$ represent the number of rhinos, and $a$ represent the number of antelope. Then, the three statements above can be represented mathematically by the system of equations
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+2o  & {}+{} &  4r & {}+{} & 4a & {}={} & 38 \\
+0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10.
+\end{alignat*}
+$$
+Looking at the third equation, we can solve for the number of rhinos $r$ as $r = 10 - 2a$. Substituting this into the first two equations gives
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  10 - 2a  & {}+{} & a  & {}={} & 12 
+\end{alignat*}
+$$ 
+and 
+$$
+\begin{alignat*}{4}
+2o  & {}+{} &  4(10 - 2a) & {}+{} & 4a & {}={} & 38 
+\end{alignat*}
+$$ 
+The first equation from above gives $o + 10 - 2a + a = 12$ and solving for $o$ as a function of $a$ gives $o = 2 + a$. The second equation from above gives $2o + 4(10 - 2a) + 4a = 38$ and solving for $o$ as a function of $a$ gives $o = 2a - 1$. Combining both of these gives $2 + a = 2a - 1$ which gives $a = 3$ so that we know there are 3 antelope. Going backwards, we know that $o = 2a - 1$ and plugging in $a = 3$ gives $o = 5$ which tells us that there are 5 ostriches in the zoo. In addition, we know that $r = 10 - 2a$ and, when plugging in the value $a = 3$, we find that there are $r = 4$ rhinos at the zoo. 
+
+While solving for variables like above is possible, it can be quite difficult to keep track of the steps in the calculation. To simplify the process, one can add and subtract entire equations. For example, starting with the system of equations from the zoo example 
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+2o  & {}+{} &  4r & {}+{} & 4a & {}={} & 38 \\
+0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10.
+\end{alignat*}
+$$
+we can add and subtract entire equations. For example, take the second equation and subtract 2 times the first equation to get the system of equations
+
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+2o - 2 \times o & {}+{} &  4r - 2 \times r & {}+{} & 4a -2 \times a& {}={} & 38 - 2 \times 12\\
+0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10,
+\end{alignat*}
+$$
+which, when simplified is
+
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+0o  & {}+{} &  2r & {}+{} & 2a & {}={} & 14 \\
+0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10.
+\end{alignat*}
+$$
+Taking the third equation and subtracting $\frac{1}{2}$ times the second equation gives
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+0o  & {}+{} &  2r & {}+{} & 2a & {}={} & 14 \\
+0o  & {}+{} &  r - \frac{1}{2} \times 2r  & {}+{} & 2a - \frac{1}{2} \times 2a & {}={} & 10 - \frac{1}{2} \times 14,
+\end{alignat*}
+$$
+which is the system of equations
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+0o  & {}+{} &  2r & {}+{} & 2a & {}={} & 14 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3.
+\end{alignat*}
+$$
+Because $a = 3$, there are 3 antelope at the zoo. Now, we can use these systems of equations to subtract 2 times the third equation from the second equation to get
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+0o  & {}+{} &  2r & {}+{} & 2a - 2 \times a & {}={} & 14 - 2 \times 3 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+which gives the system of equations
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+0o  & {}+{} &  2r & {}+{} & 0a & {}={} & 8 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+and dividing the second equation by 2 gives
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
+0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+so that we know there are 4 rhinos in the zoo. Taking the first equation and subtracting the second equation gives the system of equations
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  r - r  & {}+{} & a  & {}={} & 12 - 4\\
+0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+which is 
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  0r  & {}+{} & a  & {}={} & 8 \\
+0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+and subtracting the third equation from the first equation gives
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  0r  & {}+{} & a - a  & {}={} & 8 - 3 \\
+0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+which gives
+$$
+\begin{alignat*}{4}
+o   & {}+{} &  0r  & {}+{} & 0a  & {}={} & 5 \\
+0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
+0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
+\end{alignat*}
+$$
+which tells us that there are $o=5$ ostriches at the zoo.
+:::
+
+</div>
+
+
+:::{.example #example-one-solution}
 Consider the system of equations
 
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7.
 \end{alignat*}
+Find a solution to the system of equations.
+
 :::
 
 <div class="fold-solution">
@@ -286,6 +584,9 @@ From this plot, it is clear that the solution to the system of equations is the 
 :::
 </div>
 
+
+**START BACK HERE WITH MORE EXAMPLES OF CANCELING VARIABLES**
+
 ### Types of solutions
 
 Typically, there are 3 cases for the solutions to a system of linear equations
@@ -350,13 +651,55 @@ x & {}+{} & 4 y & {}={} & 8 \\
 \end{alignat*}
 
 
-which gives $0 = -14$. From this, we see that we have reached a contradiction so there is not a solutoin to the system of equations.
+which gives $0 = -14$. From this, we see that we have reached a contradiction so there is not a solution to the system of equations.
 :::
 </div>
 
 #### There is one solution:
 
-We have seen this example in Figure \@ref(fig:one-solution).
+Consider the system of equations from example \@ref(exm:example-one-solution)
+
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x & {}+{} & 5 y & {}={} & 7.
+\end{alignat*}
+
+Where we found that there was a unique solution $x = -\frac{12}{11}$ and $y = \frac{25}{11}$. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were 
+
+\begin{alignat*}{3}
+x   & {}+{} & 4 y & {}={} & 8 \\
+4 x & {}+{} & 5 y & {}={} & 7,
+\end{alignat*}
+
+which, writing $y$ as a function of $x$ define two lines:
+
+1) $y = -\frac{x}{4} + 2$
+2) $y = -\frac{4x}{5} + \frac{7}{5}$
+
+Let's plot these equations in `R` and see what they look like
+
+```{r one-solution-revisited, fig.cap = "Linear system of equations with one solution"}
+# define some grid points to evaluate the line
+x <- seq(-2, 2, length = 1000)
+dat <- data.frame(
+    x = c(x, x),
+    y = c(-x / 4 + 2, - 4 / 5 * x + 7/5),
+    equation = factor(rep(c(1, 2), each = 1000))
+)
+glimpse(dat)
+
+dat %>%
+    ggplot(aes(x = x, y = y, color = equation, group = equation)) +
+    geom_line() +
+    scale_color_viridis_d(end = 0.8) +
+    # solution x = -12/11, y = 25/11
+    geom_point(aes(x = -12/11, y = 25/11), color = "red", size = 2) +
+    ggtitle("Linear system of equations")
+```
+
+From this plot, it is clear that the solution to the system of equations is the **point** where the two lines intersect!
+
+
 
 #### There are infinitely many solutions:
 
