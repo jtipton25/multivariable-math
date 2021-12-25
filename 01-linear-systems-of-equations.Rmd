@@ -381,125 +381,94 @@ Using this information, how many ostriches, rhinos, and antelope are there.
 
 :::{.solution}
 Letting the variable $o$ represent the number of ostriches, $r$ represent the number of rhinos, and $a$ represent the number of antelope. Then, the three statements above can be represented mathematically by the system of equations
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 2o  & {}+{} &  4r & {}+{} & 4a & {}={} & 38 \\
 0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10.
 \end{alignat*}
-$$
 Looking at the third equation, we can solve for the number of rhinos $r$ as $r = 10 - 2a$. Substituting this into the first two equations gives
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  10 - 2a  & {}+{} & a  & {}={} & 12 
 \end{alignat*}
-$$ 
 and 
-$$
 \begin{alignat*}{4}
 2o  & {}+{} &  4(10 - 2a) & {}+{} & 4a & {}={} & 38 
 \end{alignat*}
-$$ 
 The first equation from above gives $o + 10 - 2a + a = 12$ and solving for $o$ as a function of $a$ gives $o = 2 + a$. The second equation from above gives $2o + 4(10 - 2a) + 4a = 38$ and solving for $o$ as a function of $a$ gives $o = 2a - 1$. Combining both of these gives $2 + a = 2a - 1$ which gives $a = 3$ so that we know there are 3 antelope. Going backwards, we know that $o = 2a - 1$ and plugging in $a = 3$ gives $o = 5$ which tells us that there are 5 ostriches in the zoo. In addition, we know that $r = 10 - 2a$ and, when plugging in the value $a = 3$, we find that there are $r = 4$ rhinos at the zoo. 
 
 While solving for variables like above is possible, it can be quite difficult to keep track of the steps in the calculation. To simplify the process, one can add and subtract entire equations. For example, starting with the system of equations from the zoo example 
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 2o  & {}+{} &  4r & {}+{} & 4a & {}={} & 38 \\
 0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10.
 \end{alignat*}
-$$
 we can add and subtract entire equations. For example, take the second equation and subtract 2 times the first equation to get the system of equations
-
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 2o - 2 \times o & {}+{} &  4r - 2 \times r & {}+{} & 4a -2 \times a& {}={} & 38 - 2 \times 12\\
 0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10,
 \end{alignat*}
-$$
 which, when simplified is
-
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 0o  & {}+{} &  2r & {}+{} & 2a & {}={} & 14 \\
 0o  & {}+{} &  r  & {}+{} & 2a & {}={} & 10.
 \end{alignat*}
-$$
+
 Taking the third equation and subtracting $\frac{1}{2}$ times the second equation gives
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 0o  & {}+{} &  2r & {}+{} & 2a & {}={} & 14 \\
 0o  & {}+{} &  r - \frac{1}{2} \times 2r  & {}+{} & 2a - \frac{1}{2} \times 2a & {}={} & 10 - \frac{1}{2} \times 14,
 \end{alignat*}
-$$
 which is the system of equations
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 0o  & {}+{} &  2r & {}+{} & 2a & {}={} & 14 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3.
 \end{alignat*}
-$$
 Because $a = 3$, there are 3 antelope at the zoo. Now, we can use these systems of equations to subtract 2 times the third equation from the second equation to get
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 0o  & {}+{} &  2r & {}+{} & 2a - 2 \times a & {}={} & 14 - 2 \times 3 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 which gives the system of equations
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 0o  & {}+{} &  2r & {}+{} & 0a & {}={} & 8 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 and dividing the second equation by 2 gives
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r  & {}+{} & a  & {}={} & 12 \\
 0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 so that we know there are 4 rhinos in the zoo. Taking the first equation and subtracting the second equation gives the system of equations
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  r - r  & {}+{} & a  & {}={} & 12 - 4\\
 0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 which is 
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  0r  & {}+{} & a  & {}={} & 8 \\
 0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 and subtracting the third equation from the first equation gives
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  0r  & {}+{} & a - a  & {}={} & 8 - 3 \\
 0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 which gives
-$$
 \begin{alignat*}{4}
 o   & {}+{} &  0r  & {}+{} & 0a  & {}={} & 5 \\
 0o  & {}+{} &  r & {}+{} & 0a & {}={} & 4 \\
 0o  & {}+{} &  0r  & {}+{} & a & {}={} & 3, 
 \end{alignat*}
-$$
 which tells us that there are $o=5$ ostriches at the zoo.
 :::
 
@@ -513,6 +482,7 @@ Consider the system of equations
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7.
 \end{alignat*}
+
 Find a solution to the system of equations.
 
 :::
@@ -525,30 +495,24 @@ To find if a solution to this equation exists, we can do some algebra and take 4
 
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
-4 x - 4 * (x) & {}+{} & 5 y - 4 * (4y) & {}={} & 7 - 4 * (8),
+4 x - 4 \times (x) & {}+{} & 5 y - 4 \times (4y) & {}={} & 7 - 4 \times (8),
 \end{alignat*}
 where the part of the equations in ($\cdot$) is the top equation. This system of equations now simplifies to 
 \begin{alignat*}{3}
 x & {}+{} & 4 y & {}={} & 8 \\
 0 & {}+{} & - 11y & {}={} & -25,
 \end{alignat*}
-
 which gives $y = \frac{25}{11}$. Plugging this value into the top equation gives
-
 \begin{alignat*}{3}
 x & {}+{} & 4 \frac{25}{11} & {}={} & 8 \\
 0 & {}+{} & y & {}={} & \frac{25}{11},
 \end{alignat*}
-
 where we can solve $x = 8 - \frac{100}{11} = -\frac{12}{11}$ giving the solution of the form
-
 \begin{alignat*}{3}
 x & {}+{} & 0 & {}={} & -\frac{12}{11} \\
 0 & {}+{} & y & {}={} & \frac{25}{11},
 \end{alignat*}
-
 In this case, the system of equation has the solution $x = -\frac{12}{11}$ and $y = \frac{25}{11}$. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were 
-
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7,
@@ -609,7 +573,6 @@ x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 16 y & {}={} & 18.
 \end{alignat*}
 
-
 ```{r no-solution, fig.cap = "Linear system of equations with no solution"}
 # define some grid points to evaluate the line
 x <- seq(-2, 2, length = 1000)
@@ -642,9 +605,7 @@ To find if a solution to this equation exists, we can do some algebra and take 4
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x  - 4(x) & {}+{} & 16 y - 4\times (4 y) & {}={} & 18 - 4 \times (8).
 \end{alignat*}
-
 where the part of the equations in `()` is the top equation. This system of equations now simplifies to 
-
 \begin{alignat*}{3}
 x & {}+{} & 4 y & {}={} & 8 \\
 0 x & {}+{} &  0 y & {}={} & -14,
@@ -665,12 +626,10 @@ x   & {}+{} & 4 y & {}={} & 8 \\
 \end{alignat*}
 
 Where we found that there was a unique solution $x = -\frac{12}{11}$ and $y = \frac{25}{11}$. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were 
-
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 5 y & {}={} & 7,
 \end{alignat*}
-
 which, writing $y$ as a function of $x$ define two lines:
 
 1) $y = -\frac{x}{4} + 2$
@@ -704,11 +663,11 @@ From this plot, it is clear that the solution to the system of equations is the 
 #### There are infinitely many solutions:
 
 Consider the system of linear equations
-
 \begin{alignat*}{3}
 x   & {}+{} & 4 y & {}={} & 8 \\
 4 x & {}+{} & 16 y & {}={} & 32.
 \end{alignat*}
+
 
 ```{r infinite-solutions, fig.cap = "Linear system of equations with no solution"}
 # define some grid points to evaluate the line
@@ -735,31 +694,24 @@ Two linear systems of equations are called **equivalent** if both systems share 
 :::
 
 For example, the system of equations
-
 \begin{alignat*}{4}
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9
 \end{alignat*}
-
 and the system of equations
-
 \begin{alignat*}{4}
 2x_1   & {}+{} & 8 x_2 & {}-{} & 2 x_3 & {}={} & 22 \\
 8 x_1 & {}+{} & 10 x_2 & {}+{} & 4 x_3 & {}={} & 18.
 \end{alignat*}
-
-
 have the same solution set (the second set of equations is just 2 times the first set of equations).
 
 
 :::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
-
 \begin{alignat*}{3}
 4 x_1 & {}+{} & 5 x_2 & {}={} & 8 \\
 9 x_1 & {}-{} & 3 x_2 & {}={} & 4.
 \end{alignat*}
-
 :::
 
 
@@ -769,15 +721,11 @@ For the following system of equations, determine if a solution(s) exist and if s
 
 :::{.solution}
 Multiply the first equation by $\frac{1}{4}$ and the second equation by $\frac{1}{9}$ to get 
-
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
 x_1 & {}-{} &  \frac{1}{3}x_2 & {}={} & \frac{4}{9}.
 \end{alignat*}
-
-
 Subtract the first equation from the second equation
-
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
 0 & {}-{} &  (-\frac{1}{3} - \frac{5}{4}) x_2 & {}={} & \frac{4}{9} - 2,
@@ -787,21 +735,16 @@ which reduces to
 x_1 & {}+{} & \frac{5}{4} x_2 & {}={} & 2 \\
 0 & {}-{} &  -\frac{19}{12} x_2 & {}={} & -\frac{14}{9},
 \end{alignat*}
-
 so that, dividing both sides of the second equation by $-\frac{19}{12}$ gives $x_2 = \frac{56}{57}$. Plugging this value of $x_2$ into the first equation gives
-
 \begin{alignat*}{3}
 x_1 & {}+{} & \frac{5}{4} \left(\frac{56}{57}\right) & {}={} & 2 \\
 0 & {}-{} &   x_2 & {}={} & \frac{56}{57}
 \end{alignat*}
-
 and subtracting $\frac{5}{4} \frac{56}{57}$ from both sides of the first equation gives $x_1 = \frac{44}{57}$. You can check these solutions by verifying that the following two equations hold
-
 \begin{alignat*}{3}
 4 \left(\frac{44}{57}\right) & {}+{} & 5  \left(\frac{56}{57}\right) & {}={} & 8 \\
 9 \left(\frac{44}{57}\right) & {}-{} & 3 \left(\frac{56}{57}\right)& {}={} & 4
 \end{alignat*}
-
 which can be done in `R` using
 
 ```{r solution-example-1}
@@ -816,7 +759,6 @@ all.equal(9 * x1 - 3 * x2, 4)
 
 :::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
-
 \begin{alignat*}{4}
 7 x_1 & {}+{} & 3 x_2 & {}+{} & 4 x_3 & {}={} & 5\\
 4 x_1 & {}-{} & 5 x_2 &&        & {}={} & -2
@@ -830,43 +772,31 @@ For the following system of equations, determine if a solution(s) exist and if s
 
 :::{.solution}
 Multiply the first equation by $\frac{1}{7}$ and the second equation by $\frac{1}{4}$ to get 
-
 \begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
-x_1 & {}-{} & \frac{5}{4} x_2 & {}+{} & 0 x_3       & {}={} & \frac{-1}{2}
+x_1 & {}-{} & \frac{5}{4} x_2 & {}+{} & 0 x_3       & {}={} & \frac{-1}{2}.
 \end{alignat*}
-
 Subtract the first equation from the second equation
-
 \begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
-0 x_1 & {}+{} &  (-\frac{5}{4} - \frac{3}{7}) x_2 &{}+{}& -\frac{4}{7} x_3  & {}={} & - \frac{1}{2} - \frac{5}{7}
+0 x_1 & {}+{} &  (-\frac{5}{4} - \frac{3}{7}) x_2 &{}+{}& -\frac{4}{7} x_3  & {}={} & - \frac{1}{2} - \frac{5}{7},
 \end{alignat*}
-
 which reduces to 
-
 \begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
 0 & {}-{} &  -\frac{47}{28} x_2 &{}-{}& \frac{4}{7} x_3 & {}={} & -\frac{17}{14}.
 \end{alignat*}
-
 Next, divide the second equation by $\frac{-47}{28}$ gives 
-
 \begin{alignat*}{4}
 x_1 & {}+{} & \frac{3}{7} x_2 & {}+{} & \frac{4}{7} x_3 & {}={} & \frac{5}{7} \\
 0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47}.
 \end{alignat*}
-
-
 Then, take the first equation and subtract $-\frac{3}{7}$ times the second row to get
-
-
 \begin{alignat*}{4}
 x_1 & {}+{} & 0 x_2 & {}+{} & \frac{20}{47} x_3 & {}={} & \frac{19}{47} \\
-0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47}.
+0 & {}+{} & x_2 &{}+{}& \frac{16}{47} x_3 & {}={} & \frac{34}{47},
 \end{alignat*}
-
-Which gives the solution
+which gives the solution
 $x_1 + \frac{20}{47} x_3 = \frac{19}{47}$, $x_2 + \frac{16}{47} x_3 = \frac{34}{47}$, and $x_3 = x_3$ is a free variable.
 
 The solution can be checked in `R` using
@@ -886,7 +816,6 @@ all.equal(4 * x1 - 5 * x2 + 0 * x3, -2)
 
 :::{.example}
 For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
-
 \begin{alignat*}{3}
 4 x_1 & {}-{} & 2 x_2 & {}={} & 8\\
 2 x_1 & {}+{} & x_2 & {}={} & 7 \\
@@ -901,23 +830,18 @@ For the following system of equations, determine if a solution(s) exist and if s
 
 :::{.solution}
 Multiply the first equation by $\frac{1}{4}$, the second equation by $\frac{1}{2}$, and the third equation by $-\frac{1}{3}$ to get 
-
 \begin{alignat*}{3}
 x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 x_1 & {}+{} & \frac{1}{2} x_2 & {}={} & \frac{7}{2} \\
  x_1 & {}-{} & 2 x_2 &{}={} & -\frac{11}{3}
 \end{alignat*}
-
 Subtract the first equation from the second equation and also subtract the first equation from the third equation. Thus, we get
-
 \begin{alignat*}{3}
 x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 0 x_1 & {}+{} & x_2 & {}={} & \frac{3}{2} \\
 0 x_1 & {}-{} & \frac{3}{2} x_2 &{}={} & -\frac{17}{3}.
 \end{alignat*}
-
 Then, multiply the third equation by $-\frac{2}{3}$ to get
-
 \begin{alignat*}{3}
 x_1 & {}-{} & \frac{1}{2} x_2 & {}={} & 2\\
 0 x_1 & {}+{} & x_2 & {}={} & 3 \\
@@ -1075,7 +999,6 @@ Consider the linear system of equations
 x_1   & {}+{} & 4 x_2 & {}-{} & x_3 & {}={} & 11 \\
 4 x_1 & {}+{} & 5 x_2 & {}+{} & 2 x_3 & {}={} & 9.
 \end{alignat*}
-
 The augmented matrix representation of this system of linear equations is given by the matrix
 $$
 \begin{aligned}
