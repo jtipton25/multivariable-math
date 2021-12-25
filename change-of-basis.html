@@ -351,8 +351,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="https://www.3blue1brown.com/lessons/change-of-basis">3 Blue 1 Brown – Change of basis</a></li>
 </ul>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="change-of-basis.html#cb255-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb255-2"><a href="change-of-basis.html#cb255-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="change-of-basis.html#cb258-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb258-2"><a href="change-of-basis.html#cb258-2"></a><span class="kw">library</span>(dasc2594)</span></code></pre></div>
 <p>Consider two bases <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> and <span class="math inline">\(\mathcal{C} = \{ \mathbf{c}_1, \ldots, \mathbf{c}_n \}\)</span> for a vector space <span class="math inline">\(\mathcal{V}\)</span>. If we have a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates in <span class="math inline">\(\mathcal{B}\)</span>, what are the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to <span class="math inline">\(\mathcal{C}\)</span>?</p>
 <ul>
 <li>Recall: we know how to change from the standard coordinates to the basis <span class="math inline">\(\mathcal{B}\)</span>. If <span class="math inline">\(\mathbf{x}\)</span> is a vector in the standard coordinates and <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \ldots &amp; \mathbf{b}_n \end{pmatrix}\)</span> is a matrix with columns given by the basis <span class="math inline">\(\mathbf{B}\)</span>, the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> are
@@ -371,15 +371,15 @@ and, as a consequence, given a vector <span class="math inline">\(\left[\mathbf{
 <p>Notice that change of coordinates is a linear transformation from <span class="math inline">\(\mathcal{B}\)</span> to <span class="math inline">\(\mathcal{C}\)</span> with transformation matrix <span class="math inline">\(\mathbf{A}\)</span>. Despite the more complex notation, this is just another linear transformation [<a href="https://www.youtube.com/watch?v=VGhij2qmOs4">link</a>].</p>
 <p>:::{.example}
 Show the change of basis from the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> to the basis <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span>. To do this, represent the columns that make up the basis <span class="math inline">\(\mathcal{B}\)</span> as the matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \frac{1}{2} &amp; -1 \\ 1 &amp; 0 \end{pmatrix}\)</span> and represent the columns that make up the basis <span class="math inline">\(\mathcal{C}\)</span> as the matrix <span class="math inline">\(\mathbf{C} = \begin{pmatrix} 0 &amp; \frac{1}{2} \\ 1 &amp; -\frac{1}{2} \end{pmatrix}\)</span>. Then, the change of basis can be represented as</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="change-of-basis.html#cb256-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb256-2"><a href="change-of-basis.html#cb256-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb256-3"><a href="change-of-basis.html#cb256-3"></a></span>
-<span id="cb256-4"><a href="change-of-basis.html#cb256-4"></a>p &lt;-<span class="st"> </span><span class="kw">plot_change_basis</span>(B, C)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="change-of-basis.html#cb259-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb259-2"><a href="change-of-basis.html#cb259-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb259-3"><a href="change-of-basis.html#cb259-3"></a></span>
+<span id="cb259-4"><a href="change-of-basis.html#cb259-4"></a>p &lt;-<span class="st"> </span><span class="kw">plot_change_basis</span>(B, C)</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/change-basis-animation-1.gif" /><!-- --></p>
 <p>which can be represented with the static images</p>
 <p><img src="multivariable-math_files/figure-html/change-basis-static-1.png" width="672" /></p>
 <p>The change of basis represents a linear transformation. When previously discussing linear transformations in Chapter <a href="linear-transformations.html#linear-transformations">6</a>, we considered a linear transformation from the standard basis <span class="math inline">\(\mathcal{I}\)</span> defined by the basis vectors <span class="math inline">\(\left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}\)</span> with the vectors represented as the columns of the identity matrix <span class="math inline">\(\mathbf{I}\)</span>. We can consider a change of basis as two consecutive linear transformations. First, a linear transformation from the basis <span class="math inline">\(\mathcal{B}\)</span> to the standard basis <span class="math inline">\(\mathcal{I}\)</span> and then a linear transformation from the standard basis <span class="math inline">\(\mathcal{I}\)</span> to the basis <span class="math inline">\(\mathcal{C}\)</span>. This can be represented using the following example code:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="change-of-basis.html#cb257-1"></a>p &lt;-<span class="st"> </span><span class="kw">plot_change_basis</span>(B, C, <span class="dt">plot_standard_basis =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="change-of-basis.html#cb260-1"></a>p &lt;-<span class="st"> </span><span class="kw">plot_change_basis</span>(B, C, <span class="dt">plot_standard_basis =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/change-basis-I-animation-1.gif" /><!-- --></p>
 <p><img src="multivariable-math_files/figure-html/change-basis-I-static-1.png" width="672" /></p>
 <div id="changing-coordinates-between-different-bases" class="section level2">
@@ -393,14 +393,14 @@ Show the change of basis from the basis <span class="math inline">\(\mathcal{B} 
 <p><strong>Draw diagram</strong></p>
 <div class="fold-solution">
 <div class="example">
-<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 19.1  </strong></span>Working with the same bases <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> and <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span> from the previous example, Let <span class="math inline">\(\left[\mathbf{x}\right]_B = \begin{pmatrix} -3/2 \\ 1/2 \end{pmatrix}\)</span> be the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} 1/2 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span>. Find</p>
+<p><span id="exm:unlabeled-div-61" class="example"><strong>Example 19.1  </strong></span>Working with the same bases <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> and <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span> from the previous example, Let <span class="math inline">\(\left[\mathbf{x}\right]_B = \begin{pmatrix} -3/2 \\ 1/2 \end{pmatrix}\)</span> be the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} 1/2 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span>. Find</p>
 <ol style="list-style-type: decimal">
 <li>the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the standard basis and</li>
 <li>the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>.</li>
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-56" class="solution"><em>Solution</em>. </span>Here we solve the two questions from the example above.</p>
+<p><span id="unlabeled-div-62" class="solution"><em>Solution</em>. </span>Here we solve the two questions from the example above.</p>
 <ol style="list-style-type: decimal">
 <li>Recall that the coordinates <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> mean that the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as a linear combination of the basis vectors <span class="math inline">\(\mathbf{b}_1\)</span> and <span class="math inline">\(\mathbf{b}_2\)</span> with coefficients given by the elements in <span class="math inline">\(\left[\mathbf{x}\right]_B = \begin{pmatrix} \left[x_1\right]_B \\ \left[x_2\right]_B \end{pmatrix}\)</span>. This results in the equation</li>
 </ol>
@@ -455,36 +455,36 @@ Another way to change coordinates is to change directly from basis <span class="
 \]</span>
 so that one can change coordinates from the basis <span class="math inline">\(\mathcal{B}\)</span> to the basis <span class="math inline">\(\mathcal{C}\)</span> using the linear transformation defined by the matrix multiplication <span class="math inline">\(\mathbf{C}^{-1} \mathbf{B}\)</span>.</p>
 <p>In <code>R</code>, first define the basis matrices <code>B</code> and <code>C</code> and the coordinates <code>x_b</code> of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="change-of-basis.html#cb258-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb258-2"><a href="change-of-basis.html#cb258-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb258-3"><a href="change-of-basis.html#cb258-3"></a>x_b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="change-of-basis.html#cb261-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb261-2"><a href="change-of-basis.html#cb261-2"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">-1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb261-3"><a href="change-of-basis.html#cb261-3"></a>x_b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
 <p>1) The coordinates <code>x</code> with respect to the standard basis is</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="change-of-basis.html#cb259-1"></a>x &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>x_b</span>
-<span id="cb259-2"><a href="change-of-basis.html#cb259-2"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="change-of-basis.html#cb262-1"></a>x &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>x_b</span>
+<span id="cb262-2"><a href="change-of-basis.html#cb262-2"></a>x</span></code></pre></div>
 <pre><code>##       [,1]
 ## [1,] -1.25
 ## [2,] -1.50</code></pre>
 <p>2) The coordinates <code>x_c</code> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> can be found by calculating the matrix inverse <code>C_inv</code> and then using the matrix inverse to calculate the coordinates with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> as</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="change-of-basis.html#cb261-1"></a>C_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(C)</span>
-<span id="cb261-2"><a href="change-of-basis.html#cb261-2"></a>x_c &lt;-<span class="st"> </span>C_inv <span class="op">%*%</span><span class="st"> </span>x</span>
-<span id="cb261-3"><a href="change-of-basis.html#cb261-3"></a>x_c</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="change-of-basis.html#cb264-1"></a>C_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(C)</span>
+<span id="cb264-2"><a href="change-of-basis.html#cb264-2"></a>x_c &lt;-<span class="st"> </span>C_inv <span class="op">%*%</span><span class="st"> </span>x</span>
+<span id="cb264-3"><a href="change-of-basis.html#cb264-3"></a>x_c</span></code></pre></div>
 <pre><code>##       [,1]
 ## [1,] -4.25
 ## [2,] -1.25</code></pre>
 <p>Done as a single transformation, the linear transformation is defined as</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="change-of-basis.html#cb263-1"></a>B <span class="op">%*%</span><span class="st"> </span>C_inv</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="change-of-basis.html#cb266-1"></a>B <span class="op">%*%</span><span class="st"> </span>C_inv</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,] -0.5    1
 ## [2,]  1.0    2</code></pre>
 <p>which gives the coordinates</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="change-of-basis.html#cb265-1"></a>B <span class="op">%*%</span><span class="st"> </span>C_inv <span class="op">%*%</span><span class="st"> </span>x_b</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="change-of-basis.html#cb268-1"></a>B <span class="op">%*%</span><span class="st"> </span>C_inv <span class="op">%*%</span><span class="st"> </span>x_b</span></code></pre></div>
 <pre><code>##       [,1]
 ## [1,]  1.25
 ## [2,] -0.50</code></pre>
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-243" class="example"><strong>Example 19.2  </strong></span>3-d change of basis</p>
+<p><span id="exm:unlabeled-div-252" class="example"><strong>Example 19.2  </strong></span>3-d change of basis</p>
 </div>
 
 </div>

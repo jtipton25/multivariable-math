@@ -348,15 +348,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="the-gradient-and-directional-derivatives" class="section level1">
 <h1><span class="header-section-number">Chapter 27</span> The gradient and directional derivatives</h1>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="the-gradient-and-directional-derivatives.html#cb380-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb380-2"><a href="the-gradient-and-directional-derivatives.html#cb380-2"></a><span class="kw">library</span>(plotly)</span>
-<span id="cb380-3"><a href="the-gradient-and-directional-derivatives.html#cb380-3"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb380-4"><a href="the-gradient-and-directional-derivatives.html#cb380-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="the-gradient-and-directional-derivatives.html#cb383-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb383-2"><a href="the-gradient-and-directional-derivatives.html#cb383-2"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb383-3"><a href="the-gradient-and-directional-derivatives.html#cb383-3"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb383-4"><a href="the-gradient-and-directional-derivatives.html#cb383-4"></a><span class="kw">set.seed</span>(<span class="dv">2021</span>)</span></code></pre></div>
 <p>Partial derivatives tell about how a rate of function changes in a particular direction (in the direction of a coordinate).</p>
 <p>Think about trying to find the maximum of a real-valued function (finding the minimum is equivalent to finding the maximum of the negative value of the function). Finding the maximum of a function is analogous to hiking up a mountain and trying to find the highest peak.</p>
 <p>Suppose you are standing on a mountain surface at the point <span class="math inline">\((x, y, z)\)</span> in 3-dimensions where <span class="math inline">\(z = f(x, y)\)</span> is the function that gives the height of the mountain at location <span class="math inline">\((x, y)\)</span>. If you are standing at the point <span class="math inline">\((a, b)\)</span> in the <span class="math inline">\((x, y)\)</span> coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the <strong>directional derivative</strong> and the <strong>gradient</strong>.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-311" class="definition"><strong>Definition 27.1  (Directional Derivative) </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
+<p><span id="def:unlabeled-div-320" class="definition"><strong>Definition 27.1  (Directional Derivative) </strong></span>Given a function <span class="math inline">\(f(x,y)\)</span> that is differentiable at <span class="math inline">\((a, b)\)</span> and a unit vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\)</span> in the <span class="math inline">\(x-y\)</span> plane, the <strong>directional derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> in the direction of <span class="math inline">\(\mathbf{v}\)</span> is
 <span class="math display">\[
 \begin{aligned}
 D_{\mathbf{v}} f(a, b) = \lim_{h \rightarrow 0} \frac{f(a + h v_1, b + h v_2) - f(a, b)}{h}
@@ -392,65 +392,65 @@ D_{\mathbf{v}} f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial 
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-312" class="example"><strong>Example 27.1  </strong></span>Compute the directional derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((2, 1)\)</span>.</p>
+<p><span id="exm:unlabeled-div-321" class="example"><strong>Example 27.1  </strong></span>Compute the directional derivative of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> in the direction of <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \frac{1}{\sqrt{3}}, \frac{\sqrt{2}}{\sqrt{3}} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{\sqrt{2}}, - \frac{1}{\sqrt{2}} \end{pmatrix}\)</span> at the point <span class="math inline">\((2, 1)\)</span>.</p>
 <ul>
 <li>calculate the directional derivatives</li>
 <li>graph the directional derivatives using contour plots and segments</li>
 </ul>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="the-gradient-and-directional-derivatives.html#cb381-1"></a><span class="co"># the function</span></span>
-<span id="cb381-2"><a href="the-gradient-and-directional-derivatives.html#cb381-2"></a>target_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
-<span id="cb381-3"><a href="the-gradient-and-directional-derivatives.html#cb381-3"></a>        <span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>y<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb381-4"><a href="the-gradient-and-directional-derivatives.html#cb381-4"></a>}</span>
-<span id="cb381-5"><a href="the-gradient-and-directional-derivatives.html#cb381-5"></a></span>
-<span id="cb381-6"><a href="the-gradient-and-directional-derivatives.html#cb381-6"></a><span class="co"># the gradient function</span></span>
-<span id="cb381-7"><a href="the-gradient-and-directional-derivatives.html#cb381-7"></a>gradient_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
-<span id="cb381-8"><a href="the-gradient-and-directional-derivatives.html#cb381-8"></a>        <span class="kw">c</span>(<span class="dv">6</span><span class="op">*</span>x, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>y)</span>
-<span id="cb381-9"><a href="the-gradient-and-directional-derivatives.html#cb381-9"></a>}</span>
-<span id="cb381-10"><a href="the-gradient-and-directional-derivatives.html#cb381-10"></a></span>
-<span id="cb381-11"><a href="the-gradient-and-directional-derivatives.html#cb381-11"></a><span class="co"># define the unit vectors u and v</span></span>
-<span id="cb381-12"><a href="the-gradient-and-directional-derivatives.html#cb381-12"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">3</span>), <span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>))</span>
-<span id="cb381-13"><a href="the-gradient-and-directional-derivatives.html#cb381-13"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">2</span>), <span class="dv">-1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">2</span>))</span>
-<span id="cb381-14"><a href="the-gradient-and-directional-derivatives.html#cb381-14"></a></span>
-<span id="cb381-15"><a href="the-gradient-and-directional-derivatives.html#cb381-15"></a><span class="co"># create a set of gridpoints for plotting the function</span></span>
-<span id="cb381-16"><a href="the-gradient-and-directional-derivatives.html#cb381-16"></a>N &lt;-<span class="st"> </span><span class="dv">50</span></span>
-<span id="cb381-17"><a href="the-gradient-and-directional-derivatives.html#cb381-17"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> N)</span>
-<span id="cb381-18"><a href="the-gradient-and-directional-derivatives.html#cb381-18"></a>y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> N)</span>
-<span id="cb381-19"><a href="the-gradient-and-directional-derivatives.html#cb381-19"></a></span>
-<span id="cb381-20"><a href="the-gradient-and-directional-derivatives.html#cb381-20"></a>dat &lt;-<span class="st"> </span><span class="kw">expand_grid</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y) <span class="op">%&gt;%</span></span>
-<span id="cb381-21"><a href="the-gradient-and-directional-derivatives.html#cb381-21"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">target_fun</span>(x, y))</span>
-<span id="cb381-22"><a href="the-gradient-and-directional-derivatives.html#cb381-22"></a></span>
-<span id="cb381-23"><a href="the-gradient-and-directional-derivatives.html#cb381-23"></a><span class="co"># define the point (a, b)</span></span>
-<span id="cb381-24"><a href="the-gradient-and-directional-derivatives.html#cb381-24"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb381-25"><a href="the-gradient-and-directional-derivatives.html#cb381-25"></a>b &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb381-26"><a href="the-gradient-and-directional-derivatives.html#cb381-26"></a></span>
-<span id="cb381-27"><a href="the-gradient-and-directional-derivatives.html#cb381-27"></a><span class="co"># directional derivative of f in the direction of u</span></span>
-<span id="cb381-28"><a href="the-gradient-and-directional-derivatives.html#cb381-28"></a>Du_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>u)</span>
-<span id="cb381-29"><a href="the-gradient-and-directional-derivatives.html#cb381-29"></a>Du_ab</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="the-gradient-and-directional-derivatives.html#cb384-1"></a><span class="co"># the function</span></span>
+<span id="cb384-2"><a href="the-gradient-and-directional-derivatives.html#cb384-2"></a>target_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb384-3"><a href="the-gradient-and-directional-derivatives.html#cb384-3"></a>        <span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>y<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb384-4"><a href="the-gradient-and-directional-derivatives.html#cb384-4"></a>}</span>
+<span id="cb384-5"><a href="the-gradient-and-directional-derivatives.html#cb384-5"></a></span>
+<span id="cb384-6"><a href="the-gradient-and-directional-derivatives.html#cb384-6"></a><span class="co"># the gradient function</span></span>
+<span id="cb384-7"><a href="the-gradient-and-directional-derivatives.html#cb384-7"></a>gradient_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
+<span id="cb384-8"><a href="the-gradient-and-directional-derivatives.html#cb384-8"></a>        <span class="kw">c</span>(<span class="dv">6</span><span class="op">*</span>x, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>y)</span>
+<span id="cb384-9"><a href="the-gradient-and-directional-derivatives.html#cb384-9"></a>}</span>
+<span id="cb384-10"><a href="the-gradient-and-directional-derivatives.html#cb384-10"></a></span>
+<span id="cb384-11"><a href="the-gradient-and-directional-derivatives.html#cb384-11"></a><span class="co"># define the unit vectors u and v</span></span>
+<span id="cb384-12"><a href="the-gradient-and-directional-derivatives.html#cb384-12"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">3</span>), <span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>))</span>
+<span id="cb384-13"><a href="the-gradient-and-directional-derivatives.html#cb384-13"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">2</span>), <span class="dv">-1</span> <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">2</span>))</span>
+<span id="cb384-14"><a href="the-gradient-and-directional-derivatives.html#cb384-14"></a></span>
+<span id="cb384-15"><a href="the-gradient-and-directional-derivatives.html#cb384-15"></a><span class="co"># create a set of gridpoints for plotting the function</span></span>
+<span id="cb384-16"><a href="the-gradient-and-directional-derivatives.html#cb384-16"></a>N &lt;-<span class="st"> </span><span class="dv">50</span></span>
+<span id="cb384-17"><a href="the-gradient-and-directional-derivatives.html#cb384-17"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> N)</span>
+<span id="cb384-18"><a href="the-gradient-and-directional-derivatives.html#cb384-18"></a>y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> N)</span>
+<span id="cb384-19"><a href="the-gradient-and-directional-derivatives.html#cb384-19"></a></span>
+<span id="cb384-20"><a href="the-gradient-and-directional-derivatives.html#cb384-20"></a>dat &lt;-<span class="st"> </span><span class="kw">expand_grid</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y) <span class="op">%&gt;%</span></span>
+<span id="cb384-21"><a href="the-gradient-and-directional-derivatives.html#cb384-21"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">z =</span> <span class="kw">target_fun</span>(x, y))</span>
+<span id="cb384-22"><a href="the-gradient-and-directional-derivatives.html#cb384-22"></a></span>
+<span id="cb384-23"><a href="the-gradient-and-directional-derivatives.html#cb384-23"></a><span class="co"># define the point (a, b)</span></span>
+<span id="cb384-24"><a href="the-gradient-and-directional-derivatives.html#cb384-24"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb384-25"><a href="the-gradient-and-directional-derivatives.html#cb384-25"></a>b &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb384-26"><a href="the-gradient-and-directional-derivatives.html#cb384-26"></a></span>
+<span id="cb384-27"><a href="the-gradient-and-directional-derivatives.html#cb384-27"></a><span class="co"># directional derivative of f in the direction of u</span></span>
+<span id="cb384-28"><a href="the-gradient-and-directional-derivatives.html#cb384-28"></a>Du_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>u)</span>
+<span id="cb384-29"><a href="the-gradient-and-directional-derivatives.html#cb384-29"></a>Du_ab</span></code></pre></div>
 <pre><code>## [1] 8.561196</code></pre>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="the-gradient-and-directional-derivatives.html#cb383-1"></a>Dv_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>v)</span>
-<span id="cb383-2"><a href="the-gradient-and-directional-derivatives.html#cb383-2"></a>Dv_ab</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="the-gradient-and-directional-derivatives.html#cb386-1"></a>Dv_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>v)</span>
+<span id="cb386-2"><a href="the-gradient-and-directional-derivatives.html#cb386-2"></a>Dv_ab</span></code></pre></div>
 <pre><code>## [1] 7.071068</code></pre>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="the-gradient-and-directional-derivatives.html#cb385-1"></a>q &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb385-2"><a href="the-gradient-and-directional-derivatives.html#cb385-2"></a>Dq_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>q)</span>
-<span id="cb385-3"><a href="the-gradient-and-directional-derivatives.html#cb385-3"></a>Dq_ab</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="the-gradient-and-directional-derivatives.html#cb388-1"></a>q &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb388-2"><a href="the-gradient-and-directional-derivatives.html#cb388-2"></a>Dq_ab &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">gradient_fun</span>(a, b) <span class="op">*</span><span class="st"> </span>q)</span>
+<span id="cb388-3"><a href="the-gradient-and-directional-derivatives.html#cb388-3"></a>Dq_ab</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="the-gradient-and-directional-derivatives.html#cb387-1"></a><span class="co"># generate the plot</span></span>
-<span id="cb387-2"><a href="the-gradient-and-directional-derivatives.html#cb387-2"></a><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
-<span id="cb387-3"><a href="the-gradient-and-directional-derivatives.html#cb387-3"></a><span class="st">        </span><span class="kw">geom_contour</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb387-4"><a href="the-gradient-and-directional-derivatives.html#cb387-4"></a><span class="st">        </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b)) <span class="op">+</span></span>
-<span id="cb387-5"><a href="the-gradient-and-directional-derivatives.html#cb387-5"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span>u[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Du_ab, <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span>u[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Du_ab), </span>
-<span id="cb387-6"><a href="the-gradient-and-directional-derivatives.html#cb387-6"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>))) <span class="op">+</span></span>
-<span id="cb387-7"><a href="the-gradient-and-directional-derivatives.html#cb387-7"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span>v[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Dv_ab, <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span>v[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Dv_ab), </span>
-<span id="cb387-8"><a href="the-gradient-and-directional-derivatives.html#cb387-8"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
-<span id="cb387-9"><a href="the-gradient-and-directional-derivatives.html#cb387-9"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">1</span>], <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">2</span>]), </span>
-<span id="cb387-10"><a href="the-gradient-and-directional-derivatives.html#cb387-10"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="the-gradient-and-directional-derivatives.html#cb390-1"></a><span class="co"># generate the plot</span></span>
+<span id="cb390-2"><a href="the-gradient-and-directional-derivatives.html#cb390-2"></a><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">z =</span> z)) <span class="op">+</span></span>
+<span id="cb390-3"><a href="the-gradient-and-directional-derivatives.html#cb390-3"></a><span class="st">        </span><span class="kw">geom_contour</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb390-4"><a href="the-gradient-and-directional-derivatives.html#cb390-4"></a><span class="st">        </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b)) <span class="op">+</span></span>
+<span id="cb390-5"><a href="the-gradient-and-directional-derivatives.html#cb390-5"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span>u[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Du_ab, <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span>u[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Du_ab), </span>
+<span id="cb390-6"><a href="the-gradient-and-directional-derivatives.html#cb390-6"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>))) <span class="op">+</span></span>
+<span id="cb390-7"><a href="the-gradient-and-directional-derivatives.html#cb390-7"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span>v[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Dv_ab, <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span>v[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Dv_ab), </span>
+<span id="cb390-8"><a href="the-gradient-and-directional-derivatives.html#cb390-8"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
+<span id="cb390-9"><a href="the-gradient-and-directional-derivatives.html#cb390-9"></a><span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">xend =</span> a <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">1</span>], <span class="dt">yend =</span> b <span class="op">+</span><span class="st"> </span><span class="kw">gradient_fun</span>(a, b)[<span class="dv">2</span>]), </span>
+<span id="cb390-10"><a href="the-gradient-and-directional-derivatives.html#cb390-10"></a>                     <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;in&quot;</span>)), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/example-directional-derivative-1-1.png" width="672" /></p>
 </div>
 <div id="the-gradient" class="section level2">
 <h2><span class="header-section-number">27.1</span> The Gradient</h2>
 <p>The directional derivative is a dot product of the partial derivatives and a unit vector. The gradient is similar, but rather than return a single value (a number), the gradient returns a vector at a point <span class="math inline">\((a, b)\)</span>.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-313" class="definition"><strong>Definition 27.3  (The Gradient) </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
+<p><span id="def:unlabeled-div-322" class="definition"><strong>Definition 27.3  (The Gradient) </strong></span>Let <span class="math inline">\(f(x, y)\)</span> be a differentiable function at <span class="math inline">\((a, b)\)</span>. Then, the gradient of <span class="math inline">\(f\)</span> at <span class="math inline">\((a, b)\)</span> is
 <span class="math display">\[
 \begin{aligned}
 \nabla f(a, b) &amp; = \begin{pmatrix} \frac{\partial f(x, y)}{\partial x}|_{(x,y) = (a, b)} &amp; \frac{\partial f(x, y)}{\partial y}|_{(x,y) = (a, b)} \end{pmatrix} \\
@@ -468,7 +468,7 @@ D_{\mathbf{v}} f(a, b) &amp; = \nabla f(a, b) \cdot \mathbf{v} \\
 \]</span>
 the directional derivative is the dot product of the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b)\)</span> with the unit vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-314" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
+<p><span id="exm:unlabeled-div-323" class="example"><strong>Example 27.2  </strong></span>Compute the gradient of <span class="math inline">\(f(x, y) = 3x^2 + y^2\)</span> at the point <span class="math inline">\((3, 1)\)</span>.</p>
 <ul>
 <li>calculate the gradient</li>
 <li>graph the gradient using contour plots and segments</li>
@@ -484,7 +484,7 @@ the directional derivative is the dot product of the gradient <span class="math 
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-315" class="example"><strong>Example 27.3  </strong></span>Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
+<p><span id="exm:unlabeled-div-324" class="example"><strong>Example 27.3  </strong></span>Consider the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^2\)</span>. At the point <span class="math inline">\((3, 1)\)</span>, what is the direction of steepest descent? Steepest ascent?</p>
 <ul>
 <li>graph the function as contours and plot the gradient as a segment</li>
 </ul>
@@ -505,7 +505,7 @@ which is only true if the gradient <span class="math inline">\(\nabla f(a, b)\)<
 \end{aligned}
 \]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-316" class="example"><strong>Example 27.4  </strong></span>For the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^3\)</span>, find a vector orthogonal to the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b) = (2, 1)\)</span>.</p>
+<p><span id="exm:unlabeled-div-325" class="example"><strong>Example 27.4  </strong></span>For the function <span class="math inline">\(f(x, y) = 3x^2 - 2xy + y^3\)</span>, find a vector orthogonal to the gradient <span class="math inline">\(\nabla f(a, b)\)</span> at the point <span class="math inline">\((a, b) = (2, 1)\)</span>.</p>
 </div>
 </div>
 <div id="the-gradient-in-higher-dimensions" class="section level3">

@@ -372,7 +372,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-equations" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Linear equations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-73" class="definition"><strong>Definition 2.1  (Linear Equations) </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
+<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 2.1  (Linear Equations) </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
 <p><span class="math display" id="eq:linear">\[
 \begin{aligned}
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
@@ -382,7 +382,17 @@ a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
 <p>is a <strong>linear equation</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-74" class="example"><strong>Example 2.1  </strong></span>The equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
+<p><span id="exm:unlabeled-div-80" class="example"><strong>Example 2.1  </strong></span>Show the equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+y &amp; = m x + b,
+\end{aligned}
+\]</span></p>
+<p>is a linear equation.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-1" class="solution"><em>Solution</em>. </span>The equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
 <p><span class="math display">\[
 \begin{aligned}
 y &amp; = m x + b,
@@ -394,106 +404,208 @@ y &amp; = m x + b,
 y - m x &amp; = b,
 \end{aligned}
 \]</span></p>
-<p>where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = m\)</span>, <span class="math inline">\(x_1 = y\)</span> and <span class="math inline">\(x_2 = x\)</span>.</p>
+<p>where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = m\)</span>, <span class="math inline">\(x_1 = y\)</span>, <span class="math inline">\(x_2 = x\)</span>, and <span class="math inline">\(b=b\)</span>.</p>
+</div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-75" class="example"><strong>Example 2.2  </strong></span>The equations</p>
+<p><span id="exm:unlabeled-div-81" class="example"><strong>Example 2.2  </strong></span>Determine if the equation below is a linear equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sqrt{19} x_1 &amp; = (4 + \sqrt{2}) x_2 - x_3 - 9.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-2" class="solution"><em>Solution</em>. </span>The equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 \sqrt{19} x_1 &amp; = (4 + \sqrt{2}) x_2 - x_3 - 9
-&amp; \mbox{ and } &amp;&amp; 
--4 x_1 + 5 x_2 - 11 &amp; = x_3
 \end{aligned}
 \]</span></p>
-<p>are both linear equations because they can be written as</p>
+<p>is a linear equation because it can be written as</p>
 <p><span class="math display">\[
 \begin{aligned}
-\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 &amp; = - 9 
-&amp; \mbox{ and } &amp;&amp;
--4 x_1 + 5 x_2 - x_3 &amp; = 11,
+\sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 &amp; = - 9
 \end{aligned}
-\]</span></p>
-<p>respectively.</p>
+\]</span>
+where <span class="math inline">\(a_1 = \sqrt{19}\)</span>, <span class="math inline">\(a_2 = 4 + \sqrt{2}\)</span>, <span class="math inline">\(a_3 = 1\)</span> and <span class="math inline">\(b = -9\)</span></p>
+</div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-76" class="example"><strong>Example 2.3  </strong></span>The equations</p>
+<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 2.3  </strong></span>Determine if the equation below is a linear equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+-4 x_1 + 5 x_2 - 11 &amp; = x_3.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-3" class="solution"><em>Solution</em>. </span>The equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+-4 x_1 + 5 x_2 - 11 &amp; = x_3
+\end{aligned}
+\]</span>
+is a linear equation because it can be written as</p>
+<p><span class="math display">\[
+\begin{aligned}
+-4 x_1 + 5 x_2 - x_3 &amp; = 11.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-83" class="example"><strong>Example 2.4  </strong></span>Determine if the equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 x_1 &amp; = x_2^2 + 3
-&amp; \mbox{ and } &amp;&amp; 
+\end{aligned}
+\]</span></p>
+<p>is a linear equation.</p>
+</div>
+<div class="fold-solution">
+<div class="{solution}">
+<p>The equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1 &amp; = x_2^2 + 3
+\end{aligned}
+\]</span></p>
+<p>is not a linear equation because it does not meet the form of <a href="linear-systems-of-equations.html#eq:linear">(2.1)</a> because the equation has a quadratic power of <span class="math inline">\(x_2\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 2.5  </strong></span>Determine if the equation</p>
+<p><span class="math display">\[
+\begin{aligned}
 x_1 + x_2 - x_1 x_2 &amp; = 16
 \end{aligned}
 \]</span></p>
-<p>are not linear equations because they do not meet the form of <a href="linear-systems-of-equations.html#eq:linear">(2.1)</a> (The first equation above has a quadratic power of <span class="math inline">\(x_2\)</span> and the second equation has a product of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>).</p>
+<p>is a linear equation.</p>
+</div>
+<div class="fold-solution">
+<div class="{solution}">
+<p>The equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1 + x_2 - x_1 x_2 &amp; = 16
+\end{aligned}
+\]</span></p>
+<p>is not a linear equation because it does not meet the form of <a href="linear-systems-of-equations.html#eq:linear">(2.1)</a> because there is a product <span class="math inline">\(x_1x_2\)</span> of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-85" class="example"><strong>Example 2.6  </strong></span>Is the following equation a linear equation?
+<span class="math inline">\(x_1 + 3 x_1 x_2 = 5\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-4" class="solution"><em>Solution</em>. </span>This is a linear equation because the equation can be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 = b\)</span> where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = 3\)</span> and <span class="math inline">\(b = 5\)</span></p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-86" class="example"><strong>Example 2.7  </strong></span>Is the following equation a linear equation?
+<span class="math inline">\(5x + 7y + 8z = 11.2\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-5" class="solution"><em>Solution</em>. </span>This is a linear equation because the equation can be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 + a_3 x_3= b\)</span> where <span class="math inline">\(a_1 = 5\)</span>, <span class="math inline">\(a_2 = 7\)</span>, <span class="math inline">\(a_3 = 8\)</span> and <span class="math inline">\(b = 11.2\)</span>. The variables <span class="math inline">\(x_1 = x\)</span>, <span class="math inline">\(x_2 = y\)</span>, and <span class="math inline">\(x_3 = z\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-87" class="example"><strong>Example 2.8  </strong></span>Is the following equation a linear equation?
+<span class="math inline">\(\frac{1}{4} y + \sqrt{2} z = 2^6\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-6" class="solution"><em>Solution</em>. </span>This is a linear equation because the equation can be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 = b\)</span> where <span class="math inline">\(a_1 = \frac{1}{4}\)</span>, <span class="math inline">\(a_2 = \sqrt{2}\)</span>, and <span class="math inline">\(b = 2^6\)</span>. The variables <span class="math inline">\(x_1 = y\)</span>, <span class="math inline">\(x_2 = z\)</span> enter the equation linearly.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-88" class="example"><strong>Example 2.9  </strong></span>Is the following equation a linear equation?
+<span class="math inline">\(x + 4 y^2 = 9\)</span></p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-7" class="solution"><em>Solution</em>. </span>This is not a linear equation because the equation cannot be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 = b\)</span> because <span class="math inline">\(x_1 = x\)</span> and <span class="math inline">\(x_2 = y\)</span> so that the equation is written as <span class="math inline">\(a_1 x_1 + a_2 x_2^2 = b\)</span> where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = 4\)</span>, and <span class="math inline">\(b = 9\)</span>. The variable <span class="math inline">\(x_2 = y\)</span> enters the equation in a non-linear (quadratic) manner.</p>
+</div>
 </div>
 </div>
 <div id="systems-of-linear-equations" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Systems of linear equations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-77" class="definition"><strong>Definition 2.2  (System of equations) </strong></span>A set of two or more linear equations that each contain the same set of variables is called a <strong>system of linear equations</strong>.</p>
+<p><span id="def:unlabeled-div-89" class="definition"><strong>Definition 2.2  (System of equations) </strong></span>A set of two or more linear equations that each contain the same set of variables is called a <strong>system of linear equations</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-78" class="example"><strong>Example 2.4  </strong></span>The equations</p>
+<p><span id="exm:unlabeled-div-90" class="example"><strong>Example 2.10  </strong></span>Determine if the following equations are a system of linear equations.</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
-4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 9.
+4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}{} &amp;     &amp; {}={} &amp; 9.
 \end{alignat*}\]</span></p>
-<p>are a system of equations. Note that in the second equation, the coefficient for <span class="math inline">\(x_3\)</span> is 0, meaning we could re-write the above example as</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-8" class="solution"><em>Solution</em>. </span>The set of equations
+<span class="math display">\[\begin{alignat*}{4}
+x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
+4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}{} &amp;     &amp; {}={} &amp; 9.
+\end{alignat*}\]</span>
+are a system of equations. Note that in the second equation, the coefficient for <span class="math inline">\(x_3\)</span> is 0, meaning we could re-write the above example as</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9.
 \end{alignat*}\]</span></p>
 </div>
-<p>For the following, are these linear equations?</p>
+</div>
 <div class="example">
-<p><span id="exm:unlabeled-div-79" class="example"><strong>Example 2.5  </strong></span><span class="math inline">\(x_1 + 3 x_1 x_2 = 5\)</span></p>
+<p><span id="exm:unlabeled-div-91" class="example"><strong>Example 2.11  </strong></span>Determine if the following equations are a system of linear equations.</p>
+<p><span class="math display">\[\begin{alignat*}{4}
+x_1   &amp; {}+{} &amp; 4 x_1 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
+4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; \pi.
+\end{alignat*}\]</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-1" class="solution"><em>Solution</em>. </span>This is a linear equation because the equation can be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 = b\)</span> where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = 3\)</span> and <span class="math inline">\(b = 5\)</span></p>
+<p><span id="unlabeled-div-9" class="solution"><em>Solution</em>. </span>The set of equations
+<span class="math display">\[\begin{alignat*}{4}
+x_1   &amp; {}+{} &amp; 4 x_1 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
+4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; \pi
+\end{alignat*}\]</span>
+are not a linear system of equations. Note that in the first equation, there is a nonlinear term <span class="math inline">\(x_1 x_2\)</span> and because of this, equation one cannot be written in the form of <a href="linear-systems-of-equations.html#eq:linear">(2.1)</a>.</p>
 </div>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-80" class="example"><strong>Example 2.6  </strong></span><span class="math inline">\(5x + 7y + 8z = 11.2\)</span></p>
-</div>
-<div class="fold-solution">
-<div class="solution">
-<p><span id="unlabeled-div-2" class="solution"><em>Solution</em>. </span>This is a linear equation because the equation can be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 + a_3 x_3= b\)</span> where <span class="math inline">\(a_1 = 5\)</span>, <span class="math inline">\(a_2 = 7\)</span>, <span class="math inline">\(a_3 = 8\)</span> and <span class="math inline">\(b = 11.2\)</span>. The variables <span class="math inline">\(x_1 = x\)</span>, <span class="math inline">\(x_2 = y\)</span>, and <span class="math inline">\(x_3 = z\)</span>.</p>
-</div>
-</div>
-<div class="example">
-<p><span id="exm:unlabeled-div-81" class="example"><strong>Example 2.7  </strong></span><span class="math inline">\(\frac{1}{4} y + \sqrt{2} z = 2^6\)</span></p>
-</div>
-<div class="fold-solution">
-<div class="solution">
-<p><span id="unlabeled-div-3" class="solution"><em>Solution</em>. </span>This is a linear equation because the equation can be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 = b\)</span> where <span class="math inline">\(a_1 = \frac{1}{4}\)</span>, <span class="math inline">\(a_2 = \sqrt{2}\)</span>, and <span class="math inline">\(b = 2^6\)</span>. The variables <span class="math inline">\(x_1 = y\)</span>, <span class="math inline">\(x_2 = z\)</span> enter the equation linearly.</p>
-</div>
-</div>
-<div class="example">
-<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 2.8  </strong></span><span class="math inline">\(x + 4 y^2 = 9\)</span></p>
-</div>
-<div class="fold-solution">
-<div class="solution">
-<p><span id="unlabeled-div-4" class="solution"><em>Solution</em>. </span>This is not a linear equation because the equation cannot be written as <span class="math inline">\(a_1 x_1 + a_2 x_2 = b\)</span> because <span class="math inline">\(x_1 = x\)</span> and <span class="math inline">\(x_2 = y\)</span> so that the equation is written as <span class="math inline">\(a_1 x_1 + a_2 x_2^2 = b\)</span> where <span class="math inline">\(a_1 = 1\)</span>, <span class="math inline">\(a_2 = 4\)</span>, and <span class="math inline">\(b = 9\)</span>. The variable <span class="math inline">\(x_2 = y\)</span> enters the equation in a non-linear (quadratic) manner.</p>
-</div>
-</div>
+<p>For the remainder of the section on linear algebra, we will focus on linear equations.</p>
 </div>
 <div id="solutions-of-linear-systems" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Solutions of linear systems</h3>
 <p>A fundamental question when presented with a linear system of equations is whether the system has a solution.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 2.3  (Solution of systems of equations) </strong></span>A solution to a system means that there are numbers <span class="math inline">\((s_1, s_2, \ldots, s_n)\)</span> that each of the variables <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> take that allow for all the equations to simultaneously be true.</p>
+<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 2.3  (Solution of systems of equations) </strong></span>A solution to a system means that there are numbers <span class="math inline">\((s_1, s_2, \ldots, s_n)\)</span> that each of the variables <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> take that allow for all the equations to simultaneously be true.</p>
 </div>
+<p>Checking if a vector is a solution is straightforward. You just substitute the values of the vector into the equations and see if the equations are satisfied. For example, if we consider the equation
+<span class="math display">\[
+x_1 + x_2 = 7,
+\]</span>
+the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}\)</span> is a valid solution because
+<span class="math display">\[
+4 + 3 = 7
+\]</span>
+but the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 5 \\ 9 \end{pmatrix}\)</span> is not a valid solution because
+<span class="math display">\[
+5 + 9 \neq 7.
+\]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 2.9  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> a solution to the system of equations
+<p><span id="exm:unlabeled-div-93" class="example"><strong>Example 2.12  </strong></span>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> a solution to the system of equations
 <span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
-4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9.
+4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9?
 \end{alignat*}\]</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-5" class="solution"><em>Solution</em>. </span>First, we plug in the values for <span class="math inline">\(x_1 = 5\)</span>, <span class="math inline">\(x_2 = 3\)</span> and <span class="math inline">\(x_3 = 6\)</span>. In the first equation, we get
+<p><span id="unlabeled-div-10" class="solution"><em>Solution</em>. </span>First, we plug in the values for <span class="math inline">\(x_1 = 5\)</span>, <span class="math inline">\(x_2 = 3\)</span> and <span class="math inline">\(x_3 = 6\)</span> into the system of equations. In the first equation, we get
 <span class="math display">\[\begin{alignat*}{4}
 5   &amp; {}+{} &amp; 4 \times 3 &amp; {}-{} &amp; 6 &amp; {}={} &amp; 11 \\
 \end{alignat*}\]</span>
@@ -505,36 +617,138 @@ which is false because <span class="math inline">\(35 \neq = 9\)</span>. Thus, <
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-85" class="example"><strong>Example 2.10  </strong></span>Consider the system of equations</p>
+<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 2.13  </strong></span>Finding a solution a system of equations is more challenging. To find a solution, we add/subtract equations to cancel out variables. For example, consider the following example. You work in a small zoo. In the zoo, there are ostriches (one head, two legs, and no horns), one-horned rhinos (one head, four legs, and one horn), and two-horned antelope (one head, four legs, and two horns). Consider the following statements about the set of animals in the zoo:</p>
+<ol style="list-style-type: decimal">
+<li><p>There are 12 heads</p></li>
+<li><p>There are 38 feet</p></li>
+<li><p>There are 10 horns</p></li>
+</ol>
+<p>Using this information, how many ostriches, rhinos, and antelope are there.</p>
+</div>
+<div class="fold-solution">
+<div class="solution">
+<p><span id="unlabeled-div-11" class="solution"><em>Solution</em>. </span>Letting the variable <span class="math inline">\(o\)</span> represent the number of ostriches, <span class="math inline">\(r\)</span> represent the number of rhinos, and <span class="math inline">\(a\)</span> represent the number of antelope. Then, the three statements above can be represented mathematically by the system of equations
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+2o  &amp; {}+{} &amp;  4r &amp; {}+{} &amp; 4a &amp; {}={} &amp; 38 \\
+0o  &amp; {}+{} &amp;  r  &amp; {}+{} &amp; 2a &amp; {}={} &amp; 10.
+\end{alignat*}\]</span>
+Looking at the third equation, we can solve for the number of rhinos <span class="math inline">\(r\)</span> as <span class="math inline">\(r = 10 - 2a\)</span>. Substituting this into the first two equations gives
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  10 - 2a  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 
+\end{alignat*}\]</span>
+and
+<span class="math display">\[\begin{alignat*}{4}
+2o  &amp; {}+{} &amp;  4(10 - 2a) &amp; {}+{} &amp; 4a &amp; {}={} &amp; 38 
+\end{alignat*}\]</span>
+The first equation from above gives <span class="math inline">\(o + 10 - 2a + a = 12\)</span> and solving for <span class="math inline">\(o\)</span> as a function of <span class="math inline">\(a\)</span> gives <span class="math inline">\(o = 2 + a\)</span>. The second equation from above gives <span class="math inline">\(2o + 4(10 - 2a) + 4a = 38\)</span> and solving for <span class="math inline">\(o\)</span> as a function of <span class="math inline">\(a\)</span> gives <span class="math inline">\(o = 2a - 1\)</span>. Combining both of these gives <span class="math inline">\(2 + a = 2a - 1\)</span> which gives <span class="math inline">\(a = 3\)</span> so that we know there are 3 antelope. Going backwards, we know that <span class="math inline">\(o = 2a - 1\)</span> and plugging in <span class="math inline">\(a = 3\)</span> gives <span class="math inline">\(o = 5\)</span> which tells us that there are 5 ostriches in the zoo. In addition, we know that <span class="math inline">\(r = 10 - 2a\)</span> and, when plugging in the value <span class="math inline">\(a = 3\)</span>, we find that there are <span class="math inline">\(r = 4\)</span> rhinos at the zoo.</p>
+<p>While solving for variables like above is possible, it can be quite difficult to keep track of the steps in the calculation. To simplify the process, one can add and subtract entire equations. For example, starting with the system of equations from the zoo example
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+2o  &amp; {}+{} &amp;  4r &amp; {}+{} &amp; 4a &amp; {}={} &amp; 38 \\
+0o  &amp; {}+{} &amp;  r  &amp; {}+{} &amp; 2a &amp; {}={} &amp; 10.
+\end{alignat*}\]</span>
+we can add and subtract entire equations. For example, take the second equation and subtract 2 times the first equation to get the system of equations
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+2o - 2 \times o &amp; {}+{} &amp;  4r - 2 \times r &amp; {}+{} &amp; 4a -2 \times a&amp; {}={} &amp; 38 - 2 \times 12\\
+0o  &amp; {}+{} &amp;  r  &amp; {}+{} &amp; 2a &amp; {}={} &amp; 10,
+\end{alignat*}\]</span>
+which, when simplified is
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+0o  &amp; {}+{} &amp;  2r &amp; {}+{} &amp; 2a &amp; {}={} &amp; 14 \\
+0o  &amp; {}+{} &amp;  r  &amp; {}+{} &amp; 2a &amp; {}={} &amp; 10.
+\end{alignat*}\]</span></p>
+<p>Taking the third equation and subtracting <span class="math inline">\(\frac{1}{2}\)</span> times the second equation gives
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+0o  &amp; {}+{} &amp;  2r &amp; {}+{} &amp; 2a &amp; {}={} &amp; 14 \\
+0o  &amp; {}+{} &amp;  r - \frac{1}{2} \times 2r  &amp; {}+{} &amp; 2a - \frac{1}{2} \times 2a &amp; {}={} &amp; 10 - \frac{1}{2} \times 14,
+\end{alignat*}\]</span>
+which is the system of equations
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+0o  &amp; {}+{} &amp;  2r &amp; {}+{} &amp; 2a &amp; {}={} &amp; 14 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3.
+\end{alignat*}\]</span>
+Because <span class="math inline">\(a = 3\)</span>, there are 3 antelope at the zoo. Now, we can use these systems of equations to subtract 2 times the third equation from the second equation to get
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+0o  &amp; {}+{} &amp;  2r &amp; {}+{} &amp; 2a - 2 \times a &amp; {}={} &amp; 14 - 2 \times 3 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+which gives the system of equations
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+0o  &amp; {}+{} &amp;  2r &amp; {}+{} &amp; 0a &amp; {}={} &amp; 8 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+and dividing the second equation by 2 gives
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 \\
+0o  &amp; {}+{} &amp;  r &amp; {}+{} &amp; 0a &amp; {}={} &amp; 4 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+so that we know there are 4 rhinos in the zoo. Taking the first equation and subtracting the second equation gives the system of equations
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  r - r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 12 - 4\\
+0o  &amp; {}+{} &amp;  r &amp; {}+{} &amp; 0a &amp; {}={} &amp; 4 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+which is
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a  &amp; {}={} &amp; 8 \\
+0o  &amp; {}+{} &amp;  r &amp; {}+{} &amp; 0a &amp; {}={} &amp; 4 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+and subtracting the third equation from the first equation gives
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a - a  &amp; {}={} &amp; 8 - 3 \\
+0o  &amp; {}+{} &amp;  r &amp; {}+{} &amp; 0a &amp; {}={} &amp; 4 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+which gives
+<span class="math display">\[\begin{alignat*}{4}
+o   &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; 0a  &amp; {}={} &amp; 5 \\
+0o  &amp; {}+{} &amp;  r &amp; {}+{} &amp; 0a &amp; {}={} &amp; 4 \\
+0o  &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; a &amp; {}={} &amp; 3, 
+\end{alignat*}\]</span>
+which tells us that there are <span class="math inline">\(o=5\)</span> ostriches at the zoo.</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:example-one-solution" class="example"><strong>Example 2.14  </strong></span>Consider the system of equations</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7.
 \end{alignat*}\]</span></p>
+<p>Find a solution to the system of equations.</p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-6" class="solution"><em>Solution</em>. </span>To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like</p>
+<p><span id="unlabeled-div-12" class="solution"><em>Solution</em>. </span>To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
-4 x - 4 * (x) &amp; {}+{} &amp; 5 y - 4 * (4y) &amp; {}={} &amp; 7 - 4 * (8),
+4 x - 4 \times (x) &amp; {}+{} &amp; 5 y - 4 \times (4y) &amp; {}={} &amp; 7 - 4 \times (8),
 \end{alignat*}\]</span>
 where the part of the equations in (<span class="math inline">\(\cdot\)</span>) is the top equation. This system of equations now simplifies to
 <span class="math display">\[\begin{alignat*}{3}
 x &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 0 &amp; {}+{} &amp; - 11y &amp; {}={} &amp; -25,
-\end{alignat*}\]</span></p>
-<p>which gives <span class="math inline">\(y = \frac{25}{11}\)</span>. Plugging this value into the top equation gives</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+which gives <span class="math inline">\(y = \frac{25}{11}\)</span>. Plugging this value into the top equation gives
+<span class="math display">\[\begin{alignat*}{3}
 x &amp; {}+{} &amp; 4 \frac{25}{11} &amp; {}={} &amp; 8 \\
 0 &amp; {}+{} &amp; y &amp; {}={} &amp; \frac{25}{11},
-\end{alignat*}\]</span></p>
-<p>where we can solve <span class="math inline">\(x = 8 - \frac{100}{11} = -\frac{12}{11}\)</span> giving the solution of the form</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+where we can solve <span class="math inline">\(x = 8 - \frac{100}{11} = -\frac{12}{11}\)</span> giving the solution of the form
+<span class="math display">\[\begin{alignat*}{3}
 x &amp; {}+{} &amp; 0 &amp; {}={} &amp; -\frac{12}{11} \\
 0 &amp; {}+{} &amp; y &amp; {}={} &amp; \frac{25}{11},
-\end{alignat*}\]</span></p>
-<p>In this case, the system of equation has the solution <span class="math inline">\(x = -\frac{12}{11}\)</span> and <span class="math inline">\(y = \frac{25}{11}\)</span>. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+In this case, the system of equation has the solution <span class="math inline">\(x = -\frac{12}{11}\)</span> and <span class="math inline">\(y = \frac{25}{11}\)</span>. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were
+<span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7,
 \end{alignat*}\]</span></p>
@@ -573,6 +787,7 @@ Figure 2.1: Linear system of equations with one solution
 <p>From this plot, it is clear that the solution to the system of equations is the location where the two lines intersect!</p>
 </div>
 </div>
+<p><strong>START BACK HERE WITH MORE EXAMPLES OF CANCELING VARIABLES</strong></p>
 </div>
 <div id="types-of-solutions" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Types of solutions</h3>
@@ -583,7 +798,7 @@ Figure 2.1: Linear system of equations with one solution
 <li>There are infinitely many solutions</li>
 </ol>
 <div class="definition">
-<p><span id="def:unlabeled-div-86" class="definition"><strong>Definition 2.4  </strong></span>A linear system of equations is called <strong>consistent</strong> if the system has either one or infinitely many solutions and is called <strong>inconsistent</strong> if the system has no solution.</p>
+<p><span id="def:unlabeled-div-95" class="definition"><strong>Definition 2.4  </strong></span>A linear system of equations is called <strong>consistent</strong> if the system has either one or infinitely many solutions and is called <strong>inconsistent</strong> if the system has no solution.</p>
 </div>
 <div id="there-are-no-solutions" class="section level4">
 <h4><span class="header-section-number">2.1.4.1</span> There are no solutions:</h4>
@@ -621,36 +836,43 @@ Figure 2.2: Linear system of equations with no solution
 <!-- Type out how to try and solve the system of equations -->
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-7" class="solution"><em>Solution</em>. </span>To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like</p>
+<p><span id="unlabeled-div-13" class="solution"><em>Solution</em>. </span>To find if a solution to this equation exists, we can do some algebra and take 4 times the top equation and then subtract the bottom equation, replacing the bottom equation with this new sum like</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x  - 4(x) &amp; {}+{} &amp; 16 y - 4\times (4 y) &amp; {}={} &amp; 18 - 4 \times (8).
-\end{alignat*}\]</span></p>
-<p>where the part of the equations in <code>()</code> is the top equation. This system of equations now simplifies to</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+where the part of the equations in <code>()</code> is the top equation. This system of equations now simplifies to
+<span class="math display">\[\begin{alignat*}{3}
 x &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 0 x &amp; {}+{} &amp;  0 y &amp; {}={} &amp; -14,
 \end{alignat*}\]</span></p>
-<p>which gives <span class="math inline">\(0 = -14\)</span>. From this, we see that we have reached a contradiction so there is not a solutoin to the system of equations.</p>
+<p>which gives <span class="math inline">\(0 = -14\)</span>. From this, we see that we have reached a contradiction so there is not a solution to the system of equations.</p>
 </div>
 </div>
 </div>
 <div id="there-is-one-solution" class="section level4">
 <h4><span class="header-section-number">2.1.4.2</span> There is one solution:</h4>
-<p>We have seen this example in Figure <a href="linear-systems-of-equations.html#fig:one-solution">2.1</a>.</p>
-</div>
-<div id="there-are-infinitely-many-solutions" class="section level4">
-<h4><span class="header-section-number">2.1.4.3</span> There are infinitely many solutions:</h4>
-<p>Consider the system of linear equations</p>
+<p>Consider the system of equations from example <a href="linear-systems-of-equations.html#exm:example-one-solution">2.14</a></p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
-4 x &amp; {}+{} &amp; 16 y &amp; {}={} &amp; 32.
+4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7.
 \end{alignat*}\]</span></p>
+<p>Where we found that there was a unique solution <span class="math inline">\(x = -\frac{12}{11}\)</span> and <span class="math inline">\(y = \frac{25}{11}\)</span>. While finding the solution can be done algebraically, what does this mean visually (geometrically)? The original equations were
+<span class="math display">\[\begin{alignat*}{3}
+x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
+4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7,
+\end{alignat*}\]</span>
+which, writing <span class="math inline">\(y\)</span> as a function of <span class="math inline">\(x\)</span> define two lines:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(y = -\frac{x}{4} + 2\)</span></li>
+<li><span class="math inline">\(y = -\frac{4x}{5} + \frac{7}{5}\)</span></li>
+</ol>
+<p>Let’s plot these equations in <code>R</code> and see what they look like</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="linear-systems-of-equations.html#cb37-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
 <span id="cb37-2"><a href="linear-systems-of-equations.html#cb37-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</span>
 <span id="cb37-3"><a href="linear-systems-of-equations.html#cb37-3"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
 <span id="cb37-4"><a href="linear-systems-of-equations.html#cb37-4"></a>    <span class="dt">x =</span> <span class="kw">c</span>(x, x),</span>
-<span id="cb37-5"><a href="linear-systems-of-equations.html#cb37-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>, <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span><span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">32</span> <span class="op">/</span><span class="st"> </span><span class="dv">16</span>),</span>
+<span id="cb37-5"><a href="linear-systems-of-equations.html#cb37-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>, <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">/</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">/</span><span class="dv">5</span>),</span>
 <span id="cb37-6"><a href="linear-systems-of-equations.html#cb37-6"></a>    <span class="dt">equation =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">1000</span>))</span>
 <span id="cb37-7"><a href="linear-systems-of-equations.html#cb37-7"></a>)</span>
 <span id="cb37-8"><a href="linear-systems-of-equations.html#cb37-8"></a><span class="kw">glimpse</span>(dat)</span></code></pre></div>
@@ -664,44 +886,79 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 <span id="cb39-3"><a href="linear-systems-of-equations.html#cb39-3"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
 <span id="cb39-4"><a href="linear-systems-of-equations.html#cb39-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
 <span id="cb39-5"><a href="linear-systems-of-equations.html#cb39-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
-<span id="cb39-6"><a href="linear-systems-of-equations.html#cb39-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
+<span id="cb39-6"><a href="linear-systems-of-equations.html#cb39-6"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">-12</span><span class="op">/</span><span class="dv">11</span>, <span class="dt">y =</span> <span class="dv">25</span><span class="op">/</span><span class="dv">11</span>), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb39-7"><a href="linear-systems-of-equations.html#cb39-7"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:one-solution-revisited"></span>
+<img src="multivariable-math_files/figure-html/one-solution-revisited-1.png" alt="Linear system of equations with one solution" width="672" />
+<p class="caption">
+Figure 2.3: Linear system of equations with one solution
+</p>
+</div>
+<p>From this plot, it is clear that the solution to the system of equations is the <strong>point</strong> where the two lines intersect!</p>
+</div>
+<div id="there-are-infinitely-many-solutions" class="section level4">
+<h4><span class="header-section-number">2.1.4.3</span> There are infinitely many solutions:</h4>
+<p>Consider the system of linear equations
+<span class="math display">\[\begin{alignat*}{3}
+x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
+4 x &amp; {}+{} &amp; 16 y &amp; {}={} &amp; 32.
+\end{alignat*}\]</span></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="linear-systems-of-equations.html#cb40-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb40-2"><a href="linear-systems-of-equations.html#cb40-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb40-3"><a href="linear-systems-of-equations.html#cb40-3"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb40-4"><a href="linear-systems-of-equations.html#cb40-4"></a>    <span class="dt">x =</span> <span class="kw">c</span>(x, x),</span>
+<span id="cb40-5"><a href="linear-systems-of-equations.html#cb40-5"></a>    <span class="dt">y =</span> <span class="kw">c</span>(<span class="op">-</span>x <span class="op">/</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>, <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x <span class="op">/</span><span class="st"> </span><span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">32</span> <span class="op">/</span><span class="st"> </span><span class="dv">16</span>),</span>
+<span id="cb40-6"><a href="linear-systems-of-equations.html#cb40-6"></a>    <span class="dt">equation =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb40-7"><a href="linear-systems-of-equations.html#cb40-7"></a>)</span>
+<span id="cb40-8"><a href="linear-systems-of-equations.html#cb40-8"></a><span class="kw">glimpse</span>(dat)</span></code></pre></div>
+<pre><code>## Rows: 2,000
+## Columns: 3
+## $ x        &lt;dbl&gt; -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1.979…
+## $ y        &lt;dbl&gt; 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, 2…
+## $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="linear-systems-of-equations.html#cb42-1"></a>dat <span class="op">%&gt;%</span></span>
+<span id="cb42-2"><a href="linear-systems-of-equations.html#cb42-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">color =</span> equation, <span class="dt">group =</span> equation)) <span class="op">+</span></span>
+<span id="cb42-3"><a href="linear-systems-of-equations.html#cb42-3"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb42-4"><a href="linear-systems-of-equations.html#cb42-4"></a><span class="st">    </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">end =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
+<span id="cb42-5"><a href="linear-systems-of-equations.html#cb42-5"></a><span class="st">    </span><span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb42-6"><a href="linear-systems-of-equations.html#cb42-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Linear system of equations&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:infinite-solutions"></span>
 <img src="multivariable-math_files/figure-html/infinite-solutions-1.png" alt="Linear system of equations with no solution" width="672" />
 <p class="caption">
-Figure 2.3: Linear system of equations with no solution
+Figure 2.4: Linear system of equations with no solution
 </p>
 </div>
 <p>In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-87" class="definition"><strong>Definition 2.5  </strong></span>Two linear systems of equations are called <strong>equivalent</strong> if both systems share the same <strong>solution set</strong>.</p>
+<p><span id="def:unlabeled-div-96" class="definition"><strong>Definition 2.5  </strong></span>Two linear systems of equations are called <strong>equivalent</strong> if both systems share the same <strong>solution set</strong>.</p>
 </div>
-<p>For example, the system of equations</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+<p>For example, the system of equations
+<span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 9
-\end{alignat*}\]</span></p>
-<p>and the system of equations</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+\end{alignat*}\]</span>
+and the system of equations
+<span class="math display">\[\begin{alignat*}{4}
 2x_1   &amp; {}+{} &amp; 8 x_2 &amp; {}-{} &amp; 2 x_3 &amp; {}={} &amp; 22 \\
 8 x_1 &amp; {}+{} &amp; 10 x_2 &amp; {}+{} &amp; 4 x_3 &amp; {}={} &amp; 18.
-\end{alignat*}\]</span></p>
-<p>have the same solution set (the second set of equations is just 2 times the first set of equations).</p>
+\end{alignat*}\]</span>
+have the same solution set (the second set of equations is just 2 times the first set of equations).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-88" class="example"><strong>Example 2.11  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+<p><span id="exm:unlabeled-div-97" class="example"><strong>Example 2.15  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+<span class="math display">\[\begin{alignat*}{3}
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}={} &amp; 8 \\
 9 x_1 &amp; {}-{} &amp; 3 x_2 &amp; {}={} &amp; 4.
 \end{alignat*}\]</span></p>
 </div>
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-8" class="solution"><em>Solution</em>. </span>Multiply the first equation by <span class="math inline">\(\frac{1}{4}\)</span> and the second equation by <span class="math inline">\(\frac{1}{9}\)</span> to get</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+<p><span id="unlabeled-div-14" class="solution"><em>Solution</em>. </span>Multiply the first equation by <span class="math inline">\(\frac{1}{4}\)</span> and the second equation by <span class="math inline">\(\frac{1}{9}\)</span> to get
+<span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}+{} &amp; \frac{5}{4} x_2 &amp; {}={} &amp; 2 \\
 x_1 &amp; {}-{} &amp;  \frac{1}{3}x_2 &amp; {}={} &amp; \frac{4}{9}.
-\end{alignat*}\]</span></p>
-<p>Subtract the first equation from the second equation</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+Subtract the first equation from the second equation
+<span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}+{} &amp; \frac{5}{4} x_2 &amp; {}={} &amp; 2 \\
 0 &amp; {}-{} &amp;  (-\frac{1}{3} - \frac{5}{4}) x_2 &amp; {}={} &amp; \frac{4}{9} - 2,
 \end{alignat*}\]</span>
@@ -709,29 +966,29 @@ which reduces to
 <span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}+{} &amp; \frac{5}{4} x_2 &amp; {}={} &amp; 2 \\
 0 &amp; {}-{} &amp;  -\frac{19}{12} x_2 &amp; {}={} &amp; -\frac{14}{9},
-\end{alignat*}\]</span></p>
-<p>so that, dividing both sides of the second equation by <span class="math inline">\(-\frac{19}{12}\)</span> gives <span class="math inline">\(x_2 = \frac{56}{57}\)</span>. Plugging this value of <span class="math inline">\(x_2\)</span> into the first equation gives</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+so that, dividing both sides of the second equation by <span class="math inline">\(-\frac{19}{12}\)</span> gives <span class="math inline">\(x_2 = \frac{56}{57}\)</span>. Plugging this value of <span class="math inline">\(x_2\)</span> into the first equation gives
+<span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}+{} &amp; \frac{5}{4} \left(\frac{56}{57}\right) &amp; {}={} &amp; 2 \\
 0 &amp; {}-{} &amp;   x_2 &amp; {}={} &amp; \frac{56}{57}
-\end{alignat*}\]</span></p>
-<p>and subtracting <span class="math inline">\(\frac{5}{4} \frac{56}{57}\)</span> from both sides of the first equation gives <span class="math inline">\(x_1 = \frac{44}{57}\)</span>. You can check these solutions by verifying that the following two equations hold</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+and subtracting <span class="math inline">\(\frac{5}{4} \frac{56}{57}\)</span> from both sides of the first equation gives <span class="math inline">\(x_1 = \frac{44}{57}\)</span>. You can check these solutions by verifying that the following two equations hold
+<span class="math display">\[\begin{alignat*}{3}
 4 \left(\frac{44}{57}\right) &amp; {}+{} &amp; 5  \left(\frac{56}{57}\right) &amp; {}={} &amp; 8 \\
 9 \left(\frac{44}{57}\right) &amp; {}-{} &amp; 3 \left(\frac{56}{57}\right)&amp; {}={} &amp; 4
-\end{alignat*}\]</span></p>
-<p>which can be done in <code>R</code> using</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="linear-systems-of-equations.html#cb40-1"></a>x1 &lt;-<span class="st"> </span><span class="dv">44</span><span class="op">/</span><span class="dv">57</span></span>
-<span id="cb40-2"><a href="linear-systems-of-equations.html#cb40-2"></a>x2 &lt;-<span class="st"> </span><span class="dv">56</span><span class="op">/</span><span class="dv">57</span></span>
-<span id="cb40-3"><a href="linear-systems-of-equations.html#cb40-3"></a><span class="kw">all.equal</span>(<span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x2, <span class="dv">8</span>)</span></code></pre></div>
+\end{alignat*}\]</span>
+which can be done in <code>R</code> using</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="linear-systems-of-equations.html#cb43-1"></a>x1 &lt;-<span class="st"> </span><span class="dv">44</span><span class="op">/</span><span class="dv">57</span></span>
+<span id="cb43-2"><a href="linear-systems-of-equations.html#cb43-2"></a>x2 &lt;-<span class="st"> </span><span class="dv">56</span><span class="op">/</span><span class="dv">57</span></span>
+<span id="cb43-3"><a href="linear-systems-of-equations.html#cb43-3"></a><span class="kw">all.equal</span>(<span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x2, <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="linear-systems-of-equations.html#cb42-1"></a><span class="kw">all.equal</span>(<span class="dv">9</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x2, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="linear-systems-of-equations.html#cb45-1"></a><span class="kw">all.equal</span>(<span class="dv">9</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x2, <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-89" class="example"><strong>Example 2.12  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+<p><span id="exm:unlabeled-div-98" class="example"><strong>Example 2.16  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+<span class="math display">\[\begin{alignat*}{4}
 7 x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 4 x_3 &amp; {}={} &amp; 5\\
 4 x_1 &amp; {}-{} &amp; 5 x_2 &amp;&amp;        &amp; {}={} &amp; -2
 \end{alignat*}\]</span></p>
@@ -739,49 +996,49 @@ x_1 &amp; {}+{} &amp; \frac{5}{4} \left(\frac{56}{57}\right) &amp; {}={} &amp; 2
 <!-- Solution -->
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-9" class="solution"><em>Solution</em>. </span>Multiply the first equation by <span class="math inline">\(\frac{1}{7}\)</span> and the second equation by <span class="math inline">\(\frac{1}{4}\)</span> to get</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+<p><span id="unlabeled-div-15" class="solution"><em>Solution</em>. </span>Multiply the first equation by <span class="math inline">\(\frac{1}{7}\)</span> and the second equation by <span class="math inline">\(\frac{1}{4}\)</span> to get
+<span class="math display">\[\begin{alignat*}{4}
 x_1 &amp; {}+{} &amp; \frac{3}{7} x_2 &amp; {}+{} &amp; \frac{4}{7} x_3 &amp; {}={} &amp; \frac{5}{7} \\
-x_1 &amp; {}-{} &amp; \frac{5}{4} x_2 &amp; {}+{} &amp; 0 x_3       &amp; {}={} &amp; \frac{-1}{2}
-\end{alignat*}\]</span></p>
-<p>Subtract the first equation from the second equation</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+x_1 &amp; {}-{} &amp; \frac{5}{4} x_2 &amp; {}+{} &amp; 0 x_3       &amp; {}={} &amp; \frac{-1}{2}.
+\end{alignat*}\]</span>
+Subtract the first equation from the second equation
+<span class="math display">\[\begin{alignat*}{4}
 x_1 &amp; {}+{} &amp; \frac{3}{7} x_2 &amp; {}+{} &amp; \frac{4}{7} x_3 &amp; {}={} &amp; \frac{5}{7} \\
-0 x_1 &amp; {}+{} &amp;  (-\frac{5}{4} - \frac{3}{7}) x_2 &amp;{}+{}&amp; -\frac{4}{7} x_3  &amp; {}={} &amp; - \frac{1}{2} - \frac{5}{7}
-\end{alignat*}\]</span></p>
-<p>which reduces to</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+0 x_1 &amp; {}+{} &amp;  (-\frac{5}{4} - \frac{3}{7}) x_2 &amp;{}+{}&amp; -\frac{4}{7} x_3  &amp; {}={} &amp; - \frac{1}{2} - \frac{5}{7},
+\end{alignat*}\]</span>
+which reduces to
+<span class="math display">\[\begin{alignat*}{4}
 x_1 &amp; {}+{} &amp; \frac{3}{7} x_2 &amp; {}+{} &amp; \frac{4}{7} x_3 &amp; {}={} &amp; \frac{5}{7} \\
 0 &amp; {}-{} &amp;  -\frac{47}{28} x_2 &amp;{}-{}&amp; \frac{4}{7} x_3 &amp; {}={} &amp; -\frac{17}{14}.
-\end{alignat*}\]</span></p>
-<p>Next, divide the second equation by <span class="math inline">\(\frac{-47}{28}\)</span> gives</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+\end{alignat*}\]</span>
+Next, divide the second equation by <span class="math inline">\(\frac{-47}{28}\)</span> gives
+<span class="math display">\[\begin{alignat*}{4}
 x_1 &amp; {}+{} &amp; \frac{3}{7} x_2 &amp; {}+{} &amp; \frac{4}{7} x_3 &amp; {}={} &amp; \frac{5}{7} \\
 0 &amp; {}+{} &amp; x_2 &amp;{}+{}&amp; \frac{16}{47} x_3 &amp; {}={} &amp; \frac{34}{47}.
-\end{alignat*}\]</span></p>
-<p>Then, take the first equation and subtract <span class="math inline">\(-\frac{3}{7}\)</span> times the second row to get</p>
-<p><span class="math display">\[\begin{alignat*}{4}
+\end{alignat*}\]</span>
+Then, take the first equation and subtract <span class="math inline">\(-\frac{3}{7}\)</span> times the second row to get
+<span class="math display">\[\begin{alignat*}{4}
 x_1 &amp; {}+{} &amp; 0 x_2 &amp; {}+{} &amp; \frac{20}{47} x_3 &amp; {}={} &amp; \frac{19}{47} \\
-0 &amp; {}+{} &amp; x_2 &amp;{}+{}&amp; \frac{16}{47} x_3 &amp; {}={} &amp; \frac{34}{47}.
-\end{alignat*}\]</span></p>
-<p>Which gives the solution
+0 &amp; {}+{} &amp; x_2 &amp;{}+{}&amp; \frac{16}{47} x_3 &amp; {}={} &amp; \frac{34}{47},
+\end{alignat*}\]</span>
+which gives the solution
 <span class="math inline">\(x_1 + \frac{20}{47} x_3 = \frac{19}{47}\)</span>, <span class="math inline">\(x_2 + \frac{16}{47} x_3 = \frac{34}{47}\)</span>, and <span class="math inline">\(x_3 = x_3\)</span> is a free variable.</p>
 <p>The solution can be checked in <code>R</code> using</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="linear-systems-of-equations.html#cb44-1"></a><span class="co"># this is a free variable, you can assign it any value</span></span>
-<span id="cb44-2"><a href="linear-systems-of-equations.html#cb44-2"></a>x3 &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb44-3"><a href="linear-systems-of-equations.html#cb44-3"></a>x1 &lt;-<span class="st"> </span><span class="dv">19</span><span class="op">/</span><span class="dv">47</span> <span class="op">-</span><span class="st"> </span><span class="dv">20</span><span class="op">/</span><span class="dv">47</span> <span class="op">*</span><span class="st"> </span>x3</span>
-<span id="cb44-4"><a href="linear-systems-of-equations.html#cb44-4"></a>x2 &lt;-<span class="st"> </span><span class="dv">34</span><span class="op">/</span><span class="dv">47</span> <span class="op">-</span><span class="st"> </span><span class="dv">16</span><span class="op">/</span><span class="dv">47</span> <span class="op">*</span><span class="st"> </span>x3</span>
-<span id="cb44-5"><a href="linear-systems-of-equations.html#cb44-5"></a><span class="co"># check the first equation</span></span>
-<span id="cb44-6"><a href="linear-systems-of-equations.html#cb44-6"></a><span class="kw">all.equal</span>(<span class="dv">7</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x3, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="linear-systems-of-equations.html#cb47-1"></a><span class="co"># this is a free variable, you can assign it any value</span></span>
+<span id="cb47-2"><a href="linear-systems-of-equations.html#cb47-2"></a>x3 &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb47-3"><a href="linear-systems-of-equations.html#cb47-3"></a>x1 &lt;-<span class="st"> </span><span class="dv">19</span><span class="op">/</span><span class="dv">47</span> <span class="op">-</span><span class="st"> </span><span class="dv">20</span><span class="op">/</span><span class="dv">47</span> <span class="op">*</span><span class="st"> </span>x3</span>
+<span id="cb47-4"><a href="linear-systems-of-equations.html#cb47-4"></a>x2 &lt;-<span class="st"> </span><span class="dv">34</span><span class="op">/</span><span class="dv">47</span> <span class="op">-</span><span class="st"> </span><span class="dv">16</span><span class="op">/</span><span class="dv">47</span> <span class="op">*</span><span class="st"> </span>x3</span>
+<span id="cb47-5"><a href="linear-systems-of-equations.html#cb47-5"></a><span class="co"># check the first equation</span></span>
+<span id="cb47-6"><a href="linear-systems-of-equations.html#cb47-6"></a><span class="kw">all.equal</span>(<span class="dv">7</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x3, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="linear-systems-of-equations.html#cb46-1"></a><span class="co"># check the second equation</span></span>
-<span id="cb46-2"><a href="linear-systems-of-equations.html#cb46-2"></a><span class="kw">all.equal</span>(<span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>x3, <span class="dv">-2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="linear-systems-of-equations.html#cb49-1"></a><span class="co"># check the second equation</span></span>
+<span id="cb49-2"><a href="linear-systems-of-equations.html#cb49-2"></a><span class="kw">all.equal</span>(<span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>x3, <span class="dv">-2</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-90" class="example"><strong>Example 2.13  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+<p><span id="exm:unlabeled-div-99" class="example"><strong>Example 2.17  </strong></span>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution
+<span class="math display">\[\begin{alignat*}{3}
 4 x_1 &amp; {}-{} &amp; 2 x_2 &amp; {}={} &amp; 8\\
 2 x_1 &amp; {}+{} &amp; x_2 &amp; {}={} &amp; 7 \\
 -3 x_1 &amp; {}+{} &amp; 6 x_2 &amp;{}={} &amp; 11
@@ -790,20 +1047,20 @@ x_1 &amp; {}+{} &amp; 0 x_2 &amp; {}+{} &amp; \frac{20}{47} x_3 &amp; {}={} &amp
 <!-- Solution -->
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-10" class="solution"><em>Solution</em>. </span>Multiply the first equation by <span class="math inline">\(\frac{1}{4}\)</span>, the second equation by <span class="math inline">\(\frac{1}{2}\)</span>, and the third equation by <span class="math inline">\(-\frac{1}{3}\)</span> to get</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+<p><span id="unlabeled-div-16" class="solution"><em>Solution</em>. </span>Multiply the first equation by <span class="math inline">\(\frac{1}{4}\)</span>, the second equation by <span class="math inline">\(\frac{1}{2}\)</span>, and the third equation by <span class="math inline">\(-\frac{1}{3}\)</span> to get
+<span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 x_1 &amp; {}+{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; \frac{7}{2} \\
  x_1 &amp; {}-{} &amp; 2 x_2 &amp;{}={} &amp; -\frac{11}{3}
-\end{alignat*}\]</span></p>
-<p>Subtract the first equation from the second equation and also subtract the first equation from the third equation. Thus, we get</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+Subtract the first equation from the second equation and also subtract the first equation from the third equation. Thus, we get
+<span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 0 x_1 &amp; {}+{} &amp; x_2 &amp; {}={} &amp; \frac{3}{2} \\
 0 x_1 &amp; {}-{} &amp; \frac{3}{2} x_2 &amp;{}={} &amp; -\frac{17}{3}.
-\end{alignat*}\]</span></p>
-<p>Then, multiply the third equation by <span class="math inline">\(-\frac{2}{3}\)</span> to get</p>
-<p><span class="math display">\[\begin{alignat*}{3}
+\end{alignat*}\]</span>
+Then, multiply the third equation by <span class="math inline">\(-\frac{2}{3}\)</span> to get
+<span class="math display">\[\begin{alignat*}{3}
 x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 0 x_1 &amp; {}+{} &amp; x_2 &amp; {}={} &amp; 3 \\
 0 x_1 &amp; {}+{} &amp; x_2 &amp;{}={} &amp; - \frac{34}{9}.
@@ -823,14 +1080,14 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 </ol>
 <p>Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-91" class="example"><strong>Example 2.14  </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
+<p><span id="exm:unlabeled-div-100" class="example"><strong>Example 2.18  </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
 <p><span class="math display">\[
 \begin{aligned}
 \begin{pmatrix} 1 &amp; 4 &amp; 7 \\ 2 &amp; 5 &amp; 8 \\ 3 &amp; 6 &amp; 9 \end{pmatrix}
 \end{aligned}
 \]</span></p>
 <p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can be represented in <code>R</code> using</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="linear-systems-of-equations.html#cb48-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="linear-systems-of-equations.html#cb51-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Swap the first and second rows.</p></li>
 <li><p>Add -3 times the first row to the third row.</p></li>
@@ -838,7 +1095,7 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-92" class="solution"><em>Solution</em>. </span>Here we present examples of the elementary row operations</p>
+<p><span id="unlabeled-div-101" class="solution"><em>Solution</em>. </span>Here we present examples of the elementary row operations</p>
 <ol style="list-style-type: decimal">
 <li>Swap the first and second rows.</li>
 </ol>
@@ -849,30 +1106,30 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 \end{aligned}
 \]</span></p>
 <p>Notice that the first and second rows have now switched places. This can be done in <code>R</code> in a variety of ways. First, we extract the rows and place them “by hand” in <code>R</code>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="linear-systems-of-equations.html#cb49-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb49-2"><a href="linear-systems-of-equations.html#cb49-2"></a><span class="co"># extract the rows</span></span>
-<span id="cb49-3"><a href="linear-systems-of-equations.html#cb49-3"></a>row1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] </span>
-<span id="cb49-4"><a href="linear-systems-of-equations.html#cb49-4"></a>row2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ]</span>
-<span id="cb49-5"><a href="linear-systems-of-equations.html#cb49-5"></a><span class="co"># swap the rows</span></span>
-<span id="cb49-6"><a href="linear-systems-of-equations.html#cb49-6"></a>A[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>row2</span>
-<span id="cb49-7"><a href="linear-systems-of-equations.html#cb49-7"></a>A[<span class="dv">2</span>, ] &lt;-<span class="st"> </span>row1</span>
-<span id="cb49-8"><a href="linear-systems-of-equations.html#cb49-8"></a>A</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="linear-systems-of-equations.html#cb52-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb52-2"><a href="linear-systems-of-equations.html#cb52-2"></a><span class="co"># extract the rows</span></span>
+<span id="cb52-3"><a href="linear-systems-of-equations.html#cb52-3"></a>row1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] </span>
+<span id="cb52-4"><a href="linear-systems-of-equations.html#cb52-4"></a>row2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ]</span>
+<span id="cb52-5"><a href="linear-systems-of-equations.html#cb52-5"></a><span class="co"># swap the rows</span></span>
+<span id="cb52-6"><a href="linear-systems-of-equations.html#cb52-6"></a>A[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>row2</span>
+<span id="cb52-7"><a href="linear-systems-of-equations.html#cb52-7"></a>A[<span class="dv">2</span>, ] &lt;-<span class="st"> </span>row1</span>
+<span id="cb52-8"><a href="linear-systems-of-equations.html#cb52-8"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    5    8
 ## [2,]    1    4    7
 ## [3,]    3    6    9</code></pre>
 <p>Another way to do this is to use the function <code>rbind()</code> that binds rows together into a matrix.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="linear-systems-of-equations.html#cb51-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb51-2"><a href="linear-systems-of-equations.html#cb51-2"></a><span class="co"># bind row 2, row 1, and row 3 togethter</span></span>
-<span id="cb51-3"><a href="linear-systems-of-equations.html#cb51-3"></a><span class="kw">rbind</span>(A[<span class="dv">2</span>, ], A[<span class="dv">1</span>, ], A[<span class="dv">3</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="linear-systems-of-equations.html#cb54-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb54-2"><a href="linear-systems-of-equations.html#cb54-2"></a><span class="co"># bind row 2, row 1, and row 3 togethter</span></span>
+<span id="cb54-3"><a href="linear-systems-of-equations.html#cb54-3"></a><span class="kw">rbind</span>(A[<span class="dv">2</span>, ], A[<span class="dv">1</span>, ], A[<span class="dv">3</span>, ])</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    5    8
 ## [2,]    1    4    7
 ## [3,]    3    6    9</code></pre>
 <p>Yet another way to swap the first two rows is to use a vectorized operation. This allows for fast and efficient coding and computing. The vectorized row swap is</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="linear-systems-of-equations.html#cb53-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb53-2"><a href="linear-systems-of-equations.html#cb53-2"></a><span class="co"># Take the 2nd, 1st, and 3rd row of A, in that order</span></span>
-<span id="cb53-3"><a href="linear-systems-of-equations.html#cb53-3"></a>A[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="linear-systems-of-equations.html#cb56-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb56-2"><a href="linear-systems-of-equations.html#cb56-2"></a><span class="co"># Take the 2nd, 1st, and 3rd row of A, in that order</span></span>
+<span id="cb56-3"><a href="linear-systems-of-equations.html#cb56-3"></a>A[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>), ]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    5    8
 ## [2,]    1    4    7
@@ -888,20 +1145,20 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 \]</span></p>
 <p><strong>Note:</strong> Notice that by performing this row sum and replacement, we have made the first column of the third row of <span class="math inline">\(\mathbf{A}\)</span> a 0. This zeroing out of the columns will play a very important role moving forward.</p>
 <p>Using <code>R</code>, this can be done as</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="linear-systems-of-equations.html#cb55-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb55-2"><a href="linear-systems-of-equations.html#cb55-2"></a><span class="co"># extract the rows </span></span>
-<span id="cb55-3"><a href="linear-systems-of-equations.html#cb55-3"></a>row1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ]</span>
-<span id="cb55-4"><a href="linear-systems-of-equations.html#cb55-4"></a>row3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ]</span>
-<span id="cb55-5"><a href="linear-systems-of-equations.html#cb55-5"></a>A[<span class="dv">3</span>, ] &lt;-<span class="st"> </span><span class="dv">-3</span> <span class="op">*</span><span class="st"> </span>row1 <span class="op">+</span><span class="st"> </span>row3</span>
-<span id="cb55-6"><a href="linear-systems-of-equations.html#cb55-6"></a>A</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="linear-systems-of-equations.html#cb58-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb58-2"><a href="linear-systems-of-equations.html#cb58-2"></a><span class="co"># extract the rows </span></span>
+<span id="cb58-3"><a href="linear-systems-of-equations.html#cb58-3"></a>row1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ]</span>
+<span id="cb58-4"><a href="linear-systems-of-equations.html#cb58-4"></a>row3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ]</span>
+<span id="cb58-5"><a href="linear-systems-of-equations.html#cb58-5"></a>A[<span class="dv">3</span>, ] &lt;-<span class="st"> </span><span class="dv">-3</span> <span class="op">*</span><span class="st"> </span>row1 <span class="op">+</span><span class="st"> </span>row3</span>
+<span id="cb58-6"><a href="linear-systems-of-equations.html#cb58-6"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    0   -6  -12</code></pre>
 <p>Another way to do this row sum and replacement is</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="linear-systems-of-equations.html#cb57-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb57-2"><a href="linear-systems-of-equations.html#cb57-2"></a>A[<span class="dv">3</span>, ] &lt;-<span class="st"> </span><span class="dv">-3</span> <span class="op">*</span><span class="st"> </span>A[<span class="dv">1</span>, ] <span class="op">+</span><span class="st"> </span>A[<span class="dv">3</span>, ]</span>
-<span id="cb57-3"><a href="linear-systems-of-equations.html#cb57-3"></a>A</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="linear-systems-of-equations.html#cb60-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb60-2"><a href="linear-systems-of-equations.html#cb60-2"></a>A[<span class="dv">3</span>, ] &lt;-<span class="st"> </span><span class="dv">-3</span> <span class="op">*</span><span class="st"> </span>A[<span class="dv">1</span>, ] <span class="op">+</span><span class="st"> </span>A[<span class="dv">3</span>, ]</span>
+<span id="cb60-3"><a href="linear-systems-of-equations.html#cb60-3"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
@@ -916,8 +1173,8 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 \end{aligned}
 \]</span>
 In <code>R</code>, the second row of <span class="math inline">\(\mathbf{A}\)</span> can be multiplied by <span class="math inline">\(\frac{1}{2}\)</span> as</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="linear-systems-of-equations.html#cb59-1"></a>A[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>A[<span class="dv">2</span>, ]</span>
-<span id="cb59-2"><a href="linear-systems-of-equations.html#cb59-2"></a>A</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="linear-systems-of-equations.html#cb62-1"></a>A[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>A[<span class="dv">2</span>, ]</span>
+<span id="cb62-2"><a href="linear-systems-of-equations.html#cb62-2"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1  4.0    7
 ## [2,]    1  2.5    4
@@ -930,8 +1187,8 @@ In <code>R</code>, the second row of <span class="math inline">\(\mathbf{A}\)</s
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 9.
-\end{alignat*}\]</span></p>
-<p>The augmented matrix representation of this system of linear equations is given by the matrix
+\end{alignat*}\]</span>
+The augmented matrix representation of this system of linear equations is given by the matrix
 <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix}
@@ -941,33 +1198,33 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 \end{aligned}
 \]</span>
 where the first column of the matrix represents the variable <span class="math inline">\(x_1\)</span>, the second column of the matrix represents the variable <span class="math inline">\(x_2\)</span>, the third column of the matrix represents the variable <span class="math inline">\(x_3\)</span>, and the fourth column of the matrix represents the constant terms. We can express the augmented form in <code>R</code> using a matrix</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="linear-systems-of-equations.html#cb61-1"></a>augmented_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">-1</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb61-2"><a href="linear-systems-of-equations.html#cb61-2"></a>augmented_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="linear-systems-of-equations.html#cb64-1"></a>augmented_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">-1</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb64-2"><a href="linear-systems-of-equations.html#cb64-2"></a>augmented_matrix</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4   -1   11
 ## [2,]    4    5    2    9</code></pre>
 <p>and to make clear the respective variables, we can add in column names as a matrix attribute using the <code>colnames()</code> function</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="linear-systems-of-equations.html#cb63-1"></a><span class="kw">colnames</span>(augmented_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;constants&quot;</span>)</span>
-<span id="cb63-2"><a href="linear-systems-of-equations.html#cb63-2"></a>augmented_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="linear-systems-of-equations.html#cb66-1"></a><span class="kw">colnames</span>(augmented_matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;constants&quot;</span>)</span>
+<span id="cb66-2"><a href="linear-systems-of-equations.html#cb66-2"></a>augmented_matrix</span></code></pre></div>
 <pre><code>##      x1 x2 x3 constants
 ## [1,]  1  4 -1        11
 ## [2,]  4  5  2         9</code></pre>
 <p>which adds labels to each of the columns.</p>
 <p>Now, using elementary row operations on the matrix, we can attempt to find solutions to the system of equations. First, we multiply the first row by -4 and add it to the second row of the matrix and replace the second row with this sum</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="linear-systems-of-equations.html#cb65-1"></a>augmented_matrix[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="dv">-4</span> <span class="op">*</span><span class="st"> </span>augmented_matrix[<span class="dv">1</span>, ] <span class="op">+</span><span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ]</span>
-<span id="cb65-2"><a href="linear-systems-of-equations.html#cb65-2"></a>augmented_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="linear-systems-of-equations.html#cb68-1"></a>augmented_matrix[<span class="dv">2</span>, ] &lt;-<span class="st"> </span><span class="dv">-4</span> <span class="op">*</span><span class="st"> </span>augmented_matrix[<span class="dv">1</span>, ] <span class="op">+</span><span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ]</span>
+<span id="cb68-2"><a href="linear-systems-of-equations.html#cb68-2"></a>augmented_matrix</span></code></pre></div>
 <pre><code>##      x1  x2 x3 constants
 ## [1,]  1   4 -1        11
 ## [2,]  0 -11  6       -35</code></pre>
 <p>Next, scale the second row to have a leading value of 1 by dividing by -11</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="linear-systems-of-equations.html#cb67-1"></a>augmented_matrix[<span class="dv">2</span>, ] &lt;-<span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ] <span class="op">/</span><span class="st"> </span>(<span class="op">-</span><span class="dv">11</span>)</span>
-<span id="cb67-2"><a href="linear-systems-of-equations.html#cb67-2"></a>augmented_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="linear-systems-of-equations.html#cb70-1"></a>augmented_matrix[<span class="dv">2</span>, ] &lt;-<span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ] <span class="op">/</span><span class="st"> </span>(<span class="op">-</span><span class="dv">11</span>)</span>
+<span id="cb70-2"><a href="linear-systems-of-equations.html#cb70-2"></a>augmented_matrix</span></code></pre></div>
 <pre><code>##      x1 x2         x3 constants
 ## [1,]  1  4 -1.0000000 11.000000
 ## [2,]  0  1 -0.5454545  3.181818</code></pre>
 <p>We can then multiply the second row by -4 and add it to the first row and replace the first row with this value.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="linear-systems-of-equations.html#cb69-1"></a>augmented_matrix[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>augmented_matrix[<span class="dv">1</span>, ] <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ]</span>
-<span id="cb69-2"><a href="linear-systems-of-equations.html#cb69-2"></a>augmented_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="linear-systems-of-equations.html#cb72-1"></a>augmented_matrix[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>augmented_matrix[<span class="dv">1</span>, ] <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>augmented_matrix[<span class="dv">2</span>, ]</span>
+<span id="cb72-2"><a href="linear-systems-of-equations.html#cb72-2"></a>augmented_matrix</span></code></pre></div>
 <pre><code>##      x1 x2         x3 constants
 ## [1,]  1  0  1.1818182 -1.727273
 ## [2,]  0  1 -0.5454545  3.181818</code></pre>
@@ -987,39 +1244,39 @@ x_2 &amp; = \frac{35}{11} + \frac{6}{11} \left( - \frac{19}{13} -\frac{11}{13} x
 \]</span>
 which defines a linear relationship between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Notice that in these last two solutions, <span class="math inline">\(x_1\)</span> is a “free variable” and <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are “determined” by <span class="math inline">\(x_1\)</span>.</p>
 <p>In the plot below, the two planes (red and blue) are the geometric plots of the linear equations in the system of equations (the red plane is the top equation and the blue plane is the bottom equation). The purple line is the equation for the solution given the free variable <span class="math inline">\(x_3\)</span> and lies at the intersection of the two planes, much like the point in the two lines in figure <strong>linking reference here</strong> lies at the intersection of the two points.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="linear-systems-of-equations.html#cb71-1"></a><span class="co"># uses gg3D library</span></span>
-<span id="cb71-2"><a href="linear-systems-of-equations.html#cb71-2"></a>n &lt;-<span class="st"> </span><span class="dv">60</span></span>
-<span id="cb71-3"><a href="linear-systems-of-equations.html#cb71-3"></a>x1 &lt;-<span class="st"> </span>x2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length =</span> n)</span>
-<span id="cb71-4"><a href="linear-systems-of-equations.html#cb71-4"></a>region &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x1 =</span> x1, <span class="dt">x2 =</span> x2)</span>
-<span id="cb71-5"><a href="linear-systems-of-equations.html#cb71-5"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb71-6"><a href="linear-systems-of-equations.html#cb71-6"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
-<span id="cb71-7"><a href="linear-systems-of-equations.html#cb71-7"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
-<span id="cb71-8"><a href="linear-systems-of-equations.html#cb71-8"></a>    <span class="dt">x3 =</span> <span class="op">-</span><span class="st"> </span><span class="dv">11</span> <span class="op">+</span><span class="st"> </span>(region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2)</span>
-<span id="cb71-9"><a href="linear-systems-of-equations.html#cb71-9"></a>)</span>
-<span id="cb71-10"><a href="linear-systems-of-equations.html#cb71-10"></a></span>
-<span id="cb71-11"><a href="linear-systems-of-equations.html#cb71-11"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb71-12"><a href="linear-systems-of-equations.html#cb71-12"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
-<span id="cb71-13"><a href="linear-systems-of-equations.html#cb71-13"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
-<span id="cb71-14"><a href="linear-systems-of-equations.html#cb71-14"></a>    <span class="dt">x3 =</span> (<span class="dv">9</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb71-15"><a href="linear-systems-of-equations.html#cb71-15"></a>) </span>
-<span id="cb71-16"><a href="linear-systems-of-equations.html#cb71-16"></a></span>
-<span id="cb71-17"><a href="linear-systems-of-equations.html#cb71-17"></a>df_solution &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb71-18"><a href="linear-systems-of-equations.html#cb71-18"></a>    <span class="dt">x1 =</span> x1, </span>
-<span id="cb71-19"><a href="linear-systems-of-equations.html#cb71-19"></a>    <span class="dt">x2 =</span> <span class="dv">341</span> <span class="op">/</span><span class="st"> </span><span class="dv">143</span> <span class="op">-</span><span class="st"> </span><span class="dv">6</span> <span class="op">/</span><span class="st"> </span><span class="dv">13</span> <span class="op">*</span><span class="st"> </span>x1,</span>
-<span id="cb71-20"><a href="linear-systems-of-equations.html#cb71-20"></a>    <span class="dt">x3 =</span> <span class="dv">-19</span><span class="op">/</span><span class="dv">13</span> <span class="op">-</span><span class="st"> </span><span class="dv">11</span><span class="op">/</span><span class="dv">13</span> <span class="op">*</span><span class="st"> </span>x1</span>
-<span id="cb71-21"><a href="linear-systems-of-equations.html#cb71-21"></a>) </span>
-<span id="cb71-22"><a href="linear-systems-of-equations.html#cb71-22"></a></span>
-<span id="cb71-23"><a href="linear-systems-of-equations.html#cb71-23"></a><span class="co"># theta and phi set up the &quot;perspective/viewing angle&quot; of the 3D plot</span></span>
-<span id="cb71-24"><a href="linear-systems-of-equations.html#cb71-24"></a>theta &lt;-<span class="st"> </span><span class="dv">63</span></span>
-<span id="cb71-25"><a href="linear-systems-of-equations.html#cb71-25"></a>phi &lt;-<span class="st"> </span><span class="dv">-12</span></span>
-<span id="cb71-26"><a href="linear-systems-of-equations.html#cb71-26"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x1, x2, <span class="dt">z =</span> x3)) <span class="op">+</span></span>
-<span id="cb71-27"><a href="linear-systems-of-equations.html#cb71-27"></a><span class="st">    </span><span class="kw">axes_3D</span>(<span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
-<span id="cb71-28"><a href="linear-systems-of-equations.html#cb71-28"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(<span class="dt">alpha =</span> <span class="fl">0.25</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
-<span id="cb71-29"><a href="linear-systems-of-equations.html#cb71-29"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(<span class="dt">data =</span> df2, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">z =</span> x3), <span class="dt">alpha =</span> <span class="fl">0.25</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
-<span id="cb71-30"><a href="linear-systems-of-equations.html#cb71-30"></a><span class="st">    </span><span class="kw">stat_3D</span>(<span class="dt">data =</span> df_solution, <span class="kw">aes</span>(x1, x2, <span class="dt">z =</span> x3), <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span></span>
-<span id="cb71-31"><a href="linear-systems-of-equations.html#cb71-31"></a><span class="st">    </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
-<span id="cb71-32"><a href="linear-systems-of-equations.html#cb71-32"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
-<span id="cb71-33"><a href="linear-systems-of-equations.html#cb71-33"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="linear-systems-of-equations.html#cb74-1"></a><span class="co"># uses gg3D library</span></span>
+<span id="cb74-2"><a href="linear-systems-of-equations.html#cb74-2"></a>n &lt;-<span class="st"> </span><span class="dv">60</span></span>
+<span id="cb74-3"><a href="linear-systems-of-equations.html#cb74-3"></a>x1 &lt;-<span class="st"> </span>x2 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dt">length =</span> n)</span>
+<span id="cb74-4"><a href="linear-systems-of-equations.html#cb74-4"></a>region &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">x1 =</span> x1, <span class="dt">x2 =</span> x2)</span>
+<span id="cb74-5"><a href="linear-systems-of-equations.html#cb74-5"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb74-6"><a href="linear-systems-of-equations.html#cb74-6"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
+<span id="cb74-7"><a href="linear-systems-of-equations.html#cb74-7"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
+<span id="cb74-8"><a href="linear-systems-of-equations.html#cb74-8"></a>    <span class="dt">x3 =</span> <span class="op">-</span><span class="st"> </span><span class="dv">11</span> <span class="op">+</span><span class="st"> </span>(region<span class="op">$</span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2)</span>
+<span id="cb74-9"><a href="linear-systems-of-equations.html#cb74-9"></a>)</span>
+<span id="cb74-10"><a href="linear-systems-of-equations.html#cb74-10"></a></span>
+<span id="cb74-11"><a href="linear-systems-of-equations.html#cb74-11"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb74-12"><a href="linear-systems-of-equations.html#cb74-12"></a>    <span class="dt">x1 =</span> region<span class="op">$</span>x1,</span>
+<span id="cb74-13"><a href="linear-systems-of-equations.html#cb74-13"></a>    <span class="dt">x2 =</span> region<span class="op">$</span>x2,</span>
+<span id="cb74-14"><a href="linear-systems-of-equations.html#cb74-14"></a>    <span class="dt">x3 =</span> (<span class="dv">9</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x1 <span class="op">-</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>region<span class="op">$</span>x2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb74-15"><a href="linear-systems-of-equations.html#cb74-15"></a>) </span>
+<span id="cb74-16"><a href="linear-systems-of-equations.html#cb74-16"></a></span>
+<span id="cb74-17"><a href="linear-systems-of-equations.html#cb74-17"></a>df_solution &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb74-18"><a href="linear-systems-of-equations.html#cb74-18"></a>    <span class="dt">x1 =</span> x1, </span>
+<span id="cb74-19"><a href="linear-systems-of-equations.html#cb74-19"></a>    <span class="dt">x2 =</span> <span class="dv">341</span> <span class="op">/</span><span class="st"> </span><span class="dv">143</span> <span class="op">-</span><span class="st"> </span><span class="dv">6</span> <span class="op">/</span><span class="st"> </span><span class="dv">13</span> <span class="op">*</span><span class="st"> </span>x1,</span>
+<span id="cb74-20"><a href="linear-systems-of-equations.html#cb74-20"></a>    <span class="dt">x3 =</span> <span class="dv">-19</span><span class="op">/</span><span class="dv">13</span> <span class="op">-</span><span class="st"> </span><span class="dv">11</span><span class="op">/</span><span class="dv">13</span> <span class="op">*</span><span class="st"> </span>x1</span>
+<span id="cb74-21"><a href="linear-systems-of-equations.html#cb74-21"></a>) </span>
+<span id="cb74-22"><a href="linear-systems-of-equations.html#cb74-22"></a></span>
+<span id="cb74-23"><a href="linear-systems-of-equations.html#cb74-23"></a><span class="co"># theta and phi set up the &quot;perspective/viewing angle&quot; of the 3D plot</span></span>
+<span id="cb74-24"><a href="linear-systems-of-equations.html#cb74-24"></a>theta &lt;-<span class="st"> </span><span class="dv">63</span></span>
+<span id="cb74-25"><a href="linear-systems-of-equations.html#cb74-25"></a>phi &lt;-<span class="st"> </span><span class="dv">-12</span></span>
+<span id="cb74-26"><a href="linear-systems-of-equations.html#cb74-26"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x1, x2, <span class="dt">z =</span> x3)) <span class="op">+</span></span>
+<span id="cb74-27"><a href="linear-systems-of-equations.html#cb74-27"></a><span class="st">    </span><span class="kw">axes_3D</span>(<span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb74-28"><a href="linear-systems-of-equations.html#cb74-28"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(<span class="dt">alpha =</span> <span class="fl">0.25</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb74-29"><a href="linear-systems-of-equations.html#cb74-29"></a><span class="st">    </span><span class="kw">stat_wireframe</span>(<span class="dt">data =</span> df2, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">z =</span> x3), <span class="dt">alpha =</span> <span class="fl">0.25</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) <span class="op">+</span></span>
+<span id="cb74-30"><a href="linear-systems-of-equations.html#cb74-30"></a><span class="st">    </span><span class="kw">stat_3D</span>(<span class="dt">data =</span> df_solution, <span class="kw">aes</span>(x1, x2, <span class="dt">z =</span> x3), <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span></span>
+<span id="cb74-31"><a href="linear-systems-of-equations.html#cb74-31"></a><span class="st">    </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
+<span id="cb74-32"><a href="linear-systems-of-equations.html#cb74-32"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb74-33"><a href="linear-systems-of-equations.html#cb74-33"></a><span class="st">    </span><span class="kw">labs_3D</span>(<span class="dt">hjust=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">-0.2</span>), <span class="dt">angle=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="dt">theta =</span> theta, <span class="dt">phi =</span> phi) </span></code></pre></div>
 <pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).
 
 ## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
@@ -1028,10 +1285,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <div id="existence-and-uniqueness" class="section level3">
 <h3><span class="header-section-number">2.1.7</span> Existence and Uniqueness</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-93" class="definition"><strong>Definition 2.6  </strong></span>A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a <strong>unique</strong> solution if only one solution exists.</p>
+<p><span id="def:unlabeled-div-102" class="definition"><strong>Definition 2.6  </strong></span>A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a <strong>unique</strong> solution if only one solution exists.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 2.15  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span id="exm:unlabeled-div-103" class="example"><strong>Example 2.19  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignedat}{4}  16 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 13\\ 5 x_1 &amp; {}+{} &amp; 11 x_2 &amp; {}+{} &amp; 10 x_3 &amp; {}={} &amp; 8\\ 9 x_1 &amp; {}+{} &amp; 7 x_2 &amp; {}+{} &amp; 6 x_3 &amp; {}={} &amp; 12\\ 4 x_1 &amp; {}+{} &amp; 14 x_2 &amp; {}+{} &amp; 15 x_3 &amp; {}={} &amp; 1 \end{alignedat}
 \]</span></p>
@@ -1039,11 +1296,11 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <!-- Solution -->
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-11" class="solution"><em>Solution</em>. </span></p>
+<p><span id="unlabeled-div-17" class="solution"><em>Solution</em>. </span></p>
 </div>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-95" class="example"><strong>Example 2.16  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span id="exm:unlabeled-div-104" class="example"><strong>Example 2.20  </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <p><span class="math display">\[
 \begin{alignedat}{4}   x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp; 3 x_3 &amp; {}={} &amp; 5\\  x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 2\\ 3 x_1 &amp; {}+{} &amp; 2 x_2 &amp; {}+{} &amp;  x_3 &amp; {}={} &amp; 7 \end{alignedat}
 \]</span></p>
@@ -1051,7 +1308,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <!-- Solution -->
 <div class="fold-solution">
 <div class="solution">
-<p><span id="unlabeled-div-12" class="solution"><em>Solution</em>. </span></p>
+<p><span id="unlabeled-div-18" class="solution"><em>Solution</em>. </span></p>
 </div>
 </div>
 </div>
@@ -1060,36 +1317,36 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <h2><span class="header-section-number">2.2</span> Reduce row echelon form</h2>
 <p>Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-96" class="definition"><strong>Definition 2.7  </strong></span>A matrix is said to be in <strong>echelon</strong> form if</p>
+<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 2.7  </strong></span>A matrix is said to be in <strong>echelon</strong> form if</p>
 <ol style="list-style-type: decimal">
 <li><p>all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)</p></li>
 <li><p>the leading entry/coefficient of a nonzero row (called the <strong>pivot</strong>) is always <em>strictly</em> to the right of the leading entry/coefficient of the row above</p></li>
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-97" class="example"><strong>Example 2.17  </strong></span><strong>echelon matrix example in class</strong></p>
+<p><span id="exm:unlabeled-div-106" class="example"><strong>Example 2.21  </strong></span><strong>echelon matrix example in class</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-98" class="definition"><strong>Definition 2.8  </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
+<p><span id="def:unlabeled-div-107" class="definition"><strong>Definition 2.8  </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
 <ol style="list-style-type: decimal">
 <li><p>the leading entry/coefficient of each row is 1</p></li>
 <li><p>The leading entry/coefficient of 1 is the only nonzero entry in its column.</p></li>
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-99" class="example"><strong>Example 2.18  </strong></span><strong>rref matrix example in class</strong></p>
+<p><span id="exm:unlabeled-div-108" class="example"><strong>Example 2.22  </strong></span><strong>rref matrix example in class</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-100" class="definition"><strong>Definition 2.9  </strong></span>Echelon matrices have the property of being <strong>upper diagonal</strong>. A matrix is said to be <strong>upper diagonal</strong> if all entries of the matrix at or above the diagonal are nonzero.</p>
+<p><span id="def:unlabeled-div-109" class="definition"><strong>Definition 2.9  </strong></span>Echelon matrices have the property of being <strong>upper diagonal</strong>. A matrix is said to be <strong>upper diagonal</strong> if all entries of the matrix at or above the diagonal are nonzero.</p>
 </div>
 <ul>
 <li>Example: **lower and non-lower diagonal matrices</li>
 </ul>
 <div class="definition">
-<p><span id="def:unlabeled-div-101" class="definition"><strong>Definition 2.10  </strong></span>Two matrices are <strong>row-equivalent</strong> if one matrix can be transformed to the other through elementary row operations.</p>
+<p><span id="def:unlabeled-div-110" class="definition"><strong>Definition 2.10  </strong></span>Two matrices are <strong>row-equivalent</strong> if one matrix can be transformed to the other through elementary row operations.</p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-102" class="theorem"><strong>Theorem 2.1  </strong></span>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.</p>
+<p><span id="thm:unlabeled-div-111" class="theorem"><strong>Theorem 2.1  </strong></span>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.</p>
 </div>
 <p>:::{.exercise}</p>
 <p>Using elementary row operations, calculate the reduced row echelon form of the following matrices
@@ -1101,10 +1358,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <h3><span class="header-section-number">2.2.1</span> Pivot positions</h3>
 <p>The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-103" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
+<p><span id="def:unlabeled-div-112" class="definition"><strong>Definition 2.11  </strong></span>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-104" class="example"><strong>Example 2.19  </strong></span><strong>pivot position and pivot columns</strong></p>
+<p><span id="exm:unlabeled-div-113" class="example"><strong>Example 2.23  </strong></span><strong>pivot position and pivot columns</strong></p>
 </div>
 </div>
 <div id="finding-the-reduced-row-echelon-form" class="section level3">
@@ -1118,10 +1375,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <li>Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.</li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-105" class="example"><strong>Example 2.20  </strong></span><strong>in class</strong></p>
+<p><span id="exm:unlabeled-div-114" class="example"><strong>Example 2.24  </strong></span><strong>in class</strong></p>
 </div>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="linear-systems-of-equations.html#cb73-1"></a><span class="co"># pracma library</span></span>
-<span id="cb73-2"><a href="linear-systems-of-equations.html#cb73-2"></a><span class="co"># rref example in class</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="linear-systems-of-equations.html#cb76-1"></a><span class="co"># pracma library</span></span>
+<span id="cb76-2"><a href="linear-systems-of-equations.html#cb76-2"></a><span class="co"># rref example in class</span></span></code></pre></div>
 </div>
 <div id="using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Using reduced row echelon forms to solve systems of linear equations</h3>
@@ -1134,9 +1391,9 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 \begin{pmatrix} 3 &amp; 8 &amp; -4 &amp; 6 \\ 2 &amp; -4 &amp; -1 &amp; 8 \\ 4 &amp; 5 &amp; 0 &amp; 9 \end{pmatrix}
 \]</span></p>
 <p>In <code>R</code>, this is the matrix</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="linear-systems-of-equations.html#cb74-1"></a><span class="co"># define matrix</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="linear-systems-of-equations.html#cb77-1"></a><span class="co"># define matrix</span></span></code></pre></div>
 <p>Calculating the reduced row echelon form, gives</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="linear-systems-of-equations.html#cb75-1"></a><span class="co"># calculate rref of augmented matrix</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="linear-systems-of-equations.html#cb78-1"></a><span class="co"># calculate rref of augmented matrix</span></span></code></pre></div>
 <p>which gives the solution …</p>
 <div class="example">
 <ul>
@@ -1145,7 +1402,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-107" class="example"><strong>Example 2.21  </strong></span>Another example where we find a solution is</p>
+<p><span id="exm:unlabeled-div-116" class="example"><strong>Example 2.25  </strong></span>Another example where we find a solution is</p>
 <p><span class="math display">\[
 \begin{aligned}
 5 x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; 2 x_3 &amp;&amp; = &amp; 0 \\
@@ -1155,10 +1412,10 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 <p><strong>Do same steps</strong></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-108" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
+<p><span id="def:unlabeled-div-117" class="definition"><strong>Definition 2.12  </strong></span>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-109" class="example"><strong>Example 2.22  </strong></span><strong>in class</strong></p>
+<p><span id="exm:unlabeled-div-118" class="example"><strong>Example 2.26  </strong></span><strong>in class</strong></p>
 </div>
 </div>
 <div id="existence-and-uniqueness-from-reduced-row-echelon-form" class="section level3">
@@ -1169,7 +1426,7 @@ which defines a linear relationship between <span class="math inline">\(x_1\)</s
 \]</span>
 for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-110" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
+<p><span id="thm:unlabeled-div-119" class="theorem"><strong>Theorem 2.2  </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
 </div>
 <ul>
 <li><strong>Example: consistent system of equations</strong></li>

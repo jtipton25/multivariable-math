@@ -1,6 +1,7 @@
 eq:linear
 fig:one-solution
 fig:no-solution
+fig:one-solution-revisited
 fig:infinite-solutions
 eq:matrix-equation
 eq:matrix-addition

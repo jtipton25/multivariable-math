@@ -352,9 +352,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="https://www.3blue1brown.com/lessons/linear-transformations">3 Blue 1 Brown – Linear transformations</a></p></li>
 <li><p><a href="https://www.3blue1brown.com/lessons/3d-transformations">3 Blue 1 Brown – 3D transformations</a></p></li>
 </ul>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="linear-transformations.html#cb124-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb124-2"><a href="linear-transformations.html#cb124-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb124-3"><a href="linear-transformations.html#cb124-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="linear-transformations.html#cb127-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb127-2"><a href="linear-transformations.html#cb127-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb127-3"><a href="linear-transformations.html#cb127-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
 <p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 <p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a “<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>.” For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
 <p><strong>Draw figure</strong></p>
@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-128" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
+<p><span id="exm:unlabeled-div-137" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 2 &amp; 4 \\
@@ -396,15 +396,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{pmatrix}
 \end{aligned}
 \]</span></p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="linear-transformations.html#cb125-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">-1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb125-2"><a href="linear-transformations.html#cb125-2"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb125-3"><a href="linear-transformations.html#cb125-3"></a>b &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">2</span>]</span>
-<span id="cb125-4"><a href="linear-transformations.html#cb125-4"></a>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-2</span>, <span class="dv">-1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="linear-transformations.html#cb128-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">-1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb128-2"><a href="linear-transformations.html#cb128-2"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb128-3"><a href="linear-transformations.html#cb128-3"></a>b &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">2</span>]</span>
+<span id="cb128-4"><a href="linear-transformations.html#cb128-4"></a>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-2</span>, <span class="dv">-1</span>)</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Find the image of <span class="math inline">\(\mathbf{u}\)</span> using the matrix transformation <span class="math inline">\(T\)</span> (e.g., calculate <span class="math inline">\(T(\mathbf{u})\)</span>).</li>
 </ol>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="linear-transformations.html#cb126-1"></a><span class="co"># a</span></span>
-<span id="cb126-2"><a href="linear-transformations.html#cb126-2"></a>A <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="linear-transformations.html#cb129-1"></a><span class="co"># a</span></span>
+<span id="cb129-2"><a href="linear-transformations.html#cb129-2"></a>A <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]   14
 ## [2,]    0
@@ -413,8 +413,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Find a coefficient vector <span class="math inline">\(\mathbf{x} \in \mathcal{R}^2\)</span> such that <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span>.</li>
 </ol>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="linear-transformations.html#cb128-1"></a><span class="co">#b</span></span>
-<span id="cb128-2"><a href="linear-transformations.html#cb128-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, b))</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="linear-transformations.html#cb131-1"></a><span class="co">#b</span></span>
+<span id="cb131-2"><a href="linear-transformations.html#cb131-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, b))</span></code></pre></div>
 <pre><code>##           b
 ## [1,] 1 0  3
 ## [2,] 0 1 -2
@@ -427,8 +427,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Determine if <span class="math inline">\(\mathbf{c}\)</span> is in the range of <span class="math inline">\(T\)</span>. In other words, does the solution <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{c}\)</span> exist?</li>
 </ol>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="linear-transformations.html#cb130-1"></a><span class="co"># d</span></span>
-<span id="cb130-2"><a href="linear-transformations.html#cb130-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, c)) <span class="co"># no because this is an inconsistent system of equations</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="linear-transformations.html#cb133-1"></a><span class="co"># d</span></span>
+<span id="cb133-2"><a href="linear-transformations.html#cb133-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, c)) <span class="co"># no because this is an inconsistent system of equations</span></span></code></pre></div>
 <pre><code>##          c
 ## [1,] 1 0 0
 ## [2,] 0 1 0
@@ -438,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-transformations-1" class="section level2">
 <h2><span class="header-section-number">6.1</span> Linear Transformations</h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-129" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<p><span id="def:unlabeled-div-138" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
 <li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
@@ -498,13 +498,13 @@ x &amp; 0 \\
 <ul>
 <li>In the example below, we set <span class="math inline">\(x = 2\)</span> and generate the transformation.</li>
 </ul>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="linear-transformations.html#cb132-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
-<span id="cb132-2"><a href="linear-transformations.html#cb132-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
-<span id="cb132-3"><a href="linear-transformations.html#cb132-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="cb132-4"><a href="linear-transformations.html#cb132-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb132-5"><a href="linear-transformations.html#cb132-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
-<span id="cb132-6"><a href="linear-transformations.html#cb132-6"></a></span>
-<span id="cb132-7"><a href="linear-transformations.html#cb132-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="linear-transformations.html#cb135-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb135-2"><a href="linear-transformations.html#cb135-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb135-3"><a href="linear-transformations.html#cb135-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb135-4"><a href="linear-transformations.html#cb135-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb135-5"><a href="linear-transformations.html#cb135-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb135-6"><a href="linear-transformations.html#cb135-6"></a></span>
+<span id="cb135-7"><a href="linear-transformations.html#cb135-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-animation-1.gif" /><!-- --></p>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-static-1.png" width="672" /></p>
 </div>
@@ -729,7 +729,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <div id="one-to-one-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> One-to-one transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-130" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="def:unlabeled-div-139" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <p><img src="images/one-to-one.png" width="100%" /></p>
 <p><img src="images/not-one-to-one.png" width="100%" /></p>
@@ -789,7 +789,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-131" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-140" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
@@ -825,7 +825,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <div id="onto-transformations" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Onto transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-132" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
+<p><span id="def:unlabeled-div-141" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
 </div>
 <p><img src="images/onto.png" width="100%" /></p>
 <p><img src="images/not-onto.png" width="100%" /></p>
@@ -841,7 +841,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-133" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-142" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is onto</p></li>
 <li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>

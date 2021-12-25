@@ -353,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Recall the definition of a subspace:</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-203" class="definition"><strong>Definition 15.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of a vector space <span class="math inline">\(\mathcal{V}\)</span> is a subset of <span class="math inline">\(\mathcal{V}\)</span> such that</p>
+<p><span id="def:unlabeled-div-212" class="definition"><strong>Definition 15.1  </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of a vector space <span class="math inline">\(\mathcal{V}\)</span> is a subset of <span class="math inline">\(\mathcal{V}\)</span> such that</p>
 <ul>
 <li><p><span class="math inline">\(\mathcal{H}\)</span> contains the zero vector – <span class="math inline">\(\mathbf{0} \in \mathcal{H}\)</span></p></li>
 <li><p><span class="math inline">\(\mathcal{H}\)</span> is closed under vector addition. Therefore, for <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{H}\)</span>, the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span></p></li>
@@ -367,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="null-space" class="section level3">
 <h3><span class="header-section-number">15.1.1</span> Null space</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-204" class="definition"><strong>Definition 15.2  </strong></span>The null space null(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions of the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
+<p><span id="def:unlabeled-div-213" class="definition"><strong>Definition 15.2  </strong></span>The null space null(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions of the homogeneous equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
 <p>Another way to write null(<span class="math inline">\(\mathbf{A}\)</span>) is
 <span class="math display">\[
 \begin{aligned}
@@ -376,10 +376,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-205" class="theorem"><strong>Theorem 15.1  </strong></span>The null space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="thm:unlabeled-div-214" class="theorem"><strong>Theorem 15.1  </strong></span>The null space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-206" class="proof"><em>Proof</em>. </span>To show that the null space of <span class="math inline">\(\mathbf{A}\)</span>, denoted null(<span class="math inline">\(\mathbf{A})\)</span>, is a subspace we need to show the following</p>
+<p><span id="unlabeled-div-215" class="proof"><em>Proof</em>. </span>To show that the null space of <span class="math inline">\(\mathbf{A}\)</span>, denoted null(<span class="math inline">\(\mathbf{A})\)</span>, is a subspace we need to show the following</p>
 <ol style="list-style-type: decimal">
 <li><p>The zero vector <span class="math inline">\(\mathbf{0}\)</span> is in the null space of <span class="math inline">\(\mathbf{A}\)</span></p></li>
 <li><p>The null space of <span class="math inline">\(\mathbf{A}\)</span> is closed under addition</p></li>
@@ -408,8 +408,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Find solution to system of homogeneous system of equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></li>
 </ul>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="vector-spaces-and-subspaces.html#cb246-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">-5</span>, <span class="dv">-2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">-5</span>, <span class="dv">-4</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="cb246-2"><a href="vector-spaces-and-subspaces.html#cb246-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="vector-spaces-and-subspaces.html#cb249-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">-5</span>, <span class="dv">-2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">-5</span>, <span class="dv">-4</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">-2</span>), <span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb249-2"><a href="vector-spaces-and-subspaces.html#cb249-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]  [,5] [,6]
 ## [1,]    1    0    0 1.50 -4.50    0
 ## [2,]    0    1    0 7.25  2.75    0
@@ -438,7 +438,7 @@ Find a spanning set for null(<span class="math inline">\(\mathbf{A}\)</span>) wh
 <div id="column-space" class="section level3">
 <h3><span class="header-section-number">15.1.2</span> Column space</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-209" class="definition"><strong>Definition 15.3  </strong></span>The columns space col(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p><span id="def:unlabeled-div-218" class="definition"><strong>Definition 15.3  </strong></span>The columns space col(<span class="math inline">\(\mathbf{A}\)</span>) of an <span class="math inline">\(m \times n\)</span> <span class="math inline">\(\mathbf{A}\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>If <span class="math inline">\(\{ \mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span> are the columns of <span class="math inline">\(\mathbf{A}\)</span>, then
 <span class="math display">\[
 \begin{aligned}
@@ -453,10 +453,10 @@ this can be written in set notation as
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-210" class="theorem"><strong>Theorem 15.2  </strong></span>The column space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="thm:unlabeled-div-219" class="theorem"><strong>Theorem 15.2  </strong></span>The column space of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-211" class="proof"><em>Proof</em>. </span>Do in class</p>
+<p><span id="unlabeled-div-220" class="proof"><em>Proof</em>. </span>Do in class</p>
 <ul>
 <li><p><span class="math inline">\(\mathbf{0}\)</span> vector</p></li>
 <li><p>sum of vectors</p></li>
