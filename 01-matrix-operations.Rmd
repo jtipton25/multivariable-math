@@ -1,7 +1,6 @@
 # Matrix operations {#matrix-operations}
 
 ## ToDo 
-- define dot product here
 - Show matrix multiplication using dot products
 - move to chapter 1 or 2
 
@@ -9,7 +8,56 @@
 
 * **Note: add examples:**
 
+## The dot/inner product
 
+
+:::{.definition}
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then, the **dot product** (also called the **inner product**) of $\mathbf{u}$ and $\mathbf{v}$ is $\mathbf{u}' \mathbf{v}$. The vectors $\mathbf{u}$ and $\mathbf{v}$ are $n \times 1$ matrices ($n$ rows and one column) where $\mathbf{u}'$ is a $1 \times n$ matrix and the inner product $\mathbf{u}' \mathbf{v}$ is a scalar ($1 \times 1$ matrix). The inner product is also sometimes called the dot product and written as $\mathbf{u} \cdot \mathbf{v}$. 
+
+If the vectors
+$$
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} & & \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} 
+\end{aligned}
+$$
+then $\mathbf{u}' \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n$
+:::
+
+:::{.example}
+Find the inner product $\mathbf{u}'\mathbf{v}$ and $\mathbf{v}'\mathbf{u}$ of
+$$
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} & & \mathbf{v} = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix} 
+\end{aligned}
+$$
+
+* do by hand
+```{r example-dot-prod}
+u <- c(2, -3, 1)
+v <- c(4, -2, 3)
+# u'v
+sum(u*v)
+t(u) %*% v
+# v'u
+sum(v*u)
+t(v) %*% u
+```
+:::
+
+The properties of inner products are defined with the following theorem.
+
+:::{.theorem}
+Let $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ be vectors in $\mathcal{R}^n$ and let $c$ be a scalar. Then
+
+a) $\mathbf{u}'\mathbf{v} = \mathbf{v}'\mathbf{u}$
+
+b) $(\mathbf{u} + \mathbf{v})' \mathbf{w} = \mathbf{u}' \mathbf{w} + \mathbf{v}' \mathbf{w}$
+
+c) $( c \mathbf{u} )' \mathbf{v} = c ( \mathbf{v}'\mathbf{u} )$
+
+d) $\mathbf{u}'\mathbf{u} \geq 0$ with $\mathbf{u}'\mathbf{u} = 0$ only when $\mathbf{u} = \mathbf{0}$
+
+:::
 
 
 ## Properties of matrices
