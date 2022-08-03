@@ -170,7 +170,7 @@
 \title{Multivariable Mathematics for Data Science}
 \author{John Tipton}
 \date{Created 1 January 2020\\
-Last updated 25 December, 2021}
+Last updated 03 August, 2022}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -528,6 +528,779 @@ and you can give the row representation of the matrix \texttt{A} with with row b
 ## r3  -14    5   99
 ## r4   42   -3    0
 \end{verbatim}
+
+\hypertarget{matrix-operations}{%
+\chapter{Matrix operations}\label{matrix-operations}}
+
+\hypertarget{todo}{%
+\section{ToDo}\label{todo}}
+
+\begin{itemize}
+\item
+  Show matrix multiplication using dot products
+\item
+  move to chapter 1 or 2
+\item
+  \href{https://www.3blue1brown.com/lessons/matrix-multiplication}{3 Blue 1 Brown -- Matrix Multiplication}
+\item
+  \textbf{Note: add examples:}
+\end{itemize}
+
+\hypertarget{the-dotinner-product}{%
+\section{The dot/inner product}\label{the-dotinner-product}}
+
+\begin{definition}
+Let \(\mathbf{u}\) and \(\mathbf{v}\) be vectors in \(\mathcal{R}^n\). Then, the \textbf{dot product} (also called the \textbf{inner product}) of \(\mathbf{u}\) and \(\mathbf{v}\) is \(\mathbf{u}' \mathbf{v}\). The vectors \(\mathbf{u}\) and \(\mathbf{v}\) are \(n \times 1\) matrices (\(n\) rows and one column) where \(\mathbf{u}'\) is a \(1 \times n\) matrix and the inner product \(\mathbf{u}' \mathbf{v}\) is a scalar (\(1 \times 1\) matrix). The inner product is also sometimes called the dot product and written as \(\mathbf{u} \cdot \mathbf{v}\).
+
+If the vectors
+\[
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} & & \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} 
+\end{aligned}
+\]
+then \(\mathbf{u}' \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n\)
+\end{definition}
+
+\begin{example}
+
+Find the inner product \(\mathbf{u}'\mathbf{v}\) and \(\mathbf{v}'\mathbf{u}\) of
+\[
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} & & \mathbf{v} = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix} 
+\end{aligned}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  do by hand
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{v <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{-2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\CommentTok{# u'v}
+\KeywordTok{sum}\NormalTok{(u}\OperatorTok{*}\NormalTok{v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t}\NormalTok{(u) }\OperatorTok{%*%}\StringTok{ }\NormalTok{v}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]   17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# v'u}
+\KeywordTok{sum}\NormalTok{(v}\OperatorTok{*}\NormalTok{u)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t}\NormalTok{(v) }\OperatorTok{%*%}\StringTok{ }\NormalTok{u}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]   17
+\end{verbatim}
+
+\end{example}
+
+The properties of inner products are defined with the following theorem.
+
+\begin{theorem}
+
+Let \(\mathbf{u}\), \(\mathbf{v}\), and \(\mathbf{w}\) be vectors in \(\mathcal{R}^n\) and let \(c\) be a scalar. Then
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(\mathbf{u}'\mathbf{v} = \mathbf{v}'\mathbf{u}\)
+\item
+  \((\mathbf{u} + \mathbf{v})' \mathbf{w} = \mathbf{u}' \mathbf{w} + \mathbf{v}' \mathbf{w}\)
+\item
+  \(( c \mathbf{u} )' \mathbf{v} = c ( \mathbf{v}'\mathbf{u} )\)
+\item
+  \(\mathbf{u}'\mathbf{u} \geq 0\) with \(\mathbf{u}'\mathbf{u} = 0\) only when \(\mathbf{u} = \mathbf{0}\)
+\end{enumerate}
+
+\end{theorem}
+
+\hypertarget{properties-of-matrices}{%
+\section{Properties of matrices}\label{properties-of-matrices}}
+
+\hypertarget{matrix-addition}{%
+\subsection{Matrix Addition}\label{matrix-addition}}
+
+\textbf{Matrix Addition:} If the matrices \(\mathbf{A}\) and \(\mathbf{B}\) are of the same dimension (e.g., both \(\mathbf{A}\) and \(\mathbf{B}\) have the same number of rows \(m\) and the same number of columns \(n\)), then
+
+\[
+\begin{aligned}
+\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix} + 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1n} \\
+b_{21} & b_{22} & \cdots & b_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{m1} & b_{m2} & \cdots & b_{mn}
+\end{pmatrix} \\
+& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
+\end{pmatrix} \\
+& = \left\{ a_{ij} + b_{ij} \right\}
+\end{aligned}
+\label{eq:matrix-addition}
+\]
+
+\textbf{\ldots{} Another way to }
+
+If \(\mathbf{A}\) and \(\mathbf{B}\) are of the same dimension (same number of rows and columns) you can add the matrices together
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{-4}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{-24}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{-9}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    4    2
+## [2,]    1    0
+## [3,]   33   -4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    7    9
+## [2,]  -24   11
+## [3,]    3   -9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{+}\StringTok{ }\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   11   11
+## [2,]  -23   11
+## [3,]   36  -13
+\end{verbatim}
+
+We can also write this using \texttt{for} loops
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# initialize an empty matrix to fill}
+\NormalTok{C <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(A)) \{         }\CommentTok{# loop over the rows}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(A)) \{     }\CommentTok{# loop over the columns}
+\NormalTok{        C[i, j] <-}\StringTok{ }\NormalTok{A[i, j] }\OperatorTok{+}\StringTok{ }\NormalTok{B[i, j]}
+\NormalTok{    \}}
+\NormalTok{\}}
+\NormalTok{C}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   11   11
+## [2,]  -23   11
+## [3,]   36  -13
+\end{verbatim}
+
+If \(\mathbf{A}\) and \(\mathbf{B}\) are of different dimensions (they differ in either the number of rows or columns), \texttt{R} will return an error warning you that the matrices are of different sizes and can't be added
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{-4}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{-24}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    4    2
+## [2,]    1    0
+## [3,]   33   -4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    7    3
+## [2,]  -24    9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{+}\StringTok{ }\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in A + B: non-conformable arrays
+\end{verbatim}
+
+\begin{theorem}
+
+Let \(\mathbf{A}\), \(\mathbf{B}\), and \(\mathbf{C}\) be \(m \times n\) matrices and let \(a\) and \(b\) be scalars, then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  \(\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}\) \hfill [(commutivity of addition)]{style="float:right"}
+\item
+  \((\mathbf{A} + \mathbf{B}) + \mathbf{C} = \mathbf{A} + (\mathbf{B} + \mathbf{C})\) \hfill [(commutivity of addition)]{style="float:right"}
+\item
+  \(\mathbf{A} + \mathbf{0} = \mathbf{A}\) \hfill [(additive identity)]{style="float:right"}
+\item
+  \(a (\mathbf{A} + \mathbf{B}) = a \mathbf{A} + a \mathbf{B}\) \hfill [(scalar ...)]{style="float:right"}
+\item
+  \((a + b)\mathbf{A} = a \mathbf{A} + b \mathbf{A}\) \hfill [(scalar ...)]{style="float:right"}
+\item
+  \((ab)\mathbf{A} = a (b\mathbf{A})\) \hfill [(scalar ...)]{style="float:right"}
+\end{enumerate}
+
+\end{theorem}
+
+\hypertarget{matrix-multipliation}{%
+\subsection{Matrix Multipliation}\label{matrix-multipliation}}
+
+\textbf{Matrix Multiplication:} If \(\mathbf{A} = \left\{ a_{ij} \right\}\) is an \(m \times n\) matrix and \(\mathbf{B} = \left\{ a_{jk} \right\}\) is a \(n \times p\) matrix, then the matrix product \(\mathbf{C} = \mathbf{A} \mathbf{B}\) is an \(m \times p\) matrix where \(\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}\)
+
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix} 
+\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
+b_{21} & b_{22} & \cdots & b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & \cdots & b_{np}
+\end{pmatrix} \\
+& = \begin{pmatrix} \sum_{j=1}^n a_{1j} b_{j1} & \sum_{j=1}^n a_{1j} b_{j2} & \cdots & \sum_{j=1}^n a_{1j} b_{jp} \\
+\sum_{j=1}^n a_{2j} b_{j1} &\sum_{j=1}^n a_{2j} b_{j2} & \cdots & \sum_{j=1}^n a_{2j} b_{jp} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
+\end{pmatrix} 
+\end{aligned}
+\label{eq:matrix-multiplication}
+\]
+
+Another way to define matrix multiplication is through inner product notation. Define the \(m \times n\) matrix \(\mathbf{A}\) and the \(n \times p\) matrix \(\mathbf{B}\) as the partition
+
+\[
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
+\mathbf{a}_{2}' \\ 
+\vdots \\
+\mathbf{a}_{m}' \end{pmatrix}
+& \mbox{ and } 
+&& \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
+\end{aligned}
+\]
+
+where \(\mathbf{a}_i\) and \(\mathbf{b}_k\) are both \(n\)-vectors. Then, we have \(\mathbf{C} = \mathbf{A} \mathbf{B}\) can be written as
+
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{B}  = \mathbf{A} \begin{pmatrix} \mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_p
+\end{pmatrix}  = \begin{pmatrix} \mathbf{A} \mathbf{b}_1 & \mathbf{A} \mathbf{b}_2 & \cdots & \mathbf{A} \mathbf{b}_p
+\end{pmatrix} 
+\end{aligned}
+\]
+
+Note that in this representation, each column of the matrix \(\mathbf{A}\mathbf{B}\) is a linear combination the the columns of \(\mathbf{A}\) with coefficients given by the corresponding column of \(\mathbf{B}\).
+
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
+\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
+\end{pmatrix} \\
+& = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
+\end{aligned}
+\]
+
+Written in this notation, we arrive at the multiplication rule for \(\mathbf{C} = \mathbf{A} \mathbf{B}\) -- the \(ik\)th element \(c_{ik}\) of \(\mathbf{C}\) is the inner product of the \(i\)th row of \(\mathbf{A}\) and the \(j\)th column of \(\mathbf{B}\).
+
+\hypertarget{properties-of-matrix-multiplication}{%
+\subsection{Properties of Matrix Multiplication}\label{properties-of-matrix-multiplication}}
+
+Define the \(m \times m\) \textbf{identity matrix} \(\mathbf{I}_m\) with ones on the diagonal and zeros off diagonal as
+\[
+\mathbf{I}_m = \begin{pmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ 0 & 0 & \ddots & 0 \\ 0 & 0 & \cdots & 1\end{pmatrix}
+\]
+Let \(\mathbf{A}\) be an \(m \times n\) matrix, then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Let \(\mathbf{B}\) be an \(n \times p\) matrix and \(\mathbf{C}\) a \(p \times q\) matrix. Then \(\mathbf{A}(\mathbf{B}\mathbf{C}) = (\mathbf{A}\mathbf{B})\mathbf{C}\) is an \(m \times q\) matrix.
+\item
+  Let \(\mathbf{B}\) and \(\mathbf{C}\) be \(n \times p\) matrices. Then \(\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}\) is an \(m \times p\) matrix.
+\item
+  Let \(\mathbf{B}\) and \(\mathbf{C}\) be \(p \times m\) matrices. Then \((\mathbf{B} + \mathbf{C})\mathbf{A} = \mathbf{B}\mathbf{A} + \mathbf{C}\mathbf{A}\) is an \(p \times m\) matrix.
+\item
+  Let \(\mathbf{B}\) be an \(p \times m\) matrix and \(c\) a scalar. Then \(c(\mathbf{A} \mathbf{B}) = (c \mathbf{A}) \mathbf{B} = \mathbf{A}(c\mathbf{B})\) is an \(p \times m\) matrix.
+\item
+  \(\mathbf{I}_m \mathbf{A} = \mathbf{A} \mathbf{I}_n = \mathbf{A}\)
+\end{enumerate}
+
+\textbf{Examples: in class}
+
+\textbf{Note:} Matrix multiplication violates some of the rules of multiplication that you might be used to. Pay attention for the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  In general \(\mathbf{A} \mathbf{B} \neq \mathbf{B} \mathbf{A}\) (sometimes these are equal, but usually are not)
+\item
+  \(\mathbf{A}\mathbf{B} = \mathbf{A} \mathbf{C}\) \textbf{does not} imply \(\mathbf{B} = \mathbf{C}\)
+\item
+  \(\mathbf{A}\mathbf{B} = \mathbf{0}\) does not imply that \(\mathbf{A} = \mathbf{0}\) or \(\mathbf{B} = \mathbf{0}\)
+\end{enumerate}
+
+\hypertarget{matrix-multiplication-complexity-big-o-notation}{%
+\subsection{Matrix Multiplication complexity (Big O notation)}\label{matrix-multiplication-complexity-big-o-notation}}
+
+In the study of algorithms, the notation \(O(n)\) is used to describe the number of calculations that need to be done to evaluate the equation. As an example, consider \(\mathbf{A} = \begin{pmatrix}3 & 1 \\ 2 & -3 \end{pmatrix}\), \(\mathbf{B} = \begin{pmatrix} -2 & 4 \\ -1 & 2 \end{pmatrix}\), and \(\mathbf{x} = \begin{pmatrix} -3 \\ 1 \end{pmatrix}\).
+
+\textbf{By hand:} Calculate
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  \((\mathbf{A} \mathbf{B}) \mathbf{x}\)
+\item
+  \(\mathbf{A} (\mathbf{B} \mathbf{x})\)
+\end{enumerate}
+
+Which was easier? Which required less calculation?
+
+\begin{itemize}
+\item
+  Matrix-matrix multiplication of and \(m \times n\) matrix \(\mathbf{A}\) and an \(m \times p\) matrix \(\mathbf{B}\) has complexity \(O(m n p)\).
+\item
+  Matrix-vector multiplication of and \(m \times n\) matrix \(\mathbf{A}\) and an \(p\)-vector \(\mathbf{x}\) has complexity \(O(n m)\).
+\end{itemize}
+
+From example above:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  \(O(m n p)\) matrix-matrix multiplication \((\mathbf{A} \mathbf{B})\) followed by \(O(m n)\) matrix-vector multiplication \((\mathbf{A} \mathbf{B}) \mathbf{x}\) which has computational complexity \(O(m n p) + O(m n)\)
+\item
+  \(O(m n)\) matrix-vector multiplication \((\mathbf{B} \mathbf{x})\) followed by \(O(m n)\) matrix-vector multiplication \(\mathbf{A} (\mathbf{B} \mathbf{x})\) which has computational complexity \(O(m n) + O(m n)\)
+\end{enumerate}
+
+\hypertarget{matrix-powers}{%
+\subsection{Matrix powers}\label{matrix-powers}}
+
+Powers of a \(n \times n\) (square) matrix are defined as the product of \(\mathbf{A}\) multiplied \(k\) times
+\[
+\mathbf{A}^k = \underbrace{\mathbf{A} \cdots \mathbf{A}}_k
+\]
+
+\hypertarget{matrix-transpose}{%
+\subsection{Matrix Transpose}\label{matrix-transpose}}
+
+The matrix transpose is an operator that swaps the rows and columns of a matrix. If \(\mathbf{A}\) is an \(m \times n\) matrix (\(m\) rows and \(n\) columns), then \(\mathbf{A}'\) is a \(n \times m\) matrix (\(n\) rows and \(m\) columns. Note: some use \(\mathbf{A}^T\) to denote a transpose; I prefer the \('\) notation as it is much simpler and cleaner notation). The matrix
+
+\[
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\end{aligned}
+\]
+has transpose
+
+\[
+\begin{aligned}
+\mathbf{A}' & = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{m1} \\
+a_{12} & a_{22} & \cdots & a_{m2} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1n} & a_{2n} & \cdots & a_{mn}
+\end{pmatrix},
+\end{aligned}
+\]
+
+\begin{theorem}
+
+Let \(\mathbf{A}\) be an \(m \times n\) matrix, then
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  \((\mathbf{A}')' = \mathbf{A}\).
+\item
+  Let \(\mathbf{B}\) be an \(m \times n\) matrix, then \((\mathbf{A} + \mathbf{B})' = \mathbf{A}' + \mathbf{B}'\).
+\item
+  For any scalar \(c\), \((c \mathbf{A})' = c \mathbf{A}'\).
+\item
+  Let \(\mathbf{B}\) be an \(n \times p\) matrix, then \(( \mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'\) is an \(p \times m\) matrix.
+\end{enumerate}
+
+\end{theorem}
+
+\textbf{Note:} The power of video games: GPUs and modern CPUs are becoming more and more parallelized. Because the \(ij\)th element of \(\mathbf{A}\mathbf{B}\) requires only the \(i\)th row of \(\mathbf{A}\) and the \(j\)th column of \(\mathbf{B}\), matrix multiplication is easily parallelized under modern computing architectures. Thanks to video games, this parallelization has been made faster than ever.
+
+\textbf{Examples: in class}
+
+\hypertarget{block-matrices}{%
+\chapter{Block Matrices}\label{block-matrices}}
+
+Another way to represent matrices is using a block (or partitioned) form. A block-representation of a matrix arises when the \(n \times p\) matrix \(\mathbf{A}\) is represented using smaller blocks as follows:
+
+\[
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\
+\end{pmatrix} \\
+\end{aligned}
+\]
+
+where \(\mathbf{A}_{ij}\) is a \(n_j \times p_k\) matrix where \(\sum_{j=1}^J n_j = n\) and \(\sum_{k=1}^K p_k = p\).
+
+For example, the matrix
+
+\[
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{aligned}
+\]
+
+can be written in block matrix form with
+
+\[
+\begin{aligned}
+\mathbf{A} & =
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\
+& = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\
+5 & -22 \end{bmatrix} &
+\begin{bmatrix} 1 \\
+2 \end{bmatrix} \\
+\begin{bmatrix}
+-14 & 5 \\
+42 & -3
+\end{bmatrix} &
+\begin{bmatrix} 99 \\ 0 \end{bmatrix}
+\end{pmatrix},
+\end{aligned}
+\]
+
+where \(\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}\) is a \(2 \times 2\) matrix, \(\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\) is a \(2 \times 1\) matrix, etc.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A_}\DecValTok{11}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{-22}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{A_}\DecValTok{12}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{A_}\DecValTok{21}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{14}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{-3}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{A_}\DecValTok{22}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{99}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\CommentTok{## bind columns then rows}
+\KeywordTok{rbind}\NormalTok{(}
+    \KeywordTok{cbind}\NormalTok{(A_}\DecValTok{11}\NormalTok{, A_}\DecValTok{12}\NormalTok{),}
+    \KeywordTok{cbind}\NormalTok{(A_}\DecValTok{21}\NormalTok{, A_}\DecValTok{22}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              A_12
+## [1,]   5   7    1
+## [2,]   5 -22    2
+## [3,] -14   5   99
+## [4,]  42  -3    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## bind rows then columns}
+\KeywordTok{cbind}\NormalTok{(}
+    \KeywordTok{rbind}\NormalTok{(A_}\DecValTok{11}\NormalTok{, A_}\DecValTok{21}\NormalTok{),}
+    \KeywordTok{c}\NormalTok{(A_}\DecValTok{12}\NormalTok{, A_}\DecValTok{22}\NormalTok{) }\CommentTok{## rbind on vectors is different than c()}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    7    1
+## [2,]    5  -22    2
+## [3,]  -14    5   99
+## [4,]   42   -3    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## bind rows then columns}
+\KeywordTok{cbind}\NormalTok{(}
+    \KeywordTok{rbind}\NormalTok{(A_}\DecValTok{11}\NormalTok{, A_}\DecValTok{21}\NormalTok{),}
+    \CommentTok{## convert the vectors to matrices for rbind}
+    \KeywordTok{rbind}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(A_}\DecValTok{12}\NormalTok{), }\KeywordTok{as.matrix}\NormalTok{(A_}\DecValTok{22}\NormalTok{))}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    7    1
+## [2,]    5  -22    2
+## [3,]  -14    5   99
+## [4,]   42   -3    0
+\end{verbatim}
+
+\hypertarget{block-matrix-addition}{%
+\section{Block Matrix Addition}\label{block-matrix-addition}}
+
+If \(\mathbf{A}\) and \(\mathbf{B}\) are both \(m \times n\) block matrices with blocks in \(r\) rows and \(c\) columns where
+
+\[
+\begin{aligned}
+\mathbf{A} & =
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
+\mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{r1} & \mathbf{A}_{r2} &\cdots & \mathbf{A}_{rc} \\
+\end{pmatrix} &
+\mathbf{B} & =
+\begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} & \cdots & \mathbf{B}_{1c}\\
+\mathbf{B}_{21} & \mathbf{B}_{22} &\cdots & \mathbf{B}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
+\end{pmatrix} \\
+\end{aligned}
+\]
+and each block \(\mathbf{A}_{ij}\) and \(\mathbf{B}_{ij}\) have the same dimension, then
+
+\[
+\begin{aligned}
+\mathbf{A} + \mathbf{B} & =
+\begin{pmatrix} \mathbf{A}_{11} + \mathbf{B}_{11} & \mathbf{A}_{12} + \mathbf{B}_{12} & \cdots & \mathbf{A}_{1c} + \mathbf{B}_{1c}\\
+\mathbf{A}_{21} + \mathbf{B}_{21} & \mathbf{A}_{22} + \mathbf{B}_{22} & \cdots & \mathbf{A}_{2c} + \mathbf{B}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{r1} + \mathbf{B}_{r1} & \mathbf{A}_{r2} + \mathbf{B}_{r2} & \cdots & \mathbf{A}_{rc} + \mathbf{B}_{rc} \\
+\end{pmatrix}
+\end{aligned}
+\label{eq:block-matrix-addition}
+\]
+which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation \eqref{eq:block-matrix-addition} above to \eqref{eq:matrix-addition}). The one requirement is that each of the blocks \(\mathbf{A}_{ij}\) and \(\mathbf{B}_{ij}\) have the same dimension. When this is true, we say that \(\mathbf{A}\) and \(\mathbf{B}\) are \textbf{conformable for block matrix addition}.
+
+\hypertarget{block-matrix-multiplication}{%
+\section{Block Matrix Multiplication}\label{block-matrix-multiplication}}
+
+If \(\mathbf{A}\) and \(\mathbf{B}\) are both \(m \times n\) block matrices with blocks in \(r\) rows and \(c\) columns (same as above) where
+\[
+\begin{aligned}
+\mathbf{A} & =
+\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
+\mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{r1} & \mathbf{A}_{r2} &\cdots & \mathbf{A}_{rc} \\
+\end{pmatrix} &
+\mathbf{B} & =
+\begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} & \cdots & \mathbf{B}_{1c}\\
+\mathbf{B}_{21} & \mathbf{B}_{22} &\cdots & \mathbf{B}_{2c} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
+\end{pmatrix} \\
+\end{aligned}
+\]
+and each row of blocks \(\mathbf{A}_{ij}\) has the same number of columns as the block \(\mathbf{B}_{ij}\) has rows, then the block matrices \(\mathbf{A}\) and \(\mathbf{B}\) are said to be \textbf{conformable for block matrix multiplication}. A consequence of this is that \(r = c\). When this is the case, the matrix products is
+
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{B} & =
+\begin{pmatrix} \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{jc} \\
+\sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{jc} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{jc} 
+\end{pmatrix}  
+\end{aligned}
+\label{eq:column-row-matrix-multiplication}
+\]
+which can be said in words as "each block-element (the \(ij\)th element \((\mathbf{A} \mathbf{B})_{ij}\)) of the block-matrix product \(\mathbf{A} \mathbf{B}\) is the sum of the \(i\)th block-row of \(\mathbf{A}\) and the \(j\)th block column of \(\mathbf{B}\). Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \eqref{eq:block-matrix-multiplication} above to \eqref{eq:matrix-multiplication}).
+
+\begin{example}
+in class
+\end{example}
+
+\begin{solution}
+A solution to the example problem
+\end{solution}
+
+\hypertarget{the-column-row-matrix-product}{%
+\section{The column-row matrix product}\label{the-column-row-matrix-product}}
+
+\begin{theorem}
+\protect\hypertarget{thm:block-matrix-multiplication}{}\label{thm:block-matrix-multiplication}The matrix product \(\mathbf{A}\mathbf{B}\) of an \(m \times n\) matrix \(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}\) with columns \(\{\mathbf{a}_i\}_{i=1}^n\) and an \(n \times p\) matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}\) with rows \(\{\mathbf{b}_i'\}_{i=1}^n\) can be written as the column-row expansion below:
+\[
+\begin{aligned}
+\mathbf{A} \mathbf{B} & =
+\begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix} \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix} \\
+& = \mathbf{a}_1 \mathbf{b}_1' + \mathbf{a}_2 \mathbf{b}_2' + \cdots + \mathbf{a}_n \mathbf{b}_n'
+\end{aligned} 
+\label{eq:block-matrix-multiplication}
+\]
+\end{theorem}
+
+\textbf{Recall:} The notation \(\mathbf{b}_i'\) has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
+
+\begin{example}
+in class
+\end{example}
+
+\hypertarget{special-block-matrices}{%
+\section{Special Block Matrices}\label{special-block-matrices}}
+
+There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices.
+
+\begin{definition}
+The matrix \(\mathbf{A}\) is said to be block diagonal if
+\[
+\begin{aligned}
+\mathbf{A} = \begin{pmatrix} 
+\mathbf{A}_1 & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{A}_2 & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{0} & \mathbf{0} & \mathbf{A}_3 & \cdots & \mathbf{0} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_n \\
+\end{pmatrix}
+\end{aligned}
+\]
+\end{definition}
+
+\begin{definition}
+The matrix \(\mathbf{A}\) is said to be block (upper) triangular if
+\[
+\begin{aligned}
+\mathbf{A} = \begin{pmatrix} 
+\mathbf{A}_{11} & \mathbf{A}_{12} & \mathbf{A}_{13} & \cdots & \mathbf{A}_{1n} \\
+\mathbf{0} & \mathbf{A}_{22} & \mathbf{A}_{23} & \cdots & \mathbf{A}_{2n} \\
+\mathbf{0} & \mathbf{0} & \mathbf{A}_{33} & \cdots & \mathbf{A}_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_{nn} \\
+\end{pmatrix}
+\end{aligned}
+\]
+
+\(\mathbf{A}\) is block (lower) triangular if\\
+\[
+\begin{aligned}
+\mathbf{A} = \begin{pmatrix} 
+\mathbf{A}_{11} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{A}_{21} & \mathbf{A}_{22} & \mathbf{0} & \cdots & \mathbf{0} \\
+\mathbf{A}_{31} & \mathbf{A}_{32} & \mathbf{A}_{33} & \cdots & \mathbf{0} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\mathbf{A}_{m1} & \mathbf{A}_{m2} & \mathbf{A}_{m3} & \cdots & \mathbf{A}_{mn} \\
+\end{pmatrix}
+\end{aligned}
+\]
+\end{definition}
+
+\begin{example}
+Assume that \(\mathbf{A}\), which has the form
+\[
+\mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix},  
+\]\\
+is an invertible matrix where \(\mathbf{A}_{11}\) a \(p \times p\) invertible matrix, \(\mathbf{A}_{12}\) a \(p \times q\) matrix, and \(\mathbf{A}_{22}\) is a \(q \times q\) invertible matrix. Solve for \(\mathbf{A}^{-1}\)
+\end{example}
+
+\begin{solution}
+The inverse to \(\mathbf{A}\) is a matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}\) with blocks \(\mathbf{B}_{11}\), \(\mathbf{B}_{12}\), \(\mathbf{B}_{21}\), and \(\mathbf{B}_{22}\) of appropriate size to be conformable with the blocks \(\mathbf{A}_{11}\), \(\mathbf{A}_{12}\), and\(\mathbf{A}_{22}\) that make up the matrix \(\mathbf{A}\).
+
+For \(\mathbf{B}\) to be the inverse of \(\mathbf{A}\), \(\mathbf{A}\mathbf{B} = \mathbf{B}\mathbf{A} = \mathbf{I} = \begin{pmatrix} \mathbf{I} & \mathbf{0} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}\) where \(\mathbf{0}\) is a matrix of zeros of the appropriate size. Writing this out in blocks gives
+
+\[
+\begin{aligned}
+\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}  \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix} \\
+& = \begin{pmatrix} \mathbf{B}_{11} \mathbf{A}_{11} & \mathbf{B}_{11} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{B}_{21} \mathbf{A}_{11} & \mathbf{B}_{21} \mathbf{A}_{12} + \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
+\end{aligned}
+\]
+
+which gives that \(\mathbf{B}_{11} = \mathbf{A}_{11}^{-1}\) because \(\mathbf{B}_{11}^{-1}\mathbf{A}_{11} = \mathbf{I}\) and \(\mathbf{A}_{11}\) is invertible. The equation also give \(\mathbf{B}_{21} \mathbf{A}_{11} = \mathbf{0}\) and because \(\mathbf{A}_{11}\) is an invertible matrix, the homogeneous equation \(\mathbf{A}_{11}\mathbf{b} = \mathbf{0}\) has only the trivial solution for each column \(\mathbf{b}\) of the matrix \(\mathbf{B}_{21}\) which implies that \(\mathbf{B}_{21} = \mathbf{0}\). Using these facts, we can rewrite the above equation as
+
+\[
+\begin{aligned}
+\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
+\end{aligned}
+\]
+
+Because the lower right entry \(\mathbf{B}_{22} \mathbf{A}_{22}\) must equal \(\mathbf{I}\), we have that \(\mathbf{B}_{22} = \mathbf{A}_{22}^{-1}\). Then, the equation becomes
+
+\[
+\begin{aligned}
+\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}
+\end{aligned}
+\]
+
+The final component is the upper right block. Because we are finding the inverse, we know that \(\mathbf{0} = \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22}\). Subtracting \(\mathbf{A}_{11}^{-1} \mathbf{A}_{12}\) from both sides of the equation gives
+
+\[
+\begin{aligned}
+\mathbf{B}_{12} \mathbf{A}_{22} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+\mathbf{B}_{12} \mathbf{A}_{22} \mathbf{A}_{22}^{-1} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
+\mathbf{B}_{12} \mathbf{I} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
+\mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}
+\end{aligned}
+\]
+
+Thus, \(\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}\)
+\end{solution}
 
 \hypertarget{linear-systems-of-equations}{%
 \chapter{Linear Systems of Equations}\label{linear-systems-of-equations}}
@@ -3897,375 +4670,6 @@ Let \(\mathbf{A}\mathbf{x}\) be the matrix representation of the linear transfor
 
 \textbf{Note:} Matrices that are taller than they are wide are not onto transformations. (This does not mean that all wide matrices are onto)
 
-\hypertarget{matrix-operations}{%
-\chapter{Matrix operations}\label{matrix-operations}}
-
-\hypertarget{todo}{%
-\section{ToDo}\label{todo}}
-
-\begin{itemize}
-\item
-  define dot product here
-\item
-  Show matrix multiplication using dot products
-\item
-  move to chapter 1 or 2
-\item
-  \href{https://www.3blue1brown.com/lessons/matrix-multiplication}{3 Blue 1 Brown -- Matrix Multiplication}
-\item
-  \textbf{Note: add examples:}
-\end{itemize}
-
-\hypertarget{properties-of-matrices}{%
-\section{Properties of matrices}\label{properties-of-matrices}}
-
-\hypertarget{matrix-addition}{%
-\subsection{Matrix Addition}\label{matrix-addition}}
-
-\textbf{Matrix Addition:} If the matrices \(\mathbf{A}\) and \(\mathbf{B}\) are of the same dimension (e.g., both \(\mathbf{A}\) and \(\mathbf{B}\) have the same number of rows \(m\) and the same number of columns \(n\)), then
-
-\[
-\begin{aligned}
-\mathbf{A} + \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{pmatrix} + 
-\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1n} \\
-b_{21} & b_{22} & \cdots & b_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-b_{m1} & b_{m2} & \cdots & b_{mn}
-\end{pmatrix} \\
-& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
-a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
-\end{pmatrix} \\
-& = \left\{ a_{ij} + b_{ij} \right\}
-\end{aligned}
-\label{eq:matrix-addition}
-\]
-
-\textbf{\ldots{} Another way to }
-
-If \(\mathbf{A}\) and \(\mathbf{B}\) are of the same dimension (same number of rows and columns) you can add the matrices together
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{-4}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{-24}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{-9}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{A}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2]
-## [1,]    4    2
-## [2,]    1    0
-## [3,]   33   -4
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{B}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2]
-## [1,]    7    9
-## [2,]  -24   11
-## [3,]    3   -9
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A }\OperatorTok{+}\StringTok{ }\NormalTok{B}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2]
-## [1,]   11   11
-## [2,]  -23   11
-## [3,]   36  -13
-\end{verbatim}
-
-We can also write this using \texttt{for} loops
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# initialize an empty matrix to fill}
-\NormalTok{C <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(A)) \{         }\CommentTok{# loop over the rows}
-    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(A)) \{     }\CommentTok{# loop over the columns}
-\NormalTok{        C[i, j] <-}\StringTok{ }\NormalTok{A[i, j] }\OperatorTok{+}\StringTok{ }\NormalTok{B[i, j]}
-\NormalTok{    \}}
-\NormalTok{\}}
-\NormalTok{C}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2]
-## [1,]   11   11
-## [2,]  -23   11
-## [3,]   36  -13
-\end{verbatim}
-
-If \(\mathbf{A}\) and \(\mathbf{B}\) are of different dimensions (they differ in either the number of rows or columns), \texttt{R} will return an error warning you that the matrices are of different sizes and can't be added
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{-4}\NormalTok{), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{-24}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{A}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2]
-## [1,]    4    2
-## [2,]    1    0
-## [3,]   33   -4
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{B}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2]
-## [1,]    7    3
-## [2,]  -24    9
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A }\OperatorTok{+}\StringTok{ }\NormalTok{B}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in A + B: non-conformable arrays
-\end{verbatim}
-
-\begin{theorem}
-
-Let \(\mathbf{A}\), \(\mathbf{B}\), and \(\mathbf{C}\) be \(m \times n\) matrices and let \(a\) and \(b\) be scalars, then:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  \(\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}\) \hfill [(commutivity of addition)]{style="float:right"}
-\item
-  \((\mathbf{A} + \mathbf{B}) + \mathbf{C} = \mathbf{A} + (\mathbf{B} + \mathbf{C})\) \hfill [(commutivity of addition)]{style="float:right"}
-\item
-  \(\mathbf{A} + \mathbf{0} = \mathbf{A}\) \hfill [(additive identity)]{style="float:right"}
-\item
-  \(a (\mathbf{A} + \mathbf{B}) = a \mathbf{A} + a \mathbf{B}\) \hfill [(scalar ...)]{style="float:right"}
-\item
-  \((a + b)\mathbf{A} = a \mathbf{A} + b \mathbf{A}\) \hfill [(scalar ...)]{style="float:right"}
-\item
-  \((ab)\mathbf{A} = a (b\mathbf{A})\) \hfill [(scalar ...)]{style="float:right"}
-\end{enumerate}
-
-\end{theorem}
-
-\hypertarget{matrix-multipliation}{%
-\subsection{Matrix Multipliation}\label{matrix-multipliation}}
-
-\textbf{Matrix Multiplication:} If \(\mathbf{A} = \left\{ a_{ij} \right\}\) is an \(m \times n\) matrix and \(\mathbf{B} = \left\{ a_{jk} \right\}\) is a \(n \times p\) matrix, then the matrix product \(\mathbf{C} = \mathbf{A} \mathbf{B}\) is an \(m \times p\) matrix where \(\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}\)
-
-\[
-\begin{aligned}
-\mathbf{A} \mathbf{B} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{pmatrix} 
-\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1p} \\
-b_{21} & b_{22} & \cdots & b_{2p} \\
-\vdots & \vdots & \ddots & \vdots \\
-b_{n1} & b_{n2} & \cdots & b_{np}
-\end{pmatrix} \\
-& = \begin{pmatrix} \sum_{j=1}^n a_{1j} b_{j1} & \sum_{j=1}^n a_{1j} b_{j2} & \cdots & \sum_{j=1}^n a_{1j} b_{jp} \\
-\sum_{j=1}^n a_{2j} b_{j1} &\sum_{j=1}^n a_{2j} b_{j2} & \cdots & \sum_{j=1}^n a_{2j} b_{jp} \\
-\vdots & \vdots & \ddots & \vdots \\
-\sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
-\end{pmatrix} 
-\end{aligned}
-\label{eq:matrix-multiplication}
-\]
-
-Another way to define matrix multiplication is through inner product notation. Define the \(m \times n\) matrix \(\mathbf{A}\) and the \(n \times p\) matrix \(\mathbf{B}\) as the partition
-
-\[
-\begin{aligned}
-\mathbf{A} & = \begin{pmatrix} \mathbf{a}_{1}' \\
-\mathbf{a}_{2}' \\ 
-\vdots \\
-\mathbf{a}_{m}' \end{pmatrix}
-& \mbox{ and } 
-&& \mathbf{B} & = \begin{pmatrix} \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{p} \end{pmatrix} 
-\end{aligned}
-\]
-
-where \(\mathbf{a}_i\) and \(\mathbf{b}_k\) are both \(n\)-vectors. Then, we have \(\mathbf{C} = \mathbf{A} \mathbf{B}\) can be written as
-
-\[
-\begin{aligned}
-\mathbf{A} \mathbf{B}  = \mathbf{A} \begin{pmatrix} \mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_p
-\end{pmatrix}  = \begin{pmatrix} \mathbf{A} \mathbf{b}_1 & \mathbf{A} \mathbf{b}_2 & \cdots & \mathbf{A} \mathbf{b}_p
-\end{pmatrix} 
-\end{aligned}
-\]
-
-Note that in this representation, each column of the matrix \(\mathbf{A}\mathbf{B}\) is a linear combination the the columns of \(\mathbf{A}\) with coefficients given by the corresponding column of \(\mathbf{B}\).
-
-\[
-\begin{aligned}
-\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
-\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
-\end{pmatrix} \\
-& = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
-\end{aligned}
-\]
-
-Written in this notation, we arrive at the multiplication rule for \(\mathbf{C} = \mathbf{A} \mathbf{B}\) -- the \(ik\)th element \(c_{ik}\) of \(\mathbf{C}\) is the inner product of the \(i\)th row of \(\mathbf{A}\) and the \(j\)th column of \(\mathbf{B}\).
-
-\hypertarget{properties-of-matrix-multiplication}{%
-\subsection{Properties of Matrix Multiplication}\label{properties-of-matrix-multiplication}}
-
-Define the \(m \times m\) \textbf{identity matrix} \(\mathbf{I}_m\) with ones on the diagonal and zeros off diagonal as
-\[
-\mathbf{I}_m = \begin{pmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ 0 & 0 & \ddots & 0 \\ 0 & 0 & \cdots & 1\end{pmatrix}
-\]
-Let \(\mathbf{A}\) be an \(m \times n\) matrix, then:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  Let \(\mathbf{B}\) be an \(n \times p\) matrix and \(\mathbf{C}\) a \(p \times q\) matrix. Then \(\mathbf{A}(\mathbf{B}\mathbf{C}) = (\mathbf{A}\mathbf{B})\mathbf{C}\) is an \(m \times q\) matrix.
-\item
-  Let \(\mathbf{B}\) and \(\mathbf{C}\) be \(n \times p\) matrices. Then \(\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}\) is an \(m \times p\) matrix.
-\item
-  Let \(\mathbf{B}\) and \(\mathbf{C}\) be \(p \times m\) matrices. Then \((\mathbf{B} + \mathbf{C})\mathbf{A} = \mathbf{B}\mathbf{A} + \mathbf{C}\mathbf{A}\) is an \(p \times m\) matrix.
-\item
-  Let \(\mathbf{B}\) be an \(p \times m\) matrix and \(c\) a scalar. Then \(c(\mathbf{A} \mathbf{B}) = (c \mathbf{A}) \mathbf{B} = \mathbf{A}(c\mathbf{B})\) is an \(p \times m\) matrix.
-\item
-  \(\mathbf{I}_m \mathbf{A} = \mathbf{A} \mathbf{I}_n = \mathbf{A}\)
-\end{enumerate}
-
-\textbf{Examples: in class}
-
-\textbf{Note:} Matrix multiplication violates some of the rules of multiplication that you might be used to. Pay attention for the following:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  In general \(\mathbf{A} \mathbf{B} \neq \mathbf{B} \mathbf{A}\) (sometimes these are equal, but usually are not)
-\item
-  \(\mathbf{A}\mathbf{B} = \mathbf{A} \mathbf{C}\) \textbf{does not} imply \(\mathbf{B} = \mathbf{C}\)
-\item
-  \(\mathbf{A}\mathbf{B} = \mathbf{0}\) does not imply that \(\mathbf{A} = \mathbf{0}\) or \(\mathbf{B} = \mathbf{0}\)
-\end{enumerate}
-
-\hypertarget{matrix-multiplication-complexity-big-o-notation}{%
-\subsection{Matrix Multiplication complexity (Big O notation)}\label{matrix-multiplication-complexity-big-o-notation}}
-
-In the study of algorithms, the notation \(O(n)\) is used to describe the number of calculations that need to be done to evaluate the equation. As an example, consider \(\mathbf{A} = \begin{pmatrix}3 & 1 \\ 2 & -3 \end{pmatrix}\), \(\mathbf{B} = \begin{pmatrix} -2 & 4 \\ -1 & 2 \end{pmatrix}\), and \(\mathbf{x} = \begin{pmatrix} -3 \\ 1 \end{pmatrix}\).
-
-\textbf{By hand:} Calculate
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  \((\mathbf{A} \mathbf{B}) \mathbf{x}\)
-\item
-  \(\mathbf{A} (\mathbf{B} \mathbf{x})\)
-\end{enumerate}
-
-Which was easier? Which required less calculation?
-
-\begin{itemize}
-\item
-  Matrix-matrix multiplication of and \(m \times n\) matrix \(\mathbf{A}\) and an \(m \times p\) matrix \(\mathbf{B}\) has complexity \(O(m n p)\).
-\item
-  Matrix-vector multiplication of and \(m \times n\) matrix \(\mathbf{A}\) and an \(p\)-vector \(\mathbf{x}\) has complexity \(O(n m)\).
-\end{itemize}
-
-From example above:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  \(O(m n p)\) matrix-matrix multiplication \((\mathbf{A} \mathbf{B})\) followed by \(O(m n)\) matrix-vector multiplication \((\mathbf{A} \mathbf{B}) \mathbf{x}\) which has computational complexity \(O(m n p) + O(m n)\)
-\item
-  \(O(m n)\) matrix-vector multiplication \((\mathbf{B} \mathbf{x})\) followed by \(O(m n)\) matrix-vector multiplication \(\mathbf{A} (\mathbf{B} \mathbf{x})\) which has computational complexity \(O(m n) + O(m n)\)
-\end{enumerate}
-
-\hypertarget{matrix-powers}{%
-\subsection{Matrix powers}\label{matrix-powers}}
-
-Powers of a \(n \times n\) (square) matrix are defined as the product of \(\mathbf{A}\) multiplied \(k\) times
-\[
-\mathbf{A}^k = \underbrace{\mathbf{A} \cdots \mathbf{A}}_k
-\]
-
-\hypertarget{matrix-transpose}{%
-\subsection{Matrix Transpose}\label{matrix-transpose}}
-
-The matrix transpose is an operator that swaps the rows and columns of a matrix. If \(\mathbf{A}\) is an \(m \times n\) matrix (\(m\) rows and \(n\) columns), then \(\mathbf{A}'\) is a \(n \times m\) matrix (\(n\) rows and \(m\) columns. Note: some use \(\mathbf{A}^T\) to denote a transpose; I prefer the \('\) notation as it is much simpler and cleaner notation). The matrix
-
-\[
-\begin{aligned}
-\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{pmatrix}
-\end{aligned}
-\]
-has transpose
-
-\[
-\begin{aligned}
-\mathbf{A}' & = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{m1} \\
-a_{12} & a_{22} & \cdots & a_{m2} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{1n} & a_{2n} & \cdots & a_{mn}
-\end{pmatrix},
-\end{aligned}
-\]
-
-\begin{theorem}
-
-Let \(\mathbf{A}\) be an \(m \times n\) matrix, then
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  \((\mathbf{A}')' = \mathbf{A}\).
-\item
-  Let \(\mathbf{B}\) be an \(m \times n\) matrix, then \((\mathbf{A} + \mathbf{B})' = \mathbf{A}' + \mathbf{B}'\).
-\item
-  For any scalar \(c\), \((c \mathbf{A})' = c \mathbf{A}'\).
-\item
-  Let \(\mathbf{B}\) be an \(n \times p\) matrix, then \(( \mathbf{A} \mathbf{B})' = \mathbf{B}' \mathbf{A}'\) is an \(p \times m\) matrix.
-\end{enumerate}
-
-\end{theorem}
-
-\textbf{Note:} The power of video games: GPUs and modern CPUs are becoming more and more parallelized. Because the \(ij\)th element of \(\mathbf{A}\mathbf{B}\) requires only the \(i\)th row of \(\mathbf{A}\) and the \(j\)th column of \(\mathbf{B}\), matrix multiplication is easily parallelized under modern computing architectures. Thanks to video games, this parallelization has been made faster than ever.
-
-\textbf{Examples: in class}
-
 \hypertarget{matrix-inverse}{%
 \chapter{Matrix Inverses}\label{matrix-inverse}}
 
@@ -4744,314 +5148,6 @@ T(S(\mathbf{x})) = \mathbf{x} && \mbox{for all } \mathbf{x} \in \mathcal{R}^n \\
 \begin{theorem}
 Let \(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\) be a linear transformation and let \(\mathbf{A}\) be the matrix representing the transformation \(T\). Then the transformation \(T\) is invertible if and only if the matrix \(\mathbf{A}\) is invertible. Therefore, the matrix that represents \(S:\mathcal{R}^n \rightarrow \mathcal{R}^n\), the inverse transformation of \(T\), is unique and is represented by the matrix \(\mathbf{A}^{-1}\).
 \end{theorem}
-
-\hypertarget{block-matrices}{%
-\chapter{Block Matrices}\label{block-matrices}}
-
-Another way to represent matrices is using a block (or partitioned) form. A block-representation of a matrix arises when the \(n \times p\) matrix \(\mathbf{A}\) is represented using smaller blocks as follows:
-
-\[
-\begin{aligned}
-\mathbf{A} & = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1K} \\
-\mathbf{A}_{21} & \mathbf{A}_{22} &  \cdots & \mathbf{A}_{2K} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{A}_{J1} & \mathbf{A}_{J2} & \cdots & \mathbf{A}_{JK} \\
-\end{pmatrix} \\
-\end{aligned}
-\]
-
-where \(\mathbf{A}_{ij}\) is a \(n_j \times p_k\) matrix where \(\sum_{j=1}^J n_j = n\) and \(\sum_{k=1}^K p_k = p\).
-
-For example, the matrix
-
-\[
-\begin{aligned}
-\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
-5 & -22  & 2 \\
--14 & 5 & 99 \\
-42 & -3 & 0\end{pmatrix},
-\end{aligned}
-\]
-
-can be written in block matrix form with
-
-\[
-\begin{aligned}
-\mathbf{A} & =
-\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\
-\mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix} \\
-& = \begin{pmatrix} \begin{bmatrix} 5 & 7 \\
-5 & -22 \end{bmatrix} &
-\begin{bmatrix} 1 \\
-2 \end{bmatrix} \\
-\begin{bmatrix}
--14 & 5 \\
-42 & -3
-\end{bmatrix} &
-\begin{bmatrix} 99 \\ 0 \end{bmatrix}
-\end{pmatrix},
-\end{aligned}
-\]
-
-where \(\mathbf{A}_{11} = \begin{bmatrix} 5 & 7 \\ 5 & -22 \end{bmatrix}\) is a \(2 \times 2\) matrix, \(\mathbf{A}_{12} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\) is a \(2 \times 1\) matrix, etc.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A_}\DecValTok{11}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{-22}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{A_}\DecValTok{12}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{A_}\DecValTok{21}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{14}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{-3}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{A_}\DecValTok{22}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{99}\NormalTok{, }\DecValTok{0}\NormalTok{)}
-
-\CommentTok{## bind columns then rows}
-\KeywordTok{rbind}\NormalTok{(}
-    \KeywordTok{cbind}\NormalTok{(A_}\DecValTok{11}\NormalTok{, A_}\DecValTok{12}\NormalTok{),}
-    \KeywordTok{cbind}\NormalTok{(A_}\DecValTok{21}\NormalTok{, A_}\DecValTok{22}\NormalTok{)}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##              A_12
-## [1,]   5   7    1
-## [2,]   5 -22    2
-## [3,] -14   5   99
-## [4,]  42  -3    0
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{## bind rows then columns}
-\KeywordTok{cbind}\NormalTok{(}
-    \KeywordTok{rbind}\NormalTok{(A_}\DecValTok{11}\NormalTok{, A_}\DecValTok{21}\NormalTok{),}
-    \KeywordTok{c}\NormalTok{(A_}\DecValTok{12}\NormalTok{, A_}\DecValTok{22}\NormalTok{) }\CommentTok{## rbind on vectors is different than c()}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{## bind rows then columns}
-\KeywordTok{cbind}\NormalTok{(}
-    \KeywordTok{rbind}\NormalTok{(A_}\DecValTok{11}\NormalTok{, A_}\DecValTok{21}\NormalTok{),}
-    \CommentTok{## convert the vectors to matrices for rbind}
-    \KeywordTok{rbind}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(A_}\DecValTok{12}\NormalTok{), }\KeywordTok{as.matrix}\NormalTok{(A_}\DecValTok{22}\NormalTok{))}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0
-\end{verbatim}
-
-\hypertarget{block-matrix-addition}{%
-\section{Block Matrix Addition}\label{block-matrix-addition}}
-
-If \(\mathbf{A}\) and \(\mathbf{B}\) are both \(m \times n\) block matrices with blocks in \(r\) rows and \(c\) columns where
-
-\[
-\begin{aligned}
-\mathbf{A} & =
-\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
-\mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{A}_{r1} & \mathbf{A}_{r2} &\cdots & \mathbf{A}_{rc} \\
-\end{pmatrix} &
-\mathbf{B} & =
-\begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} & \cdots & \mathbf{B}_{1c}\\
-\mathbf{B}_{21} & \mathbf{B}_{22} &\cdots & \mathbf{B}_{2c} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
-\end{pmatrix} \\
-\end{aligned}
-\]
-and each block \(\mathbf{A}_{ij}\) and \(\mathbf{B}_{ij}\) have the same dimension, then
-
-\[
-\begin{aligned}
-\mathbf{A} + \mathbf{B} & =
-\begin{pmatrix} \mathbf{A}_{11} + \mathbf{B}_{11} & \mathbf{A}_{12} + \mathbf{B}_{12} & \cdots & \mathbf{A}_{1c} + \mathbf{B}_{1c}\\
-\mathbf{A}_{21} + \mathbf{B}_{21} & \mathbf{A}_{22} + \mathbf{B}_{22} & \cdots & \mathbf{A}_{2c} + \mathbf{B}_{2c} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{A}_{r1} + \mathbf{B}_{r1} & \mathbf{A}_{r2} + \mathbf{B}_{r2} & \cdots & \mathbf{A}_{rc} + \mathbf{B}_{rc} \\
-\end{pmatrix}
-\end{aligned}
-\label{eq:block-matrix-addition}
-\]
-which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare equation \eqref{eq:block-matrix-addition} above to \eqref{eq:matrix-addition}). The one requirement is that each of the blocks \(\mathbf{A}_{ij}\) and \(\mathbf{B}_{ij}\) have the same dimension. When this is true, we say that \(\mathbf{A}\) and \(\mathbf{B}\) are \textbf{conformable for block matrix addition}.
-
-\hypertarget{block-matrix-multiplication}{%
-\section{Block Matrix Multiplication}\label{block-matrix-multiplication}}
-
-If \(\mathbf{A}\) and \(\mathbf{B}\) are both \(m \times n\) block matrices with blocks in \(r\) rows and \(c\) columns (same as above) where
-\[
-\begin{aligned}
-\mathbf{A} & =
-\begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} & \cdots & \mathbf{A}_{1c}\\
-\mathbf{A}_{21} & \mathbf{A}_{22} &\cdots & \mathbf{A}_{2c} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{A}_{r1} & \mathbf{A}_{r2} &\cdots & \mathbf{A}_{rc} \\
-\end{pmatrix} &
-\mathbf{B} & =
-\begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} & \cdots & \mathbf{B}_{1c}\\
-\mathbf{B}_{21} & \mathbf{B}_{22} &\cdots & \mathbf{B}_{2c} \\
-\vdots & \vdots & \ddots & \vdots \\
-\mathbf{B}_{r1} & \mathbf{B}_{r2} &\cdots & \mathbf{B}_{rc} \\
-\end{pmatrix} \\
-\end{aligned}
-\]
-and each row of blocks \(\mathbf{A}_{ij}\) has the same number of columns as the block \(\mathbf{B}_{ij}\) has rows, then the block matrices \(\mathbf{A}\) and \(\mathbf{B}\) are said to be \textbf{conformable for block matrix multiplication}. A consequence of this is that \(r = c\). When this is the case, the matrix products is
-
-\[
-\begin{aligned}
-\mathbf{A} \mathbf{B} & =
-\begin{pmatrix} \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{1j} \mathbf{B}_{jc} \\
-\sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{2j} \mathbf{B}_{jc} \\
-\vdots & \vdots & \ddots & \vdots \\
-\sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j1} &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j2} & \cdots &  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{jc} 
-\end{pmatrix}  
-\end{aligned}
-\label{eq:column-row-matrix-multiplication}
-\]
-which can be said in words as "each block-element (the \(ij\)th element \((\mathbf{A} \mathbf{B})_{ij}\)) of the block-matrix product \(\mathbf{A} \mathbf{B}\) is the sum of the \(i\)th block-row of \(\mathbf{A}\) and the \(j\)th block column of \(\mathbf{B}\). Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare equation \eqref{eq:block-matrix-multiplication} above to \eqref{eq:matrix-multiplication}).
-
-\begin{example}
-in class
-\end{example}
-
-\begin{solution}
-A solution to the example problem
-\end{solution}
-
-\hypertarget{the-column-row-matrix-product}{%
-\section{The column-row matrix product}\label{the-column-row-matrix-product}}
-
-\begin{theorem}
-\protect\hypertarget{thm:block-matrix-multiplication}{}\label{thm:block-matrix-multiplication}The matrix product \(\mathbf{A}\mathbf{B}\) of an \(m \times n\) matrix \(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix}\) with columns \(\{\mathbf{a}_i\}_{i=1}^n\) and an \(n \times p\) matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}\) with rows \(\{\mathbf{b}_i'\}_{i=1}^n\) can be written as the column-row expansion below:
-\[
-\begin{aligned}
-\mathbf{A} \mathbf{B} & =
-\begin{pmatrix} \mathbf{a}_1 & \mathbf{a}_2 & \cdots & \mathbf{a}_n \end{pmatrix} \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix} \\
-& = \mathbf{a}_1 \mathbf{b}_1' + \mathbf{a}_2 \mathbf{b}_2' + \cdots + \mathbf{a}_n \mathbf{b}_n'
-\end{aligned} 
-\label{eq:block-matrix-multiplication}
-\]
-\end{theorem}
-
-\textbf{Recall:} The notation \(\mathbf{b}_i'\) has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.
-
-\begin{example}
-in class
-\end{example}
-
-\hypertarget{special-block-matrices}{%
-\section{Special Block Matrices}\label{special-block-matrices}}
-
-There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices.
-
-\begin{definition}
-The matrix \(\mathbf{A}\) is said to be block diagonal if
-\[
-\begin{aligned}
-\mathbf{A} = \begin{pmatrix} 
-\mathbf{A}_1 & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
-\mathbf{0} & \mathbf{A}_2 & \mathbf{0} & \cdots & \mathbf{0} \\
-\mathbf{0} & \mathbf{0} & \mathbf{A}_3 & \cdots & \mathbf{0} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-\mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_n \\
-\end{pmatrix}
-\end{aligned}
-\]
-\end{definition}
-
-\begin{definition}
-The matrix \(\mathbf{A}\) is said to be block (upper) triangular if
-\[
-\begin{aligned}
-\mathbf{A} = \begin{pmatrix} 
-\mathbf{A}_{11} & \mathbf{A}_{12} & \mathbf{A}_{13} & \cdots & \mathbf{A}_{1n} \\
-\mathbf{0} & \mathbf{A}_{22} & \mathbf{A}_{23} & \cdots & \mathbf{A}_{2n} \\
-\mathbf{0} & \mathbf{0} & \mathbf{A}_{33} & \cdots & \mathbf{A}_{3n} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-\mathbf{0} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{A}_{nn} \\
-\end{pmatrix}
-\end{aligned}
-\]
-
-\(\mathbf{A}\) is block (lower) triangular if\\
-\[
-\begin{aligned}
-\mathbf{A} = \begin{pmatrix} 
-\mathbf{A}_{11} & \mathbf{0} & \mathbf{0} & \cdots & \mathbf{0} \\
-\mathbf{A}_{21} & \mathbf{A}_{22} & \mathbf{0} & \cdots & \mathbf{0} \\
-\mathbf{A}_{31} & \mathbf{A}_{32} & \mathbf{A}_{33} & \cdots & \mathbf{0} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-\mathbf{A}_{m1} & \mathbf{A}_{m2} & \mathbf{A}_{m3} & \cdots & \mathbf{A}_{mn} \\
-\end{pmatrix}
-\end{aligned}
-\]
-\end{definition}
-
-\begin{example}
-Assume that \(\mathbf{A}\), which has the form
-\[
-\mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix},  
-\]\\
-is an invertible matrix where \(\mathbf{A}_{11}\) a \(p \times p\) invertible matrix, \(\mathbf{A}_{12}\) a \(p \times q\) matrix, and \(\mathbf{A}_{22}\) is a \(q \times q\) invertible matrix. Solve for \(\mathbf{A}^{-1}\)
-\end{example}
-
-\begin{solution}
-The inverse to \(\mathbf{A}\) is a matrix \(\mathbf{B} = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}\) with blocks \(\mathbf{B}_{11}\), \(\mathbf{B}_{12}\), \(\mathbf{B}_{21}\), and \(\mathbf{B}_{22}\) of appropriate size to be conformable with the blocks \(\mathbf{A}_{11}\), \(\mathbf{A}_{12}\), and\(\mathbf{A}_{22}\) that make up the matrix \(\mathbf{A}\).
-
-For \(\mathbf{B}\) to be the inverse of \(\mathbf{A}\), \(\mathbf{A}\mathbf{B} = \mathbf{B}\mathbf{A} = \mathbf{I} = \begin{pmatrix} \mathbf{I} & \mathbf{0} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}\) where \(\mathbf{0}\) is a matrix of zeros of the appropriate size. Writing this out in blocks gives
-
-\[
-\begin{aligned}
-\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{B}_{11} & \mathbf{B}_{12} \\ \mathbf{B}_{21} & \mathbf{B}_{22} \end{pmatrix}  \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{0} & \mathbf{A}_{22} \end{pmatrix} \\
-& = \begin{pmatrix} \mathbf{B}_{11} \mathbf{A}_{11} & \mathbf{B}_{11} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{B}_{21} \mathbf{A}_{11} & \mathbf{B}_{21} \mathbf{A}_{12} + \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
-\end{aligned}
-\]
-
-which gives that \(\mathbf{B}_{11} = \mathbf{A}_{11}^{-1}\) because \(\mathbf{B}_{11}^{-1}\mathbf{A}_{11} = \mathbf{I}\) and \(\mathbf{A}_{11}\) is invertible. The equation also give \(\mathbf{B}_{21} \mathbf{A}_{11} = \mathbf{0}\) and because \(\mathbf{A}_{11}\) is an invertible matrix, the homogeneous equation \(\mathbf{A}_{11}\mathbf{b} = \mathbf{0}\) has only the trivial solution for each column \(\mathbf{b}\) of the matrix \(\mathbf{B}_{21}\) which implies that \(\mathbf{B}_{21} = \mathbf{0}\). Using these facts, we can rewrite the above equation as
-
-\[
-\begin{aligned}
-\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{B}_{22} \mathbf{A}_{22}\end{pmatrix}
-\end{aligned}
-\]
-
-Because the lower right entry \(\mathbf{B}_{22} \mathbf{A}_{22}\) must equal \(\mathbf{I}\), we have that \(\mathbf{B}_{22} = \mathbf{A}_{22}^{-1}\). Then, the equation becomes
-
-\[
-\begin{aligned}
-\mathbf{B}\mathbf{A} & = \begin{pmatrix} \mathbf{I} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22} \\ \mathbf{0} & \mathbf{I} \end{pmatrix}
-\end{aligned}
-\]
-
-The final component is the upper right block. Because we are finding the inverse, we know that \(\mathbf{0} = \mathbf{A}_{11}^{-1} \mathbf{A}_{12} + \mathbf{B}_{12} \mathbf{A}_{22}\). Subtracting \(\mathbf{A}_{11}^{-1} \mathbf{A}_{12}\) from both sides of the equation gives
-
-\[
-\begin{aligned}
-\mathbf{B}_{12} \mathbf{A}_{22} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
-\mathbf{B}_{12} \mathbf{A}_{22} \mathbf{A}_{22}^{-1} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
-\mathbf{B}_{12} \mathbf{I} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}\\
-\mathbf{B}_{12} & = - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1}
-\end{aligned}
-\]
-
-Thus, \(\mathbf{A}^{-1} = \begin{pmatrix} \mathbf{A}_{11}^{-1} & - \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \mathbf{A}_{22}^{-1} \\ \mathbf{0} & \mathbf{A}_{22}^{-1} \end{pmatrix}\)
-\end{solution}
 
 \hypertarget{matrix-factorizations}{%
 \chapter{Matrix Factorizations}\label{matrix-factorizations}}

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Linear Transformations | Multivariable Mathematics for Data Science</title>
+  <title>Chapter 8 Linear Transformations | Multivariable Mathematics for Data Science</title>
   <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Linear Transformations | Multivariable Mathematics for Data Science" />
+  <meta property="og:title" content="Chapter 8 Linear Transformations | Multivariable Mathematics for Data Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Linear Transformations | Multivariable Mathematics for Data Science" />
+  <meta name="twitter:title" content="Chapter 8 Linear Transformations | Multivariable Mathematics for Data Science" />
   
   <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="linear-independence.html"/>
-<link rel="next" href="matrix-operations.html"/>
+<link rel="next" href="matrix-inverse.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -150,88 +150,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#matrices"><i class="fa fa-check"></i><b>1.3.1</b> Matrices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html"><i class="fa fa-check"></i><b>2</b> Linear Systems of Equations</a><ul>
-<li class="chapter" data-level="2.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#linear-systems-of-equations-1"><i class="fa fa-check"></i><b>2.1</b> Linear Systems of equations</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#linear-equations"><i class="fa fa-check"></i><b>2.1.1</b> Linear equations</a></li>
-<li class="chapter" data-level="2.1.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>2.1.2</b> Systems of linear equations</a></li>
-<li class="chapter" data-level="2.1.3" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#solutions-of-linear-systems"><i class="fa fa-check"></i><b>2.1.3</b> Solutions of linear systems</a></li>
-<li class="chapter" data-level="2.1.4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#types-of-solutions"><i class="fa fa-check"></i><b>2.1.4</b> Types of solutions</a></li>
-<li class="chapter" data-level="2.1.5" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>2.1.5</b> Elementary row and column operations on matrices</a></li>
-<li class="chapter" data-level="2.1.6" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>2.1.6</b> The Augmented matrix form of a system of equations</a></li>
-<li class="chapter" data-level="2.1.7" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#existence-and-uniqueness"><i class="fa fa-check"></i><b>2.1.7</b> Existence and Uniqueness</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#reduce-row-echelon-form"><i class="fa fa-check"></i><b>2.2</b> Reduce row echelon form</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#pivot-positions"><i class="fa fa-check"></i><b>2.2.1</b> Pivot positions</a></li>
-<li class="chapter" data-level="2.2.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>2.2.2</b> Finding the reduced row echelon form</a></li>
-<li class="chapter" data-level="2.2.3" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
-<li class="chapter" data-level="2.2.4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#existence-and-uniqueness-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>2.2.4</b> Existence and uniqueness from reduced row echelon form</a></li>
+<li class="chapter" data-level="2" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>2</b> Matrix operations</a><ul>
+<li class="chapter" data-level="2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>2.1</b> ToDo</a></li>
+<li class="chapter" data-level="2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#the-dotinner-product"><i class="fa fa-check"></i><b>2.2</b> The dot/inner product</a></li>
+<li class="chapter" data-level="2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>2.3</b> Properties of matrices</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>2.3.1</b> Matrix Addition</a></li>
+<li class="chapter" data-level="2.3.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>2.3.2</b> Matrix Multipliation</a></li>
+<li class="chapter" data-level="2.3.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>2.3.3</b> Properties of Matrix Multiplication</a></li>
+<li class="chapter" data-level="2.3.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>2.3.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>2.3.5</b> Matrix powers</a></li>
+<li class="chapter" data-level="2.3.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>2.3.6</b> Matrix Transpose</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="vector-spaces.html"><a href="vector-spaces.html"><i class="fa fa-check"></i><b>3</b> Vectors spaces</a><ul>
-<li class="chapter" data-level="3.1" data-path="vector-spaces.html"><a href="vector-spaces.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="vector-spaces.html"><a href="vector-spaces.html#properties-of-vectors"><i class="fa fa-check"></i><b>3.1.1</b> Properties of Vectors</a></li>
+<li class="chapter" data-level="3" data-path="block-matrices.html"><a href="block-matrices.html"><i class="fa fa-check"></i><b>3</b> Block Matrices</a><ul>
+<li class="chapter" data-level="3.1" data-path="block-matrices.html"><a href="block-matrices.html#block-matrix-addition"><i class="fa fa-check"></i><b>3.1</b> Block Matrix Addition</a></li>
+<li class="chapter" data-level="3.2" data-path="block-matrices.html"><a href="block-matrices.html#block-matrix-multiplication"><i class="fa fa-check"></i><b>3.2</b> Block Matrix Multiplication</a></li>
+<li class="chapter" data-level="3.3" data-path="block-matrices.html"><a href="block-matrices.html#the-column-row-matrix-product"><i class="fa fa-check"></i><b>3.3</b> The column-row matrix product</a></li>
+<li class="chapter" data-level="3.4" data-path="block-matrices.html"><a href="block-matrices.html#special-block-matrices"><i class="fa fa-check"></i><b>3.4</b> Special Block Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="vector-spaces.html"><a href="vector-spaces.html#vector-addition"><i class="fa fa-check"></i><b>3.2</b> Vector addition</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>3.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
-<li class="chapter" data-level="3.2.2" data-path="vector-spaces.html"><a href="vector-spaces.html#scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>3.2.2</b> Scalar multiplication of vectors</a></li>
-<li class="chapter" data-level="3.2.3" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>3.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
-<li class="chapter" data-level="3.2.4" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>3.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
-<li class="chapter" data-level="3.2.5" data-path="vector-spaces.html"><a href="vector-spaces.html#linear-combinations-of-vectors"><i class="fa fa-check"></i><b>3.2.5</b> Linear Combinations of Vectors</a></li>
-<li class="chapter" data-level="3.2.6" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>3.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
+<li class="chapter" data-level="4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html"><i class="fa fa-check"></i><b>4</b> Linear Systems of Equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#linear-systems-of-equations-1"><i class="fa fa-check"></i><b>4.1</b> Linear Systems of equations</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#linear-equations"><i class="fa fa-check"></i><b>4.1.1</b> Linear equations</a></li>
+<li class="chapter" data-level="4.1.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>4.1.2</b> Systems of linear equations</a></li>
+<li class="chapter" data-level="4.1.3" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#solutions-of-linear-systems"><i class="fa fa-check"></i><b>4.1.3</b> Solutions of linear systems</a></li>
+<li class="chapter" data-level="4.1.4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#types-of-solutions"><i class="fa fa-check"></i><b>4.1.4</b> Types of solutions</a></li>
+<li class="chapter" data-level="4.1.5" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>4.1.5</b> Elementary row and column operations on matrices</a></li>
+<li class="chapter" data-level="4.1.6" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>4.1.6</b> The Augmented matrix form of a system of equations</a></li>
+<li class="chapter" data-level="4.1.7" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#existence-and-uniqueness"><i class="fa fa-check"></i><b>4.1.7</b> Existence and Uniqueness</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="vector-spaces.html"><a href="vector-spaces.html#span"><i class="fa fa-check"></i><b>3.3</b> Span</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="vector-spaces.html"><a href="vector-spaces.html#geometric-example-of-the-span"><i class="fa fa-check"></i><b>3.3.1</b> Geometric example of the span</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="matrix-equation.html"><a href="matrix-equation.html"><i class="fa fa-check"></i><b>4</b> Matrix equations</a><ul>
-<li class="chapter" data-level="4.1" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-of-matrix-equations"><i class="fa fa-check"></i><b>4.1</b> Solutions of matrix equations</a></li>
-<li class="chapter" data-level="4.2" data-path="matrix-equation.html"><a href="matrix-equation.html#existence-of-solutions"><i class="fa fa-check"></i><b>4.2</b> Existence of solutions</a></li>
-<li class="chapter" data-level="4.3" data-path="matrix-equation.html"><a href="matrix-equation.html#matrix-vector-multiplication"><i class="fa fa-check"></i><b>4.3</b> Matrix-vector multiplication</a></li>
-<li class="chapter" data-level="4.4" data-path="matrix-equation.html"><a href="matrix-equation.html#properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>4.4</b> Properties of matrix-vector multiplication</a></li>
-<li class="chapter" data-level="4.5" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>4.5</b> Solutions of linear systems</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="matrix-equation.html"><a href="matrix-equation.html#homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>4.5.1</b> Homogeneous linear systems of equations</a></li>
-</ul></li>
-<li class="chapter" data-level="4.6" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>4.6</b> Solutions to nonhomogeneous systems</a></li>
-<li class="chapter" data-level="4.7" data-path="matrix-equation.html"><a href="matrix-equation.html#finding-solutions"><i class="fa fa-check"></i><b>4.7</b> Finding solutions</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="linear-independence.html"><a href="linear-independence.html"><i class="fa fa-check"></i><b>5</b> Linear independence</a></li>
-<li class="chapter" data-level="6" data-path="linear-transformations.html"><a href="linear-transformations.html"><i class="fa fa-check"></i><b>6</b> Linear Transformations</a><ul>
-<li class="chapter" data-level="6.1" data-path="linear-transformations.html"><a href="linear-transformations.html#linear-transformations-1"><i class="fa fa-check"></i><b>6.1</b> Linear Transformations</a></li>
-<li class="chapter" data-level="6.2" data-path="linear-transformations.html"><a href="linear-transformations.html#types-of-matrix-transformations"><i class="fa fa-check"></i><b>6.2</b> Types of matrix transformations</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="linear-transformations.html"><a href="linear-transformations.html#contractionsexpansions"><i class="fa fa-check"></i><b>6.2.1</b> Contractions/Expansions</a></li>
-<li class="chapter" data-level="6.2.2" data-path="linear-transformations.html"><a href="linear-transformations.html#rotations"><i class="fa fa-check"></i><b>6.2.2</b> Rotations</a></li>
-<li class="chapter" data-level="6.2.3" data-path="linear-transformations.html"><a href="linear-transformations.html#reflections"><i class="fa fa-check"></i><b>6.2.3</b> Reflections</a></li>
-<li class="chapter" data-level="6.2.4" data-path="linear-transformations.html"><a href="linear-transformations.html#shears"><i class="fa fa-check"></i><b>6.2.4</b> Shears</a></li>
-<li class="chapter" data-level="6.2.5" data-path="linear-transformations.html"><a href="linear-transformations.html#projections"><i class="fa fa-check"></i><b>6.2.5</b> Projections</a></li>
-<li class="chapter" data-level="6.2.6" data-path="linear-transformations.html"><a href="linear-transformations.html#identity"><i class="fa fa-check"></i><b>6.2.6</b> Identity</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="linear-transformations.html"><a href="linear-transformations.html#properties-of-matrix-transformations"><i class="fa fa-check"></i><b>6.3</b> Properties of matrix transformations</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="linear-transformations.html"><a href="linear-transformations.html#one-to-one-transformations"><i class="fa fa-check"></i><b>6.3.1</b> One-to-one transformations</a></li>
-<li class="chapter" data-level="6.3.2" data-path="linear-transformations.html"><a href="linear-transformations.html#onto-transformations"><i class="fa fa-check"></i><b>6.3.2</b> Onto transformations</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#reduce-row-echelon-form"><i class="fa fa-check"></i><b>4.2</b> Reduce row echelon form</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#pivot-positions"><i class="fa fa-check"></i><b>4.2.1</b> Pivot positions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.2</b> Finding the reduced row echelon form</a></li>
+<li class="chapter" data-level="4.2.3" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>4.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#existence-and-uniqueness-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.4</b> Existence and uniqueness from reduced row echelon form</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>7</b> Matrix operations</a><ul>
-<li class="chapter" data-level="7.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>7.1</b> ToDo</a></li>
-<li class="chapter" data-level="7.2" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>7.2</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>7.2.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="7.2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>7.2.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="7.2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>7.2.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="7.2.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>7.2.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="7.2.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>7.2.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="7.2.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>7.2.6</b> Matrix Transpose</a></li>
+<li class="chapter" data-level="5" data-path="vector-spaces.html"><a href="vector-spaces.html"><i class="fa fa-check"></i><b>5</b> Vectors spaces</a><ul>
+<li class="chapter" data-level="5.1" data-path="vector-spaces.html"><a href="vector-spaces.html#vectors"><i class="fa fa-check"></i><b>5.1</b> Vectors</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="vector-spaces.html"><a href="vector-spaces.html#properties-of-vectors"><i class="fa fa-check"></i><b>5.1.1</b> Properties of Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vector-spaces.html"><a href="vector-spaces.html#vector-addition"><i class="fa fa-check"></i><b>5.2</b> Vector addition</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>5.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="vector-spaces.html"><a href="vector-spaces.html#scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>5.2.2</b> Scalar multiplication of vectors</a></li>
+<li class="chapter" data-level="5.2.3" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>5.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>5.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
+<li class="chapter" data-level="5.2.5" data-path="vector-spaces.html"><a href="vector-spaces.html#linear-combinations-of-vectors"><i class="fa fa-check"></i><b>5.2.5</b> Linear Combinations of Vectors</a></li>
+<li class="chapter" data-level="5.2.6" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>5.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="vector-spaces.html"><a href="vector-spaces.html#span"><i class="fa fa-check"></i><b>5.3</b> Span</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="vector-spaces.html"><a href="vector-spaces.html#geometric-example-of-the-span"><i class="fa fa-check"></i><b>5.3.1</b> Geometric example of the span</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>8</b> Matrix Inverses</a><ul>
-<li class="chapter" data-level="8.1" data-path="matrix-inverse.html"><a href="matrix-inverse.html#elementary-matrices"><i class="fa fa-check"></i><b>8.1</b> Elementary matrices</a></li>
-<li class="chapter" data-level="8.2" data-path="matrix-inverse.html"><a href="matrix-inverse.html#finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>8.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
-<li class="chapter" data-level="8.3" data-path="matrix-inverse.html"><a href="matrix-inverse.html#the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>8.3</b> The Invertible Matrix Theorem</a></li>
-<li class="chapter" data-level="8.4" data-path="matrix-inverse.html"><a href="matrix-inverse.html#invertible-linear-transformations"><i class="fa fa-check"></i><b>8.4</b> Invertible Linear Transformations</a></li>
+<li class="chapter" data-level="6" data-path="matrix-equation.html"><a href="matrix-equation.html"><i class="fa fa-check"></i><b>6</b> Matrix equations</a><ul>
+<li class="chapter" data-level="6.1" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-of-matrix-equations"><i class="fa fa-check"></i><b>6.1</b> Solutions of matrix equations</a></li>
+<li class="chapter" data-level="6.2" data-path="matrix-equation.html"><a href="matrix-equation.html#existence-of-solutions"><i class="fa fa-check"></i><b>6.2</b> Existence of solutions</a></li>
+<li class="chapter" data-level="6.3" data-path="matrix-equation.html"><a href="matrix-equation.html#matrix-vector-multiplication"><i class="fa fa-check"></i><b>6.3</b> Matrix-vector multiplication</a></li>
+<li class="chapter" data-level="6.4" data-path="matrix-equation.html"><a href="matrix-equation.html#properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>6.4</b> Properties of matrix-vector multiplication</a></li>
+<li class="chapter" data-level="6.5" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>6.5</b> Solutions of linear systems</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="matrix-equation.html"><a href="matrix-equation.html#homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>6.5.1</b> Homogeneous linear systems of equations</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="block-matrices.html"><a href="block-matrices.html"><i class="fa fa-check"></i><b>9</b> Block Matrices</a><ul>
-<li class="chapter" data-level="9.1" data-path="block-matrices.html"><a href="block-matrices.html#block-matrix-addition"><i class="fa fa-check"></i><b>9.1</b> Block Matrix Addition</a></li>
-<li class="chapter" data-level="9.2" data-path="block-matrices.html"><a href="block-matrices.html#block-matrix-multiplication"><i class="fa fa-check"></i><b>9.2</b> Block Matrix Multiplication</a></li>
-<li class="chapter" data-level="9.3" data-path="block-matrices.html"><a href="block-matrices.html#the-column-row-matrix-product"><i class="fa fa-check"></i><b>9.3</b> The column-row matrix product</a></li>
-<li class="chapter" data-level="9.4" data-path="block-matrices.html"><a href="block-matrices.html#special-block-matrices"><i class="fa fa-check"></i><b>9.4</b> Special Block Matrices</a></li>
+<li class="chapter" data-level="6.6" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>6.6</b> Solutions to nonhomogeneous systems</a></li>
+<li class="chapter" data-level="6.7" data-path="matrix-equation.html"><a href="matrix-equation.html#finding-solutions"><i class="fa fa-check"></i><b>6.7</b> Finding solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linear-independence.html"><a href="linear-independence.html"><i class="fa fa-check"></i><b>7</b> Linear independence</a></li>
+<li class="chapter" data-level="8" data-path="linear-transformations.html"><a href="linear-transformations.html"><i class="fa fa-check"></i><b>8</b> Linear Transformations</a><ul>
+<li class="chapter" data-level="8.1" data-path="linear-transformations.html"><a href="linear-transformations.html#linear-transformations-1"><i class="fa fa-check"></i><b>8.1</b> Linear Transformations</a></li>
+<li class="chapter" data-level="8.2" data-path="linear-transformations.html"><a href="linear-transformations.html#types-of-matrix-transformations"><i class="fa fa-check"></i><b>8.2</b> Types of matrix transformations</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="linear-transformations.html"><a href="linear-transformations.html#contractionsexpansions"><i class="fa fa-check"></i><b>8.2.1</b> Contractions/Expansions</a></li>
+<li class="chapter" data-level="8.2.2" data-path="linear-transformations.html"><a href="linear-transformations.html#rotations"><i class="fa fa-check"></i><b>8.2.2</b> Rotations</a></li>
+<li class="chapter" data-level="8.2.3" data-path="linear-transformations.html"><a href="linear-transformations.html#reflections"><i class="fa fa-check"></i><b>8.2.3</b> Reflections</a></li>
+<li class="chapter" data-level="8.2.4" data-path="linear-transformations.html"><a href="linear-transformations.html#shears"><i class="fa fa-check"></i><b>8.2.4</b> Shears</a></li>
+<li class="chapter" data-level="8.2.5" data-path="linear-transformations.html"><a href="linear-transformations.html#projections"><i class="fa fa-check"></i><b>8.2.5</b> Projections</a></li>
+<li class="chapter" data-level="8.2.6" data-path="linear-transformations.html"><a href="linear-transformations.html#identity"><i class="fa fa-check"></i><b>8.2.6</b> Identity</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="linear-transformations.html"><a href="linear-transformations.html#properties-of-matrix-transformations"><i class="fa fa-check"></i><b>8.3</b> Properties of matrix transformations</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="linear-transformations.html"><a href="linear-transformations.html#one-to-one-transformations"><i class="fa fa-check"></i><b>8.3.1</b> One-to-one transformations</a></li>
+<li class="chapter" data-level="8.3.2" data-path="linear-transformations.html"><a href="linear-transformations.html#onto-transformations"><i class="fa fa-check"></i><b>8.3.2</b> Onto transformations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>9</b> Matrix Inverses</a><ul>
+<li class="chapter" data-level="9.1" data-path="matrix-inverse.html"><a href="matrix-inverse.html#elementary-matrices"><i class="fa fa-check"></i><b>9.1</b> Elementary matrices</a></li>
+<li class="chapter" data-level="9.2" data-path="matrix-inverse.html"><a href="matrix-inverse.html#finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>9.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
+<li class="chapter" data-level="9.3" data-path="matrix-inverse.html"><a href="matrix-inverse.html#the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>9.3</b> The Invertible Matrix Theorem</a></li>
+<li class="chapter" data-level="9.4" data-path="matrix-inverse.html"><a href="matrix-inverse.html#invertible-linear-transformations"><i class="fa fa-check"></i><b>9.4</b> Invertible Linear Transformations</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a><ul>
 <li class="chapter" data-level="10.1" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html#the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a><ul>
@@ -347,14 +348,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="linear-transformations" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Linear Transformations</h1>
+<h1><span class="header-section-number">Chapter 8</span> Linear Transformations</h1>
 <ul>
 <li><p><a href="https://www.3blue1brown.com/lessons/linear-transformations">3 Blue 1 Brown – Linear transformations</a></p></li>
 <li><p><a href="https://www.3blue1brown.com/lessons/3d-transformations">3 Blue 1 Brown – 3D transformations</a></p></li>
 </ul>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="linear-transformations.html#cb127-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb127-2"><a href="linear-transformations.html#cb127-2"></a><span class="kw">library</span>(dasc2594)</span>
-<span id="cb127-3"><a href="linear-transformations.html#cb127-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="linear-transformations.html#cb155-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb155-2"><a href="linear-transformations.html#cb155-2"></a><span class="kw">library</span>(dasc2594)</span>
+<span id="cb155-3"><a href="linear-transformations.html#cb155-3"></a><span class="kw">library</span>(gifski)</span></code></pre></div>
 <p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 <p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a “<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>.” For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
 <p><strong>Draw figure</strong></p>
@@ -373,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-137" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[
+<p><span id="exm:unlabeled-div-147" class="example"><strong>Example 8.1  </strong></span><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 2 &amp; 4 \\
@@ -396,15 +397,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{pmatrix}
 \end{aligned}
 \]</span></p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="linear-transformations.html#cb128-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">-1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb128-2"><a href="linear-transformations.html#cb128-2"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb128-3"><a href="linear-transformations.html#cb128-3"></a>b &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">2</span>]</span>
-<span id="cb128-4"><a href="linear-transformations.html#cb128-4"></a>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-2</span>, <span class="dv">-1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="linear-transformations.html#cb156-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-3</span>, <span class="dv">-1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb156-2"><a href="linear-transformations.html#cb156-2"></a>u &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb156-3"><a href="linear-transformations.html#cb156-3"></a>b &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>A[, <span class="dv">2</span>]</span>
+<span id="cb156-4"><a href="linear-transformations.html#cb156-4"></a>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-2</span>, <span class="dv">-1</span>)</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Find the image of <span class="math inline">\(\mathbf{u}\)</span> using the matrix transformation <span class="math inline">\(T\)</span> (e.g., calculate <span class="math inline">\(T(\mathbf{u})\)</span>).</li>
 </ol>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="linear-transformations.html#cb129-1"></a><span class="co"># a</span></span>
-<span id="cb129-2"><a href="linear-transformations.html#cb129-2"></a>A <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="linear-transformations.html#cb157-1"></a><span class="co"># a</span></span>
+<span id="cb157-2"><a href="linear-transformations.html#cb157-2"></a>A <span class="op">%*%</span><span class="st"> </span>u</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]   14
 ## [2,]    0
@@ -413,8 +414,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Find a coefficient vector <span class="math inline">\(\mathbf{x} \in \mathcal{R}^2\)</span> such that <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span>.</li>
 </ol>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="linear-transformations.html#cb131-1"></a><span class="co">#b</span></span>
-<span id="cb131-2"><a href="linear-transformations.html#cb131-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, b))</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="linear-transformations.html#cb159-1"></a><span class="co">#b</span></span>
+<span id="cb159-2"><a href="linear-transformations.html#cb159-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, b))</span></code></pre></div>
 <pre><code>##           b
 ## [1,] 1 0  3
 ## [2,] 0 1 -2
@@ -427,8 +428,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Determine if <span class="math inline">\(\mathbf{c}\)</span> is in the range of <span class="math inline">\(T\)</span>. In other words, does the solution <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{c}\)</span> exist?</li>
 </ol>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="linear-transformations.html#cb133-1"></a><span class="co"># d</span></span>
-<span id="cb133-2"><a href="linear-transformations.html#cb133-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, c)) <span class="co"># no because this is an inconsistent system of equations</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="linear-transformations.html#cb161-1"></a><span class="co"># d</span></span>
+<span id="cb161-2"><a href="linear-transformations.html#cb161-2"></a><span class="kw">rref</span>(<span class="kw">cbind</span>(A, c)) <span class="co"># no because this is an inconsistent system of equations</span></span></code></pre></div>
 <pre><code>##          c
 ## [1,] 1 0 0
 ## [2,] 0 1 0
@@ -436,9 +437,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{c}\)</span> which can be found from the reduced row echelon form of the augmented matrix above results in no solution because the last column (the augmented column) is a pivot column. Thus, the system of equations is inconsistent and <span class="math inline">\(\mathbf{c}\)</span> cannot be written as a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span> which means that <span class="math inline">\(\mathbf{c}\)</span> is not in the range of <span class="math inline">\(T\)</span>.</p>
 </div>
 <div id="linear-transformations-1" class="section level2">
-<h2><span class="header-section-number">6.1</span> Linear Transformations</h2>
+<h2><span class="header-section-number">8.1</span> Linear Transformations</h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-138" class="definition"><strong>Definition 6.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<p><span id="def:unlabeled-div-148" class="definition"><strong>Definition 8.1  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
 <li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
@@ -473,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="types-of-matrix-transformations" class="section level2">
-<h2><span class="header-section-number">6.2</span> Types of matrix transformations</h2>
+<h2><span class="header-section-number">8.2</span> Types of matrix transformations</h2>
 <p>The basic types of matrix transformations include</p>
 <ol style="list-style-type: decimal">
 <li>contractions/expansions</li>
@@ -485,9 +486,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the following examples, we will consider the unit vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span> and apply different linear transformations using the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>To build the matrix transformations, we use the <code>dasc2594</code> package and build matrix transformations based on code from <a href="https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/">https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/</a>.</p>
 <div id="contractionsexpansions" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Contractions/Expansions</h3>
+<h3><span class="header-section-number">8.2.1</span> Contractions/Expansions</h3>
 <div id="horizonal-expansion" class="section level4">
-<h4><span class="header-section-number">6.2.1.1</span> Horizonal Expansion</h4>
+<h4><span class="header-section-number">8.2.1.1</span> Horizonal Expansion</h4>
 <p>The matrix below gives a horizontal expansion when <span class="math inline">\(x &gt; 1\)</span></p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
@@ -498,18 +499,18 @@ x &amp; 0 \\
 <ul>
 <li>In the example below, we set <span class="math inline">\(x = 2\)</span> and generate the transformation.</li>
 </ul>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="linear-transformations.html#cb135-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
-<span id="cb135-2"><a href="linear-transformations.html#cb135-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
-<span id="cb135-3"><a href="linear-transformations.html#cb135-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="cb135-4"><a href="linear-transformations.html#cb135-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb135-5"><a href="linear-transformations.html#cb135-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
-<span id="cb135-6"><a href="linear-transformations.html#cb135-6"></a></span>
-<span id="cb135-7"><a href="linear-transformations.html#cb135-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="linear-transformations.html#cb163-1"></a>transformation_matrix &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb163-2"><a href="linear-transformations.html#cb163-2"></a>  <span class="op">~</span><span class="st"> </span>x, <span class="op">~</span><span class="st"> </span>y,</span>
+<span id="cb163-3"><a href="linear-transformations.html#cb163-3"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb163-4"><a href="linear-transformations.html#cb163-4"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb163-5"><a href="linear-transformations.html#cb163-5"></a><span class="st">  </span><span class="kw">as.matrix</span>()</span>
+<span id="cb163-6"><a href="linear-transformations.html#cb163-6"></a></span>
+<span id="cb163-7"><a href="linear-transformations.html#cb163-7"></a>p &lt;-<span class="st"> </span><span class="kw">plot_transformation</span>(transformation_matrix)</span></code></pre></div>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-animation-1.gif" /><!-- --></p>
 <p><img src="multivariable-math_files/figure-html/horizontal-expansion-static-1.png" width="672" /></p>
 </div>
 <div id="horizonal-contraction" class="section level4">
-<h4><span class="header-section-number">6.2.1.2</span> Horizonal Contraction</h4>
+<h4><span class="header-section-number">8.2.1.2</span> Horizonal Contraction</h4>
 <p>The matrix below gives a horizontal contraction when <span class="math inline">\(x &lt; 1\)</span>
 * Horizontal contraction when <span class="math inline">\(x &lt; 1\)</span></p>
 <p><span class="math display">\[
@@ -525,7 +526,7 @@ x &amp; 0 \\
 <p><img src="multivariable-math_files/figure-html/horizontal-contraction-static-1.png" width="672" /></p>
 </div>
 <div id="vertical-expansion" class="section level4">
-<h4><span class="header-section-number">6.2.1.3</span> Vertical Expansion</h4>
+<h4><span class="header-section-number">8.2.1.3</span> Vertical Expansion</h4>
 <p>The matrix below gives a vertical expansion when <span class="math inline">\(x &gt; 1\)</span></p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
@@ -538,7 +539,7 @@ x &amp; 0 \\
 <p><img src="multivariable-math_files/figure-html/vertical-expansion-static-1.png" width="672" /></p>
 </div>
 <div id="vertical-contraction" class="section level4">
-<h4><span class="header-section-number">6.2.1.4</span> Vertical Contraction</h4>
+<h4><span class="header-section-number">8.2.1.4</span> Vertical Contraction</h4>
 <p>The matrix below gives a vertical contraction when <span class="math inline">\(x &lt; 1\)</span></p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
@@ -554,9 +555,9 @@ x &amp; 0 \\
 </div>
 </div>
 <div id="rotations" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Rotations</h3>
+<h3><span class="header-section-number">8.2.2</span> Rotations</h3>
 <div id="rotation-by-90-degrees" class="section level4">
-<h4><span class="header-section-number">6.2.2.1</span> Rotation by 90 degrees</h4>
+<h4><span class="header-section-number">8.2.2.1</span> Rotation by 90 degrees</h4>
 <p>Rotations in 2D of an angle <span class="math inline">\(\theta \in [0, 2\pi]\)</span> take the form of
 <span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
@@ -593,9 +594,9 @@ For example, a rotation of 90 degrees counter-clockwise (<span class="math inlin
 </div>
 </div>
 <div id="reflections" class="section level3">
-<h3><span class="header-section-number">6.2.3</span> Reflections</h3>
+<h3><span class="header-section-number">8.2.3</span> Reflections</h3>
 <div id="reflection-across-the-x-axis" class="section level4">
-<h4><span class="header-section-number">6.2.3.1</span> Reflection across the x-axis</h4>
+<h4><span class="header-section-number">8.2.3.1</span> Reflection across the x-axis</h4>
 <p>The matrix below gives a reflection about the x-axis</p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
@@ -607,7 +608,7 @@ For example, a rotation of 90 degrees counter-clockwise (<span class="math inlin
 <p><img src="multivariable-math_files/figure-html/reflection-x-axis-1.png" width="672" /></p>
 </div>
 <div id="reflection-across-the-y-axis" class="section level4">
-<h4><span class="header-section-number">6.2.3.2</span> Reflection across the y-axis</h4>
+<h4><span class="header-section-number">8.2.3.2</span> Reflection across the y-axis</h4>
 <p>The matrix below gives a reflection about the y-axis</p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
@@ -619,7 +620,7 @@ For example, a rotation of 90 degrees counter-clockwise (<span class="math inlin
 <p><img src="multivariable-math_files/figure-html/reflection-y-axis-static-1.png" width="672" /></p>
 </div>
 <div id="reflection-across-the-line-y-x" class="section level4">
-<h4><span class="header-section-number">6.2.3.3</span> Reflection across the line y = x</h4>
+<h4><span class="header-section-number">8.2.3.3</span> Reflection across the line y = x</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 0 &amp; 1 \\
@@ -633,7 +634,7 @@ For example, a rotation of 90 degrees counter-clockwise (<span class="math inlin
 <p><img src="multivariable-math_files/figure-html/reflection-line-y-equals-x-static-1.png" width="672" /></p>
 </div>
 <div id="reflection-across-the-line-y---x" class="section level4">
-<h4><span class="header-section-number">6.2.3.4</span> Reflection across the line y = - x</h4>
+<h4><span class="header-section-number">8.2.3.4</span> Reflection across the line y = - x</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 0 &amp; -1 \\
@@ -644,7 +645,7 @@ For example, a rotation of 90 degrees counter-clockwise (<span class="math inlin
 <p><img src="multivariable-math_files/figure-html/reflection-line-y-equals-minus-x-static-1.png" width="672" /></p>
 </div>
 <div id="reflection-across-the-origin-0-0" class="section level4">
-<h4><span class="header-section-number">6.2.3.5</span> Reflection across the origin (0, 0)</h4>
+<h4><span class="header-section-number">8.2.3.5</span> Reflection across the origin (0, 0)</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 -1 &amp; 0 \\
@@ -656,10 +657,10 @@ For example, a rotation of 90 degrees counter-clockwise (<span class="math inlin
 </div>
 </div>
 <div id="shears" class="section level3">
-<h3><span class="header-section-number">6.2.4</span> Shears</h3>
+<h3><span class="header-section-number">8.2.4</span> Shears</h3>
 <p>A shear transformation is like stretching play-dough if it was possible to stretch all parts of the dough uniformly (rather than some sections getting stretched more than others).</p>
 <div id="horizontal-shear" class="section level4">
-<h4><span class="header-section-number">6.2.4.1</span> Horizontal Shear</h4>
+<h4><span class="header-section-number">8.2.4.1</span> Horizontal Shear</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 1 &amp; x \\
@@ -671,7 +672,7 @@ For the example below, we plot a horizontal shear with <span class="math inline"
 <p><img src="multivariable-math_files/figure-html/horizontal-shear-static-1.png" width="672" /></p>
 </div>
 <div id="vertical-shear" class="section level4">
-<h4><span class="header-section-number">6.2.4.2</span> Vertical Shear</h4>
+<h4><span class="header-section-number">8.2.4.2</span> Vertical Shear</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 1 &amp; 0 \\
@@ -684,10 +685,10 @@ For the example below, we plot a horizontal shear with <span class="math inline"
 </div>
 </div>
 <div id="projections" class="section level3">
-<h3><span class="header-section-number">6.2.5</span> Projections</h3>
+<h3><span class="header-section-number">8.2.5</span> Projections</h3>
 <p>A projection is a mapping <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> from one space (<span class="math inline">\(\mathbf{R}^n\)</span>) to itself (<span class="math inline">\(\mathbf{R}^n\)</span>) such that <span class="math inline">\(T^2 = T\)</span></p>
 <div id="project-onto-the-x-axis" class="section level4">
-<h4><span class="header-section-number">6.2.5.1</span> Project onto the x-axis</h4>
+<h4><span class="header-section-number">8.2.5.1</span> Project onto the x-axis</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 1 &amp; 0 \\
@@ -699,7 +700,7 @@ For the example below, we plot a projection onto the x-axis</p>
 <p><img src="multivariable-math_files/figure-html/projection-x-static-1.png" width="672" /></p>
 </div>
 <div id="project-onto-the-y-axis" class="section level4">
-<h4><span class="header-section-number">6.2.5.2</span> Project onto the y-axis</h4>
+<h4><span class="header-section-number">8.2.5.2</span> Project onto the y-axis</h4>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 0 &amp; 0 \\
@@ -712,7 +713,7 @@ For the example below, we plot a projection onto the y-axis</p>
 </div>
 </div>
 <div id="identity" class="section level3">
-<h3><span class="header-section-number">6.2.6</span> Identity</h3>
+<h3><span class="header-section-number">8.2.6</span> Identity</h3>
 <p>The identity transformation is the transformation that leaves the vector input unchanged. The identity matrix is typically written as <span class="math inline">\(\mathbf{I}\)</span></p>
 <p><span class="math display">\[
 \mathbf{I} = \begin{pmatrix}
@@ -725,11 +726,11 @@ For the example below, we plot a projection onto the y-axis</p>
 </div>
 </div>
 <div id="properties-of-matrix-transformations" class="section level2">
-<h2><span class="header-section-number">6.3</span> Properties of matrix transformations</h2>
+<h2><span class="header-section-number">8.3</span> Properties of matrix transformations</h2>
 <div id="one-to-one-transformations" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> One-to-one transformations</h3>
+<h3><span class="header-section-number">8.3.1</span> One-to-one transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-139" class="definition"><strong>Definition 6.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+<p><span id="def:unlabeled-div-149" class="definition"><strong>Definition 8.2  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <p><img src="images/one-to-one.png" width="100%" /></p>
 <p><img src="images/not-one-to-one.png" width="100%" /></p>
@@ -789,7 +790,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-140" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-150" class="theorem"><strong>Theorem 8.1  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
@@ -823,9 +824,9 @@ For the example below, we plot a projection onto the y-axis</p>
 <p><strong>Note:</strong> Matrices that are wider than they are tall are not one-to-one transformations. (This does not mean that all tall matrices are one-to-one)</p>
 </div>
 <div id="onto-transformations" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Onto transformations</h3>
+<h3><span class="header-section-number">8.3.2</span> Onto transformations</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-141" class="definition"><strong>Definition 6.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
+<p><span id="def:unlabeled-div-151" class="definition"><strong>Definition 8.3  </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
 </div>
 <p><img src="images/onto.png" width="100%" /></p>
 <p><img src="images/not-onto.png" width="100%" /></p>
@@ -841,7 +842,7 @@ For the example below, we plot a projection onto the y-axis</p>
 <li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
 </ol>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-142" class="theorem"><strong>Theorem 6.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span id="thm:unlabeled-div-152" class="theorem"><strong>Theorem 8.2  </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(T\)</span> is onto</p></li>
 <li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>
@@ -912,7 +913,7 @@ $(document).ready(function() {
         </div>
       </div>
 <a href="linear-independence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="matrix-operations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="matrix-inverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
