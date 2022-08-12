@@ -11,6 +11,11 @@ jobs:
     permissions:
       contents: write
     steps:
+    
+      - name: Install dependencies
+        run: |
+          sudo apt-get install libcurl4-openssl-dev
+        
       - name: Check out repository
         uses: actions/checkout@v2
 
