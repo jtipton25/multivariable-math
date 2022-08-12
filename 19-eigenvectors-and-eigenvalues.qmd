@@ -1,0 +1,1082 @@
+# Eigenvectors and Eigenvalues
+
+- [3 Blue 1 Brown -- Eigenvalues](https://www.3blue1brown.com/lessons/eigenvalues)
+
+```{r setup-19, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+set.seed(2021)
+```
+
+We have just learned about change of basis in an abstract sense. Now, we will learn about a special change of basis that is "data-driven" called an eigenvector. Eigenvectors and the corresponding eigenvalues are a vital tool in data science for data compression and modeling.
+
+::: {#def-}
+An **eigenvector** of an $n \times n$ matrix $\mathbf{A}$ is a nonzero vector $\mathbf{x}$ such that the matrix equation
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{x} = \lambda \mathbf{x}
+\end{aligned}
+$$
+for some scalar $\lambda$. If there exists some $\lambda \neq 0$ (a non-trivial solutions), then $\lambda$ is called an **eigenvalue** of $\mathbf{A}$ corresponding to the eigenvector $\mathbf{x}$.
+:::
+
+
+::: {.example}
+It is easy to check if a vector is an eigenvalue:
+```{r example-eigenvalue-1, echo = FALSE}
+# n <- 3
+# n_iter <- 5
+# # simulate some eigenvectors, eigenvalues, and a matrix
+# u <- matrix(sample(-9:9, n^2, replace = TRUE), n, n)
+# u <- u %*% t(u)
+# delta <- det(u)
+# while(abs(delta) > 20) {
+#     u <- matrix(sample(-9:9, n^2, replace = TRUE), n, n)
+#     u <- u %*% t(u)
+#     delta <- det(u)
+# }
+# lambda <- sample(1:(delta-1), 1) * delta * sort(sample(1:9, n), decreasing = TRUE)
+# Lambda <- diag(lambda)
+# A <- u %*% Lambda %*% solve(u)
+# A
+# eigen(A)
+# lambda <- diag(sort(sample(1:9, n), decreasing = TRUE))
+# A <- lambda
+# for (k in 1:n_iter) {
+#     idx <- sample(1:n, 2)
+#     a <- sample(-9:9, 1)
+#     A[idx[1], ] <- A[idx[1], ] + a * A[idx[2], ]
+#     A[, idx[2]] <- A[, idx[2]] - a * A[, idx[1]]
+#     
+#     
+# }
+# 
+# u <- matrix(sample(-9:9, n^2, replace = TRUE), n, n)
+# lambda <- sort(sample(1:9, n), decreasing = TRUE) * prod(sapply(1:n, function(i) as.numeric(t(u[, i]) %*% u[, i]), simplify = "vector"))
+# tmp <- sapply(1:n, function(i) {lambda[i] * u[, i] %*% t(u[, i]) / as.numeric(t(u[, i]) %*% u[, i])}, simplify = "array")
+# A <- apply(tmp, c(1, 2), sum)
+# # A <- det(u) * u %*% lambda %*% solve(u)
+# A
+# eigen(A)
+# v <- sample(-9:9, n, replace = TRUE)
+A <- matrix(c(0, 1/2, 0, 6, 0, 1/2, 8, 0, 0), 3, 3)
+u <- c(16, 4, 1)
+v <- c(2, 2, 2)
+```
+
+
+Let $\mathbf{A} = `r array_to_latex(A)`$, $\mathbf{u} = `r array_to_latex(as.matrix(u))`$, and $\mathbf{v} = `r array_to_latex(as.matrix(v))`$. Determine if $\mathbf{u}$ or $\mathbf{v}$ are eigenvectors of $\mathbf{A}$. If they are eigenvectors, what are the associated eigenvalues.
+:::
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+Here we demonstrate the eigenvector/eigenvalue relationship. 
+
+a) If $\mathbf{u}$ is an eigenvector of a matrix $\mathbf{A}$, then there exists some constant $\lambda$ such that $\mathbf{A} \mathbf{u} = \lambda \mathbf{u}$. Checking this gives
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{u} & = `r array_to_latex(A)` `r array_to_latex(u)` \\
+& = `r array_to_latex(A %*% u)` \\ 
+& = 2 `r array_to_latex(u)`
+\end{aligned}
+$$
+which shows that $\mathbf{u}$ is an eigenvector of $\mathbf{A}$ with associated eigenvalue $\lambda = 2$. Now, we check if $\mathbf{v}$ is an eigenvector of $\mathbf{A}$
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{v} & = `r array_to_latex(A)` `r array_to_latex(v)` \\
+& = `r array_to_latex(A %*% v)` 
+\end{aligned}
+$$
+where there is no number $\lambda$ such that $`r array_to_latex(A %*% v)` = \lambda `r array_to_latex(v)`$. In `R`, this can be shown
+
+
+```{r example-eigenvalue-2}
+A <- matrix(c(0, 1/2, 0, 6, 0, 1/2, 8, 0, 0), 3, 3)
+A
+u <- c(16, 4, 1)
+v <- c(2, 2, 2)      
+# is u an eigenvector of A?
+A %*% u
+# yes, because A %*% u = 2 u
+# 2 is the eigenvalue associated with u
+
+# is v an eigenvector of A?
+A %*% v
+# not an eigenvectos because A %*% v is not equal to lambda * v for some lambda
+```
+:::
+
+
+
+
+::: {#exm-}
+It is easy to check if a vector is an eigenvalue:
+```{r example-eigenvalue-3, echo = FALSE}
+A <- matrix(c(2, 0, 1, 1), 2, 2)
+
+# # show these are eigen vectors
+# eA <- eigen(A)
+# eA$vectors
+# eA$values
+# # first eigenvector
+# eA$vectors[, 1]
+# A %*% eA$vectors[, 1]
+# # associated first eigenvalue is 2 (A v = lambda v)
+# all.equal(drop(A %*% eA$vectors[, 1]), eA$vectors[, 1] * eA$values[1])
+# 
+# # second eigenvector
+# eA$vectors[, 2]
+# A %*% eA$vectors[, 2]
+# # associated first eigenvalue is 2 (A v = lambda v)
+# all.equal(drop(A %*% eA$vectors[, 1]), eA$vectors[, 1] * eA$values[1])
+# 
+# 
+# #plot the eigen vectors
+# 
+# plot_transformation(A) +
+#         facet_wrap(~ time) +
+#         # first eigenvector
+#         geom_segment(aes(x = 0, y = 0, 
+#                          xend = eA$vectors[1, 1], yend = eA$vectors[2, 1]),
+#                      color = "blue", lwd = 1.5) +
+#         # second eigenvector
+#         geom_segment(aes(x = 0, y = 0, 
+#                          xend = eA$vectors[1, 2], yend = eA$vectors[2, 2]),
+#                      color = "purple", lwd = 1.5)
+
+u <- c(-sqrt(2)/2, sqrt(2) / 2)
+v <- c(1, 1)
+```
+
+
+ Let $\mathbf{A} = `r array_to_latex(A)`$, $\mathbf{u} = \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix}$, and $\mathbf{v} = `r array_to_latex(as.matrix(v))`$. Determine if $\mathbf{u}$ or $\mathbf{v}$ are eigenvectors of $\mathbf{A}$. If they are eigenvectors, what are the associated eigenvalues. Now, plot $\mathbf{u}$, $\mathbf{A} \mathbf{u}$, $\mathbf{v}$, and $\mathbf{A} \mathbf{v}$ to show this relationship geometrically.
+:::
+
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+First, we determine if the vectors $\mathbf{u}$ and $\mathbf{v}$ are eigenvectors of $\mathbf{A}$. 
+
+If $\mathbf{u}$ is an eigenvector of a matrix $\mathbf{A}$, then there exists some constant $\lambda$ such that $\mathbf{A} \mathbf{u} = \lambda \mathbf{u}$. Checking this gives
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{u} & = `r array_to_latex(A)` \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix} \\
+& = \begin{pmatrix} - \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{pmatrix} 
+\end{aligned}
+$$
+which shows that $\mathbf{u}$ is an eigenvector of $\mathbf{A}$ with associated eigenvalue $\lambda = 1$. Now, we check if $\mathbf{v}$ is an eigenvector of $\mathbf{A}$
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{v} & = `r array_to_latex(A)` `r array_to_latex(v)` \\
+& = `r array_to_latex(A %*% v)` 
+\end{aligned}
+$$
+where there is no number $\lambda$ such that $`r array_to_latex(A %*% v)` = \lambda `r array_to_latex(v)`$. In `R`, this can be shown
+
+```{r example-eigenvalue-4}
+A <- matrix(c(2, 0, 1, 1), 2, 2)
+u <- c(-sqrt(2)/2, sqrt(2) / 2)
+v <- c(1, 1)
+
+# is u an eigenvector of A?
+A %*% u
+# yes, because A %*% u = u
+# 1 is the eigenvalue associated with u
+
+# is v an eigenvector of A?
+A %*% v
+# not an eigenvectos because A %*% v is not equal to lambda * v for some lambda
+```
+
+
+Now, we will plot the vectors $\mathbf{u}$ and $\mathbf{v}$ as well as the vectors transformed by the matrix $\mathbf{A}$ (i.e., $\mathbf{A} \mathbf{u}$ and $\mathbf{A} \mathbf{v}$). The code below plot the vector $\mathbf{u}$ in dark blue and the transformed vector $\mathbf{A} \mathbf{u}$ in light blue. The code also plots the vector $\mathbf{v}$ in dark red and the transformed vector $\mathbf{A} \mathbf{v}$ in light red.
+
+```{r example-eigenvalue-5}
+ggplot() +
+    geom_segment(aes(x = 0, xend = u[1], y = 0, yend = u[2]), color = "dark blue") +
+    geom_segment(aes(x = 0, xend = (A %*% u)[1], y = 0, yend = (A %*% u)[2]), color = "light blue", lty = 2) +
+    geom_segment(aes(x = 0, xend = v[1], y = 0, yend = v[2]), color = "dark red") +
+    geom_segment(aes(x = 0, xend = (A %*% v)[1], y = 0, yend = (A %*% v)[2]), color = "red") +
+    coord_cartesian(xlim = c(-5, 5), ylim = c(-5, 5))
+```
+Notice that the multiplication of $\mathbf{u}$ by $\mathbf{A}$ gives a vector $\mathbf{A} \mathbf{u}$ that points along the same line as $\mathbf{u}$ because $\mathbf{u}$ is an eigenvector of $\mathbf{A}$. In comparison, the vector $\mathbf{v}$ is not an eigenvector of $\mathbf{A}$ and multiplication of $\mathbf{v}$ by $\mathbf{A}$ gives a vector $\mathbf{A} \mathbf{v}$ that *does not* point along the same line as the vector $\mathbf{u}$. 
+:::
+
+
+
+::: {#exm-}
+Come up with another example and another plot that shows the similar result as the example above.
+:::
+
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+The solution (TBD)
+:::
+
+
+Thus, we end up with the understanding that nn eigenvector is a (nonzero) vector $\mathbf{x}$ that gets mapped to a scalar multiple of itself $\lambda \mathbf{x}$ by the matrix transformation defined by $T: \mathbf{x} \rightarrow \mathbf{A}\mathbf{x} = \mathbf{x}$. As such, when $\mathbf{x}$ is an eigenvector of $\mathbf{A}$ we say that $\mathbf{x}$ and $\mathbf{A} \mathbf{x}$ are collinear with the origin ($\mathbf{0}$) and each other in the sense that these points lie on the same line that goes through the origin. 
+
+**Note:** The matrix $\mathbf{A}$ must be an $n \times n$ square matrix. A similar decomposition (called the singular value decomposition) can be used for rectangular matrices.
+
+::: {#exm-}
+Example: reflection
+Draw images: [https://textbooks.math.gatech.edu/ila/eigenvectors.html](https://textbooks.math.gatech.edu/ila/eigenvectors.html)
+:::
+
+
+:::{#thm-distincteigenvalues}
+## The Distinct Eigenvalues Theorem
+
+Let $\mathbf{v}_1, \ldots, \mathbf{v}_n$ be eigenvectors of a matrix $\mathbf{A}$ and suppose the corresponding eigenvalues are $\lambda_1, \lambda_2, \ldots, \lambda_n$ are all distinct (different values). Then, the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly independent.
+:::
+
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+Suppose the set $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is linearly dependent. Then, there is some $j$ such that $\mathbf{v}_j = \sum_{k = 1}^{j-1} x_k \mathbf{v}_k$. If we choose the first linearly dependent vector as $j$, we know that the subset of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ is linearly independent and 
+$$
+\begin{aligned}
+\mathbf{v}_j & = x_1 \mathbf{v}_1 + \cdots x_{j-1} + \mathbf{v}_{j-1}
+\end{aligned}
+$$
+for some scalars $x_1, \ldots, x_{j-1}$. Multiplying the equation above on the left by $\mathbf{A}$ on both sides gives
+$$
+\begin{aligned}
+\mathbf{A}\mathbf{v}_j & = \mathbf{A} (x_1 \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{v}_{j-1}) \\
+\lambda_j \mathbf{v}_j & = x_1 \mathbf{A} \mathbf{v}_1 + \cdots + x_{j-1} \mathbf{A} \mathbf{v}_{j-1} \\
+& =  x_1 \lambda_1 \mathbf{v}_1 + \cdots x_{j-1} \lambda_{j-1} + \mathbf{v}_{j-1} \\
+\end{aligned}
+$$
+Multiplying the first equation by $\lambda_j$ and subtracting this from the second equation gives
+$$
+\begin{aligned}
+\mathbf{0} = \lambda_j \mathbf{v}_j - \lambda_j \mathbf{v}_j 
+& = x_1 (\lambda_1 - \lambda_j) \mathbf{v}_1 + \cdots x_{j-1} + (\lambda_{j-1} - \lambda_j) \mathbf{v}_{j-1} \\
+\end{aligned}
+$$
+Because $\lambda_k \neq \lambda_j$ for all $k < j$, the equation above implies a linear dependence among the set of vectors $\{\mathbf{v}_1, \ldots, \mathbf{v}_{j-1}\}$ which is a contradiction. Therefore, our assumption that there exists a linearly dependent vector $\mathbf{v}_j$ is violated and all the $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ are linearly independent.
+:::
+
+
+## Eigenspaces
+
+Given a square $n \times n$ matrix $\mathbf{A}$, we know how to check if a given vector $\mathbf{x}$ is an eigenvector and then how to find the eigenvalue associated with that eigenvector. Next, we want to check if a given number is an eigenvalue of $\mathbf{A}$ and to find all the eigenvectors corresponding to that eigenvalue. 
+
+Given a square $n \times n$ matrix $\mathbf{A}$ and a scalar $\lambda$, the eigenvectors of $\mathbf{A}$ associated with the scalar $\lambda$ (if there are eigenvectors associated with $\lambda$) are the nonzero solutoins to the equation $\mathbf{A} \mathbf{x} = \lambda \mathbf{x}$. This can be written as
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{x} & = \lambda \mathbf{x} \\
+\mathbf{A} \mathbf{x} -\lambda \mathbf{x} & = \mathbf{0} \\
+\mathbf{A} \mathbf{x} -\lambda \mathbf{I} \mathbf{x} & = \mathbf{0} \\
+\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}. \\
+\end{aligned}
+$$
+Therefore, the eigenvectors of $\mathbf{A}$ associated with $\lambda$, if there are any, are the nontrivial solutions of the homogeneous matrix equation $\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$. In other words, the eigenvectors are the nonzero vectors in the null space null$\left( \mathbf{A} -\lambda \mathbf{I} \right)$. If there is not a nontrivial solution (solution $\mathbf{x} \neq \mathbf{0}$), then $\lambda$ is not an eigenvalue of $\mathbf{A}$.
+
+Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of $\mathbf{A}$. All we have to do is solve the system of linear equations $\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ for a given $\lambda$ (actually, for all $\lambda$s, which we can't do). If only there was some way to find eigenvalues $\lambda$ (hint: there is and it is coming next chapter).
+
+::: {#exm-}
+```{r example-eigenvalue-6, echo = FALSE}
+n <- 3
+# simulate some eigenvectors, eigenvalues, and a matrix
+A <- matrix(c(3, 0, 0, 6, 0, 0, -8, 6, 2), 3, 3)
+lambda <- diag(eigen(A)$values)
+# A <- matrix(sample(-4:4, n^2, replace = TRUE), n, n)
+# A <- A %*% t(A)
+# eigen(A)
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$. Then an eigenvector with eigenvector $\lambda$ is a nontrival solution to 
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r A[1, 1]`  - \lambda & `r A[1, 2]` & `r A[1, 3]` \\
+`r A[2, 1]` & `r A[2, 2]` - \lambda & `r A[2, 3]` \\
+`r A[3, 1]` & `r A[3, 2]` & `r A[3, 3]` - \lambda
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which can be solved for a given $\lambda$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda = `r lambda[1, 1]`$, we have
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r A[1, 1]`  - `r lambda[1, 1]` & `r A[1, 2]` & `r A[1, 3]` \\
+`r A[2, 1]` & `r A[2, 2]` - `r lambda[1, 1]` & `r A[2, 3]` \\
+`r A[3, 1]` & `r A[3, 2]` & `r A[3, 3]` - `r lambda[1, 1]`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as the matrix equation
+$$
+\begin{aligned}
+`r array_to_latex(A - lambda[1] * diag(nrow(A)))` \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+Note that the columns of the matrix above are not linearly independent. Thus, we can solve a non-unique solution (the solution set is a line going through the origin) by finding the reduce row echelon form of an augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[1] * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda[1] * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1 & = x_1 \\
+x_2 & = 0 \\
+x_3 & = 0
+\end{aligned}
+$$
+Fixing $x_1 = 1$ gives the eigenvector associated with $\lambda = `r lambda[1, 1]`$ of $`r array_to_latex(c(1, 0, 0))`$. We can verify that this is an eigenvector with matrix multiplication
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(1, 0, 0))` & = `r array_to_latex(A %*% c(1, 0, 0))`  = `r lambda[1, 1]` `r array_to_latex(c(1, 0, 0))`
+\end{aligned}
+$$
+
+Using `R`, this can be done as
+
+```{r example-eigenvalue-7, echo = FALSE}
+lambda <- lambda[1, 1]
+```
+
+
+```{r example-eigenvalue-8}
+lambda <- 3
+# apply rref to the augmented matrix
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+where the solution set is determined from the RREF form of the augmented matrix of the equation $\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$
+:::
+
+
+::: {#exm-}
+```{r example-eigenvalue-9, echo = FALSE}
+n <- 3
+# simulate some eigenvectors, eigenvalues, and a matrix
+U <- matrix(sample(-4:4, n^2, replace = TRUE), n, n)
+D <- diag(sort(sample((-4:4)[-5], n, replace = TRUE)))
+A <- U %*% D %*% solve(U)
+lambda <- eigen(A)$values
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$. Find the eigenvectors associated with the eigenvalues (a) $\lambda_1 = `r lambda[1]`$, (b) $\lambda_2 = `r lambda[2]`$, and (c) $\lambda_3 = `r lambda[3]`$.
+:::
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$, we can find the eigenvectors associated with the given eigenvalues
+
+a) The eigenvalues associated with the first eigenvector $\lambda_1 = `r lambda[1]`$ by solving
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda_1 \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda_1 & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda_1 & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - \lambda_1
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda_1$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda_1 = `r lambda[1]`$, we have
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda[1]` & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda[1]` & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - `r lambda[1]`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[1] * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[1] * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda[1] * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1 - x_3 & = 0 \\
+x_2 - \frac{1}{2} x_3 & = 0 \\
+x_3 & = x_3
+\end{aligned}
+$$
+Fixing $x_3 = 1$ gives the eigenvector associated with $\lambda_1 = `r lambda[1]`$ of $\mathbf{x}_1 = `r array_to_latex(c(1, 1/2, 1))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x}_1 = \lambda_1 \mathbf{x}_1$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(1, 1/2, 1))` & = `r array_to_latex(A %*% c(1, 1/2, 1))`  = `r lambda[1]` `r array_to_latex(c(1, 1/2, 1))`
+\end{aligned}
+$$
+Using `R`, this is 
+```{r example-eigenvalue-10, echo = FALSE}
+lambda_1 <- lambda[1]
+```
+
+
+```{r example-eigenvalue-11}
+A <- matrix(c(-21/5, -6/5, -4, -34/5, -14/5, -10, 18/5,  3/5, 5), 3, 3)
+lambda_1 <- -4
+rref(cbind(A - lambda_1 * diag(nrow(A)), 0))
+```
+Verifying that the eigenvalue $\mathbf{x}_1 = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector is
+```{r example-eigenvalue-12}
+x_1 <- c(1, 1/2, 1)
+all.equal(drop(A %*% x_1), lambda_1 * x_1) # drop() makes a matrix with one column a vector
+
+```
+
+
+b) The eigenvalues associated with the second eigenvector $\lambda_2 = `r lambda[2]`$ by solving
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda_2 \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda_2 & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda_2 & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - \lambda_2
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda_2$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda_2 = `r lambda[2]`$, we have
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda[2]` & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda[2]` & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - `r lambda[2]`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[2] * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[2] * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda[2] * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1 - \frac{1}{2} x_3 & = 0 \\
+x_2  & = 0 \\
+x_3 & = x_3
+\end{aligned}
+$$
+Fixing $x_3 = 1$ gives the eigenvector associated with $\lambda_2 = `r lambda[2]`$ of $\mathbf{x}_2 = `r array_to_latex(c(1/2, 0, 1))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(1/2, 0, 1))` & = `r array_to_latex(A %*% c(1/2, 0, 1))`  = `r lambda[2]` `r array_to_latex(c(1/2, 0, 1))`
+\end{aligned}
+$$
+Using `R`, this is 
+```{r example-eigenvalue-13, echo = FALSE}
+lambda_2 <- lambda[2]
+```
+
+
+```{r example-eigenvalue-14}
+A <- matrix(c(-21/5, -6/5, -4, -34/5, -14/5, -10, 18/5,  3/5, 5), 3, 3)
+lambda_2 <- 3
+rref(cbind(A - lambda_2 * diag(nrow(A)), 0))
+```
+Verifying that the eigenvalue $\mathbf{x}_1 = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector is
+```{r example-eigenvalue-15}
+x_2 <- c(1/2, 0, 1)
+all.equal(drop(A %*% x_2), lambda_2 * x_2) # drop() makes a matrix with one column a vector
+```
+
+c) The eigenvalues associated with the third eigenvector $\lambda_3 = `r lambda[3]`$ by solving
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda_3 \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda_3 & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda_3 & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - \lambda_3
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda_3$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda_3 = `r lambda[3]`$, we have
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda[3]` & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda[3]` & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - `r lambda[3]`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[3] * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda[3] * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda[3] * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1 + x_3 & = 0 \\
+x_2  - x_3 & = 0 \\
+x_3 & = x_3
+\end{aligned}
+$$
+Fixing $x_3 = 1$ gives the eigenvector associated with $\lambda_3 = `r lambda[3]`$ of $\mathbf{x}_3 = `r array_to_latex(c(-1, 1, 1))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(-1, 1, 1))` & = `r array_to_latex(A %*% c(-1, 1, 1))`  = `r lambda[3]` `r array_to_latex(c(-1, 1, 1))`
+\end{aligned}
+$$
+Using `R`, this is 
+```{r example-eigenvalue-16, echo = FALSE}
+lambda_3 <- lambda[3]
+```
+
+
+```{r example-eigenvalue-17}
+A <- matrix(c(-21/5, -6/5, -4, -34/5, -14/5, -10, 18/5,  3/5, 5), 3, 3)
+lambda_3 <- -1
+rref(cbind(A - lambda_3 * diag(nrow(A)), 0))
+```
+Verifying that the eigenvalue $\mathbf{x}_1 = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector is
+```{r}
+x_3 <- c(-1, 1, 1)
+all.equal(drop(A %*% x_3), lambda_3 * x_3) # drop() makes a matrix with one column a vector
+```
+
+Now, let's compare the output of the `eigen()` function in `R` to these eigenvectors calculated "by hand." The `eigen()` function returns the two objects named `$values` that contain the eigenvalues of $\mathbf{A}$ and the object `$vectors` that contains a matrix of eigenvectors as the columns fo the matrix. Each eigenvalue corresponds to the respective column of the eigenvector matrix.
+```{r example-eigenvalue-18}
+eigen(A)
+```
+
+Note that the eigenvectors returned by the `eigen()` function are the same as those in the example, but the vectors are different. However, the vectors from `eigen()` point in the same direction as those found "by hand" and only differ in the length of the vector. For example, we found the eigenvector associated with the eigenvalue -4 to be $`r array_to_latex(c(1, 1/2, 1))`$ which points in the same direction as the vector from `eigen()` of $`r array_to_latex(eigen(A)$vectors[, 1])`$ which is just a scalar multiple of the vector found "by hand." Recall that when we found a solution using RREF and the augmented matrix, the solution set was infinite (a line) and we just set the free variable equal to 1. Another equally valid solution would be to set the free variable so that the total length of the vector is 1, and this is what the `eigen()` function does.
+:::
+
+
+::: {#def-}
+Let $\mathbf{A}$ be an $n \times n$ matrix and let $\lambda$ be an eigenvalue of $\mathbf{A}$. Then, the **$\lambda$-eigenspace** of $\mathbf{A}$ is the solution set of the matrix equation $\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ which is the subspace null($\mathbf{A} - \lambda 
+\mathbf{I}$).
+:::
+
+Therefore, the $\lambda$-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector $\mathbf{0}$ and all the eigenvectors of $\mathbf{A}$ with corresponding eigenvalue $\lambda$.
+
+::: {#exm-}
+```{r example-eigenvalue-19, echo = FALSE}
+A <-  matrix(c(3, -3, 0, 2), 2, 2)
+lambda <- -2
+```
+For $\lambda$ = (a) -2, (b) 1, and (c) 3, decide if $\lambda$ is a eigenvalue of the matrix $\mathbf{A} = `r array_to_latex(A)`$ and if so, compute a basis for the $\lambda$-eigenspace.
+:::
+
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+Given the matrix $\mathbf{A}$ defined in the example, we will check if any of the values of $\lambda$ are eigenvalues. 
+
+```{r example-eigenvalue-20, eval = FALSE}
+A <-  matrix(c(3, -3, 0, 2), 2, 2)
+```
+
+a) First, we check if $\lambda = -2$ is an eigenvalue of $\mathbf{A}$. If $\lambda = -2$ is an eigenvalue of $\mathbf{A}$, then there is a non-trivial solution to
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+The homogeneous system of equations can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda & `r as.character(MASS::fractions(A[1, 2]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda 
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda = -2$ using an augmented matrix form and row operations to reduce to reduced row echelon form where
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda` & `r as.character(MASS::fractions(A[1, 2]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1  & = 0 \\
+x_2  & = 0 
+\end{aligned}
+$$
+which is the trivial solution. Thus, $\lambda = -2$ is not an eigenvalue of $\mathbf{A}$.
+
+Using `R`, this is 
+```{r example-eigenvalue-21, echo = FALSE}
+lambda <- -2
+```
+
+
+```{r example-eigenvalue-22}
+A <-  matrix(c(3, -3, 0, 2), 2, 2)
+lambda <- -2
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+Because there is only the trivial solution $\mathbf{x} = \mathbf{0}$, $\lambda = -2$ is not an eigenvalue of $\mathbf{A}$.
+
+
+
+
+```{r example-eigenvalue-23}
+lambda <- 1
+```
+b) Next, we check if $\lambda = 1$ is an eigenvalue of $\mathbf{A}$. If $\lambda = 1$ is an eigenvalue of $\mathbf{A}$, then there is a non-trivial solution to
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+The homogeneous system of equations can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda & `r as.character(MASS::fractions(A[1, 2]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda 
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda = 1$ using an augmented matrix form and row operations to reduce to reduced row echelon form where
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda` & `r as.character(MASS::fractions(A[1, 2]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1  & = 0 \\
+x_2  & = 0 
+\end{aligned}
+$$
+which is the trivial solution. Thus, $\lambda = 1$ is not an eigenvalue of $\mathbf{A}$.
+
+Fixing $x_3 = 1$ gives the eigenvector associated with $\lambda_3 = `r lambda[3]`$ of $\mathbf{x}_3 = `r array_to_latex(c(-1, 1, 1))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x}_2 = \lambda_2 \mathbf{x}_2$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(-1, 1))` & = `r array_to_latex(A %*% c(-1, 1))`  = `r lambda` `r array_to_latex(c(-1, 1))`
+\end{aligned}
+$$
+Using `R`, this is 
+```{r example-eigenvalue-24, echo = FALSE}
+lambda <- 1
+```
+
+
+```{r example-eigenvalue-25}
+A <-  matrix(c(3, -3, 0, 2), 2, 2)
+lambda <- 1
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+Because there is only the trivial solution $\mathbf{x} = \mathbf{0}$, $\lambda = 1$ is not an eigenvalue of $\mathbf{A}$.
+
+
+
+
+
+
+```{r example-eigenvalue-26}
+lambda <- 3
+```
+c) Next, we check if $\lambda = 3$ is an eigenvalue of $\mathbf{A}$. If $\lambda = 3$ is an eigenvalue of $\mathbf{A}$, then there is a non-trivial solution to
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda\mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+The homogeneous system of equations can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda & `r as.character(MASS::fractions(A[1, 2]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda 
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda = 3$ using an augmented matrix form and row operations to reduce to reduced row echelon form where
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda` & `r as.character(MASS::fractions(A[1, 2]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1  + \frac{1}{3} x_2 & = 0 \\
+x_2  & = x_2
+\end{aligned}
+$$
+where the solution can be chosen by setting $x_2 = 1$ giving the eigenvector associated with $\lambda = 3$ of $\mathbf{x} = `r array_to_latex(c(-1/3, 1))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x} = \lambda \mathbf{x}$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(-1/3, 1))` & = `r array_to_latex(A %*% c(-1/3, 1))`  = `r lambda` `r array_to_latex(c(-1/3, 1))`
+\end{aligned}
+$$
+Using `R`, this is 
+
+```{r example-eigenvalue-27}
+A <-  matrix(c(3, -3, 0, 2), 2, 2)
+lambda <- 3
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+Verifying that the eigenvalue $\mathbf{x} = `r array_to_latex(c(-1/3, 1))`$ is an eigenvector is
+```{r example-eigenvalue-28}
+x <- c(-1/3, 1)
+all.equal(drop(A %*% x), lambda * x) # drop() makes a matrix with one column a vector
+```
+
+Now, because we know that $\lambda = 3$ is an eigenvalue of $\mathbf{A}$ and the homogeneous system of equations $\left(\mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}$ has a unique solution, the vector $`r array_to_latex(c(-1/3, 1))`$ forms a basis for the 3-eigenspace of $\mathbf{A}$.
+:::
+
+
+::: {#exm-}
+```{r example-eigenvalue-29, echo = FALSE}
+set.seed(2021)
+n <- 3
+# simulate some eigenvectors, eigenvalues, and a matrix
+U <- matrix(sample(-4:4, n^2, replace = TRUE), n, n)
+D <- diag(c(3, 3, 1))
+A <- U %*% D %*% solve(U)
+lambda <- eigen(A)$values
+```
+Let $\mathbf{A} = `r array_to_latex(A)`$. Find the eigenvectors associated with the eigenvalues (a) $\lambda = 3$ and (b) $\lambda = 1$. For each eigen value, also find the basis for the associated eigen-space.
+:::
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+Given the matrix $\mathbf{A} = `r array_to_latex(A)`$, we can find the eigenvectors associated with the given eigenvalues
+
+```{r example-eigenvalue-30, echo = FALSE}
+lambda <- 3
+```
+
+a) The eigenvalues associated with the first eigenvector $\lambda = `r lambda`$ by solving
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - \lambda
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda = `r lambda`$, we have
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda` & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda` & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - `r lambda`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1 + 4 x_2 - x_33 & = 0 \\
+x_2 & = x_2 \\
+x_3 & = x_3
+\end{aligned}
+$$
+Where there are two free variables which suggests that the dimension of the solution space is 2 (the solution set defines a plane and will have 2 basis vectors. Fixing $x_2 = 1$ and $x_3 = 0$ gives the first eigenvector associated with $\lambda = `r lambda`$ of $\mathbf{x}_1 = `r array_to_latex(c(-4, 1, 0))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x}_1 = \lambda \mathbf{x}_1$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(-4, 1, 0))` & = `r array_to_latex(A %*% c(-4, 1, 0))`  = `r lambda[1]` `r array_to_latex(c(-4, 1, 0))`
+\end{aligned}
+$$
+The second basis vector for the eigenspace associated with $\lambda = 3$ can be found by fixing $x_2 = 0$ and $x_3 = 1$ to get the eigenvector $\mathbf{x}_2 = `r array_to_latex(c(3, 0, 1))`$. We can verify that this is an eigenvector with matrix multiplication to show $\mathbf{A} \mathbf{x}_2 = \lambda \mathbf{x}_2$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(3, 0, 1))` & = `r array_to_latex(A %*% c(3, 0, 1))`  = `r lambda[1]` `r array_to_latex(c(3, 0, 1))`
+\end{aligned}
+$$
+Thus, the basis for 3-eigenspace is $\left\{ `r array_to_latex(c(-4, 1, 0))`, `r array_to_latex(c(3, 0, 1))`\right\}$. Note that this is the same as finding a basis for the null space of $\left(\mathbf{A} - \lambda \mathbf{I} \right)$.
+
+
+Using `R`, this is 
+```{r example-eigenvalue-31, echo = FALSE}
+lambda <- 3
+```
+
+
+```{r example-eigenvalue-32}
+A <- matrix(c(17/5, 0, 4/5, 8/5, 3, 16/5, -6/5, 0, 3/5), 3, 3)
+lambda <- 3
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+Verifying that the eigenvalue $\mathbf{x}_1 = `r array_to_latex(c(-4, 1, 0))`$ is an eigenvector and that $\mathbf{x}_2 = `r array_to_latex(c(3, 0, 1))`$ is an eigenvector
+```{r}
+x_1 <- c(-4, 1, 0)
+all.equal(drop(A %*% x_1), lambda * x_1) # drop() makes a matrix with one column a vector
+x_2 <- c(3, 0, 1)
+all.equal(drop(A %*% x_2), lambda * x_2) # drop() makes a matrix with one column a vector
+
+```
+
+
+```{r example-eigenvalue-33}
+lambda <- 1
+```
+b) The eigenvalues associated with the second eigenvector $\lambda = `r lambda`$ by solving
+$$
+\begin{aligned}
+\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} & = \mathbf{0}
+\end{aligned}
+$$
+which can be written as 
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - \lambda & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - \lambda & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - \lambda
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+and can be solved for $\lambda$ using an augmented matrix form and row operations to reduce to reduced row echelon form. 
+
+Letting $\lambda = `r lambda`$, we have
+$$
+\begin{aligned}
+\begin{pmatrix} 
+`r as.character(MASS::fractions(A[1, 1]))`  - `r lambda` & `r as.character(MASS::fractions(A[1, 2]))` & `r as.character(MASS::fractions(A[1, 3]))` \\
+`r as.character(MASS::fractions(A[2, 1]))` & `r as.character(MASS::fractions(A[2, 2]))` - `r lambda` & `r as.character(MASS::fractions(A[2, 3]))` \\
+`r as.character(MASS::fractions(A[3, 1]))` & `r as.character(MASS::fractions(A[3, 2]))` & `r as.character(MASS::fractions(A[3, 3]))` - `r lambda`
+\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} & = \mathbf{0}
+\end{aligned}
+$$
+which results in the augmented matrix
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))`
+\end{aligned}
+$$
+Reducing the augmented matrix to reduced row echelon form gives
+$$
+\begin{aligned}
+`r array_to_latex(cbind(A - lambda * diag(nrow(A)), 0))` & \stackrel{rref}{\sim} `r array_to_latex(rref(cbind(A - lambda * diag(nrow(A)), 0)))`
+\end{aligned}
+$$
+which has solution 
+$$
+\begin{aligned}
+x_1 - \frac{1}{2} x_3 & = 0 \\
+x_2  & = 0 \\
+x_3 & = x_3
+\end{aligned}
+$$
+Fixing $x_3 = 1$ gives the eigenvector associated with $\lambda= `r lambda`$ of $\mathbf{x} = `r array_to_latex(c(1/2, 0, 1))`$. We can verify that this is an eigenvector associated with eigenvalue $\lambda = `r lambda`$ with matrix multiplication to show $\mathbf{A} \mathbf{x} = \lambda \mathbf{x}$
+$$
+\begin{aligned}
+`r array_to_latex(A)` `r array_to_latex(c(1/2, 0, 1))` & = `r array_to_latex(A %*% c(1/2, 0, 1))`  = `r lambda[2]` `r array_to_latex(c(1/2, 0, 1))`
+\end{aligned}
+$$
+Therefore, a basis for the 1-eigenspace is $\left\{ `r array_to_latex(c(1/2, 0, 1))` \right\}$
+
+
+Using `R`, this is 
+```{r example-eigenvalue-34, echo = FALSE}
+lambda <- 1
+```
+
+
+```{r example-eigenvalue-35}
+A <- matrix(c(17/5, 0, 4/5, 8/5, 3, 16/5, -6/5, 0, 3/5), 3, 3)
+lambda <- 1
+rref(cbind(A - lambda * diag(nrow(A)), 0))
+```
+Verifying that the eigenvalue $\mathbf{x} = `r array_to_latex(c(1, 1/2, 1))`$ is an eigenvector associated with eigenvalue $\lambda = `r lambda`$ is
+```{r example-eigenvalue-36}
+x <- c(1/2, 0, 1)
+all.equal(drop(A %*% x), lambda * x) # drop() makes a matrix with one column a vector
+```
+:::
+
+
+
+
+
+### Computing Eigenspaces
+
+Let $\mathbf{A}$ be a $n \times n$ matrix and let $\lambda$ be a scalar.
+
+1) $\lambda$ is an eigenvalue of $\mathbf{A}$ if and only if $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$ has a non-trivial solution. The matrix equation $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$ has a non-trivial solution if and only if null$(\mathbf{A} - \lambda \mathbf{I}) \neq \{\mathbf{0} \}$
+
+2) Finding a basis for the $\lambda$-eigenspace of $\mathbf{A}$ is equivalent to finding a basis for  null$(\mathbf{A} - \lambda \mathbf{I})$ which can be done by finding parametric forms of the solutions of the homogeneous system of equations $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$.
+
+3) The dimension of the $\lambda$-eigenspace of $\mathbf{A}$ is equal to the number of free variables in the system of equations $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$ which is the number of non-pivot columns of $\mathbf{A} - \lambda \mathbf{I}$.
+
+4) The eigenvectors with eigenvalue $\lambda$ are the nonzero vectors in null$(\mathbf{A} - \lambda \mathbf{I})$ which are equivalent to the nontrivial solutions of $(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}$.
+
+Note that this leads of a fact about the $0$-eigenspace. 
+
+::: {#def-}
+Let $\mathbf{A}$ be an $n \times n$ matrix. Then
+
+1) The number 0 is an eigenvalue of $\mathbf{A}$ if and only if $\mathbf{A}$ is not invertible.
+
+2) If 0 is an eigenvalue of $\mathbf{A}$, then the 0-eigenspace of $\mathbf{A}$ is null$(\mathbf{A})$.
+:::
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+0 is an eigenvalue of $\mathbf{A}$ if and only if null$(\mathbf{A} - 0 \mathbf{I})$ = null$(\mathbf{A})$. By the invertible matrix theorem, $\mathbf{A}$ is invertible if and only if null$(\mathbf{A}) = \{\mathbf{0}\}$ but we know that the 0-eigenspace of $\mathbf{A}$ is not the trivial set $\{\mathbf{0}\}$ because 0 is an eigenvalue.
+:::
+
+
+:::{#thm-}
+## Invertible Matrix Theorm + eigenspaces
+This is an extension of the prior statement of the invertible matrix @thm-invertiblematrix
+Let $\mathbf{A}$ be an $n \times n$ matrix and $T: \mathcal{R}^n \rightarrow \mathcal{R}^n$ be the linear transformation given by $T(\mathbf{x}) = \mathbf{A}\mathbf{x}$. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
+
+1) $\mathbf{A}$ is invertible.
+
+2) $\mathbf{A}$ has n pivot columns.
+
+3) null$(\mathbf{A}) = \{\mathbf{0}\}$.
+
+4) The columns of $\mathbf{A}$ are linearly independent.
+
+5) The columns of $\mathbf{A}$ span $\mathcal{R}^n$.
+
+6) The matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ has a uniqu solution for each $\mathbf{b} \in \mathcal{R}^n$.
+
+7) The transormation $T$ is invertible.
+
+8) The transormation $T$ is one-to-one.
+
+9) The transormation $T$ is onto.
+
+10) det$(\mathbf{A}) \neq 0$
+    
+11) 0 is not an eigenvalue of $\mathbf{A}$
+    
+:::
+

@@ -1,0 +1,958 @@
+# Linear Transformations {#linear-transformations}
+
+- [3 Blue 1 Brown -- Linear transformations](https://www.3blue1brown.com/lessons/linear-transformations)
+
+- [3 Blue 1 Brown -- 3D transformations](https://www.3blue1brown.com/lessons/3d-transformations)
+
+
+```{r setup-05, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+library(gifski)
+```
+
+```{r setup-052, echo = FALSE, message = FALSE}
+library(magick)
+library(pdftools)
+```
+
+It is often useful to think of $\mathbf{A}\mathbf{x}$ as a linear transformation defined by the matrix $\mathbf{A}$ applied to the vector $\mathbf{x}$.
+
+A linear transformation is mathematically defined as a function/mapping $T(\cdot)$ ($T$ for transformation) from a **domain** in $\mathcal{R}^n$ (function input) to a **codomain** in $\mathcal{R}^m$ (function output). In shorthand, this is written as $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ which is read a "$T$ maps inputs from the domain $\mathcal{R}^n$ to the codomain $\mathcal{R}^m$." For each $\mathbf{x} \in \mathcal{R}^n$ (in the domain), $T(\mathbf{x}) \in \mathcal{R}^m$ is known as the image of $\mathbf{x}$. The set of all $T(\mathbf{x})$ for all $\mathbf{x} \in \mathcal{R}^n$ is known as the range of $T(\mathbf{x})$. Note that it is possible that the range of $T(\mathbf{x})$ is not required to be the entire space $\mathcal{R}^m$ (i.e., the range of the transformation $T$ might be a subset of $\mathcal{R}^m$)
+
+
+**Draw figure**
+
+```{r transformation-image-1, echo = FALSE, out.width="100%"}
+#knitr::include_graphics(here::here("images", "transformation-1.jpg"))
+knitr::include_graphics("./images/transformation-1.jpg")
+```
+
+```{r transformation-image-2, echo = FALSE, out.width="100%"}
+#knitr::include_graphics(here::here("images", "transformation-2.jpg"))
+knitr::include_graphics("./images/transformation-2.jpg")
+```
+
+In the case of matrix transformations (linear transformations), the function $T(\mathbf{x}) = \mathbf{A} \mathbf{x}$ where $\mathbf{A}$ is a $m \times n$ matrix and $\mathbf{x} \in \mathcal{R}^n$ is a $n$-vector. 
+
+* **Question:** What kind of object is $\mathbf{A} \mathbf{x}$?
+    * scalar
+    * vector
+    * matrix 
+    * array
+
+* **Question** What are the dimensions of $\mathbf{A} \mathbf{x}$?
+
+Using the matrix transformation notation, the domain of the transformation $T$ is $\mathcal{R}^n$, the codomain of $\mathcal{T}$ $\mathcal{R}^m$. The range of the transformation $T$ is the set of all linear combinations of the columns of $\mathbf{A}$ (the $\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$) because the transformation $T(\mathbf{x}) = \mathbf{A} \mathbf{x}$ is a linear combination $\sum_{i=1}^n x_i \mathbf{a}_i$ of the columns $\{\mathbf{a}_i\}_{i=1}^n$ of $\mathbf{A}$ with coefficients $x_1, \ldots, x_n$
+
+
+::: {#exm-}
+$$
+\begin{aligned}
+\mathbf{A} = \begin{pmatrix}
+2 & 4 \\
+-3 & 1 \\
+-1 & 6
+\end{pmatrix}
+&& \mathbf{u} = \begin{pmatrix}
+1 \\
+3
+\end{pmatrix}
+&& \mathbf{b} = \begin{pmatrix}
+-2 \\
+-11 \\
+-15
+\end{pmatrix} &&
+\mathbf{c} = \begin{pmatrix}
+2 \\
+-2 \\
+-1
+\end{pmatrix}
+\end{aligned}
+$$
+
+```{r define-variables-05}
+A <- matrix(c(2, -3, -1, 4, 1, 6), 3, 2)
+u <- c(1, 3)
+b <- 3 * A[, 1] - 2 * A[, 2]
+c <- c(2, -2, -1)
+```
+
+
+a) Find the image of $\mathbf{u}$ using the matrix transformation $T$ (e.g., calculate $T(\mathbf{u})$).
+
+```{r image-of-transformation}
+# a
+A %*% u
+```
+
+The image of $\mathbf{u}$ under $T$ is $T(\mathbf{u}) = \mathbf{A} \mathbf{u} = `r array_to_latex(A %*% u)`$.
+
+b) Find a coefficient vector $\mathbf{x} \in \mathcal{R}^2$ such that $T(\mathbf{x}) = \mathbf{b}$.
+
+```{r transformation-example-b}
+#b
+rref(cbind(A, b))
+```
+
+A coefficient vector $\mathbf{x}$ such that $T(\mathbf{x}) = \mathbf{b}$ is the solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ which can be found from the reduced row echelon form of the augmented matrix above giving $\mathbf{x} = `r array_to_latex(as.matrix(rref(cbind(A, b))[1:2, 3]))`$
+
+c) Is there more than one $\mathbf{x}$ whose image under $T$ is $\mathbf{b}?$ In other words, is the solution $\mathbf{A} \mathbf{x}= \mathbf{b}$ unique?
+
+Use the reduced row echelon form of the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ above which gives a unique solution as every (non augmented) column is a pivot. Thus, there is only one solution.
+
+
+d) Determine if $\mathbf{c}$ is in the range of $T$. In other words, does the solution $\mathbf{A} \mathbf{x}= \mathbf{c}$ exist?
+
+```{r transformation-example-d}
+# d
+rref(cbind(A, c)) # no because this is an inconsistent system of equations
+```
+The solution to the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{c}$ which can be found from the reduced row echelon form of the augmented matrix above results in no solution because the last column (the augmented column) is a pivot column. Thus, the system of equations is inconsistent and $\mathbf{c}$ cannot be written as a linear combination of the columns of $\mathbf{A}$ which means that $\mathbf{c}$ is not in the range of $T$. 
+
+:::
+
+## Linear Transformations
+
+::: {#def-} 
+A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is linear if
+
+1) $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$ for all $\mathbf{u}$ and $\mathbf{v}$ in the domain of $T$
+  
+2) $T(c \mathbf{u}) = c T(\mathbf{u})$ for all scalars $c$ and all vectors $\mathbf{u}$ in the domain of $T$
+
+:::
+
+Note: Because a linear transformation is equivalent to a matrix transformation, the definition above is equivalent to the following matrix-vector multiplication properties
+
+
+If $\mathbf{A}$ is a $m \times n$ matrix, $\mathbf{u}$ and $\mathbf{v}$ are vectors in $\mathcal{R}^m$ and $c$ is a scalar, then
+
+1) $\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v}$
+2) $\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}$
+
+As a consequence of the previous definition, the following properties hold for scalars $c$ and $d$ and vectors $\mathbf{u}$ and $\mathbf{v} \in \mathcal{R}^m$
+
+3) $T(\mathbf{0}) = \mathbf{0}$
+4) $T(c \mathbf{u} + d \mathbf{v}) = c T(\mathbf{u}) + d T(\mathbf{v})$
+
+* **Show why in class**
+
+These properties give rise to the following statement for scalars $c_1, \ldots, c_m$ and vectors $\mathbf{u}_1, \ldots, \mathbf{u}_m \in \mathcal{R}^n$ 
+
+5) $T(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 T(\mathbf{u}_1) + \ldots + c_m T(\mathbf{u}_m)$
+
+
+
+The statements above for linear transformations are equivalent to the matrix statements where $\mathbf{A}$ is a $m \times n$ matrix, $\mathbf{u}$ and $\mathbf{v}$ are vectors in $\mathcal{R}^m$ and $c$ is a scalar:
+
+3) $\mathbf{A} \mathbf{0} = \mathbf{0}$
+4) $\mathbf{A}(c \mathbf{u} + d \mathbf{v}) = c \mathbf{A} \mathbf{u} + d \mathbf{A} \mathbf{v}$
+
+And for a $m \times n$ matrix $\mathbf{A}$, scalars $c_1, \ldots, c_m$, and vectors $\mathbf{u}_1, \ldots, \mathbf{u}_m \in \mathcal{R}^n$
+
+5) $\mathbf{A}(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 \mathbf{A}\mathbf{u}_1 + \ldots + c_m \mathbf{A} \mathbf{u}_m$
+
+
+## Types of matrix transformations
+
+The basic types of matrix transformations include
+
+1) contractions/expansions
+2) rotations
+3) reflections
+4) shears
+5) projections
+
+For the following examples, we will consider the unit vectors $\mathbf{u} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ and apply different linear transformations using the matrix $\mathbf{A}$.
+
+To build the matrix transformations, we use the `dasc2594` package and build matrix transformations based on code from [https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/](https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/). 
+
+
+### Contractions/Expansions
+
+#### Horizonal Expansion
+
+The matrix below gives a horizontal expansion when $x > 1$
+
+$$
+\mathbf{A} = \begin{pmatrix}
+x & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+
+* In the example below, we set $x = 2$ and generate the transformation.
+
+```{r horizontal-expansion-matrix, cache = TRUE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  2, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r horizontal-expansion-animation, cache = TRUE, message = FALSE, echo = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE)
+}
+```
+
+
+```{r horizontal-expansion-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Horizontal expansion"))) 
+```
+
+
+
+#### Horizonal Contraction
+
+The matrix below gives a horizontal contraction when $x < 1$
+* Horizontal contraction when $x < 1$
+
+$$
+\mathbf{A} = \begin{pmatrix}
+x & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+
+* In the example below, we set $x = 0.5$
+
+```{r horizontal-contraction-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  0.5, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r horizontal-contraction-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+p  + gganimate::transition_states(time, wrap = FALSE) +
+  ggtitle("Horizontal contraction")
+}
+```
+
+```{r horizontal-contraction-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Horizontal contraction"))) 
+```
+
+
+#### Vertical Expansion
+
+The matrix below gives a vertical expansion when $x > 1$
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & x
+\end{pmatrix}
+$$
+* In the example below, we set $x = 2$
+
+
+```{r vertical-expansion-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, 2) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r vertical-expansion-animation, cache = TRUE, message = FALSE, echo = FALSE, dependson = -1}
+## animate transformation
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+p  + gganimate::transition_states(time, wrap = FALSE) +
+  ggtitle("Vertical expansion")
+}
+```
+
+
+```{r vertical-expansion-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Vertical expansion"))) 
+```
+
+
+#### Vertical Contraction
+
+The matrix below gives a vertical contraction when $x < 1$
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & x
+\end{pmatrix}
+$$
+
+* In the example below, we set $x = 0.5$
+
+```{r vertical-contraction-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, 0.5) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r vertical-contraction-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+p  + gganimate::transition_states(time, wrap = FALSE) +
+  ggtitle("Vertical contraction")
+}
+```
+
+
+```{r  vertical-contraction-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Vertical contraction"))) 
+```
+
+### Rotations
+
+#### Rotation by 90 degrees
+
+Rotations in 2D of an angle $\theta \in [0, 2\pi]$ take the form of 
+$$
+\mathbf{A} = \begin{pmatrix}
+\cos(\theta) & -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}
+$$
+For example, a rotation of 90 degrees counter-clockwise ($\theta = \frac{\pi}{2}$) is given by the transformation matrix 
+$$
+\mathbf{A} = \begin{pmatrix}
+\cos(\frac{\pi}{2}) & -\sin(\frac{\pi}{2}) \\
+\sin(\frac{\pi}{2}) & \cos(\frac{\pi}{2})
+\end{pmatrix} = 
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}
+$$
+```{r rotate-90-matrix, cache = TRUE, echo = FALSE}
+theta <- pi / 2
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  cos(theta), - sin(theta),
+  sin(theta), cos(theta)) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r rotate-90-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Rotation by 90 degrees (pi / 2 radians)")
+}
+```
+
+
+```{r rotate-90-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Rotation by 90 degrees (pi / 2 radians)"))) 
+```
+
+
+Another example is for a rotation of 45 degrees clockwise ($\theta = -\frac{\pi}{4}$) is given by the transformation matrix 
+$$
+ = \begin{pmatrix}
+\cos(\frac{\pi}{4}) & -\sin(\frac{\pi}{4}) \\
+\sin(\frac{\pi}{4}) & \cos(\frac{\pi}{4})
+\end{pmatrix} = 
+\begin{pmatrix}
+\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+\end{pmatrix}
+$$
+```{r rotate-45-matrix, cache = TRUE, echo = FALSE}
+theta <- - pi / 4
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  cos(theta), - sin(theta),
+  sin(theta), cos(theta)) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r rotate-45-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Rotation by -45 degrees (-pi / 4 radians)")
+}
+```
+
+
+```{r rotate-45-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Rotation by -45 degrees (-pi / 4 radians)"))) 
+```
+
+
+
+
+### Reflections
+
+#### Reflection across the x-axis
+
+The matrix below gives a reflection about the x-axis
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+$$
+
+```{r reflection-x-axis-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, -1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+
+```
+
+```{r reflection-x-axis-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across x-axis")
+}
+```
+
+
+```{r reflection-x-axis, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Reflection across x-axis"))) 
+```
+
+
+#### Reflection across the y-axis
+
+The matrix below gives a reflection about the y-axis
+
+$$
+\mathbf{A} = \begin{pmatrix}
+-1 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+
+```{r reflection-y-axis-matrix, echo = FALSE, cache = TRUE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  -1, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r reflection-y-axis-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across y-axis")
+}
+```
+
+
+```{r reflection-y-axis-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Reflection across y-axis"))) 
+```
+
+#### Reflection across the line y = x
+
+$$
+\mathbf{A} = \begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+$$
+
+* In the example below, we set $x = 0.5$
+
+```{r reflection-line-y-equals-x-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  0, 1,
+  1, 0) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r reflection-line-y-equals-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across line y = x")
+}
+```
+
+
+```{r reflection-line-y-equals-x-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Reflection across line y = x"))) 
+```
+
+#### Reflection across the line y = - x
+
+$$
+\mathbf{A} = \begin{pmatrix}
+0 & -1 \\
+-1 & 0
+\end{pmatrix}
+$$
+
+
+```{r reflection-line-y-equals-minus-x-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  -1, 0,
+  0, -1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r reflection-line-y-equals-minus-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across line y = -x")
+}
+```
+
+
+```{r reflection-line-y-equals-minus-x-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Reflection across line y = -x"))) 
+```
+
+
+#### Reflection across the origin (0, 0)
+
+$$
+\mathbf{A} = \begin{pmatrix}
+-1 & 0 \\
+0 & -1
+\end{pmatrix}
+$$
+
+```{r reflection-origin-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  -1, 0,
+  0, -1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r reflection-origin-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Reflection across the origin")
+}
+```
+
+
+```{r reflection-origin-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Reflection across the origin"))) 
+```
+
+
+
+
+### Shears
+
+A shear transformation is like stretching play-dough if it was possible to stretch all parts of the dough uniformly (rather than some sections getting stretched more than others).
+
+#### Horizontal Shear
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & x \\
+0 & 1
+\end{pmatrix}
+$$
+For the example below, we plot a horizontal shear with $x = 2$.
+
+```{r horizontal-shear-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 2,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r horizontal-shear-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Horizontal Shear")
+}
+```
+
+
+```{r horizontal-shear-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Horizontal Shear"))) 
+```
+
+
+
+#### Vertical Shear
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+x & 1
+\end{pmatrix}
+$$
+For the example below, we plot a horizontal shear with $x = 2$.
+
+```{r vertical-shear-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  2, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r vertical-shear-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Vertical Shear")
+}
+```
+
+
+```{r vertical-shear-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Vertical Shear"))) 
+```
+
+
+
+
+### Projections
+
+A projection is a mapping $T:\mathcal{R}^n \rightarrow \mathcal{R}^n$ from one space ($\mathbf{R}^n$) to itself ($\mathbf{R}^n$) such that $T^2 = T$
+
+#### Project onto the x-axis
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+$$
+For the example below, we plot a projection onto the x-axis
+
+```{r projection-x-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, 0) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r projection-x-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Projection onto the x-axis")
+}
+```
+
+
+```{r projection-x-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Projection onto the x-axis"))) 
+```
+
+#### Project onto the y-axis
+
+$$
+\mathbf{A} = \begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+For the example below, we plot a projection onto the y-axis
+
+```{r projection-y-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  0, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r projection-y-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Projection onto the y-axis")
+}
+```
+
+
+```{r projection-y-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Projection onto the y-axis"))) 
+```
+
+
+
+### Identity
+
+The identity transformation is the transformation that leaves the vector input unchanged. The identity matrix is typically written as $\mathbf{I}$
+
+$$
+\mathbf{I} = \begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+$$
+
+```{r identity-matrix, cache = TRUE, echo = FALSE}
+transformation_matrix <- tribble(
+  ~ x, ~ y,
+  1, 0,
+  0, 1) %>% 
+  as.matrix()
+
+p <- plot_transformation(transformation_matrix)
+```
+
+```{r identity-animation, echo = FALSE, cache = TRUE, message = FALSE, dependson = -1}
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "html") {
+  p  + gganimate::transition_states(time, wrap = FALSE) +
+    ggtitle("Identity transformation")
+}
+```
+
+
+```{r identity-static, echo = FALSE}
+p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Unit Square", "2" = "Identity transformation"))) 
+```
+
+
+## Properties of matrix transformations
+
+### One-to-one transformations
+
+::: {#def-} 
+
+A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **one-to-one** if every vector $\mathbf{b}$ in the image $\mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at most** one solution in $\mathcal{R}^n$.
+
+:::
+
+
+```{r one-to-one-image, echo = FALSE, out.width="100%"}
+knitr::include_graphics("images/one-to-one.png")
+```
+
+```{r not-one-to-one-image, echo = FALSE, out.width="100%"}
+knitr::include_graphics("images/not-one-to-one.png")
+```
+
+<!-- ```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext='png', fig.cap='One-to-one.'} -->
+
+<!-- \begin{tikzpicture}[thin border nodes, scale=.75] -->
+<!--   \draw[grid lines] (-3,-3) grid (3,3); -->
+
+<!--   \node (A) at (0,-3.6) {$\R^n$}; -->
+<!--   \node (B) at (12,-3.6) {$\R^m$}; -->
+<!--   \draw[->] (A) -- (B) node[midway,above=1pt] {$T$}; -->
+
+<!--   \point["$x$" left] (x) at (1,1.5); -->
+<!--   \point["$y$" left] (y) at (-1,0); -->
+<!--   \point["$z$" left] (z) at (0,-2); -->
+
+<!--   \begin{scope}[myxyz, xshift=12cm] -->
+<!--     \path[clip, resetxy] (-3,-3) rectangle (3,3); -->
+
+<!--     \def\v{(-1,2,1)} -->
+<!--     \def\w{(0,1,-1)} -->
+
+<!--     \node[coordinate] (X) at \v {}; -->
+<!--     \node[coordinate] (Y) at \w {}; -->
+
+<!--     \draw[very thin] (-2,0,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,-2,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,0,-2) -- (0,0,0); -->
+
+<!--     \begin{scope}[x=(X), y=(Y), transformxy, -->
+<!--         every label/.style={font=\small,fill=none,inner sep=.5pt}] -->
+<!--       \fill[seq4!10, nearly opaque] (-1,-1) rectangle (1,1); -->
+<!--       \draw[step=.5cm, seq4!30, very thin] (-1,-1) grid (1,1); -->
+<!--       \point["$T(x)$" above] (Tx) at (.5,-.5); -->
+<!--       \point["$T(y)$" above] (Ty) at (.5,.5); -->
+<!--       \point["$T(z)$" above] (Tz) at (-.5,.75); -->
+<!--       \node[coordinate, -->
+<!--           pin={[pin edge={very thin,-}, -->
+<!--             pin distance=3mm,anchor=north,text=seq4]-70:range}] -->
+<!--         at (0.1,1) {}; -->
+<!--     \end{scope} -->
+
+<!--     \draw[->, very thin] (0,0,0) -- (2,0,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,2,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,0,2); -->
+
+<!--     \draw[resetxy] (-3,-3) rectangle (3,3); -->
+
+<!--   \end{scope} -->
+
+<!--   \begin{scope}[arrows={|->}, shorten=.35mm, every to/.style={out=0, in=180}] -->
+<!--     \draw (x) to (Tx); -->
+<!--     \draw (y) to (Ty); -->
+<!--     \draw (z) to (Tz); -->
+<!--   \end{scope} -->
+
+<!--   \node[seq-blue] at (6,2.5) {one-to-one}; -->
+
+<!-- \end{tikzpicture} -->
+<!-- ``` -->
+
+
+
+The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is one-to-one:
+
+a) For every $\mathbf{b} \in \mathcal{R}^m$ (for every vector in the image), the equation $T(\mathbf{x}) = \mathbf{b}$ has either zero or one solution
+
+b) Every different input into the function $T(\cdot)$ has a different output
+
+c) If $T(\mathbf{u}) = T(\mathbf{v})$ then $\mathbf{u} = \mathbf{v}$ 
+
+The following statements are equivalent was of saying $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is **not** one-to-one:
+
+a) There exists as least one $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x}) = \mathbf{b}$ has more than one solution
+
+b) There are at least two  different inputs into the function $T(\cdot)$ that have the same output
+
+c) There exist vectors $\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n$ such that $T(\mathbf{u}) = T(\mathbf{v})$
+
+:::{#thm-}
+Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+
+1) $T$ is one-to-one.
+
+2) For every $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has at most one solution.
+
+3) For every $\mathbf{b} \in \mathcal{R}^m$, the equation $\mathbf{A}\mathbf{x} = \mathbf{b}$ has a unique solution or is inconsistent.
+
+4) The equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ has only a trivial solution.
+
+5) The columns of $\mathbf{A}$ are linearly independent.
+
+6) $\mathbf{A}$ has a pivot in every column.
+
+7) The range of $\mathbf{A}$ has dimension $n$
+
+:::
+
+* **Example:** is the following matrix one-to-one?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+1 & 1
+\end{pmatrix}
+$$
+
+* **Example:** is the following matrix one-to-one?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 1 & 0
+\end{pmatrix}
+$$
+
+**Note:** Matrices that are wider than they are tall are not one-to-one transformations. (This does not mean that all tall matrices are one-to-one)
+
+### Onto transformations
+
+::: {#def-}
+
+A transformation $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is called **onto** if, for every vector $\mathbf{b} \in \mathcal{R}^m$, the equation $T(\mathbf{x}) = \mathbf{b}$ has **at least** one solution $\mathbf{x} \in \mathcal{R}^n$
+
+:::
+
+
+```{r onto-image, echo = FALSE, out.width="100%"}
+knitr::include_graphics("images/onto.png")
+```
+
+```{r not-onto-image, echo = FALSE, out.width="100%"}
+knitr::include_graphics("images/not-onto.png")
+```
+
+
+The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is onto:
+
+1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is equal to the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$
+
+2) Every vector in the codomain is the output of some input vector
+
+
+The following are equivalent ways of saying that $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is not onto:
+
+1) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ is smaller than the codomain of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$.
+
+2) There exists a vector $\mathbf{b} \in \mathcal{R}^m$ such that the equation $T(\mathbf{x})$ does not have a solution.
+
+3) There is a vector in the codomain that is not the output of any input vector.
+
+:::{#thm-} 
+Let $\mathbf{A}\mathbf{x}$ be the matrix representation of the linear transformation $T(\mathbf{x})$ for the $m \times n$ matrix $\mathbf{A}$. Then the following statements are equivalent:
+  
+1) $T$ is onto
+
+2) $T(\mathbf{x}) = \mathbf{b}$ has at least one solution for every $\mathbf{b} \in \mathcal{R}^m$.
+
+3)  The equation $\mathbf{A}\mathbf{x} = \mathbf{b}$ is consistent for every $\mathbf{b} \in \mathcal{R}^m$.
+
+4) The columns of $\mathbf{A}$ span $\mathcal{R}^m$
+  
+6) $\mathbf{A}$ has a pivot in every row
+
+7) The range of $T:\mathcal{R}^n \rightarrow \mathcal{R}^m$ has dimension $m$
+
+:::
+
+
+* **Example:**
+
+* **Example:** is the following matrix onto?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 1 & 0 \\
+0 & 1 & 1
+\end{pmatrix}
+$$
+
+* **Example:** is the following matrix one-to-one?
+
+$$
+\mathbf{A} = \begin{pmatrix}
+1 & 0  \\
+0 & 1  \\
+1 & 0
+\end{pmatrix}
+$$
+
+**Note:** Matrices that are taller than they are wide are not onto transformations. (This does not mean that all wide matrices are onto)
+
+

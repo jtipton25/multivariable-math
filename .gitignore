@@ -1,6 +1,9 @@
 .Rhistory
 .RData
 .Rproj.user
+*.DS_store
+*_cache
+*_files
 
 github-actions-setup.Rmd
 github-actions-setup.html
@@ -14,3 +17,5 @@ multivariable-math_files/
 webshot-images/*.html
 webshot-images/*.png
 webshot-images/*_files
+
+/.quarto/

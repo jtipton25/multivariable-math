@@ -1,0 +1,328 @@
+
+<!-- ---  -->
+<!-- title: "Multivariable Mathematics for Data Science" -->
+<!-- author: "John Tipton" -->
+<!-- date: | -->
+<!--   | Created 1 January 2020 -->
+<!--   | Last updated `r format(Sys.time(), '%d %B, %Y')` -->
+<!-- documentclass: book -->
+<!-- link-citations: yes -->
+<!-- bibliography: -->
+<!-- - book.bib -->
+<!-- - packages.bib -->
+<!-- site: bookdown::bookdown_site -->
+<!-- biblio-style: apalike -->
+<!-- description: This is a text for Multivariable Mathematics for Data Science.  -->
+<!--   This text is used at the University of Arkansas for the course DASC 2594  -->
+<!--   that exposes students to topics in linear algebra and vector calculus that -->
+<!--   are needed for success in data science. As such, a large focus of the text -->
+<!--   is on computation for these topics. -->
+<!-- --- -->
+
+# Preface
+
+```{r setup-index, include = FALSE, echo = FALSE, message = FALSE}
+library(tidyverse)
+library(shiny)
+
+# if devtools package not installed, install the package
+if (!require(devtools)) {
+    install.packages("devtools")
+}
+# if dasc2594 package not installed, install the package
+if (!require(dasc2594)) {
+    devtools::install_github("jtipton25/dasc2594")
+}
+```
+
+
+
+This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines. 
+
+The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).
+
+
+
+## Getting started in `R`
+
+TBD
+
+## Some videos that explain useful concepts of linear algebra
+
+- [3 Blue 1 Brown -- Essence of Linear Algebra](https://www.3blue1brown.com/lessons/eola-preview)
+
+- [3 Blue 1 Brown -- Vectors](https://www.3blue1brown.com/lessons/vectors)
+
+
+
+
+## Notation
+
+For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors 
+
+$$
+\begin{aligned}
+\textbf{x} = \begin{pmatrix}  x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},
+\end{aligned}
+$$
+
+where the elements $x_1, \ldots, x_n$ are scalars written in lowercase Roman. Note that vectors are assumed to follow a vertical notation where the elements of the vector (the $x_i$s are stacked on top of one another) and the order matters. For example, the vector 
+
+$$
+\begin{aligned}
+\mathbf{x} & = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}
+\end{aligned}
+$$
+
+has the first element $x_1 = 5$, second element $x_2 = 2$ and third element $x_3 = 8$. Note that the vector $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is not the same as the vector $\begin{pmatrix}  8 \\ 2 \\ 5 \end{pmatrix}$ because the order of the elements matters.
+
+We can also write the vector as  
+
+$$
+\begin{aligned}
+\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
+\end{aligned}
+$$
+
+where the $'$ symbol represents the transpose function. For our example matrix, we have $\begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 & 2 & 8 \end{pmatrix}$ which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector $\begin{pmatrix} 5 & 2 & 8 \end{pmatrix}' = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ is a column vector. If $\mathbf{x}$ is a column vector, we say that $\mathbf{x}'$ is a row vector and if $\mathbf{x}$ is a row vector, the $\mathbf{x}'$ is a column vector. 
+
+
+To create a vector we can use the concatenate function `c()`. For example, the vector $\mathbf{x} = \begin{pmatrix}  5 \\ 2 \\ 8 \end{pmatrix}$ can be created as the `R` object using
+
+```{r define-vector}
+x <- c(5, 2, 8)
+```
+
+where the `<-` assigns the values in the vector `c(5, 2, 8)` to the object named `x`. To print the values of `x`, we can use
+
+```{r print-vector}
+x
+```
+
+which prints the elements of x. Notice that `R` prints the elements of $\mathbf{x}$ in a row; however, $\mathbf{x}$ is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a `data.frame`, then the vector will be presented as a column vector
+
+```{r define-dataframe}
+data.frame(x)
+```
+
+One can use the index operator $[\ ]$ to select specific elements of the vector $\mathbf{x}$. For example, the first element of $\mathbf{x}$, $x_1$, is
+
+```{r subset1}
+x[1]
+```
+
+and the third element of $\mathbf{x}$, $x_3$, is
+
+```{r subset3}
+x[3]
+```
+
+The transpose function `t()` turns a column vector into a row vector (or a row vector into a column vector). For example the transpose $\mathbf{x}'$ of $\mathbf{x}$ is 
+
+```{r define-transpose}
+tx <- t(x)
+tx
+```
+
+where `tx` is `R` object storing the transpose of $\mathbf{x}$ and is a row vector. The transpose of `tx`. Notice the indices on the output of the row vector `tx`. The index operator `[1, ]` selects the first row to `tx` and the index operator `[, 1]` gives the first column `tx`. Taking the transpose again gives us back the original column vector
+
+```{r transpose-transpose}
+t(tx)
+```
+
+### Matrices
+
+We let uppercase bold letters $\mathbf{A}$, $\mathbf{B}$, etc., represent matrices. We define the matrix $\mathbf{A}$ with $m$ rows and $n$ columns as
+
+$$
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix},
+\end{aligned}
+$$
+
+with $a_{ij}$ being the value of the matrix $\mathbf{A}$ in the $i$th row and the $j$th column.
+
+If the matrix 
+
+$$
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} 5 & 7 & 1 \\
+5 & -22  & 2 \\
+-14 & 5 & 99 \\
+42 & -3 & 0\end{pmatrix},
+\end{aligned}
+$$
+
+the elements $a_{11}$ = 5, $a_{12}$ = 7, $a_{21}$ = 5, and $a_{33}$ = 99, etc. 
+
+In `R`, we can define the matrix A using the `matrix()` function
+
+```{r define-matrix}
+A <- matrix(
+    data = c(5, 5, -14, 42, 7, -22, 5, -3, 1, 2, 99, 0),
+    nrow = 4,
+    ncol = 3
+)
+
+A
+```
+
+Notice in the above creation of $\mathbf{A}$, we wrote defined the elements of the  $\mathbf{A}$ using the columns stacked on top of one another. If we want to fill in the elements of $\mathbf{A}$ using the rows, we can add the option `byrow = TRUE` to the `matrix()` function
+
+```{r define-matrix-row}
+A <- matrix(
+    data  = c(5, 7, 1, 5, -22, 2, -14, 5, 99, 42, -3, 0), 
+    nrow  = 4,
+    ncol  = 3,
+    byrow = TRUE
+)
+A
+```
+
+To select the $ij$th elements of $\mathbf{A}$, we use the subset operator `[` to select the element. For example, to get the element $a_{11} = 5$ in the first row and first column of $\mathbf{A}$, we use
+
+```{r matrix-select1}
+A[1, 1]
+```
+
+The element $a_{3, 3} = 99$ in the third row and third column can be selected using
+
+```{r matrix-select2}
+A[3, 3]
+```
+
+
+The matrix $\mathbf{A}$ can also be represented as a set of either column vectors $\{\mathbf{c}_j \}_{j=1}^n$ or row vectors $\{\mathbf{r}_i \}_{i=1}^m$. For example, the column vector representation is
+
+
+$$
+\begin{aligned}
+\mathbf{A} & = \left( \mathbf{c}_{1} \middle| \mathbf{c}_{2} \middle| \cdots \middle| \mathbf{c}_{n} \right),
+\end{aligned}
+$$
+
+where the notation $|$ is used to separate the vectors
+
+$$
+\begin{aligned}
+\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
+\end{pmatrix},
+& \mathbf{c}_2 & = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
+\end{pmatrix}, 
+& \cdots, &
+& \mathbf{c}_n & = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
+\end{pmatrix}
+\end{aligned}
+$$
+
+In `R` you can extract the columns using the `[` selection operator
+
+```{r matrix-select-columns}
+c1 <- A[, 1] # first column
+c2 <- A[, 2] # second column
+c3 <- A[, 3] # third column
+```
+
+and you can give the column representation of the matrix `A` with with column bind function `cbind()`
+
+```{r matrix-bind-cols}
+cbind(c1, c2, c3)
+```
+
+The row vector representation of $\mathbf{A}$ is 
+
+$$
+\begin{aligned}
+\mathbf{A} & = \begin{pmatrix} \mathbf{r}_{1} \\ \mathbf{r}_{2} \\ \vdots \\ \mathbf{r}_{m} \end{pmatrix},
+\end{aligned}
+$$
+
+where the row vectors $\mathbf{r}_i$ are
+
+$$
+\begin{aligned}
+\mathbf{r}_1 & = \left( a_{11}, a_{12}, \ldots, a_{1n} \right) \\
+\mathbf{r}_2 & = \left( a_{21}, a_{22}, \ldots, a_{2n} \right) \\
+& \vdots \\
+\mathbf{r}_m & = \left( a_{m1}, a_{m2}, \ldots, a_{mn} \right)
+\end{aligned}
+$$
+
+
+In `R` you can extract the rows using the `[` selection operator
+
+```{r matrix-select-rows}
+r1 <- A[1, ] # first row
+r2 <- A[2, ] # second row
+r3 <- A[3, ] # third row
+r4 <- A[4, ] # fourth row
+```
+
+and you can give the row representation of the matrix `A` with with row bind function `rbind()`
+
+```{r matrix-bind-rows}
+rbind(r1, r2, r3, r4)
+```
+
+
+
+
+<!-- ## Outline -->
+
+<!-- **Note: This is going to be revised and reformated throughout the class** -->
+
+<!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
+
+<!-- 1) vector spaces and subspaces -->
+
+<!-- 2) dot products, cross products, projections -->
+
+<!-- 3) linear combinations, linear independence, bases, coordinate systems -->
+
+<!-- 4) planes, surfaces, and lines in space -->
+
+<!-- 5) linear transformations, matrix arithmetic, and matrix rank -->
+
+<!-- 6) solving linear equations $\mathbf{A} \mathbf{x} = \mathbf{b}$ -->
+
+<!-- 7) innner products, outer products, and norms -->
+
+<!-- 8) projections - orthogonal projections and least squares -->
+
+<!-- 9) matrix decompositoins: Eigen, Cholesky, principal components,  -->
+<!-- singular value decomposition, pre-whitening -->
+
+<!-- 10) matrix decompositoins: Eigen, Cholesky, principal components,  -->
+<!-- singular value decomposition, pre-whitening -->
+
+<!-- 11) limits, continuity, and partial derivatives -->
+
+<!-- 12) chain rule, directional derivatives -->
+
+<!-- 13) tangent planes, linear approximations, Taylor Series -->
+
+<!-- 14) double/triple integrals, change of variables, Jacobian transformation -->
+
+<!-- 15) double/triple integrals, change of variables, Jacobian transformation -->
+
+```{r setup-bib, include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+
+
+<!-- Notes for revision -->
+<!-- 1) Start with vector and matrix addition/multiplication properties. Show how to  -->
+<!-- 2) Introduce how to solve a matrix equation with `solve()`. Notice that sometimes this works and sometimes this fails. Maybe we can understand why -->
+<!-- 3) Introduce systems of equations and rref  -->
+<!-- 4) Show how Gaussian-Jordan elimination can solve these equations using augmented matrices -->
+<!-- 5) Introduce linear combinations, spans, linear independence -->
+<!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
+

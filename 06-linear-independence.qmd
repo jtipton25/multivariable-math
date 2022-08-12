@@ -1,0 +1,85 @@
+# Linear independence {#linear-independence}
+
+Recall the homogeneous equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ can be written as a linear combination of coefficients $x_1, \ldots, x_K$ and vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ where 
+$$
+\begin{aligned}
+\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}
+\end{aligned}
+$$
+
+::: {#def-} 
+The set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ are called **linearly independent** if the only solution to the vector equation $\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}$ is the trivial solution. The set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ are called **linearly dependent** if there are coefficients $x_1, \ldots, x_K$ that are not all zero.
+:::
+
+::: {#exm-}
+**In class**
+:::
+
+What does it mean for a set of vectors to be **linearly dependent**? This means that there is at least one vector $\mathbf{a}_k$ that can be written as a sum of the other vectors with coefficients $x_k$:
+$$
+\begin{aligned}
+\mathbf{a}_k = \sum_{j \neq k} x_{j} \mathbf{a}_{j}
+\end{aligned}
+$$
+Note: **linear dependence** does not imply that all vectors $\mathbf{a}_{k}$ can be written as a linear combination of other vectors, just that there is at least one such vector in the set.
+
+::: {#exm-}
+**Example: in class -- determine if the vectors are linearly independent and solve the dependence relation**
+:::    
+    
+
+:::{#thm-} 
+The matrix $\mathbf{A}$ has linearly independent columns if and only if the matrix equation $\mathbf{A}\mathbf{x} = \mathbf{0}$ has only the trivial solution.
+:::
+
+::: {#exm-}
+**Example: in class** A set of a single vector
+:::
+
+::: {#exm-}
+
+**Example:  in class** A set of two vectors
+
+* linearly independent if:
+
+* linearly dependent if one vector is a scalar multiple of the other:
+    
+:::
+
+    
+:::{#thm-}
+If an $n \times K$ matrix $\mathbf{A}$ has $K > n$, then the columns of $\mathbf{A}$ are linearly dependent. In other words, if a set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ contains more vectors than entries within vectors, the set of vectors is linearly dependent.
+:::
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+If $K>n$, there are more variables ($K$) than equations ($n$). Therefore, there is at least one free variable and this implies that the homogeneous equation $\mathbf{A}\mathbf{x}=\mathbf{0}$ has a non-trivial solution @eq-homogeneous
+:::
+
+
+:::{#thm-}
+If a set of vectors $\mathbf{a}_1, \ldots, \mathbf{a}_K$ contains the $\mathbf{0}$ vector, then the the set of vectors is linearly dependent.
+:::
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+**in class**
+:::
+
+::: {#exm-}
+In class: Determine whether the following sets of vectors are linearly dependent
+:::
+
+
+
+
+
+
+    
+    
+
+
+
+

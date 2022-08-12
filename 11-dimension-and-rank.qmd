@@ -1,0 +1,263 @@
+# Dimension and Rank {#dimension-and-rank}
+
+```{r setup-11}
+library(dasc2594)
+```
+
+## Coordinate systems
+
+Recall the idea of polynomials (e.g., a polynomial of order $p$ is $a_1x^p + a_2x^{p-1} + \ldots + a_p x^1 + a_{p+1} x^0$) where the polynomials $x^p, x^{p-1}, \ldots, x^1, x^0$ form a set of powers up to the power $p$ of $x$ from which the coefficients $a_p, \ldots, a_{p+1}$ can be used to make any polynomial of order $p$. It can be said that the powers of $x$ ($x^p, x^{p-1}, \ldots, x^1, x^0$) form a basis for all polynomials of order $p$. 
+
+In the previous section, we extended this analogy to vector spaces using the concept of a minimal spanning set. Consider the basis  $\mathbf{b}_1, \ldots, \mathbf{b}_k$ for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ where span$\{\mathbf{b}_1, \ldots, \mathbf{b}_k\} = \mathcal{H}$. Because the set $\mathbf{b}_1, \ldots, \mathbf{b}_k$ is a basis, the set of vectors is linearly independent. Then, because the set $\mathbf{b}_1, \ldots, \mathbf{b}_k$ is a basis, we have the following result. 
+
+:::{#thm-}
+For each vector $\mathbf{a}$ in the subspace $\mathcal{H}$ of $\mathcal{R}^n$, and a basis $\mathbf{b}_1, \ldots, \mathbf{b}_k$, there is a unique set of coefficients $x_1, \ldots, x_k$ such that 
+$$
+\begin{aligned}
+\mathbf{a} & = x_1 \mathbf{b}_1 + \cdots + x_k \mathbf{b}_k
+\end{aligned}
+$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+In class: assume contradiction that there are two ways $x_1, \ldots, x_k$ and $y_1, \ldots, y_k$... Show that this violates the assumption of linear dependence. 
+:::
+
+::: {#def-coordinates}
+Let $\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_k\}$ be a basis for a subspace $\mathcal{H}$ of $\mathcal{R}^n$. Then, for each $\mathbf{a} \in \mathcal{H}$, the **coordinates** of $\mathbf{a}$ with respect to the basis $\mathcal{B}$ are the set of coefficients $\{x_1, \ldots, x_k\}$ where
+$$
+\begin{aligned}
+\mathbf{a} & = x_1 \mathbf{b}_1 + \cdots + x_k \mathbf{b}_k.
+\end{aligned}
+$$
+:::
+
+
+```{r minimal-spanning-set, echo = FALSE}
+b1 <- c(3, 0, 1)
+b2 <- c(2, -3, 1)
+b3 <- c(0, 0, 1)
+a <- c(5, 6, 1)
+```
+
+::: {#exm-}
+Let $\mathcal{B} = \left\{ \mathbf{b}_1 = `r array_to_latex(as.matrix(b1))`, \mathbf{b}_2 = `r array_to_latex(as.matrix(b2))`, \mathbf{b}_3 = `r array_to_latex(as.matrix(b3))`  \right\}$ and $\mathbf{a} = `r array_to_latex(as.matrix(a))`$. What are the coordinates of $\mathbf{a}$ with respect to the basis $\mathcal{B}$?
+:::
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+It can be seen that $\mathbf{a} = 3 \mathbf{b}_1 - 2 \mathbf{b}_2 + 0 \mathbf{b}_3$ because $3 `r array_to_latex(as.matrix(b1))` - 2  `r array_to_latex(as.matrix(b2))` + 0  `r array_to_latex(as.matrix(b3))` =  `r array_to_latex(as.matrix(a))`$. Thus the coordinates of $\mathbf{a}$ with respect to $\mathcal{B}$ are $\mathbf{x} = \begin{pmatrix} 3 \\ -2 \\ 0 \end{pmatrix}$
+
+Now, the question is how to find such a solution in general. What we know is that if we write the matrix $\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 & \mathbf{b_2} & \mathbf{b_3} \end{pmatrix}$, then the coefficients for the vector $\mathbf{x}$ are the solutions to the matrix equation 
+$$
+\begin{aligned}
+\mathbf{B} \mathbf{x} = \mathbf{a}
+\end{aligned}
+$$
+Notice that this is the same matrix equation as $\mathbf{A} \mathbf{x} = \mathbf{b}$ but written in different notation that denotes that $\mathbf{B}$ is a basis. Because $\mathbf{B}$ is a basis, we know that there is a pivot in every column which tells us that as long as $\mathbf{a}$ is in the columnspace of $\mathbf{B}$, there will be a unique solution for the coordinates $\mathbf{x}$. Using an augmented matrix approach, you can solve for $\mathbf{x}$ using elementary row operations applied to the matrix
+$$
+\begin{aligned}
+\begin{pmatrix} \mathbf{B} & \mathbf{a} \end{pmatrix} & = `r array_to_latex(cbind(b1, b2, b3, a))` \\
+& \stackrel{RREF}{\sim} `r array_to_latex(rref(cbind(b1, b2, b3, a)))` 
+\end{aligned}
+$$
+which gives the solution that $\mathbf{x} = \begin{pmatrix} x_1 \\ x_ 2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 3 \\ -2 \\ 0\end{pmatrix}$
+
+
+In `R`, this can be done as
+
+```{r example-minimal-spanning-set}
+b1 <- c(3, 0, 1)
+b2 <- c(2, -3, 1)
+b3 <- c(0, 0, 1)
+a <- c(5, 6, 1)
+
+rref(cbind(b1, b2, b3, a))
+```
+:::
+
+
+## Dimension of a subspace
+
+
+::: {#def-dimension}
+The **dimension** $\operatorname{dim}(\mathcal{H})$ of a nonzero subspace $\mathcal{H}$ of $\mathcal{R}^n$ is the number of (nonzero) vectors that make up a basis $\mathcal{B}$ for $\mathcal{H}$. The dimension of the subspace $\mathcal{H} = \{\mathbf{0}\}$ that contains only the $\mathbf{0}$ vectors is defined as 0.
+:::
+
+::: {#exm-}
+Note that under this definition, the basis $\mathcal{B}$ is not unique. For example, the following bases for the 3-dimensional subspace $\mathcal{H}$ of $\mathcal{R}^3$ both have three linearly independent vectors.
+
+$$
+\begin{aligned}
+\mathcal{B}_1 =  \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \right\} 
+\end{aligned}
+$$
+
+Let $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$. What are the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ and $\mathcal{B}_2$?
+:::
+
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+Under the basis $\mathcal{B}_1$, the coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$ are $a_1 = 3$, $a_2 = 4$, and $a_3 = 0$ because 
+$$
+\begin{aligned}
+\mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 =  \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 4 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix},
+\end{aligned}
+$$
+which we write as $\left[\mathbf{x}\right]_{B_1} = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_1$. 
+
+The coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are $a_1 = 3$, $a_2 = 1$, and $a_3 = 0$ because
+$$
+\begin{aligned}
+\mathbf{x} = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2 + a_3 \mathbf{b}_3 = \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + 0 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}.
+\end{aligned}
+$$
+which we write as $\left[\mathbf{x}\right]_{B_2} = \begin{pmatrix} 3 \\ 1 \\ 0 \end{pmatrix}$ to denote that these are the coordinates of the vector $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$.. 
+
+We can get these coordinates using `R` by creating augmented matrices and using row operations. For example, the coordinates of $\mathbf{x}$ with respect to $\mathcal{B}_1$ are
+```{r example-basis-not-unique-1}
+B1 <- matrix(c(1, 0, 0, 0, 1, 0, 0, 0, 1), 3, 3)
+B1
+x <- c(3, 4, 0)
+x
+# augmented matrix
+cbind(B1, x)
+# rref of augmented matrix
+rref(cbind(B1, x))
+```
+which gives the coordinates
+```{r example-basis-not-unique-2}
+rref(cbind(B1, x))[, 4]
+```
+
+The coordinates of $\mathbf{x}$ with respect to the basis $\mathcal{B}_2$ are
+```{r example-basis-not-unique-3}
+B2 <- matrix(c(1, 1, 0, 0, 1, 0, 1, 0, 1), 3, 3)
+B2
+x <- c(3, 4, 0)
+x
+# augmented matrix
+cbind(B2, x)
+# rref of augmented matrix
+rref(cbind(B2, x))
+```
+which gives the coordinates
+```{r example-basis-not-unique-4}
+rref(cbind(B2, x))[, 4]
+```
+:::
+
+::: {#exm-}
+
+Also note that if two subspaces $\mathcal{H}_1$ and $\mathcal{H}_2$ have the same dimension (i.e., dim($\mathcal{H}_1$) = dim($\mathcal{H}_2$) = $p$), this does not mean that these are the same subspaces. For example, Let $\mathcal{H}_1$ and $\mathcal{H}_2$ be subspaces of $\mathcal{R}^3$ of dimension 2 with respective bases 
+$$
+\begin{aligned}
+\mathcal{B}_1 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\} && \mathcal{B}_2 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}. 
+\end{aligned}
+$$
+
+Note that the subspace defined by the span of the basis vectors in $\mathcal{B}_1$ is a plane in the x-y axes and the subspace defined by the span of the basis vectors in $\mathcal{B}_2$ is a plane in the x-z axes.
+
+:::
+
+:::{.#exr-}
+What is the dimension of a basis for $\mathcal{R}^n$?
+:::
+
+## Rank
+
+::: {#def-rank}
+The **rank** of a matrix $\mathbf{A}$, denoted as $\operatorname{rank}(\mathbf{A})$, is the dimension of the column space of $\mathcal{A}$.
+:::
+
+Recall that the pivot columns of $\mathbf{A}$ form a basis for the column space of $\mathbf{A}$. Hence, the number of pivot columns in the matrix $\mathbf{A}$ is the rank of the matrix $\mathbf{A}$.
+
+::: {#exm-}
+Determine the rank of the following matrices
+```{r example-rank, echo = FALSE}
+A <- matrix(c(-7, 5, -4, 1, -6, -1, -5, 4, -2, 9, 8, 0), 3, 4)
+B <- matrix(c(5, -6, 6, -7, 8, -8, 4, 2, -3, -1, 3, -5, 0, 9, -9), 5, 3)
+B[, 2] <- B[, 1] - 2 * B[, 3]
+C <- matrix(c(3, -2, -4, -5, -6, 5, 1, -9, 4, -8, 9, 8, -1, -3, 2), 3, 5)
+```
+
+1) $\mathbf{A} = `r array_to_latex(A)`$
+
+2) $\mathbf{B} = `r array_to_latex(B)`$
+
+3) $\mathbf{C} = `r array_to_latex(C)`$
+:::
+
+
+::: {.callout-note icon=false collapse="true" appearance="simple"} 
+## Solution
+
+Using Definition (\@ref(def:rank)), the rank of $\mathbf{A}$ is equal to the dimension of the column space of $\mathbf{A}$ where the dimension can be found by counting the number of pivot columns. 
+
+1) $`r array_to_latex(A)` \stackrel{RREF}{\sim} `r array_to_latex(rref(A))`$ which has 3 pivot columns. Thus, $\operatorname{rank}(\mathbf{A}) = 3$
+
+2) $`r array_to_latex(B)` \stackrel{RREF}{\sim} `r array_to_latex(rref(B))`$ which has 2 pivot columns. Thus, $\operatorname{rank}(\mathbf{B}) = 2$
+
+3) $`r array_to_latex(C)` \stackrel{RREF}{\sim} `r array_to_latex(rref(C))`$ which has 3 pivot columns. Thus, $\operatorname{rank}(\mathbf{C}) = 3$
+:::
+
+:::{#thm-}
+## The Rank Theorem
+If a matrix $\mathbf{A}$ has $n$ columns, then $\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n$
+:::
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+The rank($\mathbf{A}$) is number of linearly independent columns. The dimension for the null($\mathbf{A}$) is the number of linearly dependent columns of $\mathbf{A}$ (non-trivial solutions to $\mathbf{A}\mathbf{x}=\mathbf{0}$).
+:::
+
+
+The following theorem states that any $p$ vectors in $\mathcal{R}^p$ that are linearly independent must span $\mathcal{R}^p$.
+
+:::{#thm-}
+## The Basis Theorem
+Let $\mathcal{H}$ be a p-dimensional subspace of $\mathcal{R}^n$. 
+
+1) Then any linearly independent set of $p$ elements in $\mathcal{H}$ is a basis for $\mathcal{H}$. 
+
+2) Equivalently, any set of $p$ elements of $\mathcal{H}$ that span $\mathcal{H}$ is a basis for $\mathcal{H}$
+
+:::
+
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+We consider the two statements in the theorem above. 
+
+1) Each of the $p$ vectors are in $\mathcal{H}$ and the set of vectors in $\mathcal{H}$ are linearly independent. Thus, the span of the set of vectors is $\mathcal{R}^p$. We have examples where two subspaces have the same dimension but are not equal, however, because each vector is in $\mathcal{H}$ and $\mathcal{H}$ is a subspace, all linear combinations of the vectors are in $\mathcal{H}$. Thus, the set of $p$ vectors span $\mathcal{H}$. Thus, the set of vectors spans the subspace and are linearly independent which satisfies the conditions of Definition (\@ref(def:basis)).
+
+2) The set of $p$ vectors span $\mathcal{H}$. Because $\mathcal{H}$ is a $p$-dimensional subspace of $\mathcal{R}^n$, each vector must be linearly independent. If the vectors were not linearly independent, the $p$ vectors would not span a $p$-dimensional space. Thus, the set of $p$ vectors span $\mathcal{H}$. Thus, the set of vectors spans the subspace and are linearly independent which satisfies the conditions of Definition (\@ref(def:basis)).
+:::
+
+
+
+:::{#thm-invertiblematrix2}
+## Invertible Matrix Theorem Yet Again
+Let $\mathbf{A}$ be a $n \times n$ matrix. Then, in addition to the current conditions from @thm-invertiblematrix, the following statements are equivalent to $\mathbf{A}$ being an invertible matrix:
+    
+a) The columns of $\mathbf{A}$ form a basis for $\mathcal{R}^n$
+    
+b) $\operatorname{col}(\mathbf{A}) = \mathcal{R}^n$
+    
+c) $\operatorname{dim}(\operatorname{col}(\mathbf{A})) = n$
+    
+d) $\operatorname{rank}(\mathbf{A}) = n$
+    
+e) $\operatorname{null}(\mathbf{A}) = \{\mathbf{0}\}$    
+
+f) $\operatorname{dim}(\operatorname{null}(\mathbf{A})) = 0$    
+:::

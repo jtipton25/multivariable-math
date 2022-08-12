@@ -1,0 +1,62 @@
+project:
+  type: book
+  
+book:
+  title: "Multivariable Mathematics for Data Science"
+  author: "John Tipton"
+  date: today
+  repo-url: https://github.com/jtipton25/multivariable-math/
+  downloads: [pdf, epub]
+  page-navigation: true
+  chapters: 
+    - index.qmd
+    - 01-matrix-operations.qmd
+    - 02-block-matrices.qmd
+    - 03-vector-spaces.qmd
+    - 04-linear-systems-of-equations.qmd
+    - 05-matrix-equations.qmd
+    - 06-linear-independence.qmd
+    - 07-linear-transformations-matrix.qmd
+    - 08-matrix-inverses.qmd
+    - 09-matrix-factorizations.qmd
+    - 10-subspaces-of-Rn.qmd
+    - 11-dimension-and-rank.qmd
+    - 12-determinants.qmd
+    - 13-determinants-and-volumes.qmd
+    - 14-vector-spaces-and-subspaces.qmd
+    - 15-linearly-independent-sets-bases.qmd
+    - 16-coordinate-systems.qmd
+    - 17-rank.qmd
+    - 18-change-of-basis.qmd
+    - 19-eigenvectors-and-eigenvalues.qmd
+    - 20-characteristic-equations.qmd
+    - 21-Diagonalization.qmd
+    - 22-orthogonal.qmd
+    - 23-limits.qmd
+    - 24-partial-derivatives.qmd
+    - 25-chain-rule.qmd
+    - 26-gradient.qmd
+    - 27-tangents.qmd
+    - 28-max-min.qmd
+
+number-depth: 3
+engine: knitr
+
+format: 
+  html:
+    theme: cosmo
+    css: style.css
+    include-after-body: fold.html
+  pdf:
+    include-in-header: preamble.tex
+    keep-tex: true
+    pdf-engine: xelatex
+    cite-method: natbib
+  epub:
+    cover-image: one-solution-1.png
+    
+comments: 
+  hypothesis: true
+  
+execute:
+  freeze: auto

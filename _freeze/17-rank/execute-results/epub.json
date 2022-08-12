@@ -1,0 +1,20 @@
+{
+  "hash": "2eea027890fdfb992c3592ae5bc471d9",
+  "result": {
+    "markdown": "# Rank\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(dasc2594)\n```\n:::\n\n\n\n\n::: {#def-}\nGiven an $m \\times n$ matrix $\\mathbf{A}$, the row space, row($\\mathbf{A}$) is the set of linearly independent rows of $\\mathbf{A}$. Thus, the row space is the span of the rows of $\\mathbf{A}$.\n:::\n\n\nNote: the row space of $\\mathbf{A}$ is the column space of the transposed matrix $\\mathcal{A}'$.\n\n\n\n$$\n\\begin{aligned}\nrow(\\mathbf{A}) = col(\\mathbf{A}')\n\\end{aligned}\n$$\n\n\n\n\n::: {#exm-}\nin class \n:::\n\n::: {#exm-}\nFind basis for row space, column space, and null space of $\\mathbf{A}$\n:::\n\n\n## Rank\n::: {#def-}\nThe rank of a matrix $\\mathbf{A}$, rank($\\mathbf{A}$) is the dimension of the column space col($\\mathbf{A}$)\n:::\n\n\n:::{#thm-}\n## The Rank Theorem\n\nLet $\\mathbf{A}$ be an $m \\times n$ matrix. Then the dimension of are equal. The rank of $\\mathbf{A}$ equals the number of pivot columns of $\\mathbf{A}$ and \n\n\n\n$$\n\\begin{aligned}\nrank (\\mathbf{A}) + dim(null(\\mathbf{A})) = n\n\\end{aligned}\n$$\n\n\n\n:::\n\n\n::: {.callout-tip icon=false collapse=\"true\" appearance=\"simple\"} \n## Proof\n\nThe rank($\\mathbf{A}$) is the number of pivot columns and dim(null($\\mathbf{A}$)) is the number of non-pivot columns. The number of pivot columns (rank($\\mathbf{A}$)) + the number of non-pivot columns (dim(null($\\mathbf{A}$))) are the number of columns. \n:::\n\n::: {#exm-}\nin class\n\n$\\mathbf{A}$ is an $m \\times n$ matrix with dim(null($\\mathbf{A}$)) = p. What is rank($\\mathbf{A}$)\n:::\n\n::: {#exm-}\n$\\mathbf{A}$ is a 6x9 matrix. Is it possible for null($\\mathbf{A}$) = 2?\n:::\n\n\n:::{#thm-}\n## Invertible Matrix Theorm + Rank\nThis is an extension of the prior statement of the invertible matrix theorem @thm-invertiblematrix\nLet $\\mathbf{A}$ be an $n \\times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).\n\n13\\) The columns of $\\mathbf{A}$ form a basis of $\\mathcal{R}^n$\n    \n14\\) col($\\mathbf{A}$) = $\\mathcal{R}^n$    \n    \n15\\) dim(col($\\mathbf{A}$)) = $n$\n    \n16\\) rank($\\mathbf{A}$) = $n$\n    \n17\\) null($\\mathbf{A}$) = $\\{\\mathbf{0}\\}$\n\n18\\) dim(null($\\mathbf{A}$)) = 0\n\n:::\n\n\n",
+    "supporting": [
+      "17-rank_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": {},
+    "postProcess": true
+  }
+}

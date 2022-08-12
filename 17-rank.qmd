@@ -1,0 +1,83 @@
+# Rank
+
+```{r setup-17, message = FALSE}
+library(tidyverse)
+library(dasc2594)
+```
+
+::: {#def-}
+Given an $m \times n$ matrix $\mathbf{A}$, the row space, row($\mathbf{A}$) is the set of linearly independent rows of $\mathbf{A}$. Thus, the row space is the span of the rows of $\mathbf{A}$.
+:::
+
+
+Note: the row space of $\mathbf{A}$ is the column space of the transposed matrix $\mathcal{A}'$.
+$$
+\begin{aligned}
+row(\mathbf{A}) = col(\mathbf{A}')
+\end{aligned}
+$$
+
+::: {#exm-}
+in class 
+:::
+
+::: {#exm-}
+Find basis for row space, column space, and null space of $\mathbf{A}$
+:::
+
+
+## Rank
+::: {#def-}
+The rank of a matrix $\mathbf{A}$, rank($\mathbf{A}$) is the dimension of the column space col($\mathbf{A}$)
+:::
+
+
+:::{#thm-}
+## The Rank Theorem
+
+Let $\mathbf{A}$ be an $m \times n$ matrix. Then the dimension of are equal. The rank of $\mathbf{A}$ equals the number of pivot columns of $\mathbf{A}$ and 
+$$
+\begin{aligned}
+rank (\mathbf{A}) + dim(null(\mathbf{A})) = n
+\end{aligned}
+$$
+:::
+
+
+::: {.callout-tip icon=false collapse="true" appearance="simple"} 
+## Proof
+
+The rank($\mathbf{A}$) is the number of pivot columns and dim(null($\mathbf{A}$)) is the number of non-pivot columns. The number of pivot columns (rank($\mathbf{A}$)) + the number of non-pivot columns (dim(null($\mathbf{A}$))) are the number of columns. 
+:::
+
+::: {#exm-}
+in class
+
+$\mathbf{A}$ is an $m \times n$ matrix with dim(null($\mathbf{A}$)) = p. What is rank($\mathbf{A}$)
+:::
+
+::: {#exm-}
+$\mathbf{A}$ is a 6x9 matrix. Is it possible for null($\mathbf{A}$) = 2?
+:::
+
+
+:::{#thm-}
+## Invertible Matrix Theorm + Rank
+This is an extension of the prior statement of the invertible matrix theorem @thm-invertiblematrix
+Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are equivalent (i.e., they are all either simultaneously true or false).
+
+13\) The columns of $\mathbf{A}$ form a basis of $\mathcal{R}^n$
+    
+14\) col($\mathbf{A}$) = $\mathcal{R}^n$    
+    
+15\) dim(col($\mathbf{A}$)) = $n$
+    
+16\) rank($\mathbf{A}$) = $n$
+    
+17\) null($\mathbf{A}$) = $\{\mathbf{0}\}$
+
+18\) dim(null($\mathbf{A}$)) = 0
+
+:::
+
+
