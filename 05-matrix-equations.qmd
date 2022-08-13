@@ -1,6 +1,6 @@
 # Matrix equations {#matrix-equation}
 
-```{r setup-03}
+```{r setup-03, message=FALSE}
 library(tidyverse)
 library(dasc2594)
 library(gg3D)

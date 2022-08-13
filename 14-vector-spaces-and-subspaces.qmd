@@ -5,7 +5,7 @@
 - [3 Blue 1 Brown -- Abstract vector spaces](https://www.3blue1brown.com/lessons/abstract-vector-spaces)
 
 
-```{r setup-14, echo = FALSE}
+```{r setup-14, echo = FALSE, message=FALSE}
 library(tidyverse)
 library(dasc2594)
 ```

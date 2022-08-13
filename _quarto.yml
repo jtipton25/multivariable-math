@@ -7,6 +7,13 @@ book:
   date: today
   repo-url: https://github.com/jtipton25/multivariable-math/
   downloads: [pdf, epub]
+  search: 
+    location: sidebar
+    type: overlay
+    copy-button: true
+  sidebar: 
+    style: docked
+  reader-mode: false
   page-navigation: true
   chapters: 
     - index.qmd
@@ -44,16 +51,18 @@ engine: knitr
 
 format: 
   html:
-    theme: cosmo
+    theme: 
+      light: cosmo
+      dark: [cosmo, theme-dark.scss]
     css: style.css
     include-after-body: fold.html
+    code-copy: true
   pdf:
     include-in-header: preamble.tex
     keep-tex: true
     pdf-engine: xelatex
     cite-method: natbib
-  epub:
-    cover-image: one-solution-1.png
+  epub: default
     
 comments: 
   hypothesis: true

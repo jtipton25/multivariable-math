@@ -2,7 +2,7 @@
 
 - [3 Blue 1 Brown -- Change of basis](https://www.3blue1brown.com/lessons/change-of-basis)
 
-```{r setup-18}
+```{r setup-18, message=FALSE}
 library(tidyverse)
 library(dasc2594)
 ```
