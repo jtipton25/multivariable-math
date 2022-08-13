@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Multivariable Mathematics for Data Science - 25&nbsp; Partial Derivatives</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./25-chain-rule.html" rel="next">
+<link href="./23-limits.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Multivariable Mathematics for Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-matrix-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-matrix-inverses.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-matrix-factorizations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-subspaces-of-Rn.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-dimension-and-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-determinants.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-determinants-and-volumes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-vector-spaces-and-subspaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vector Spaces and Subspaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-linearly-independent-sets-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linearly independent sets and bases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-coordinate-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Coordinate Systems and Dimension</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-change-of-basis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Change of basis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-eigenvectors-and-eigenvalues.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Eigenvectors and Eigenvalues</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-characteristic-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The Characteristic Equation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Diagonalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-orthogonal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-limits.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-partial-derivatives.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-chain-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-gradient.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">The gradient and directional derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-tangents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Tangent planes and linear approximations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-max-min.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Minimums and Maximums</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#higher-order-partial-derivatives" id="toc-higher-order-partial-derivatives" class="nav-link active" data-scroll-target="#higher-order-partial-derivatives"> <span class="header-section-number">25.1</span> Higher-order partial derivatives</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2021</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>Recall that for a function of one variable, the derivative gives the rate of change of the function with respect to that variable. The function <span class="math inline">\(f(x)\)</span> has an instantaneous rate of change <span class="math inline">\(\frac{d}{dx}f(x)\)</span>, assuming the derivative <span class="math inline">\(\frac{d}{dx}f(x)\)</span> exists.</p>
+<p>This concept can be extended to functions of multivariables where we now have to specify a direction in which the function changes. For example, consider a mountain which is very steep in the north/south direction but is much less steep in the east/west direction. Thus, the directional derivative in the north/south direction will have a larger absolute value (higher rate of change) than the directional derivative in the east/west direction.</p>
+<p>For example, consider the function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mountain <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span> <span class="sc">-</span> <span class="dv">9</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> y<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">20</span>), <span class="at">y =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fu">mountain</span>(x, y))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">z =</span> z)) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_contour</span>() <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="24-partial-derivatives_files/figure-html/example-mountain-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">z =</span> <span class="fu">matrix</span>(dat<span class="sc">$</span>z, <span class="dv">20</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_surface</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">contours =</span> <span class="fu">list</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">z =</span> <span class="fu">list</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">show=</span><span class="cn">TRUE</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">usecolormap=</span><span class="cn">TRUE</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">highlightcolor=</span><span class="st">"#ff0000"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">project=</span><span class="fu">list</span>(<span class="at">z=</span><span class="cn">TRUE</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-86a5adb9e68bf345bfa5" style="width:100%;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-86a5adb9e68bf345bfa5">{"x":{"visdat":{"17e9e5ed643b3":["function () ","plotlyVisDat"]},"cur_data":"17e9e5ed643b3","attrs":{"17e9e5ed643b3":{"z":[[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.5623268698061,-6.37119113573407,-6.37119113573407,-9.5623268698061,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590028,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083103,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099713,0.0110803324099726,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132964,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828257,2.49307479224377,2.49307479224377,-0.698060941828257,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828256,2.49307479224377,2.49307479224377,-0.698060941828256,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132963,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083102,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099731,0.0110803324099744,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590027,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.56232686980609,-6.37119113573407,-6.37119113573407,-9.56232686980609,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.5623268698061,-6.37119113573407,-6.37119113573407,-9.5623268698061,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590028,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083103,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099713,0.0110803324099726,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132964,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828257,2.49307479224377,2.49307479224377,-0.698060941828257,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.04432132964,-111.324099722992,-85.7950138504155,-63.4570637119114,-44.3102493074792,-28.3545706371191,-15.590027700831,-6.01662049861496,0.365650969529084,3.55678670360111,3.55678670360111,0.365650969529084,-6.01662049861495,-15.590027700831,-28.3545706371191,-44.3102493074792,-63.4570637119113,-85.7950138504155,-111.324099722992,-140.04432132964],[-140.398891966759,-111.678670360111,-86.1495844875346,-63.8116343490305,-44.6648199445983,-28.7091412742382,-15.9445983379501,-6.37119113573408,0.0110803324099699,3.20221606648199,3.20221606648199,0.0110803324099699,-6.37119113573407,-15.9445983379501,-28.7091412742382,-44.6648199445983,-63.8116343490304,-86.1495844875346,-111.678670360111,-140.398891966759],[-141.108033240997,-112.387811634349,-86.8587257617729,-64.5207756232687,-45.3739612188366,-29.4182825484765,-16.6537396121884,-7.0803324099723,-0.698060941828256,2.49307479224377,2.49307479224377,-0.698060941828256,-7.08033240997229,-16.6537396121883,-29.4182825484764,-45.3739612188366,-64.5207756232687,-86.8587257617728,-112.387811634349,-141.108033240997],[-142.171745152355,-113.451523545706,-87.9224376731302,-65.584487534626,-46.4376731301939,-30.4819944598338,-17.7174515235457,-8.14404432132964,-1.7617728531856,1.42936288088643,1.42936288088643,-1.7617728531856,-8.14404432132963,-17.7174515235457,-30.4819944598338,-46.4376731301939,-65.584487534626,-87.9224376731302,-113.451523545706,-142.171745152355],[-143.590027700831,-114.869806094183,-89.3407202216067,-67.0027700831025,-47.8559556786704,-31.9002770083102,-19.1357340720222,-9.5623268698061,-3.18005540166205,0.0110803324099731,0.0110803324099744,-3.18005540166205,-9.56232686980609,-19.1357340720221,-31.9002770083102,-47.8559556786704,-67.0027700831025,-89.3407202216066,-114.869806094183,-143.590027700831],[-145.362880886427,-116.642659279778,-91.1135734072022,-68.7756232686981,-49.6288088642659,-33.6731301939058,-20.9085872576177,-11.3351800554017,-4.95290858725762,-1.7617728531856,-1.7617728531856,-4.95290858725762,-11.3351800554017,-20.9085872576177,-33.6731301939058,-49.6288088642659,-68.775623268698,-91.1135734072022,-116.642659279778,-145.362880886427],[-147.490304709141,-118.770083102493,-93.2409972299169,-70.9030470914127,-51.7562326869806,-35.8005540166205,-23.0360110803324,-13.4626038781163,-7.0803324099723,-3.88919667590028,-3.88919667590027,-7.0803324099723,-13.4626038781163,-23.0360110803324,-35.8005540166205,-51.7562326869806,-70.9030470914127,-93.2409972299169,-118.770083102493,-147.490304709141],[-149.972299168975,-121.252077562327,-95.7229916897507,-73.3850415512465,-54.2382271468144,-38.2825484764543,-25.5180055401662,-15.9445983379501,-9.56232686980609,-6.37119113573407,-6.37119113573407,-9.56232686980609,-15.9445983379501,-25.5180055401662,-38.2825484764543,-54.2382271468144,-73.3850415512465,-95.7229916897507,-121.252077562327,-149.972299168975],[-152.808864265928,-124.08864265928,-98.5595567867036,-76.2216066481995,-57.0747922437673,-41.1191135734072,-28.3545706371191,-18.781163434903,-12.398891966759,-9.20775623268698,-9.20775623268698,-12.398891966759,-18.781163434903,-28.3545706371191,-41.1191135734072,-57.0747922437673,-76.2216066481994,-98.5595567867036,-124.08864265928,-152.808864265928],[-156,-127.279778393352,-101.750692520776,-79.4127423822715,-60.2659279778393,-44.3102493074792,-31.5457063711911,-21.9722991689751,-15.590027700831,-12.398891966759,-12.398891966759,-15.590027700831,-21.9722991689751,-31.5457063711911,-44.3102493074792,-60.2659279778393,-79.4127423822714,-101.750692520776,-127.279778393352,-156]],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>Note that the partial derivative asks the question “What is the rate of change of one variable holding all the other variables constant?” Thus, the question can be phrased as what is the derivative of the function <span class="math inline">\(f(x, y)\)</span> at the point <span class="math inline">\((a, b)\)</span> where we only let one variable change? To make the notation of a partial derivative clear, a special symbol is used where <span class="math inline">\(\frac{\partial}{\partial x}\)</span> is the partial derivative with respect to the <span class="math inline">\(x\)</span> variable (holding the y variable constant).</p>
+<p><strong>draw surfaces with marginal slices</strong></p>
+<div id="partial">
+<p>The partial derivative of the function <span class="math inline">\(f(x, y)\)</span> with respect to <span class="math inline">\(x\)</span> at the point <span class="math inline">\((a, b)\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial x} f(x, y) = f_x(x, y) &amp; = \lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)} {h}.
+\end{aligned}
+\]</span></p>
+<p>The partial derivative of the function <span class="math inline">\(f(x, y)\)</span> with respect to <span class="math inline">\(y\)</span> at the point <span class="math inline">\((a, b)\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial y} f(x, y) = f_y(x, y) &amp; = \lim_{h \rightarrow 0} \frac{f(a, b + h) - f(a, b)} {h},
+\end{aligned}
+\]</span></p>
+<p>as long as these limits exist.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 25.1 </strong></span></p>
+<p><strong>partial derivatives using limit definition</strong></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 25.2 </strong></span></p>
+<p>Let <span class="math inline">\(f(x, y) = 3x^2 - 4 y^3 + 3\)</span>, Compute <span class="math inline">\(\frac{\partial}{\partial x}f(x, y)\)</span> and <span class="math inline">\(\frac{\partial}{\partial y}f(x, y)\)</span>. Then evaluate each derivative at <span class="math inline">\((-2, 3)\)</span>.</p>
+</div>
+<p>Notice that you can find partial derivatives by holding all the other variables constant and then finding the equivalent univariate derivative.</p>
+<section id="higher-order-partial-derivatives" class="level2" data-number="25.1">
+<h2 data-number="25.1" class="anchored" data-anchor-id="higher-order-partial-derivatives"><span class="header-section-number">25.1</span> Higher-order partial derivatives</h2>
+<p>We can calculate the partial derivatives of partial derivatives. The derivatives could be with respect to the same variable repeatedly or the derivatives could be with respect to different variables in which case we call these <strong>mixed partial derivatives</strong>. Notation for higher order partial derivatives is <span class="math inline">\(\frac{\partial^2}{\partial x \partial y} f(x, y) = f_{xy}(x, y)\)</span> which says first take the partial derivative of with respect to <span class="math inline">\(y\)</span> then take the partial derivative with respect to <span class="math inline">\(x\)</span>. The possible sets of second-order partial derivatives for functions of two variables are shown in the table below</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Notation 1</th>
+<th>Notation 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\frac{\partial}{\partial x}\frac{\partial}{\partial x} f(x, y) = \frac{\partial^2}{\partial x^2} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{xx}(x, y)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\frac{\partial}{\partial y}\frac{\partial}{\partial y} f(x, y) = \frac{\partial^2}{\partial y^2} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{yy}(x, y)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\frac{\partial}{\partial x}\frac{\partial}{\partial y} f(x, y) = \frac{\partial^2}{\partial x \partial y} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{xy}(x, y)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\frac{\partial}{\partial y}\frac{\partial}{\partial x} f(x, y) = \frac{\partial^2}{\partial y \partial x} f(x, y)\)</span></td>
+<td><span class="math inline">\(f_{yx}(x, y)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 25.3 </strong></span></p>
+<p>Find the four second-order partial derivatives of <span class="math inline">\(f(x, y) = 3x^2y^3 + 4xy - 3x^2\)</span></p>
+</div>
+<p>Note that the order in which mixed partial derivatives are taken can sometimes change the result. However, it is often the case that the order of the partial derivatives can be switched.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 25.1 </strong></span></p>
+<p>Let the function <span class="math inline">\(f(x, y)\)</span> be defined on an open domain <span class="math inline">\(\mathcal{D}\)</span> of <span class="math inline">\(\mathcal{R}^2\)</span> and assume that <span class="math inline">\(f_{xy}\)</span> and <span class="math inline">\(f_{yx}\)</span> are continuous over the domain <span class="math inline">\(\mathcal{D}\)</span>. Then, <span class="math inline">\(f_{xy} = f_{yx}\)</span> for all points in the domain <span class="math inline">\(\mathcal{D}\)</span>.</p>
+</div>
+<p>Many of the commonly used functional forms in data science meet the criteria above. Thus, for many of the commonly used functions in data science, the order of evaluation of partial derivatives often does not matter. In practice, it is always good practice to verify this though.</p>
+<!-- ## Differentiability -->
+<!-- We have learned how to calculate a derivative, but an important characteristic is whether a derivative exists.  -->
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./23-limits.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./25-chain-rule.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

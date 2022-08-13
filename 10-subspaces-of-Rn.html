@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Multivariable Mathematics for Data Science - 11&nbsp; Subspaces of \(\mathcal{R}^n\)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./11-dimension-and-rank.html" rel="next">
+<link href="./09-matrix-factorizations.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Multivariable Mathematics for Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-matrix-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-matrix-inverses.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-matrix-factorizations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-subspaces-of-Rn.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-dimension-and-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-determinants.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-determinants-and-volumes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-vector-spaces-and-subspaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vector Spaces and Subspaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-linearly-independent-sets-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linearly independent sets and bases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-coordinate-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Coordinate Systems and Dimension</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-change-of-basis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Change of basis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-eigenvectors-and-eigenvalues.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Eigenvectors and Eigenvalues</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-characteristic-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The Characteristic Equation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Diagonalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-orthogonal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-limits.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-partial-derivatives.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-chain-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-gradient.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">The gradient and directional derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-tangents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Tangent planes and linear approximations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-max-min.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Minimums and Maximums</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#special-subspaces-column-space-and-null-space" id="toc-special-subspaces-column-space-and-null-space" class="nav-link active" data-scroll-target="#special-subspaces-column-space-and-null-space"> <span class="header-section-number">11.1</span> Special subspaces: column space and null space</a></li>
+  <li><a href="#the-basis-of-a-subspace" id="toc-the-basis-of-a-subspace" class="nav-link" data-scroll-target="#the-basis-of-a-subspace"> <span class="header-section-number">11.2</span> The basis of a subspace</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="subspaces-Rn" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li><p><a href="https://www.3blue1brown.com/lessons/span">3 Blue 1 Brown – Linear combinations, span, and basis vectors</a></p></li>
+<li><p><a href="https://www.3blue1brown.com/lessons/inverse-matrices">3 Blue 1 Brown – Inverse Matrices, column space, and null space</a></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First, let’s recall the definition of a subset. A set <span class="math inline">\(A\)</span> is a subset of a set <span class="math inline">\(B\)</span> if all elements of <span class="math inline">\(A\)</span> are also members of <span class="math inline">\(B\)</span>. For example, the integers <span class="math inline">\(\mathcal{Z}\)</span> are a subset of the real numbers <span class="math inline">\(\mathbf{R}\)</span> (<span class="math inline">\(\mathcal{Z} \subset \mathcal{R}\)</span>) and the real numbers are a subset of the complex numbers <span class="math inline">\(\mathcal{C}\)</span> (<span class="math inline">\(\mathcal{R} \subset \mathcal{C}\)</span>).</p>
+<p>Subspaces are a generalization of the idea of subsets that are useful for understanding vector spaces.</p>
+<div id="def-subspace" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.1 </strong></span>A subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is a set that has the properties</p>
+<ol type="1">
+<li><p>The zero vector <span class="math inline">\(\mathbf{0} \in \mathcal{H}\)</span> </p></li>
+<li><p>For each <span class="math inline">\(\mathbf{u}, \mathbf{v} \in \mathcal{H}\)</span>, the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span> </p></li>
+<li><p>For each <span class="math inline">\(\mathbf{u} \in \mathcal{H}\)</span> and scalar <span class="math inline">\(c\)</span>, the scalar multiple <span class="math inline">\(c \mathbf{u}\)</span> is in <span class="math inline">\(\mathcal{H}\)</span> </p></li>
+</ol>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.1 </strong></span></p>
+<p>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector space defined by span<span class="math inline">\(\{\mathbf{u}, \mathbf{v} \}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To show that span<span class="math inline">\(\{\mathbf{u}, \mathbf{v}\}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>, we must satisfy the three conditions of definition (@ref(def:subspace)).</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mathbf{0} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span> because <span class="math inline">\(\mathbf{0} = 0 \mathbf{u} + 0 \mathbf{v}\)</span> is a linear combination of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> with coefficients 0 and 0.</p></li>
+<li><p>Let <span class="math inline">\(\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span> and <span class="math inline">\(\mathbf{y} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Then, by the definition of the span (Definition (@ref(def:span))) there exists constants <span class="math inline">\(a, b, c, d\)</span> such that <span class="math inline">\(\mathbf{x} = a \mathbf{u} + b \mathbf{v}\)</span> and <span class="math inline">\(\mathbf{y} = c \mathbf{u} + d \mathbf{v}\)</span>. Thus, <span class="math inline">\(\mathbf{x} + \mathbf{y} = a \mathbf{u} + b \mathbf{v} + c \mathbf{u} + d \mathbf{v} = (a + c) \mathbf{u} + (b + d) \mathbf{v}\)</span> which, by definition, is in the span<span class="math inline">\(\{\mathbf{u}, \mathbf{v}\}\)</span>. Thus, span<span class="math inline">\(\{\mathbf{u}, \mathbf{v}\}\)</span> is closed under addition.</p></li>
+<li><p>Let <span class="math inline">\(\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span> <span class="math inline">\(c\)</span> be a constant. Because <span class="math inline">\(\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>, the definition of the span (Definition (@ref(def:span))) implies there exists constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such that <span class="math inline">\(\mathbf{x} = a \mathbf{u} + b \mathbf{v}\)</span>. Thus, <span class="math inline">\(c\mathbf{x} = ca \mathbf{u} + cb \mathbf{v}\)</span> which is a linear combination of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> and is therefore <span class="math inline">\(c\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>.</p></li>
+</ol>
+<p>Because all three requirements are met, we have shown that <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.2 </strong></span>Recall that a solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> that has one free variable is a line through the origin and the solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> that has one free variable is a line parallel to the prior line that does not go through the origin.</p>
+<ol type="A">
+<li><p>Is a line through the origin a subspace?</p></li>
+<li><p>Is a line <strong>not</strong> through the origin a subspace?</p></li>
+</ol>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Part A:</strong> First, we will consider whether the line through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (@ref(def:subspace))</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mathbf{0}\)</span> is on the line through the origin because <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> has the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are on the line through the origin, then because the line through the origin is defined as the solution set of the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> we know that</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{A} \mathbf{u} = \mathbf{0} &amp;&amp; \mbox{ and } &amp;&amp; \mathbf{A} \mathbf{v} = \mathbf{0}.
+\end{aligned}
+\]</span></p>
+<p>Then, the vector <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is in the subspace defined by the line through the origin because</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v} = \mathbf{0} + \mathbf{0} = \mathbf{0},
+\end{aligned}
+\]</span></p>
+<p>which is a solution to the matrix equation and therefore <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is a point on the line through the origin.</p>
+<ol start="3" type="1">
+<li>If <span class="math inline">\(\mathbf{u}\)</span> is a point on the line through the origin and <span class="math inline">\(c\)</span> is a scalar, then because the line through the origin is defined as the solution set of the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> we know that</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{A} \mathbf{u} = \mathbf{0}.
+\end{aligned}
+\]</span></p>
+<p>Then, the vector <span class="math inline">\(c \mathbf{u}\)</span> is in the subspace defined by the line through the origin because</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{A} (c \mathbf{u}) = c \mathbf{A} \mathbf{u}  = c \mathbf{0} = \mathbf{0},
+\end{aligned}
+\]</span></p>
+<p>which is a solution to the matrix equation and therefore <span class="math inline">\(c \mathbf{u}\)</span> is a point on the line through the origin.</p>
+<p><strong>Part B:</strong> Next, we consider whether the line <strong>not</strong> through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (@ref(def:subspace)). Recall that a line not through the origin is a solution set of the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> where the solution set has a single free variable and <span class="math inline">\(\mathbf \neq \mathbf{0}\)</span>. To check if this line defines a subspace, we check the first condition of Definition (@ref(def:subspace))</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbf{0}\)</span> is not on the line through the origin because <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> does not have the trivial solution <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> because <span class="math inline">\(\mathbf{A} \mathbf{0} = \mathbf{0} \neq \mathbf{b}\)</span>. Because <span class="math inline">\(\mathbf{0}\)</span> is not a point on the line not through the origin, the line not through the origin does not define a subspace.</li>
+</ol>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Note:</strong> For any vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k \in \mathcal{R}^n\)</span>, the span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</li>
+</ul>
+<section id="special-subspaces-column-space-and-null-space" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="special-subspaces-column-space-and-null-space"><span class="header-section-number">11.1</span> Special subspaces: column space and null space</h2>
+<div id="def-columnspace" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.2 </strong></span></p>
+<p>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<div class="cell">
+<span class="theorem-title"><strong>Example 11.3 </strong></span>
+</div>
+<p>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, what is the column space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, the column space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\mathbf{b}\)</span> such that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{b} = x_1 \mathbf{a_1} + x_2 \mathbf{a}_2 + x_3 \mathbf{a}_3.
+\end{aligned}
+\]</span></p>
+<p>Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span> is the span of the vectors that makes up the columns of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="def-nullspace" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.3 </strong></span></p>
+<p>The <strong>null space</strong>, denoted <span class="math inline">\(\operatorname{null}(\mathbf{A})\)</span>, of a matrix <span class="math inline">\(\mathbf{A}\)</span> is the set of all solutions to the homogeneous matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>.</p>
+</div>
+<p>While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>. In other words, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}\)</span>.</p>
+<div id="exm-" class="theorem example">
+<div class="cell">
+<span class="theorem-title"><strong>Example 11.4 </strong></span>
+</div>
+<p>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, find vectors that span the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the solution set of the homogeneous system of equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span>. Using an augmented matrix and transforming into reduced row echelon form gives the RREF form</p>
+<p><span class="math display">\[
+\begin{aligned}
+\begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 &amp; 0 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 &amp; 0 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 &amp; 0 \end{pmatrix} \sim \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -15 &amp; -25 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; -1 &amp; -4 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 53/4 &amp; 89/4 &amp; 0 \end{pmatrix}
+\end{aligned}
+\]</span></p>
+<p>which tells us that the solution to the system of equations is</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_1 - 15 x_4 -25 x_5 &amp; = 0 \\
+x_2 - x_4 - 4 x_5 &amp; = 0 \\
+x_3 + \frac{53}{4} x_4  + \frac{89}{4} x_5 &amp; = 0\\
+x_4 &amp; = x_4 \\
+x_5 &amp; = x_5
+\end{aligned}
+\]</span></p>
+<p>Writing this solution as a vector times <span class="math inline">\(x_4\)</span> and a vector times <span class="math inline">\(x_5\)</span> gives the vectors <span class="math inline">\(\begin{pmatrix} 15 \\ 1 \\ -\frac{53}{4} \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 25 \\ 4 \\ -\frac{89}{4} \\ 0 \\ 1 \end{pmatrix}\)</span>.</p>
+<p>In <code>R</code>, this is shown by starting with the matrix <code>A</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]   -3   -3   -4   -5   -2
+[2,]   -4    2   -4    5    3
+[3,]    4   -4    4   -3    5</code></pre>
+</div>
+</div>
+<p>Looking at the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span> gives</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]   [,4]   [,5]
+[1,]    1    0    0 -15.00 -25.00
+[2,]    0    1    0  -1.00  -4.00
+[3,]    0    0    1  13.25  22.25</code></pre>
+</div>
+</div>
+<p>where the columns of interest are the non-pivot columns. For this matrix <span class="math inline">\(\mathbf{A}\)</span>, the fourth and fifth columns of <span class="math inline">\(\mathbf{A}\)</span> are the non-pivot columns. The fourth column or the RREF form corresponds to the variable <span class="math inline">\(x_4\)</span> and the fifth column corresponds to the variable <span class="math inline">\(x_5\)</span>. Thus, you can extract the vectors that form the null space from these fourth and fifth columns of the RREF form of <span class="math inline">\(\mathbf{A}\)</span> like so</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the nullspace vector corresponding to x4 = 1 and x5 = 0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="sc">-</span><span class="fu">rref</span>(A)[, <span class="dv">4</span>], <span class="dv">1</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  15.00   1.00 -13.25   1.00   0.00</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the nullspace vector corresponding to x4 = 0 and x5 = 1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="sc">-</span><span class="fu">rref</span>(A)[, <span class="dv">5</span>], <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  25.00   4.00 -22.25   0.00   1.00</code></pre>
+</div>
+</div>
+<p>We check that these vectors are in null(<span class="math inline">\(\mathbf{A}\)</span>) by using matrix multiplication and verifying that these are zero (at least up to numeric overflow/underflow)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fu">rref</span>(A)[, <span class="dv">4</span>], <span class="dv">1</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              [,1]
+[1,] -7.105427e-15
+[2,] -7.105427e-15
+[3,]  7.105427e-15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fu">rref</span>(A)[, <span class="dv">5</span>], <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              [,1]
+[1,] -1.421085e-14
+[2,] -1.421085e-14
+[3,]  1.421085e-14</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 11.1 </strong></span></p>
+<p>The null space of a n <span class="math inline">\(m \times m\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> is a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Do in class Show that the three requirements of the defintion of a subspace in Definition (@ref(def:subspace)) are met.</p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</div>
+</div>
+</div>
+<ul>
+<li>Example: give <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{x}\)</span> and determine if <span class="math inline">\(\mathbf{x}\)</span> is in the null space of <span class="math inline">\(\mathbf{A}\)</span> using <code>R</code></li>
+</ul>
+</section>
+<section id="the-basis-of-a-subspace" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="the-basis-of-a-subspace"><span class="header-section-number">11.2</span> The basis of a subspace</h2>
+<div id="def-basis" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.4 </strong></span>A <strong>basis</strong> for a subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is</p>
+<ol type="1">
+<li>a linearly independent set in <span class="math inline">\(\mathcal{H}\)</span> that</li>
+<li>spans <span class="math inline">\(\mathbf{H}\)</span>.</li>
+</ol>
+<p>Equivlently, a baisis is a set of linearly independent vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_k\)</span> such that span<span class="math inline">\(\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}\)</span>.</p>
+</div>
+<p>The requirement that the vectors of a basis are linearly independent while spanning a subspace <span class="math inline">\(\mathcal{H}\)</span> means that a basis is a <strong>minimal spanning set</strong> for the subspace <span class="math inline">\(\mathcal{H}\)</span></p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.5 </strong></span></p>
+<p>Is a basis for a vector space unique?</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A basis for a vector is not unique. Just like you can represent the number 16 as <span class="math inline">\(1.6 * 10^1\)</span> (base 10) or <span class="math inline">\(2^4\)</span> (base 2), the basis for a vector space is also not unique.</p>
+</div>
+</div>
+</div>
+<div id="def-standardbasis" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.5 </strong></span>The <strong>standard basis</strong> for <span class="math inline">\(\mathcal{R}^n\)</span> is the set of vectors <span class="math inline">\(\left\{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \right\}\)</span> of length <span class="math inline">\(n\)</span> where the vector <span class="math inline">\(\mathbf{e}_j\)</span> is a vector that is 0 in every value except for a 1 in the <span class="math inline">\(j\)</span>th position. For example,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, &amp;&amp; \mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, &amp;&amp; \mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \\ \vdots \\ 0\end{pmatrix}, &amp;&amp; \ldots, &amp;&amp; \mathbf{e}_n = \begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}.
+\end{aligned}
+\]</span></p>
+<p>Notice that the matrix defined as having columns <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\)</span> is the identity matrix <span class="math inline">\(\mathbf{I}\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.6 </strong></span></p>
+<p>What is the standard basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The standard basis for <span class="math inline">\(\mathcal{R}^3\)</span> are the x-, y-, and z-axes. These are written as vectors where the x-axis is <span class="math inline">\(\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}\)</span>, the y-axis is <span class="math inline">\(\mathbf{e}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\)</span>, and the z-axis is <span class="math inline">\(\mathbf{e}_3 = \begin{pmatrix} 0 \\ 0 \\ 1\end{pmatrix}\)</span>,</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.7 </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<div class="cell">
+
+</div>
+<p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For the set of vectors <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span> to form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>, we need to satisfy the two conditions in Definition (@ref(def:basis)). Both conditions of Definition (@ref(def:basis)) can be checked by combining the set of vectors <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(\mathbf{z}\)</span> into a matrix and using RREF to determine the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> and determine whether the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> is linearly independent. The matrix of the vectors is</p>
+<p><span class="math display">\[
+\begin{pmatrix} 2 &amp; -1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ 2 &amp; 1 &amp; 2 \end{pmatrix}
+\]</span></p>
+<p>which is row-equivalent to</p>
+<p><span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
+\]</span></p>
+<p>Because the reduced row echelon form of the matrix has 3 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3\)</span> which satisfies the first condition for being a basis. Because there is a pivot in every column, we know the set of vectors is linearly independent which satisfies the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> forms a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
+<p>Using <code>R</code>, we can show this result first by creating the vectors <code>x</code>, <code>y</code>, and <code>z</code> and then joining these into a matrix <code>A</code> using <code>cbind()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x, y, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we convert <code>A</code> to reduced row echelon form to get the row equivalent matrix</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     x y z
+[1,] 1 0 0
+[2,] 0 1 0
+[3,] 0 0 1</code></pre>
+</div>
+</div>
+<p>Because this reduced row echelon form has a pivot in each column we know the columns of the matrix <code>A</code> are linearly independent. Because there are 3 pivot columns in total, we know the span of the columns of <code>A</code> is <span class="math inline">\(\mathcal{R}^3\)</span>. Therefore, the vectors <span class="math inline">\(\mathbf{x}, \mathbf{y}, \mathbf{z}\)</span> forms a basis for <span class="math inline">\(\mathcal{R}^3\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.8 </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<div class="cell">
+
+</div>
+<p><span class="math inline">\(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For the set of vectors <span class="math inline">\(\mathbf{w} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 4 \\ 2 \\ -2 \end{pmatrix}\)</span> to form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>, we need to satisfy the two conditions in Definition (@ref(def:basis)). Both conditions of Definition (@ref(def:basis)) can be checked by combining the set of vectors <span class="math inline">\(\mathbf{w}\)</span>, <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(\mathbf{z}\)</span> into a matrix and using RREF to determine the span<span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> and determine whether the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> is linearly independent. The matrix of the vectors is</p>
+<p><span class="math display">\[
+\begin{pmatrix} 2 &amp; -1 &amp; 1 &amp; 4 \\ 1 &amp; 1 &amp; 0 &amp; 2 \\ 2 &amp; 1 &amp; 2 &amp; -2 \end{pmatrix}
+\]</span></p>
+<p>which is row-equivalent to</p>
+<p><span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 16/5 \\ 0 &amp; 1 &amp; 0 &amp; -6/5 \\ 0 &amp; 0 &amp; 1 &amp; -18/5 \end{pmatrix}
+\]</span></p>
+<p>Because the reduced row echelon form of the matrix has 3 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^3\)</span> which satisfies the first condition for being a basis. However, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
+<p>Using <code>R</code>, we can show this result first by creating the vectors <code>w</code>, x<code>,</code>y<code>, and</code>z<code>and then joining these into a matrix</code>A<code>using</code>cbind()`</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(w, x, y, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we convert <code>A</code> to reduced row echelon form to get the row equivalent matrix</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     w x y    z
+[1,] 1 0 0  3.2
+[2,] 0 1 0 -1.2
+[3,] 0 0 1 -3.6</code></pre>
+</div>
+</div>
+<p>Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix <code>A</code> are linearly dependent. Because there are 3 pivot columns in total, we know the span of the columns of <code>A</code> is <span class="math inline">\(\mathcal{R}^3\)</span>. Because the set of vectors <span class="math inline">\(\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> are linearly dependent, they do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.9 </strong></span>Do the following set of vectors form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>?</p>
+<div class="cell">
+
+</div>
+<p><span class="math inline">\(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For the set of vectors <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 4 \\ 3 \\ 2 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{y} = \begin{pmatrix} 3 \\ -3 \\ 4 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{z} = \begin{pmatrix} 5 \\ 9 \\ 0 \end{pmatrix}\)</span> to form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>, we need to satisfy the two conditions in Definition (@ref(def:basis)). Both conditions of Definition (@ref(def:basis)) can be checked by combining the set of vectors <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(\mathbf{z}\)</span> into a matrix and using RREF to determine the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> and determine whether the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> is linearly independent. The matrix of the vectors is</p>
+<p><span class="math display">\[
+\begin{pmatrix} 4 &amp; 3 &amp; 5 \\ 3 &amp; -3 &amp; 9 \\ 2 &amp; 4 &amp; 0 \end{pmatrix}
+\]</span></p>
+<p>which is row-equivalent to</p>
+<p><span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 2 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}
+\]</span></p>
+<p>Because the reduced row echelon form of the matrix has 2 pivot columns, the span<span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \} = \mathcal{R}^2\)</span> which does not satisfy the first condition for being a basis for <span class="math inline">\(\mathcal{R}^3\)</span>. In addition, there is not a pivot in every column which tells us that the set of vectors is linearly dependent which does not satisfy the second condition for being a basis. Therefore, the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span></p>
+<p>Using <code>R</code>, we can show this result first by creating the vectors x<code>,</code>y<code>, and</code>z<code>and then joining these into a matrix</code>A<code>using</code>cbind()`</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">0</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x, y, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we convert <code>A</code> to reduced row echelon form to get the row equivalent matrix</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     x y  z
+[1,] 1 0  2
+[2,] 0 1 -1
+[3,] 0 0  0</code></pre>
+</div>
+</div>
+<p>Because this reduced row echelon form does not have a pivot in each column, we know the columns of the matrix <code>A</code> are linearly dependent. Because there are 2 pivot columns in total, we know the span of the columns of <code>A</code> is <span class="math inline">\(\mathcal{R}^2\)</span> which is not <span class="math inline">\(\mathcal{R}^3\)</span>. Because the set of vectors <span class="math inline">\(\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}\)</span> are linearly dependent and do not span <span class="math inline">\(\mathcal{R}^3\)</span>, they do not form a basis for <span class="math inline">\(\mathcal{R}^3\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.10 </strong></span>Using <code>R</code>, find a basis for the null space of the matrix</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; 1 &amp; 3 \\ -1 &amp; -2 &amp; 6 &amp; 5 \\ 1 &amp; 2 &amp; -3 &amp; 2 \end{pmatrix}
+\]</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we look for non-trivial solutions to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    2    0    0    0
+[2,]    0    0    1    0    0
+[3,]    0    0    0    1    0</code></pre>
+</div>
+</div>
+<p>which has solution <span class="math inline">\(x_1 = -2 x_2\)</span>, <span class="math inline">\(x_2 = \mbox{free}\)</span>, <span class="math inline">\(x_3 = 0\)</span> and <span class="math inline">\(x_4 = 0\)</span>. This can be represented as a vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}\)</span>. Thus, <span class="math inline">\(\left\{ \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} \right\}\)</span> is a basis for the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>We can check this by showing that <span class="math inline">\(\mathbf{A} \mathbf{v} = \mathbf{0}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    0
+[2,]    0
+[3,]    0</code></pre>
+</div>
+</div>
+<p>In addition, any linear combination of the basis is also in the null space</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> (<span class="dv">5</span><span class="sc">*</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    0
+[2,]    0
+[3,]    0</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 11.2 </strong></span></p>
+<p>The pivot columns of a matrix <span class="math inline">\(\mathbf{A}\)</span> form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+<p><strong>Note:</strong> Use the columns of <span class="math inline">\(\mathbf{A}\)</span>, not the columns of the matrix in echelon form.</p>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We will provide just a sketch of the proof here. First, the column space (Definition @ref(def:column-space)) is the space defined by the linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the span of any subset of the vectors that make up the columns of <span class="math inline">\(\mathbf{A}\)</span> must, by definition, be in the column space of <span class="math inline">\(\mathbf{A}\)</span>, because any linear combination of the subset of vectors is just a linear combination of the full set of vectors with the coefficients of the vectors in the subset with the same coefficients and the coefficients of the vectors not in the subset equal to 0. Thus, the span of the subset of the vectors is contained within the span of the columns of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the column space.</p>
+<p>Now, choose the subset of columns of <span class="math inline">\(\mathbf{A}\)</span> that correspond to the pivot columns of the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span>. If the span of the columns of <span class="math inline">\(\mathbf{A} = \mathcal{R}^p\)</span>, then 1) there must be <span class="math inline">\(p\)</span> pivot columns in the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span> and 2) there are <span class="math inline">\(p\)</span> vectors in the subset of vectors where the columns of <span class="math inline">\(\mathbf{A}\)</span> are pivot columns. Thus, the subset of vectors spans <span class="math inline">\(\mathcal{R}^p\)</span> (the columnspace) and, by definition, there are <span class="math inline">\(p\)</span> pivot columns (therefore there is a pivot in each column) so the subset of vectors defined by the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.11 </strong></span>Find a basis for the column space of the matrix</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix} 3 &amp; 1 &amp; 2 &amp; -3 \\ 4 &amp; 1 &amp; -3 &amp; -2 \\ 4 &amp; -1 &amp; -3 &amp; 1 \end{pmatrix}
+\]</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we first find its reduced row echelon form</p>
+<p><span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; -11/34 \\ 0 &amp; 1 &amp; 0 &amp; -3/2 \\ 0 &amp; 0 &amp; 1 &amp; -9/34 \end{pmatrix}
+\]</span></p>
+<p>which has pivots in the first three columns. Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the linear combination of the vectors of <span class="math inline">\(\mathbf{A}\)</span>, spans <span class="math inline">\(\mathcal{R}^3\)</span> because there are three pivot columns. The first three columns of <span class="math inline">\(\mathbf{A}\)</span> are <span class="math inline">\(\begin{pmatrix} 3 \\ 4 \\ 4 \end{pmatrix}\)</span>, <span class="math inline">\(\begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}\)</span>, and <span class="math inline">\(\begin{pmatrix} 2 \\ -3 \\ -3 \end{pmatrix}\)</span>. Because these 3 vectors are linearly independent (they are each pivot columns in the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span>) and they span <span class="math inline">\(\mathcal{R}^3\)</span>, they form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>Thus, any vector in the columns space of <span class="math inline">\(\mathbf{A}\)</span> (for example, the fourth column of <span class="math inline">\(\mathbf{A}\)</span>) can be written as a linear combination of the basis vectors of the columns space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="exm-" class="theorem example">
+<div class="cell">
+<span class="theorem-title"><strong>Example 11.12 </strong></span>
+</div>
+<p>Find a basis for the column space of the matrix</p>
+<p><span class="math display">\[
+\begin{pmatrix} -4 &amp; 1 \\ 8 &amp; -2 \\ 6 &amp; 3 \\ 9 &amp; 7 \end{pmatrix}
+\]</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>Given the matrix <span class="math inline">\(\mathbf{A}\)</span>, we first find its reduced row echelon form</p>
+<p><span class="math display">\[
+\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \\ 0 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}
+\]</span></p>
+<p>which has pivots in the first two columns. Thus, the column space of <span class="math inline">\(\mathbf{A}\)</span>, which is defined as the linear combination of the vectors of <span class="math inline">\(\mathbf{A}\)</span>, spans <span class="math inline">\(\mathcal{R}^2\)</span> because there are two pivot columns. The first two columns of <span class="math inline">\(\mathbf{A}\)</span> are <span class="math inline">\(\begin{pmatrix} -4 \\ 8 \\ 6 \\ 9 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 1 \\ -2 \\ 3 \\ 7 \end{pmatrix}\)</span>. Because these 2 vectors are linearly independent (they are each pivot columns) and they span <span class="math inline">\(\mathcal{R}^2\)</span>, they form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>Note however, that the first two columns of the reduced row echelon form of <span class="math inline">\(\mathbf{A}\)</span> (the vectors <span class="math inline">\(\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}\)</span>) do not form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>. This can be seen because The first two columns of <span class="math inline">\(\mathbf{A}\)</span> have non-zero entries in the 3rd and 4th elements.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-matrix-factorizations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./11-dimension-and-rank.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

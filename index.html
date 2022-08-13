@@ -1,79 +1,35 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariable Mathematics for Data Science</title>
-  <meta name="description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
 
-  <meta property="og:title" content="Multivariable Mathematics for Data Science" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
-  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariable Mathematics for Data Science" />
-  
-  <meta name="twitter:description" content="This is a text for Multivariable Mathematics for Data Science. This text is used at the University of Arkansas for the course DASC 2594 that exposes students to topics in linear algebra and vector calculus that are needed for success in data science. As such, a large focus of the text is on computation for these topics." />
-  
+<meta name="author" content="John Tipton">
+<meta name="dcterms.date" content="2022-08-13">
 
-<meta name="author" content="John Tipton" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-
-<link rel="next" href="matrix-operations.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-
-
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+<title>Multivariable Mathematics for Data Science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -93,7 +49,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -127,249 +83,329 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-matrix-operations.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Multivariable Mathematics for Data Science</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#getting-started-in-r"><i class="fa fa-check"></i><b>1.1</b> Getting started in <code>R</code></a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#some-videos-that-explain-useful-concepts-of-linear-algebra"><i class="fa fa-check"></i><b>1.2</b> Some videos that explain useful concepts of linear algebra</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.3</b> Notation</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#matrices"><i class="fa fa-check"></i><b>1.3.1</b> Matrices</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="matrix-operations.html"><a href="matrix-operations.html"><i class="fa fa-check"></i><b>2</b> Matrix operations</a><ul>
-<li class="chapter" data-level="2.1" data-path="matrix-operations.html"><a href="matrix-operations.html#todo"><i class="fa fa-check"></i><b>2.1</b> ToDo</a></li>
-<li class="chapter" data-level="2.2" data-path="matrix-operations.html"><a href="matrix-operations.html#the-dotinner-product"><i class="fa fa-check"></i><b>2.2</b> The dot/inner product</a></li>
-<li class="chapter" data-level="2.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrices"><i class="fa fa-check"></i><b>2.3</b> Properties of matrices</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-addition"><i class="fa fa-check"></i><b>2.3.1</b> Matrix Addition</a></li>
-<li class="chapter" data-level="2.3.2" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multipliation"><i class="fa fa-check"></i><b>2.3.2</b> Matrix Multipliation</a></li>
-<li class="chapter" data-level="2.3.3" data-path="matrix-operations.html"><a href="matrix-operations.html#properties-of-matrix-multiplication"><i class="fa fa-check"></i><b>2.3.3</b> Properties of Matrix Multiplication</a></li>
-<li class="chapter" data-level="2.3.4" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-multiplication-complexity-big-o-notation"><i class="fa fa-check"></i><b>2.3.4</b> Matrix Multiplication complexity (Big O notation)</a></li>
-<li class="chapter" data-level="2.3.5" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-powers"><i class="fa fa-check"></i><b>2.3.5</b> Matrix powers</a></li>
-<li class="chapter" data-level="2.3.6" data-path="matrix-operations.html"><a href="matrix-operations.html#matrix-transpose"><i class="fa fa-check"></i><b>2.3.6</b> Matrix Transpose</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="block-matrices.html"><a href="block-matrices.html"><i class="fa fa-check"></i><b>3</b> Block Matrices</a><ul>
-<li class="chapter" data-level="3.1" data-path="block-matrices.html"><a href="block-matrices.html#block-matrix-addition"><i class="fa fa-check"></i><b>3.1</b> Block Matrix Addition</a></li>
-<li class="chapter" data-level="3.2" data-path="block-matrices.html"><a href="block-matrices.html#block-matrix-multiplication"><i class="fa fa-check"></i><b>3.2</b> Block Matrix Multiplication</a></li>
-<li class="chapter" data-level="3.3" data-path="block-matrices.html"><a href="block-matrices.html#the-column-row-matrix-product"><i class="fa fa-check"></i><b>3.3</b> The column-row matrix product</a></li>
-<li class="chapter" data-level="3.4" data-path="block-matrices.html"><a href="block-matrices.html#special-block-matrices"><i class="fa fa-check"></i><b>3.4</b> Special Block Matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html"><i class="fa fa-check"></i><b>4</b> Linear Systems of Equations</a><ul>
-<li class="chapter" data-level="4.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#linear-systems-of-equations-1"><i class="fa fa-check"></i><b>4.1</b> Linear Systems of equations</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#linear-equations"><i class="fa fa-check"></i><b>4.1.1</b> Linear equations</a></li>
-<li class="chapter" data-level="4.1.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>4.1.2</b> Systems of linear equations</a></li>
-<li class="chapter" data-level="4.1.3" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#solutions-of-linear-systems"><i class="fa fa-check"></i><b>4.1.3</b> Solutions of linear systems</a></li>
-<li class="chapter" data-level="4.1.4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#types-of-solutions"><i class="fa fa-check"></i><b>4.1.4</b> Types of solutions</a></li>
-<li class="chapter" data-level="4.1.5" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#elementary-row-and-column-operations-on-matrices"><i class="fa fa-check"></i><b>4.1.5</b> Elementary row and column operations on matrices</a></li>
-<li class="chapter" data-level="4.1.6" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#the-augmented-matrix-form-of-a-system-of-equations"><i class="fa fa-check"></i><b>4.1.6</b> The Augmented matrix form of a system of equations</a></li>
-<li class="chapter" data-level="4.1.7" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#existence-and-uniqueness"><i class="fa fa-check"></i><b>4.1.7</b> Existence and Uniqueness</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#reduce-row-echelon-form"><i class="fa fa-check"></i><b>4.2</b> Reduce row echelon form</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#pivot-positions"><i class="fa fa-check"></i><b>4.2.1</b> Pivot positions</a></li>
-<li class="chapter" data-level="4.2.2" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#finding-the-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.2</b> Finding the reduced row echelon form</a></li>
-<li class="chapter" data-level="4.2.3" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><i class="fa fa-check"></i><b>4.2.3</b> Using reduced row echelon forms to solve systems of linear equations</a></li>
-<li class="chapter" data-level="4.2.4" data-path="linear-systems-of-equations.html"><a href="linear-systems-of-equations.html#existence-and-uniqueness-from-reduced-row-echelon-form"><i class="fa fa-check"></i><b>4.2.4</b> Existence and uniqueness from reduced row echelon form</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="vector-spaces.html"><a href="vector-spaces.html"><i class="fa fa-check"></i><b>5</b> Vectors spaces</a><ul>
-<li class="chapter" data-level="5.1" data-path="vector-spaces.html"><a href="vector-spaces.html#vectors"><i class="fa fa-check"></i><b>5.1</b> Vectors</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="vector-spaces.html"><a href="vector-spaces.html#properties-of-vectors"><i class="fa fa-check"></i><b>5.1.1</b> Properties of Vectors</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="vector-spaces.html"><a href="vector-spaces.html#vector-addition"><i class="fa fa-check"></i><b>5.2</b> Vector addition</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalr2"><i class="fa fa-check"></i><b>5.2.1</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
-<li class="chapter" data-level="5.2.2" data-path="vector-spaces.html"><a href="vector-spaces.html#scalar-multiplication-of-vectors"><i class="fa fa-check"></i><b>5.2.2</b> Scalar multiplication of vectors</a></li>
-<li class="chapter" data-level="5.2.3" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalr3"><i class="fa fa-check"></i><b>5.2.3</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
-<li class="chapter" data-level="5.2.4" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-vectors-in-mathcalrn"><i class="fa fa-check"></i><b>5.2.4</b> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
-<li class="chapter" data-level="5.2.5" data-path="vector-spaces.html"><a href="vector-spaces.html#linear-combinations-of-vectors"><i class="fa fa-check"></i><b>5.2.5</b> Linear Combinations of Vectors</a></li>
-<li class="chapter" data-level="5.2.6" data-path="vector-spaces.html"><a href="vector-spaces.html#the-geometric-interpretation-of-linear-combinations-of-vectors"><i class="fa fa-check"></i><b>5.2.6</b> The geometric interpretation of linear combinations of vectors</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="vector-spaces.html"><a href="vector-spaces.html#span"><i class="fa fa-check"></i><b>5.3</b> Span</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="vector-spaces.html"><a href="vector-spaces.html#geometric-example-of-the-span"><i class="fa fa-check"></i><b>5.3.1</b> Geometric example of the span</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="matrix-equation.html"><a href="matrix-equation.html"><i class="fa fa-check"></i><b>6</b> Matrix equations</a><ul>
-<li class="chapter" data-level="6.1" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-of-matrix-equations"><i class="fa fa-check"></i><b>6.1</b> Solutions of matrix equations</a></li>
-<li class="chapter" data-level="6.2" data-path="matrix-equation.html"><a href="matrix-equation.html#existence-of-solutions"><i class="fa fa-check"></i><b>6.2</b> Existence of solutions</a></li>
-<li class="chapter" data-level="6.3" data-path="matrix-equation.html"><a href="matrix-equation.html#matrix-vector-multiplication"><i class="fa fa-check"></i><b>6.3</b> Matrix-vector multiplication</a></li>
-<li class="chapter" data-level="6.4" data-path="matrix-equation.html"><a href="matrix-equation.html#properties-of-matrix-vector-multiplication"><i class="fa fa-check"></i><b>6.4</b> Properties of matrix-vector multiplication</a></li>
-<li class="chapter" data-level="6.5" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-of-linear-systems-1"><i class="fa fa-check"></i><b>6.5</b> Solutions of linear systems</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="matrix-equation.html"><a href="matrix-equation.html#homogeneous-linear-systems-of-equations"><i class="fa fa-check"></i><b>6.5.1</b> Homogeneous linear systems of equations</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="matrix-equation.html"><a href="matrix-equation.html#solutions-to-nonhomogeneous-systems"><i class="fa fa-check"></i><b>6.6</b> Solutions to nonhomogeneous systems</a></li>
-<li class="chapter" data-level="6.7" data-path="matrix-equation.html"><a href="matrix-equation.html#finding-solutions"><i class="fa fa-check"></i><b>6.7</b> Finding solutions</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="linear-independence.html"><a href="linear-independence.html"><i class="fa fa-check"></i><b>7</b> Linear independence</a></li>
-<li class="chapter" data-level="8" data-path="linear-transformations.html"><a href="linear-transformations.html"><i class="fa fa-check"></i><b>8</b> Linear Transformations</a><ul>
-<li class="chapter" data-level="8.1" data-path="linear-transformations.html"><a href="linear-transformations.html#linear-transformations-1"><i class="fa fa-check"></i><b>8.1</b> Linear Transformations</a></li>
-<li class="chapter" data-level="8.2" data-path="linear-transformations.html"><a href="linear-transformations.html#types-of-matrix-transformations"><i class="fa fa-check"></i><b>8.2</b> Types of matrix transformations</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="linear-transformations.html"><a href="linear-transformations.html#contractionsexpansions"><i class="fa fa-check"></i><b>8.2.1</b> Contractions/Expansions</a></li>
-<li class="chapter" data-level="8.2.2" data-path="linear-transformations.html"><a href="linear-transformations.html#rotations"><i class="fa fa-check"></i><b>8.2.2</b> Rotations</a></li>
-<li class="chapter" data-level="8.2.3" data-path="linear-transformations.html"><a href="linear-transformations.html#reflections"><i class="fa fa-check"></i><b>8.2.3</b> Reflections</a></li>
-<li class="chapter" data-level="8.2.4" data-path="linear-transformations.html"><a href="linear-transformations.html#shears"><i class="fa fa-check"></i><b>8.2.4</b> Shears</a></li>
-<li class="chapter" data-level="8.2.5" data-path="linear-transformations.html"><a href="linear-transformations.html#projections"><i class="fa fa-check"></i><b>8.2.5</b> Projections</a></li>
-<li class="chapter" data-level="8.2.6" data-path="linear-transformations.html"><a href="linear-transformations.html#identity"><i class="fa fa-check"></i><b>8.2.6</b> Identity</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="linear-transformations.html"><a href="linear-transformations.html#properties-of-matrix-transformations"><i class="fa fa-check"></i><b>8.3</b> Properties of matrix transformations</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="linear-transformations.html"><a href="linear-transformations.html#one-to-one-transformations"><i class="fa fa-check"></i><b>8.3.1</b> One-to-one transformations</a></li>
-<li class="chapter" data-level="8.3.2" data-path="linear-transformations.html"><a href="linear-transformations.html#onto-transformations"><i class="fa fa-check"></i><b>8.3.2</b> Onto transformations</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="matrix-inverse.html"><a href="matrix-inverse.html"><i class="fa fa-check"></i><b>9</b> Matrix Inverses</a><ul>
-<li class="chapter" data-level="9.1" data-path="matrix-inverse.html"><a href="matrix-inverse.html#elementary-matrices"><i class="fa fa-check"></i><b>9.1</b> Elementary matrices</a></li>
-<li class="chapter" data-level="9.2" data-path="matrix-inverse.html"><a href="matrix-inverse.html#finding-the-inverse-of-mathbfa"><i class="fa fa-check"></i><b>9.2</b> Finding the inverse of <span class="math inline">\(\mathbf{A}\)</span></a></li>
-<li class="chapter" data-level="9.3" data-path="matrix-inverse.html"><a href="matrix-inverse.html#the-invertible-matrix-theorem"><i class="fa fa-check"></i><b>9.3</b> The Invertible Matrix Theorem</a></li>
-<li class="chapter" data-level="9.4" data-path="matrix-inverse.html"><a href="matrix-inverse.html#invertible-linear-transformations"><i class="fa fa-check"></i><b>9.4</b> Invertible Linear Transformations</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html"><i class="fa fa-check"></i><b>10</b> Matrix Factorizations</a><ul>
-<li class="chapter" data-level="10.1" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html#the-lu-factorization"><i class="fa fa-check"></i><b>10.1</b> The LU factorization</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html#geometric-interpretation-of-the-lu-factorization"><i class="fa fa-check"></i><b>10.1.1</b> Geometric interpretation of the LU factorization</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html#obtaining-the-lu-factorization"><i class="fa fa-check"></i><b>10.2</b> Obtaining the LU factorization</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-factorizations.html"><a href="matrix-factorizations.html#the-cholesky-factor"><i class="fa fa-check"></i><b>10.3</b> The Cholesky factor</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="subspaces-Rn.html"><a href="subspaces-Rn.html"><i class="fa fa-check"></i><b>11</b> Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></a><ul>
-<li class="chapter" data-level="11.1" data-path="subspaces-Rn.html"><a href="subspaces-Rn.html#special-subspaces-column-space-and-null-space"><i class="fa fa-check"></i><b>11.1</b> Special subspaces: column space and null space</a></li>
-<li class="chapter" data-level="11.2" data-path="subspaces-Rn.html"><a href="subspaces-Rn.html#the-basis-of-a-subspace"><i class="fa fa-check"></i><b>11.2</b> The basis of a subspace</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="dimension-and-rank.html"><a href="dimension-and-rank.html"><i class="fa fa-check"></i><b>12</b> Dimension and Rank</a><ul>
-<li class="chapter" data-level="12.1" data-path="dimension-and-rank.html"><a href="dimension-and-rank.html#coordinate-systems"><i class="fa fa-check"></i><b>12.1</b> Coordinate systems</a></li>
-<li class="chapter" data-level="12.2" data-path="dimension-and-rank.html"><a href="dimension-and-rank.html#dimension-of-a-subspace"><i class="fa fa-check"></i><b>12.2</b> Dimension of a subspace</a></li>
-<li class="chapter" data-level="12.3" data-path="dimension-and-rank.html"><a href="dimension-and-rank.html#rank"><i class="fa fa-check"></i><b>12.3</b> Rank</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="determinants.html"><a href="determinants.html"><i class="fa fa-check"></i><b>13</b> Determinants</a><ul>
-<li class="chapter" data-level="13.1" data-path="determinants.html"><a href="determinants.html#determinants-of-2-times-2-matrices"><i class="fa fa-check"></i><b>13.1</b> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
-<li class="chapter" data-level="13.2" data-path="determinants.html"><a href="determinants.html#determinants-of-n-times-n-matrices"><i class="fa fa-check"></i><b>13.2</b> Determinants of <span class="math inline">\(n \times n\)</span> matrices</a></li>
-<li class="chapter" data-level="13.3" data-path="determinants.html"><a href="determinants.html#properties-of-determinants"><i class="fa fa-check"></i><b>13.3</b> Properties of determinants</a></li>
-<li class="chapter" data-level="13.4" data-path="determinants.html"><a href="determinants.html#cramers-rule-and-determinants"><i class="fa fa-check"></i><b>13.4</b> Cramer’s Rule and Determinants</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="determinants-and-volumes.html"><a href="determinants-and-volumes.html"><i class="fa fa-check"></i><b>14</b> Determinants and volumes</a><ul>
-<li class="chapter" data-level="14.1" data-path="determinants-and-volumes.html"><a href="determinants-and-volumes.html#volumes-of-parallelpipeds"><i class="fa fa-check"></i><b>14.1</b> Volumes of Parallelpipeds</a></li>
-<li class="chapter" data-level="14.2" data-path="determinants-and-volumes.html"><a href="determinants-and-volumes.html#volumes-of-linear-transformations"><i class="fa fa-check"></i><b>14.2</b> Volumes of Linear Transformations</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="vector-spaces-and-subspaces.html"><a href="vector-spaces-and-subspaces.html"><i class="fa fa-check"></i><b>15</b> Vector Spaces and Subspaces</a><ul>
-<li class="chapter" data-level="15.1" data-path="vector-spaces-and-subspaces.html"><a href="vector-spaces-and-subspaces.html#null-space-and-column-space"><i class="fa fa-check"></i><b>15.1</b> Null space and column space</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="vector-spaces-and-subspaces.html"><a href="vector-spaces-and-subspaces.html#null-space"><i class="fa fa-check"></i><b>15.1.1</b> Null space</a></li>
-<li class="chapter" data-level="15.1.2" data-path="vector-spaces-and-subspaces.html"><a href="vector-spaces-and-subspaces.html#column-space"><i class="fa fa-check"></i><b>15.1.2</b> Column space</a></li>
-<li class="chapter" data-level="15.1.3" data-path="vector-spaces-and-subspaces.html"><a href="vector-spaces-and-subspaces.html#understanding-the-differerneces-between-the-column-space-and-the-null-space"><i class="fa fa-check"></i><b>15.1.3</b> Understanding the differerneces between the column space and the null space</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="linearly-independent-sets-and-bases.html"><a href="linearly-independent-sets-and-bases.html"><i class="fa fa-check"></i><b>16</b> Linearly independent sets and bases</a><ul>
-<li class="chapter" data-level="16.1" data-path="linearly-independent-sets-and-bases.html"><a href="linearly-independent-sets-and-bases.html#bases-for-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>16.1</b> Bases for null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="coordinate-systems-and-dimension.html"><a href="coordinate-systems-and-dimension.html"><i class="fa fa-check"></i><b>17</b> Coordinate Systems and Dimension</a><ul>
-<li class="chapter" data-level="17.1" data-path="coordinate-systems-and-dimension.html"><a href="coordinate-systems-and-dimension.html#coordinates-in-mathcalrn"><i class="fa fa-check"></i><b>17.1</b> Coordinates in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
-<li class="chapter" data-level="17.2" data-path="coordinate-systems-and-dimension.html"><a href="coordinate-systems-and-dimension.html#dimension-of-a-vector-space"><i class="fa fa-check"></i><b>17.2</b> Dimension of a vector space</a></li>
-<li class="chapter" data-level="17.3" data-path="coordinate-systems-and-dimension.html"><a href="coordinate-systems-and-dimension.html#subspaces-of-finite-dimension"><i class="fa fa-check"></i><b>17.3</b> Subspaces of finite dimension</a></li>
-<li class="chapter" data-level="17.4" data-path="coordinate-systems-and-dimension.html"><a href="coordinate-systems-and-dimension.html#dimensions-of-nullmathbfa-and-colmathbfa"><i class="fa fa-check"></i><b>17.4</b> Dimensions of null(<span class="math inline">\(\mathbf{A}\)</span>) and col(<span class="math inline">\(\mathbf{A}\)</span>)</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="rank-1.html"><a href="rank-1.html"><i class="fa fa-check"></i><b>18</b> Rank</a><ul>
-<li class="chapter" data-level="18.1" data-path="rank-1.html"><a href="rank-1.html#rank-2"><i class="fa fa-check"></i><b>18.1</b> Rank</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="change-of-basis.html"><a href="change-of-basis.html"><i class="fa fa-check"></i><b>19</b> Change of basis</a><ul>
-<li class="chapter" data-level="19.1" data-path="change-of-basis.html"><a href="change-of-basis.html#changing-coordinates-between-different-bases"><i class="fa fa-check"></i><b>19.1</b> Changing coordinates between different bases</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html"><i class="fa fa-check"></i><b>20</b> Eigenvectors and Eigenvalues</a><ul>
-<li class="chapter" data-level="20.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#eigenspaces"><i class="fa fa-check"></i><b>20.1</b> Eigenspaces</a><ul>
-<li class="chapter" data-level="20.1.1" data-path="eigenvectors-and-eigenvalues.html"><a href="eigenvectors-and-eigenvalues.html#computing-eigenspaces"><i class="fa fa-check"></i><b>20.1.1</b> Computing Eigenspaces</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="21" data-path="the-characteristic-equation.html"><a href="the-characteristic-equation.html"><i class="fa fa-check"></i><b>21</b> The Characteristic Equation</a><ul>
-<li class="chapter" data-level="21.1" data-path="the-characteristic-equation.html"><a href="the-characteristic-equation.html#similarity"><i class="fa fa-check"></i><b>21.1</b> Similarity</a></li>
-<li class="chapter" data-level="21.2" data-path="the-characteristic-equation.html"><a href="the-characteristic-equation.html#the-geometric-interpetation-of-similar-matrices"><i class="fa fa-check"></i><b>21.2</b> The geometric interpetation of similar matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="22" data-path="diagonalization.html"><a href="diagonalization.html"><i class="fa fa-check"></i><b>22</b> Diagonalization</a></li>
-<li class="chapter" data-level="23" data-path="inner-product-length-and-orthogonality.html"><a href="inner-product-length-and-orthogonality.html"><i class="fa fa-check"></i><b>23</b> Inner product, length, and orthogonality</a><ul>
-<li class="chapter" data-level="23.1" data-path="inner-product-length-and-orthogonality.html"><a href="inner-product-length-and-orthogonality.html#distance"><i class="fa fa-check"></i><b>23.1</b> Distance</a></li>
-<li class="chapter" data-level="23.2" data-path="inner-product-length-and-orthogonality.html"><a href="inner-product-length-and-orthogonality.html#orthogonal-vectors"><i class="fa fa-check"></i><b>23.2</b> Orthogonal vectors</a></li>
-<li class="chapter" data-level="23.3" data-path="inner-product-length-and-orthogonality.html"><a href="inner-product-length-and-orthogonality.html#angles-between-vectors"><i class="fa fa-check"></i><b>23.3</b> Angles between vectors</a></li>
-<li class="chapter" data-level="23.4" data-path="inner-product-length-and-orthogonality.html"><a href="inner-product-length-and-orthogonality.html#orthogonal-sets"><i class="fa fa-check"></i><b>23.4</b> Orthogonal sets</a></li>
-<li class="chapter" data-level="23.5" data-path="inner-product-length-and-orthogonality.html"><a href="inner-product-length-and-orthogonality.html#orthogonal-projections"><i class="fa fa-check"></i><b>23.5</b> Orthogonal projections</a></li>
-</ul></li>
-<li class="chapter" data-level="24" data-path="graphs-and-limits.html"><a href="graphs-and-limits.html"><i class="fa fa-check"></i><b>24</b> Graphs and Limits</a><ul>
-<li class="chapter" data-level="24.1" data-path="graphs-and-limits.html"><a href="graphs-and-limits.html#graphs-and-level-curves"><i class="fa fa-check"></i><b>24.1</b> Graphs and level curves</a></li>
-<li class="chapter" data-level="24.2" data-path="graphs-and-limits.html"><a href="graphs-and-limits.html#limits"><i class="fa fa-check"></i><b>24.2</b> Limits</a><ul>
-<li class="chapter" data-level="24.2.1" data-path="graphs-and-limits.html"><a href="graphs-and-limits.html#boundary-points"><i class="fa fa-check"></i><b>24.2.1</b> Boundary points</a></li>
-</ul></li>
-<li class="chapter" data-level="24.3" data-path="graphs-and-limits.html"><a href="graphs-and-limits.html#continuity"><i class="fa fa-check"></i><b>24.3</b> Continuity</a></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="partial-derivatives.html"><a href="partial-derivatives.html"><i class="fa fa-check"></i><b>25</b> Partial Derivatives</a><ul>
-<li class="chapter" data-level="25.1" data-path="partial-derivatives.html"><a href="partial-derivatives.html#higher-order-partial-derivatives"><i class="fa fa-check"></i><b>25.1</b> Higher-order partial derivatives</a></li>
-</ul></li>
-<li class="chapter" data-level="26" data-path="the-chain-rule.html"><a href="the-chain-rule.html"><i class="fa fa-check"></i><b>26</b> The chain rule</a><ul>
-<li class="chapter" data-level="26.1" data-path="the-chain-rule.html"><a href="the-chain-rule.html#the-chain-rule-with-one-independent-variable"><i class="fa fa-check"></i><b>26.1</b> The chain rule with one independent variable</a></li>
-<li class="chapter" data-level="26.2" data-path="the-chain-rule.html"><a href="the-chain-rule.html#the-chain-rule-with-several-independent-variables"><i class="fa fa-check"></i><b>26.2</b> The chain rule with several independent variables</a></li>
-<li class="chapter" data-level="26.3" data-path="the-chain-rule.html"><a href="the-chain-rule.html#the-chain-rule-in-matrix-notation"><i class="fa fa-check"></i><b>26.3</b> The chain rule in matrix notation</a></li>
-</ul></li>
-<li class="chapter" data-level="27" data-path="the-gradient-and-directional-derivatives.html"><a href="the-gradient-and-directional-derivatives.html"><i class="fa fa-check"></i><b>27</b> The gradient and directional derivatives</a><ul>
-<li class="chapter" data-level="27.1" data-path="the-gradient-and-directional-derivatives.html"><a href="the-gradient-and-directional-derivatives.html#the-gradient"><i class="fa fa-check"></i><b>27.1</b> The Gradient</a><ul>
-<li class="chapter" data-level="27.1.1" data-path="the-gradient-and-directional-derivatives.html"><a href="the-gradient-and-directional-derivatives.html#the-gradient-and-the-tangent-line"><i class="fa fa-check"></i><b>27.1.1</b> The gradient and the tangent line</a></li>
-<li class="chapter" data-level="27.1.2" data-path="the-gradient-and-directional-derivatives.html"><a href="the-gradient-and-directional-derivatives.html#the-gradient-in-higher-dimensions"><i class="fa fa-check"></i><b>27.1.2</b> The gradient in higher dimensions</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="28" data-path="tangent-planes-and-linear-approximations.html"><a href="tangent-planes-and-linear-approximations.html"><i class="fa fa-check"></i><b>28</b> Tangent planes and linear approximations</a></li>
-<li class="chapter" data-level="29" data-path="minimums-and-maximums.html"><a href="minimums-and-maximums.html"><i class="fa fa-check"></i><b>29</b> Minimums and Maximums</a><ul>
-<li class="chapter" data-level="29.1" data-path="minimums-and-maximums.html"><a href="minimums-and-maximums.html#local-minimums"><i class="fa fa-check"></i><b>29.1</b> Local minimums</a></li>
-<li class="chapter" data-level="29.2" data-path="minimums-and-maximums.html"><a href="minimums-and-maximums.html#global-maximums-and-minimums"><i class="fa fa-check"></i><b>29.2</b> Global maximums and minimums</a></li>
-<li class="chapter" data-level="29.3" data-path="minimums-and-maximums.html"><a href="minimums-and-maximums.html#grid-search-optimization"><i class="fa fa-check"></i><b>29.3</b> Grid search optimization</a></li>
-<li class="chapter" data-level="29.4" data-path="minimums-and-maximums.html"><a href="minimums-and-maximums.html#gradient-descent"><i class="fa fa-check"></i><b>29.4</b> Gradient Descent</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Multivariable Mathematics for Data Science</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
     </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Multivariable Mathematics for Data Science</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariable Mathematics for Data Science</h1>
-<p class="author"><em>John Tipton</em></p>
-<p class="date"><em><div class="line-block">Created 1 January 2020<br />
-Last updated 03 August, 2022</div></em></p>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Multivariable Mathematics for Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
 </div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-matrix-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-matrix-inverses.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-matrix-factorizations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-subspaces-of-Rn.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-dimension-and-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-determinants.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-determinants-and-volumes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-vector-spaces-and-subspaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vector Spaces and Subspaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-linearly-independent-sets-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linearly independent sets and bases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-coordinate-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Coordinate Systems and Dimension</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-change-of-basis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Change of basis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-eigenvectors-and-eigenvalues.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Eigenvectors and Eigenvalues</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-characteristic-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The Characteristic Equation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Diagonalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-orthogonal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-limits.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-partial-derivatives.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-chain-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-gradient.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">The gradient and directional derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-tangents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Tangent planes and linear approximations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-max-min.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Minimums and Maximums</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface"> <span class="header-section-number">1</span> Preface</a>
+  <ul class="collapse">
+  <li><a href="#getting-started-in-r" id="toc-getting-started-in-r" class="nav-link" data-scroll-target="#getting-started-in-r"> <span class="header-section-number">1.1</span> Getting started in <code>R</code></a></li>
+  <li><a href="#some-videos-that-explain-useful-concepts-of-linear-algebra" id="toc-some-videos-that-explain-useful-concepts-of-linear-algebra" class="nav-link" data-scroll-target="#some-videos-that-explain-useful-concepts-of-linear-algebra"> <span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</a></li>
+  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation"> <span class="header-section-number">1.3</span> Notation</a>
+  <ul class="collapse">
+  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"> <span class="header-section-number">1.3.1</span> Matrices</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Multivariable Mathematics for Data Science</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Tipton </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 13, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<!-- ---  -->
+<!-- title: "Multivariable Mathematics for Data Science" -->
+<!-- author: "John Tipton" -->
+<!-- date: | -->
+<!--   | Created 1 January 2020 -->
+<!--   | Last updated 12 August, 2022 -->
+<!-- documentclass: book -->
+<!-- link-citations: yes -->
+<!-- bibliography: -->
+<!-- - book.bib -->
+<!-- - packages.bib -->
+<!-- site: bookdown::bookdown_site -->
+<!-- biblio-style: apalike -->
+<!-- description: This is a text for Multivariable Mathematics for Data Science.  -->
+<!--   This text is used at the University of Arkansas for the course DASC 2594  -->
+<!--   that exposes students to topics in linear algebra and vector calculus that -->
+<!--   are needed for success in data science. As such, a large focus of the text -->
+<!--   is on computation for these topics. -->
+<!-- --- -->
+<section id="preface" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Preface</h1>
 <p>This book will introduce students to multivariable Calculus and linear algebra methods and techniques to be successful in data science, statistics, computer science, and other data-driven, computational disciplines.</p>
 <p>The motiviation for this text is to provide both a theoretical understanding of important multivariable methods used in data science as well as giving a hands-on experience using software. Throughout this text, we assume the reader has a solid foundation in univariate calculus (typically two semesters) as well as familiarity with a scripting language (e.g., R or python).</p>
-<div id="getting-started-in-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
+<section id="getting-started-in-r" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="getting-started-in-r"><span class="header-section-number">1.1</span> Getting started in <code>R</code></h2>
 <p>TBD</p>
-</div>
-<div id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="section level2">
-<h2><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
+</section>
+<section id="some-videos-that-explain-useful-concepts-of-linear-algebra" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="some-videos-that-explain-useful-concepts-of-linear-algebra"><span class="header-section-number">1.2</span> Some videos that explain useful concepts of linear algebra</h2>
 <ul>
 <li><p><a href="https://www.3blue1brown.com/lessons/eola-preview">3 Blue 1 Brown – Essence of Linear Algebra</a></p></li>
 <li><p><a href="https://www.3blue1brown.com/lessons/vectors">3 Blue 1 Brown – Vectors</a></p></li>
 </ul>
-</div>
-<div id="notation" class="section level2">
-<h2><span class="header-section-number">1.3</span> Notation</h2>
+</section>
+<section id="notation" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="notation"><span class="header-section-number">1.3</span> Notation</h2>
 <p>For notation, we let lowercase Roman letters represent scalar numbers (e.g., n = 5, d = 7), lowercase bold letters represent vectors</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -386,40 +422,66 @@ Last updated 03 August, 2022</div></em></p>
 <p>We can also write the vector as</p>
 <p><span class="math display">\[
 \begin{aligned}
-\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)&#39;,
+\textbf{x} = \left(  x_1, x_2, \ldots, x_n \right)',
 \end{aligned}
 \]</span></p>
-<p>where the <span class="math inline">\(&#39;\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}&#39; = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}&#39;\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}&#39;\)</span> is a column vector.</p>
+<p>where the <span class="math inline">\('\)</span> symbol represents the transpose function. For our example matrix, we have <span class="math inline">\(\begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}' = \begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}\)</span> which is the original vector but arranged in a row rather than a column. Likewise, the transpose of a row vector <span class="math inline">\(\begin{pmatrix} 5 &amp; 2 &amp; 8 \end{pmatrix}' = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> is a column vector. If <span class="math inline">\(\mathbf{x}\)</span> is a column vector, we say that <span class="math inline">\(\mathbf{x}'\)</span> is a row vector and if <span class="math inline">\(\mathbf{x}\)</span> is a row vector, the <span class="math inline">\(\mathbf{x}'\)</span> is a column vector.</p>
 <p>To create a vector we can use the concatenate function <code>c()</code>. For example, the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 2 \\ 8 \end{pmatrix}\)</span> can be created as the <code>R</code> object using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>where the <code>&lt;-</code> assigns the values in the vector <code>c(5, 2, 8)</code> to the object named <code>x</code>. To print the values of <code>x</code>, we can use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5 2 8</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 2 8</code></pre>
+</div>
+</div>
 <p>which prints the elements of x. Notice that <code>R</code> prints the elements of <span class="math inline">\(\mathbf{x}\)</span> in a row; however, <span class="math inline">\(\mathbf{x}\)</span> is a column vector. This inconsistency is present to allow the output to be printed in a manner easier to read (more numbers fit on a row). If we put the column vector into a <code>data.frame</code>, then the vector will be presented as a column vector</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a><span class="kw">data.frame</span>(x)</span></code></pre></div>
-<pre><code>##   x
-## 1 5
-## 2 2
-## 3 8</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x
+1 5
+2 2
+3 8</code></pre>
+</div>
+</div>
 <p>One can use the index operator <span class="math inline">\([\ ]\)</span> to select specific elements of the vector <span class="math inline">\(\mathbf{x}\)</span>. For example, the first element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_1\)</span>, is</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
 <p>and the third element of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(x_3\)</span>, is</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}&#39;\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a>tx &lt;-<span class="st"> </span><span class="kw">t</span>(x)</span>
-<span id="cb10-2"><a href="index.html#cb10-2"></a>tx</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    2    8</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p>The transpose function <code>t()</code> turns a column vector into a row vector (or a row vector into a column vector). For example the transpose <span class="math inline">\(\mathbf{x}'\)</span> of <span class="math inline">\(\mathbf{x}\)</span> is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tx <span class="ot">&lt;-</span> <span class="fu">t</span>(x)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    5    2    8</code></pre>
+</div>
+</div>
 <p>where <code>tx</code> is <code>R</code> object storing the transpose of <span class="math inline">\(\mathbf{x}\)</span> and is a row vector. The transpose of <code>tx</code>. Notice the indices on the output of the row vector <code>tx</code>. The index operator <code>[1, ]</code> selects the first row to <code>tx</code> and the index operator <code>[, 1]</code> gives the first column <code>tx</code>. Taking the transpose again gives us back the original column vector</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1"></a><span class="kw">t</span>(tx)</span></code></pre></div>
-<pre><code>##      [,1]
-## [1,]    5
-## [2,]    2
-## [3,]    8</code></pre>
-<div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Matrices</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    5
+[2,]    2
+[3,]    8</code></pre>
+</div>
+</div>
+<section id="matrices" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="matrices"><span class="header-section-number">1.3.1</span> Matrices</h3>
 <p>We let uppercase bold letters <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span>, etc., represent matrices. We define the matrix <span class="math inline">\(\mathbf{A}\)</span> with <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns as</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -442,37 +504,53 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \]</span></p>
 <p>the elements <span class="math inline">\(a_{11}\)</span> = 5, <span class="math inline">\(a_{12}\)</span> = 7, <span class="math inline">\(a_{21}\)</span> = 5, and <span class="math inline">\(a_{33}\)</span> = 99, etc.</p>
 <p>In <code>R</code>, we can define the matrix A using the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb14-2"><a href="index.html#cb14-2"></a>    <span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">-14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="dv">-22</span>, <span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
-<span id="cb14-3"><a href="index.html#cb14-3"></a>    <span class="dt">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb14-4"><a href="index.html#cb14-4"></a>    <span class="dt">ncol =</span> <span class="dv">3</span></span>
-<span id="cb14-5"><a href="index.html#cb14-5"></a>)</span>
-<span id="cb14-6"><a href="index.html#cb14-6"></a></span>
-<span id="cb14-7"><a href="index.html#cb14-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">14</span>, <span class="dv">42</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">22</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">99</span>, <span class="dv">0</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">3</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    5    7    1
+[2,]    5  -22    2
+[3,]  -14    5   99
+[4,]   42   -3    0</code></pre>
+</div>
+</div>
 <p>Notice in the above creation of <span class="math inline">\(\mathbf{A}\)</span>, we wrote defined the elements of the <span class="math inline">\(\mathbf{A}\)</span> using the columns stacked on top of one another. If we want to fill in the elements of <span class="math inline">\(\mathbf{A}\)</span> using the rows, we can add the option <code>byrow = TRUE</code> to the <code>matrix()</code> function</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
-<span id="cb16-2"><a href="index.html#cb16-2"></a>    <span class="dt">data  =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">-22</span>, <span class="dv">2</span>, <span class="dv">-14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="dv">-3</span>, <span class="dv">0</span>), </span>
-<span id="cb16-3"><a href="index.html#cb16-3"></a>    <span class="dt">nrow  =</span> <span class="dv">4</span>,</span>
-<span id="cb16-4"><a href="index.html#cb16-4"></a>    <span class="dt">ncol  =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="index.html#cb16-5"></a>    <span class="dt">byrow =</span> <span class="ot">TRUE</span></span>
-<span id="cb16-6"><a href="index.html#cb16-6"></a>)</span>
-<span id="cb16-7"><a href="index.html#cb16-7"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    5    7    1
-## [2,]    5  -22    2
-## [3,]  -14    5   99
-## [4,]   42   -3    0</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data  =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">22</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">14</span>, <span class="dv">5</span>, <span class="dv">99</span>, <span class="dv">42</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>), </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow  =</span> <span class="dv">4</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol  =</span> <span class="dv">3</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    5    7    1
+[2,]    5  -22    2
+[3,]  -14    5   99
+[4,]   42   -3    0</code></pre>
+</div>
+</div>
 <p>To select the <span class="math inline">\(ij\)</span>th elements of <span class="math inline">\(\mathbf{A}\)</span>, we use the subset operator <code>[</code> to select the element. For example, to get the element <span class="math inline">\(a_{11} = 5\)</span> in the first row and first column of <span class="math inline">\(\mathbf{A}\)</span>, we use</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
 <p>The element <span class="math inline">\(a_{3, 3} = 99\)</span> in the third row and third column can be selected using</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 99</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">3</span>, <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99</code></pre>
+</div>
+</div>
 <p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can also be represented as a set of either column vectors <span class="math inline">\(\{\mathbf{c}_j \}_{j=1}^n\)</span> or row vectors <span class="math inline">\(\{\mathbf{r}_i \}_{i=1}^m\)</span>. For example, the column vector representation is</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -485,23 +563,29 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \mathbf{c}_1 &amp; = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
 \end{pmatrix},
 &amp; \mathbf{c}_2 &amp; = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
-\end{pmatrix}, 
+\end{pmatrix},
 &amp; \cdots, &amp;
 &amp; \mathbf{c}_n &amp; = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
 \end{pmatrix}
 \end{aligned}
 \]</span></p>
 <p>In <code>R</code> you can extract the columns using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1"></a>c1 &lt;-<span class="st"> </span>A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
-<span id="cb22-2"><a href="index.html#cb22-2"></a>c2 &lt;-<span class="st"> </span>A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
-<span id="cb22-3"><a href="index.html#cb22-3"></a>c3 &lt;-<span class="st"> </span>A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> A[, <span class="dv">1</span>] <span class="co"># first column</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> A[, <span class="dv">2</span>] <span class="co"># second column</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> A[, <span class="dv">3</span>] <span class="co"># third column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>and you can give the column representation of the matrix <code>A</code> with with column bind function <code>cbind()</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1"></a><span class="kw">cbind</span>(c1, c2, c3)</span></code></pre></div>
-<pre><code>##       c1  c2 c3
-## [1,]   5   7  1
-## [2,]   5 -22  2
-## [3,] -14   5 99
-## [4,]  42  -3  0</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(c1, c2, c3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      c1  c2 c3
+[1,]   5   7  1
+[2,]   5 -22  2
+[3,] -14   5 99
+[4,]  42  -3  0</code></pre>
+</div>
+</div>
 <p>The row vector representation of <span class="math inline">\(\mathbf{A}\)</span> is</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -518,17 +602,23 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \end{aligned}
 \]</span></p>
 <p>In <code>R</code> you can extract the rows using the <code>[</code> selection operator</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1"></a>r1 &lt;-<span class="st"> </span>A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
-<span id="cb25-2"><a href="index.html#cb25-2"></a>r2 &lt;-<span class="st"> </span>A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
-<span id="cb25-3"><a href="index.html#cb25-3"></a>r3 &lt;-<span class="st"> </span>A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
-<span id="cb25-4"><a href="index.html#cb25-4"></a>r4 &lt;-<span class="st"> </span>A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> A[<span class="dv">1</span>, ] <span class="co"># first row</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> A[<span class="dv">2</span>, ] <span class="co"># second row</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>r3 <span class="ot">&lt;-</span> A[<span class="dv">3</span>, ] <span class="co"># third row</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>r4 <span class="ot">&lt;-</span> A[<span class="dv">4</span>, ] <span class="co"># fourth row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>and you can give the row representation of the matrix <code>A</code> with with row bind function <code>rbind()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1"></a><span class="kw">rbind</span>(r1, r2, r3, r4)</span></code></pre></div>
-<pre><code>##    [,1] [,2] [,3]
-## r1    5    7    1
-## r2    5  -22    2
-## r3  -14    5   99
-## r4   42   -3    0</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(r1, r2, r3, r4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [,1] [,2] [,3]
+r1    5    7    1
+r2    5  -22    2
+r3  -14    5   99
+r4   42   -3    0</code></pre>
+</div>
+</div>
 <!-- ## Outline -->
 <!-- **Note: This is going to be revised and reformated throughout the class** -->
 <!-- 1) Introduction to vectors and matrices and vector and matrix operations -->
@@ -557,9 +647,12 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <!-- 5) Introduce linear combinations, spans, linear independence -->
 <!-- 6) Show how the concepts in 5) determine if a solution exists (invertibility) -->
 
-</div>
-</div>
-</div>
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -590,80 +683,114 @@ $(document).ready(function() {
   })
 });
 </script>
-            </section>
-
-          </div>
-        </div>
-      </div>
-
-<a href="matrix-operations.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["multivariable-math.pdf", "multivariable-math.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
+  <div class="nav-page nav-page-next">
+      <a href="./01-matrix-operations.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-</body>
 
-</html>
+
+</body></html>

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Multivariable Mathematics for Data Science - 13&nbsp; Determinants</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-determinants-and-volumes.html" rel="next">
+<link href="./11-dimension-and-rank.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Multivariable Mathematics for Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-matrix-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-matrix-inverses.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-matrix-factorizations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-subspaces-of-Rn.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-dimension-and-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-determinants.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-determinants-and-volumes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-vector-spaces-and-subspaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vector Spaces and Subspaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-linearly-independent-sets-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linearly independent sets and bases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-coordinate-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Coordinate Systems and Dimension</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-change-of-basis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Change of basis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-eigenvectors-and-eigenvalues.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Eigenvectors and Eigenvalues</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-characteristic-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The Characteristic Equation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Diagonalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-orthogonal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-limits.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-partial-derivatives.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-chain-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-gradient.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">The gradient and directional derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-tangents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Tangent planes and linear approximations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-max-min.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Minimums and Maximums</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#determinants-of-2-times-2-matrices" id="toc-determinants-of-2-times-2-matrices" class="nav-link active" data-scroll-target="#determinants-of-2-times-2-matrices"> <span class="header-section-number">13.1</span> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</a></li>
+  <li><a href="#determinants-of-n-times-n-matrices" id="toc-determinants-of-n-times-n-matrices" class="nav-link" data-scroll-target="#determinants-of-n-times-n-matrices"> <span class="header-section-number">13.2</span> Determinants of <span class="math inline">\(n \times n\)</span> matrices</a></li>
+  <li><a href="#properties-of-determinants" id="toc-properties-of-determinants" class="nav-link" data-scroll-target="#properties-of-determinants"> <span class="header-section-number">13.3</span> Properties of determinants</a></li>
+  <li><a href="#cramers-rule-and-determinants" id="toc-cramers-rule-and-determinants" class="nav-link" data-scroll-target="#cramers-rule-and-determinants"> <span class="header-section-number">13.4</span> Cramer’s Rule and Determinants</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="determinants" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li><a href="https://www.3blue1brown.com/lessons/determinant">3 Blue 1 Brown – The determinant</a></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="def-determinant" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.1 </strong></span>The determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> is a function of a square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> whose output is a real number that satisfies the following properties based on elementary row operations</p>
+<ol type="1">
+<li><p>The determinant of the <span class="math inline">\(n \times n\)</span> identity matrix <span class="math inline">\(\mathbf{I}\)</span> is equal to 1</p></li>
+<li><p>If a scalar multiple of one row of <span class="math inline">\(\mathbf{A}\)</span> is added to another row of <span class="math inline">\(\mathbf{A}\)</span>, then the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> is unchanged.</p></li>
+<li><p>Scaling a row of <span class="math inline">\(\mathbf{A}\)</span> by a constant <span class="math inline">\(c\)</span> multiples the determinant by <span class="math inline">\(c\)</span></p></li>
+<li><p>Swapping two rows of a matrix <span class="math inline">\(\mathbf{A}\)</span> multiplies the determinant by -1</p></li>
+</ol>
+</div>
+<p>The determinant is the unique function mapping square matrices to the real number line that satisfies the above definition.</p>
+<div class="example">
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>. Find <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>.</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can calculate the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> using row operations to get to reduced row echelon form.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;&amp; \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix} &amp;&amp; \operatorname{det} = x \\
+\mbox{swap row 1 and row 2} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 5 &amp; 3  \end{pmatrix} &amp;&amp; \operatorname{det} = -x \\
+\mbox{row 2 = -5 * row 1 + row 2} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 0 &amp; 18  \end{pmatrix} &amp;&amp; \operatorname{det} = -x \\
+\mbox{row 2 } \div \mbox{ 18} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{18} \\
+\mbox{row 1 = row 1 + 3 * row 2} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{18}
+\end{aligned}
+\]</span></p>
+<p>where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(-\frac{x}{18} = 1\)</span> which implies that <span class="math inline">\(x = -18\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = -18\)</span> Let’s check our answer in R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -18</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="example">
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 0 \\ -3 &amp; 5 \end{pmatrix}\)</span>. Find <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span>.</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can calculate the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A})\)</span> using row operations to get to reduced row echelon form.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;&amp; \begin{pmatrix} 2 &amp; 0 \\ -3 &amp; 5 \end{pmatrix} &amp;&amp; \operatorname{det} = x \\
+\mbox{multiply row 1 by }\frac{1}{2} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ -3 &amp; 5  \end{pmatrix} &amp;&amp; \operatorname{det} = \frac{x}{2} \\
+\mbox{multiply row 2 by }\frac{-1}{3} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 1 &amp; -\frac{5}{3} \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{6} \\
+\mbox{row 2 = row 2 - row 1} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -\frac{5}{3}  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{6} \\
+\mbox{multiply row 2 by } - \frac{3}{5} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = \frac{x}{10}
+\end{aligned}
+\]</span></p>
+<p>where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(\frac{x}{10} = 1\)</span> which implies that <span class="math inline">\(x = 10\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = 10\)</span> Let’s check our answer in R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="determinants-of-2-times-2-matrices" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="determinants-of-2-times-2-matrices"><span class="header-section-number">13.1</span> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</h2>
+<div id="det22" class="definition">
+<p>If <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A}) = ad - bc\)</span></p>
+</div>
+<div class="cell">
+
+</div>
+<div class="example">
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 3 \\ 1 &amp; -3 \end{pmatrix}\)</span>. What is <span class="math inline">\(\det(\mathbf{A})\)</span>?</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Using Definition (@ref(def:det22)), the determinant of <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is <span class="math inline">\(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="determinants-of-n-times-n-matrices" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="determinants-of-n-times-n-matrices"><span class="header-section-number">13.2</span> Determinants of <span class="math inline">\(n \times n\)</span> matrices</h2>
+<p>To better understand determinants of <span class="math inline">\(n \times n\)</span> matrices, we need to define the two concepts of a matrix <strong>minor</strong> and <strong>cofactor</strong>.</p>
+<div id="minor-cofactor" class="definition">
+<p>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
+<ol type="a">
+<li><p>The (i, j) <strong>minor</strong> <span class="math inline">\(\mathbf{A}_{-i-j}\)</span> is the <span class="math inline">\((n-1) \times (n-1)\)</span> matrix obtained by deleting the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span> column from <span class="math inline">\(\mathbf{A}\)</span></p></li>
+<li><p>The (i, j) <strong>cofactor</strong> <span class="math inline">\(c_{ij}\)</span> is defined using the determinant of the minor where</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
+\end{aligned}
+\]</span></p>
+</div>
+<p>Note: The cofactor of a scalar <span class="math inline">\(a\)</span> (a <span class="math inline">\(1 \times 1\)</span> matrix) is defined as <span class="math inline">\(\mathbf{C}_{ij} = (-1)^{1 + 1} \det(a) = a\)</span>.</p>
+<p>Note: The leading term in the cofactor definition <span class="math inline">\(\mathbf(-1)^{i + j}\)</span> defines a checkerboard pattern shown below</p>
+<p><span class="math display">\[
+\begin{aligned}
+\begin{pmatrix}
++ &amp; - &amp; + &amp; - &amp; \cdots \\
+- &amp; + &amp; - &amp; + &amp; \cdots \\
++ &amp; - &amp; + &amp; - &amp; \cdots \\
+- &amp; + &amp; - &amp; + &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots \\
++ &amp; - &amp; + &amp; - &amp; \cdots \\
+\end{pmatrix}
+\end{aligned}
+\]</span></p>
+<div id="exm-" class="theorem example">
+<div class="cell">
+<span class="theorem-title"><strong>Example 13.1 </strong></span>
+</div>
+<p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -3 &amp; 1 \\ 4 &amp; 2 &amp; -3 \\ 7 &amp; 4 &amp; 7 \end{pmatrix}\)</span>.</p>
+<ol type="a">
+<li><p>Find the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span></p></li>
+<li><p>Find the cofactor <span class="math inline">\(c_{23}\)</span></p></li>
+</ol>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Using Definition (@ref(def:minor-cofactor)), the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the second row and third column removed.</p>
+<div class="cell">
+
+</div>
+<p>Thus, the minor <span class="math inline">\(\mathbf{A}_{-2-3} = \begin{pmatrix} 1 &amp; -3 \\ 7 &amp; 4 \end{pmatrix}\)</span>.</p>
+<p>In <code>R</code>, this can be found by first defining the matrix <code>A</code> as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>,<span class="dv">7</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">7</span>), <span class="dv">3</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>then finding the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A_minor_23 <span class="ot">&lt;-</span> A[<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The matrix cofactor <span class="math inline">\(c_{23} = (-1)^{2+3} \det \mathbf{A}_{-2-3} = (-1) * ((1)(4) - (-3) (7)) = -25\)</span></p>
+<p>In <code>R</code>, given the minor <code>A_minor_23</code>, the cofactor is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(<span class="dv">2</span><span class="sc">+</span><span class="dv">3</span>) <span class="sc">*</span> <span class="fu">det</span>(A_minor_23)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -25</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Note that in the cofactor definition of a <span class="math inline">\(n \times n\)</span> matrix it is assumed that you can calculate the determinant of the <span class="math inline">\(n-1 \times n-1\)</span> minor <span class="math inline">\(\mathbf{A}_{-i-j}\)</span>. From this we see that each of the <span class="math inline">\(n \times n\)</span> cofactors of <span class="math inline">\(\mathbf{A}\)</span> are themselves the (signed) determinants of <span class="math inline">\(n-1 \times n-1\)</span> submatrices (the matrix minors). Thus, solving for all cofactors in general requires a recursive definition where smaller and smaller submatrices are evaluated.</p>
+<div id="thm-cofactorexpansion" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 13.1 (Cofactor exapansion) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(ij\)</span>th elements <span class="math inline">\(a_{ij}\)</span>. Then</p>
+<ol type="a">
+<li>The <strong>cofactor expansion along the <span class="math inline">\(i\)</span>th row</strong> (for any fixed row <span class="math inline">\(i\)</span>) is</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = \sum_{j=1}^n a_{ij} c_{ij} = a_{i1} c_{i1} + a_{i2} c_{i2} + \cdots + a_{in} c_{in}
+\end{aligned}
+\]</span></p>
+<ol start="2" type="a">
+<li>The <strong>cofactor expansion along the <span class="math inline">\(j\)</span>th column</strong> (for any fixed column <span class="math inline">\(j\)</span>) is</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = \sum_{i=1}^n a_{ij} c_{ij} = a_{1j} c_{1j} + a_{2j} c_{2j} + \cdots + a_{nj} c_{nj}
+\end{aligned}
+\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is quite complex. For those interested, an example is available <a href="https://textbooks.math.gatech.edu/ila/determinants-cofactors.html">here</a></p>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> The above theorem states that there are actually <span class="math inline">\(2n\)</span> ways to calculate the determinant–one for each row and column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<div class="example">
+<div class="cell">
+
+</div>
+<p>Use the minor/cofactor definition to calculate the determinant of the <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 5 &amp; 0 &amp; 2 \\ 1 &amp; 3 &amp; 3 \\ 2 &amp; -4 &amp; 1 \end{pmatrix}\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using <a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a> by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(a_{ij}\)</span> is the <span class="math inline">\(ij\)</span>th element of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the cofactor expansion is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) = 5 c_{11} + 0 c_{12} + 2 c_{13}
+\end{aligned}
+\]</span></p>
+<p>This implies that we only need to find the cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span> (but not <span class="math inline">\(c_{12}\)</span> because it gets multiplied by 0). Thus, the cofactor expansion along the first row only requires finding 2 cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span>.</p>
+<div class="cell">
+
+</div>
+<p>The minor <span class="math inline">\(\mathbf{A}_{-1-1}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and first column removed and is <span class="math inline">\(\mathbf{A}_{-1-1} = \begin{pmatrix} 3 &amp; 3 \\ -4 &amp; 1 \end{pmatrix}\)</span>. The minor <span class="math inline">\(\mathbf{A}_{-1-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and third column removed and is <span class="math inline">\(\mathbf{A}_{-1-3} = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; -4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{11}\)</span> is given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+c_{11} = (-1)^{1+1}((3)(1) - (3) (-4)) = 15
+\end{aligned}
+\]</span></p>
+<p>and the cofactor <span class="math inline">\(c_{13}\)</span> is given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+c_{13} = (-1)^{1+3}((1)(-4) - (3) (2)) = -10
+\end{aligned}
+\]</span></p>
+<p>Combining these, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13} \\
+&amp; = (5) (15) + (0) (c_{12}) + (2) (-10) \\
+&amp; = 55
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example">
+<div class="cell">
+
+</div>
+<p>Use the minor/cofactor definition to calculate the determinant of the <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 2 &amp; 4 &amp; -1 \\ -3 &amp; 0 &amp; 2 \\ 2 &amp; 0 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (@ref(thm:cofactorexpansion)) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
+&amp; = 4 c_{12} + 0 c_{22} + 0 c_{32}
+\end{aligned}
+\]</span></p>
+<p>This implies that we only need to find the cofactor <span class="math inline">\(c_{12}\)</span> (but not <span class="math inline">\(c_{22}\)</span> and <span class="math inline">\(c_{32}\)</span> because these get multiplied by 0). Thus, the cofactor expansion along the second column only requires finding the single cofactor <span class="math inline">\(c_{12}\)</span>.</p>
+<div class="cell">
+
+</div>
+<p>The minor <span class="math inline">\(\mathbf{A}_{-1-2}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and second column removed and is <span class="math inline">\(\mathbf{A}_{-1-2} = \begin{pmatrix} -3 &amp; 2 \\ 2 &amp; 4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{12}\)</span> is given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
+\end{aligned}
+\]</span></p>
+<p>Thus, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
+&amp; = (4) (16) + (0) (c_{22}) + (0) (c_{32}) \\
+&amp; = 64
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example">
+<p>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> matrix that has all zero entries for the <span class="math inline">\(j\)</span>th row. Find <span class="math inline">\(\det(\mathbf{A})\)</span></p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Using the cofactor expansion theorem (<a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a>), expand the determinant along the <span class="math inline">\(j\)</span>th row. Then, because all entries of the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> are zero, this gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det(\mathbf{A}) &amp; = a_{j1} c_{j1} + a_{j2} c_{j2} + \cdots + a_{jn} c_{jn} \\
+&amp; = 0 c_{j1} + 0 c_{j2} + \cdots + 0 c_{jn} \\
+&amp; = 0
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<!-- ::: {.example} -->
+<!-- in class: determinant of a matrix where at least one row is a linear combination of the other rows -->
+<!-- ::: -->
+<!-- :::{.solution} -->
+<!-- Without loss of generality, assume that the row that is a linear combination of the other rows is the first row. Then, the determinant can be found using the cofactor expansion.  -->
+<!-- ::: -->
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 13.2 </strong></span></p>
+<p>The determinant of a matrix <span class="math inline">\(\mathbf{A}\)</span> is equal to the determinant of its transpose <span class="math inline">\(\mathbf{A}'\)</span>. In other words, <span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}')\)</span></p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Follows directly from cofactor expansion theorem. The expansion along a given row/column of <span class="math inline">\(\mathbf{A}\)</span> is equivalent to expansion along the corresponding column/row of <span class="math inline">\(\mathbf{A}'\)</span> (notice the row/column for <span class="math inline">\(\mathbf{A}\)</span> got swapped to column/row for <span class="math inline">\(\mathbf{A}'\)</span>).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="properties-of-determinants" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="properties-of-determinants"><span class="header-section-number">13.3</span> Properties of determinants</h2>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 13.3 </strong></span></p>
+<p>A <span class="math inline">\(n \times n\)</span> square matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From the invertible matrix theorem (<a href="08-matrix-inverses.html#thm-invertiblematrix">Theorem&nbsp;<span>9.5</span></a>), we know that the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible if and only if every column of <span class="math inline">\(\mathbf{A}\)</span> is a pivot column. Therefore, each column is linearly independent from the other columns. Based on the example above, if the rows were not linearly independent, the determinant would be equal to 0 (as row operations could create a row/column of all zeros). Thus, if the determinant is not 0, the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent and the matrix is invertible.</p>
+</div>
+</div>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 13.4 </strong></span>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <span class="math inline">\(n \times n\)</span> matrices, <span class="math inline">\(\mathbf{I}\)</span> is an <span class="math inline">\(n \times n\)</span> identity matrix, and <span class="math inline">\(c\)</span> is a scalar, we have</p>
+<ol type="a">
+<li><p><span class="math inline">\(\det(\mathbf{I}) = 1\)</span></p></li>
+<li><p><span class="math inline">\(\det(\mathbf{A}) = \det(\mathbf{A}')\)</span></p></li>
+<li><p><span class="math inline">\(\det(\mathbf{A}^{-1}) = 1 / \det(\mathbf{A})\)</span> if <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span> (<span class="math inline">\(\mathbf{A}\)</span> is invertible)</p></li>
+<li><p><span class="math inline">\(\det(\mathbf{A}\mathbf{B}) = \det(\mathbf{A})\det(\mathbf{B})\)</span></p></li>
+<li><p><span class="math inline">\(\det(c\mathbf{A}) = c^n \det(\mathbf{A})\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="cramers-rule-and-determinants" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="cramers-rule-and-determinants"><span class="header-section-number">13.4</span> Cramer’s Rule and Determinants</h2>
+<ul>
+<li><a href="https://www.3blue1brown.com/lessons/cramers-rule">3 Blue 1 Brown – Cramer’s rule</a></li>
+</ul>
+<p>While commonly used for theoretical results, Cramer’s rule is not commonly used in applied linear algebra. As such, we will mention Cramer’s rule but not focus on it.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 13.5 (Cramer’s Rule) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for } i = 1, 2, \ldots, n
+\end{aligned}
+\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 13.2 </strong></span>In Cramer’s rule, why do we know</p>
+<ul>
+<li><p>the solution is unique for any <span class="math inline">\(\mathbf{b}\)</span>?</p></li>
+<li><p>the determinant <span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span>?</p></li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-dimension-and-rank.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-determinants-and-volumes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

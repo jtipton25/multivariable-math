@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Multivariable Mathematics for Data Science - 8&nbsp; Linear Transformations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-matrix-inverses.html" rel="next">
+<link href="./06-linear-independence.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Multivariable Mathematics for Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-matrix-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-matrix-inverses.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-matrix-factorizations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-subspaces-of-Rn.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-dimension-and-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-determinants.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-determinants-and-volumes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-vector-spaces-and-subspaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vector Spaces and Subspaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-linearly-independent-sets-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linearly independent sets and bases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-coordinate-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Coordinate Systems and Dimension</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-change-of-basis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Change of basis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-eigenvectors-and-eigenvalues.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Eigenvectors and Eigenvalues</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-characteristic-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The Characteristic Equation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Diagonalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-orthogonal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-limits.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-partial-derivatives.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-chain-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-gradient.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">The gradient and directional derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-tangents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Tangent planes and linear approximations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-max-min.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Minimums and Maximums</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#linear-transformations" id="toc-linear-transformations" class="nav-link active" data-scroll-target="#linear-transformations"> <span class="header-section-number">8.1</span> Linear Transformations</a></li>
+  <li><a href="#types-of-matrix-transformations" id="toc-types-of-matrix-transformations" class="nav-link" data-scroll-target="#types-of-matrix-transformations"> <span class="header-section-number">8.2</span> Types of matrix transformations</a>
+  <ul class="collapse">
+  <li><a href="#contractionsexpansions" id="toc-contractionsexpansions" class="nav-link" data-scroll-target="#contractionsexpansions"> <span class="header-section-number">8.2.1</span> Contractions/Expansions</a></li>
+  <li><a href="#rotations" id="toc-rotations" class="nav-link" data-scroll-target="#rotations"> <span class="header-section-number">8.2.2</span> Rotations</a></li>
+  <li><a href="#reflections" id="toc-reflections" class="nav-link" data-scroll-target="#reflections"> <span class="header-section-number">8.2.3</span> Reflections</a></li>
+  <li><a href="#shears" id="toc-shears" class="nav-link" data-scroll-target="#shears"> <span class="header-section-number">8.2.4</span> Shears</a></li>
+  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections"> <span class="header-section-number">8.2.5</span> Projections</a></li>
+  <li><a href="#identity" id="toc-identity" class="nav-link" data-scroll-target="#identity"> <span class="header-section-number">8.2.6</span> Identity</a></li>
+  </ul></li>
+  <li><a href="#properties-of-matrix-transformations" id="toc-properties-of-matrix-transformations" class="nav-link" data-scroll-target="#properties-of-matrix-transformations"> <span class="header-section-number">8.3</span> Properties of matrix transformations</a>
+  <ul class="collapse">
+  <li><a href="#one-to-one-transformations" id="toc-one-to-one-transformations" class="nav-link" data-scroll-target="#one-to-one-transformations"> <span class="header-section-number">8.3.1</span> One-to-one transformations</a></li>
+  <li><a href="#onto-transformations" id="toc-onto-transformations" class="nav-link" data-scroll-target="#onto-transformations"> <span class="header-section-number">8.3.2</span> Onto transformations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="linear-transformations" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li><p><a href="https://www.3blue1brown.com/lessons/linear-transformations">3 Blue 1 Brown – Linear transformations</a></p></li>
+<li><p><a href="https://www.3blue1brown.com/lessons/3d-transformations">3 Blue 1 Brown – 3D transformations</a></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gifski)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>It is often useful to think of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> as a linear transformation defined by the matrix <span class="math inline">\(\mathbf{A}\)</span> applied to the vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>A linear transformation is mathematically defined as a function/mapping <span class="math inline">\(T(\cdot)\)</span> (<span class="math inline">\(T\)</span> for transformation) from a <strong>domain</strong> in <span class="math inline">\(\mathcal{R}^n\)</span> (function input) to a <strong>codomain</strong> in <span class="math inline">\(\mathcal{R}^m\)</span> (function output). In shorthand, this is written as <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> which is read a “<span class="math inline">\(T\)</span> maps inputs from the domain <span class="math inline">\(\mathcal{R}^n\)</span> to the codomain <span class="math inline">\(\mathcal{R}^m\)</span>.” For each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> (in the domain), <span class="math inline">\(T(\mathbf{x}) \in \mathcal{R}^m\)</span> is known as the image of <span class="math inline">\(\mathbf{x}\)</span>. The set of all <span class="math inline">\(T(\mathbf{x})\)</span> for all <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is known as the range of <span class="math inline">\(T(\mathbf{x})\)</span>. Note that it is possible that the range of <span class="math inline">\(T(\mathbf{x})\)</span> is not required to be the entire space <span class="math inline">\(\mathcal{R}^m\)</span> (i.e., the range of the transformation <span class="math inline">\(T\)</span> might be a subset of <span class="math inline">\(\mathcal{R}^m\)</span>)</p>
+<p><strong>Draw figure</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="./images/transformation-1.jpg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="./images/transformation-2.jpg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<p>In the case of matrix transformations (linear transformations), the function <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> is a <span class="math inline">\(n\)</span>-vector.</p>
+<ul>
+<li><strong>Question:</strong> What kind of object is <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>?
+<ul>
+<li>scalar</li>
+<li>vector</li>
+<li>matrix</li>
+<li>array</li>
+</ul></li>
+<li><strong>Question</strong> What are the dimensions of <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>?</li>
+</ul>
+<p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.1 </strong></span><span class="math display">\[
+\begin{aligned}
+\mathbf{A} = \begin{pmatrix}
+2 &amp; 4 \\
+-3 &amp; 1 \\
+-1 &amp; 6
+\end{pmatrix}
+&amp;&amp; \mathbf{u} = \begin{pmatrix}
+1 \\
+3
+\end{pmatrix}
+&amp;&amp; \mathbf{b} = \begin{pmatrix}
+-2 \\
+-11 \\
+-15
+\end{pmatrix} &amp;&amp;
+\mathbf{c} = \begin{pmatrix}
+2 \\
+-2 \\
+-1
+\end{pmatrix}
+\end{aligned}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>), <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> A[, <span class="dv">1</span>] <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> A[, <span class="dv">2</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Find the image of <span class="math inline">\(\mathbf{u}\)</span> using the matrix transformation <span class="math inline">\(T\)</span> (e.g., calculate <span class="math inline">\(T(\mathbf{u})\)</span>).</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]   14
+[2,]    0
+[3,]   17</code></pre>
+</div>
+</div>
+<p>The image of <span class="math inline">\(\mathbf{u}\)</span> under <span class="math inline">\(T\)</span> is <span class="math inline">\(T(\mathbf{u}) = \mathbf{A} \mathbf{u} = \begin{pmatrix} 14 \\ 0 \\ 17 \end{pmatrix}\)</span>.</p>
+<ol start="2" type="a">
+<li>Find a coefficient vector <span class="math inline">\(\mathbf{x} \in \mathcal{R}^2\)</span> such that <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#b</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A, b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          b
+[1,] 1 0  3
+[2,] 0 1 -2
+[3,] 0 0  0</code></pre>
+</div>
+</div>
+<p>A coefficient vector <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> is the solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> which can be found from the reduced row echelon form of the augmented matrix above giving <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}\)</span></p>
+<ol start="3" type="a">
+<li>Is there more than one <span class="math inline">\(\mathbf{x}\)</span> whose image under <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathbf{b}?\)</span> In other words, is the solution <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{b}\)</span> unique?</li>
+</ol>
+<p>Use the reduced row echelon form of the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> above which gives a unique solution as every (non augmented) column is a pivot. Thus, there is only one solution.</p>
+<ol start="4" type="a">
+<li>Determine if <span class="math inline">\(\mathbf{c}\)</span> is in the range of <span class="math inline">\(T\)</span>. In other words, does the solution <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{c}\)</span> exist?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># d</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A, c)) <span class="co"># no because this is an inconsistent system of equations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         c
+[1,] 1 0 0
+[2,] 0 1 0
+[3,] 0 0 1</code></pre>
+</div>
+</div>
+<p>The solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{c}\)</span> which can be found from the reduced row echelon form of the augmented matrix above results in no solution because the last column (the augmented column) is a pivot column. Thus, the system of equations is inconsistent and <span class="math inline">\(\mathbf{c}\)</span> cannot be written as a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span> which means that <span class="math inline">\(\mathbf{c}\)</span> is not in the range of <span class="math inline">\(T\)</span>.</p>
+</div>
+<section id="linear-transformations" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="linear-transformations"><span class="header-section-number">8.1</span> Linear Transformations</h2>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.1 </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<ol type="1">
+<li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
+<li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
+</ol>
+</div>
+<p>Note: Because a linear transformation is equivalent to a matrix transformation, the definition above is equivalent to the following matrix-vector multiplication properties</p>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^m\)</span> and <span class="math inline">\(c\)</span> is a scalar, then</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v}\)</span></li>
+<li><span class="math inline">\(\mathbf{A} (c \mathbf{u}) = (c \mathbf{A}) \mathbf{u}\)</span></li>
+</ol>
+<p>As a consequence of the previous definition, the following properties hold for scalars <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> and vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v} \in \mathcal{R}^m\)</span></p>
+<ol start="3" type="1">
+<li><span class="math inline">\(T(\mathbf{0}) = \mathbf{0}\)</span></li>
+<li><span class="math inline">\(T(c \mathbf{u} + d \mathbf{v}) = c T(\mathbf{u}) + d T(\mathbf{v})\)</span></li>
+</ol>
+<ul>
+<li><strong>Show why in class</strong></li>
+</ul>
+<p>These properties give rise to the following statement for scalars <span class="math inline">\(c_1, \ldots, c_m\)</span> and vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_m \in \mathcal{R}^n\)</span></p>
+<ol start="5" type="1">
+<li><span class="math inline">\(T(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 T(\mathbf{u}_1) + \ldots + c_m T(\mathbf{u}_m)\)</span></li>
+</ol>
+<p>The statements above for linear transformations are equivalent to the matrix statements where <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(m \times n\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^m\)</span> and <span class="math inline">\(c\)</span> is a scalar:</p>
+<ol start="3" type="1">
+<li><span class="math inline">\(\mathbf{A} \mathbf{0} = \mathbf{0}\)</span></li>
+<li><span class="math inline">\(\mathbf{A}(c \mathbf{u} + d \mathbf{v}) = c \mathbf{A} \mathbf{u} + d \mathbf{A} \mathbf{v}\)</span></li>
+</ol>
+<p>And for a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, scalars <span class="math inline">\(c_1, \ldots, c_m\)</span>, and vectors <span class="math inline">\(\mathbf{u}_1, \ldots, \mathbf{u}_m \in \mathcal{R}^n\)</span></p>
+<ol start="5" type="1">
+<li><span class="math inline">\(\mathbf{A}(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 \mathbf{A}\mathbf{u}_1 + \ldots + c_m \mathbf{A} \mathbf{u}_m\)</span></li>
+</ol>
+</section>
+<section id="types-of-matrix-transformations" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="types-of-matrix-transformations"><span class="header-section-number">8.2</span> Types of matrix transformations</h2>
+<p>The basic types of matrix transformations include</p>
+<ol type="1">
+<li>contractions/expansions</li>
+<li>rotations</li>
+<li>reflections</li>
+<li>shears</li>
+<li>projections</li>
+</ol>
+<p>For the following examples, we will consider the unit vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span> and apply different linear transformations using the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>To build the matrix transformations, we use the <code>dasc2594</code> package and build matrix transformations based on code from <a href="https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/">https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/</a>.</p>
+<section id="contractionsexpansions" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="contractionsexpansions"><span class="header-section-number">8.2.1</span> Contractions/Expansions</h3>
+<section id="horizonal-expansion" class="level4">
+<h4 class="anchored" data-anchor-id="horizonal-expansion">Horizonal Expansion</h4>
+<p>The matrix below gives a horizontal expansion when <span class="math inline">\(x &gt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+x &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 2\)</span> and generate the transformation.</li>
+</ul>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/horizontal-expansion-matrix_77af5773856e894b18a110868336ae30">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>transformation_matrix <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> x, <span class="sc">~</span> y,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">plot_transformation</span>(transformation_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/horizontal-expansion-animation_50e2262b37a9e9bf8de65970ed6b8680">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/horizontal-expansion-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/horizontal-expansion-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="horizonal-contraction" class="level4">
+<h4 class="anchored" data-anchor-id="horizonal-contraction">Horizonal Contraction</h4>
+<p>The matrix below gives a horizontal contraction when <span class="math inline">\(x &lt; 1\)</span> * Horizontal contraction when <span class="math inline">\(x &lt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+x &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 0.5\)</span></li>
+</ul>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/horizontal-contraction-matrix_044b43d505d8ec1eafea196e3f53839d">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/horizontal-contraction-animation_f46b5022d80e0187603200c667eafdc4">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/horizontal-contraction-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/horizontal-contraction-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="vertical-expansion" class="level4">
+<h4 class="anchored" data-anchor-id="vertical-expansion">Vertical Expansion</h4>
+<p>The matrix below gives a vertical expansion when <span class="math inline">\(x &gt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; x
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 2\)</span></li>
+</ul>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/vertical-expansion-matrix_0db113c0e086797279cc48e75c589b9b">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/vertical-expansion-animation_15f6c843182e273ec07c82ddaaadfe23">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/vertical-expansion-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/vertical-expansion-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="vertical-contraction" class="level4">
+<h4 class="anchored" data-anchor-id="vertical-contraction">Vertical Contraction</h4>
+<p>The matrix below gives a vertical contraction when <span class="math inline">\(x &lt; 1\)</span></p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; x
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 0.5\)</span></li>
+</ul>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/vertical-contraction-matrix_ac3df6b4a3dc9bdb64ae85f83781b401">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/vertical-contraction-animation_2294d5e772448ff12a670c978b94855f">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/vertical-contraction-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/vertical-contraction-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="rotations" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="rotations"><span class="header-section-number">8.2.2</span> Rotations</h3>
+<section id="rotation-by-90-degrees" class="level4">
+<h4 class="anchored" data-anchor-id="rotation-by-90-degrees">Rotation by 90 degrees</h4>
+<p>Rotations in 2D of an angle <span class="math inline">\(\theta \in [0, 2\pi]\)</span> take the form of</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+\cos(\theta) &amp; -\sin(\theta) \\
+\sin(\theta) &amp; \cos(\theta)
+\end{pmatrix}
+\]</span></p>
+<p>For example, a rotation of 90 degrees counter-clockwise (<span class="math inline">\(\theta = \frac{\pi}{2}\)</span>) is given by the transformation matrix</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+\cos(\frac{\pi}{2}) &amp; -\sin(\frac{\pi}{2}) \\
+\sin(\frac{\pi}{2}) &amp; \cos(\frac{\pi}{2})
+\end{pmatrix} =
+\begin{pmatrix}
+0 &amp; -1 \\
+1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/rotate-90-matrix_4f69c32fbea4d92c87497e27e7901442">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/rotate-90-animation_e5b916e00aee3235f051acc0ebbabeb3">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/rotate-90-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/rotate-90-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Another example is for a rotation of 45 degrees clockwise (<span class="math inline">\(\theta = -\frac{\pi}{4}\)</span>) is given by the transformation matrix</p>
+<p><span class="math display">\[
+= \begin{pmatrix}
+\cos(\frac{\pi}{4}) &amp; -\sin(\frac{\pi}{4}) \\
+\sin(\frac{\pi}{4}) &amp; \cos(\frac{\pi}{4})
+\end{pmatrix} =
+\begin{pmatrix}
+\frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{2}}{2} \\
+\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/rotate-45-matrix_53b389e112b3d151bb90cee3581305a9">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/rotate-45-animation_bbc10e647cbb7567fdb0b8868dc820d1">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/rotate-45-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/rotate-45-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="reflections" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="reflections"><span class="header-section-number">8.2.3</span> Reflections</h3>
+<section id="reflection-across-the-x-axis" class="level4">
+<h4 class="anchored" data-anchor-id="reflection-across-the-x-axis">Reflection across the x-axis</h4>
+<p>The matrix below gives a reflection about the x-axis</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-x-axis-matrix_7b5fd79f85db1f0fa76ae01cbb265c8e">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-x-axis-animation_ffe14ad8da4289554fffa3bddf3466f7">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-x-axis-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-x-axis-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="reflection-across-the-y-axis" class="level4">
+<h4 class="anchored" data-anchor-id="reflection-across-the-y-axis">Reflection across the y-axis</h4>
+<p>The matrix below gives a reflection about the y-axis</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+-1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-y-axis-matrix_e8f5a861f50106218218e44cec49ba45">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-y-axis-animation_8f0e5041cbc9980c48b5d37e93520d07">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-y-axis-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-y-axis-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="reflection-across-the-line-y-x" class="level4">
+<h4 class="anchored" data-anchor-id="reflection-across-the-line-y-x">Reflection across the line y = x</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li>In the example below, we set <span class="math inline">\(x = 0.5\)</span></li>
+</ul>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-line-y-equals-x-matrix_78465d544877fcee1913a904ed1764dc">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-line-y-equals-x-animation_8f1ec265a632de96dcf39eca8cc54c5a">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-line-y-equals-x-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-line-y-equals-x-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="reflection-across-the-line-y---x" class="level4">
+<h4 class="anchored" data-anchor-id="reflection-across-the-line-y---x">Reflection across the line y = - x</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+0 &amp; -1 \\
+-1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-line-y-equals-minus-x-matrix_5a404ab6c40f42bff209782bbb4a22b1">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-line-y-equals-minus-x-animation_bca7ab0db8176adcdff67c7522a4e558">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-line-y-equals-minus-x-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-line-y-equals-minus-x-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="reflection-across-the-origin-0-0" class="level4">
+<h4 class="anchored" data-anchor-id="reflection-across-the-origin-0-0">Reflection across the origin (0, 0)</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+-1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-origin-matrix_60119e94cb171e3f30d132ba4e0b8f67">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/reflection-origin-animation_aa23903f72bf39cf68ed8b95d8414793">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-origin-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/reflection-origin-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="shears" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="shears"><span class="header-section-number">8.2.4</span> Shears</h3>
+<p>A shear transformation is like stretching play-dough if it was possible to stretch all parts of the dough uniformly (rather than some sections getting stretched more than others).</p>
+<section id="horizontal-shear" class="level4">
+<h4 class="anchored" data-anchor-id="horizontal-shear">Horizontal Shear</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; x \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>For the example below, we plot a horizontal shear with <span class="math inline">\(x = 2\)</span>.</p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/horizontal-shear-matrix_fc0226d3d6b7bd95a8aea29b46f7ff45">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/horizontal-shear-animation_541be71985978f594ff4774f403dc351">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/horizontal-shear-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/horizontal-shear-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="vertical-shear" class="level4">
+<h4 class="anchored" data-anchor-id="vertical-shear">Vertical Shear</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+x &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>For the example below, we plot a horizontal shear with <span class="math inline">\(x = 2\)</span>.</p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/vertical-shear-matrix_fa2e897122eeafc6307fa9751b69c524">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/vertical-shear-animation_b53af8941002f8546ba438ea69ff9940">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/vertical-shear-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/vertical-shear-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="projections" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="projections"><span class="header-section-number">8.2.5</span> Projections</h3>
+<p>A projection is a mapping <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> from one space (<span class="math inline">\(\mathbf{R}^n\)</span>) to itself (<span class="math inline">\(\mathbf{R}^n\)</span>) such that <span class="math inline">\(T^2 = T\)</span></p>
+<section id="project-onto-the-x-axis" class="level4">
+<h4 class="anchored" data-anchor-id="project-onto-the-x-axis">Project onto the x-axis</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p>For the example below, we plot a projection onto the x-axis</p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/projection-x-matrix_1205d8ca244229f7577c22f26db34a66">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/projection-x-animation_ce394f0c4a1ccb1543c1225ad8ff7443">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/projection-x-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/projection-x-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="project-onto-the-y-axis" class="level4">
+<h4 class="anchored" data-anchor-id="project-onto-the-y-axis">Project onto the y-axis</h4>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>For the example below, we plot a projection onto the y-axis</p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/projection-y-matrix_bff33bb4a73298ad1652c28a8abc4955">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/projection-y-animation_ce3299e79c9c92c3722c09acb4c0fe67">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/projection-y-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/projection-y-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="identity" class="level3" data-number="8.2.6">
+<h3 data-number="8.2.6" class="anchored" data-anchor-id="identity"><span class="header-section-number">8.2.6</span> Identity</h3>
+<p>The identity transformation is the transformation that leaves the vector input unchanged. The identity matrix is typically written as <span class="math inline">\(\mathbf{I}\)</span></p>
+<p><span class="math display">\[
+\mathbf{I} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/identity-matrix_51f4ec59d92de2a806217778a33b73f8">
+
+</div>
+<div class="cell" data-hash="07-linear-transformations-matrix_cache/html/identity-animation_b2323d1cc4fbf2c83d3331cdec8914c3">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/identity-animation-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="07-linear-transformations-matrix_files/figure-html/identity-static-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="properties-of-matrix-transformations" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="properties-of-matrix-transformations"><span class="header-section-number">8.3</span> Properties of matrix transformations</h2>
+<section id="one-to-one-transformations" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="one-to-one-transformations"><span class="header-section-number">8.3.1</span> One-to-one transformations</h3>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.2 </strong></span></p>
+<p>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/one-to-one.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/not-one-to-one.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<!-- ```{r, echo=FALSE, engine='tikz', out.width='90%', fig.ext='png', fig.cap='One-to-one.'} -->
+<!-- \begin{tikzpicture}[thin border nodes, scale=.75] -->
+<!--   \draw[grid lines] (-3,-3) grid (3,3); -->
+<!--   \node (A) at (0,-3.6) {$\R^n$}; -->
+<!--   \node (B) at (12,-3.6) {$\R^m$}; -->
+<!--   \draw[->] (A) -- (B) node[midway,above=1pt] {$T$}; -->
+<!--   \point["$x$" left] (x) at (1,1.5); -->
+<!--   \point["$y$" left] (y) at (-1,0); -->
+<!--   \point["$z$" left] (z) at (0,-2); -->
+<!--   \begin{scope}[myxyz, xshift=12cm] -->
+<!--     \path[clip, resetxy] (-3,-3) rectangle (3,3); -->
+<!--     \def\v{(-1,2,1)} -->
+<!--     \def\w{(0,1,-1)} -->
+<!--     \node[coordinate] (X) at \v {}; -->
+<!--     \node[coordinate] (Y) at \w {}; -->
+<!--     \draw[very thin] (-2,0,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,-2,0) -- (0,0,0); -->
+<!--     \draw[very thin] (0,0,-2) -- (0,0,0); -->
+<!--     \begin{scope}[x=(X), y=(Y), transformxy, -->
+<!--         every label/.style={font=\small,fill=none,inner sep=.5pt}] -->
+<!--       \fill[seq4!10, nearly opaque] (-1,-1) rectangle (1,1); -->
+<!--       \draw[step=.5cm, seq4!30, very thin] (-1,-1) grid (1,1); -->
+<!--       \point["$T(x)$" above] (Tx) at (.5,-.5); -->
+<!--       \point["$T(y)$" above] (Ty) at (.5,.5); -->
+<!--       \point["$T(z)$" above] (Tz) at (-.5,.75); -->
+<!--       \node[coordinate, -->
+<!--           pin={[pin edge={very thin,-}, -->
+<!--             pin distance=3mm,anchor=north,text=seq4]-70:range}] -->
+<!--         at (0.1,1) {}; -->
+<!--     \end{scope} -->
+<!--     \draw[->, very thin] (0,0,0) -- (2,0,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,2,0); -->
+<!--     \draw[->, very thin] (0,0,0) -- (0,0,2); -->
+<!--     \draw[resetxy] (-3,-3) rectangle (3,3); -->
+<!--   \end{scope} -->
+<!--   \begin{scope}[arrows={|->}, shorten=.35mm, every to/.style={out=0, in=180}] -->
+<!--     \draw (x) to (Tx); -->
+<!--     \draw (y) to (Ty); -->
+<!--     \draw (z) to (Tz); -->
+<!--   \end{scope} -->
+<!--   \node[seq-blue] at (6,2.5) {one-to-one}; -->
+<!-- \end{tikzpicture} -->
+<!-- ``` -->
+<p>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is one-to-one:</p>
+<ol type="a">
+<li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> (for every vector in the image), the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has either zero or one solution</p></li>
+<li><p>Every different input into the function <span class="math inline">\(T(\cdot)\)</span> has a different output</p></li>
+<li><p>If <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span> then <span class="math inline">\(\mathbf{u} = \mathbf{v}\)</span></p></li>
+</ol>
+<p>The following statements are equivalent was of saying <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is <strong>not</strong> one-to-one:</p>
+<ol type="a">
+<li><p>There exists as least one <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has more than one solution</p></li>
+<li><p>There are at least two different inputs into the function <span class="math inline">\(T(\cdot)\)</span> that have the same output</p></li>
+<li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
+</ol>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.1 </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<ol type="1">
+<li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
+<li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
+<li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> has a unique solution or is inconsistent.</p></li>
+<li><p>The equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only a trivial solution.</p></li>
+<li><p>The columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.</p></li>
+<li><p><span class="math inline">\(\mathbf{A}\)</span> has a pivot in every column.</p></li>
+<li><p>The range of <span class="math inline">\(\mathbf{A}\)</span> has dimension <span class="math inline">\(n\)</span></p></li>
+</ol>
+</div>
+<ul>
+<li><strong>Example:</strong> is the following matrix one-to-one?</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; 1 \\
+1 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li><strong>Example:</strong> is the following matrix one-to-one?</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p><strong>Note:</strong> Matrices that are wider than they are tall are not one-to-one transformations. (This does not mean that all tall matrices are one-to-one)</p>
+</section>
+<section id="onto-transformations" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="onto-transformations"><span class="header-section-number">8.3.2</span> Onto transformations</h3>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.3 </strong></span></p>
+<p>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/onto.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/not-onto.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is onto:</p>
+<ol type="1">
+<li><p>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is equal to the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span></p></li>
+<li><p>Every vector in the codomain is the output of some input vector</p></li>
+</ol>
+<p>The following are equivalent ways of saying that <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is not onto:</p>
+<ol type="1">
+<li><p>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is smaller than the codomain of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span>.</p></li>
+<li><p>There exists a vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span> such that the equation <span class="math inline">\(T(\mathbf{x})\)</span> does not have a solution.</p></li>
+<li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
+</ol>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.2 </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<ol type="1">
+<li><p><span class="math inline">\(T\)</span> is onto</p></li>
+<li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>
+<li><p>The equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> is consistent for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>
+<li><p>The columns of <span class="math inline">\(\mathbf{A}\)</span> span <span class="math inline">\(\mathcal{R}^m\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{A}\)</span> has a pivot in every row</p></li>
+<li><p>The range of <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> has dimension <span class="math inline">\(m\)</span></p></li>
+</ol>
+</div>
+<ul>
+<li><p><strong>Example:</strong></p></li>
+<li><p><strong>Example:</strong> is the following matrix onto?</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li><strong>Example:</strong> is the following matrix one-to-one?</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A} = \begin{pmatrix}
+1 &amp; 0  \\
+0 &amp; 1  \\
+1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p><strong>Note:</strong> Matrices that are taller than they are wide are not onto transformations. (This does not mean that all wide matrices are onto)</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-linear-independence.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-matrix-inverses.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

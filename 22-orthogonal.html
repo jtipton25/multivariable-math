@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Multivariable Mathematics for Data Science - 23&nbsp; Inner product, length, and orthogonality</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./23-limits.html" rel="next">
+<link href="./21-Diagonalization.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Multivariable Mathematics for Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-matrix-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-matrix-inverses.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-matrix-factorizations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Matrix Factorizations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-subspaces-of-Rn.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Subspaces of <span class="math inline">\(\mathcal{R}^n\)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-dimension-and-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dimension and Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-determinants.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Determinants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-determinants-and-volumes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Determinants and volumes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-vector-spaces-and-subspaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vector Spaces and Subspaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-linearly-independent-sets-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Linearly independent sets and bases</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-coordinate-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Coordinate Systems and Dimension</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-rank.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Rank</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-change-of-basis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Change of basis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-eigenvectors-and-eigenvalues.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Eigenvectors and Eigenvalues</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-characteristic-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The Characteristic Equation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Diagonalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-orthogonal.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-limits.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-partial-derivatives.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Partial Derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-chain-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The chain rule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-gradient.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">The gradient and directional derivatives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-tangents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Tangent planes and linear approximations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-max-min.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Minimums and Maximums</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#distance" id="toc-distance" class="nav-link active" data-scroll-target="#distance"> <span class="header-section-number">23.1</span> Distance</a></li>
+  <li><a href="#orthogonal-vectors" id="toc-orthogonal-vectors" class="nav-link" data-scroll-target="#orthogonal-vectors"> <span class="header-section-number">23.2</span> Orthogonal vectors</a></li>
+  <li><a href="#angles-between-vectors" id="toc-angles-between-vectors" class="nav-link" data-scroll-target="#angles-between-vectors"> <span class="header-section-number">23.3</span> Angles between vectors</a></li>
+  <li><a href="#orthogonal-sets" id="toc-orthogonal-sets" class="nav-link" data-scroll-target="#orthogonal-sets"> <span class="header-section-number">23.4</span> Orthogonal sets</a></li>
+  <li><a href="#orthogonal-projections" id="toc-orthogonal-projections" class="nav-link" data-scroll-target="#orthogonal-projections"> <span class="header-section-number">23.5</span> Orthogonal projections</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Inner product, length, and orthogonality</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li><a href="https://www.3blue1brown.com/lessons/dot-products">3 Blue 1 Brown – The dot prodcut</a></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2021</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 23.1 </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the <strong>inner product</strong> of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is <span class="math inline">\(\mathbf{u}' \mathbf{v}\)</span>. The vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are <span class="math inline">\(n \times 1\)</span> matrices where <span class="math inline">\(\mathbf{u}'\)</span> is a <span class="math inline">\(1 \times n\)</span> matrix and the inner product <span class="math inline">\(\mathbf{u}' \mathbf{v}\)</span> is a scalar (<span class="math inline">\(1 \times 1\)</span> matrix). The inner product is also sometimes called the dot product and written as <span class="math inline">\(\mathbf{u} \cdot \mathbf{v}\)</span>.</p>
+<p>If the vectors</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} &amp; &amp; \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}
+\end{aligned}
+\]</span></p>
+<p>then <span class="math inline">\(\mathbf{u}' \mathbf{v} = u_1 v_1 + u_2 v_2 + \cdots u_n v_n\)</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 23.1 </strong></span>Find the inner product <span class="math inline">\(\mathbf{u}'\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{v}'\mathbf{u}\)</span> of</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{u} = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix} &amp; &amp; \mathbf{v} = \begin{pmatrix} 4 \\ -2 \\ 3 \end{pmatrix}
+\end{aligned}
+\]</span></p>
+<ul>
+<li>do by hand</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># u'v</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(u<span class="sc">*</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(u) <span class="sc">%*%</span> v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]   17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># v'u</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v<span class="sc">*</span>u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(v) <span class="sc">%*%</span> u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]   17</code></pre>
+</div>
+</div>
+</div>
+<p>The properties of inner products are defined with the following theorem.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 23.1 </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{w}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(c\)</span> be a scalar. Then</p>
+<ol type="a">
+<li><p><span class="math inline">\(\mathbf{u}'\mathbf{v} = \mathbf{v}'\mathbf{u}\)</span></p></li>
+<li><p><span class="math inline">\((\mathbf{u} + \mathbf{v})' \mathbf{w} = \mathbf{u}' \mathbf{w} + \mathbf{v}' \mathbf{w}\)</span></p></li>
+<li><p><span class="math inline">\(( c \mathbf{u} )' \mathbf{v} = c ( \mathbf{v}'\mathbf{u} )\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{u}'\mathbf{u} \geq 0\)</span> with <span class="math inline">\(\mathbf{u}'\mathbf{u} = 0\)</span> only when <span class="math inline">\(\mathbf{u} = \mathbf{0}\)</span></p></li>
+</ol>
+</div>
+<p>Based on the theorem above, the inner product of a vector with itself (<span class="math inline">\(\mathbf{u}'\mathbf{u}\)</span>) is strictly non-negative. Thus, we can define the length of the vector <span class="math inline">\(\mathbf{u}\)</span> (also called the <strong>norm</strong> of the vector <span class="math inline">\(\mathbf{u}\)</span>).</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 23.2 </strong></span>The length of a vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span>, also called the vector <strong>norm</strong> <span class="math inline">\(\| \mathbf{v} \|\)</span> is defined as</p>
+<p><span class="math display">\[
+\begin{aligned}
+\| \mathbf{v} \| &amp; = \sqrt{\mathbf{v}'\mathbf{v}} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+\end{aligned}
+\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 23.2 </strong></span></p>
+<p>Let <span class="math inline">\(\mathbf{v} = \begin{pmatrix} a \\ b \end{pmatrix} \in \mathcal{R}^2\)</span>. Show that the definition of the norm satisfies the Pythagorean theorem.</p>
+</div>
+<p>Another property of the norm is how the norm changes based on scalar multiplication. Let <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span> be a vector and let <span class="math inline">\(c\)</span> be a scalar. Then <span class="math inline">\(\|c \mathbf{v}\| = |c|\|\mathbf{v}\|\)</span></p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 23.3 </strong></span></p>
+<p>A vector <span class="math inline">\(\mathbf{v} \in \mathcal{R}^n\)</span> whose length/norm is 1 is called a <strong>unit</strong> vector. Any vector can be made into a unit vector through <strong>normalization</strong> by multiplying the vector <span class="math inline">\(\mathbf{v}\)</span> by <span class="math inline">\(\frac{1}{\|\mathbf{v}\|}\)</span> to get a unit vector <span class="math inline">\(\mathbf{u} = \frac{\mathbf{v}}{\|\mathbf{v}\|}\)</span> in the same direction as <span class="math inline">\(\mathbf{v}\)</span>.</p>
+</div>
+<section id="distance" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="distance"><span class="header-section-number">23.1</span> Distance</h2>
+<p>In two dimensions, the Euclidean distance between the points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> is defined as <span class="math inline">\(\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)</span>. In higher dimensions, a similar definition holds.</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 23.4 </strong></span>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the distance <span class="math inline">\(dist(\mathbf{u}, \mathbf{v})\)</span> between <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+dist(\mathbf{u}, \mathbf{v}) = \|\mathbf{u} - \mathbf{v}\|
+\end{aligned}
+\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 23.3 </strong></span>Distance between two 3-dimensional vectors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>((u<span class="sc">-</span>v)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.602325</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="orthogonal-vectors" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="orthogonal-vectors"><span class="header-section-number">23.2</span> Orthogonal vectors</h2>
+<p>The equivalent of perpendicular lines in <span class="math inline">\(\mathcal{R}^n\)</span> are known as orthogonal vectors. <!-- Geometrically, two vectors are defined as orthogonal if the distance between $\mathbf{u}$ and $\mathbf{v}$ is the same as the distance between $\mathbf{u}$ and $-\mathbf{v}$. **Draw picture -- perpendicular triangle** --> <!-- $$\begin{aligned} --> <!-- dist(\mathbf{u}, - \mathbf{v}) & =  --> <!-- \end{aligned}$$ --></p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 23.5 </strong></span>The two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> are orthogonal if</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{u}' \mathbf{v} = 0
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="angles-between-vectors" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="angles-between-vectors"><span class="header-section-number">23.3</span> Angles between vectors</h2>
+<p>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the angle between the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is defined as the angle <span class="math inline">\(\theta\)</span> in the relationship</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{u}' \mathbf{v} = \| \mathbf{u} \| \| \mathbf{v} \| cos(\theta)
+\end{aligned}
+\]</span></p>
+<p>Solving for the angle <span class="math inline">\(\theta\)</span> results in the equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta = arccos \left( \frac{\mathbf{u}' \mathbf{v}}{\| \mathbf{u} \| \| \mathbf{v} \|} \right)
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(arccos(\cdot)\)</span> is inverse cosine function, which is <code>acos()</code> in <code>R</code>.</p>
+<p><strong>see example: <code>angles-as-n-gets-large.R</code></strong></p>
+<div id="exm-" class="theorem example">
+<div class="cell">
+<span class="theorem-title"><strong>Example 23.4 </strong></span>
+</div>
+<p>Let <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 1 \\ 4 \\ 6 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} -5 \\ 2 \\ 4 \end{pmatrix}\)</span>. What is the angle between these two vectors?</p>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The angle between the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> depends on the dot product between the two vectors and the norms (lengths) of the two vectors. The inner product of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{u}'\mathbf{v} = \begin{pmatrix} 1 &amp; 4 &amp; 6 \end{pmatrix} \begin{pmatrix} -5 \\ 2 \\ 4 \end{pmatrix} = 1*-5 +4*2 + 6*4 = 27
+\end{aligned}
+\]</span></p>
+<p>where the vector <span class="math inline">\(\mathbf{u}\)</span> has length</p>
+<p><span class="math display">\[
+\|\mathbf{u}\| = \sqrt{u_1^2 + u_2^2 + u_3^2} = \sqrt{1^2 + 4^2 + 6^2} = \sqrt{53} = 7.2801099
+\]</span></p>
+<p>and the vector <span class="math inline">\(\mathbf{v}\)</span> has length</p>
+<p><span class="math display">\[
+\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + v_3^2} = \sqrt{-5^2 + 2^2 + 4^2} = \sqrt{45} = 6.7082039
+\]</span></p>
+<p>Plugging these into the equation for the angle <span class="math inline">\(\theta\)</span> gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta = arccos \left( \frac{\mathbf{u}' \mathbf{v}}{\| \mathbf{u} \| \| \mathbf{v} \|} \right) \\
+= arccos \left( \frac{27}{ 7.2801099 * 6.7082039} \right) \\
+= 0.984997
+\end{aligned}
+\]</span></p>
+<p>which gives an angle of <span class="math inline">\(\theta\)</span> = 0.984997 radians between the vector <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>. In degrees, this angle is <span class="math inline">\(\theta\)</span> = 0.984997 * <span class="math inline">\(\frac{180}{\pi}\)</span> = 56.4361716 degrees.</p>
+<p>In <code>R</code>, this angle can be found by finding the dot product of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(u <span class="sc">*</span> v) <span class="co"># dot product of u and v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+<p>as well as the lengths of these two vectors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(u<span class="sc">^</span><span class="dv">2</span>)) <span class="co"># length of u</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.28011</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="sc">^</span><span class="dv">2</span>)) <span class="co"># length of v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.708204</code></pre>
+</div>
+</div>
+<p>Combining these, the angle <span class="math inline">\(\theta\)</span> can be calculate in radians as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">acos</span>(<span class="fu">sum</span>(u <span class="sc">*</span> v) <span class="sc">/</span> (<span class="fu">sqrt</span>(<span class="fu">sum</span>(u<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(v<span class="sc">^</span><span class="dv">2</span>))))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>theta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.984997</code></pre>
+</div>
+</div>
+<p>and in degrees this is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>theta <span class="sc">*</span> <span class="dv">180</span> <span class="sc">/</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56.43617</code></pre>
+</div>
+</div>
+<!-- # cosine angle -->
+<!-- u <- c(1, 1) -->
+<!-- v <- c(-1, 2) -->
+<!-- sum(u * v) -->
+<!-- # euclidean norm -->
+<!-- norm(u, type = '2')  -->
+<!-- sqrt(sum(u^2)) -->
+<!-- norm(v, type = '2')  -->
+<!-- sqrt(sum(v^2)) -->
+<!-- theta <- acos(sum(u * v) / (norm(u, "2") * norm(v, "2"))) -->
+<!-- theta -->
+<!-- theta / (pi / 2) -->
+<!-- ``` -->
+</div>
+</div>
+</div>
+</section>
+<section id="orthogonal-sets" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="orthogonal-sets"><span class="header-section-number">23.4</span> Orthogonal sets</h2>
+<p>The set of vectors <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> in <span class="math inline">\(\mathcal{R}^n\)</span> is said to be an <strong>orthogonal set</strong> if every pair of vectors is orthogonal. In other words, for all <span class="math inline">\(i \neq j\)</span>, <span class="math inline">\(\mathbf{v}_i' \mathbf{v}_j = 0\)</span>. The set is called an <strong>orthonormal set</strong> if the set of vectors are orthogonal and for <span class="math inline">\(i = 1, \ldots, p\)</span>, each vector <span class="math inline">\(\mathbf{v}_i\)</span> in the set has length <span class="math inline">\(\| \mathbf{v}_i \| = 1\)</span>.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 23.5 </strong></span>Show the set of vectors <span class="math inline">\(\left\{ \mathbf{v}_1 = \begin{pmatrix} 3 \\ 1 \\ 1 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} -\frac{1}{2} \\ -2 \\ \frac{7}{2} \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix} \right\}\)</span> is orthogonal</p>
+<ul>
+<li>Show these are orthogonal using <code>R</code></li>
+</ul>
+</div>
+<p>If the set of vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> are an orthogonal set, then the set of vectors <span class="math inline">\(\left\{ \frac{\mathbf{v}_1}{\|\mathbf{v}_1\|}, \ldots, \frac{\mathbf{v}_p}{\|\mathbf{v}_p\|} \right\}\)</span> is an orthonormal set. Note that for each <span class="math inline">\(i\)</span>, the length of the vector <span class="math inline">\(\frac{\mathbf{v}_i} {\|\mathbf{v}_i \|} = 1\)</span></p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 23.2 </strong></span></p>
+<p>Let the set <span class="math inline">\(\mathcal{S} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal set of nonzero vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. Then, the set of vectors in <span class="math inline">\(\mathcal{S}\)</span> are linearly independent and therefore are a basis for the space spanned by <span class="math inline">\(\mathcal{S}\)</span>.</p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Assume the set of vectors <span class="math inline">\(\mathbf{v}_1, \ldots, \mathbf{v}_p\)</span> are linearly dependent. Then, there exist coefficients <span class="math inline">\(c_1, \ldots, c_p\)</span> such that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{0} &amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p
+\end{aligned}
+\]</span></p>
+<p>Then, multiplying both equations on the left by <span class="math inline">\(\mathbf{v}_1'\)</span> gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+0 = \mathbf{v}_1' \mathbf{0} &amp; = \mathbf{v}_1' (c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p) \\
+&amp; = c_1 \mathbf{v}_1' \mathbf{v}_1 + c_2  \mathbf{v}_1' \mathbf{v}_2 + \cdots + c_p  \mathbf{v}_1' \mathbf{v}_p \\
+&amp; = c_1 \mathbf{v}_1' \mathbf{v}_1 + c_2  0 + \cdots + c_p 0 \\
+&amp; = c_1 \mathbf{v}_1' \mathbf{v}_1
+\end{aligned}
+\]</span></p>
+<p>which is only equal to 0 when <span class="math inline">\(c_1\)</span> is equal to 0 because <span class="math inline">\(\mathbf{v}_1\)</span> is a nonzero vector. The above left multiplication could be repeated for each vector <span class="math inline">\(\mathbf{v}_i\)</span> which gives all <span class="math inline">\(c_i\)</span> must equal 0. As the only solution to the starting equation has all 0 coefficients, the set of vectors <span class="math inline">\(\mathcal{S}\)</span> must be linearly independent.</p>
+</div>
+</div>
+</div>
+<p>A set of orthogonal vectors is called an <strong>orthogonal basis</strong>.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 23.3 </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{W}\)</span>, the coefficients for the linear combination of basis vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> for the vector <span class="math inline">\(\mathbf{x}\)</span> are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{x} &amp; = \frac{\mathbf{x}'\mathbf{v}_1}{\mathbf{v}_1'\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}'\mathbf{v}_2}{\mathbf{v}_2'\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}'\mathbf{v}_p}{\mathbf{v}_p'\mathbf{v}_p} \mathbf{v}_p \\
+&amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \\
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}\)</span>. In other words, the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the orthogonal basis <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> are the linear projection of the vector <span class="math inline">\(\mathbf{x}\)</span> on the respective vectors <span class="math inline">\(\mathbf{v}_j\)</span>.</p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The orthogonality of the basis <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{x}'\mathbf{v}_j &amp; = \left(c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \right)' \mathbf{v}_j \\
+&amp; = c_j \mathbf{v}_j' \mathbf{v}_j
+\end{aligned}
+\]</span></p>
+<p>Because we know that <span class="math inline">\(\mathbf{v}_j'\mathbf{v}_j\)</span> is not zero (a vector can’t be orthogonal to itself), we can divide the above equality by <span class="math inline">\(\mathbf{v}_j' \mathbf{v}_j\)</span> and solve for <span class="math inline">\(c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}\)</span></p>
+</div>
+</div>
+</div>
+<p>Thus, for a vector <span class="math inline">\(\mathbf{x}\)</span> in the standard basis, the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to an orthogonal basis can be easily calculated using dot products (rather than matrix inverses) which is an easier computation.</p>
+<p>In fact, this is exactly the idea of using <strong>least squares</strong> estimation (linear regression, spline regression, etc.).</p>
+</section>
+<section id="orthogonal-projections" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="orthogonal-projections"><span class="header-section-number">23.5</span> Orthogonal projections</h2>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 23.6 </strong></span>Let <span class="math inline">\(\mathbf{x}\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span> and let <span class="math inline">\(\mathcal{W}\)</span> be a subspace of <span class="math inline">\(\mathcal{R}^n\)</span>. Then the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as the <strong>orthogonal decomposition</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{x} = \mathbf{x}_{\mathcal{W}} + \mathbf{x}_{\mathcal{W}^\perp}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{x}_{\mathcal{W}}\)</span> is the vector in <span class="math inline">\(\mathcal{W}\)</span> that is closest to <span class="math inline">\(\mathbf{x}\)</span> and is called the <strong>orthogonal projection of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}\)</span></strong> and <span class="math inline">\(\mathbf{x}_{\mathcal{W}^\perp}\)</span> is the orthogonal projection of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}^{\perp}\)</span>, the subspace <span class="math inline">\(\mathcal{W}^\perp\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> that is complementary to <span class="math inline">\(\mathcal{W}\)</span> and is called the <strong>orthogonal complement</strong>.</p>
+</div>
+<p><strong>Draw picture in class - W is a plane, orthogonal projection of a vector onto the plane</strong></p>
+<p>This leads to the projection theorem that decomposes a vector <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span> into components that are</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 23.4 </strong></span>Let <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> be an orthogonal basis of the subspace <span class="math inline">\(\mathcal{W}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span>. Then for each <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span>, the orthogonal projection of <span class="math inline">\(\mathbf{x}\)</span> onto <span class="math inline">\(\mathcal{W}\)</span> is given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{x}_{\mathcal{W}} &amp; = \frac{\mathbf{x}'\mathbf{v}_1}{\mathbf{v}_1'\mathbf{v}_1} \mathbf{v}_1 + \frac{\mathbf{x}'\mathbf{v}_2}{\mathbf{v}_2'\mathbf{v}_2} \mathbf{v}_2 + \cdots +  \frac{\mathbf{x}'\mathbf{v}_p}{\mathbf{v}_p'\mathbf{v}_p} \mathbf{v}_p \\
+&amp; = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \cdots + c_p \mathbf{v}_p \\
+\end{aligned}
+\]</span></p>
+<p>where the coefficient <span class="math inline">\(c_j\)</span> corresponding to the vector <span class="math inline">\(\mathbf{v}_j\)</span> of the linear combination of vectors <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> is given by <span class="math inline">\(c_j = \frac{\mathbf{x}'\mathbf{v}_j}{\mathbf{v}_j'\mathbf{v}_j}\)</span>. In other words, the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the orthogonal basis <span class="math inline">\(\{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}\)</span> are the linear projection of the vector <span class="math inline">\(\mathbf{x}\)</span> on the respective vectors <span class="math inline">\(\mathbf{v}_j\)</span>.</p>
+</div>
+<p>You might be wondering what use orthogonal projections are. In fact, linear regression (and most common regression models) use orthogonal projections to fit a line (or surface) of best fit. This leads to the important theorem that allows us to project a vector <span class="math inline">\(\mathbf{y} \in \mathcal{R}^n\)</span> onto the column space of a <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{X}\)</span> (which is exactly the linear regression of <span class="math inline">\(\mathbf{y}\)</span> onto <span class="math inline">\(\mathbf{X}\)</span>).</p>
+<div id="thm-orthogonalmatrixprojection" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 23.5 (Orthogonal Projection Theorem) </strong></span>Let <span class="math inline">\(\mathbf{X}\)</span> be a <span class="math inline">\(n \times p\)</span> matrix, let <span class="math inline">\(\mathcal{W} =\)</span> col(<span class="math inline">\(\mathbf{X}\)</span>), and let <span class="math inline">\(\mathbf{y}\)</span> be a vector in <span class="math inline">\(\mathcal{R}^n\)</span>. Then the matrix equation</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{X}'\mathbf{X} \boldsymbol{\beta} = \mathbf{X}' \mathbf{y}
+\end{aligned}
+\]</span></p>
+<p>with respect to the unknown coefficients <span class="math inline">\(\boldsymbol{\beta}\)</span> is consistent and <span class="math inline">\(\mathbf{y}_{\mathcal{W}} = \mathbf{X}\boldsymbol{\beta}\)</span> for any solution <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p>
+</div>
+<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Show this in class</p>
+</div>
+</div>
+</div>
+<p>In addition, if the columns of <span class="math inline">\(\mathbf{X}\)</span> are linearly independent, then the coefficients <span class="math inline">\(\boldsymbol{\beta}\)</span> are given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+\boldsymbol{\beta} = \left( \mathbf{X}'\mathbf{X} \right)^{-1} \mathbf{X}' \mathbf{y}
+\end{aligned}
+\]</span></p>
+<p>which is the least squares solution to the linear regression problem. For example, let <code>X</code> and <code>y</code> be defined as below</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plotting this data shows the strong positive linear relationship</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> X[, <span class="dv">2</span>], <span class="at">y =</span> y) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="22-orthogonal_files/figure-html/example-least-squares-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can solve for the coefficients <code>beta</code> using the linear project theorem</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X) <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and using this solution, solve for the projection <span class="math inline">\(\mathbf{y}_{\mathcal{W}}\)</span> of <span class="math inline">\(\mathbf{y}\)</span> onto <span class="math inline">\(\mathbf{X}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>y_W <span class="ot">&lt;-</span> X <span class="sc">%*%</span> beta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plotting the projection <span class="math inline">\(\mathbf{y}_{\mathcal{W}}\)</span> gives</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> X[, <span class="dv">2</span>], <span class="at">y =</span> y, <span class="at">y_W =</span> y_W) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_W))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="22-orthogonal_files/figure-html/example-least-squares-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The complement of the project (called the <strong>residuals</strong> in statistics) is given by <span class="math inline">\(\mathbf{y}_{\mathcal{W}^\perp} = \mathbf{y} - \mathbf{y}_{\mathcal{W}}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>y_W_perp <span class="ot">&lt;-</span> y <span class="sc">-</span> y_W</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and can be visualized as the orthogonal projection using segments</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first column is a basis for a constant term (the intercept)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> X[, <span class="dv">2</span>], <span class="at">y =</span> y, <span class="at">y_W =</span> y_W) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_W)) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_W, <span class="at">xend =</span> x, <span class="at">yend =</span> y_W <span class="sc">+</span> y_W_perp), <span class="at">color =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="22-orthogonal_files/figure-html/example-least-squares-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Recall that the orthogonal projection gives the “closest” vector <span class="math inline">\(\mathbf{y}_W\)</span> to <span class="math inline">\(\mathbf{y}\)</span> that is in the subspace <span class="math inline">\(\mathcal{W}\)</span> that is the span of the column space of <span class="math inline">\(\mathbf{X}\)</span>. See <a href="https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html">https://www.enchufa2.es/archives/least-squares-as-springs-the-shiny-app.html</a> for an example.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-solution");
+  $folds.wrapInner("<div class=\"fold-solution-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-solution-btn\">Show Solution</button>");  // add a button
+  $(".fold-solution-blck").toggle();  // fold all blocks
+  $(".fold-solution-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Solution" ? "Show Solution" : "Hide Solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-solution-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold-proof");
+  $folds.wrapInner("<div class=\"fold-proof-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-proof-btn\">Show Proof</button>");  // add a button
+  $(".fold-proof-blck").toggle();  // fold all blocks
+  $(".fold-proof-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide Proof" ? "Show Proof" : "Hide Proof");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-proof-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./21-Diagonalization.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Diagonalization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./23-limits.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Graphs and Limits</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
