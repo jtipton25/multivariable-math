@@ -15,7 +15,6 @@ multivariable-math_cache/
 multivariable-math_files/
 
 webshot-images/*.html
-webshot-images/*.png
 webshot-images/*_files
 
 /.quarto/
