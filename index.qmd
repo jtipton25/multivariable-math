@@ -209,12 +209,12 @@ where the notation $|$ is used to separate the vectors
 
 $$
 \begin{aligned}
-\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{12} \\ \vdots \\ a_{1m}
+\mathbf{c}_1 & = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1}
 \end{pmatrix},
-& \mathbf{c}_2 & = \begin{pmatrix} a_{21} \\ a_{22} \\ \vdots \\ a_{2m}
+& \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2}
 \end{pmatrix}, 
 & \cdots, &
-& \mathbf{c}_n & = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
+& \mathbf{c}_n & = \begin{pmatrix} a_{n1} \\ a_{n2} \\ \vdots \\ a_{nm}
 \end{pmatrix}
 \end{aligned}
 $$
