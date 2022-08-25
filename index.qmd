@@ -214,7 +214,7 @@ $$
 & \mathbf{c}_2 & = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2}
 \end{pmatrix}, 
 & \cdots, &
-& \mathbf{c}_n & = \begin{pmatrix} a_{n1} \\ a_{n2} \\ \vdots \\ a_{nm}
+& \mathbf{c}_n & = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
 \end{pmatrix}
 \end{aligned}
 $$
