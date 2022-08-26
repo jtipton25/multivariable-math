@@ -77,7 +77,7 @@ b_{21} & b_{22} & \cdots & b_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 b_{m1} & b_{m2} & \cdots & b_{mn}
 \end{pmatrix} \\
-& = \begin{pmatrix} a_{11} + b_{11} & b_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+& = \begin{pmatrix} a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
 a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
@@ -140,10 +140,10 @@ Let $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ be $m \times n$ matrices and le
 6) $(ab)\mathbf{A} = a (b\mathbf{A})$ \hfill [(scalar ...)]{style="float:right"} 
 :::
 
-### Matrix Multipliation
+### Matrix Multiplication
 
 
-**Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $m \times n$ matrix and $\mathbf{B} = \left\{ a_{jk} \right\}$ is a $n \times p$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $m \times p$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^p a_{ij} b{jk} \right\}$
+**Matrix Multiplication:** If $\mathbf{A} = \left\{ a_{ij} \right\}$ is an $m \times n$ matrix and $\mathbf{B} = \left\{ b_{jk} \right\}$ is a $n \times p$ matrix, then the matrix product $\mathbf{C} = \mathbf{A} \mathbf{B}$ is an $m \times p$ matrix where $\mathbf{C} = \left\{ \sum_{j=1}^n a_{ij} b_{jk} \right\}$
 
 
 $$
@@ -161,7 +161,7 @@ b_{n1} & b_{n2} & \cdots & b_{np}
 & = \begin{pmatrix} \sum_{j=1}^n a_{1j} b_{j1} & \sum_{j=1}^n a_{1j} b_{j2} & \cdots & \sum_{j=1}^n a_{1j} b_{jp} \\
 \sum_{j=1}^n a_{2j} b_{j1} &\sum_{j=1}^n a_{2j} b_{j2} & \cdots & \sum_{j=1}^n a_{2j} b_{jp} \\
 \vdots & \vdots & \ddots & \vdots \\
-\sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{nj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
+\sum_{j=1}^n a_{mj} b_{j1} &\sum_{j=1}^n a_{mj} b_{j2} & \cdots & \sum_{j=1}^n a_{mj} b_{jp}
 \end{pmatrix} 
 \end{aligned}
 $${#eq-matrixmultiplication}
@@ -194,10 +194,10 @@ Note that in this representation, each column of the matrix $\mathbf{A}\mathbf{B
  
 $$
 \begin{aligned}
-\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_q \\
-\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_q \\
+\mathbf{A} \mathbf{B} & = \begin{pmatrix} \mathbf{a}_1' \mathbf{b}_1 & \mathbf{a}_1' \mathbf{b}_2 & \cdots & \mathbf{a}_1' \mathbf{b}_p \\
+\mathbf{a}_2' \mathbf{b}_1 & \mathbf{a}_2' \mathbf{b}_2 & \cdots & \mathbf{a}_2' \mathbf{b}_p \\
 \vdots & \vdots & \ddots & \vdots \\
-\mathbf{a}_n' \mathbf{b}_1 & \mathbf{a}_n' \mathbf{b}_2  & \cdots & \mathbf{a}_n' \mathbf{b}_q
+\mathbf{a}_m' \mathbf{b}_1 & \mathbf{a}_m' \mathbf{b}_2  & \cdots & \mathbf{a}_m' \mathbf{b}_p
 \end{pmatrix} \\
 & = \left\{ \mathbf{a}_i' \mathbf{b}_k  \right\}.
 \end{aligned}
@@ -220,7 +220,7 @@ Let $\mathbf{A}$ be an $m \times n$ matrix, then:
 
 3) Let $\mathbf{B}$ and $\mathbf{C}$ be $p \times m$ matrices. Then $(\mathbf{B} + \mathbf{C})\mathbf{A} = \mathbf{B}\mathbf{A} + \mathbf{C}\mathbf{A}$ is an $p \times m$ matrix.
 
-4) Let $\mathbf{B}$ be an $p \times m$ matrix and $c$ a scalar. Then $c(\mathbf{A} \mathbf{B}) = (c \mathbf{A}) \mathbf{B} = \mathbf{A}(c\mathbf{B})$ is an $p \times m$ matrix.
+4) Let $\mathbf{B}$ be an $n \times p$ matrix and $c$ a scalar. Then $c(\mathbf{A} \mathbf{B}) = (c \mathbf{A}) \mathbf{B} = \mathbf{A}(c\mathbf{B})$ is an $m \times p$ matrix.
 
 5) $\mathbf{I}_m \mathbf{A} = \mathbf{A} \mathbf{I}_n = \mathbf{A}$
 
@@ -249,9 +249,9 @@ In the study of algorithms, the notation $O(n)$ is used to describe the number o
 
 Which was easier? Which required less calculation?
 
-* Matrix-matrix multiplication of and $m \times n$ matrix $\mathbf{A}$ and an $m \times p$ matrix $\mathbf{B}$ has complexity $O(m n p)$.
+* Matrix-matrix multiplication of and $m \times n$ matrix $\mathbf{A}$ and an $n \times p$ matrix $\mathbf{B}$ has complexity $O(m n p)$.
 
-* Matrix-vector multiplication of and $m \times n$ matrix $\mathbf{A}$ and an $p$-vector $\mathbf{x}$ has complexity $O(n m)$.
+* Matrix-vector multiplication of and $m \times n$ matrix $\mathbf{A}$ and an $n$-vector $\mathbf{x}$ has complexity $O(n m)$.
 
 From example above:
 
