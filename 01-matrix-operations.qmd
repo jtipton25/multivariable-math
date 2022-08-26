@@ -1,8 +1,6 @@
 # Matrix operations {#matrix-operations}
 
 ## ToDo 
-- Show matrix multiplication using dot products
-- move to chapter 1 or 2
 
 - [3 Blue 1 Brown -- Matrix Multiplication](https://www.3blue1brown.com/lessons/matrix-multiplication)
 

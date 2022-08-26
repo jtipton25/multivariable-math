@@ -18,12 +18,12 @@ book:
   chapters: 
     - index.qmd
     - 01-matrix-operations.qmd
-    - 02-block-matrices.qmd
     - 03-vector-spaces.qmd
     - 04-linear-systems-of-equations.qmd
     - 05-matrix-equations.qmd
     - 06-linear-independence.qmd
     - 07-linear-transformations-matrix.qmd
+    - 02-block-matrices.qmd
     - 08-matrix-inverses.qmd
     - 09-matrix-factorizations.qmd
     - 10-subspaces-of-Rn.qmd
