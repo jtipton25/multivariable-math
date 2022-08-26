@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.1.141">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -149,21 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <a href="./">Multivariable Mathematics for Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/jtipton25/multivariable-math/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Multivariable-Mathematics-for-Data-Science.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
+    <a href="./Multivariable-Mathematics-for-Data-Science.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -325,13 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#coordinate-systems" id="toc-coordinate-systems" class="nav-link active" data-scroll-target="#coordinate-systems"> <span class="header-section-number">12.1</span> Coordinate systems</a></li>
-  <li><a href="#dimension-of-a-subspace" id="toc-dimension-of-a-subspace" class="nav-link" data-scroll-target="#dimension-of-a-subspace"> <span class="header-section-number">12.2</span> Dimension of a subspace</a></li>
-  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank"> <span class="header-section-number">12.3</span> Rank</a></li>
+  <li><a href="#coordinate-systems" id="toc-coordinate-systems" class="nav-link active" data-scroll-target="#coordinate-systems"><span class="toc-section-number">12.1</span>  Coordinate systems</a></li>
+  <li><a href="#dimension-of-a-subspace" id="toc-dimension-of-a-subspace" class="nav-link" data-scroll-target="#dimension-of-a-subspace"><span class="toc-section-number">12.2</span>  Dimension of a subspace</a></li>
+  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank"><span class="toc-section-number">12.3</span>  Rank</a></li>
   </ul>
 </nav>
     </div>
@@ -397,8 +388,7 @@ Proof
 
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 12.1 </strong></span></p>
-<p>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix}, \mathbf{b}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{a} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{a}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?</p>
+<p><span class="theorem-title"><strong>Example 12.1 </strong></span>Let <span class="math inline">\(\mathcal{B} = \left\{ \mathbf{b}_1 = \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}, \mathbf{b}_2 = \begin{pmatrix} 2 \\ -3 \\ 1 \end{pmatrix}, \mathbf{b}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}\)</span> and <span class="math inline">\(\mathbf{a} = \begin{pmatrix} 5 \\ 6 \\ 1 \end{pmatrix}\)</span>. What are the coordinates of <span class="math inline">\(\mathbf{a}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>?</p>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -449,8 +439,7 @@ Solution
 <section id="dimension-of-a-subspace" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="dimension-of-a-subspace"><span class="header-section-number">12.2</span> Dimension of a subspace</h2>
 <div id="def-dimension" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 12.2 </strong></span></p>
-<p>The <strong>dimension</strong> <span class="math inline">\(\operatorname{dim}(\mathcal{H})\)</span> of a nonzero subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is the number of (nonzero) vectors that make up a basis <span class="math inline">\(\mathcal{B}\)</span> for <span class="math inline">\(\mathcal{H}\)</span>. The dimension of the subspace <span class="math inline">\(\mathcal{H} = \{\mathbf{0}\}\)</span> that contains only the <span class="math inline">\(\mathbf{0}\)</span> vectors is defined as 0.</p>
+<p><span class="theorem-title"><strong>Definition 12.2 </strong></span>The <strong>dimension</strong> <span class="math inline">\(\operatorname{dim}(\mathcal{H})\)</span> of a nonzero subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^n\)</span> is the number of (nonzero) vectors that make up a basis <span class="math inline">\(\mathcal{B}\)</span> for <span class="math inline">\(\mathcal{H}\)</span>. The dimension of the subspace <span class="math inline">\(\mathcal{H} = \{\mathbf{0}\}\)</span> that contains only the <span class="math inline">\(\mathbf{0}\)</span> vectors is defined as 0.</p>
 </div>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 12.2 </strong></span>Note that under this definition, the basis <span class="math inline">\(\mathcal{B}\)</span> is not unique. For example, the following bases for the 3-dimensional subspace <span class="math inline">\(\mathcal{H}\)</span> of <span class="math inline">\(\mathcal{R}^3\)</span> both have three linearly independent vectors.</p>
@@ -584,8 +573,7 @@ Solution
 <section id="rank" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="rank"><span class="header-section-number">12.3</span> Rank</h2>
 <div id="def-rank" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 12.3 </strong></span></p>
-<p>The <strong>rank</strong> of a matrix <span class="math inline">\(\mathbf{A}\)</span>, denoted as <span class="math inline">\(\operatorname{rank}(\mathbf{A})\)</span>, is the dimension of the column space of <span class="math inline">\(\mathcal{A}\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 12.3 </strong></span>The <strong>rank</strong> of a matrix <span class="math inline">\(\mathbf{A}\)</span>, denoted as <span class="math inline">\(\operatorname{rank}(\mathbf{A})\)</span>, is the dimension of the column space of <span class="math inline">\(\mathcal{A}\)</span>.</p>
 </div>
 <p>Recall that the pivot columns of <span class="math inline">\(\mathbf{A}\)</span> form a basis for the column space of <span class="math inline">\(\mathbf{A}\)</span>. Hence, the number of pivot columns in the matrix <span class="math inline">\(\mathbf{A}\)</span> is the rank of the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <div id="exm-" class="theorem example">
@@ -621,8 +609,7 @@ Solution
 </div>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 12.2 (The Rank Theorem) </strong></span></p>
-<p>If a matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n\)</span></p>
+<p><span class="theorem-title"><strong>Theorem 12.2 (The Rank Theorem) </strong></span>If a matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> columns, then <span class="math inline">\(\operatorname{rank}(\mathbf{A}) + \operatorname{dim}(\operatorname{null}(\mathbf{A})) = n\)</span></p>
 </div>
 <div class="callout-tip callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -786,6 +773,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       }
     }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
   }
   const isFileUrl = () => { 
     return window.location.protocol === 'file:';
@@ -887,7 +884,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
