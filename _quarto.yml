@@ -6,7 +6,8 @@ book:
   author: "John Tipton"
   date: today
   repo-url: https://github.com/jtipton25/multivariable-math/
-  downloads: [pdf, epub]
+  # downloads: [pdf, epub]
+  downloads: [pdf]
   search: 
     location: sidebar
     type: overlay
@@ -62,7 +63,7 @@ format:
     keep-tex: true
     pdf-engine: xelatex
     cite-method: natbib
-  epub: default
+  # epub: default
     
 comments: 
   hypothesis: true
