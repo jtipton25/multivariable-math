@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multivariable Mathematics for Data Science - 3&nbsp; Block Matrices</title>
+<title>Multivariable Mathematics for Data Science - 8&nbsp; Block Matrices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,8 +88,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03-vector-spaces.html" rel="next">
-<link href="./01-matrix-operations.html" rel="prev">
+<link href="./08-matrix-inverses.html" rel="next">
+<link href="./07-linear-transformations-matrix.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -187,32 +187,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -329,10 +329,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#block-matrix-addition" id="toc-block-matrix-addition" class="nav-link active" data-scroll-target="#block-matrix-addition"> <span class="header-section-number">3.1</span> Block Matrix Addition</a></li>
-  <li><a href="#block-matrix-multiplication" id="toc-block-matrix-multiplication" class="nav-link" data-scroll-target="#block-matrix-multiplication"> <span class="header-section-number">3.2</span> Block Matrix Multiplication</a></li>
-  <li><a href="#the-column-row-matrix-product" id="toc-the-column-row-matrix-product" class="nav-link" data-scroll-target="#the-column-row-matrix-product"> <span class="header-section-number">3.3</span> The column-row matrix product</a></li>
-  <li><a href="#special-block-matrices" id="toc-special-block-matrices" class="nav-link" data-scroll-target="#special-block-matrices"> <span class="header-section-number">3.4</span> Special Block Matrices</a></li>
+  <li><a href="#block-matrix-addition" id="toc-block-matrix-addition" class="nav-link active" data-scroll-target="#block-matrix-addition"> <span class="header-section-number">8.1</span> Block Matrix Addition</a></li>
+  <li><a href="#block-matrix-multiplication" id="toc-block-matrix-multiplication" class="nav-link" data-scroll-target="#block-matrix-multiplication"> <span class="header-section-number">8.2</span> Block Matrix Multiplication</a></li>
+  <li><a href="#the-column-row-matrix-product" id="toc-the-column-row-matrix-product" class="nav-link" data-scroll-target="#the-column-row-matrix-product"> <span class="header-section-number">8.3</span> The column-row matrix product</a></li>
+  <li><a href="#special-block-matrices" id="toc-special-block-matrices" class="nav-link" data-scroll-target="#special-block-matrices"> <span class="header-section-number">8.4</span> Special Block Matrices</a></li>
   </ul>
 </nav>
     </div>
@@ -341,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="block-matrices" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></span></h1>
+<h1 class="title"><span id="block-matrices" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></span></h1>
 </div>
 
 
@@ -438,8 +438,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 [4,]   42   -3    0</code></pre>
 </div>
 </div>
-<section id="block-matrix-addition" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="block-matrix-addition"><span class="header-section-number">3.1</span> Block Matrix Addition</h2>
+<section id="block-matrix-addition" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="block-matrix-addition"><span class="header-section-number">8.1</span> Block Matrix Addition</h2>
 <p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are both <span class="math inline">\(m \times n\)</span> block matrices with blocks in <span class="math inline">\(r\)</span> rows and <span class="math inline">\(c\)</span> columns where</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -467,11 +467,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \mathbf{A}_{r1} + \mathbf{B}_{r1} &amp; \mathbf{A}_{r2} + \mathbf{B}_{r2} &amp; \cdots &amp; \mathbf{A}_{rc} + \mathbf{B}_{rc} \\
 \end{pmatrix}
 \end{aligned}
-\tag{3.1}\]</span></span></p>
-<p>which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare <a href="#eq-blockmatrixaddition">Equation&nbsp;<span>3.1</span></a>) above to <a href="01-matrix-operations.html#eq-matrixaddition">Equation&nbsp;<span>2.1</span></a>). The one requirement is that each of the blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> and <span class="math inline">\(\mathbf{B}_{ij}\)</span> have the same dimension. When this is true, we say that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <strong>conformable for block matrix addition</strong>.</p>
+\tag{8.1}\]</span></span></p>
+<p>which is a matrix where each block is the sum of the other blocks. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix addition (compare <a href="#eq-blockmatrixaddition">Equation&nbsp;<span>8.1</span></a>) above to <a href="01-matrix-operations.html#eq-matrixaddition">Equation&nbsp;<span>2.1</span></a>). The one requirement is that each of the blocks <span class="math inline">\(\mathbf{A}_{ij}\)</span> and <span class="math inline">\(\mathbf{B}_{ij}\)</span> have the same dimension. When this is true, we say that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <strong>conformable for block matrix addition</strong>.</p>
 </section>
-<section id="block-matrix-multiplication" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="block-matrix-multiplication"><span class="header-section-number">3.2</span> Block Matrix Multiplication</h2>
+<section id="block-matrix-multiplication" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="block-matrix-multiplication"><span class="header-section-number">8.2</span> Block Matrix Multiplication</h2>
 <p>If <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are both <span class="math inline">\(m \times n\)</span> block matrices with blocks in <span class="math inline">\(r\)</span> rows and <span class="math inline">\(c\)</span> columns (same as above) where</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -499,10 +499,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j1} &amp;  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{j2} &amp; \cdots &amp;  \sum_{j = 1}^c \mathbf{A}_{rj} \mathbf{B}_{jc}
 \end{pmatrix}  
 \end{aligned}
-\tag{3.2}\]</span></span></p>
-<p>which can be said in words as “each block-element (the <span class="math inline">\(ij\)</span>th element <span class="math inline">\((\mathbf{A} \mathbf{B})_{ij}\)</span>) of the block-matrix product <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is the sum of the <span class="math inline">\(i\)</span>th block-row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th block column of <span class="math inline">\(\mathbf{B}\)</span>. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare <a href="#eq-blockmatrixmultiplication">Equation&nbsp;<span>3.3</span></a> above to <a href="01-matrix-operations.html#eq-matrixmultiplication">Equation&nbsp;<span>2.2</span></a>).</p>
+\tag{8.2}\]</span></span></p>
+<p>which can be said in words as “each block-element (the <span class="math inline">\(ij\)</span>th element <span class="math inline">\((\mathbf{A} \mathbf{B})_{ij}\)</span>) of the block-matrix product <span class="math inline">\(\mathbf{A} \mathbf{B}\)</span> is the sum of the <span class="math inline">\(i\)</span>th block-row of <span class="math inline">\(\mathbf{A}\)</span> and the <span class="math inline">\(j\)</span>th block column of <span class="math inline">\(\mathbf{B}\)</span>. Notice that if each block was a scalar rather than a block matrix, this would be the usual definition of matrix multiplication (compare <a href="#eq-blockmatrixmultiplication">Equation&nbsp;<span>8.3</span></a> above to <a href="01-matrix-operations.html#eq-matrixmultiplication">Equation&nbsp;<span>2.2</span></a>).</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 8.1 </strong></span></p>
 <p>in class</p>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -522,29 +522,29 @@ Solution
 </div>
 </div>
 </section>
-<section id="the-column-row-matrix-product" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="the-column-row-matrix-product"><span class="header-section-number">3.3</span> The column-row matrix product</h2>
+<section id="the-column-row-matrix-product" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="the-column-row-matrix-product"><span class="header-section-number">8.3</span> The column-row matrix product</h2>
 <div id="thm-blockmatrixmultiplication" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.1 </strong></span>The matrix product <span class="math inline">\(\mathbf{A}\mathbf{B}\)</span> of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span> with columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> and an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}\)</span> with rows <span class="math inline">\(\{\mathbf{b}_i'\}_{i=1}^n\)</span> can be written as the column-row expansion below:</p>
+<p><span class="theorem-title"><strong>Theorem 8.1 </strong></span>The matrix product <span class="math inline">\(\mathbf{A}\mathbf{B}\)</span> of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span> with columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> and an <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix}\)</span> with rows <span class="math inline">\(\{\mathbf{b}_i'\}_{i=1}^n\)</span> can be written as the column-row expansion below:</p>
 <p><span id="eq-blockmatrixmultiplication"><span class="math display">\[
 \begin{aligned}
 \mathbf{A} \mathbf{B} &amp; =
 \begin{pmatrix} \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix} \begin{pmatrix} \mathbf{b}_1' \\ \mathbf{b}_2' \\ \vdots \\ \mathbf{b}_n' \end{pmatrix} \\
 &amp; = \mathbf{a}_1 \mathbf{b}_1' + \mathbf{a}_2 \mathbf{b}_2' + \cdots + \mathbf{a}_n \mathbf{b}_n'
 \end{aligned}
-\tag{3.3}\]</span></span></p>
+\tag{8.3}\]</span></span></p>
 </div>
 <p><strong>Recall:</strong> The notation <span class="math inline">\(\mathbf{b}_i'\)</span> has a transpose because a vector is defined in the vertical orientation (column vector). Therefore, to formally define a row vector, we take a vertical vector of the values in the row and take its transpose to turn the column vector into a row vector.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.2 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 8.2 </strong></span></p>
 <p>in class</p>
 </div>
 </section>
-<section id="special-block-matrices" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="special-block-matrices"><span class="header-section-number">3.4</span> Special Block Matrices</h2>
+<section id="special-block-matrices" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="special-block-matrices"><span class="header-section-number">8.4</span> Special Block Matrices</h2>
 <p>There are many different forms of block matrices. Two that deserve special mention here include block diagonal matrices and block triangular matrices.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.1 </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block diagonal if</p>
+<p><span class="theorem-title"><strong>Definition 8.1 </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block diagonal if</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
@@ -558,7 +558,7 @@ Solution
 \]</span></p>
 </div>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.2 </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block (upper) triangular if</p>
+<p><span class="theorem-title"><strong>Definition 8.2 </strong></span>The matrix <span class="math inline">\(\mathbf{A}\)</span> is said to be block (upper) triangular if</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
@@ -584,7 +584,7 @@ Solution
 \]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.3 </strong></span>Assume that <span class="math inline">\(\mathbf{A}\)</span>, which has the form</p>
+<p><span class="theorem-title"><strong>Example 8.3 </strong></span>Assume that <span class="math inline">\(\mathbf{A}\)</span>, which has the form</p>
 <p><span class="math display">\[
 \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} &amp; \mathbf{A}_{12} \\ \mathbf{0} &amp; \mathbf{A}_{22} \end{pmatrix},  
 \]</span></p>
@@ -872,13 +872,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-matrix-operations.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></span>
+      <a href="./07-linear-transformations-matrix.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-vector-spaces.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08-matrix-inverses.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multivariable Mathematics for Data Science - 4&nbsp; Vectors spaces</title>
+<title>Multivariable Mathematics for Data Science - 3&nbsp; Vectors spaces</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./04-linear-systems-of-equations.html" rel="next">
-<link href="./02-block-matrices.html" rel="prev">
+<link href="./01-matrix-operations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -187,32 +187,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -329,22 +329,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#vectors" id="toc-vectors" class="nav-link active" data-scroll-target="#vectors"> <span class="header-section-number">4.1</span> Vectors</a>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link active" data-scroll-target="#vectors"> <span class="header-section-number">3.1</span> Vectors</a>
   <ul class="collapse">
-  <li><a href="#properties-of-vectors" id="toc-properties-of-vectors" class="nav-link" data-scroll-target="#properties-of-vectors"> <span class="header-section-number">4.1.1</span> Properties of Vectors</a></li>
+  <li><a href="#properties-of-vectors" id="toc-properties-of-vectors" class="nav-link" data-scroll-target="#properties-of-vectors"> <span class="header-section-number">3.1.1</span> Properties of Vectors</a></li>
   </ul></li>
-  <li><a href="#vector-addition" id="toc-vector-addition" class="nav-link" data-scroll-target="#vector-addition"> <span class="header-section-number">4.2</span> Vector addition</a>
+  <li><a href="#vector-addition" id="toc-vector-addition" class="nav-link" data-scroll-target="#vector-addition"> <span class="header-section-number">3.2</span> Vector addition</a>
   <ul class="collapse">
-  <li><a href="#the-geometric-interpretation-of-vectors-in-mathcalr2" id="toc-the-geometric-interpretation-of-vectors-in-mathcalr2" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-vectors-in-mathcalr2"> <span class="header-section-number">4.2.1</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
-  <li><a href="#scalar-multiplication-of-vectors" id="toc-scalar-multiplication-of-vectors" class="nav-link" data-scroll-target="#scalar-multiplication-of-vectors"> <span class="header-section-number">4.2.2</span> Scalar multiplication of vectors</a></li>
-  <li><a href="#the-geometric-interpretation-of-vectors-in-mathcalr3" id="toc-the-geometric-interpretation-of-vectors-in-mathcalr3" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-vectors-in-mathcalr3"> <span class="header-section-number">4.2.3</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
-  <li><a href="#the-geometric-interpretation-of-vectors-in-mathcalrn" id="toc-the-geometric-interpretation-of-vectors-in-mathcalrn" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-vectors-in-mathcalrn"> <span class="header-section-number">4.2.4</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
-  <li><a href="#linear-combinations-of-vectors" id="toc-linear-combinations-of-vectors" class="nav-link" data-scroll-target="#linear-combinations-of-vectors"> <span class="header-section-number">4.2.5</span> Linear Combinations of Vectors</a></li>
-  <li><a href="#the-geometric-interpretation-of-linear-combinations-of-vectors" id="toc-the-geometric-interpretation-of-linear-combinations-of-vectors" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-linear-combinations-of-vectors"> <span class="header-section-number">4.2.6</span> The geometric interpretation of linear combinations of vectors</a></li>
+  <li><a href="#the-geometric-interpretation-of-vectors-in-mathcalr2" id="toc-the-geometric-interpretation-of-vectors-in-mathcalr2" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-vectors-in-mathcalr2"> <span class="header-section-number">3.2.1</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></a></li>
+  <li><a href="#scalar-multiplication-of-vectors" id="toc-scalar-multiplication-of-vectors" class="nav-link" data-scroll-target="#scalar-multiplication-of-vectors"> <span class="header-section-number">3.2.2</span> Scalar multiplication of vectors</a></li>
+  <li><a href="#the-geometric-interpretation-of-vectors-in-mathcalr3" id="toc-the-geometric-interpretation-of-vectors-in-mathcalr3" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-vectors-in-mathcalr3"> <span class="header-section-number">3.2.3</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></a></li>
+  <li><a href="#the-geometric-interpretation-of-vectors-in-mathcalrn" id="toc-the-geometric-interpretation-of-vectors-in-mathcalrn" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-vectors-in-mathcalrn"> <span class="header-section-number">3.2.4</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></a></li>
+  <li><a href="#linear-combinations-of-vectors" id="toc-linear-combinations-of-vectors" class="nav-link" data-scroll-target="#linear-combinations-of-vectors"> <span class="header-section-number">3.2.5</span> Linear Combinations of Vectors</a></li>
+  <li><a href="#the-geometric-interpretation-of-linear-combinations-of-vectors" id="toc-the-geometric-interpretation-of-linear-combinations-of-vectors" class="nav-link" data-scroll-target="#the-geometric-interpretation-of-linear-combinations-of-vectors"> <span class="header-section-number">3.2.6</span> The geometric interpretation of linear combinations of vectors</a></li>
   </ul></li>
-  <li><a href="#span" id="toc-span" class="nav-link" data-scroll-target="#span"> <span class="header-section-number">4.3</span> Span</a>
+  <li><a href="#span" id="toc-span" class="nav-link" data-scroll-target="#span"> <span class="header-section-number">3.3</span> Span</a>
   <ul class="collapse">
-  <li><a href="#geometric-example-of-the-span" id="toc-geometric-example-of-the-span" class="nav-link" data-scroll-target="#geometric-example-of-the-span"> <span class="header-section-number">4.3.1</span> Geometric example of the span</a></li>
+  <li><a href="#geometric-example-of-the-span" id="toc-geometric-example-of-the-span" class="nav-link" data-scroll-target="#geometric-example-of-the-span"> <span class="header-section-number">3.3.1</span> Geometric example of the span</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -354,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="vector-spaces" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></span></h1>
+<h1 class="title"><span id="vector-spaces" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></span></h1>
 </div>
 
 
@@ -379,10 +379,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gg3D)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="vectors" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="vectors"><span class="header-section-number">4.1</span> Vectors</h2>
-<section id="properties-of-vectors" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="properties-of-vectors"><span class="header-section-number">4.1.1</span> Properties of Vectors</h3>
+<section id="vectors" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="vectors"><span class="header-section-number">3.1</span> Vectors</h2>
+<section id="properties-of-vectors" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="properties-of-vectors"><span class="header-section-number">3.1.1</span> Properties of Vectors</h3>
 <p>For any real valued scalars <span class="math inline">\(a, b \in \mathcal{R}\)</span> and any vectors <span class="math inline">\(\mathbf{x}, \mathbf{y}, \mathbf{z} \in \mathcal{R}^n\)</span> (vectors of real numbers of length <span class="math inline">\(n\)</span>),</p>
 <ol type="1">
 <li><strong>scalar multiplication</strong></li>
@@ -519,8 +519,8 @@ a \mathbf{x} + a \mathbf{y} &amp; = a (\mathbf{x} + \mathbf{y})
 </div>
 </section>
 </section>
-<section id="vector-addition" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="vector-addition"><span class="header-section-number">4.2</span> Vector addition</h2>
+<section id="vector-addition" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="vector-addition"><span class="header-section-number">3.2</span> Vector addition</h2>
 <p>Two vectors of length <span class="math inline">\(n\)</span> can be added elementwise</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -572,8 +572,8 @@ length</code></pre>
 <pre><code>[1] 2 4 4 6</code></pre>
 </div>
 </div>
-<section id="the-geometric-interpretation-of-vectors-in-mathcalr2" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="the-geometric-interpretation-of-vectors-in-mathcalr2"><span class="header-section-number">4.2.1</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></h3>
+<section id="the-geometric-interpretation-of-vectors-in-mathcalr2" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="the-geometric-interpretation-of-vectors-in-mathcalr2"><span class="header-section-number">3.2.1</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^2\)</span></h3>
 <p>Let <span class="math inline">\(\mathcal{R}^2\)</span> be a real coordinate space of <span class="math inline">\(2\)</span> dimensions. You are already familiar with the Cartesian plane that consists of ordered pairs <span class="math inline">\((x, y)\)</span>. The Cartesian plane defines the real coordinate space <span class="math inline">\(\mathbf{R}^2\)</span> of two dimensions. In <span class="math inline">\(\mathbf{R}^2\)</span>, the location of any point of interest can be defined using the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. For example, the plot below shows the location of the point (2, 3)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -656,8 +656,8 @@ length</code></pre>
 <p>Notice that the sum of these vectors defines a parallelogram where the sum <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span> is the diagonal of the shaded parallelogram. This geometric interpretation will serve as a basis for interpreting vector equations in higher dimensions where typical visualization methods fail.</p>
 </section>
 </section>
-<section id="scalar-multiplication-of-vectors" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="scalar-multiplication-of-vectors"><span class="header-section-number">4.2.2</span> Scalar multiplication of vectors</h3>
+<section id="scalar-multiplication-of-vectors" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="scalar-multiplication-of-vectors"><span class="header-section-number">3.2.2</span> Scalar multiplication of vectors</h3>
 <p>We can represent the multiplication of a vector by a scalar geometrically as well. Consider the vector <span class="math inline">\(\mathbf{u}\)</span> = (3, 2) and the scalars <span class="math inline">\(a = 2\)</span> and <span class="math inline">\(b = -1\)</span>. Then, we can plot <span class="math inline">\(\mathbf{u}\)</span>, <span class="math inline">\(a\mathbf{u}\)</span>, and <span class="math inline">\(b\mathbf{u}\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">vector =</span> <span class="fu">c</span>(<span class="st">"u"</span>, <span class="st">"a*u"</span>, <span class="st">"b*u"</span>)) <span class="sc">%&gt;%</span></span>
@@ -685,20 +685,20 @@ length</code></pre>
 </div>
 </div>
 </section>
-<section id="the-geometric-interpretation-of-vectors-in-mathcalr3" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="the-geometric-interpretation-of-vectors-in-mathcalr3"><span class="header-section-number">4.2.3</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></h3>
+<section id="the-geometric-interpretation-of-vectors-in-mathcalr3" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="the-geometric-interpretation-of-vectors-in-mathcalr3"><span class="header-section-number">3.2.3</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^3\)</span></h3>
 <p>Let the vector <span class="math inline">\(\mathbf{u} = c(-2, 3, 5)\)</span>. Then, the figure below shows the vector in 3 dimensions.</p>
 <p><strong>Draw picture by hand</strong></p>
 <div class="cell">
 
 </div>
 </section>
-<section id="the-geometric-interpretation-of-vectors-in-mathcalrn" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="the-geometric-interpretation-of-vectors-in-mathcalrn"><span class="header-section-number">4.2.4</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></h3>
+<section id="the-geometric-interpretation-of-vectors-in-mathcalrn" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="the-geometric-interpretation-of-vectors-in-mathcalrn"><span class="header-section-number">3.2.4</span> The geometric interpretation of vectors in <span class="math inline">\(\mathcal{R}^n\)</span></h3>
 <p>As the number of dimensions increases, the same interpretation can be used, but the ability to visualize higher dimensions becomes more difficult.</p>
 </section>
-<section id="linear-combinations-of-vectors" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="linear-combinations-of-vectors"><span class="header-section-number">4.2.5</span> Linear Combinations of Vectors</h3>
+<section id="linear-combinations-of-vectors" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="linear-combinations-of-vectors"><span class="header-section-number">3.2.5</span> Linear Combinations of Vectors</h3>
 <p>We say that for any two scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and any two vectors <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> of length <span class="math inline">\(n\)</span>, the sum</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -784,8 +784,8 @@ a \begin{pmatrix} 3 \\ 6\end{pmatrix} + b \begin{pmatrix} -2 \\ 1\end{pmatrix} &
 \]</span></p>
 <p>Equivalently, the set of vectors <span class="math inline">\(\{\mathbf{x}_k\}_{k=1}^K\)</span> can only be combined with linear coefficients <span class="math inline">\(\{a_k\}_{k=1}^K\)</span> to equal the vector <span class="math inline">\(\mathbf{b}\)</span> if the linear system of equations is consistent.</p>
 </section>
-<section id="the-geometric-interpretation-of-linear-combinations-of-vectors" class="level3" data-number="4.2.6">
-<h3 data-number="4.2.6" class="anchored" data-anchor-id="the-geometric-interpretation-of-linear-combinations-of-vectors"><span class="header-section-number">4.2.6</span> The geometric interpretation of linear combinations of vectors</h3>
+<section id="the-geometric-interpretation-of-linear-combinations-of-vectors" class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="the-geometric-interpretation-of-linear-combinations-of-vectors"><span class="header-section-number">3.2.6</span> The geometric interpretation of linear combinations of vectors</h3>
 <p>Consider the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} \sqrt{2} \\ - \sqrt{2} \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span> shown in the figure below on the left.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -802,18 +802,18 @@ a \begin{pmatrix} 3 \\ 6\end{pmatrix} + b \begin{pmatrix} -2 \\ 1\end{pmatrix} &
 </div>
 </section>
 </section>
-<section id="span" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="span"><span class="header-section-number">4.3</span> Span</h2>
+<section id="span" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="span"><span class="header-section-number">3.3</span> Span</h2>
 <div id="def-span" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Span) </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 3.1 (Span) </strong></span></p>
 <p>Let <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> be vectors in <span class="math inline">\(\mathcal{R}^n\)</span>. We say the vector <span class="math inline">\(\mathbf{w}\)</span> is in the span of <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> (<span class="math inline">\(\mathbf{w} \in \mbox{span}\{ \mathbf{a}_1, \ldots, \mathbf{a}_K \}\)</span>) if there exists coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> such that <span class="math inline">\(\mathbf{w} = \sum_{k=1}^K x_k \mathbf{a}_k\)</span>.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 3.1 </strong></span></p>
 <p>While not a vector notation, you already understand the span from polynomial functions. For example, assume you have the functions 1, <span class="math inline">\(x\)</span>, and <span class="math inline">\(x^2\)</span>. Then, the functions <span class="math inline">\(-4 + 3x^2\)</span> (<span class="math inline">\(a_1 = -4, a_2 = 0, a_3 = 3\)</span>) and <span class="math inline">\(-3 + 4x - 2x^2\)</span> (<span class="math inline">\(a_1 = -3, a_2 = 4, a_3 = -2\)</span>) are in the span of functions <span class="math inline">\(\{1, x, x^2\}\)</span>, but the functions <span class="math inline">\(x^3\)</span>, <span class="math inline">\(x^4 - 2x^2\)</span>, etc., are not in the span of <span class="math inline">\(\{1, x, x^2\}\)</span> because you cannot write these as a linear combination of <span class="math inline">\(a_1 1 + a_2 x + a_3 x^2\)</span>.</p>
 </div>
-<section id="geometric-example-of-the-span" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="geometric-example-of-the-span"><span class="header-section-number">4.3.1</span> Geometric example of the span</h3>
+<section id="geometric-example-of-the-span" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="geometric-example-of-the-span"><span class="header-section-number">3.3.1</span> Geometric example of the span</h3>
 <ul>
 <li><strong>Example:</strong> Consider the vector <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\)</span>. Then, the vector <span class="math inline">\(\mathbf{w} = \begin{pmatrix} 4 \\ 2 \end{pmatrix}\)</span> is in the <span class="math inline">\(\mbox{span}\{\mathbf{u}\}\)</span> because <span class="math inline">\(\mathbf{w} = 2 \mathbf{u}\)</span> but the vector <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 4 \\ -4 \end{pmatrix}\)</span> is not in the <span class="math inline">\(\mbox{span}\{\mathbf{u}\}\)</span> because there is no coefficient <span class="math inline">\(a\)</span> such that <span class="math inline">\(\mathbf{w} = a \mathbf{u}\)</span>. In this example, the vector <span class="math inline">\(\mathbf{u}\)</span> is a 2-dimensional vector (lives in <span class="math inline">\(\mathcal{R}^2\)</span>–a plane) but the <span class="math inline">\(\mbox{span}\{\mathbf{u}\}\)</span> lives in 1-dimension (a line).</li>
 </ul>
@@ -1083,13 +1083,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-block-matrices.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></span>
+      <a href="./01-matrix-operations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Matrix operations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./04-linear-systems-of-equations.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

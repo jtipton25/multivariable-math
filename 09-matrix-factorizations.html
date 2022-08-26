@@ -187,32 +187,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -401,7 +401,7 @@ a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots &amp; a_{1n} \\
 \mathbf{U} \mathbf{x} &amp; = \mathbf{y}
 \end{aligned}
 \tag{10.1}\]</span></span></p>
-<p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="05-matrix-equations.html#eq-matrixequation">Equation&nbsp;<span>6.1</span></a> for the two equations in <a href="#eq-LU">Equation&nbsp;<span>10.1</span></a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
+<p>At first glance, this seems like we are trading the challenge of solving one system of equations <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> <a href="05-matrix-equations.html#eq-matrixequation">Equation&nbsp;<span>5.1</span></a> for the two equations in <a href="#eq-LU">Equation&nbsp;<span>10.1</span></a>. However, the computational benefits arise due to the fact that <span class="math inline">\(\mathbf{L}\)</span> and <span class="math inline">\(\mathbf{U}\)</span> are triangular matrices and solving matrix equations with triangular matrices is much faster.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 10.1 </strong></span>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; 0 &amp; 2 &amp; -2 \\ -2 &amp; -2 &amp; -4 &amp; 1 \\ -1 &amp; -4 &amp; -8 &amp; 5 \\ -2 &amp; -6 &amp; -4 &amp; 4 \end{pmatrix}\)</span> which has the LU decomposition</p>
 <p><span class="math display">\[

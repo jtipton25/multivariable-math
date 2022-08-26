@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multivariable Mathematics for Data Science - 8&nbsp; Linear Transformations</title>
+<title>Multivariable Mathematics for Data Science - 7&nbsp; Linear Transformations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,7 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./08-matrix-inverses.html" rel="next">
+<link href="./02-block-matrices.html" rel="next">
 <link href="./06-linear-independence.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -187,32 +187,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -329,20 +329,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-transformations" id="toc-linear-transformations" class="nav-link active" data-scroll-target="#linear-transformations"> <span class="header-section-number">8.1</span> Linear Transformations</a></li>
-  <li><a href="#types-of-matrix-transformations" id="toc-types-of-matrix-transformations" class="nav-link" data-scroll-target="#types-of-matrix-transformations"> <span class="header-section-number">8.2</span> Types of matrix transformations</a>
+  <li><a href="#linear-transformations" id="toc-linear-transformations" class="nav-link active" data-scroll-target="#linear-transformations"> <span class="header-section-number">7.1</span> Linear Transformations</a></li>
+  <li><a href="#types-of-matrix-transformations" id="toc-types-of-matrix-transformations" class="nav-link" data-scroll-target="#types-of-matrix-transformations"> <span class="header-section-number">7.2</span> Types of matrix transformations</a>
   <ul class="collapse">
-  <li><a href="#contractionsexpansions" id="toc-contractionsexpansions" class="nav-link" data-scroll-target="#contractionsexpansions"> <span class="header-section-number">8.2.1</span> Contractions/Expansions</a></li>
-  <li><a href="#rotations" id="toc-rotations" class="nav-link" data-scroll-target="#rotations"> <span class="header-section-number">8.2.2</span> Rotations</a></li>
-  <li><a href="#reflections" id="toc-reflections" class="nav-link" data-scroll-target="#reflections"> <span class="header-section-number">8.2.3</span> Reflections</a></li>
-  <li><a href="#shears" id="toc-shears" class="nav-link" data-scroll-target="#shears"> <span class="header-section-number">8.2.4</span> Shears</a></li>
-  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections"> <span class="header-section-number">8.2.5</span> Projections</a></li>
-  <li><a href="#identity" id="toc-identity" class="nav-link" data-scroll-target="#identity"> <span class="header-section-number">8.2.6</span> Identity</a></li>
+  <li><a href="#contractionsexpansions" id="toc-contractionsexpansions" class="nav-link" data-scroll-target="#contractionsexpansions"> <span class="header-section-number">7.2.1</span> Contractions/Expansions</a></li>
+  <li><a href="#rotations" id="toc-rotations" class="nav-link" data-scroll-target="#rotations"> <span class="header-section-number">7.2.2</span> Rotations</a></li>
+  <li><a href="#reflections" id="toc-reflections" class="nav-link" data-scroll-target="#reflections"> <span class="header-section-number">7.2.3</span> Reflections</a></li>
+  <li><a href="#shears" id="toc-shears" class="nav-link" data-scroll-target="#shears"> <span class="header-section-number">7.2.4</span> Shears</a></li>
+  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections"> <span class="header-section-number">7.2.5</span> Projections</a></li>
+  <li><a href="#identity" id="toc-identity" class="nav-link" data-scroll-target="#identity"> <span class="header-section-number">7.2.6</span> Identity</a></li>
   </ul></li>
-  <li><a href="#properties-of-matrix-transformations" id="toc-properties-of-matrix-transformations" class="nav-link" data-scroll-target="#properties-of-matrix-transformations"> <span class="header-section-number">8.3</span> Properties of matrix transformations</a>
+  <li><a href="#properties-of-matrix-transformations" id="toc-properties-of-matrix-transformations" class="nav-link" data-scroll-target="#properties-of-matrix-transformations"> <span class="header-section-number">7.3</span> Properties of matrix transformations</a>
   <ul class="collapse">
-  <li><a href="#one-to-one-transformations" id="toc-one-to-one-transformations" class="nav-link" data-scroll-target="#one-to-one-transformations"> <span class="header-section-number">8.3.1</span> One-to-one transformations</a></li>
-  <li><a href="#onto-transformations" id="toc-onto-transformations" class="nav-link" data-scroll-target="#onto-transformations"> <span class="header-section-number">8.3.2</span> Onto transformations</a></li>
+  <li><a href="#one-to-one-transformations" id="toc-one-to-one-transformations" class="nav-link" data-scroll-target="#one-to-one-transformations"> <span class="header-section-number">7.3.1</span> One-to-one transformations</a></li>
+  <li><a href="#onto-transformations" id="toc-onto-transformations" class="nav-link" data-scroll-target="#onto-transformations"> <span class="header-section-number">7.3.2</span> Onto transformations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -352,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="linear-transformations" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></span></h1>
+<h1 class="title"><span id="linear-transformations" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></span></h1>
 </div>
 
 
@@ -404,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Using the matrix transformation notation, the domain of the transformation <span class="math inline">\(T\)</span> is <span class="math inline">\(\mathcal{R}^n\)</span>, the codomain of <span class="math inline">\(\mathcal{T}\)</span> <span class="math inline">\(\mathcal{R}^m\)</span>. The range of the transformation <span class="math inline">\(T\)</span> is the set of all linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> (the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>) because the transformation <span class="math inline">\(T(\mathbf{x}) = \mathbf{A} \mathbf{x}\)</span> is a linear combination <span class="math inline">\(\sum_{i=1}^n x_i \mathbf{a}_i\)</span> of the columns <span class="math inline">\(\{\mathbf{a}_i\}_{i=1}^n\)</span> of <span class="math inline">\(\mathbf{A}\)</span> with coefficients <span class="math inline">\(x_1, \ldots, x_n\)</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.1 </strong></span><span class="math display">\[
+<p><span class="theorem-title"><strong>Example 7.1 </strong></span><span class="math display">\[
 \begin{aligned}
 \mathbf{A} = \begin{pmatrix}
 2 &amp; 4 \\
@@ -480,10 +480,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>The solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{c}\)</span> which can be found from the reduced row echelon form of the augmented matrix above results in no solution because the last column (the augmented column) is a pivot column. Thus, the system of equations is inconsistent and <span class="math inline">\(\mathbf{c}\)</span> cannot be written as a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span> which means that <span class="math inline">\(\mathbf{c}\)</span> is not in the range of <span class="math inline">\(T\)</span>.</p>
 </div>
-<section id="linear-transformations" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="linear-transformations"><span class="header-section-number">8.1</span> Linear Transformations</h2>
+<section id="linear-transformations" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="linear-transformations"><span class="header-section-number">7.1</span> Linear Transformations</h2>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.1 </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
+<p><span class="theorem-title"><strong>Definition 7.1 </strong></span>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is linear if</p>
 <ol type="1">
 <li><p><span class="math inline">\(T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
 <li><p><span class="math inline">\(T(c \mathbf{u}) = c T(\mathbf{u})\)</span> for all scalars <span class="math inline">\(c\)</span> and all vectors <span class="math inline">\(\mathbf{u}\)</span> in the domain of <span class="math inline">\(T\)</span></p></li>
@@ -517,8 +517,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(\mathbf{A}(c_1 \mathbf{u}_1 + \ldots + c_m \mathbf{u}_m) = c_1 \mathbf{A}\mathbf{u}_1 + \ldots + c_m \mathbf{A} \mathbf{u}_m\)</span></li>
 </ol>
 </section>
-<section id="types-of-matrix-transformations" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="types-of-matrix-transformations"><span class="header-section-number">8.2</span> Types of matrix transformations</h2>
+<section id="types-of-matrix-transformations" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="types-of-matrix-transformations"><span class="header-section-number">7.2</span> Types of matrix transformations</h2>
 <p>The basic types of matrix transformations include</p>
 <ol type="1">
 <li>contractions/expansions</li>
@@ -529,8 +529,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>For the following examples, we will consider the unit vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span> and apply different linear transformations using the matrix <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>To build the matrix transformations, we use the <code>dasc2594</code> package and build matrix transformations based on code from <a href="https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/">https://www.bryanshalloway.com/2020/02/20/visualizing-matrix-transformations-with-gganimate/</a>.</p>
-<section id="contractionsexpansions" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="contractionsexpansions"><span class="header-section-number">8.2.1</span> Contractions/Expansions</h3>
+<section id="contractionsexpansions" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="contractionsexpansions"><span class="header-section-number">7.2.1</span> Contractions/Expansions</h3>
 <section id="horizonal-expansion" class="level4">
 <h4 class="anchored" data-anchor-id="horizonal-expansion">Horizonal Expansion</h4>
 <p>The matrix below gives a horizontal expansion when <span class="math inline">\(x &gt; 1\)</span></p>
@@ -642,8 +642,8 @@ x &amp; 0 \\
 </div>
 </section>
 </section>
-<section id="rotations" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="rotations"><span class="header-section-number">8.2.2</span> Rotations</h3>
+<section id="rotations" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="rotations"><span class="header-section-number">7.2.2</span> Rotations</h3>
 <section id="rotation-by-90-degrees" class="level4">
 <h4 class="anchored" data-anchor-id="rotation-by-90-degrees">Rotation by 90 degrees</h4>
 <p>Rotations in 2D of an angle <span class="math inline">\(\theta \in [0, 2\pi]\)</span> take the form of</p>
@@ -703,8 +703,8 @@ x &amp; 0 \\
 </div>
 </section>
 </section>
-<section id="reflections" class="level3" data-number="8.2.3">
-<h3 data-number="8.2.3" class="anchored" data-anchor-id="reflections"><span class="header-section-number">8.2.3</span> Reflections</h3>
+<section id="reflections" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="reflections"><span class="header-section-number">7.2.3</span> Reflections</h3>
 <section id="reflection-across-the-x-axis" class="level4">
 <h4 class="anchored" data-anchor-id="reflection-across-the-x-axis">Reflection across the x-axis</h4>
 <p>The matrix below gives a reflection about the x-axis</p>
@@ -821,8 +821,8 @@ x &amp; 0 \\
 </div>
 </section>
 </section>
-<section id="shears" class="level3" data-number="8.2.4">
-<h3 data-number="8.2.4" class="anchored" data-anchor-id="shears"><span class="header-section-number">8.2.4</span> Shears</h3>
+<section id="shears" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="shears"><span class="header-section-number">7.2.4</span> Shears</h3>
 <p>A shear transformation is like stretching play-dough if it was possible to stretch all parts of the dough uniformly (rather than some sections getting stretched more than others).</p>
 <section id="horizontal-shear" class="level4">
 <h4 class="anchored" data-anchor-id="horizontal-shear">Horizontal Shear</h4>
@@ -871,8 +871,8 @@ x &amp; 1
 </div>
 </section>
 </section>
-<section id="projections" class="level3" data-number="8.2.5">
-<h3 data-number="8.2.5" class="anchored" data-anchor-id="projections"><span class="header-section-number">8.2.5</span> Projections</h3>
+<section id="projections" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="projections"><span class="header-section-number">7.2.5</span> Projections</h3>
 <p>A projection is a mapping <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^n\)</span> from one space (<span class="math inline">\(\mathbf{R}^n\)</span>) to itself (<span class="math inline">\(\mathbf{R}^n\)</span>) such that <span class="math inline">\(T^2 = T\)</span></p>
 <section id="project-onto-the-x-axis" class="level4">
 <h4 class="anchored" data-anchor-id="project-onto-the-x-axis">Project onto the x-axis</h4>
@@ -921,8 +921,8 @@ x &amp; 1
 </div>
 </section>
 </section>
-<section id="identity" class="level3" data-number="8.2.6">
-<h3 data-number="8.2.6" class="anchored" data-anchor-id="identity"><span class="header-section-number">8.2.6</span> Identity</h3>
+<section id="identity" class="level3" data-number="7.2.6">
+<h3 data-number="7.2.6" class="anchored" data-anchor-id="identity"><span class="header-section-number">7.2.6</span> Identity</h3>
 <p>The identity transformation is the transformation that leaves the vector input unchanged. The identity matrix is typically written as <span class="math inline">\(\mathbf{I}\)</span></p>
 <p><span class="math display">\[
 \mathbf{I} = \begin{pmatrix}
@@ -945,12 +945,12 @@ x &amp; 1
 </div>
 </section>
 </section>
-<section id="properties-of-matrix-transformations" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="properties-of-matrix-transformations"><span class="header-section-number">8.3</span> Properties of matrix transformations</h2>
-<section id="one-to-one-transformations" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="one-to-one-transformations"><span class="header-section-number">8.3.1</span> One-to-one transformations</h3>
+<section id="properties-of-matrix-transformations" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="properties-of-matrix-transformations"><span class="header-section-number">7.3</span> Properties of matrix transformations</h2>
+<section id="one-to-one-transformations" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="one-to-one-transformations"><span class="header-section-number">7.3.1</span> One-to-one transformations</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.2 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 7.2 </strong></span></p>
 <p>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>one-to-one</strong> if every vector <span class="math inline">\(\mathbf{b}\)</span> in the image <span class="math inline">\(\mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at most</strong> one solution in <span class="math inline">\(\mathcal{R}^n\)</span>.</p>
 </div>
 <div class="cell">
@@ -1019,7 +1019,7 @@ x &amp; 1
 <li><p>There exist vectors <span class="math inline">\(\mathbf{u} \neq \mathbf{v} \in \mathcal{R}^n\)</span> such that <span class="math inline">\(T(\mathbf{u}) = T(\mathbf{v})\)</span></p></li>
 </ol>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 8.1 </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span class="theorem-title"><strong>Theorem 7.1 </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol type="1">
 <li><p><span class="math inline">\(T\)</span> is one-to-one.</p></li>
 <li><p>For every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at most one solution.</p></li>
@@ -1052,10 +1052,10 @@ x &amp; 1
 \]</span></p>
 <p><strong>Note:</strong> Matrices that are wider than they are tall are not one-to-one transformations. (This does not mean that all tall matrices are one-to-one)</p>
 </section>
-<section id="onto-transformations" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="onto-transformations"><span class="header-section-number">8.3.2</span> Onto transformations</h3>
+<section id="onto-transformations" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="onto-transformations"><span class="header-section-number">7.3.2</span> Onto transformations</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.3 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 7.3 </strong></span></p>
 <p>A transformation <span class="math inline">\(T:\mathcal{R}^n \rightarrow \mathcal{R}^m\)</span> is called <strong>onto</strong> if, for every vector <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>, the equation <span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has <strong>at least</strong> one solution <span class="math inline">\(\mathbf{x} \in \mathcal{R}^n\)</span></p>
 </div>
 <div class="cell">
@@ -1080,7 +1080,7 @@ x &amp; 1
 <li><p>There is a vector in the codomain that is not the output of any input vector.</p></li>
 </ol>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 8.2 </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
+<p><span class="theorem-title"><strong>Theorem 7.2 </strong></span>Let <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> be the matrix representation of the linear transformation <span class="math inline">\(T(\mathbf{x})\)</span> for the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>. Then the following statements are equivalent:</p>
 <ol type="1">
 <li><p><span class="math inline">\(T\)</span> is onto</p></li>
 <li><p><span class="math inline">\(T(\mathbf{x}) = \mathbf{b}\)</span> has at least one solution for every <span class="math inline">\(\mathbf{b} \in \mathcal{R}^m\)</span>.</p></li>
@@ -1350,12 +1350,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./06-linear-independence.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08-matrix-inverses.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Matrix Inverses</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-block-matrices.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

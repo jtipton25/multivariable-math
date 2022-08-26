@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multivariable Mathematics for Data Science - 5&nbsp; Linear Systems of Equations</title>
+<title>Multivariable Mathematics for Data Science - 4&nbsp; Linear Systems of Equations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -187,32 +187,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -329,22 +329,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-systems-of-equations" id="toc-linear-systems-of-equations" class="nav-link active" data-scroll-target="#linear-systems-of-equations"> <span class="header-section-number">5.1</span> Linear Systems of equations</a>
+  <li><a href="#linear-systems-of-equations" id="toc-linear-systems-of-equations" class="nav-link active" data-scroll-target="#linear-systems-of-equations"> <span class="header-section-number">4.1</span> Linear Systems of equations</a>
   <ul class="collapse">
-  <li><a href="#linear-equations" id="toc-linear-equations" class="nav-link" data-scroll-target="#linear-equations"> <span class="header-section-number">5.1.1</span> Linear equations</a></li>
-  <li><a href="#systems-of-linear-equations" id="toc-systems-of-linear-equations" class="nav-link" data-scroll-target="#systems-of-linear-equations"> <span class="header-section-number">5.1.2</span> Systems of linear equations</a></li>
-  <li><a href="#solutions-of-linear-systems" id="toc-solutions-of-linear-systems" class="nav-link" data-scroll-target="#solutions-of-linear-systems"> <span class="header-section-number">5.1.3</span> Solutions of linear systems</a></li>
-  <li><a href="#types-of-solutions" id="toc-types-of-solutions" class="nav-link" data-scroll-target="#types-of-solutions"> <span class="header-section-number">5.1.4</span> Types of solutions</a></li>
-  <li><a href="#elementary-row-and-column-operations-on-matrices" id="toc-elementary-row-and-column-operations-on-matrices" class="nav-link" data-scroll-target="#elementary-row-and-column-operations-on-matrices"> <span class="header-section-number">5.1.5</span> Elementary row and column operations on matrices</a></li>
-  <li><a href="#the-augmented-matrix-form-of-a-system-of-equations" id="toc-the-augmented-matrix-form-of-a-system-of-equations" class="nav-link" data-scroll-target="#the-augmented-matrix-form-of-a-system-of-equations"> <span class="header-section-number">5.1.6</span> The Augmented matrix form of a system of equations</a></li>
-  <li><a href="#existence-and-uniqueness" id="toc-existence-and-uniqueness" class="nav-link" data-scroll-target="#existence-and-uniqueness"> <span class="header-section-number">5.1.7</span> Existence and Uniqueness</a></li>
+  <li><a href="#linear-equations" id="toc-linear-equations" class="nav-link" data-scroll-target="#linear-equations"> <span class="header-section-number">4.1.1</span> Linear equations</a></li>
+  <li><a href="#systems-of-linear-equations" id="toc-systems-of-linear-equations" class="nav-link" data-scroll-target="#systems-of-linear-equations"> <span class="header-section-number">4.1.2</span> Systems of linear equations</a></li>
+  <li><a href="#solutions-of-linear-systems" id="toc-solutions-of-linear-systems" class="nav-link" data-scroll-target="#solutions-of-linear-systems"> <span class="header-section-number">4.1.3</span> Solutions of linear systems</a></li>
+  <li><a href="#types-of-solutions" id="toc-types-of-solutions" class="nav-link" data-scroll-target="#types-of-solutions"> <span class="header-section-number">4.1.4</span> Types of solutions</a></li>
+  <li><a href="#elementary-row-and-column-operations-on-matrices" id="toc-elementary-row-and-column-operations-on-matrices" class="nav-link" data-scroll-target="#elementary-row-and-column-operations-on-matrices"> <span class="header-section-number">4.1.5</span> Elementary row and column operations on matrices</a></li>
+  <li><a href="#the-augmented-matrix-form-of-a-system-of-equations" id="toc-the-augmented-matrix-form-of-a-system-of-equations" class="nav-link" data-scroll-target="#the-augmented-matrix-form-of-a-system-of-equations"> <span class="header-section-number">4.1.6</span> The Augmented matrix form of a system of equations</a></li>
+  <li><a href="#existence-and-uniqueness" id="toc-existence-and-uniqueness" class="nav-link" data-scroll-target="#existence-and-uniqueness"> <span class="header-section-number">4.1.7</span> Existence and Uniqueness</a></li>
   </ul></li>
-  <li><a href="#reduce-row-echelon-form" id="toc-reduce-row-echelon-form" class="nav-link" data-scroll-target="#reduce-row-echelon-form"> <span class="header-section-number">5.2</span> Reduce row echelon form</a>
+  <li><a href="#reduce-row-echelon-form" id="toc-reduce-row-echelon-form" class="nav-link" data-scroll-target="#reduce-row-echelon-form"> <span class="header-section-number">4.2</span> Reduce row echelon form</a>
   <ul class="collapse">
-  <li><a href="#pivot-positions" id="toc-pivot-positions" class="nav-link" data-scroll-target="#pivot-positions"> <span class="header-section-number">5.2.1</span> Pivot positions</a></li>
-  <li><a href="#finding-the-reduced-row-echelon-form" id="toc-finding-the-reduced-row-echelon-form" class="nav-link" data-scroll-target="#finding-the-reduced-row-echelon-form"> <span class="header-section-number">5.2.2</span> Finding the reduced row echelon form</a></li>
-  <li><a href="#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" id="toc-using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" class="nav-link" data-scroll-target="#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"> <span class="header-section-number">5.2.3</span> Using reduced row echelon forms to solve systems of linear equations</a></li>
-  <li><a href="#existence-and-uniqueness-from-reduced-row-echelon-form" id="toc-existence-and-uniqueness-from-reduced-row-echelon-form" class="nav-link" data-scroll-target="#existence-and-uniqueness-from-reduced-row-echelon-form"> <span class="header-section-number">5.2.4</span> Existence and uniqueness from reduced row echelon form</a></li>
+  <li><a href="#pivot-positions" id="toc-pivot-positions" class="nav-link" data-scroll-target="#pivot-positions"> <span class="header-section-number">4.2.1</span> Pivot positions</a></li>
+  <li><a href="#finding-the-reduced-row-echelon-form" id="toc-finding-the-reduced-row-echelon-form" class="nav-link" data-scroll-target="#finding-the-reduced-row-echelon-form"> <span class="header-section-number">4.2.2</span> Finding the reduced row echelon form</a></li>
+  <li><a href="#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" id="toc-using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" class="nav-link" data-scroll-target="#using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"> <span class="header-section-number">4.2.3</span> Using reduced row echelon forms to solve systems of linear equations</a></li>
+  <li><a href="#existence-and-uniqueness-from-reduced-row-echelon-form" id="toc-existence-and-uniqueness-from-reduced-row-echelon-form" class="nav-link" data-scroll-target="#existence-and-uniqueness-from-reduced-row-echelon-form"> <span class="header-section-number">4.2.4</span> Existence and uniqueness from reduced row echelon form</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -354,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="linear-systems-of-equations" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></span></h1>
+<h1 class="title"><span id="linear-systems-of-equations" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></span></h1>
 </div>
 
 
@@ -388,21 +388,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dasc2594)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="linear-systems-of-equations" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="linear-systems-of-equations"><span class="header-section-number">5.1</span> Linear Systems of equations</h2>
-<section id="linear-equations" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="linear-equations"><span class="header-section-number">5.1.1</span> Linear equations</h3>
+<section id="linear-systems-of-equations" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="linear-systems-of-equations"><span class="header-section-number">4.1</span> Linear Systems of equations</h2>
+<section id="linear-equations" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="linear-equations"><span class="header-section-number">4.1.1</span> Linear equations</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.1 (Linear Equations) </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
+<p><span class="theorem-title"><strong>Definition 4.1 (Linear Equations) </strong></span>Let <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> be <strong>variables</strong> with <strong>coefficients</strong> <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span>, and <span class="math inline">\(b\)</span> are fixed and known numbers. Then, we say</p>
 <p><span id="eq-linear"><span class="math display">\[
 \begin{aligned}
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n &amp; = b
 \end{aligned}
-\tag{5.1}\]</span></span></p>
+\tag{4.1}\]</span></span></p>
 <p>is a <strong>linear equation</strong>.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.1 </strong></span>Show the equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
+<p><span class="theorem-title"><strong>Example 4.1 </strong></span>Show the equation for a line with slope <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b\)</span> is</p>
 <p><span class="math display">\[
 \begin{aligned}
 y &amp; = m x + b,
@@ -439,7 +439,7 @@ y - m x &amp; = b,
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.2 </strong></span>Determine if the equation below is a linear equation</p>
+<p><span class="theorem-title"><strong>Example 4.2 </strong></span>Determine if the equation below is a linear equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 \sqrt{19} x_1 &amp; = (4 + \sqrt{2}) x_2 - x_3 - 9.
@@ -475,7 +475,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.3 </strong></span>Determine if the equation below is a linear equation</p>
+<p><span class="theorem-title"><strong>Example 4.3 </strong></span>Determine if the equation below is a linear equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 -4 x_1 + 5 x_2 - 11 &amp; = x_3.
@@ -510,7 +510,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.4 </strong></span>Determine if the equation</p>
+<p><span class="theorem-title"><strong>Example 4.4 </strong></span>Determine if the equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 x_1 &amp; = x_2^2 + 3
@@ -536,12 +536,12 @@ Solution
 x_1 &amp; = x_2^2 + 3
 \end{aligned}
 \]</span></p>
-<p>is not a linear equation because it does not meet the form of <a href="#eq-linear">Equation&nbsp;<span>5.1</span></a> because the equation has a quadratic power of <span class="math inline">\(x_2\)</span>.</p>
+<p>is not a linear equation because it does not meet the form of <a href="#eq-linear">Equation&nbsp;<span>4.1</span></a> because the equation has a quadratic power of <span class="math inline">\(x_2\)</span>.</p>
 </div>
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.5 </strong></span>Determine if the equation</p>
+<p><span class="theorem-title"><strong>Example 4.5 </strong></span>Determine if the equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 x_1 + x_2 - x_1 x_2 &amp; = 16
@@ -567,12 +567,12 @@ Solution
 x_1 + x_2 - x_1 x_2 &amp; = 16
 \end{aligned}
 \]</span></p>
-<p>is not a linear equation because it does not meet the form of <a href="#eq-linear">Equation&nbsp;<span>5.1</span></a> because there is a product <span class="math inline">\(x_1x_2\)</span> of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>.</p>
+<p>is not a linear equation because it does not meet the form of <a href="#eq-linear">Equation&nbsp;<span>4.1</span></a> because there is a product <span class="math inline">\(x_1x_2\)</span> of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>.</p>
 </div>
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.6 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.6 </strong></span></p>
 <p>Is the following equation a linear equation? <span class="math inline">\(x_1 + 3 x_1 x_2 = 5\)</span></p>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -592,7 +592,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.7 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.7 </strong></span></p>
 <p>Is the following equation a linear equation? <span class="math inline">\(5x + 7y + 8z = 11.2\)</span></p>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -612,7 +612,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.8 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.8 </strong></span></p>
 <p>Is the following equation a linear equation? <span class="math inline">\(\frac{1}{4} y + \sqrt{2} z = 2^6\)</span></p>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -632,7 +632,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.9 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.9 </strong></span></p>
 <p>Is the following equation a linear equation? <span class="math inline">\(x + 4 y^2 = 9\)</span></p>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -652,14 +652,14 @@ Solution
 </div>
 </div>
 </section>
-<section id="systems-of-linear-equations" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="systems-of-linear-equations"><span class="header-section-number">5.1.2</span> Systems of linear equations</h3>
+<section id="systems-of-linear-equations" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="systems-of-linear-equations"><span class="header-section-number">4.1.2</span> Systems of linear equations</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.2 (System of Equations) </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.2 (System of Equations) </strong></span></p>
 <p>A set of two or more linear equations that each contain the same set of variables is called a <strong>system of linear equations</strong>.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.10 </strong></span>Determine if the following equations are a system of linear equations.</p>
+<p><span class="theorem-title"><strong>Example 4.10 </strong></span>Determine if the following equations are a system of linear equations.</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}{} &amp;     &amp; {}={} &amp; 9.
@@ -689,7 +689,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.11 </strong></span>Determine if the following equations are a system of linear equations.</p>
+<p><span class="theorem-title"><strong>Example 4.11 </strong></span>Determine if the following equations are a system of linear equations.</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_1 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; \pi.
@@ -710,17 +710,17 @@ Solution
 <p>The set of equations <span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_1 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; \pi
-\end{alignat*}\]</span> are not a linear system of equations. Note that in the first equation, there is a nonlinear term <span class="math inline">\(x_1 x_2\)</span> and because of this, equation one cannot be written in the form of <a href="#eq-linear">Equation&nbsp;<span>5.1</span></a>.</p>
+\end{alignat*}\]</span> are not a linear system of equations. Note that in the first equation, there is a nonlinear term <span class="math inline">\(x_1 x_2\)</span> and because of this, equation one cannot be written in the form of <a href="#eq-linear">Equation&nbsp;<span>4.1</span></a>.</p>
 </div>
 </div>
 </div>
 <p>For the remainder of the section on linear algebra, we will focus on linear equations.</p>
 </section>
-<section id="solutions-of-linear-systems" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="solutions-of-linear-systems"><span class="header-section-number">5.1.3</span> Solutions of linear systems</h3>
+<section id="solutions-of-linear-systems" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="solutions-of-linear-systems"><span class="header-section-number">4.1.3</span> Solutions of linear systems</h3>
 <p>A fundamental question when presented with a linear system of equations is whether the system has a solution.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.3 (Solution of Systems of Equations) </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.3 (Solution of Systems of Equations) </strong></span></p>
 <p>A solution to a system means that there are numbers <span class="math inline">\((s_1, s_2, \ldots, s_n)\)</span> that each of the variables <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> take that allow for all the equations to simultaneously be true.</p>
 </div>
 <p>Checking if a vector is a solution is straightforward. You just substitute the values of the vector into the equations and see if the equations are satisfied. For example, if we consider the equation</p>
@@ -739,7 +739,7 @@ x_1 + x_2 = 7,
 
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.12 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.12 </strong></span></p>
 <p>Is <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> a solution to the system of equations <span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 0 x_3 &amp; {}={} &amp; 9?
@@ -767,7 +767,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.13 </strong></span>Finding a solution a system of equations is more challenging. To find a solution, we add/subtract equations to cancel out variables. For example, consider the following example. You work in a small zoo. In the zoo, there are ostriches (one head, two legs, and no horns), one-horned rhinos (one head, four legs, and one horn), and two-horned antelope (one head, four legs, and two horns). Consider the following statements about the set of animals in the zoo:</p>
+<p><span class="theorem-title"><strong>Example 4.13 </strong></span>Finding a solution a system of equations is more challenging. To find a solution, we add/subtract equations to cancel out variables. For example, consider the following example. You work in a small zoo. In the zoo, there are ostriches (one head, two legs, and no horns), one-horned rhinos (one head, four legs, and one horn), and two-horned antelope (one head, four legs, and two horns). Consider the following statements about the set of animals in the zoo:</p>
 <ol type="1">
 <li><p>There are 12 heads</p></li>
 <li><p>There are 38 feet</p></li>
@@ -850,7 +850,7 @@ o   &amp; {}+{} &amp;  0r  &amp; {}+{} &amp; 0a  &amp; {}={} &amp; 5 \\
 </div>
 </div>
 <div id="exm-exampleonesolution" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.14 </strong></span>Consider the system of equations</p>
+<p><span class="theorem-title"><strong>Example 4.14 </strong></span>Consider the system of equations</p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7.
@@ -919,7 +919,7 @@ $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 <div id="fig-onesolution" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-linear-systems-of-equations_files/figure-html/fig-onesolution-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure 5.1: Linear system of equations with one solution</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure 4.1: Linear system of equations with one solution</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -930,16 +930,16 @@ $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 </div>
 <p><strong>START BACK HERE WITH MORE EXAMPLES OF CANCELING VARIABLES</strong></p>
 </section>
-<section id="types-of-solutions" class="level3" data-number="5.1.4">
-<h3 data-number="5.1.4" class="anchored" data-anchor-id="types-of-solutions"><span class="header-section-number">5.1.4</span> Types of solutions</h3>
+<section id="types-of-solutions" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="types-of-solutions"><span class="header-section-number">4.1.4</span> Types of solutions</h3>
 <p>Typically, there are 3 cases for the solutions to a system of linear equations</p>
 <ol type="1">
 <li>There are no solutions</li>
-<li>There is one solution (<a href="#fig-onesolution">Figure&nbsp;<span>5.1</span></a>)</li>
+<li>There is one solution (<a href="#fig-onesolution">Figure&nbsp;<span>4.1</span></a>)</li>
 <li>There are infinitely many solutions</li>
 </ol>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.4 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.4 </strong></span></p>
 <p>A linear system of equations is called <strong>consistent</strong> if the system has either one or infinitely many solutions and is called <strong>inconsistent</strong> if the system has no solution.</p>
 </div>
 <section id="there-are-no-solutions" class="level4">
@@ -1009,7 +1009,7 @@ x &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 </section>
 <section id="there-is-one-solution" class="level4">
 <h4 class="anchored" data-anchor-id="there-is-one-solution">There is one solution:</h4>
-<p>Consider the system of equations from <a href="#exm-exampleonesolution">Example&nbsp;<span>5.14</span></a></p>
+<p>Consider the system of equations from <a href="#exm-exampleonesolution">Example&nbsp;<span>4.14</span></a></p>
 <p><span class="math display">\[\begin{alignat*}{3}
 x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 5 y &amp; {}={} &amp; 7.
@@ -1096,7 +1096,7 @@ $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 </div>
 <p>In this case, the linear equations are perfectly overlapping lines and always intersect so therefore there are infinitely many solutions (all points on the line).</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.5 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.5 </strong></span></p>
 <p>Two linear systems of equations are called <strong>equivalent</strong> if both systems share the same <strong>solution set</strong>.</p>
 </div>
 <p>For example, the system of equations <span class="math display">\[\begin{alignat*}{4}
@@ -1107,7 +1107,7 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 8 x_1 &amp; {}+{} &amp; 10 x_2 &amp; {}+{} &amp; 4 x_3 &amp; {}={} &amp; 18.
 \end{alignat*}\]</span> have the same solution set (the second set of equations is just 2 times the first set of equations).</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.15 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.15 </strong></span></p>
 <p>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution <span class="math display">\[\begin{alignat*}{3}
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}={} &amp; 8 \\
 9 x_1 &amp; {}-{} &amp; 3 x_2 &amp; {}={} &amp; 4.
@@ -1157,7 +1157,7 @@ x_1 &amp; {}+{} &amp; \frac{5}{4} \left(\frac{56}{57}\right) &amp; {}={} &amp; 2
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.16 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.16 </strong></span></p>
 <p>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution <span class="math display">\[\begin{alignat*}{4}
 7 x_1 &amp; {}+{} &amp; 3 x_2 &amp; {}+{} &amp; 4 x_3 &amp; {}={} &amp; 5\\
 4 x_1 &amp; {}-{} &amp; 5 x_2 &amp;&amp;        &amp; {}={} &amp; -2
@@ -1212,7 +1212,7 @@ x_1 &amp; {}+{} &amp; 0 x_2 &amp; {}+{} &amp; \frac{20}{47} x_3 &amp; {}={} &amp
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.17 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.17 </strong></span></p>
 <p>For the following system of equations, determine if a solution(s) exist and if so, solve for the solution <span class="math display">\[\begin{alignat*}{3}
 4 x_1 &amp; {}-{} &amp; 2 x_2 &amp; {}={} &amp; 8\\
 2 x_1 &amp; {}+{} &amp; x_2 &amp; {}={} &amp; 7 \\
@@ -1250,8 +1250,8 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 </div>
 </section>
 </section>
-<section id="elementary-row-and-column-operations-on-matrices" class="level3" data-number="5.1.5">
-<h3 data-number="5.1.5" class="anchored" data-anchor-id="elementary-row-and-column-operations-on-matrices"><span class="header-section-number">5.1.5</span> Elementary row and column operations on matrices</h3>
+<section id="elementary-row-and-column-operations-on-matrices" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="elementary-row-and-column-operations-on-matrices"><span class="header-section-number">4.1.5</span> Elementary row and column operations on matrices</h3>
 <p>The elementary row (column) operations include</p>
 <ol type="1">
 <li>swaps: swapping two rows (columns),</li>
@@ -1260,7 +1260,7 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 </ol>
 <p>Note that these operations are exactly what we used to solve the equation using algebra above (except for swapping rows).</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.18 </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
+<p><span class="theorem-title"><strong>Example 4.18 </strong></span>For the elementary row operations listed above, we demonstrate these using the matrix</p>
 <div class="cell">
 
 </div>
@@ -1412,8 +1412,8 @@ Solution
 </div>
 </div>
 </section>
-<section id="the-augmented-matrix-form-of-a-system-of-equations" class="level3" data-number="5.1.6">
-<h3 data-number="5.1.6" class="anchored" data-anchor-id="the-augmented-matrix-form-of-a-system-of-equations"><span class="header-section-number">5.1.6</span> The Augmented matrix form of a system of equations</h3>
+<section id="the-augmented-matrix-form-of-a-system-of-equations" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="the-augmented-matrix-form-of-a-system-of-equations"><span class="header-section-number">4.1.6</span> The Augmented matrix form of a system of equations</h3>
 <p>Consider the linear system of equations</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
@@ -1538,14 +1538,14 @@ Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 </div>
 </div>
 </section>
-<section id="existence-and-uniqueness" class="level3" data-number="5.1.7">
-<h3 data-number="5.1.7" class="anchored" data-anchor-id="existence-and-uniqueness"><span class="header-section-number">5.1.7</span> Existence and Uniqueness</h3>
+<section id="existence-and-uniqueness" class="level3" data-number="4.1.7">
+<h3 data-number="4.1.7" class="anchored" data-anchor-id="existence-and-uniqueness"><span class="header-section-number">4.1.7</span> Existence and Uniqueness</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.6 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.6 </strong></span></p>
 <p>A system of linear equations is said to be consistent if at least one solution exists. The linear system of equations is said to have a <strong>unique</strong> solution if only one solution exists.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.19 </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span class="theorem-title"><strong>Example 4.19 </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <div class="cell">
 
 </div>
@@ -1570,7 +1570,7 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.20 </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
+<p><span class="theorem-title"><strong>Example 4.20 </strong></span>Is the system of linear equations consistent? If the system is consistent, does it have a unique solution?</p>
 <div class="cell">
 
 </div>
@@ -1597,68 +1597,68 @@ Solution
 </div>
 </section>
 </section>
-<section id="reduce-row-echelon-form" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="reduce-row-echelon-form"><span class="header-section-number">5.2</span> Reduce row echelon form</h2>
+<section id="reduce-row-echelon-form" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="reduce-row-echelon-form"><span class="header-section-number">4.2</span> Reduce row echelon form</h2>
 <p>Reducing a matrix to row echelon form is a useful technique for working with matrices. The row echelon form can be used to solve systems of equations, as well as determine other properties of a matrix that are yet to be discussed, including rank, invertibility, column/row spaces, etc.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.7 </strong></span>A matrix is said to be in <strong>echelon</strong> form if</p>
+<p><span class="theorem-title"><strong>Definition 4.7 </strong></span>A matrix is said to be in <strong>echelon</strong> form if</p>
 <ol type="1">
 <li><p>all nonzero rows are above any rows of zeros (all rows consisting entirely of zeros are at the bottom)</p></li>
 <li><p>the leading entry/coefficient of a nonzero row (called the <strong>pivot</strong>) is always <em>strictly</em> to the right of the leading entry/coefficient of the row above</p></li>
 </ol>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.21 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.21 </strong></span></p>
 <p><strong>echelon matrix example in class</strong></p>
 </div>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.8 </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
+<p><span class="theorem-title"><strong>Definition 4.8 </strong></span>A matrix is in <strong>reduced row echelon form</strong> if it is in echelon form and</p>
 <ol type="1">
 <li><p>the leading entry/coefficient of each row is 1</p></li>
 <li><p>The leading entry/coefficient of 1 is the only nonzero entry in its column.</p></li>
 </ol>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.22 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.22 </strong></span></p>
 <p><strong>rref matrix example in class</strong></p>
 </div>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.9 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.9 </strong></span></p>
 <p>Echelon matrices have the property of being <strong>upper diagonal</strong>. A matrix is said to be <strong>upper diagonal</strong> if all entries of the matrix at or above the diagonal are nonzero.</p>
 </div>
 <ul>
 <li>Example: **lower and non-lower diagonal matrices</li>
 </ul>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.10 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.10 </strong></span></p>
 <p>Two matrices are <strong>row-equivalent</strong> if one matrix can be transformed to the other through elementary row operations.</p>
 </div>
 <div id="thm-reducedechelon" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Theorem 4.1 </strong></span></p>
 <p>A nonzero matrix can be transformed into more than one echelon forms. However, the reduced row echelon form of a nonzero matrix is unique.</p>
 </div>
 <div id="exm-echelonexample" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.23 </strong></span>Using elementary row operations, calculate the reduced row echelon form of the following matrices</p>
+<p><span class="theorem-title"><strong>Example 4.23 </strong></span>Using elementary row operations, calculate the reduced row echelon form of the following matrices</p>
 <ol type="1">
 <li><p><strong>fill in later</strong></p></li>
 <li><p><strong>fill in later</strong></p></li>
 <li><p><strong>fill in later</strong></p></li>
 </ol>
 </div>
-<section id="pivot-positions" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="pivot-positions"><span class="header-section-number">5.2.1</span> Pivot positions</h3>
+<section id="pivot-positions" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="pivot-positions"><span class="header-section-number">4.2.1</span> Pivot positions</h3>
 <p>The leading entry/coefficients of a row echelon form matrix are called pivots. The positions of the pivot positions are the same for any row echelon form of a matrix. In reduced row echelon form, these pivot positions take the value 1.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.11 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.11 </strong></span></p>
 <p>In a matrix that is in reduced echelon form, the pivot position is the first nonzero element of each row. The column in which the pivot position occurs is called a pivot column.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.24 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.24 </strong></span></p>
 <p><strong>pivot position and pivot columns</strong></p>
 </div>
 </section>
-<section id="finding-the-reduced-row-echelon-form" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="finding-the-reduced-row-echelon-form"><span class="header-section-number">5.2.2</span> Finding the reduced row echelon form</h3>
+<section id="finding-the-reduced-row-echelon-form" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="finding-the-reduced-row-echelon-form"><span class="header-section-number">4.2.2</span> Finding the reduced row echelon form</h3>
 <p>Calculating the reduced row echelon form is known as Gaussian elimination, which is named after <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Johann Carl Friedrich Gauss</a>. This algorithm uses elementary row operations to calculate the reduced row echelon form. The following steps perform the Gaussian elimination algorithm.</p>
 <ol type="1">
 <li>Start with the left-most nonzero column, which is a pivot column</li>
@@ -1668,7 +1668,7 @@ Solution
 <li>Starting at the right-most pivot column, use elementary row operations to zero out all positions above each pivot and to make each pivot position 1. At the end of this step, the matrix is in reduced row echelon form.</li>
 </ol>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.25 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.25 </strong></span></p>
 <p><strong>in class</strong></p>
 </div>
 <div class="cell">
@@ -1676,8 +1676,8 @@ Solution
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rref example in class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><span class="header-section-number">5.2.3</span> Using reduced row echelon forms to solve systems of linear equations</h3>
+<section id="using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations"><span class="header-section-number">4.2.3</span> Using reduced row echelon forms to solve systems of linear equations</h3>
 <p>When a system of linear equations is expressed as an augmented matrix, the reduced row echelon form can be used to find solutions to those systems of equations. Consider the systems of equations</p>
 <div class="cell">
 
@@ -1699,13 +1699,13 @@ Solution
 </div>
 <p>which gives the solution …</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.26 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.26 </strong></span></p>
 <ul>
 <li><strong>calculate the RREF for the augmented matrix in the example above by hand</strong></li>
 </ul>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.27 </strong></span>Another example where we find a solution is</p>
+<p><span class="theorem-title"><strong>Example 4.27 </strong></span>Another example where we find a solution is</p>
 <p><span class="math display">\[
 \begin{aligned}
 5 x_1 &amp;&amp; + &amp;&amp; 4 x_2 &amp;&amp; - &amp;&amp; 2 x_3 &amp;&amp; = &amp; 0 \\
@@ -1715,23 +1715,23 @@ Solution
 <p><strong>Do same steps</strong></p>
 </div>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.12 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 4.12 </strong></span></p>
 <p>In a system of linear equations that is underdetermined (fewer equations than unknowns), the <strong>determined/basic variables</strong> are those variable that have a 1 in the respective columns when in reduced row echelon form (i.e., variables in a pivot position). The variables that are not in a pivot position are called <strong>free variable</strong>.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.28 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 4.28 </strong></span></p>
 <p><strong>in class</strong></p>
 </div>
 </section>
-<section id="existence-and-uniqueness-from-reduced-row-echelon-form" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="existence-and-uniqueness-from-reduced-row-echelon-form"><span class="header-section-number">5.2.4</span> Existence and uniqueness from reduced row echelon form</h3>
+<section id="existence-and-uniqueness-from-reduced-row-echelon-form" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="existence-and-uniqueness-from-reduced-row-echelon-form"><span class="header-section-number">4.2.4</span> Existence and uniqueness from reduced row echelon form</h3>
 <p>The row echelon form is useful to determine if a system of linear equations is consistent (the system of equations has a solution). To check if a solution to a linear system of equations exists, convert the system of equations to an augmented matrix form. Then, reduce the augmented matrix to row echelon form using elementary matrix operations. As long as there is not an equation of the form</p>
 <p><span class="math display">\[
 0 = \mbox{constant}
 \]</span></p>
 <p>for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.2 </strong></span></p>
+<p><span class="theorem-title"><strong>Theorem 4.2 </strong></span></p>
 <p>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
 </div>
 <ul>
@@ -1981,12 +1981,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03-vector-spaces.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05-matrix-equations.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

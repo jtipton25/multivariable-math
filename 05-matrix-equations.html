@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multivariable Mathematics for Data Science - 6&nbsp; Matrix equations</title>
+<title>Multivariable Mathematics for Data Science - 5&nbsp; Matrix equations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -187,32 +187,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -329,16 +329,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#solutions-of-matrix-equations" id="toc-solutions-of-matrix-equations" class="nav-link active" data-scroll-target="#solutions-of-matrix-equations"> <span class="header-section-number">6.1</span> Solutions of matrix equations</a></li>
-  <li><a href="#existence-of-solutions" id="toc-existence-of-solutions" class="nav-link" data-scroll-target="#existence-of-solutions"> <span class="header-section-number">6.2</span> Existence of solutions</a></li>
-  <li><a href="#matrix-vector-multiplication" id="toc-matrix-vector-multiplication" class="nav-link" data-scroll-target="#matrix-vector-multiplication"> <span class="header-section-number">6.3</span> Matrix-vector multiplication</a></li>
-  <li><a href="#properties-of-matrix-vector-multiplication" id="toc-properties-of-matrix-vector-multiplication" class="nav-link" data-scroll-target="#properties-of-matrix-vector-multiplication"> <span class="header-section-number">6.4</span> Properties of matrix-vector multiplication</a></li>
-  <li><a href="#solutions-of-linear-systems" id="toc-solutions-of-linear-systems" class="nav-link" data-scroll-target="#solutions-of-linear-systems"> <span class="header-section-number">6.5</span> Solutions of linear systems</a>
+  <li><a href="#solutions-of-matrix-equations" id="toc-solutions-of-matrix-equations" class="nav-link active" data-scroll-target="#solutions-of-matrix-equations"> <span class="header-section-number">5.1</span> Solutions of matrix equations</a></li>
+  <li><a href="#existence-of-solutions" id="toc-existence-of-solutions" class="nav-link" data-scroll-target="#existence-of-solutions"> <span class="header-section-number">5.2</span> Existence of solutions</a></li>
+  <li><a href="#matrix-vector-multiplication" id="toc-matrix-vector-multiplication" class="nav-link" data-scroll-target="#matrix-vector-multiplication"> <span class="header-section-number">5.3</span> Matrix-vector multiplication</a></li>
+  <li><a href="#properties-of-matrix-vector-multiplication" id="toc-properties-of-matrix-vector-multiplication" class="nav-link" data-scroll-target="#properties-of-matrix-vector-multiplication"> <span class="header-section-number">5.4</span> Properties of matrix-vector multiplication</a></li>
+  <li><a href="#solutions-of-linear-systems" id="toc-solutions-of-linear-systems" class="nav-link" data-scroll-target="#solutions-of-linear-systems"> <span class="header-section-number">5.5</span> Solutions of linear systems</a>
   <ul class="collapse">
-  <li><a href="#homogeneous-linear-systems-of-equations" id="toc-homogeneous-linear-systems-of-equations" class="nav-link" data-scroll-target="#homogeneous-linear-systems-of-equations"> <span class="header-section-number">6.5.1</span> Homogeneous linear systems of equations</a></li>
+  <li><a href="#homogeneous-linear-systems-of-equations" id="toc-homogeneous-linear-systems-of-equations" class="nav-link" data-scroll-target="#homogeneous-linear-systems-of-equations"> <span class="header-section-number">5.5.1</span> Homogeneous linear systems of equations</a></li>
   </ul></li>
-  <li><a href="#solutions-to-nonhomogeneous-systems" id="toc-solutions-to-nonhomogeneous-systems" class="nav-link" data-scroll-target="#solutions-to-nonhomogeneous-systems"> <span class="header-section-number">6.6</span> Solutions to nonhomogeneous systems</a></li>
-  <li><a href="#finding-solutions" id="toc-finding-solutions" class="nav-link" data-scroll-target="#finding-solutions"> <span class="header-section-number">6.7</span> Finding solutions</a></li>
+  <li><a href="#solutions-to-nonhomogeneous-systems" id="toc-solutions-to-nonhomogeneous-systems" class="nav-link" data-scroll-target="#solutions-to-nonhomogeneous-systems"> <span class="header-section-number">5.6</span> Solutions to nonhomogeneous systems</a></li>
+  <li><a href="#finding-solutions" id="toc-finding-solutions" class="nav-link" data-scroll-target="#finding-solutions"> <span class="header-section-number">5.7</span> Finding solutions</a></li>
   </ul>
 </nav>
     </div>
@@ -347,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="matrix-equation" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></span></h1>
+<h1 class="title"><span id="matrix-equation" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></span></h1>
 </div>
 
 
@@ -373,14 +373,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K \end{pmatrix} \begin{pmatrix} x_1 \\ \vdots \\ x_K \end{pmatrix} &amp; = \mathbf{b} \\
 x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 \end{aligned}
-\tag{6.1}\]</span></span></p>
+\tag{5.1}\]</span></span></p>
 <p>as long as the matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> rows and <span class="math inline">\(K\)</span> columns and the vectors <span class="math inline">\(\mathbf{a}_k\)</span> are <span class="math inline">\(n\)</span>-dimensional.</p>
 <ul>
 <li><p><strong>Example: in class</strong></p></li>
 <li><p><strong>Example: in class</strong></p></li>
 </ul>
-<section id="solutions-of-matrix-equations" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="solutions-of-matrix-equations"><span class="header-section-number">6.1</span> Solutions of matrix equations</h2>
+<section id="solutions-of-matrix-equations" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="solutions-of-matrix-equations"><span class="header-section-number">5.1</span> Solutions of matrix equations</h2>
 <p>Because the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is equivalent to a linear system of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, we can solve the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> by writing the equation in an augmented matrix form</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -389,18 +389,18 @@ x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 \]</span></p>
 <p>and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Theorem 5.1 </strong></span></p>
 <p>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.</p>
 </div>
 </section>
-<section id="existence-of-solutions" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="existence-of-solutions"><span class="header-section-number">6.2</span> Existence of solutions</h2>
+<section id="existence-of-solutions" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="existence-of-solutions"><span class="header-section-number">5.2</span> Existence of solutions</h2>
 <p>A solution to the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> exists if and only if <span class="math inline">\(\mathbf{b}\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span>. In other words, <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has a solution if and only if <span class="math inline">\(\mathbf{b}\)</span> is in the <span class="math inline">\(\mbox{span}\{\mathbf{a}_1, \ldots, \mathbf{a}_K\}\)</span>.</p>
 <ul>
 <li><strong>Example: in class</strong> Let <span class="math inline">\(\mathbf{A} =\ldots\)</span> and <span class="math inline">\(\mathbf{b} = \ldots\)</span>. Is the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> consistent?</li>
 </ul>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6.2 </strong></span>For the <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the following statements are equivalent:</p>
+<p><span class="theorem-title"><strong>Theorem 5.2 </strong></span>For the <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>, the following statements are equivalent:</p>
 <ol type="a">
 <li><p>For each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has at least one solution</p></li>
 <li><p>Each <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span> is a linear combination of the columns of <span class="math inline">\(\mathbf{A}\)</span></p></li>
@@ -409,8 +409,8 @@ x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 </ol>
 </div>
 </section>
-<section id="matrix-vector-multiplication" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="matrix-vector-multiplication"><span class="header-section-number">6.3</span> Matrix-vector multiplication</h2>
+<section id="matrix-vector-multiplication" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="matrix-vector-multiplication"><span class="header-section-number">5.3</span> Matrix-vector multiplication</h2>
 <p>To calculate <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>, we need to define matrix multiplication. The equivalence between the linear systems of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span> and the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> gives a hint in how to do this. First, recall the definition of <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{x}\)</span></p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -449,7 +449,7 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 \]</span></p>
 <p>Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 6.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 5.1 </strong></span></p>
 <p>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span></p>
 </div>
 <ul>
@@ -459,8 +459,8 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 <li><p><strong>Example: in R using <code>%*%</code></strong></p></li>
 </ul>
 </section>
-<section id="properties-of-matrix-vector-multiplication" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="properties-of-matrix-vector-multiplication"><span class="header-section-number">6.4</span> Properties of matrix-vector multiplication</h2>
+<section id="properties-of-matrix-vector-multiplication" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="properties-of-matrix-vector-multiplication"><span class="header-section-number">5.4</span> Properties of matrix-vector multiplication</h2>
 <p>If <span class="math inline">\(\mathbf{A}\)</span> is a <span class="math inline">\(n \times K\)</span> matrix, <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are vectors in <span class="math inline">\(\mathcal{R}^K\)</span> and <span class="math inline">\(c\)</span> is a scalar, then</p>
 <ol type="a">
 <li><span class="math inline">\(\mathbf{A} (\mathbf{u} + \mathbf{v}) = \mathbf{A} \mathbf{u} + \mathbf{A} \mathbf{v}\)</span></li>
@@ -470,17 +470,17 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 <li><strong>Proof in class</strong></li>
 </ul>
 </section>
-<section id="solutions-of-linear-systems" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="solutions-of-linear-systems"><span class="header-section-number">6.5</span> Solutions of linear systems</h2>
-<section id="homogeneous-linear-systems-of-equations" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="homogeneous-linear-systems-of-equations"><span class="header-section-number">6.5.1</span> Homogeneous linear systems of equations</h3>
+<section id="solutions-of-linear-systems" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="solutions-of-linear-systems"><span class="header-section-number">5.5</span> Solutions of linear systems</h2>
+<section id="homogeneous-linear-systems-of-equations" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="homogeneous-linear-systems-of-equations"><span class="header-section-number">5.5.1</span> Homogeneous linear systems of equations</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 6.2 </strong></span>The matrix equation</p>
+<p><span class="theorem-title"><strong>Definition 5.2 </strong></span>The matrix equation</p>
 <p><span id="eq-homogeneous"><span class="math display">\[
 \begin{aligned}
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{aligned}
-\tag{6.2}\]</span></span></p>
+\tag{5.2}\]</span></span></p>
 <p>is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
 </div>
 <p>The homogeneous linear system of equations can be written in augmented matrix form</p>
@@ -535,13 +535,13 @@ x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 \]</span></p>
 <p>which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 6.3 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 5.3 </strong></span></p>
 <p>A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.</p>
 </div>
 </section>
 </section>
-<section id="solutions-to-nonhomogeneous-systems" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="solutions-to-nonhomogeneous-systems"><span class="header-section-number">6.6</span> Solutions to nonhomogeneous systems</h2>
+<section id="solutions-to-nonhomogeneous-systems" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="solutions-to-nonhomogeneous-systems"><span class="header-section-number">5.6</span> Solutions to nonhomogeneous systems</h2>
 <p>Recall the simple linear equation</p>
 <p><span class="math display">\[
 y = mx + b
@@ -673,8 +673,8 @@ x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
 \end{aligned}
 \]</span></p>
 </section>
-<section id="finding-solutions" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="finding-solutions"><span class="header-section-number">6.7</span> Finding solutions</h2>
+<section id="finding-solutions" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="finding-solutions"><span class="header-section-number">5.7</span> Finding solutions</h2>
 <p>The following algorithm describes how to solve a linear system of equations.</p>
 <ol type="1">
 <li><p>Put the system of equations in an augmented matrix form</p></li>
@@ -921,12 +921,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./04-linear-systems-of-equations.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./06-linear-independence.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

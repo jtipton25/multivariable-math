@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multivariable Mathematics for Data Science - 7&nbsp; Linear independence</title>
+<title>Multivariable Mathematics for Data Science - 6&nbsp; Linear independence</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -124,32 +124,32 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
+  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-vector-spaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vectors spaces</span></a>
+  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-linear-systems-of-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Systems of Equations</span></a>
+  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-matrix-equations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></a>
+  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-linear-independence.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></a>
+  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-linear-transformations-matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></a>
+  <a href="./02-block-matrices.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Block Matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -269,7 +269,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="linear-independence" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear independence</span></span></h1>
+<h1 class="title"><span id="linear-independence" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Linear independence</span></span></h1>
 </div>
 
 
@@ -290,11 +290,11 @@ ul.task-list{list-style: none;}
 \end{aligned}
 \]</span></p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 7.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Definition 6.1 </strong></span></p>
 <p>The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly independent</strong> if the only solution to the vector equation <span class="math inline">\(\sum_{k=1}^K x_k \mathbf{a}_k = \mathbf{0}\)</span> is the trivial solution. The set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> are called <strong>linearly dependent</strong> if there are coefficients <span class="math inline">\(x_1, \ldots, x_K\)</span> that are not all zero.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 7.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 6.1 </strong></span></p>
 <p><strong>In class</strong></p>
 </div>
 <p>What does it mean for a set of vectors to be <strong>linearly dependent</strong>? This means that there is at least one vector <span class="math inline">\(\mathbf{a}_k\)</span> that can be written as a sum of the other vectors with coefficients <span class="math inline">\(x_k\)</span>:</p>
@@ -305,26 +305,26 @@ ul.task-list{list-style: none;}
 \]</span></p>
 <p>Note: <strong>linear dependence</strong> does not imply that all vectors <span class="math inline">\(\mathbf{a}_{k}\)</span> can be written as a linear combination of other vectors, just that there is at least one such vector in the set.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 7.2 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 6.2 </strong></span></p>
 <p><strong>Example: in class – determine if the vectors are linearly independent and solve the dependence relation</strong></p>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 7.1 </strong></span></p>
+<p><span class="theorem-title"><strong>Theorem 6.1 </strong></span></p>
 <p>The matrix <span class="math inline">\(\mathbf{A}\)</span> has linearly independent columns if and only if the matrix equation <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> has only the trivial solution.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 7.3 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 6.3 </strong></span></p>
 <p><strong>Example: in class</strong> A set of a single vector</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 7.4 </strong></span><strong>Example: in class</strong> A set of two vectors</p>
+<p><span class="theorem-title"><strong>Example 6.4 </strong></span><strong>Example: in class</strong> A set of two vectors</p>
 <ul>
 <li><p>linearly independent if:</p></li>
 <li><p>linearly dependent if one vector is a scalar multiple of the other:</p></li>
 </ul>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 7.2 </strong></span></p>
+<p><span class="theorem-title"><strong>Theorem 6.2 </strong></span></p>
 <p>If an <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(K &gt; n\)</span>, then the columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly dependent. In other words, if a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains more vectors than entries within vectors, the set of vectors is linearly dependent.</p>
 </div>
 <div class="callout-tip callout callout-style-simple no-icon callout-captioned">
@@ -339,12 +339,12 @@ Proof
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(K&gt;n\)</span>, there are more variables (<span class="math inline">\(K\)</span>) than equations (<span class="math inline">\(n\)</span>). Therefore, there is at least one free variable and this implies that the homogeneous equation <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> has a non-trivial solution <a href="05-matrix-equations.html#eq-homogeneous">Equation&nbsp;<span>6.2</span></a></p>
+<p>If <span class="math inline">\(K&gt;n\)</span>, there are more variables (<span class="math inline">\(K\)</span>) than equations (<span class="math inline">\(n\)</span>). Therefore, there is at least one free variable and this implies that the homogeneous equation <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> has a non-trivial solution <a href="05-matrix-equations.html#eq-homogeneous">Equation&nbsp;<span>5.2</span></a></p>
 </div>
 </div>
 </div>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 7.3 </strong></span></p>
+<p><span class="theorem-title"><strong>Theorem 6.3 </strong></span></p>
 <p>If a set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_K\)</span> contains the <span class="math inline">\(\mathbf{0}\)</span> vector, then the the set of vectors is linearly dependent.</p>
 </div>
 <div class="callout-tip callout callout-style-simple no-icon callout-captioned">
@@ -364,7 +364,7 @@ Proof
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 7.5 </strong></span></p>
+<p><span class="theorem-title"><strong>Example 6.5 </strong></span></p>
 <p>In class: Determine whether the following sets of vectors are linearly dependent</p>
 </div>
 
@@ -604,12 +604,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./05-matrix-equations.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrix equations</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Matrix equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./07-linear-transformations-matrix.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear Transformations</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear Transformations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
