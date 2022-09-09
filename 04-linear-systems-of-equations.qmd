@@ -358,7 +358,7 @@ which is true because $11 = 11$. Now we consider the second equation
 \begin{alignat*}{4}
 4 \times 5 & {}+{} & 5 \times 3 & {}+{} & 0 \times 6 & {}={} & 9.
 \end{alignat*}
-which is false because $35 \neq = 9$. Thus, $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  = \end{pmatrix}$ is not a solution to the system of equations in the given example.
+which is false because $35 \neq 9$. Thus, $\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6  \end{pmatrix}$ is not a solution to the system of equations in the given example.
 :::
 
 
