@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.141">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -371,13 +371,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(gg3D)) {</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"AckerDWM/gg3D"</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(gg3D)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># if dasc2594 package not installed, install the package</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(dasc2594)) {</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jtipton25/dasc2594"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dasc2594)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: no DISPLAY variable so Tk is not available</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if dasc2594 package not installed, install the package</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(dasc2594)) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jtipton25/dasc2594"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dasc2594)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="linear-systems-of-equations" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="linear-systems-of-equations"><span class="header-section-number">4.1</span> Linear Systems of equations</h2>
@@ -460,8 +462,7 @@ Solution
 \begin{aligned}
 \sqrt{19} x_1 - (4 + \sqrt{2}) x_2 + x_3 &amp; = - 9
 \end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(a_1 = \sqrt{19}\)</span>, <span class="math inline">\(a_2 = 4 + \sqrt{2}\)</span>, <span class="math inline">\(a_3 = 1\)</span> and <span class="math inline">\(b = -9\)</span></p>
+\]</span> where <span class="math inline">\(a_1 = \sqrt{19}\)</span>, <span class="math inline">\(a_2 = 4 + \sqrt{2}\)</span>, <span class="math inline">\(a_3 = 1\)</span> and <span class="math inline">\(b = -9\)</span></p>
 </div>
 </div>
 </div>
@@ -490,8 +491,7 @@ Solution
 \begin{aligned}
 -4 x_1 + 5 x_2 - 11 &amp; = x_3
 \end{aligned}
-\]</span></p>
-<p>is a linear equation because it can be written as</p>
+\]</span> is a linear equation because it can be written as</p>
 <p><span class="math display">\[
 \begin{aligned}
 -4 x_1 + 5 x_2 - x_3 &amp; = 11.
@@ -708,16 +708,11 @@ x_1   &amp; {}+{} &amp; 4 x_1 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 <div id="def-" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.3 (Solution of Systems of Equations) </strong></span>A solution to a system means that there are numbers <span class="math inline">\((s_1, s_2, \ldots, s_n)\)</span> that each of the variables <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> take that allow for all the equations to simultaneously be true.</p>
 </div>
-<p>Checking if a vector is a solution is straightforward. You just substitute the values of the vector into the equations and see if the equations are satisfied. For example, if we consider the equation</p>
-<p><span class="math display">\[
+<p>Checking if a vector is a solution is straightforward. You just substitute the values of the vector into the equations and see if the equations are satisfied. For example, if we consider the equation <span class="math display">\[
 x_1 + x_2 = 7,
-\]</span></p>
-<p>the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}\)</span> is a valid solution because</p>
-<p><span class="math display">\[
+\]</span> the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}\)</span> is a valid solution because <span class="math display">\[
 4 + 3 = 7
-\]</span></p>
-<p>but the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 5 \\ 9 \end{pmatrix}\)</span> is not a valid solution because</p>
-<p><span class="math display">\[
+\]</span> but the vector <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 5 \\ 9 \end{pmatrix}\)</span> is not a valid solution because <span class="math display">\[
 5 + 9 \neq 7.
 \]</span></p>
 <div class="cell">
@@ -746,7 +741,7 @@ Solution
 \end{alignat*}\]</span> which is true because <span class="math inline">\(11 = 11\)</span>. Now we consider the second equation</p>
 <p><span class="math display">\[\begin{alignat*}{4}
 4 \times 5 &amp; {}+{} &amp; 5 \times 3 &amp; {}+{} &amp; 0 \times 6 &amp; {}={} &amp; 9.
-\end{alignat*}\]</span> which is false because <span class="math inline">\(35 \neq = 9\)</span>. Thus, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 = \end{pmatrix}\)</span> is not a solution to the system of equations in the given example.</p>
+\end{alignat*}\]</span> which is false because <span class="math inline">\(35 \neq 9\)</span>. Thus, <span class="math inline">\(\mathbf{x} = \begin{pmatrix} 5 \\ 3 \\ 6 \end{pmatrix}\)</span> is not a solution to the system of equations in the given example.</p>
 </div>
 </div>
 </div>
@@ -877,14 +872,14 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 </ol>
 <p>Let’s plot these equations in <code>R</code> and see what they look like</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span>, <span class="sc">-</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">7</span><span class="sc">/</span><span class="dv">5</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span>, <span class="sc">-</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">7</span><span class="sc">/</span><span class="dv">5</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,000
 Columns: 3
@@ -892,13 +887,13 @@ $ x        &lt;dbl&gt; -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1
 $ y        &lt;dbl&gt; 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, 2…
 $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">12</span><span class="sc">/</span><span class="dv">11</span>, <span class="at">y =</span> <span class="dv">25</span><span class="sc">/</span><span class="dv">11</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">12</span><span class="sc">/</span><span class="dv">11</span>, <span class="at">y =</span> <span class="dv">25</span><span class="sc">/</span><span class="dv">11</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-onesolution" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -933,14 +928,14 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 16 y &amp; {}={} &amp; 18.
 \end{alignat*}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">4</span>, <span class="sc">-</span> x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">18</span> <span class="sc">/</span> <span class="dv">4</span>),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">4</span>, <span class="sc">-</span> x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">18</span> <span class="sc">/</span> <span class="dv">4</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,000
 Columns: 3
@@ -948,12 +943,12 @@ $ x        &lt;dbl&gt; -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1
 $ y        &lt;dbl&gt; 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, 2…
 $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1007,14 +1002,14 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 </ol>
 <p>Let’s plot these equations in <code>R</code> and see what they look like</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span>, <span class="sc">-</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">7</span><span class="sc">/</span><span class="dv">5</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span>, <span class="sc">-</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">7</span><span class="sc">/</span><span class="dv">5</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,000
 Columns: 3
@@ -1022,13 +1017,13 @@ $ x        &lt;dbl&gt; -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1
 $ y        &lt;dbl&gt; 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, 2…
 $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">12</span><span class="sc">/</span><span class="dv">11</span>, <span class="at">y =</span> <span class="dv">25</span><span class="sc">/</span><span class="dv">11</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">12</span><span class="sc">/</span><span class="dv">11</span>, <span class="at">y =</span> <span class="dv">25</span><span class="sc">/</span><span class="dv">11</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1047,14 +1042,14 @@ x   &amp; {}+{} &amp; 4 y &amp; {}={} &amp; 8 \\
 4 x &amp; {}+{} &amp; 16 y &amp; {}={} &amp; 32.
 \end{alignat*}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">4</span>, <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> x <span class="sc">/</span> <span class="dv">16</span> <span class="sc">+</span> <span class="dv">32</span> <span class="sc">/</span> <span class="dv">16</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define some grid points to evaluate the line</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x, x),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span>x <span class="sc">/</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">4</span>, <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> x <span class="sc">/</span> <span class="dv">16</span> <span class="sc">+</span> <span class="dv">32</span> <span class="sc">/</span> <span class="dv">16</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> <span class="dv">1000</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,000
 Columns: 3
@@ -1062,12 +1057,12 @@ $ x        &lt;dbl&gt; -2.000000, -1.995996, -1.991992, -1.987988, -1.983984, -1
 $ y        &lt;dbl&gt; 2.500000, 2.498999, 2.497998, 2.496997, 2.495996, 2.494995, 2…
 $ equation &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> equation, <span class="at">group =</span> equation)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># solution x = -12/11, y = 25/11</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Linear system of equations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1123,13 +1118,13 @@ x_1 &amp; {}+{} &amp; \frac{5}{4} \left(\frac{56}{57}\right) &amp; {}={} &amp; 2
 9 \left(\frac{44}{57}\right) &amp; {}-{} &amp; 3 \left(\frac{56}{57}\right)&amp; {}={} &amp; 4
 \end{alignat*}\]</span> which can be done in <code>R</code> using</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">44</span><span class="sc">/</span><span class="dv">57</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">56</span><span class="sc">/</span><span class="dv">57</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">4</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> x2, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">44</span><span class="sc">/</span><span class="dv">57</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">56</span><span class="sc">/</span><span class="dv">57</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">4</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> x2, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">9</span> <span class="sc">*</span> x1 <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> x2, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">9</span> <span class="sc">*</span> x1 <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> x2, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -1173,17 +1168,17 @@ x_1 &amp; {}+{} &amp; 0 x_2 &amp; {}+{} &amp; \frac{20}{47} x_3 &amp; {}={} &amp
 \end{alignat*}\]</span> which gives the solution <span class="math inline">\(x_1 + \frac{20}{47} x_3 = \frac{19}{47}\)</span>, <span class="math inline">\(x_2 + \frac{16}{47} x_3 = \frac{34}{47}\)</span>, and <span class="math inline">\(x_3 = x_3\)</span> is a free variable.</p>
 <p>The solution can be checked in <code>R</code> using</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a free variable, you can assign it any value</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">19</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">-</span> <span class="dv">20</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">*</span> x3</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">34</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">-</span> <span class="dv">16</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">*</span> x3</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check the first equation</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">7</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> x3, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a free variable, you can assign it any value</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">19</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">-</span> <span class="dv">20</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">*</span> x3</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">34</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">-</span> <span class="dv">16</span><span class="sc">/</span><span class="dv">47</span> <span class="sc">*</span> x3</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check the first equation</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">7</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> x3, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the second equation</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">4</span> <span class="sc">*</span> x1 <span class="sc">-</span> <span class="dv">5</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="dv">0</span> <span class="sc">*</span> x3, <span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the second equation</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">4</span> <span class="sc">*</span> x1 <span class="sc">-</span> <span class="dv">5</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="dv">0</span> <span class="sc">*</span> x3, <span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -1250,7 +1245,7 @@ x_1 &amp; {}-{} &amp; \frac{1}{2} x_2 &amp; {}={} &amp; 2\\
 \]</span></p>
 <p>The matrix <span class="math inline">\(\mathbf{A}\)</span> can be represented in <code>R</code> using</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
 <li><p>Swap the first and second rows.</p></li>
@@ -1285,14 +1280,14 @@ Solution
 \]</span></p>
 <p>Notice that the first and second rows have now switched places. This can be done in <code>R</code> in a variety of ways. First, we extract the rows and place them “by hand” in <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the rows</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> A[<span class="dv">1</span>, ] </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>row2 <span class="ot">&lt;-</span> A[<span class="dv">2</span>, ]</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># swap the rows</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> row2</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> row1</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the rows</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> A[<span class="dv">1</span>, ] </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>row2 <span class="ot">&lt;-</span> A[<span class="dv">2</span>, ]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># swap the rows</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> row2</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> row1</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    2    5    8
@@ -1302,9 +1297,9 @@ Solution
 </div>
 <p>Another way to do this is to use the function <code>rbind()</code> that binds rows together into a matrix.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># bind row 2, row 1, and row 3 togethter</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(A[<span class="dv">2</span>, ], A[<span class="dv">1</span>, ], A[<span class="dv">3</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># bind row 2, row 1, and row 3 togethter</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(A[<span class="dv">2</span>, ], A[<span class="dv">1</span>, ], A[<span class="dv">3</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    2    5    8
@@ -1314,9 +1309,9 @@ Solution
 </div>
 <p>Yet another way to swap the first two rows is to use a vectorized operation. This allows for fast and efficient coding and computing. The vectorized row swap is</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Take the 2nd, 1st, and 3rd row of A, in that order</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>A[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Take the 2nd, 1st, and 3rd row of A, in that order</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>A[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    2    5    8
@@ -1330,8 +1325,7 @@ Solution
 <div class="cell">
 
 </div>
-<p>First, we notice that -3 times the first row gives the row vector <span class="math inline">\(\begin{pmatrix} -3 &amp; -12 &amp; -21 \end{pmatrix}\)</span>. Then, we add this to the row vector of the third row <span class="math inline">\(\begin{pmatrix} 3 &amp; 6 &amp; 9 \end{pmatrix}\)</span> to get the row vector <span class="math inline">\(\begin{pmatrix} 0 &amp; -6 &amp; -12 \end{pmatrix}\)</span>. Finally, this row vector replaces the third row of the matrix to give the result</p>
-<p><span class="math display">\[
+<p>First, we notice that -3 times the first row gives the row vector <span class="math inline">\(\begin{pmatrix} -3 &amp; -12 &amp; -21 \end{pmatrix}\)</span>. Then, we add this to the row vector of the third row <span class="math inline">\(\begin{pmatrix} 3 &amp; 6 &amp; 9 \end{pmatrix}\)</span> to get the row vector <span class="math inline">\(\begin{pmatrix} 0 &amp; -6 &amp; -12 \end{pmatrix}\)</span>. Finally, this row vector replaces the third row of the matrix to give the result <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix} 1 &amp; 4 &amp; 7 \\ 2 &amp; 5 &amp; 8 \\ 0 &amp; -6 &amp; -12 \end{pmatrix}
 \end{aligned}
@@ -1339,12 +1333,12 @@ Solution
 <p><strong>Note:</strong> Notice that by performing this row sum and replacement, we have made the first column of the third row of <span class="math inline">\(\mathbf{A}\)</span> a 0. This zeroing out of the columns will play a very important role moving forward.</p>
 <p>Using <code>R</code>, this can be done as</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the rows </span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> A[<span class="dv">1</span>, ]</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>row3 <span class="ot">&lt;-</span> A[<span class="dv">3</span>, ]</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">3</span>, ] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span> <span class="sc">*</span> row1 <span class="sc">+</span> row3</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the rows </span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> A[<span class="dv">1</span>, ]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>row3 <span class="ot">&lt;-</span> A[<span class="dv">3</span>, ]</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">3</span>, ] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span> <span class="sc">*</span> row1 <span class="sc">+</span> row3</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    4    7
@@ -1354,9 +1348,9 @@ Solution
 </div>
 <p>Another way to do this row sum and replacement is</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">3</span>, ] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span> <span class="sc">*</span> A[<span class="dv">1</span>, ] <span class="sc">+</span> A[<span class="dv">3</span>, ]</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">3</span>, ] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span> <span class="sc">*</span> A[<span class="dv">1</span>, ] <span class="sc">+</span> A[<span class="dv">3</span>, ]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    4    7
@@ -1370,16 +1364,14 @@ Solution
 <div class="cell">
 
 </div>
-<p>The second row of <span class="math inline">\(\mathbf{A}\)</span> is the row vector <span class="math inline">\(\begin{pmatrix} 2 &amp; 5 &amp; 8 \end{pmatrix}\)</span>. Multiplying the second row by <span class="math inline">\(\frac{1}{2}\)</span> gives the row vector <span class="math inline">\(\begin{pmatrix} 1 &amp; 5/2 &amp; 4 \end{pmatrix}\)</span>. Plugging this into the matrix gives the full matrix with second row multiplied by <span class="math inline">\(\frac{1}{2}\)</span> as</p>
-<p><span class="math display">\[
+<p>The second row of <span class="math inline">\(\mathbf{A}\)</span> is the row vector <span class="math inline">\(\begin{pmatrix} 2 &amp; 5 &amp; 8 \end{pmatrix}\)</span>. Multiplying the second row by <span class="math inline">\(\frac{1}{2}\)</span> gives the row vector <span class="math inline">\(\begin{pmatrix} 1 &amp; 5/2 &amp; 4 \end{pmatrix}\)</span>. Plugging this into the matrix gives the full matrix with second row multiplied by <span class="math inline">\(\frac{1}{2}\)</span> as <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix} 1 &amp; 4 &amp; 7 \\ 1 &amp; 5/2 &amp; 4 \\ 3 &amp; 6 &amp; 9 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>In <code>R</code>, the second row of <span class="math inline">\(\mathbf{A}\)</span> can be multiplied by <span class="math inline">\(\frac{1}{2}\)</span> as</p>
+\]</span> In <code>R</code>, the second row of <span class="math inline">\(\mathbf{A}\)</span> can be multiplied by <span class="math inline">\(\frac{1}{2}\)</span> as</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">*</span> A[<span class="dv">2</span>, ]</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">*</span> A[<span class="dv">2</span>, ]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1  4.0    7
@@ -1397,19 +1389,17 @@ Solution
 <p><span class="math display">\[\begin{alignat*}{4}
 x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}+{} &amp; 2 x_3 &amp; {}={} &amp; 9.
-\end{alignat*}\]</span> The augmented matrix representation of this system of linear equations is given by the matrix</p>
-<p><span class="math display">\[
+\end{alignat*}\]</span> The augmented matrix representation of this system of linear equations is given by the matrix <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix}
 1 &amp; 4 &amp; - 1 &amp; 11 \\
 4 &amp; 5 &amp; 2   &amp;  9
 \end{pmatrix},
 \end{aligned}
-\]</span></p>
-<p>where the first column of the matrix represents the variable <span class="math inline">\(x_1\)</span>, the second column of the matrix represents the variable <span class="math inline">\(x_2\)</span>, the third column of the matrix represents the variable <span class="math inline">\(x_3\)</span>, and the fourth column of the matrix represents the constant terms. We can express the augmented form in <code>R</code> using a matrix</p>
+\]</span> where the first column of the matrix represents the variable <span class="math inline">\(x_1\)</span>, the second column of the matrix represents the variable <span class="math inline">\(x_2\)</span>, the third column of the matrix represents the variable <span class="math inline">\(x_3\)</span>, and the fourth column of the matrix represents the constant terms. We can express the augmented form in <code>R</code> using a matrix</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">9</span>), <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    1    4   -1   11
@@ -1418,8 +1408,8 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 <p>and to make clear the respective variables, we can add in column names as a matrix attribute using the <code>colnames()</code> function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(augmented_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"constants"</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(augmented_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"constants"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     x1 x2 x3 constants
 [1,]  1  4 -1        11
@@ -1429,8 +1419,8 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 <p>which adds labels to each of the columns.</p>
 <p>Now, using elementary row operations on the matrix, we can attempt to find solutions to the system of equations. First, we multiply the first row by -4 and add it to the second row of the matrix and replace the second row with this sum</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">*</span> augmented_matrix[<span class="dv">1</span>, ] <span class="sc">+</span> augmented_matrix[<span class="dv">2</span>, ]</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">*</span> augmented_matrix[<span class="dv">1</span>, ] <span class="sc">+</span> augmented_matrix[<span class="dv">2</span>, ]</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     x1  x2 x3 constants
 [1,]  1   4 -1        11
@@ -1439,8 +1429,8 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 <p>Next, scale the second row to have a leading value of 1 by dividing by -11</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> augmented_matrix[<span class="dv">2</span>, ] <span class="sc">/</span> (<span class="sc">-</span><span class="dv">11</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix[<span class="dv">2</span>, ] <span class="ot">&lt;-</span> augmented_matrix[<span class="dv">2</span>, ] <span class="sc">/</span> (<span class="sc">-</span><span class="dv">11</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     x1 x2         x3 constants
 [1,]  1  4 -1.0000000 11.000000
@@ -1449,8 +1439,8 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 <p>We can then multiply the second row by -4 and add it to the first row and replace the first row with this value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> augmented_matrix[<span class="dv">1</span>, ] <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> augmented_matrix[<span class="dv">2</span>, ]</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>augmented_matrix[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> augmented_matrix[<span class="dv">1</span>, ] <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> augmented_matrix[<span class="dv">2</span>, ]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>augmented_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     x1 x2         x3 constants
 [1,]  1  0  1.1818182 -1.727273
@@ -1458,59 +1448,50 @@ x_1   &amp; {}+{} &amp; 4 x_2 &amp; {}-{} &amp; x_3 &amp; {}={} &amp; 11 \\
 </div>
 </div>
 <p>Notice how the matrix has a “triangular” form (The lower part of the “triangle” is made of 0s and the upper part has numbers).</p>
-<p>The triangular form tells us that There are infinitely many solutions to this system of equation. The infinite solutions are subject to the requirements that</p>
-<p><span class="math display">\[x_1 = - \frac{19}{11} - \frac{13}{11} x_3\]</span></p>
-<p>and</p>
-<p><span class="math display">\[x_2 = \frac{35}{11} + \frac{6}{11} x_3.\]</span></p>
-<p>To get this into a reasonable form, we will solve these equations as a function of <span class="math inline">\(x_1\)</span>. Solving the first equation for <span class="math inline">\(x_3\)</span> gives</p>
-<p><span class="math display">\[x_3 = - \frac{19}{13} -\frac{11}{13} x_1.\]</span></p>
-<p>Then, plugging this into <span class="math inline">\(x_3\)</span> in the second equation gives</p>
-<p><span class="math display">\[
+<p>The triangular form tells us that There are infinitely many solutions to this system of equation. The infinite solutions are subject to the requirements that <span class="math display">\[x_1 = - \frac{19}{11} - \frac{13}{11} x_3\]</span> and <span class="math display">\[x_2 = \frac{35}{11} + \frac{6}{11} x_3.\]</span> To get this into a reasonable form, we will solve these equations as a function of <span class="math inline">\(x_1\)</span>. Solving the first equation for <span class="math inline">\(x_3\)</span> gives <span class="math display">\[x_3 = - \frac{19}{13} -\frac{11}{13} x_1.\]</span> Then, plugging this into <span class="math inline">\(x_3\)</span> in the second equation gives <span class="math display">\[
 \begin{aligned}
 x_2 &amp; = \frac{35}{11} + \frac{6}{11} \left( - \frac{19}{13} -\frac{11}{13} x_1 \right) \\
 &amp; = \frac{341}{143} - \frac{6}{13} x_1
 \end{aligned}
-\]</span></p>
-<p>which defines a linear relationship between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Notice that in these last two solutions, <span class="math inline">\(x_1\)</span> is a “free variable” and <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are “determined” by <span class="math inline">\(x_1\)</span>.</p>
+\]</span> which defines a linear relationship between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Notice that in these last two solutions, <span class="math inline">\(x_1\)</span> is a “free variable” and <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are “determined” by <span class="math inline">\(x_1\)</span>.</p>
 <p>In the plot below, the two planes (red and blue) are the geometric plots of the linear equations in the system of equations (the red plane is the top equation and the blue plane is the bottom equation). The purple line is the equation for the solution given the free variable <span class="math inline">\(x_3\)</span> and lies at the intersection of the two planes, much like the point in the two lines in figure <strong>linking reference here</strong> lies at the intersection of the two points.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uses gg3D library</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">60</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length =</span> n)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1, <span class="at">x2 =</span> x2)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> region<span class="sc">$</span>x1,</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> region<span class="sc">$</span>x2,</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> <span class="sc">-</span> <span class="dv">11</span> <span class="sc">+</span> (region<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x2)</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> region<span class="sc">$</span>x1,</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> region<span class="sc">$</span>x2,</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> (<span class="dv">9</span> <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x1 <span class="sc">-</span> <span class="dv">5</span> <span class="sc">*</span> region<span class="sc">$</span>x2) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>df_solution <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x1, </span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="dv">341</span> <span class="sc">/</span> <span class="dv">143</span> <span class="sc">-</span> <span class="dv">6</span> <span class="sc">/</span> <span class="dv">13</span> <span class="sc">*</span> x1,</span>
-<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> <span class="sc">-</span><span class="dv">19</span><span class="sc">/</span><span class="dv">13</span> <span class="sc">-</span> <span class="dv">11</span><span class="sc">/</span><span class="dv">13</span> <span class="sc">*</span> x1</span>
-<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="co"># theta and phi set up the "perspective/viewing angle" of the 3D plot</span></span>
-<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">63</span></span>
-<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">12</span></span>
-<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x1, x2, <span class="at">z =</span> x3)) <span class="sc">+</span></span>
-<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">axes_3D</span>(<span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
-<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_wireframe</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
-<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_wireframe</span>(<span class="at">data =</span> df2, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2, <span class="at">z =</span> x3), <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
-<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_3D</span>(<span class="at">data =</span> df_solution, <span class="fu">aes</span>(x1, x2, <span class="at">z =</span> x3), <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">theta =</span> theta, <span class="at">phi =</span> phi, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
-<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs_3D</span>(<span class="at">hjust=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">vjust=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.2</span>), <span class="at">angle=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uses gg3D library</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">60</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length =</span> n)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1, <span class="at">x2 =</span> x2)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> region<span class="sc">$</span>x1,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> region<span class="sc">$</span>x2,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> <span class="sc">-</span> <span class="dv">11</span> <span class="sc">+</span> (region<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x2)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> region<span class="sc">$</span>x1,</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> region<span class="sc">$</span>x2,</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> (<span class="dv">9</span> <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x1 <span class="sc">-</span> <span class="dv">5</span> <span class="sc">*</span> region<span class="sc">$</span>x2) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>df_solution <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x1, </span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="dv">341</span> <span class="sc">/</span> <span class="dv">143</span> <span class="sc">-</span> <span class="dv">6</span> <span class="sc">/</span> <span class="dv">13</span> <span class="sc">*</span> x1,</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> <span class="sc">-</span><span class="dv">19</span><span class="sc">/</span><span class="dv">13</span> <span class="sc">-</span> <span class="dv">11</span><span class="sc">/</span><span class="dv">13</span> <span class="sc">*</span> x1</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="co"># theta and phi set up the "perspective/viewing angle" of the 3D plot</span></span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">63</span></span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">12</span></span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x1, x2, <span class="at">z =</span> x3)) <span class="sc">+</span></span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">axes_3D</span>(<span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_wireframe</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_wireframe</span>(<span class="at">data =</span> df2, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2, <span class="at">z =</span> x3), <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_3D</span>(<span class="at">data =</span> df_solution, <span class="fu">aes</span>(x1, x2, <span class="at">z =</span> x3), <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">theta =</span> theta, <span class="at">phi =</span> phi, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs_3D</span>(<span class="at">hjust=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">vjust=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.2</span>), <span class="at">angle=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 row(s) containing missing values (geom_path).
-
-Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
+Removed 2 row(s) containing missing values (geom_path).</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="04-linear-systems-of-equations_files/figure-html/plot-solution-1.png" class="img-fluid" width="672"></p>
@@ -1642,8 +1623,8 @@ Solution
 <p><span class="theorem-title"><strong>Example 4.25 </strong></span><strong>in class</strong></p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pracma library</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rref example in class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pracma library</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># rref example in class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-reduced-row-echelon-forms-to-solve-systems-of-linear-equations" class="level3" data-number="4.2.3">
@@ -1655,17 +1636,16 @@ Solution
 <p><span class="math display">\[
 \begin{alignedat}{4}  3 x_1 &amp; {}+{} &amp; 8 x_2 &amp; {}-{} &amp; 4 x_3 &amp; {}={} &amp; 6\\ 2 x_1 &amp; {}-{} &amp; 4 x_2 &amp; {}-{} &amp; 1 x_3 &amp; {}={} &amp; 8\\ 4 x_1 &amp; {}+{} &amp; 5 x_2 &amp; {}{} &amp;   &amp; {}={} &amp; 9 \end{alignedat}
 \]</span></p>
-<p>which can be written in the augmented matrix form as</p>
-<p><span class="math display">\[
+<p>which can be written in the augmented matrix form as <span class="math display">\[
 \begin{pmatrix} 3 &amp; 8 &amp; -4 &amp; 6 \\ 2 &amp; -4 &amp; -1 &amp; 8 \\ 4 &amp; 5 &amp; 0 &amp; 9 \end{pmatrix}
 \]</span></p>
 <p>In <code>R</code>, this is the matrix</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Calculating the reduced row echelon form, gives</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate rref of augmented matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate rref of augmented matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>which gives the solution …</p>
 <div id="exm-" class="theorem example">
@@ -1693,11 +1673,9 @@ Solution
 </section>
 <section id="existence-and-uniqueness-from-reduced-row-echelon-form" class="level3" data-number="4.2.4">
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="existence-and-uniqueness-from-reduced-row-echelon-form"><span class="header-section-number">4.2.4</span> Existence and uniqueness from reduced row echelon form</h3>
-<p>The row echelon form is useful to determine if a system of linear equations is consistent (the system of equations has a solution). To check if a solution to a linear system of equations exists, convert the system of equations to an augmented matrix form. Then, reduce the augmented matrix to row echelon form using elementary matrix operations. As long as there is not an equation of the form</p>
-<p><span class="math display">\[
+<p>The row echelon form is useful to determine if a system of linear equations is consistent (the system of equations has a solution). To check if a solution to a linear system of equations exists, convert the system of equations to an augmented matrix form. Then, reduce the augmented matrix to row echelon form using elementary matrix operations. As long as there is not an equation of the form <span class="math display">\[
 0 = \mbox{constant}
-\]</span></p>
-<p>for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
+\]</span> for some constant number not equal to 0, the system of linear equations is consistent. If the augmented matrix can be written in reduced row echelon form with no free variables, the solution to the linear system of equations is unique. These results give rise to the theorem</p>
 <div id="thm-" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 4.2 </strong></span>A linear system of equations is consistent (has a solution) if the furthest right column (the constant column) is not a pivot column. If the system of equations is consistent, (i.e., the furthest right column is not a pivot column), the solution is unique if there are no free variables and there are infinitely many solutions if there is at least one free variable.</p>
 </div>
