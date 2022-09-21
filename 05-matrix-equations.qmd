@@ -4,6 +4,7 @@
 library(tidyverse)
 library(dasc2594)
 library(gg3D)
+library(MASS)
 ```
 
 Here we introduce the concept of the linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$. This equation is the most fundamental equation in all of statistics and data science. Given a matrix $\mathbf{A}$ and a vector of constants $\mathbf{b}$, the goal is to solve for the value (or values) of $\mathbf{x}$ that are a solution to this equation. The equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ is a matrix representation of the system of linear equations
@@ -297,19 +298,19 @@ but change this so that $\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}
 
 ```{r define-matrix-03}
 A <- matrix(c(3, -2, 5, -2, 4, -6, 4, -2, 6, 2, -6, 8), 3, 4)
-rref(A)
+fractions(rref(A))
 ```
+
 $$
 \begin{aligned}
-x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
-x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
+x_1 = - \frac{3}{2} x_3  - \frac{1}{2}\\
+x_2 = - \frac{1}{4} x_3  - \frac{7}{4} \\
 \end{aligned}
 $$
-which was the same solution set as the homoegenous solution plus the additional vector $\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}$. Thus, the inhomogenous solution is now $\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}$ where 
+which was the same solution set as the homoegenous solution $\begin{pmatrix} -\frac{3}{2} \\ - \frac{1}{4} \\ 1 \end{pmatrix}$ plus the additional vector $\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}$. Thus, the inhomogenous solution is now $\mathbf{x} = c \mathbf{u} + \mathbf{p}$ where 
 $$
 \begin{aligned}
-\mathbf{u} &= \begin{pmatrix} 1 \\ 0 \\ \frac{3}{2} \end{pmatrix} & 
-\mathbf{v} &= \begin{pmatrix} 0 \\ 1 \\ \frac{1}{4} \end{pmatrix} & 
+\mathbf{u} &= \begin{pmatrix} -\frac{3}{2} \\ - \frac{1}{4} \\ 1 \end{pmatrix} &
 \mathbf{p} &= \begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix} 
 \end{aligned}
 $$
