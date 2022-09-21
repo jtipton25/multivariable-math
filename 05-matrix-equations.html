@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -356,6 +356,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dasc2594)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gg3D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: no DISPLAY variable so Tk is not available</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we introduce the concept of the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>. This equation is the most fundamental equation in all of statistics and data science. Given a matrix <span class="math inline">\(\mathbf{A}\)</span> and a vector of constants <span class="math inline">\(\mathbf{b}\)</span>, the goal is to solve for the value (or values) of <span class="math inline">\(\mathbf{x}\)</span> that are a solution to this equation. The equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is a matrix representation of the system of linear equations</p>
 <p><span id="eq-matrixequation"><span class="math display">\[
@@ -372,13 +376,11 @@ x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K &amp; = \mathbf{b} \\
 </ul>
 <section id="solutions-of-matrix-equations" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="solutions-of-matrix-equations"><span class="header-section-number">5.1</span> Solutions of matrix equations</h2>
-<p>Because the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is equivalent to a linear system of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, we can solve the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> by writing the equation in an augmented matrix form</p>
-<p><span class="math display">\[
+<p>Because the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is equivalent to a linear system of equations <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, we can solve the matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> by writing the equation in an augmented matrix form <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
+\]</span> and then reducing the matrix to reduced row echelon form. This gives rise to the theorem</p>
 <div id="thm-" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 5.1 </strong></span>The matrix equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, the vector equation <span class="math inline">\(x_1 \mathbf{a}_1 + \ldots + x_K \mathbf{a}_K = \mathbf{b}\)</span>, and the augmented matrix <span class="math inline">\(\begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{b} \end{pmatrix}\)</span> all have the same solution set.</p>
 </div>
@@ -411,9 +413,7 @@ a_{21} &amp; a_{22} &amp; \ldots &amp; a_{2K} \\
 a_{n1} &amp; a_{n2} &amp; \ldots &amp; a_{nK} \\
 \end{pmatrix} &amp;&amp; \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_K \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>The matrix product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the linear system of equations</p>
-<p><span class="math display">\[
+\]</span> The matrix product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the linear system of equations <span class="math display">\[
 \begin{aligned}
 \mathbf{A}  \mathbf{x} &amp; = \begin{pmatrix}
 a_{11} &amp; a_{12} &amp; \ldots &amp; a_{1K} \\
@@ -436,8 +436,7 @@ a_{21} x_1 + a_{22} x_2 + \ldots + a_{2K} x_K \\
 a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
+\]</span> Notice that the first row of the last matrix above has the sum first row of the matrix <span class="math inline">\(\mathbf{A}\)</span> multiplied by the corresponding elements in <span class="math inline">\(\mathbf{x}\)</span> (i.e., first element <span class="math inline">\(a_{11}\)</span> of the first row of <span class="math inline">\(\mathbf{A}\)</span> times the first element <span class="math inline">\(x_1\)</span> of <span class="math inline">\(\mathbf{x}\)</span> plus the second, third, fourth, etc.). Likewise, this pattern holds for the second row, and all the other rows. This gives an algorithm for evaluating the product <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span>.</p>
 <div id="def-" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.1 </strong></span>The product <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> of a <span class="math inline">\(n \times K\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> with a <span class="math inline">\(K\)</span>-vector <span class="math inline">\(\mathbf{x}\)</span> is a <span class="math inline">\(n\)</span>-vector where the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> is the sum of the <span class="math inline">\(i\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> times the corresponding elements of the vector <span class="math inline">\(\mathbf{x}\)</span></p>
 </div>
@@ -464,22 +463,17 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 <section id="homogeneous-linear-systems-of-equations" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="homogeneous-linear-systems-of-equations"><span class="header-section-number">5.5.1</span> Homogeneous linear systems of equations</h3>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.2 </strong></span>The matrix equation</p>
-<p><span id="eq-homogeneous"><span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 5.2 </strong></span>The matrix equation <span id="eq-homogeneous"><span class="math display">\[
 \begin{aligned}
 \mathbf{A}\mathbf{x} = \mathbf{0}
 \end{aligned}
-\tag{5.2}\]</span></span></p>
-<p>is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
+\tag{5.2}\]</span></span> is called a homogeneous system of equations. The vector <span class="math inline">\(\mathbf{0}\)</span> is a vector of length <span class="math inline">\(N\)</span> composed of all zeros. The <strong>trivial</strong> solution of the homogeneous equation is when <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> and is not a very useful solution. Typically one is interested in <strong>nontrivial</strong> solutions where <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>.</p>
 </div>
-<p>The homogeneous linear system of equations can be written in augmented matrix form</p>
-<p><span class="math display">\[
+<p>The homogeneous linear system of equations can be written in augmented matrix form <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix} \mathbf{a}_1 &amp; \ldots &amp; \mathbf{a}_K &amp; \mathbf{0} \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column <span class="math inline">\(\mathbf{A}\)</span> must not be a pivot column (Note: the last column of the augmented matrix will not be a pivot column because it will be a column of zeros). If every column of <span class="math inline">\(\mathbf{A}\)</span> were a pivot column, the reduced row echelon form of the augmented matrix would be</p>
-<p><span class="math display">\[
+\]</span> which implies that a non-trivial solution only exists if there is a free variable. Another way of saying this is that at least one column <span class="math inline">\(\mathbf{A}\)</span> must not be a pivot column (Note: the last column of the augmented matrix will not be a pivot column because it will be a column of zeros). If every column of <span class="math inline">\(\mathbf{A}\)</span> were a pivot column, the reduced row echelon form of the augmented matrix would be <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix}
 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\
@@ -487,8 +481,7 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 0 &amp; 0 &amp; \ldots &amp; 1 &amp; 0
 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>which implies the only solution is the trivial solution <span class="math inline">\(\mathbf{0}\)</span>.</p>
+\]</span> which implies the only solution is the trivial solution <span class="math inline">\(\mathbf{0}\)</span>.</p>
 <ul>
 <li><strong>Example: in class</strong></li>
 </ul>
@@ -498,31 +491,23 @@ a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nK} x_K \\
 - 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
 5 x_1 - 6 x_2 + 6 x_3 = 0
 \end{aligned}
-\]</span></p>
-<ul>
-<li><strong>Example: in class</strong></li>
-</ul>
+\]</span> * <strong>Example: in class</strong></p>
 <p>Consider the equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 2x_1 + 4 x_2 - x_3 = 0.
 \end{aligned}
-\]</span></p>
-<p>we can write this as</p>
-<p><span class="math display">\[
+\]</span> we can write this as <span class="math display">\[
 \begin{aligned}
 x_1 = -2 x_2 + \frac{1}{2} x_3
 \end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are free variables. Writing this as a solution <span class="math inline">\(\mathbf{x}\)</span> gives</p>
-<p><span class="math display">\[
+\]</span> where <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> are free variables. Writing this as a solution <span class="math inline">\(\mathbf{x}\)</span> gives <span class="math display">\[
 \begin{aligned}
 \mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} -2 x_2 + \frac{1}{2} x_3 \\ x_2 \\ x_3 \end{pmatrix} =
 x_2 \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} +
 x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
+\]</span> which is a linear combination of the vectors <span class="math inline">\(\mathbf{u} = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{v} = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}\)</span>. This implies that we can write the solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> for scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Therefore, the solution set <span class="math inline">\(\mathbf{x}\)</span> is contained in the <span class="math inline">\(\mbox{span}\{\mathbf{u}, \mathbf{v}\}\)</span>. Because the vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> are linearly independent (they don’t point in the same direction), the set of all linear combinations of <span class="math inline">\(c \mathbf{u} + d \mathbf{v}\)</span> defines a plane.</p>
 <div id="def-" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.3 </strong></span>A solution set of the form <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> is called a <strong>parametric vector solution</strong>.</p>
 </div>
@@ -530,59 +515,51 @@ x_3 \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 </section>
 <section id="solutions-to-nonhomogeneous-systems" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="solutions-to-nonhomogeneous-systems"><span class="header-section-number">5.6</span> Solutions to nonhomogeneous systems</h2>
-<p>Recall the simple linear equation</p>
-<p><span class="math display">\[
+<p>Recall the simple linear equation <span class="math display">\[
 y = mx + b
-\]</span></p>
-<p>where <span class="math inline">\(m\)</span> is the slope and <span class="math inline">\(b\)</span> is the y-intercept. Setting <span class="math inline">\(b = 0\)</span> gives a simple homogenous linear equation where the y-intercept goes through the origin (0, 0). When <span class="math inline">\(b\)</span> is nonzero, the line keeps the same slope but is shifted upward/downward by <span class="math inline">\(b\)</span>.</p>
+\]</span> where <span class="math inline">\(m\)</span> is the slope and <span class="math inline">\(b\)</span> is the y-intercept. Setting <span class="math inline">\(b = 0\)</span> gives a simple homogenous linear equation where the y-intercept goes through the origin (0, 0). When <span class="math inline">\(b\)</span> is nonzero, the line keeps the same slope but is shifted upward/downward by <span class="math inline">\(b\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>), <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">2</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">2</span>, <span class="at">intercept =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>))  <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="at">text =</span> <span class="fu">c</span>(<span class="st">"homogeneous</span><span class="sc">\n</span><span class="st">solution"</span>, <span class="st">"inhomogeneous</span><span class="sc">\n</span><span class="st">solution"</span>)),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">y =</span> y <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">label =</span> text), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>)) <span class="sc">+</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">2</span>),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>)), </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">2</span>, <span class="at">text =</span> <span class="st">"b"</span>),</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">y =</span> y, <span class="at">label =</span> text), </span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">8</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"orange"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>), <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">2</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">2</span>, <span class="at">intercept =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>))  <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="at">text =</span> <span class="fu">c</span>(<span class="st">"homogeneous</span><span class="sc">\n</span><span class="st">solution"</span>, <span class="st">"inhomogeneous</span><span class="sc">\n</span><span class="st">solution"</span>)),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">y =</span> y <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">label =</span> text), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>)) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">2</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>)), </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">2</span>, <span class="at">text =</span> <span class="st">"b"</span>),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">y =</span> y, <span class="at">label =</span> text), </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">8</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"orange"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-matrix-equations_files/figure-html/plot-inhomogeneous-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>This shift in location (but not in slope) is called a <strong>translation</strong></p>
 <ul>
-<li><strong>Example:</strong> Show this shift for a system of linear equations where the solution set defines a plane. From example above,</li>
-</ul>
-<p><span class="math display">\[
+<li><strong>Example:</strong> Show this shift for a system of linear equations where the solution set defines a plane. From example above, <span class="math display">\[
 \begin{aligned}
 2x_1 + 4 x_2 - x_3 = 0.
 \end{aligned}
-\]</span></p>
-<p>has the parametric solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> with</p>
-<p><span class="math display">\[
+\]</span> has the parametric solution <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v}\)</span> with <span class="math display">\[
 \begin{aligned}
 \mathbf{u} &amp; = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} &amp;
 \mathbf{v} &amp; = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>Now, if we change the system of linear equations so that we have the inhomogeneous equation</p>
-<p><span class="math display">\[
+\]</span></li>
+</ul>
+<p>Now, if we change the system of linear equations so that we have the inhomogeneous equation <span class="math display">\[
 \begin{aligned}
 2x_1 + 4 x_2 - x_3 = 20.
 \end{aligned}
-\]</span></p>
-<p>we get the homogeneous solution set <span class="math inline">\(x_1 = -2 x_2 + \frac{1}{2} x_3 + 10\)</span> which can be written in parametric form as <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span> with</p>
-<p><span class="math display">\[
+\]</span> we get the homogeneous solution set <span class="math inline">\(x_1 = -2 x_2 + \frac{1}{2} x_3 + 10\)</span> which can be written in parametric form as <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span> with <span class="math display">\[
 \begin{aligned}
 \mathbf{u} &amp; = \begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix} &amp;
 \mathbf{v} &amp; = \begin{pmatrix} \frac{1}{2} \\ 0 \\ 1 \end{pmatrix} &amp;
@@ -591,30 +568,30 @@ y = mx + b
 \]</span></p>
 <p>For plotting, we will solve these equations for <span class="math inline">\(x_3\)</span>, letting <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> be free variables (this is just for the requirements of the plotting function). Thus, the homogeneous equation has the solution <span class="math inline">\(x_3 = 2x_1 + 4x_2\)</span> and the inhomogenous equation has the solution <span class="math inline">\(x_3 = 2x_1 + 4x_2 - 20\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uses gg3D library</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">60</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length =</span> n)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1, <span class="at">x2 =</span> x2)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> region<span class="sc">$</span>x1,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> region<span class="sc">$</span>x2,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> <span class="fu">c</span>(</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> region<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x2,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> region<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x2 <span class="sc">-</span> <span class="dv">20</span>),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"inhomogeneous"</span>, <span class="st">"homogeneous"</span>), <span class="at">each =</span> n<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># theta and phi set up the "perspective/viewing angle" of the 3D plot</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">45</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2, <span class="at">z =</span> x3, <span class="at">color =</span> equation)) <span class="sc">+</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">axes_3D</span>(<span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_wireframe</span>(</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.75</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"inhomogeneous"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"homogeneous"</span> <span class="ot">=</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs_3D</span>(<span class="at">hjust=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">vjust=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.2</span>), </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">angle=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uses gg3D library</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">60</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length =</span> n)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> x1, <span class="at">x2 =</span> x2)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> region<span class="sc">$</span>x1,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> region<span class="sc">$</span>x2,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x3 =</span> <span class="fu">c</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> region<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x2,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> region<span class="sc">$</span>x1 <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> region<span class="sc">$</span>x2 <span class="sc">-</span> <span class="dv">20</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">equation =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"inhomogeneous"</span>, <span class="st">"homogeneous"</span>), <span class="at">each =</span> n<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># theta and phi set up the "perspective/viewing angle" of the 3D plot</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2, <span class="at">z =</span> x3, <span class="at">color =</span> equation)) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">axes_3D</span>(<span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_wireframe</span>(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.75</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"inhomogeneous"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"homogeneous"</span> <span class="ot">=</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs_3D</span>(<span class="at">hjust=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">vjust=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.2</span>), </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">angle=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">90</span>), <span class="at">theta =</span> theta, <span class="at">phi =</span> phi) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
 </div>
@@ -631,32 +608,28 @@ y = mx + b
 - 2 x_1 + 4 x_2 - 2 x_3 = 0 \\
 5 x_1 - 6 x_2 + 6 x_3 = 0
 \end{aligned}
-\]</span></p>
-<p>but change this so that <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}\)</span></p>
+\]</span> but change this so that <span class="math inline">\(\mathbf{b} = \begin{pmatrix} 2 \\ -6 \\ 8 \end{pmatrix}\)</span></p>
 <ul>
 <li><strong>Write this as a parametric solution with a mean shift</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">8</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">8</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fractions</span>(<span class="fu">rref</span>(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3]  [,4]
-[1,]    1    0 1.50 -0.50
-[2,]    0    1 0.25 -1.75
-[3,]    0    0 0.00  0.00</code></pre>
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1    0  3/2 -1/2
+[2,]    0    1  1/4 -7/4
+[3,]    0    0    0    0</code></pre>
 </div>
 </div>
 <p><span class="math display">\[
 \begin{aligned}
-x_1 = \frac{3}{2} x_2  - \frac{1}{2}\\
-x_2 = \frac{1}{4} x_3  - \frac{7}{4} \\
+x_1 = - \frac{3}{2} x_3  - \frac{1}{2}\\
+x_2 = - \frac{1}{4} x_3  - \frac{7}{4} \\
 \end{aligned}
-\]</span></p>
-<p>which was the same solution set as the homoegenous solution plus the additional vector <span class="math inline">\(\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}\)</span>. Thus, the inhomogenous solution is now <span class="math inline">\(\mathbf{x} = c \mathbf{u} + d \mathbf{v} + \mathbf{p}\)</span> where</p>
-<p><span class="math display">\[
+\]</span> which was the same solution set as the homoegenous solution <span class="math inline">\(\begin{pmatrix} -\frac{3}{2} \\ - \frac{1}{4} \\ 1 \end{pmatrix}\)</span> plus the additional vector <span class="math inline">\(\begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}\)</span>. Thus, the inhomogenous solution is now <span class="math inline">\(\mathbf{x} = c \mathbf{u} + \mathbf{p}\)</span> where <span class="math display">\[
 \begin{aligned}
-\mathbf{u} &amp;= \begin{pmatrix} 1 \\ 0 \\ \frac{3}{2} \end{pmatrix} &amp;
-\mathbf{v} &amp;= \begin{pmatrix} 0 \\ 1 \\ \frac{1}{4} \end{pmatrix} &amp;
+\mathbf{u} &amp;= \begin{pmatrix} -\frac{3}{2} \\ - \frac{1}{4} \\ 1 \end{pmatrix} &amp;
 \mathbf{p} &amp;= \begin{pmatrix} -\frac{1}{2} \\ -\frac{7}{4} \\ 0 \end{pmatrix}
 \end{aligned}
 \]</span></p>
