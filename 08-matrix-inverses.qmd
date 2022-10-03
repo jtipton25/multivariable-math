@@ -176,7 +176,7 @@ Recall the elementary row operations:
 2) sums: replacing a row by the sum itself and a multiple of another row.
 3) scalar multiplication: replacing a row by a scalar multiple times itself.
 
-::: {.example}
+::: {#exm-row-operations}
 Consider the $3 \times 3$ matrix 
 
 ```{r example-row-operations-matrix}
@@ -247,7 +247,9 @@ $$
 
 **Fact:** Each elementary matrix $\mathbf{E}$ is invertible
 
-**Example: in class**
+:::{#exm-}
+**In class**
+:::
 
 The next theorem is quite important as the result gives an algorithm for calculating the inverse of a $n \times n$ matrix $\mathbf{A}$ which also makes it possible to solve matrix equations $\mathbf{A}\mathbf{x} = \mathbf{b}$
 
