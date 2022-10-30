@@ -31,14 +31,14 @@ Let $\mathbf{u}$ and $\mathbf{v}$ be vectors in $\mathcal{R}^n$. Then the vector
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-To show that span$\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$, we must satisfy the three conditions of definition (\@ref(def:subspace)).
+To show that span$\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$, we must satisfy the three conditions of @def-subspace.
 
 1) $\mathbf{0} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ because $\mathbf{0} = 0 \mathbf{u} + 0 \mathbf{v}$ is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ with coefficients 0 and 0.
     
 2) Let $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ and $\mathbf{y} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$. Then, by the definition of the span (Definition (\@ref(def:span))) there exists constants $a, b, c, d$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$ and $\mathbf{y} = c \mathbf{u} + d \mathbf{v}$. Thus, $\mathbf{x} + \mathbf{y} =  a \mathbf{u} + b \mathbf{v} + c \mathbf{u} + d \mathbf{v} =  (a + c) \mathbf{u} + (b + d) \mathbf{v}$ which, by definition, is in the span$\{\mathbf{u}, \mathbf{v}\}$. Thus, span$\{\mathbf{u}, \mathbf{v}\}$ is closed under addition.
 
 
-3) Let $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ $c$ be a constant. Because $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$, the definition of the span (Definition (\@ref(def:span))) implies there exists constants $a$ and $b$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$. Thus, $c\mathbf{x} = ca \mathbf{u} + cb \mathbf{v}$ which is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ and is therefore $c\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$.
+3) Let $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$ $c$ be a constant. Because $\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$, the definition of the span  in @def-span implies there exists constants $a$ and $b$ such that $\mathbf{x} = a \mathbf{u} + b \mathbf{v}$. Thus, $c\mathbf{x} = ca \mathbf{u} + cb \mathbf{v}$ which is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ and is therefore $c\mathbf{x} \in \mbox{span}\{\mathbf{u}, \mathbf{v}\}$.
 
 Because all three requirements are met, we have shown that $\mbox{span}\{\mathbf{u}, \mathbf{v}\}$ is a subspace of $\mathcal{R}^n$.
 :::
@@ -54,7 +54,7 @@ B) Is a line **not** through the origin a subspace?
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-**Part A:** First, we will consider whether the line through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (\@ref(def:subspace))
+**Part A:** First, we will consider whether the line through the origin is a subspace. To show this, we need to verify the three properties of a subspace in @def-subspace.
 
 1) $\mathbf{0}$ is on the line through the origin because $\mathbf{A} \mathbf{x} = \mathbf{0}$ has the trivial solution $\mathbf{x} = \mathbf{0}$.
 
@@ -87,7 +87,7 @@ $$
 which is a solution to the matrix equation and therefore $c \mathbf{u}$ is a point on the line through the origin.
 
 
-**Part B:** Next, we consider whether the line **not** through the origin is a subspace. To show this, we need to verify the three properties of a subspace in Definition (\@ref(def:subspace)). Recall that a line not through the origin is a solution set of the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ where the solution set has a single free variable and $\mathbf \neq \mathbf{0}$. To check if this line defines a subspace, we check the first condition of Definition (\@ref(def:subspace))
+**Part B:** Next, we consider whether the line **not** through the origin is a subspace. To show this, we need to verify the three properties of a subspace in @def-subspace. Recall that a line not through the origin is a solution set of the matrix equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ where the solution set has a single free variable and $\mathbf \neq \mathbf{0}$. To check if this line defines a subspace, we check the first condition of @def-subspace.
 
 1)  $\mathbf{0}$ is not on the line through the origin because $\mathbf{A} \mathbf{x} = \mathbf{b}$ does not have the trivial solution $\mathbf{x} = \mathbf{0}$ because $\mathbf{A} \mathbf{0} = \mathbf{0} \neq \mathbf{b}$. Because $\mathbf{0}$ is not a point on the line not through the origin, the line not through the origin does not define a subspace.
 :::
@@ -98,7 +98,7 @@ which is a solution to the matrix equation and therefore $c \mathbf{u}$ is a poi
 
 ## Special subspaces: column space and null space
 
-::: {#def-columnspace}
+::: {#def-column-space}
 The **column space**, denoted $\operatorname{col}(\mathbf{A})$, of a $m \times n$ matrix $\mathbf{A}$ which has columns $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m$ is the set of vectors that are linear combinations of the columns of $\mathbf{A}$ which is equivalent to the span$\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}$.
 :::
 
@@ -194,7 +194,7 @@ The null space of a n $m \times m$ matrix $\mathbf{A}$ is a subspace of $\mathca
 ## Proof
 
 Do in class
-Show that the three requirements of the defintion of a subspace in Definition (\@ref(def:subspace)) are met.
+Show that the three requirements of the definition of a subspace in @def-subspace are met.
 
 1)
 
@@ -212,7 +212,7 @@ Show that the three requirements of the defintion of a subspace in Definition (\
 A **basis** for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ is 
 
 1) a linearly independent set in $\mathcal{H}$ that
-2) spans $\mathbf{H}$.
+2) spans $\mathcal{H}$.
 
 Equivlently, a baisis is a set of linearly independent vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k$ such that span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}$.
 :::
@@ -263,7 +263,7 @@ $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-For the set of vectors $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in Definition (\@ref(def:basis)). Both conditions of Definition (\@ref(def:basis)) can be checked by combining the set of vectors $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
+For the set of vectors $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in @def-basis. Both conditions of @def-basis can be checked by combining the set of vectors $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
 $$
 `r array_to_latex(cbind(x, y, z))`
 $$
@@ -307,7 +307,7 @@ $\mathbf{w} = `r array_to_latex(as.matrix(w))`$, $\mathbf{x} = `r array_to_latex
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-For the set of vectors $\mathbf{w} = `r array_to_latex(as.matrix(w))`$, $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in Definition (\@ref(def:basis)). Both conditions of Definition (\@ref(def:basis)) can be checked by combining the set of vectors $\mathbf{w}$, $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
+For the set of vectors $\mathbf{w} = `r array_to_latex(as.matrix(w))`$, $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in @def-basis. Both conditions of @def-basis be checked by combining the set of vectors $\mathbf{w}$, $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{w}, \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
 $$
 `r array_to_latex(cbind(w, x, y, z))`
 $$
@@ -353,7 +353,7 @@ $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-For the set of vectors $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in Definition (\@ref(def:basis)). Both conditions of Definition (\@ref(def:basis)) can be checked by combining the set of vectors $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
+For the set of vectors $\mathbf{x} = `r array_to_latex(as.matrix(x))`$, $\mathbf{y} = `r array_to_latex(as.matrix(y))`$, and $\mathbf{z} = `r array_to_latex(as.matrix(z))`$ to form a basis for $\mathcal{R}^3$, we need to satisfy the two conditions in @def-basis. Both conditions of Definition @def-basis can be checked by combining the set of vectors $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ into a matrix and using RREF to determine the span$\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ and determine whether the set of vectors $\{ \mathbf{x}, \mathbf{y}, \mathbf{z} \}$ is linearly independent. The matrix of the vectors is 
 $$
 `r array_to_latex(cbind(x, y, z))`
 $$
@@ -427,9 +427,9 @@ The pivot columns of a matrix $\mathbf{A}$ form a basis for the column space of 
 ::: {.callout-tip icon=false collapse="true" appearance="simple"} 
 ## Proof
 
-We will provide just a sketch of the proof here. First, the column space (Definition \@ref(def:column-space)) is the space defined by the linear combination of the columns of $\mathbf{A}$. Thus, the span of any subset of the vectors that make up the columns of $\mathbf{A}$ must, by definition, be in the column space of $\mathbf{A}$, because any linear combination of the subset of vectors is just a linear combination of the full set of vectors with the coefficients of the vectors in the subset with the same coefficients and the coefficients of the vectors not in the subset equal to 0. Thus, the span of the subset of the vectors is contained within the span of the columns of $\mathbf{A}$, which is defined as the column space.
+We will provide just a sketch of the proof here. First, the column space (@def-column-space) is the space defined by the linear combination of the columns of $\mathbf{A}$. Thus, the span of any subset of the vectors that make up the columns of $\mathbf{A}$ must, by definition, be in the column space of $\mathbf{A}$, because any linear combination of the subset of vectors is just a linear combination of the full set of vectors with the coefficients of the vectors in the subset with the same coefficients and the coefficients of the vectors not in the subset equal to 0. Thus, the span of the subset of the vectors is contained within the span of the columns of $\mathbf{A}$, which is defined as the column space.
 
-Now, choose the subset of columns of $\mathbf{A}$ that correspond to the pivot columns of the reduced row echelon form of $\mathbf{A}$. If the span of the columns of $\mathbf{A} = \mathcal{R}^p$, then 1) there must be $p$ pivot columns in the reduced row echelon form of $\mathbf{A}$ and 2) there are $p$ vectors in the subset of vectors where the columns of $\mathbf{A}$ are pivot columns. Thus, the subset of vectors spans $\mathcal{R}^p$ (the columnspace) and, by definition, there are $p$ pivot columns (therefore there is a pivot in each column) so the subset of vectors defined by the pivot columns of $\mathbf{A}$ are linearly independent.
+Now, choose the subset of columns of $\mathbf{A}$ that correspond to the pivot columns of the reduced row echelon form of $\mathbf{A}$. If the span of the columns of $\mathbf{A} = \mathcal{R}^p$, then 1) there must be $p$ pivot columns in the reduced row echelon form of $\mathbf{A}$ and 2) there are $p$ vectors in the subset of vectors where the columns of $\mathbf{A}$ are pivot columns. Thus, the subset of vectors spans $\mathcal{R}^p$ (the column space) and, by definition, there are $p$ pivot columns (therefore there is a pivot in each column) so the subset of vectors defined by the pivot columns of $\mathbf{A}$ are linearly independent.
 :::
 
 

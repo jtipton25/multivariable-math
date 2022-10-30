@@ -1,7 +1,7 @@
 # Matrix Factorizations {#matrix-factorizations}
 
 ```{r setup-09, message = FALSE}
-library(tidyverse)
+    library(tidyverse)
 library(dasc2594)
 library(mvnfast)
 library(MASS)
@@ -266,11 +266,13 @@ Notice that the algorithm does not say to find a specific matrix $\mathbf{U}$. I
 
 A Cholesky decomposition is special type of LU decomposition. A Cholesky decomposition is an LU decomposition on a **symmetric, positive-definite** square matrix. 
 
-::: {#def-}
+::: {#def-spd} 
 
-* A matrix $\mathbf{A}$ is said to by symmetric if $\mathbf{A} = \mathbf{A}'$
+If a matrix $\mathbf{A}$ meets the following two conditions, the matrix $\mathbf{A}$ is said to be **symmetric, positive-definite.**
 
-* A $n \times n$ matrix is said to be positive definite if for all $\mathbf{x} \in \mathcal{R}^n$, the quadratic form $\mathbf{x}' \mathbf{A }\mathbf{x} \geq 0$        
+1) A matrix $\mathbf{A}$ is said to by symmetric if $\mathbf{A} = \mathbf{A}'$
+
+b) A $n \times n$ matrix is said to be positive definite if for all $\mathbf{x} \in \mathcal{R}^n$, the quadratic form $\mathbf{x}' \mathbf{A }\mathbf{x} \geq 0$        
 
 :::
 

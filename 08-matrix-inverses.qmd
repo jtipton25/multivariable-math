@@ -289,7 +289,7 @@ Let $\mathbf{A}$ be an $n \times n$ matrix. Then the following statements are eq
 
 2) $\mathbf{A}$ is row equivalent to the $n \times n$ identity matrix $\mathbf{I}$ ($\mathbf{A} \sim \mathbf{I}$).
 
-3) $\mathbf{A}$ and $n$ pivot columns.
+3) $\mathbf{A}$ has $n$ pivot columns.
 
 4) The homogeneous matrix equation $\mathbf{A} \mathbf{x} = \mathbf{0}$ has only the trivial solution $\mathbf{x} = \mathbf{0}$.
 
