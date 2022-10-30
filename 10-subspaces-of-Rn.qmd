@@ -214,7 +214,7 @@ A **basis** for a subspace $\mathcal{H}$ of $\mathcal{R}^n$ is
 1) a linearly independent set in $\mathcal{H}$ that
 2) spans $\mathcal{H}$.
 
-Equivlently, a baisis is a set of linearly independent vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k$ such that span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}$.
+Equivalently, a basis is a set of linearly independent vectors $\mathbf{u}_1, \ldots, \mathbf{u}_k$ such that span$\{\mathbf{u}_1, \ldots, \mathbf{u}_k\} = \mathcal{H}$.
 :::
 
 The requirement that the vectors of a basis are linearly independent while spanning a subspace $\mathcal{H}$ means that a basis is a **minimal spanning set** for the subspace $\mathcal{H}$
