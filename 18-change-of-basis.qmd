@@ -47,7 +47,7 @@ which can be represented with the static images
 p + facet_wrap(~ time, labeller = labeller(time = c("1" = "Basis B", "2" = "Basis C"))) 
 ```
 
-The change of basis represents a linear transformation. When previously discussing linear transformations in Chapter \@ref(linear-transformations), we considered a linear transformation from the standard basis $\mathcal{I}$ defined by the basis vectors $\left\{ `r array_to_latex(c(1, 0))`, `r array_to_latex(c(0, 1))` \right\}$ with the vectors represented as the columns of the identity matrix $\mathbf{I}$. We can consider a change of basis as two consecutive linear transformations. First, a linear transformation from the basis $\mathcal{B}$ to the standard basis $\mathcal{I}$ and then a linear transformation from the standard basis $\mathcal{I}$ to the basis $\mathcal{C}$. This can be represented using the following example code:
+The change of basis represents a linear transformation. When previously discussing linear transformations in @sec-linear-transformations, we considered a linear transformation from the standard basis $\mathcal{I}$ defined by the basis vectors $\left\{ `r array_to_latex(c(1, 0))`, `r array_to_latex(c(0, 1))` \right\}$ with the vectors represented as the columns of the identity matrix $\mathbf{I}$. We can consider a change of basis as two consecutive linear transformations. First, a linear transformation from the basis $\mathcal{B}$ to the standard basis $\mathcal{I}$ and then a linear transformation from the standard basis $\mathcal{I}$ to the basis $\mathcal{C}$. This can be represented using the following example code:
 
 
 ```{r change-basis-I, cache = TRUE}

@@ -151,7 +151,7 @@ $$
 ::: {.callout-tip icon=false collapse="true" appearance="simple"} 
 ## Proof
 
-Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in Definition \@ref(def:matrix-inverse)
+Here we prove the three statements from the theorem above. All three statements rely on the definition of an invertible matrix in @def-matrix-inverse.
 
 
 1) If $\mathbf{A}^{-1}$ is invertible, then, there exists a matrix $\mathbf{C}$ such that $\mathbf{C} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{C} = \mathbf{I}$. Let $\mathbf{C} = \mathbf{A}$. Then, we have $\mathbf{A} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{A} = \mathbf{I}$ which shows that $\left(\mathbf{A}^{-1}\right)^{-1} = \mathbf{A}$

@@ -32,7 +32,7 @@ $$
 \lim_{h \rightarrow 0} \frac{f(a + h, b) - f(a, b)}{h}
 \end{aligned}
 $$
-which is the definition for the partial derivative of $f$ in the $x$ direction $f_x = \frac{\partial f}{\partial x}$ (Definition \@ref(def:partial)). Likewise, letting $\mathbf{v} = \mathbf{e}_2$, the standard basis vector in the y direction, gives the partial derivative in the y direction $f_y = \frac{\partial f}{\partial y}$. Thus, one could pick any direction vector $\mathbf{v}$ and then calculate the partial derivative in that direction.
+which is the definition for the partial derivative of $f$ in the $x$ direction $f_x = \frac{\partial f}{\partial x}$ (@def-partial). Likewise, letting $\mathbf{v} = \mathbf{e}_2$, the standard basis vector in the y direction, gives the partial derivative in the y direction $f_y = \frac{\partial f}{\partial y}$. Thus, one could pick any direction vector $\mathbf{v}$ and then calculate the partial derivative in that direction.
 
 
 <!-- Now, observe that the vectors $\{\mathbf{e}_1, \mathbf{e}_2\}$ form a spanning set for $\mathcal{R}^2$, which contains the domain for all possible inputs into the function $f(\cdot, \cdot)$. -->
@@ -179,7 +179,7 @@ Consider the function $f(x, y) = 3x^2 - 2xy + y^2$. At the point $(3, 1)$, what 
 
 ### The gradient and the tangent line
 
-@thm-gradient states that the directional derivative at the point $(a, b)$ is 0 in any direction that is orthogonal to $\nabla f(a, b)$. Because the directional derivative is the rate of change of the function in the direction of $\mathbf{v}$, the directional derivative being 0 means that the function $f(x, y)$ is not is not changing in the direction of the vector $\mathbf{v}$. Therefore, we know that the vector $\mathbf{v}$ and the vector $\nabla f(x, y)|_{(a,b)}$ are orthogonal because the definition of the directional derivative in definition \@ref(def:directional-gradient) states that 
+@thm-gradient states that the directional derivative at the point $(a, b)$ is 0 in any direction that is orthogonal to $\nabla f(a, b)$. Because the directional derivative is the rate of change of the function in the direction of $\mathbf{v}$, the directional derivative being 0 means that the function $f(x, y)$ is not is not changing in the direction of the vector $\mathbf{v}$. Therefore, we know that the vector $\mathbf{v}$ and the vector $\nabla f(x, y)|_{(a,b)}$ are orthogonal because the definition of the directional derivative in @def-directional-gradient states that 
 $$
 \begin{aligned}
 D_{\mathbf{v}} f(a, b)  = \nabla f(a, b) \cdot \mathbf{v} = \left(\nabla f(a, b) \right)'  \mathbf{v} = 0

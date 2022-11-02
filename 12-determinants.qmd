@@ -98,7 +98,7 @@ Let $\mathbf{A} = `r array_to_latex(A)`$. What is $\det(\mathbf{A})$?
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-Using Definition (\@ref(def:det22)), the determinant of $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is  $\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18$
+Using @def-det22, the determinant of $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is  $\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18$
 :::
 
 
@@ -152,7 +152,7 @@ b) Find the cofactor $c_{23}$
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-Using Definition (\@ref(def:minor-cofactor)), the minor $\mathbf{A}_{-2-3}$ is the matrix $\mathbf{A}$ with the second row and third column removed. 
+Using @def-minor-cofactor, the minor $\mathbf{A}_{-2-3}$ is the matrix $\mathbf{A}$ with the second row and third column removed. 
 ```{r  example-det-4, echo = FALSE}
 A_minor_23 <- A[-2, -3]
 ```
@@ -272,7 +272,7 @@ Use the minor/cofactor definition to calculate the determinant of the $3 \times 
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-The determinant of $\mathbf{A}$ can be found by using Theorem (\@ref(thm:cofactorexpansion)) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is 
+The determinant of $\mathbf{A}$ can be found by using @thm-cofactorexpansion by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is 
 $$
 \begin{aligned}
 \det(\mathbf{A}) & = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\

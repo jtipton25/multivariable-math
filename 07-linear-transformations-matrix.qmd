@@ -1,4 +1,4 @@
-# Linear Transformations {#linear-transformations}
+# Linear Transformations {#sec-linear-transformations}
 
 - [3 Blue 1 Brown -- Linear transformations](https://www.3blue1brown.com/lessons/linear-transformations)
 
