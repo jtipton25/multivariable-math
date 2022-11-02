@@ -387,8 +387,7 @@ Solution
 \mbox{row 2 } \div \mbox{ 18} &amp;&amp; \begin{pmatrix} 1 &amp; -3 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{18} \\
 \mbox{row 1 = row 1 + 3 * row 2} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{18}
 \end{aligned}
-\]</span></p>
-<p>where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(-\frac{x}{18} = 1\)</span> which implies that <span class="math inline">\(x = -18\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = -18\)</span> Let’s check our answer in R</p>
+\]</span> where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(-\frac{x}{18} = 1\)</span> which implies that <span class="math inline">\(x = -18\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = -18\)</span> Let’s check our answer in R</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -423,8 +422,7 @@ Solution
 \mbox{row 2 = row 2 - row 1} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -\frac{5}{3}  \end{pmatrix} &amp;&amp; \operatorname{det} = -\frac{x}{6} \\
 \mbox{multiply row 2 by } - \frac{3}{5} &amp;&amp; \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1  \end{pmatrix} &amp;&amp; \operatorname{det} = \frac{x}{10}
 \end{aligned}
-\]</span></p>
-<p>where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(\frac{x}{10} = 1\)</span> which implies that <span class="math inline">\(x = 10\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = 10\)</span> Let’s check our answer in R</p>
+\]</span> where the last matrix is in reduced row echelon form and is the identity matrix which has determinant <span class="math inline">\(\operatorname{det}(\mathbf{I}) = 1\)</span>. Therefore <span class="math inline">\(\frac{x}{10} = 1\)</span> which implies that <span class="math inline">\(x = 10\)</span> so that <span class="math inline">\(\operatorname{det}(\mathbf{A}) = 10\)</span> Let’s check our answer in R</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -458,7 +456,7 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using Definition (@ref(def:det22)), the determinant of <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is <span class="math inline">\(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)</span></p>
+<p>Using <span class="quarto-unresolved-ref">?def-det22</span>, the determinant of <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is <span class="math inline">\(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)</span></p>
 </div>
 </div>
 </div>
@@ -470,17 +468,15 @@ Solution
 <p>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
 <ol type="a">
 <li><p>The (i, j) <strong>minor</strong> <span class="math inline">\(\mathbf{A}_{-i-j}\)</span> is the <span class="math inline">\((n-1) \times (n-1)\)</span> matrix obtained by deleting the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span> column from <span class="math inline">\(\mathbf{A}\)</span></p></li>
-<li><p>The (i, j) <strong>cofactor</strong> <span class="math inline">\(c_{ij}\)</span> is defined using the determinant of the minor where</p></li>
-</ol>
-<p><span class="math display">\[
+<li><p>The (i, j) <strong>cofactor</strong> <span class="math inline">\(c_{ij}\)</span> is defined using the determinant of the minor where <span class="math display">\[
 \begin{aligned}
 c_{ij} = \mathbf(-1)^{i + j} \det{\mathbf{A}_{-i-j}}
 \end{aligned}
-\]</span></p>
+\]</span></p></li>
+</ol>
 </div>
 <p>Note: The cofactor of a scalar <span class="math inline">\(a\)</span> (a <span class="math inline">\(1 \times 1\)</span> matrix) is defined as <span class="math inline">\(\mathbf{C}_{ij} = (-1)^{1 + 1} \det(a) = a\)</span>.</p>
-<p>Note: The leading term in the cofactor definition <span class="math inline">\(\mathbf(-1)^{i + j}\)</span> defines a checkerboard pattern shown below</p>
-<p><span class="math display">\[
+<p>Note: The leading term in the cofactor definition <span class="math inline">\(\mathbf(-1)^{i + j}\)</span> defines a checkerboard pattern shown below <span class="math display">\[
 \begin{aligned}
 \begin{pmatrix}
 + &amp; - &amp; + &amp; - &amp; \cdots \\
@@ -514,7 +510,7 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using Definition (@ref(def:minor-cofactor)), the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the second row and third column removed.</p>
+<p>Using <span class="quarto-unresolved-ref">?def-minor-cofactor</span>, the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the second row and third column removed.</p>
 <div class="cell">
 
 </div>
@@ -542,21 +538,17 @@ Solution
 <div id="thm-cofactorexpansion" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 13.1 (Cofactor exapansion) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(ij\)</span>th elements <span class="math inline">\(a_{ij}\)</span>. Then</p>
 <ol type="a">
-<li>The <strong>cofactor expansion along the <span class="math inline">\(i\)</span>th row</strong> (for any fixed row <span class="math inline">\(i\)</span>) is</li>
-</ol>
-<p><span class="math display">\[
+<li><p>The <strong>cofactor expansion along the <span class="math inline">\(i\)</span>th row</strong> (for any fixed row <span class="math inline">\(i\)</span>) is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) = \sum_{j=1}^n a_{ij} c_{ij} = a_{i1} c_{i1} + a_{i2} c_{i2} + \cdots + a_{in} c_{in}
 \end{aligned}
-\]</span></p>
-<ol start="2" type="a">
-<li>The <strong>cofactor expansion along the <span class="math inline">\(j\)</span>th column</strong> (for any fixed column <span class="math inline">\(j\)</span>) is</li>
-</ol>
-<p><span class="math display">\[
+\]</span></p></li>
+<li><p>The <strong>cofactor expansion along the <span class="math inline">\(j\)</span>th column</strong> (for any fixed column <span class="math inline">\(j\)</span>) is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) = \sum_{i=1}^n a_{ij} c_{ij} = a_{1j} c_{1j} + a_{2j} c_{2j} + \cdots + a_{nj} c_{nj}
 \end{aligned}
-\]</span></p>
+\]</span></p></li>
+</ol>
 </div>
 <div class="callout-tip callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -593,36 +585,28 @@ Solution
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using <a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a> by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is</p>
-<p><span class="math display">\[
+<p>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using <a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a> by expanding either down a row or a column. Because the first row contains a 0, we will use the cofactor expansion theorem. The cofactor expansion along the first row is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13}
 \end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(a_{ij}\)</span> is the <span class="math inline">\(ij\)</span>th element of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the cofactor expansion is</p>
-<p><span class="math display">\[
+\]</span> where <span class="math inline">\(a_{ij}\)</span> is the <span class="math inline">\(ij\)</span>th element of <span class="math inline">\(\mathbf{A}\)</span>. Thus, the cofactor expansion is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) = 5 c_{11} + 0 c_{12} + 2 c_{13}
 \end{aligned}
-\]</span></p>
-<p>This implies that we only need to find the cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span> (but not <span class="math inline">\(c_{12}\)</span> because it gets multiplied by 0). Thus, the cofactor expansion along the first row only requires finding 2 cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span>.</p>
+\]</span> This implies that we only need to find the cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span> (but not <span class="math inline">\(c_{12}\)</span> because it gets multiplied by 0). Thus, the cofactor expansion along the first row only requires finding 2 cofactors <span class="math inline">\(c_{11}\)</span> and <span class="math inline">\(c_{13}\)</span>.</p>
 <div class="cell">
 
 </div>
-<p>The minor <span class="math inline">\(\mathbf{A}_{-1-1}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and first column removed and is <span class="math inline">\(\mathbf{A}_{-1-1} = \begin{pmatrix} 3 &amp; 3 \\ -4 &amp; 1 \end{pmatrix}\)</span>. The minor <span class="math inline">\(\mathbf{A}_{-1-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and third column removed and is <span class="math inline">\(\mathbf{A}_{-1-3} = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; -4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{11}\)</span> is given by</p>
-<p><span class="math display">\[
+<p>The minor <span class="math inline">\(\mathbf{A}_{-1-1}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and first column removed and is <span class="math inline">\(\mathbf{A}_{-1-1} = \begin{pmatrix} 3 &amp; 3 \\ -4 &amp; 1 \end{pmatrix}\)</span>. The minor <span class="math inline">\(\mathbf{A}_{-1-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and third column removed and is <span class="math inline">\(\mathbf{A}_{-1-3} = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; -4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{11}\)</span> is given by <span class="math display">\[
 \begin{aligned}
 c_{11} = (-1)^{1+1}((3)(1) - (3) (-4)) = 15
 \end{aligned}
-\]</span></p>
-<p>and the cofactor <span class="math inline">\(c_{13}\)</span> is given by</p>
-<p><span class="math display">\[
+\]</span> and the cofactor <span class="math inline">\(c_{13}\)</span> is given by <span class="math display">\[
 \begin{aligned}
 c_{13} = (-1)^{1+3}((1)(-4) - (3) (2)) = -10
 \end{aligned}
 \]</span></p>
-<p>Combining these, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is</p>
-<p><span class="math display">\[
+<p>Combining these, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) &amp; = a_{11} c_{11} + a_{12} c_{12} + a_{13} c_{13} \\
 &amp; = (5) (15) + (0) (c_{12}) + (2) (-10) \\
@@ -650,25 +634,21 @@ Solution
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using Theorem (@ref(thm:cofactorexpansion)) by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is</p>
-<p><span class="math display">\[
+<p>The determinant of <span class="math inline">\(\mathbf{A}\)</span> can be found by using <a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a> by expanding either down a row or a column. Because the second row contains multiple zeros, we will use the cofactor expansion theorem. The cofactor expansion along the second column is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
 &amp; = 4 c_{12} + 0 c_{22} + 0 c_{32}
 \end{aligned}
-\]</span></p>
-<p>This implies that we only need to find the cofactor <span class="math inline">\(c_{12}\)</span> (but not <span class="math inline">\(c_{22}\)</span> and <span class="math inline">\(c_{32}\)</span> because these get multiplied by 0). Thus, the cofactor expansion along the second column only requires finding the single cofactor <span class="math inline">\(c_{12}\)</span>.</p>
+\]</span> This implies that we only need to find the cofactor <span class="math inline">\(c_{12}\)</span> (but not <span class="math inline">\(c_{22}\)</span> and <span class="math inline">\(c_{32}\)</span> because these get multiplied by 0). Thus, the cofactor expansion along the second column only requires finding the single cofactor <span class="math inline">\(c_{12}\)</span>.</p>
 <div class="cell">
 
 </div>
-<p>The minor <span class="math inline">\(\mathbf{A}_{-1-2}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and second column removed and is <span class="math inline">\(\mathbf{A}_{-1-2} = \begin{pmatrix} -3 &amp; 2 \\ 2 &amp; 4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{12}\)</span> is given by</p>
-<p><span class="math display">\[
+<p>The minor <span class="math inline">\(\mathbf{A}_{-1-2}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the first row and second column removed and is <span class="math inline">\(\mathbf{A}_{-1-2} = \begin{pmatrix} -3 &amp; 2 \\ 2 &amp; 4 \end{pmatrix}\)</span>. The cofactor <span class="math inline">\(c_{12}\)</span> is given by <span class="math display">\[
 \begin{aligned}
 c_{12} = (-1)^{1+2}((-3)(4) - (2, 4) (2)) = -16.
 \end{aligned}
 \]</span></p>
-<p>Thus, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is</p>
-<p><span class="math display">\[
+<p>Thus, the determinant of <span class="math inline">\(\mathbf{A}\)</span> using the cofactor expansion is <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) &amp; = a_{12} c_{12} + a_{22} c_{22} + a_{32} c_{32} \\
 &amp; = (4) (16) + (0) (c_{22}) + (0) (c_{32}) \\
@@ -693,8 +673,7 @@ Solution
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using the cofactor expansion theorem (<a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a>), expand the determinant along the <span class="math inline">\(j\)</span>th row. Then, because all entries of the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> are zero, this gives</p>
-<p><span class="math display">\[
+<p>Using the cofactor expansion theorem (<a href="#thm-cofactorexpansion">Theorem&nbsp;<span>13.1</span></a>), expand the determinant along the <span class="math inline">\(j\)</span>th row. Then, because all entries of the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(\mathbf{A}\)</span> are zero, this gives <span class="math display">\[
 \begin{aligned}
 \det(\mathbf{A}) &amp; = a_{j1} c_{j1} + a_{j2} c_{j2} + \cdots + a_{jn} c_{jn} \\
 &amp; = 0 c_{j1} + 0 c_{j2} + \cdots + 0 c_{jn} \\
@@ -769,8 +748,7 @@ Proof
 </ul>
 <p>While commonly used for theoretical results, Cramer’s rule is not commonly used in applied linear algebra. As such, we will mention Cramer’s rule but not focus on it.</p>
 <div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 13.5 (Cramer’s Rule) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by</p>
-<p><span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 13.5 (Cramer’s Rule) </strong></span>Let <span class="math inline">\(\mathbf{A}\)</span> be a <span class="math inline">\(n \times n\)</span> invertible matrix. Define <span class="math inline">\(\mathbf{A}_i(\mathbf{b})\)</span> as the matrix <span class="math inline">\(\mathbf{A}\)</span> with the <span class="math inline">\(i\)</span>th column replace by the vector <span class="math inline">\(\mathbf{b}\)</span>. For example, <span class="math inline">\(\mathbf{A}_i(\mathbf{b}) = \begin{pmatrix} \mathbf{a}_1 &amp; \cdots &amp; \mathbf{a}_{i-1} &amp; \mathbf{b} &amp; \mathbf{a}_{i+1} &amp; \cdots &amp; \mathbf{a}_n \end{pmatrix}\)</span>. Then, for any <span class="math inline">\(\mathbf{b} \in \mathcal{R}^n\)</span>, the unique solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> has entries given by <span class="math display">\[
 \begin{aligned}
 x_i = \frac{\det(\mathbf{A}_i(\mathbf{b}))}{\det(\mathbf{A})} &amp; \mbox{ for } i = 1, 2, \ldots, n
 \end{aligned}

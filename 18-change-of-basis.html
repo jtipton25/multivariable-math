@@ -352,19 +352,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Consider two bases <span class="math inline">\(\mathcal{B} = \{ \mathbf{b}_1, \ldots, \mathbf{b}_n \}\)</span> and <span class="math inline">\(\mathcal{C} = \{ \mathbf{c}_1, \ldots, \mathbf{c}_n \}\)</span> for a vector space <span class="math inline">\(\mathcal{V}\)</span>. If we have a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates in <span class="math inline">\(\mathcal{B}\)</span>, what are the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to <span class="math inline">\(\mathcal{C}\)</span>?</p>
 <ul>
-<li>Recall: we know how to change from the standard coordinates to the basis <span class="math inline">\(\mathcal{B}\)</span>. If <span class="math inline">\(\mathbf{x}\)</span> is a vector in the standard coordinates and <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \ldots &amp; \mathbf{b}_n \end{pmatrix}\)</span> is a matrix with columns given by the basis <span class="math inline">\(\mathbf{B}\)</span>, the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> are</li>
-</ul>
-<p><span class="math display">\[
+<li>Recall: we know how to change from the standard coordinates to the basis <span class="math inline">\(\mathcal{B}\)</span>. If <span class="math inline">\(\mathbf{x}\)</span> is a vector in the standard coordinates and <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \ldots &amp; \mathbf{b}_n \end{pmatrix}\)</span> is a matrix with columns given by the basis <span class="math inline">\(\mathbf{B}\)</span>, the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span> are <span class="math display">\[
 \begin{aligned}
 \left[\mathbf{x}\right]_B = \mathbf{B}^{-1} \mathbf{x}
 \end{aligned}
-\]</span></p>
-<p>and, as a consequence, given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, the vector of coefficients <span class="math inline">\(\mathbf{x}\)</span> with standard coordinates is given by</p>
-<p><span class="math display">\[
+\]</span> and, as a consequence, given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, the vector of coefficients <span class="math inline">\(\mathbf{x}\)</span> with standard coordinates is given by <span class="math display">\[
 \begin{aligned}
 \mathbf{x} = \mathbf{B} \left[\mathbf{x}\right]_B.
 \end{aligned}
-\]</span></p>
+\]</span></li>
+</ul>
 <p>Notice that change of coordinates is a linear transformation from <span class="math inline">\(\mathcal{B}\)</span> to <span class="math inline">\(\mathcal{C}\)</span> with transformation matrix <span class="math inline">\(\mathbf{A}\)</span>. Despite the more complex notation, this is just another linear transformation [<a href="https://www.youtube.com/watch?v=VGhij2qmOs4">link</a>].</p>
 <p>::: {#exm-} Show the change of basis from the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> to the basis <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span>. To do this, represent the columns that make up the basis <span class="math inline">\(\mathcal{B}\)</span> as the matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \frac{1}{2} &amp; -1 \\ 1 &amp; 0 \end{pmatrix}\)</span> and represent the columns that make up the basis <span class="math inline">\(\mathcal{C}\)</span> as the matrix <span class="math inline">\(\mathbf{C} = \begin{pmatrix} 0 &amp; \frac{1}{2} \\ 1 &amp; -\frac{1}{2} \end{pmatrix}\)</span>. Then, the change of basis can be represented as</p>
 <div class="cell" data-hash="18-change-of-basis_cache/html/change-basis_70f0ba6ee9691e86aecd6304446b63cb">
@@ -384,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="18-change-of-basis_files/figure-html/change-basis-static-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>The change of basis represents a linear transformation. When previously discussing linear transformations in Chapter @ref(linear-transformations), we considered a linear transformation from the standard basis <span class="math inline">\(\mathcal{I}\)</span> defined by the basis vectors <span class="math inline">\(\left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}\)</span> with the vectors represented as the columns of the identity matrix <span class="math inline">\(\mathbf{I}\)</span>. We can consider a change of basis as two consecutive linear transformations. First, a linear transformation from the basis <span class="math inline">\(\mathcal{B}\)</span> to the standard basis <span class="math inline">\(\mathcal{I}\)</span> and then a linear transformation from the standard basis <span class="math inline">\(\mathcal{I}\)</span> to the basis <span class="math inline">\(\mathcal{C}\)</span>. This can be represented using the following example code:</p>
+<p>The change of basis represents a linear transformation. When previously discussing linear transformations in <a href="07-linear-transformations-matrix.html"><span>Chapter&nbsp;7</span></a>, we considered a linear transformation from the standard basis <span class="math inline">\(\mathcal{I}\)</span> defined by the basis vectors <span class="math inline">\(\left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}\)</span> with the vectors represented as the columns of the identity matrix <span class="math inline">\(\mathbf{I}\)</span>. We can consider a change of basis as two consecutive linear transformations. First, a linear transformation from the basis <span class="math inline">\(\mathcal{B}\)</span> to the standard basis <span class="math inline">\(\mathcal{I}\)</span> and then a linear transformation from the standard basis <span class="math inline">\(\mathcal{I}\)</span> to the basis <span class="math inline">\(\mathcal{C}\)</span>. This can be represented using the following example code:</p>
 <div class="cell" data-hash="18-change-of-basis_cache/html/change-basis-I_dd25814228037b8a370cfc7902eca7c8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">plot_change_basis</span>(B, C, <span class="at">plot_standard_basis =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -400,8 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="changing-coordinates-between-different-bases" class="level2" data-number="19.1">
 <h2 data-number="19.1" class="anchored" data-anchor-id="changing-coordinates-between-different-bases"><span class="header-section-number">19.1</span> Changing coordinates between different bases</h2>
-<p>Now, we can combine these ideas. Given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> written with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, we can find the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>. First, we find the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the standard basis then find the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>. Let <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \ldots &amp; \mathbf{b}_n \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{C} = \begin{pmatrix} \mathbf{c}_1 &amp; \ldots &amp; \mathbf{c}_n \end{pmatrix}\)</span>, then given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, the coordinates <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> of this vector with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> is</p>
-<p><span class="math display">\[
+<p>Now, we can combine these ideas. Given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> written with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, we can find the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>. First, we find the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the standard basis then find the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>. Let <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \ldots &amp; \mathbf{b}_n \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{C} = \begin{pmatrix} \mathbf{c}_1 &amp; \ldots &amp; \mathbf{c}_n \end{pmatrix}\)</span>, then given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, the coordinates <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> of this vector with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> is <span class="math display">\[
 \begin{aligned}
 \left[\mathbf{x}\right]_C = \mathbf{C}^{-1} \mathbf{B} \left[\mathbf{x}\right]_B.
 \end{aligned}
@@ -438,54 +434,41 @@ Solution
 \begin{aligned}
 \mathbf{x} &amp; = \left[x_1\right]_B \mathbf{b}_1 + \left[x_2\right]_B \mathbf{b}_2
 \end{aligned}
-\]</span></p>
-<p>Plugging the values from the example gives</p>
-<p><span class="math display">\[
+\]</span> Plugging the values from the example gives <span class="math display">\[
 \begin{aligned}
 \mathbf{x} &amp; = \left[x_1\right]_B \mathbf{b}_1 + \left[x_2\right]_B \mathbf{b}_2 \\
 &amp; = -1.5 \begin{pmatrix} 1/2 \\ 1 \end{pmatrix} + 0.5 \begin{pmatrix} -1 \\ 0 \end{pmatrix} \\
 &amp; = \begin{pmatrix} -3/4 \\ -3/2 \end{pmatrix} + \begin{pmatrix} -1/2 \\ 0 \end{pmatrix} \\
 &amp; = \begin{pmatrix} -5/4 \\ -3/2 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<ol start="2" type="1">
-<li>Now, recall the coordinates <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> mean that the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as a linear combination of the basis vectors <span class="math inline">\(\mathbf{c}_1\)</span> and <span class="math inline">\(\mathbf{c}_2\)</span> with coefficients given by the elements in <span class="math inline">\(\left[\mathbf{x}\right]_C = \begin{pmatrix} \left[x_1\right]_C \\ \left[x_2\right]_C \end{pmatrix}\)</span>. This results in the equation</li>
-</ol>
+\]</span> 2) Now, recall the coordinates <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> mean that the vector <span class="math inline">\(\mathbf{x}\)</span> can be written as a linear combination of the basis vectors <span class="math inline">\(\mathbf{c}_1\)</span> and <span class="math inline">\(\mathbf{c}_2\)</span> with coefficients given by the elements in <span class="math inline">\(\left[\mathbf{x}\right]_C = \begin{pmatrix} \left[x_1\right]_C \\ \left[x_2\right]_C \end{pmatrix}\)</span>. This results in the equation</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{x} &amp; = \left[x_1\right]_C \mathbf{c}_1 + \left[x_2\right]_C \mathbf{c}_2
 \end{aligned}
-\]</span></p>
-<p>However, unlike part (1), we do not know the coefficients <span class="math inline">\(\left[\mathbf{x}\right]\)</span> but need to solve for them. Rewriting the above equation in the form of <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> gives</p>
-<p><span class="math display">\[
+\]</span> However, unlike part (1), we do not know the coefficients <span class="math inline">\(\left[\mathbf{x}\right]\)</span> but need to solve for them. Rewriting the above equation in the form of <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span> gives <span class="math display">\[
 \begin{aligned}
 \mathbf{C} \left[ \mathbf{x} \right]_C &amp; = \mathbf{x}
 \end{aligned}
-\]</span></p>
-<p>Because the matrix of basis vectors <span class="math inline">\(\mathbf{C}\)</span> is an invertible matrix (a basis is a linearly independent spanning set), the coefficients <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> can be solved using the equation</p>
-<p><span class="math display">\[
+\]</span> Because the matrix of basis vectors <span class="math inline">\(\mathbf{C}\)</span> is an invertible matrix (a basis is a linearly independent spanning set), the coefficients <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> can be solved using the equation <span class="math display">\[
 \begin{aligned}
 \mathbf{C} \left[ \mathbf{x} \right]_C &amp; = \mathbf{x} \\
 \mathbf{C}^{-1} \mathbf{C}\left[ \mathbf{x} \right]_C &amp; = \mathbf{C}^{-1}\mathbf{x} \\
 \left[ \mathbf{x} \right]_C &amp; = \mathbf{C}^{-1} \mathbf{x}
 \end{aligned}
-\]</span></p>
-<p>The matrix inverse <span class="math inline">\(\mathbf{C}^{-1}\)</span> can be found using <a href="08-matrix-inverses.html#thm-matrix2by2">Theorem&nbsp;<span>9.1</span></a> to get <span class="math inline">\(\mathbf{C}^{-1} = \begin{pmatrix} 1 &amp; 2 \\ 1 &amp; 0 \end{pmatrix}\)</span>. Then, plugging in the values from the example gives</p>
+\]</span> The matrix inverse <span class="math inline">\(\mathbf{C}^{-1}\)</span> can be found using <a href="08-matrix-inverses.html#thm-matrix2by2">Theorem&nbsp;<span>9.1</span></a> to get <span class="math inline">\(\mathbf{C}^{-1} = \begin{pmatrix} 1 &amp; 2 \\ 1 &amp; 0 \end{pmatrix}\)</span>. Then, plugging in the values from the example gives</p>
 <p><span class="math display">\[
 \begin{aligned}
 \left[ \mathbf{x} \right]_C &amp; = \mathbf{C}^{-1} \mathbf{x} \\
 &amp; = \begin{pmatrix} 1 &amp; 2 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} -5/4 \\ -3/2 \end{pmatrix} \\
 &amp; = \begin{pmatrix} -17/4 \\ -5/4 \end{pmatrix}
 \end{aligned}
-\]</span></p>
-<p>Another way to change coordinates is to change directly from basis <span class="math inline">\(\mathcal{B}\)</span> to <span class="math inline">\(\mathcal{C}\)</span> without going through the intermediate transformation to the standard coordinates. Combining the results from (1) and (2) gives</p>
-<p><span class="math display">\[
+\]</span> Another way to change coordinates is to change directly from basis <span class="math inline">\(\mathcal{B}\)</span> to <span class="math inline">\(\mathcal{C}\)</span> without going through the intermediate transformation to the standard coordinates. Combining the results from (1) and (2) gives <span class="math display">\[
 \begin{aligned}
 \left[ \mathbf{x} \right]_C &amp; = \mathbf{C}^{-1} \mathbf{x} \\
 &amp; = \mathbf{C}^{-1} \mathbf{B} \left[\mathbf{x}\right]_B
 \end{aligned}
-\]</span></p>
-<p>so that one can change coordinates from the basis <span class="math inline">\(\mathcal{B}\)</span> to the basis <span class="math inline">\(\mathcal{C}\)</span> using the linear transformation defined by the matrix multiplication <span class="math inline">\(\mathbf{C}^{-1} \mathbf{B}\)</span>.</p>
+\]</span> so that one can change coordinates from the basis <span class="math inline">\(\mathcal{B}\)</span> to the basis <span class="math inline">\(\mathcal{C}\)</span> using the linear transformation defined by the matrix multiplication <span class="math inline">\(\mathbf{C}^{-1} \mathbf{B}\)</span>.</p>
 <p>In <code>R</code>, first define the basis matrices <code>B</code> and <code>C</code> and the coordinates <code>x_b</code> of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
