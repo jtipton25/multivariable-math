@@ -92,7 +92,7 @@ Note that the partial derivative asks the question "What is the rate of change o
 
 **draw surfaces with marginal slices**
 
-::: {#def- #partial}
+::: {#def-partial}
 The partial derivative of the function $f(x, y)$ with respect to $x$ at the point $(a, b)$ is 
 $$
 \begin{aligned}

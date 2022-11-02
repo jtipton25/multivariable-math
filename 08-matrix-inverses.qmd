@@ -13,7 +13,7 @@ a \frac{1}{a} = a a^{-1} = a^{-1} a = 1
 $$
 where $a^{-1}$ is the inverse of $a$.
 
-::: {#def-matrixinverse}
+::: {#def-matrix-inverse}
 ## Matrix Inverse
 
 The $n \times n$ **square** matrix $\mathbf{A}$ is said to be **invertible** if there exists a $n \times n$ matrix $\mathbf{C}$( which we call $\mathbf{A}^{-1}$ once we verify the inverse exists) such that 

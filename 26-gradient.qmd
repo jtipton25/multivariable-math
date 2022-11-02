@@ -13,7 +13,7 @@ Think about trying to find the maximum of a real-valued function (finding the mi
 
 Suppose you are standing on a mountain surface at the point $(x, y, z)$ in 3-dimensions where $z = f(x, y)$ is the function that gives the height of the mountain at location $(x, y)$. If you are standing at the point $(a, b)$ in the $(x, y)$ coordinate system, you might want to get to the top of the mountain as quickly as possible. The direction that is the steepest uphill direction can be calculated using the concepts of the **directional derivative** and the **gradient**.
 
-::: {#def-}
+::: {#def-directional}
 ## Directional Derivative
 
 Given a function $f(x,y)$ that is differentiable at $(a, b)$ and a unit vector $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$ in the $x-y$ plane, the **directional derivative** of $f$ at $(a, b)$ in the direction of $\mathbf{v}$ is
@@ -50,7 +50,7 @@ which is the dot product of the vectors $\begin{pmatrix} f_x(a, b) \\ f_y(a, b) 
 
 Notice that the vector $\mathbf{v}$ is a unit vector and therefore the directional derivative is a weighted sum of the partial derivatives in the $x$ and $y$ directions weighted by the vector $\mathbf{v}$ (weighted sums are sums where the coefficients sum to 1--in this case the sum is in the "distance" metric). As a consequence, we can find the directional derivative in any direction by changing the vector $\mathbf{v}$.
 
-::: {#def-directionalgradient}
+::: {#def-directional-gradient}
 ## The Directional Derivative
 
 Let $f(x, y)$ be a differentiable function at $(a, b)$ and $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$ a unit vector in the $xy$ plane. Then, the directional derivative of $f$ at $(a, b)$ in the direction of $\mathbf{v}$ is
@@ -123,7 +123,7 @@ ggplot(dat, aes(x = x, y = y, z = z)) +
 
 The directional derivative is a dot product of the partial derivatives and a unit vector. The gradient is similar, but rather than return a single value (a number), the gradient returns a vector at a point $(a, b)$.
 
-::: {#def-}
+::: {#def-gradient}
 ## The Gradient
 Let $f(x, y)$ be a differentiable function at $(a, b)$. Then, the gradient of $f$ at $(a, b)$ is
 $$

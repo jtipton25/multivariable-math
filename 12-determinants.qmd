@@ -84,9 +84,10 @@ det(A)
 
 ## Determinants of $2 \times 2$ matrices
 
-::: {.definition #det22}
+:::{#def-det22}
 If $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is a $2 \times 2$ matrix, the determinant $\operatorname{det}(\mathbf{A}) = ad - bc$ 
 :::
+
 ```{r, echo = FALSE}
 A <- matrix(c(5, 1, 3, -3), 2, 2)
 ```
@@ -98,7 +99,7 @@ Let $\mathbf{A} = `r array_to_latex(A)`$. What is $\det(\mathbf{A})$?
 ::: {.callout-note icon=false collapse="true" appearance="simple"} 
 ## Solution
 
-Using @def-det22, the determinant of $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is  $\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18$
+Using @def-det22 , the determinant of $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is  $\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18$
 :::
 
 
@@ -106,7 +107,7 @@ Using @def-det22, the determinant of $\mathbf{A} = \begin{pmatrix} a & b \\ c & 
 
 To better understand determinants of $n \times n$ matrices, we need to define the two concepts of a matrix **minor** and **cofactor**.
 
-::: {.definition #minor-cofactor}
+::: {#def-minor-cofactor}
 For an $n \times n$ matrix $\mathbf{A}$, 
 
 a) The (i, j) **minor** $\mathbf{A}_{-i-j}$ is the $(n-1) \times (n-1)$ matrix obtained by deleting the $i$th row and the $j$ column from $\mathbf{A}$
