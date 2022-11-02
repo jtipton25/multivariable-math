@@ -435,8 +435,8 @@ Solution
 </div>
 <section id="determinants-of-2-times-2-matrices" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="determinants-of-2-times-2-matrices"><span class="header-section-number">13.1</span> Determinants of <span class="math inline">\(2 \times 2\)</span> matrices</h2>
-<div id="det22" class="definition">
-<p>If <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A}) = ad - bc\)</span></p>
+<div id="def-det22" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.2 </strong></span>If <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant <span class="math inline">\(\operatorname{det}(\mathbf{A}) = ad - bc\)</span></p>
 </div>
 <div class="cell">
 
@@ -456,7 +456,7 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using <span class="quarto-unresolved-ref">?def-det22</span>, the determinant of <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is <span class="math inline">\(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)</span></p>
+<p>Using <a href="#def-det22">Definition&nbsp;<span>13.2</span></a> , the determinant of <span class="math inline">\(\mathbf{A} = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> is <span class="math inline">\(\det(\mathbf{A}) = ad - bc= (5 * -3) - (3 * 1) = -18\)</span></p>
 </div>
 </div>
 </div>
@@ -464,8 +464,8 @@ Solution
 <section id="determinants-of-n-times-n-matrices" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="determinants-of-n-times-n-matrices"><span class="header-section-number">13.2</span> Determinants of <span class="math inline">\(n \times n\)</span> matrices</h2>
 <p>To better understand determinants of <span class="math inline">\(n \times n\)</span> matrices, we need to define the two concepts of a matrix <strong>minor</strong> and <strong>cofactor</strong>.</p>
-<div id="minor-cofactor" class="definition">
-<p>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
+<div id="def-minor-cofactor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.3 </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span>,</p>
 <ol type="a">
 <li><p>The (i, j) <strong>minor</strong> <span class="math inline">\(\mathbf{A}_{-i-j}\)</span> is the <span class="math inline">\((n-1) \times (n-1)\)</span> matrix obtained by deleting the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span> column from <span class="math inline">\(\mathbf{A}\)</span></p></li>
 <li><p>The (i, j) <strong>cofactor</strong> <span class="math inline">\(c_{ij}\)</span> is defined using the determinant of the minor where <span class="math display">\[
@@ -510,7 +510,7 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using <span class="quarto-unresolved-ref">?def-minor-cofactor</span>, the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the second row and third column removed.</p>
+<p>Using <a href="#def-minor-cofactor">Definition&nbsp;<span>13.3</span></a>, the minor <span class="math inline">\(\mathbf{A}_{-2-3}\)</span> is the matrix <span class="math inline">\(\mathbf{A}\)</span> with the second row and third column removed.</p>
 <div class="cell">
 
 </div>
