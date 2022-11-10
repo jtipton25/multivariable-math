@@ -288,7 +288,7 @@ A_minor_12 <- A[-1, -2]
 The minor $\mathbf{A}_{-1-2}$ is the matrix $\mathbf{A}$ with the first row and second column removed and is $\mathbf{A}_{-1-2} = `r array_to_latex(A_minor_12)`$. The cofactor $c_{12}$ is given by 
 $$
 \begin{aligned}
-c_{12} = (-1)^{1+2}((`r A_minor_12[1,1]`)(`r A_minor_12[2,2]`) - (`r A_minor_12[,2]`) (`r A_minor_12[2,1]`)) = `r (-1)^(1+1) * det(A_minor_12)`.
+c_{12} = (-1)^{1+2}((`r A_minor_12[1,1]`)(`r A_minor_12[2,2]`) - (`r A_minor_12[1,2]`) (`r A_minor_12[2,1]`)) = `r (-1)^(1+2) * det(A_minor_12)`.
 \end{aligned}
 $$
 
