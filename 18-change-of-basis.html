@@ -316,13 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#changing-coordinates-between-different-bases" id="toc-changing-coordinates-between-different-bases" class="nav-link active" data-scroll-target="#changing-coordinates-between-different-bases"><span class="toc-section-number">19.1</span>  Changing coordinates between different bases</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -363,7 +357,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></li>
 </ul>
 <p>Notice that change of coordinates is a linear transformation from <span class="math inline">\(\mathcal{B}\)</span> to <span class="math inline">\(\mathcal{C}\)</span> with transformation matrix <span class="math inline">\(\mathbf{A}\)</span>. Despite the more complex notation, this is just another linear transformation [<a href="https://www.youtube.com/watch?v=VGhij2qmOs4">link</a>].</p>
-<p>::: {#exm-} Show the change of basis from the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> to the basis <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span>. To do this, represent the columns that make up the basis <span class="math inline">\(\mathcal{B}\)</span> as the matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \frac{1}{2} &amp; -1 \\ 1 &amp; 0 \end{pmatrix}\)</span> and represent the columns that make up the basis <span class="math inline">\(\mathcal{C}\)</span> as the matrix <span class="math inline">\(\mathbf{C} = \begin{pmatrix} 0 &amp; \frac{1}{2} \\ 1 &amp; -\frac{1}{2} \end{pmatrix}\)</span>. Then, the change of basis can be represented as</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 19.1 </strong></span>Show the change of basis from the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> to the basis <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span>. To do this, represent the columns that make up the basis <span class="math inline">\(\mathcal{B}\)</span> as the matrix <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \frac{1}{2} &amp; -1 \\ 1 &amp; 0 \end{pmatrix}\)</span> and represent the columns that make up the basis <span class="math inline">\(\mathcal{C}\)</span> as the matrix <span class="math inline">\(\mathbf{C} = \begin{pmatrix} 0 &amp; \frac{1}{2} \\ 1 &amp; -\frac{1}{2} \end{pmatrix}\)</span>. Then, the change of basis can be represented as</p>
 <div class="cell" data-hash="18-change-of-basis_cache/html/change-basis_70f0ba6ee9691e86aecd6304446b63cb">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
@@ -395,24 +390,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="18-change-of-basis_files/figure-html/change-basis-I-static-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="changing-coordinates-between-different-bases" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="changing-coordinates-between-different-bases"><span class="header-section-number">19.1</span> Changing coordinates between different bases</h2>
+<section id="changing-coordinates-between-different-bases" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="changing-coordinates-between-different-bases">Changing coordinates between different bases</h2>
 <p>Now, we can combine these ideas. Given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> written with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, we can find the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>. First, we find the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the standard basis then find the coordinates of <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>. Let <span class="math inline">\(\mathbf{B} = \begin{pmatrix} \mathbf{b}_1 &amp; \ldots &amp; \mathbf{b}_n \end{pmatrix}\)</span> and <span class="math inline">\(\mathbf{C} = \begin{pmatrix} \mathbf{c}_1 &amp; \ldots &amp; \mathbf{c}_n \end{pmatrix}\)</span>, then given a vector <span class="math inline">\(\left[\mathbf{x}\right]_B\)</span> with coordinates with respect to the basis <span class="math inline">\(\mathcal{B}\)</span>, the coordinates <span class="math inline">\(\left[\mathbf{x}\right]_C\)</span> of this vector with respect to the basis <span class="math inline">\(\mathcal{C}\)</span> is <span class="math display">\[
 \begin{aligned}
 \left[\mathbf{x}\right]_C = \mathbf{C}^{-1} \mathbf{B} \left[\mathbf{x}\right]_B.
 \end{aligned}
 \]</span></p>
 <p><strong>Draw diagram</strong></p>
-<p>::: {.callout-note icon=false collapse=“true” appearance=“simple”} ## Solution</p>
-<div id="exm-" class="theorem example">
+<p>x ::: {#exm-}</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 19.1 </strong></span>
+
 </div>
 <p>Working with the same bases <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span> and <span class="math inline">\(\mathcal{C} = \left\{ \begin{pmatrix} 0 \\ \frac{1}{2} \end{pmatrix}, \begin{pmatrix} 1 \\ -\frac{1}{2} \end{pmatrix}\right\}\)</span> from the previous example, Let <span class="math inline">\(\left[\mathbf{x}\right]_B = \begin{pmatrix} -3/2 \\ 1/2 \end{pmatrix}\)</span> be the coordinates of the vector <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{B} = \left\{ \begin{pmatrix} 1/2 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \end{pmatrix}\right\}\)</span>. Find</p>
 <ol type="1">
 <li>the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the standard basis and</li>
 <li>the coordinates of <span class="math inline">\(\mathbf{x}\)</span> with respect to the basis <span class="math inline">\(\mathcal{C}\)</span>.</li>
 </ol>
+</section>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -522,7 +517,6 @@ Solution
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 
