@@ -78,9 +78,7 @@ $$
 
 **Draw diagram**
 
-::: {.callout-note icon=false collapse="true" appearance="simple"} 
-## Solution
-
+x
 ::: {#exm-}
 
 ```{r example-change-basis-1, echo = FALSE}
