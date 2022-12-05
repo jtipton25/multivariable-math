@@ -120,7 +120,7 @@ $$
 which, in matrix notation is
 $$
 \begin{aligned}
-\frac{dz}{dt} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{\partial x}{\partial s} \\  \frac{\partial y}{\partial s} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
+\frac{dz}{ds} = \begin{pmatrix} \frac{\partial z}{ \partial x} & \frac{\partial z}{\partial y} \end{pmatrix} \begin{pmatrix} \frac{\partial x}{\partial s} \\  \frac{\partial y}{\partial s} \end{pmatrix} = \frac{\partial z}{ \partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
 \end{aligned}
 $$
     
