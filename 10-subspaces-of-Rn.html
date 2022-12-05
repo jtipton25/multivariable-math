@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -338,6 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -443,8 +444,9 @@ Solution
 <p><span class="theorem-title"><strong>Definition 11.2 </strong></span>The <strong>column space</strong>, denoted <span class="math inline">\(\operatorname{col}(\mathbf{A})\)</span>, of a <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> which has columns <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathcal{R}^m\)</span> is the set of vectors that are linear combinations of the columns of <span class="math inline">\(\mathbf{A}\)</span> which is equivalent to the span<span class="math inline">\(\{\mathbf{a}_1, \ldots, \mathbf{a}_n\}\)</span>.</p>
 </div>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.3 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 11.3 </strong></span>
+
 </div>
 <p>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 1 &amp; -8 &amp; -9 \\ -3 &amp; 3 &amp; -5 \\ 1 &amp; 0 &amp; 6 \\ -2 &amp; -1 &amp; -1 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, and <span class="math inline">\(\mathbf{a}_3\)</span>, what is the column space of <span class="math inline">\(\mathbf{A}\)</span>?</p>
 </div>
@@ -473,8 +475,9 @@ Solution
 </div>
 <p>While the idea of a null space might at first glance seem unclear, the null space is the set of all vectors which the matrix transformation defined by <span class="math inline">\(\mathbf{A}\)</span> maps to <span class="math inline">\(\mathbf{0}\)</span>. In other words, the null space of <span class="math inline">\(\mathbf{A}\)</span> is the set of vectors <span class="math inline">\(\{ \mathbf{x} : \mathbf{A} \mathbf{x} = \mathbf{0} \}\)</span>.</p>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.4 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 11.4 </strong></span>
+
 </div>
 <p>Given the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -3 &amp; -3 &amp; -4 &amp; -5 &amp; -2 \\ -4 &amp; 2 &amp; -4 &amp; 5 &amp; 3 \\ 4 &amp; -4 &amp; 4 &amp; -3 &amp; 5 \end{pmatrix}\)</span> with columns <span class="math inline">\(\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_2\)</span>, <span class="math inline">\(\mathbf{a}_3\)</span>, and <span class="math inline">\(\mathbf{a}_4\)</span>, find vectors that span the null space of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
@@ -882,8 +885,9 @@ Solution
 </div>
 </div>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.12 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 11.12 </strong></span>
+
 </div>
 <p>Find a basis for the column space of the matrix <span class="math display">\[
 \begin{pmatrix} -4 &amp; 1 \\ 8 &amp; -2 \\ 6 &amp; 3 \\ 9 &amp; 7 \end{pmatrix}
@@ -1078,7 +1082,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1100,7 +1106,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1136,24 +1159,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

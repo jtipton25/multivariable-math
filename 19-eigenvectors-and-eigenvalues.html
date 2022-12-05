@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -340,6 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -591,8 +592,9 @@ Proof
 <p>Therefore, the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> associated with <span class="math inline">\(\lambda\)</span>, if there are any, are the nontrivial solutions of the homogeneous matrix equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span>. In other words, the eigenvectors are the nonzero vectors in the null space null<span class="math inline">\(\left( \mathbf{A} -\lambda \mathbf{I} \right)\)</span>. If there is not a nontrivial solution (solution <span class="math inline">\(\mathbf{x} \neq \mathbf{0}\)</span>), then <span class="math inline">\(\lambda\)</span> is not an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>Hey, we know how to find solutions to homogeneous systems of equations! Thus, we know how to find the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span>. All we have to do is solve the system of linear equations <span class="math inline">\(\left( \mathbf{A} -\lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span> for a given <span class="math inline">\(\lambda\)</span> (actually, for all <span class="math inline">\(\lambda\)</span>s, which we can’t do). If only there was some way to find eigenvalues <span class="math inline">\(\lambda\)</span> (hint: there is and it is coming next chapter).</p>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.4 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 20.4 </strong></span>
+
 </div>
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 6 &amp; -8 \\ 0 &amp; 0 &amp; 6 \\ 0 &amp; 0 &amp; 2 \end{pmatrix}\)</span>. Then an eigenvector with eigenvector <span class="math inline">\(\lambda\)</span> is a nontrival solution to</p>
 <p><span class="math display">\[
@@ -665,8 +667,9 @@ x_3 &amp; = 0
 <p>where the solution set is determined from the RREF form of the augmented matrix of the equation <span class="math inline">\(\left( \mathbf{A} - \lambda \mathbf{I} \right) \mathbf{x} = \mathbf{0}\)</span></p>
 </div>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.5 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 20.5 </strong></span>
+
 </div>
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} -21/5 &amp; -34/5 &amp; 18/5 \\ -6/5 &amp; -14/5 &amp; 3/5 \\ -4 &amp; -10 &amp; 5 \end{pmatrix}\)</span>. Find the eigenvectors associated with the eigenvalues (a) <span class="math inline">\(\lambda_1 = -4\)</span>, (b) <span class="math inline">\(\lambda_2 = 3\)</span>, and (c) <span class="math inline">\(\lambda_3 = -1\)</span>.</p>
 </div>
@@ -941,8 +944,9 @@ $vectors
 </div>
 <p>Therefore, the <span class="math inline">\(\lambda\)</span>-eigenspace is a subspace (the null space of any matrix is a subspace) that contains the zero vector <span class="math inline">\(\mathbf{0}\)</span> and all the eigenvectors of <span class="math inline">\(\mathbf{A}\)</span> with corresponding eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.6 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 20.6 </strong></span>
+
 </div>
 <p>For <span class="math inline">\(\lambda\)</span> = (a) -2, (b) 1, and (c) 3, decide if <span class="math inline">\(\lambda\)</span> is a eigenvalue of the matrix <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 3 &amp; 0 \\ -3 &amp; 2 \end{pmatrix}\)</span> and if so, compute a basis for the <span class="math inline">\(\lambda\)</span>-eigenspace.</p>
 </div>
@@ -1171,8 +1175,9 @@ x_2  &amp; = x_2
 </div>
 </div>
 <div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.7 </strong></span>&nbsp;</p>
 <div class="cell">
-<span class="theorem-title"><strong>Example 20.7 </strong></span>
+
 </div>
 <p>Let <span class="math inline">\(\mathbf{A} = \begin{pmatrix} 17/5 &amp; 8/5 &amp; -6/5 \\ 0 &amp; 3 &amp; 0 \\ 4/5 &amp; 16/5 &amp; 3/5 \end{pmatrix}\)</span>. Find the eigenvectors associated with the eigenvalues (a) <span class="math inline">\(\lambda = 3\)</span> and (b) <span class="math inline">\(\lambda = 1\)</span>. For each eigen value, also find the basis for the associated eigen-space.</p>
 </div>
@@ -1584,7 +1589,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1606,7 +1613,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1642,24 +1666,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
